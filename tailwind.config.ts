@@ -7,7 +7,7 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: 'calc(var(--spacing) * 4)', // 1rem with 14px base = 14px padding
+      padding: 'calc(var(--spacing) * 4)',
       screens: {
         sm: '40rem',
         md: '48rem', 
@@ -18,8 +18,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'sans-serif'],
-        display: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['Fredoka', 'Inter', 'sans-serif'],
+        fredoka: ['Fredoka', 'sans-serif'],
       },
       colors: {
         border: "var(--border)",
@@ -47,7 +48,7 @@ export default {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
           blue: "var(--accent-blue)",
-          green: "var(--accent-green)",
+          emerald: "var(--accent-emerald)",
           purple: "var(--accent-purple)",
           orange: "var(--accent-orange)",
         },
@@ -59,6 +60,16 @@ export default {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        // Brand colors
+        'brick-red': "var(--brick-red)",
+        'golden-yellow': "var(--golden-yellow)",
+        'teal': "var(--teal)",
+        'near-black': "var(--near-black)",
+        'orange-accent': "var(--orange-accent)",
+        'cream-highlight': "var(--cream-highlight)",
+        'dark-teal': "var(--dark-teal)",
+        'deep-brown': "var(--deep-brown)",
+        'warm-tan': "var(--warm-tan)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -67,10 +78,10 @@ export default {
         full: "9999px",
       },
       boxShadow: {
-        'apple-sm': 'var(--shadow-sm)',
-        'apple-md': 'var(--shadow-md)',
-        'apple-lg': 'var(--shadow-lg)',
-        'apple-xl': 'var(--shadow-xl)',
+        'sm': 'var(--shadow-sm)',
+        'md': 'var(--shadow-md)',
+        'lg': 'var(--shadow-lg)',
+        'xl': 'var(--shadow-xl)',
       },
       keyframes: {
         "accordion-down": {
@@ -93,6 +104,14 @@ export default {
           from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
+        "bounce-gentle": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "wiggle": {
+          "0%, 100%": { transform: "rotate(-2deg)" },
+          "50%": { transform: "rotate(2deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -100,9 +119,11 @@ export default {
         "fade-in-up": "fade-in-up 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
         "fade-in": "fade-in 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
         "scale-in": "scale-in 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
+        "bounce-gentle": "bounce-gentle 2s ease-in-out infinite",
+        "wiggle": "wiggle 3s ease-in-out infinite",
       },
       transitionTimingFunction: {
-        'apple': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        'smooth': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
       },
     },
   },

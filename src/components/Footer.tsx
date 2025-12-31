@@ -16,16 +16,16 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative py-20 bg-foreground text-background">
+    <footer className="relative py-20 bg-near-black text-cream-highlight">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-12 gap-12">
           {/* Logo and Description */}
           <div className="col-span-12 md:col-span-4">
             <div>
-              <div className="text-background text-3xl font-bold tracking-wider mb-4">
+              <div className="font-fredoka text-golden-yellow text-3xl font-semibold tracking-wide mb-4">
                 Where2Studios
               </div>
-              <p className="text-background/70 leading-relaxed mb-6">
+              <p className="text-cream-highlight/80 leading-relaxed mb-6">
                 A social media agency and creative community empowering dreamers 
                 with result-driven marketing and authentic storytelling.
               </p>
@@ -92,10 +92,10 @@ export function Footer() {
           {/* Tools We Use Section */}
           <div className="col-span-12 md:col-span-8">
             <div>
-              <h4 className="font-black text-2xl text-background mb-4">TOOLS WE USE</h4>
+              <h4 className="font-fredoka font-semibold text-2xl text-golden-yellow mb-4">TOOLS WE USE</h4>
               
               {/* AI Tools Description */}
-              <p className="text-background/70 text-base mb-8 leading-relaxed">
+              <p className="text-cream-highlight/70 text-base mb-8 leading-relaxed">
                 We leverage the latest AI technology to deliver cutting-edge video production. 
                 Our toolkit combines the best generative AI models for video, audio, and visual content creation.
               </p>
@@ -104,7 +104,7 @@ export function Footer() {
                 {aiTools.map((tool, index) => (
                   <div
                     key={tool}
-                    className="text-background/80 hover:text-background gentle-animation text-sm font-medium"
+                    className="text-cream-highlight/70 hover:text-golden-yellow gentle-animation text-sm font-medium"
                   >
                     {tool}
                   </div>
@@ -115,12 +115,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar - Simplified */}
-        <div className="border-t border-background/20 pt-8 mt-16">
+        <div className="border-t border-teal/30 pt-8 mt-16">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-background/70 mb-4 md:mb-0">
+            <div className="text-sm text-cream-highlight/60 mb-4 md:mb-0">
               © 2025 Where2Studios. All rights reserved.
             </div>
-            <div className="text-sm text-background/70">
+            <div className="text-sm text-cream-highlight/60">
               2847 HIGHLAND AVE. SUITE 310 BIRMINGHAM 35205, AL, USA
             </div>
           </div>
