@@ -90,36 +90,50 @@ export function FeaturedWins() {
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <motion.h2
+        <div className="text-center mb-10">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-near-black mb-2"
+            className="inline-flex items-center gap-3 mb-4"
           >
-            Real Results
-          </motion.h2>
-          <motion.p
+            <div className="w-2 h-2 bg-golden-yellow rounded-full" />
+            <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
+              Real Results
+            </span>
+            <div className="w-2 h-2 bg-brick-red rounded-full" />
+          </motion.div>
+          
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-near-black/60 text-sm"
+            className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-near-black mb-3"
           >
-            Hover to see why it worked
+            Proof, Not Promises
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            viewport={{ once: true }}
+            className="text-lg text-near-black/70"
+          >
+            What we've done, and why it worked.
           </motion.p>
         </div>
 
         {/* Reels Row */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-3">
+        <div className="mb-8 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <Play className="w-4 h-4 text-brick-red fill-brick-red" />
             <span className="font-fredoka text-sm font-semibold text-near-black">Reels</span>
           </div>
           
           <div 
-            className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory"
+            className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory justify-start lg:justify-center"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {reels.map((item, index) => (
@@ -161,14 +175,14 @@ export function FeaturedWins() {
         </div>
 
         {/* Photos Row */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-3">
+        <div className="mb-10 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <Image className="w-4 h-4 text-golden-yellow" />
             <span className="font-fredoka text-sm font-semibold text-near-black">Photos</span>
           </div>
           
           <div 
-            className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory"
+            className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory justify-start lg:justify-center"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {photos.map((item, index) => (
