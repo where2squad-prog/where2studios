@@ -235,19 +235,8 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka font-semibold leading-[0.95] text-white drop-shadow-lg">
-            <span className="relative block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>
+            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>
               Stories That
-              {/* Orange dot accent under the last "t" */}
-              <motion.span 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.2, type: "spring", stiffness: 500 }}
-                className="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 bg-golden-yellow rounded-full"
-                style={{ 
-                  bottom: '-0.4em',
-                  right: '0.05em'
-                }}
-              />
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
