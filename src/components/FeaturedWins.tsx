@@ -84,7 +84,7 @@ export function FeaturedWins() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground mb-6"
+            className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-near-black mb-6"
           >
             Proof, Not Promises
           </motion.h2>
@@ -94,7 +94,7 @@ export function FeaturedWins() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-foreground/70 max-w-2xl mx-auto"
+            className="text-xl text-near-black/70 max-w-2xl mx-auto"
           >
             What we've done, and why it worked.
           </motion.p>

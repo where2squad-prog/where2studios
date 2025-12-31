@@ -65,11 +65,11 @@ export function Team() {
             The Squad
           </span>
           
-          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-bold text-near-black mb-6">
             Meet the Dreamers
           </h2>
           
-          <p className="text-lg lg:text-xl text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-near-black/70 max-w-2xl mx-auto">
             The people who make things happen.
           </p>
         </div>
@@ -105,7 +105,7 @@ export function Team() {
                 
                 {/* Info */}
                 <div className="p-4 text-center">
-                  <h3 className="font-fredoka text-lg font-bold text-foreground mb-1">
+                  <h3 className="font-fredoka text-lg font-bold text-near-black mb-1">
                     {member.name}
                   </h3>
                   <p className="text-sm text-golden-yellow font-medium">
@@ -122,7 +122,7 @@ export function Team() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-foreground/60 mb-4">
+          <p className="text-near-black/60 mb-4">
             Want to join the squad?
           </p>
           <a 

@@ -11,14 +11,14 @@ export function Services() {
       id: 'strategy',
       title: "Growth Strategy",
       subtitle: "Offer, audience, content angles",
-      description: "We map what to say, who it's for, and why it will convert—then we turn it into a weekly plan.",
+      description: "We map what to say, who it's for, and why it will convert. Then we turn it into a weekly plan.",
       icon: "📊"
     },
     {
       id: 'production',
       title: "Short-Form Production",
       subtitle: "Shoot, edit, packaging",
-      description: "We produce scroll-stopping content fast—built around retention, clarity, and brand consistency.",
+      description: "We produce scroll-stopping content fast. Built around retention, clarity, and brand consistency.",
       icon: "🎬"
     },
     {
@@ -39,7 +39,7 @@ export function Services() {
       id: 'analytics',
       title: "Performance Review + Iteration",
       subtitle: "Monthly insights, next steps",
-      description: "Monthly review—what hit, what missed, what we change next—so growth compounds.",
+      description: "Monthly review: what hit, what missed, what we change next. So growth compounds.",
       icon: "📈"
     }
   ]

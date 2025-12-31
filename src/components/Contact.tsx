@@ -84,11 +84,11 @@ export function Contact() {
             <div className="w-3 h-3 bg-brick-red rounded-full" />
           </div>
           
-          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-near-black">
             Book a 30-Minute <span className="text-golden-yellow">Growth Audit</span>
           </h2>
           
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-near-black/70 max-w-2xl mx-auto mb-8">
             Tell us your goals, audience, and current bottlenecks. We'll show you exactly how to turn content into customers.
           </p>
           
@@ -104,13 +104,13 @@ export function Contact() {
                 className="flex items-center gap-2 bg-golden-yellow/10 border border-golden-yellow/20 rounded-full px-4 py-2"
               >
                 <Check className="w-4 h-4 text-golden-yellow" />
-                <span className="text-sm font-medium text-foreground">{item}</span>
+                <span className="text-sm font-medium text-near-black">{item}</span>
               </motion.div>
             ))}
           </div>
           
           {/* Qualifier */}
-          <p className="text-sm text-muted-foreground/70 italic">
+          <p className="text-sm text-near-black/50 italic">
             Best if you can post at least 3x/week and want measurable growth
           </p>
         </motion.div>
@@ -128,16 +128,16 @@ export function Contact() {
             <div className="bg-card/50 px-8 py-6 border-b border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-fredoka text-xl font-semibold text-foreground mb-1">
+                  <h3 className="font-fredoka text-xl font-semibold text-near-black mb-1">
                     Where2Studios Growth Audit
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-near-black/60">
                     30 minutes • Video call • Free
                   </p>
                 </div>
                 <div className="hidden sm:flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm text-muted-foreground font-medium">Available now</span>
+                  <span className="text-sm text-near-black/60 font-medium">Available now</span>
                 </div>
               </div>
             </div>
