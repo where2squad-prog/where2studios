@@ -235,14 +235,24 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka font-semibold leading-[0.95] text-white drop-shadow-lg">
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>Stories That</span>
-            <span className="block text-6xl sm:text-7xl lg:text-7xl xl:text-8xl text-golden-yellow font-bold" style={{ letterSpacing: '0.12em' }}>SCALE.</span>
+            <span className="relative block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>
+              Stories That
+              {/* Orange dot accent under the last "t" */}
+              <span 
+                className="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 bg-golden-yellow rounded-full"
+                style={{ 
+                  bottom: '-0.4em',
+                  right: '0.05em'
+                }}
+              />
+            </span>
+            <span className="block text-6xl sm:text-7xl lg:text-7xl xl:text-8xl text-golden-yellow font-bold leading-none" style={{ letterSpacing: '0.08em' }}>SCALE<span className="inline">.</span></span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
             Strategy. Production. Distribution. Built to scale.
           </p>
-          <p className="mt-3 text-sm sm:text-base text-white/70 drop-shadow-md max-w-md">
-            Repeatable content systems that grow audience, demand, and revenue.
+          <p className="mt-3 text-sm sm:text-base text-white/90 drop-shadow-md max-w-md font-medium">
+            Real stories, turned into repeatable series people actually follow.
           </p>
           
           {/* CTA Buttons */}
