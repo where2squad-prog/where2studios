@@ -9,37 +9,37 @@ export function Services() {
   const services = [
     {
       id: 'strategy',
-      title: "Growth Strategy",
-      subtitle: "Offer, audience, content angles",
-      description: "We map what to say, who it's for, and why it will convert. Then we turn it into a weekly plan.",
+      title: "Strategy",
+      subtitle: "Positioning + messaging",
+      description: "We define what makes you different and turn it into content that converts.",
       icon: "📊"
     },
     {
       id: 'production',
-      title: "Short-Form Production",
-      subtitle: "Shoot, edit, packaging",
-      description: "We produce scroll-stopping content fast. Built around retention, clarity, and brand consistency.",
+      title: "Production",
+      subtitle: "Video, photo, creative",
+      description: "High-quality content built for attention and action.",
       icon: "🎬"
     },
     {
       id: 'distribution',
-      title: "Distribution + Posting System",
-      subtitle: "Scheduling, captions, testing",
-      description: "We handle posting, captions, creative testing, and consistency so content doesn't die in drafts.",
+      title: "Distribution",
+      subtitle: "Posting + optimization",
+      description: "We handle publishing and testing so your content reaches the right people.",
       icon: "📱"
     },
     {
       id: 'partnerships',
-      title: "Partnerships + Collaborations",
-      subtitle: "Creators, brands, communities",
-      description: "We create collabs that put you in front of new customers, creators, and local communities.",
+      title: "Partnerships",
+      subtitle: "Creators + brands",
+      description: "Collaborations that expand your reach and credibility.",
       icon: "🤝"
     },
     {
       id: 'analytics',
-      title: "Performance Review + Iteration",
-      subtitle: "Monthly insights, next steps",
-      description: "Monthly review: what hit, what missed, what we change next. So growth compounds.",
+      title: "Performance",
+      subtitle: "Data + iteration",
+      description: "We track what works and double down on it.",
       icon: "📈"
     }
   ]
@@ -76,7 +76,7 @@ export function Services() {
             viewport={{ once: true }}
             className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-cream-highlight mb-6"
           >
-            You Focus on the Business
+            Full-Service Creative
           </motion.h2>
           
           <motion.p
@@ -86,7 +86,7 @@ export function Services() {
             viewport={{ once: true }}
             className="text-xl text-golden-yellow font-fredoka font-medium max-w-2xl mx-auto"
           >
-            We bring the customers in.
+            From strategy to execution.
           </motion.p>
         </div>
 
