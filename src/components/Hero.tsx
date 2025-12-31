@@ -99,13 +99,21 @@ export function Hero() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-near-black">
-      {/* Brand Color Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-near-black via-near-black to-brick-red/30" />
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
+      </video>
       
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-golden-yellow/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-80 h-80 bg-brick-red/20 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-golden-yellow/10 rounded-full blur-3xl" />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Full-Width Navbar */}
       <motion.nav
