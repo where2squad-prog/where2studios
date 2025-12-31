@@ -131,9 +131,9 @@ export function FeaturedWins() {
                 </div>
                 
                 {/* Stats Badge */}
-                <div className="absolute top-3 right-3 bg-near-black/80 backdrop-blur-sm rounded-lg px-3 py-1.5 flex items-center gap-2">
+                <div className="absolute top-3 right-3 bg-near-black/90 backdrop-blur-md rounded-lg px-3 py-1.5 flex items-center gap-2 border border-white/10">
                   <Eye className="w-4 h-4 text-golden-yellow" />
-                  <span className="text-cream-highlight text-sm font-semibold">{video.views}</span>
+                  <span className="text-white text-sm font-semibold">{video.views}</span>
                 </div>
                 
                 {/* Bottom Info */}
