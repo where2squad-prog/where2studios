@@ -56,7 +56,7 @@ export function Team() {
   ]
 
   return (
-    <section id="team" className="relative py-24 lg:py-32 bg-background">
+    <section id="team" className="relative pt-8 pb-24 lg:pb-32 bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Section Header */}
