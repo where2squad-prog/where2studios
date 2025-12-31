@@ -235,11 +235,13 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-white drop-shadow-lg">
-            <span className="block">Content That Turns</span>
-            <span className="block">Into <span className="text-golden-yellow">Customers.</span></span>
+            <span className="block">Stories That <span className="text-golden-yellow">Scale.</span></span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
-            Strategy. Production. Distribution. Built for growth.
+            Strategy. Production. Distribution. Built to scale.
+          </p>
+          <p className="mt-3 text-sm sm:text-base text-white/70 drop-shadow-md max-w-md">
+            Repeatable content systems that grow audience, demand, and revenue.
           </p>
           
           {/* CTA Buttons */}
