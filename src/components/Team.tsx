@@ -57,17 +57,21 @@ export function Team() {
   ]
 
   return (
-    <section id="team" className="relative pt-8 pb-24 lg:pb-32 bg-background">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="team" className="relative pt-8 pb-24 lg:pb-32 bg-background overflow-hidden">
+      {/* Decorative blobs */}
+      <div className="absolute top-40 left-[2%] w-48 h-48 bg-golden-yellow/5 rounded-full blur-3xl blob-morph" />
+      <div className="absolute bottom-20 right-[5%] w-64 h-64 bg-brick-red/5 rounded-full blur-3xl blob-morph" style={{ animationDelay: '-4s' }} />
+      
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="inline-block px-4 py-2 bg-golden-yellow/10 text-golden-yellow rounded-full text-sm font-semibold mb-6"
+            className="inline-block px-4 py-2 bg-golden-yellow/10 text-golden-yellow rounded-full text-sm font-semibold mb-6 border border-golden-yellow/20"
           >
             The Squad
           </motion.span>
@@ -98,14 +102,15 @@ export function Team() {
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, rotate: index % 2 === 0 ? -2 : 2 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              whileHover={{ y: -10, rotate: index % 2 === 0 ? 1 : -1 }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true, margin: "-50px" }}
               className="group relative"
             >
               {/* Card */}
-              <div className="fun-card bg-card rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02]">
+              <div className="fun-card bg-card rounded-3xl overflow-hidden transition-all duration-300">
                 
                 {/* Image Container */}
                 <div className="relative aspect-square overflow-hidden bg-muted">
@@ -138,7 +143,7 @@ export function Team() {
               </div>
               
               {/* Decorative accent */}
-              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-brick-red/20 to-golden-yellow/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -z-10 inset-0 bg-gradient-to-br from-brick-red/20 to-golden-yellow/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
           ))}
         </div>

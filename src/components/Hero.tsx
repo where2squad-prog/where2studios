@@ -226,6 +226,23 @@ export function Hero() {
 
 
 
+      {/* Decorative floating shapes */}
+      <motion.div
+        animate={{ y: [-10, 10, -10], rotate: [0, 5, -5, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] right-[15%] w-6 h-6 bg-golden-yellow rounded-full opacity-40 blur-[1px] z-30"
+      />
+      <motion.div
+        animate={{ y: [8, -8, 8], x: [-5, 5, -5] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute top-[35%] right-[25%] w-4 h-4 bg-brick-red rounded-full opacity-30 z-30"
+      />
+      <motion.div
+        animate={{ y: [-15, 15, -15] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-[30%] right-[35%] w-8 h-8 bg-golden-yellow/30 rounded-full blur-sm z-30"
+      />
+      
       {/* Hero Content - Lower Left */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -238,7 +255,10 @@ export function Hero() {
             <span className="relative block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>
               Stories That
               {/* Orange dot accent under the last "t" */}
-              <span 
+              <motion.span 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.2, type: "spring", stiffness: 500 }}
                 className="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 bg-golden-yellow rounded-full"
                 style={{ 
                   bottom: '-0.4em',
@@ -246,30 +266,54 @@ export function Hero() {
                 }}
               />
             </span>
-            <span className="block text-6xl sm:text-7xl lg:text-7xl xl:text-8xl text-golden-yellow font-bold leading-none" style={{ letterSpacing: '0.08em' }}>SCALE<span className="inline">.</span></span>
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="block text-6xl sm:text-7xl lg:text-7xl xl:text-8xl text-golden-yellow font-bold leading-none" 
+              style={{ letterSpacing: '0.08em' }}
+            >
+              SCALE<span className="inline">.</span>
+            </motion.span>
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-2xl px-4 py-2 inline-block border border-white/10"
+          >
             Strategy. Production. Distribution. Built to scale.
-          </p>
-          <p className="mt-3 text-sm sm:text-base text-white/90 drop-shadow-md max-w-md font-medium">
+          </motion.p>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+            className="mt-3 text-sm sm:text-base text-white/90 drop-shadow-md max-w-md font-medium"
+          >
             Real stories, turned into repeatable series people actually follow.
-          </p>
+          </motion.p>
           
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mt-8">
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.3 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(224, 158, 36, 0.4)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const contactSection = document.getElementById('contact')
                 contactSection?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="bg-golden-yellow text-near-black font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer shadow-lg"
+              className="bg-golden-yellow text-near-black font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer shadow-lg squish-hover"
             >
               Book a Call
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4 }}
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const servicesSection = document.getElementById('services')
