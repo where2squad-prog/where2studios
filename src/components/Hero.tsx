@@ -234,9 +234,9 @@ export function Hero() {
         className="absolute bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         <div className="max-w-3xl">
-          <h1 className="font-fredoka font-semibold leading-[0.95] text-white drop-shadow-lg">
-            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight">Stories That</span>
-            <span className="block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-golden-yellow font-bold tracking-tight">SCALE.</span>
+          <h1 className="font-fredoka font-semibold leading-[0.9] text-white drop-shadow-lg">
+            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-5xl tracking-normal">Stories That</span>
+            <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-7xl text-golden-yellow font-bold tracking-normal">SCALE.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
             Strategy. Production. Distribution. Built to scale.
