@@ -113,9 +113,9 @@ export function FeaturedWins() {
             <motion.div 
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 bg-golden-yellow rounded-full" 
+              className="w-2 h-2 bg-brick-red rounded-full" 
             />
-            <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
+            <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
               Real Results
             </span>
             <motion.div 

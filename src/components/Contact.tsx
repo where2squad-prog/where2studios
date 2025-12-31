@@ -123,13 +123,13 @@ export function Contact() {
 
         {/* Divider with dots */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-12 h-px bg-near-black/10" />
+          <div className="w-12 h-px bg-near-black/20" />
           <motion.div 
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-2 h-2 bg-golden-yellow rounded-full" 
+            className="w-2 h-2 bg-brick-red rounded-full" 
           />
-          <div className="w-12 h-px bg-near-black/10" />
+          <div className="w-12 h-px bg-near-black/20" />
         </div>
 
         {/* Contact Header - Condensed */}
@@ -144,9 +144,9 @@ export function Contact() {
             <motion.div 
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 bg-golden-yellow rounded-full" 
+              className="w-2 h-2 bg-brick-red rounded-full" 
             />
-            <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
+            <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
               Let's Talk
             </span>
             <motion.div 
@@ -157,7 +157,7 @@ export function Contact() {
           </div>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-near-black mb-2">
-            Book a 30-Minute <span className="text-golden-yellow">Growth Audit</span>
+            Book a 30-Minute <span className="text-brick-red">Growth Audit</span>
           </h2>
           
           <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-4">
@@ -173,10 +173,10 @@ export function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-1.5 text-xs bg-near-black/5 px-3 py-1.5 rounded-full"
+                className="flex items-center gap-1.5 text-xs bg-near-black/10 px-3 py-1.5 rounded-full"
               >
-                <Check className="w-3 h-3 text-golden-yellow" />
-                <span className="text-near-black/70">{item}</span>
+                <Check className="w-3 h-3 text-brick-red" />
+                <span className="text-near-black">{item}</span>
               </motion.div>
             ))}
           </div>
