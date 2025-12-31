@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Volume2, VolumeX, Menu, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
+import logo from '@/assets/where2studios-logo.png'
 
 export function Hero() {
   const [isMuted, setIsMuted] = useState(true)
@@ -134,7 +135,7 @@ export function Hero() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <span className="font-bagel text-white text-xl tracking-wider">MOJJU</span>
+              <img src={logo} alt="Where2Studios" className="h-10 sm:h-12 w-auto" />
             </motion.div>
 
             {/* Navigation Menu */}
