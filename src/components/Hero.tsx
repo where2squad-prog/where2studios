@@ -141,22 +141,10 @@ export function Hero() {
             {/* Navigation Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <a 
-                href="#portfolio" 
-                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
-              >
-                Work
-              </a>
-              <a 
-                href="#about" 
-                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
-              >
-                Process
-              </a>
-              <a 
                 href="#services" 
                 className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
               >
-                Capabilities
+                Services
               </a>
               <a 
                 href="#team" 
@@ -252,25 +240,11 @@ export function Hero() {
             {/* Mobile Navigation Links */}
             <div className="flex flex-col space-y-4 text-white">
               <a 
-                href="#portfolio" 
-                className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Work
-              </a>
-              <a 
-                href="#about" 
-                className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Process
-              </a>
-              <a 
                 href="#services" 
                 className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Capabilities
+                Services
               </a>
               <a 
                 href="#team" 
@@ -307,7 +281,7 @@ export function Hero() {
 
 
 
-      {/* Big Studio Title - Lower Left */}
+      {/* Hero Content - Lower Left */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -315,14 +289,72 @@ export function Hero() {
         className="absolute bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         <div className="max-w-3xl">
-          <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-white">
-            <span className="block">Content That Turns</span>
-            <span className="block">Attention Into</span>
-            <span className="block text-golden-yellow">Action.</span>
+          <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-white drop-shadow-lg">
+            <span className="block">We Turn Short-Form</span>
+            <span className="block">Content Into</span>
+            <span className="block text-golden-yellow">Customers.</span>
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-xl font-medium">
-            We build social media engines for brands that want real growth.
+          <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-xl font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+            Strategy, filming, editing, posting, partnerships—built as a repeatable system, not random posts.
           </p>
+          
+          {/* Target Audience Tag */}
+          <p className="mt-4 text-sm text-golden-yellow/90 font-medium tracking-wide">
+            Best for restaurants, food brands & hospitality businesses
+          </p>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 mt-8">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const contactSection = document.getElementById('contact')
+                contactSection?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="bg-golden-yellow text-near-black font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer shadow-lg"
+            >
+              Book a Call
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const servicesSection = document.getElementById('services')
+                servicesSection?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 gentle-animation cursor-pointer"
+            >
+              See How It Works
+            </motion.button>
+          </div>
+        </div>
+      </motion.div>
+      
+      {/* Social Proof Stats Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        className="absolute bottom-16 right-6 sm:right-8 lg:right-16 z-40 hidden lg:block"
+      >
+        <div className="bg-black/40 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+          <div className="flex flex-col gap-4">
+            <div className="text-center">
+              <div className="font-fredoka text-3xl font-bold text-golden-yellow">500+</div>
+              <div className="text-white/70 text-sm">Videos Shipped</div>
+            </div>
+            <div className="w-full h-px bg-white/20" />
+            <div className="text-center">
+              <div className="font-fredoka text-3xl font-bold text-golden-yellow">10M+</div>
+              <div className="text-white/70 text-sm">Total Views</div>
+            </div>
+            <div className="w-full h-px bg-white/20" />
+            <div className="text-center">
+              <div className="font-fredoka text-3xl font-bold text-golden-yellow">25+</div>
+              <div className="text-white/70 text-sm">Clients Served</div>
+            </div>
+          </div>
         </div>
       </motion.div>
 

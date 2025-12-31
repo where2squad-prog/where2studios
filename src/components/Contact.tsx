@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 
 export function Contact() {
 
@@ -57,44 +59,84 @@ export function Contact() {
     }
   }, [])
 
+  const deliverables = [
+    "3 content angles tailored to your business",
+    "A posting system for the next 30 days",
+    "Partnership ideas to reach new customers"
+  ]
+
   return (
-    <section id="contact" className="relative py-32 bg-card/30">
+    <section id="contact" className="relative py-24 bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-3 h-3 bg-accent-emerald rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-muted-foreground">
-              Let's Build Together
+            <div className="w-3 h-3 bg-golden-yellow rounded-full" />
+            <span className="font-fredoka text-sm font-medium text-muted-foreground uppercase tracking-widest">
+              Let's Talk
             </span>
-            <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
+            <div className="w-3 h-3 bg-brick-red rounded-full" />
           </div>
           
-          <h2 className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight mb-8">
-            <span className="block mb-2">Ready to Build Your Engine?</span>
+          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+            Book a 30-Minute <span className="text-golden-yellow">Growth Audit</span>
           </h2>
           
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Book a discovery call. Tell us your goals, audience, and offer—and let's build a content system that drives real growth.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            Tell us your goals, audience, and current bottlenecks. We'll show you exactly how to turn content into customers.
           </p>
-        </div>
+          
+          {/* Deliverables */}
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            {deliverables.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-2 bg-golden-yellow/10 border border-golden-yellow/20 rounded-full px-4 py-2"
+              >
+                <Check className="w-4 h-4 text-golden-yellow" />
+                <span className="text-sm font-medium text-foreground">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Qualifier */}
+          <p className="text-sm text-muted-foreground/70 italic">
+            Best if you can post at least 3x/week and want measurable growth
+          </p>
+        </motion.div>
 
         {/* Cal.com Booking Widget */}
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-background clean-border rounded-3xl overflow-hidden elevated-shadow">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto"
+        >
+          <div className="bg-background border border-border rounded-3xl overflow-hidden shadow-xl">
             {/* Widget Header */}
             <div className="bg-card/50 px-8 py-6 border-b border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-black text-foreground mb-1">
-                    Where2Studios Discovery Call
+                  <h3 className="font-fredoka text-xl font-semibold text-foreground mb-1">
+                    Where2Studios Growth Audit
                   </h3>
                   <p className="text-muted-foreground">
-                    30 minutes • Video call • Free consultation
+                    30 minutes • Video call • Free
                   </p>
                 </div>
                 <div className="hidden sm:flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-accent-emerald rounded-full" />
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                   <span className="text-sm text-muted-foreground font-medium">Available now</span>
                 </div>
               </div>
@@ -112,42 +154,7 @@ export function Contact() {
               />
             </div>
           </div>
-        </div>
-
-        {/* Bottom Info */}
-        <div className="text-center mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
-              <div className="w-12 h-12 bg-accent-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-accent-blue rounded-full" />
-              </div>
-              <h4 className="font-fredoka font-semibold text-foreground mb-2">Diagnose</h4>
-              <p className="text-muted-foreground text-sm">
-                Goals, audience, offer—what does success look like for you?
-              </p>
-            </div>
-            
-            <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
-              <div className="w-12 h-12 bg-accent-emerald/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-accent-emerald rounded-full" />
-              </div>
-              <h4 className="font-fredoka font-semibold text-foreground mb-2">Custom Strategy</h4>
-              <p className="text-muted-foreground text-sm">
-                Content pillars, hooks, and a posting cadence built for your brand.
-              </p>
-            </div>
-            
-            <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
-              <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-accent-purple rounded-full" />
-              </div>
-              <h4 className="font-fredoka font-semibold text-foreground mb-2">Next Steps</h4>
-              <p className="text-muted-foreground text-sm">
-                Clear roadmap to start producing and publishing content.
-              </p>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
