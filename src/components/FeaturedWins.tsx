@@ -92,10 +92,10 @@ export function FeaturedWins() {
         {/* Section Header */}
         <div className="text-center mb-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
             className="inline-flex items-center gap-3 mb-4"
           >
             <div className="w-2 h-2 bg-golden-yellow rounded-full" />
@@ -106,19 +106,19 @@ export function FeaturedWins() {
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
             className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-near-black mb-3"
           >
             Proof, Not Promises
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
             className="text-lg text-near-black/70"
           >
             What we've done, and why it worked.
@@ -139,10 +139,10 @@ export function FeaturedWins() {
             {reels.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="flex-shrink-0 snap-start"
               >
                 <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-md w-[140px] aspect-[9/14]">
@@ -188,10 +188,10 @@ export function FeaturedWins() {
             {photos.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="flex-shrink-0 snap-start"
               >
                 <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-md w-[140px] aspect-square">
@@ -224,10 +224,10 @@ export function FeaturedWins() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-center"
         >
           <a

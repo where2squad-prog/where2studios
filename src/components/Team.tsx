@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { ImageWithFallback } from './figma/ImageWithFallback'
 import joshuaPhoto from '../assets/team-member-1.png'
 import danielPhoto from '../assets/team-member-2.png'
@@ -61,24 +62,46 @@ export function Team() {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-golden-yellow/10 text-golden-yellow rounded-full text-sm font-semibold mb-6">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="inline-block px-4 py-2 bg-golden-yellow/10 text-golden-yellow rounded-full text-sm font-semibold mb-6"
+          >
             The Squad
-          </span>
+          </motion.span>
           
-          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-bold text-near-black mb-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-bold text-near-black mb-6"
+          >
             Meet the Dreamers
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg lg:text-xl text-near-black/70 max-w-2xl mx-auto">
+          <motion.p 
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-lg lg:text-xl text-near-black/70 max-w-2xl mx-auto"
+          >
             The people who make things happen.
-          </p>
+          </motion.p>
         </div>
 
         {/* Team Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {teamMembers.map((member, index) => (
-            <div
+            <motion.div
               key={member.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-50px" }}
               className="group relative"
             >
               {/* Card */}
@@ -116,25 +139,31 @@ export function Team() {
               
               {/* Decorative accent */}
               <div className="absolute -z-10 inset-0 bg-gradient-to-br from-brick-red/20 to-golden-yellow/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mt-16"
+        >
           <p className="text-near-black/60 mb-4">
             Want to join the squad?
           </p>
           <a 
             href="#contact" 
-            className="inline-flex items-center gap-2 px-6 py-3 bg-brick-red text-cream-highlight font-semibold rounded-full hover:bg-brick-red/90 transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-brick-red text-cream-highlight font-semibold rounded-full hover:bg-brick-red/90 transition-all duration-500 hover:scale-105"
           >
             Get in Touch
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

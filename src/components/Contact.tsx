@@ -78,10 +78,10 @@ export function Contact() {
         
         {/* Trusted By - Compact */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-8"
         >
           <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
@@ -104,10 +104,10 @@ export function Contact() {
 
         {/* Contact Header - Condensed */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-6"
         >
           <div className="inline-flex items-center gap-2 mb-3">
@@ -142,10 +142,10 @@ export function Contact() {
 
         {/* Cal.com Widget - Compact */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="max-w-4xl mx-auto"
         >
           <div className="bg-background border border-border rounded-2xl overflow-hidden shadow-lg">
