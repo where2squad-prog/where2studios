@@ -142,31 +142,31 @@ export function Hero() {
             <div className="hidden md:flex items-center space-x-8">
               <a 
                 href="#portfolio" 
-                className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
+                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
               >
                 Work
               </a>
               <a 
                 href="#about" 
-                className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
+                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
               >
                 Process
               </a>
               <a 
                 href="#services" 
-                className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
+                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
               >
                 Capabilities
               </a>
               <a 
                 href="#team" 
-                className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
+                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
               >
                 Team
               </a>
               <a 
                 href="#contact" 
-                className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
+                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
               >
                 Contact
               </a>
@@ -194,13 +194,13 @@ export function Hero() {
               
               {/* CTA Button - Hidden on mobile */}
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   const contactSection = document.getElementById('contact')
                   contactSection?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="hidden sm:block bg-red-600 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-md hover:bg-red-700 gentle-animation ml-4 cursor-pointer"
+                className="hidden sm:block bg-white text-black font-medium text-sm px-5 py-2.5 rounded-full hover:bg-white/90 gentle-animation ml-4 cursor-pointer"
               >
                 Book a Call
               </motion.button>
@@ -290,14 +290,14 @@ export function Hero() {
 
             {/* Mobile CTA Button */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const contactSection = document.getElementById('contact')
                 contactSection?.scrollIntoView({ behavior: 'smooth' })
                 setIsMobileMenuOpen(false)
               }}
-              className="bg-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 active:bg-red-800 gentle-animation mt-8 cursor-pointer"
+              className="bg-white text-black font-medium px-6 py-3 rounded-full hover:bg-white/90 gentle-animation mt-8 cursor-pointer"
             >
               Book a Call
             </motion.button>
@@ -309,16 +309,16 @@ export function Hero() {
 
       {/* Big Studio Title - Lower Left */}
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-12 left-6 sm:left-8 lg:left-12 z-40"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        className="absolute bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
-        <div className="max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-white">
-            <span className="block">AI FILM</span>
-            <span className="block">PRODUCTION</span>
-            <span className="block">WITHOUT LIMITS</span>
+        <div className="max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-white">
+            <span className="block">AI Film</span>
+            <span className="block">Production</span>
+            <span className="block text-white/60">Without Limits.</span>
           </h1>
         </div>
       </motion.div>
