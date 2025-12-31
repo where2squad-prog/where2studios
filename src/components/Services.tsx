@@ -118,7 +118,7 @@ export function Services() {
               }`}>
                 {service.title}
               </h3>
-              <p className="text-golden-yellow/60 text-xs">
+              <p className="text-cream-highlight/90 text-xs">
                 {service.subtitle}
               </p>
             </motion.div>
