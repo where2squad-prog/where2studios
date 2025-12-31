@@ -135,7 +135,7 @@ export function Hero() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <img src={logo} alt="Where2Studios" className="h-12 sm:h-14 lg:h-16 w-auto drop-shadow-lg" />
+              <img src={logo} alt="Where2Studios" className="h-16 sm:h-20 lg:h-24 w-auto drop-shadow-lg" />
             </motion.div>
 
             {/* Navigation Menu */}
