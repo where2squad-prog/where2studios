@@ -235,8 +235,8 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka font-semibold leading-[0.95] text-white drop-shadow-lg">
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '-0.01em' }}>Stories That</span>
-            <span className="block text-5xl sm:text-6xl lg:text-6xl xl:text-7xl text-golden-yellow font-bold" style={{ letterSpacing: '0.08em' }}>SCALE.</span>
+            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>Stories That</span>
+            <span className="block text-5xl sm:text-6xl lg:text-6xl xl:text-7xl text-golden-yellow font-bold" style={{ letterSpacing: '0.18em' }}>SCALE.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
             Strategy. Production. Distribution. Built to scale.
