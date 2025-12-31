@@ -58,7 +58,7 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-8 text-foreground"
+            className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-8 text-foreground"
           >
             What is Where2?
           </motion.h2>
@@ -90,10 +90,10 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-3xl mx-auto"
           >
-            <p className="text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground mb-8">
+            <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground mb-8">
               Or are we just a bunch of dreamers who realized at some point in life we gave up on our dreams—
             </p>
-            <p className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-relaxed text-foreground">
+            <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold leading-relaxed text-teal">
               and now we're ready to make them come alive?
             </p>
           </motion.div>
@@ -118,7 +118,7 @@ export function About() {
           <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-12">
             Not sure exactly where these dreams are gonna take us.
           </p>
-          <p className="text-2xl sm:text-3xl text-foreground font-medium leading-relaxed">
+          <p className="font-fredoka text-2xl sm:text-3xl text-foreground font-medium leading-relaxed">
             But that's the exciting question, isn't it?
           </p>
           
@@ -130,7 +130,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-12"
           >
-            <span className="text-6xl sm:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text">
+            <span className="font-fredoka text-6xl sm:text-7xl lg:text-8xl font-bold text-teal">
               Where2?
             </span>
           </motion.div>
@@ -156,15 +156,15 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:bg-card/80 hover:border-border gentle-animation"
+                className="group relative bg-card/50 backdrop-blur-sm border-2 border-border/50 rounded-2xl p-8 hover:bg-card/80 hover:border-golden-yellow gentle-animation"
               >
                 {/* Icon */}
-                <div className="text-4xl mb-6 opacity-60 group-hover:opacity-100 gentle-animation">
+                <div className="text-4xl mb-6 text-teal opacity-80 group-hover:opacity-100 gentle-animation">
                   {value.icon}
                 </div>
                 
                 {/* Title */}
-                <h4 className="text-xl font-semibold text-foreground mb-3">
+                <h4 className="font-fredoka text-xl font-semibold text-foreground mb-3">
                   {value.title}
                 </h4>
                 
@@ -183,12 +183,12 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center mt-24 pt-24 border-t border-border/30"
+          className="max-w-4xl mx-auto text-center mt-24 pt-24 border-t-2 border-golden-yellow/30"
         >
-          <p className="text-lg sm:text-xl text-muted-foreground mb-4">
+          <p className="font-fredoka text-lg sm:text-xl text-teal font-medium mb-4">
             Our Mission
           </p>
-          <p className="text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground">
+          <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground">
             To empower dreamers with result-driven marketing and creative community—turning "what if" into "what's next."
           </p>
         </motion.div>

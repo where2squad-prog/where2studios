@@ -194,13 +194,13 @@ export function Hero() {
               
               {/* CTA Button - Hidden on mobile */}
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   const contactSection = document.getElementById('contact')
                   contactSection?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="hidden sm:block bg-white text-black font-medium text-sm px-5 py-2.5 rounded-full hover:bg-white/90 gentle-animation ml-4 cursor-pointer"
+                className="hidden sm:block bg-golden-yellow text-near-black font-fredoka font-semibold text-sm px-6 py-3 rounded-full hover:bg-orange-accent gentle-animation ml-4 cursor-pointer"
               >
                 Book a Call
               </motion.button>
@@ -290,14 +290,14 @@ export function Hero() {
 
             {/* Mobile CTA Button */}
             <motion.button
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const contactSection = document.getElementById('contact')
                 contactSection?.scrollIntoView({ behavior: 'smooth' })
                 setIsMobileMenuOpen(false)
               }}
-              className="bg-white text-black font-medium px-6 py-3 rounded-full hover:bg-white/90 gentle-animation mt-8 cursor-pointer"
+              className="bg-golden-yellow text-near-black font-fredoka font-semibold px-6 py-3 rounded-full hover:bg-orange-accent gentle-animation mt-8 cursor-pointer"
             >
               Book a Call
             </motion.button>
@@ -315,12 +315,12 @@ export function Hero() {
         className="absolute bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         <div className="max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-white">
+          <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-white">
             <span className="block">Dreams Don't</span>
             <span className="block">Wait.</span>
-            <span className="block text-white/60">Neither Do We.</span>
+            <span className="block text-cream-highlight">Neither Do We.</span>
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-xl">
+          <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-xl font-medium">
             Social Media Agency & Creative Community
           </p>
         </div>

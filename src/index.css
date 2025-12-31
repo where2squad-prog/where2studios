@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,71 +8,85 @@
 :root {
   --font-size: 17px;
   
-  /* Apple-inspired color palette */
-  --background: #ffffff;
-  --foreground: #1d1d1f;
-  --card: #fbfbfd;
-  --card-foreground: #1d1d1f;
-  --popover: #ffffff;
-  --popover-foreground: #1d1d1f;
-  --primary: #0071e3;
-  --primary-foreground: #ffffff;
-  --secondary: #f5f5f7;
-  --secondary-foreground: #1d1d1f;
-  --muted: #f5f5f7;
-  --muted-foreground: #86868b;
-  --accent: #f5f5f7;
-  --accent-foreground: #1d1d1f;
-  --destructive: #ff3b30;
-  --destructive-foreground: #ffffff;
-  --border: #d2d2d7;
-  --input: #f5f5f7;
-  --input-background: #ffffff;
-  --switch-background: #e8e8ed;
+  /* Where2Studios Brand Colors */
+  /* Priority Colors */
+  --brick-red: #AE200C;
+  --golden-yellow: #E09E24;
+  --teal: #336669;
+  --near-black: #14180A;
+  
+  /* Secondary Colors */
+  --orange-accent: #E17735;
+  --cream-highlight: #EBC37E;
+  --dark-teal: #26615E;
+  --deep-brown: #4D260F;
+  --warm-tan: #B44F17;
+  
+  /* Semantic mappings using brand colors */
+  --background: #FFFBF5;
+  --foreground: #14180A;
+  --card: #FFF8EE;
+  --card-foreground: #14180A;
+  --popover: #FFFBF5;
+  --popover-foreground: #14180A;
+  --primary: #336669;
+  --primary-foreground: #FFFBF5;
+  --secondary: #EBC37E;
+  --secondary-foreground: #14180A;
+  --muted: #F5EDE0;
+  --muted-foreground: #5D5A52;
+  --accent: #E09E24;
+  --accent-foreground: #14180A;
+  --destructive: #AE200C;
+  --destructive-foreground: #FFFBF5;
+  --border: #D9CDBF;
+  --input: #F5EDE0;
+  --input-background: #FFFBF5;
+  --switch-background: #E8DFD0;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #0071e3;
+  --ring: #336669;
   
-  /* Apple accent colors */
-  --accent-blue: #0071e3;
-  --accent-green: #34c759;
-  --accent-purple: #af52de;
-  --accent-orange: #ff9500;
+  /* Brand accent colors for components */
+  --accent-blue: #336669;
+  --accent-emerald: #26615E;
+  --accent-purple: #AE200C;
+  --accent-orange: #E17735;
   
-  --radius: 0.875rem;
+  --radius: 1rem;
   
-  /* Apple-style shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
-  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.08);
+  /* Fun, warm shadows */
+  --shadow-sm: 0 1px 3px rgba(20, 24, 10, 0.06), 0 1px 2px rgba(20, 24, 10, 0.08);
+  --shadow-md: 0 4px 12px rgba(20, 24, 10, 0.08), 0 2px 4px rgba(20, 24, 10, 0.06);
+  --shadow-lg: 0 8px 28px rgba(20, 24, 10, 0.12), 0 4px 10px rgba(20, 24, 10, 0.08);
+  --shadow-xl: 0 20px 50px rgba(20, 24, 10, 0.16), 0 8px 20px rgba(20, 24, 10, 0.10);
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #f5f5f7;
-  --card: #1c1c1e;
-  --card-foreground: #f5f5f7;
-  --popover: #1c1c1e;
-  --popover-foreground: #f5f5f7;
-  --primary: #0a84ff;
-  --primary-foreground: #ffffff;
-  --secondary: #2c2c2e;
-  --secondary-foreground: #f5f5f7;
-  --muted: #2c2c2e;
-  --muted-foreground: #98989d;
-  --accent: #2c2c2e;
-  --accent-foreground: #f5f5f7;
-  --destructive: #ff453a;
-  --destructive-foreground: #ffffff;
-  --border: #38383a;
-  --input: #2c2c2e;
-  --ring: #0a84ff;
+  --background: #14180A;
+  --foreground: #FFFBF5;
+  --card: #1E2214;
+  --card-foreground: #FFFBF5;
+  --popover: #1E2214;
+  --popover-foreground: #FFFBF5;
+  --primary: #4A8A8D;
+  --primary-foreground: #FFFBF5;
+  --secondary: #3D4A35;
+  --secondary-foreground: #FFFBF5;
+  --muted: #2A3020;
+  --muted-foreground: #A8A090;
+  --accent: #E09E24;
+  --accent-foreground: #14180A;
+  --destructive: #D42A12;
+  --destructive-foreground: #FFFBF5;
+  --border: #3A4030;
+  --input: #2A3020;
+  --ring: #4A8A8D;
   
-  --accent-blue: #0a84ff;
-  --accent-green: #30d158;
-  --accent-purple: #bf5af2;
-  --accent-orange: #ff9f0a;
+  --accent-blue: #4A8A8D;
+  --accent-emerald: #3A7A75;
+  --accent-purple: #D42A12;
+  --accent-orange: #F08A45;
 }
 
 @theme inline {
@@ -98,8 +112,19 @@
   --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
   
+  /* Brand colors accessible via Tailwind */
+  --color-brick-red: var(--brick-red);
+  --color-golden-yellow: var(--golden-yellow);
+  --color-teal: var(--teal);
+  --color-near-black: var(--near-black);
+  --color-orange-accent: var(--orange-accent);
+  --color-cream-highlight: var(--cream-highlight);
+  --color-dark-teal: var(--dark-teal);
+  --color-deep-brown: var(--deep-brown);
+  --color-warm-tan: var(--warm-tan);
+  
   --color-accent-blue: var(--accent-blue);
-  --color-accent-green: var(--accent-green);
+  --color-accent-emerald: var(--accent-emerald);
   --color-accent-purple: var(--accent-purple);
   --color-accent-orange: var(--accent-orange);
   
@@ -116,7 +141,7 @@
 
   body {
     @apply bg-background text-foreground overflow-x-hidden antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -128,60 +153,50 @@
     box-sizing: border-box;
   }
   
-  /* Apple-style container */
-  .container {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-  
-  /* Apple-style utility classes */
-  .apple-card {
+  /* Fun card style */
+  .fun-card {
     background: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    border: 2px solid transparent;
   }
   
-  .apple-card:hover {
-    transform: scale(1.02);
+  .fun-card:hover {
+    transform: translateY(-4px) scale(1.01);
     box-shadow: var(--shadow-xl);
+    border-color: var(--golden-yellow);
   }
   
-  .apple-button {
-    background: var(--primary);
-    color: var(--primary-foreground);
-    font-weight: 500;
-    padding: 12px 24px;
+  /* Primary button with brand colors */
+  .brand-button {
+    background: var(--teal);
+    color: var(--background);
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    padding: 14px 28px;
     border-radius: 980px;
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   
-  .apple-button:hover {
-    filter: brightness(1.1);
-    transform: scale(1.02);
+  .brand-button:hover {
+    background: var(--dark-teal);
+    transform: scale(1.03);
   }
   
-  .apple-link {
-    color: var(--primary);
-    transition: color 0.2s ease;
+  .brand-button-secondary {
+    background: var(--golden-yellow);
+    color: var(--near-black);
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 980px;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   
-  .apple-link:hover {
-    color: var(--accent-blue);
-    text-decoration: underline;
-  }
-  
-  /* Apple-style transitions */
-  .apple-transition {
-    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  
-  .apple-transition-fast {
-    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  
-  .apple-transition-slow {
-    transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  .brand-button-secondary:hover {
+    background: var(--orange-accent);
+    transform: scale(1.03);
   }
   
   /* Gentle animation */
@@ -189,38 +204,38 @@
     transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   
-  /* Apple-style glass effect */
+  /* Glass effect with warm tint */
   .glass-effect {
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 251, 245, 0.72);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
   
   .dark .glass-effect {
-    background: rgba(29, 29, 31, 0.72);
+    background: rgba(20, 24, 10, 0.72);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
   
   .glass-effect:hover {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 251, 245, 0.88);
   }
   
   .dark .glass-effect:hover {
-    background: rgba(29, 29, 31, 0.85);
+    background: rgba(20, 24, 10, 0.88);
   }
   
-  /* Apple-style navbar glass */
+  /* Navbar glass */
   .glass-navbar {
-    background: rgba(251, 251, 253, 0.8);
+    background: rgba(255, 251, 245, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
   
   .dark .glass-navbar {
-    background: rgba(29, 29, 31, 0.8);
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    background: rgba(20, 24, 10, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   /* Text shadow utilities */
@@ -230,6 +245,20 @@
   
   .text-shadow-medium {
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Clean border utility */
+  .clean-border {
+    border: 1px solid var(--border);
+  }
+  
+  /* Shadow utilities */
+  .subtle-shadow {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .elevated-shadow {
+    box-shadow: var(--shadow-lg);
   }
   
   /* Video Container */
@@ -252,7 +281,7 @@
     object-fit: cover;
   }
   
-  /* Apple-style animations */
+  /* Fun animations */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -289,6 +318,24 @@
     }
   }
   
+  @keyframes bounce-gentle {
+    0%, 100% { 
+      transform: translateY(0px); 
+    }
+    50% { 
+      transform: translateY(-12px); 
+    }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { 
+      transform: rotate(-2deg); 
+    }
+    50% { 
+      transform: rotate(2deg); 
+    }
+  }
+  
   @keyframes pulse-glow {
     0%, 100% { 
       opacity: 1;
@@ -314,11 +361,19 @@
     animation: float-gentle 6s ease-in-out infinite;
   }
   
+  .bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+  
+  .wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+  }
+  
   .pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
   }
   
-  /* Apple-style scrollbar */
+  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -329,58 +384,55 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--teal);
     border-radius: 4px;
+    opacity: 0.6;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--dark-teal);
   }
 }
 
-/* Apple-style typography */
+/* Fun typography with Fredoka for headings */
 @layer base {
   h1 {
+    font-family: 'Fredoka', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
   }
 
   h2 {
+    font-family: 'Fredoka', sans-serif;
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
   h3 {
+    font-family: 'Fredoka', sans-serif;
     font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0;
   }
 
   h4 {
+    font-family: 'Fredoka', sans-serif;
     font-size: clamp(1.25rem, 2vw, 1.5rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0;
   }
 
   p {
     font-size: 1.0625rem;
     font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    line-height: 1.6;
+    letter-spacing: 0;
     color: var(--muted-foreground);
   }
 
@@ -388,14 +440,13 @@
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.5;
-    letter-spacing: -0.01em;
   }
 
   button {
+    font-family: 'Fredoka', sans-serif;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
-    letter-spacing: -0.01em;
   }
 
   input {
@@ -458,11 +509,11 @@ html {
   }
 }
 
-/* Apple-style section spacing */
-.apple-section {
+/* Section spacing */
+.section-spacing {
   padding: clamp(4rem, 10vw, 8rem) 0;
 }
 
-.apple-section-tight {
+.section-spacing-tight {
   padding: clamp(2rem, 6vw, 4rem) 0;
 }
