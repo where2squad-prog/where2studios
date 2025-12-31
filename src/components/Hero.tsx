@@ -341,17 +341,17 @@ export function Hero() {
         <div className="bg-black/40 backdrop-blur-md rounded-2xl p-6 border border-white/10">
           <div className="flex flex-col gap-4">
             <div className="text-center">
-              <div className="font-fredoka text-3xl font-bold text-golden-yellow">500+</div>
+              <div className="font-fredoka text-3xl font-bold text-golden-yellow">10,000+</div>
               <div className="text-white/70 text-sm">Videos Shipped</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-3xl font-bold text-golden-yellow">10M+</div>
-              <div className="text-white/70 text-sm">Total Views</div>
+              <div className="font-fredoka text-3xl font-bold text-golden-yellow">300M+</div>
+              <div className="text-white/70 text-sm">Views in 2024</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-3xl font-bold text-golden-yellow">25+</div>
+              <div className="font-fredoka text-3xl font-bold text-golden-yellow">100+</div>
               <div className="text-white/70 text-sm">Clients Served</div>
             </div>
           </div>

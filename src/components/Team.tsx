@@ -1,68 +1,68 @@
 'use client'
 
 import { ImageWithFallback } from './figma/ImageWithFallback'
-import marcusPhoto from '../assets/team-member-1.png'
-import sofiaPhoto from '../assets/team-member-2.png'
-import jakePhoto from '../assets/team-member-3.png'
-import mayaPhoto from '../assets/team-member-4.png'
-import connorPhoto from '../assets/team-member-5.png'
-import zaraPhoto from '../assets/team-member-6.png'
-import leoPhoto from '../assets/team-member-7.png'
+import joshuaPhoto from '../assets/team-member-1.png'
+import danielPhoto from '../assets/team-member-2.png'
+import gabbyPhoto from '../assets/team-member-3.png'
+import mattPhoto from '../assets/team-member-4.png'
+import ryanPhoto from '../assets/team-member-5.png'
+import anthonyPhoto from '../assets/team-member-6.png'
+import gavinPhoto from '../assets/team-member-7.png'
 
 export function Team() {
   const teamMembers = [
     {
-      name: "Marcus",
-      role: "Creative Director",
-      vibe: "Turns ordinary into extraordinary",
-      image: marcusPhoto,
+      name: "Joshua Saltiban",
+      role: "CEO",
+      vibe: "Building the vision, one frame at a time",
+      image: joshuaPhoto,
     },
     {
-      name: "Sofia",
-      role: "Strategy Lead",
-      vibe: "Makes the impossible happen",
-      image: sofiaPhoto,
+      name: "Daniel",
+      role: "Operations Lead",
+      vibe: "Making the impossible look easy",
+      image: danielPhoto,
     },
     {
-      name: "Jake",
-      role: "Technical Director",
-      vibe: "The wizard behind the curtain",
-      image: jakePhoto,
+      name: "Gabby",
+      role: "Social Media Manager",
+      vibe: "Turning feeds into communities",
+      image: gabbyPhoto,
     },
     {
-      name: "Maya",
-      role: "Developer",
-      vibe: "Code that feels like magic",
-      image: mayaPhoto,
+      name: "Matt",
+      role: "Marketing Manager",
+      vibe: "Strategy that actually converts",
+      image: mattPhoto,
     },
     {
-      name: "Connor",
-      role: "Production Lead",
+      name: "Ryan",
+      role: "Production Manager",
+      vibe: "Every shot tells a story",
+      image: ryanPhoto,
+    },
+    {
+      name: "Anthony",
+      role: "Production Manager",
+      vibe: "Quality is non-negotiable",
+      image: anthonyPhoto,
+    },
+    {
+      name: "Gavin",
+      role: "Production Manager",
       vibe: "Content machine energy",
-      image: connorPhoto,
-    },
-    {
-      name: "Zara",
-      role: "Motion Designer",
-      vibe: "Movement with meaning",
-      image: zaraPhoto,
-    },
-    {
-      name: "Leo",
-      role: "VFX Artist",
-      vibe: "Making the unreal feel real",
-      image: leoPhoto,
+      image: gavinPhoto,
     }
   ]
 
   return (
-    <section className="relative py-24 lg:py-32 bg-background">
+    <section id="team" className="relative py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-golden-yellow/10 text-golden-yellow rounded-full text-sm font-semibold mb-6">
-            The Crew
+            The Squad
           </span>
           
           <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -123,7 +123,7 @@ export function Team() {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">
-            Want to join the crew?
+            Want to join the squad?
           </p>
           <a 
             href="#contact" 
