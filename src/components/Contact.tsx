@@ -7,7 +7,6 @@ import { Check } from 'lucide-react'
 export function Contact() {
 
   useEffect(() => {
-    // Load Cal.com embed script
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.innerHTML = `
@@ -52,109 +51,128 @@ export function Contact() {
     document.body.appendChild(script)
     
     return () => {
-      // Cleanup script on unmount
       if (document.body.contains(script)) {
         document.body.removeChild(script)
       }
     }
   }, [])
 
+  const brandPlaceholders = [
+    { name: "Brand 1" },
+    { name: "Brand 2" },
+    { name: "Brand 3" },
+    { name: "Brand 4" },
+    { name: "Brand 5" },
+    { name: "Brand 6" },
+  ]
+
   const deliverables = [
-    "3 content angles tailored to your business",
-    "A posting system for the next 30 days",
-    "Partnership ideas to reach new customers"
+    "3 content angles",
+    "30-day posting system",
+    "Partnership ideas"
   ]
 
   return (
-    <section id="contact" className="relative py-24 bg-background">
+    <section id="contact" className="relative py-12 bg-cream-highlight">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
+        
+        {/* Trusted By - Compact */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-3 h-3 bg-golden-yellow rounded-full" />
-            <span className="font-fredoka text-sm font-medium text-golden-yellow uppercase tracking-widest">
+          <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
+            Trusted By Growing Brands
+          </span>
+          <div className="flex flex-wrap justify-center items-center gap-4 mt-4 max-w-3xl mx-auto">
+            {brandPlaceholders.map((_, index) => (
+              <div
+                key={index}
+                className="w-24 h-10 rounded-lg bg-near-black/5 border border-near-black/10 flex items-center justify-center"
+              >
+                <span className="font-fredoka text-xs text-near-black/30">Logo</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Divider */}
+        <div className="w-16 h-px bg-near-black/10 mx-auto mb-8" />
+
+        {/* Contact Header - Condensed */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-center mb-6"
+        >
+          <div className="inline-flex items-center gap-2 mb-3">
+            <div className="w-2 h-2 bg-golden-yellow rounded-full" />
+            <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
               Let's Talk
             </span>
-            <div className="w-3 h-3 bg-brick-red rounded-full" />
+            <div className="w-2 h-2 bg-brick-red rounded-full" />
           </div>
           
-          <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-near-black">
+          <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-near-black mb-2">
             Book a 30-Minute <span className="text-golden-yellow">Growth Audit</span>
           </h2>
           
-          <p className="text-xl text-near-black/70 max-w-2xl mx-auto mb-8">
-            Tell us your goals, audience, and current bottlenecks. We'll show you exactly how to turn content into customers.
+          <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-4">
+            Tell us your goals, audience, and bottlenecks. We'll show you how to turn content into customers.
           </p>
           
-          {/* Deliverables */}
-          <div className="flex flex-wrap justify-center gap-4 mb-4">
+          {/* Inline Deliverables */}
+          <div className="flex flex-wrap justify-center gap-3 mb-2">
             {deliverables.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-2 bg-golden-yellow/10 border border-golden-yellow/20 rounded-full px-4 py-2"
+                className="flex items-center gap-1.5 text-xs"
               >
-                <Check className="w-4 h-4 text-golden-yellow" />
-                <span className="text-sm font-medium text-near-black">{item}</span>
-              </motion.div>
+                <Check className="w-3 h-3 text-golden-yellow" />
+                <span className="text-near-black/70">{item}</span>
+              </div>
             ))}
           </div>
-          
-          {/* Qualifier */}
-          <p className="text-sm text-near-black/50 italic">
-            Best if you can post at least 3x/week and want measurable growth
-          </p>
         </motion.div>
 
-        {/* Cal.com Booking Widget */}
+        {/* Cal.com Widget - Compact */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto"
+          className="max-w-4xl mx-auto"
         >
-          <div className="bg-background border border-border rounded-3xl overflow-hidden shadow-xl">
-            {/* Widget Header */}
-            <div className="bg-card/50 px-8 py-6 border-b border-border">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-fredoka text-xl font-semibold text-near-black mb-1">
-                    Where2Studios Growth Audit
-                  </h3>
-                  <p className="text-near-black/60">
-                    30 minutes • Video call • Free
-                  </p>
-                </div>
-                <div className="hidden sm:flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm text-near-black/60 font-medium">Available now</span>
-                </div>
+          <div className="bg-background border border-border rounded-2xl overflow-hidden shadow-lg">
+            <div className="bg-card/50 px-6 py-4 border-b border-border flex items-center justify-between">
+              <div>
+                <h3 className="font-fredoka text-base font-semibold text-near-black">
+                  Where2Studios Growth Audit
+                </h3>
+                <p className="text-near-black/50 text-xs">
+                  30 min • Video call • Free
+                </p>
+              </div>
+              <div className="hidden sm:flex items-center gap-1.5">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs text-near-black/50">Available</span>
               </div>
             </div>
             
-            {/* Cal.com Embed Container */}
             <div className="p-0 bg-white">
               <div 
-                style={{
-                  width: '100%',
-                  height: '600px',
-                  overflow: 'scroll'
-                }} 
+                style={{ width: '100%', height: '500px', overflow: 'scroll' }} 
                 id="my-cal-inline-mojju-discovery-call"
               />
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   )

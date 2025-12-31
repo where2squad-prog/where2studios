@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Hero } from './components/Hero'
 import { FeaturedWins } from './components/FeaturedWins'
 import { Services } from './components/Services'
-import { Awards } from './components/Awards'
 import { Team } from './components/Team'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
@@ -19,10 +18,9 @@ function HomePage() {
         <SectionDivider from="background" to="near-black" />
         <Services />
         <SectionDivider from="near-black" to="cream" />
-        <Awards />
+        <Contact />
         <SectionDivider from="cream" to="background" />
         <Team />
-        <Contact />
       </main>
       <Footer />
     </div>
