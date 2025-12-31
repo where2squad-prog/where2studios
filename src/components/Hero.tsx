@@ -316,10 +316,13 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-white">
-            <span className="block">AI Film</span>
-            <span className="block">Production</span>
-            <span className="block text-white/60">Without Limits.</span>
+            <span className="block">Dreams Don't</span>
+            <span className="block">Wait.</span>
+            <span className="block text-white/60">Neither Do We.</span>
           </h1>
+          <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-xl">
+            Social Media Agency & Creative Community
+          </p>
         </div>
       </motion.div>
 
