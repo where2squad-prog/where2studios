@@ -73,7 +73,7 @@ export function FeaturedWins() {
             className="inline-flex items-center gap-3 mb-6"
           >
             <div className="w-3 h-3 bg-golden-yellow rounded-full" />
-            <span className="font-fredoka text-sm font-medium text-muted-foreground uppercase tracking-widest">
+            <span className="font-fredoka text-sm font-medium text-golden-yellow uppercase tracking-widest">
               Real Results
             </span>
             <div className="w-3 h-3 bg-brick-red rounded-full" />
@@ -94,9 +94,9 @@ export function FeaturedWins() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-xl text-foreground/70 max-w-2xl mx-auto"
           >
-            What we've done—and why it worked.
+            What we've done, and why it worked.
           </motion.p>
         </div>
 

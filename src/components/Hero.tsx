@@ -295,7 +295,7 @@ export function Hero() {
             <span className="block text-golden-yellow">Customers.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-xl font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
-            Strategy, filming, editing, posting, partnerships—built as a repeatable system, not random posts.
+            Strategy, filming, editing, posting, partnerships. Built as a repeatable system, not random posts.
           </p>
           
           {/* Target Audience Tag */}

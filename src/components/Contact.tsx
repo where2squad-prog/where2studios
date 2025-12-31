@@ -78,7 +78,7 @@ export function Contact() {
         >
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-3 h-3 bg-golden-yellow rounded-full" />
-            <span className="font-fredoka text-sm font-medium text-muted-foreground uppercase tracking-widest">
+            <span className="font-fredoka text-sm font-medium text-golden-yellow uppercase tracking-widest">
               Let's Talk
             </span>
             <div className="w-3 h-3 bg-brick-red rounded-full" />
@@ -88,7 +88,7 @@ export function Contact() {
             Book a 30-Minute <span className="text-golden-yellow">Growth Audit</span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto mb-8">
             Tell us your goals, audience, and current bottlenecks. We'll show you exactly how to turn content into customers.
           </p>
           
