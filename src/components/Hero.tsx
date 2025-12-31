@@ -109,7 +109,7 @@ export function Hero() {
         playsInline
         preload="auto"
       >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
+        <source src="/videos/hero-background.mp4?v=2" type="video/mp4" />
       </video>
       
       {/* Dark overlay for text readability */}
