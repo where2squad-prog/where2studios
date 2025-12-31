@@ -310,17 +310,17 @@ export function Hero() {
           <div className="flex flex-col gap-4">
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">8,472+</div>
-              <div className="text-white/70 text-sm">Projects Delivered</div>
+              <div className="text-cream-highlight text-sm">Projects Delivered</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">287M+</div>
-              <div className="text-white/70 text-sm">Total Views</div>
+              <div className="text-cream-highlight text-sm">Total Views</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">127</div>
-              <div className="text-white/70 text-sm">Brands Served</div>
+              <div className="text-cream-highlight text-sm">Brands Served</div>
             </div>
           </div>
         </div>
