@@ -235,17 +235,11 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-white drop-shadow-lg">
-            <span className="block">We Turn Short-Form</span>
-            <span className="block">Content Into</span>
-            <span className="block text-golden-yellow">Customers.</span>
+            <span className="block">Content That Turns</span>
+            <span className="block">Into <span className="text-golden-yellow">Customers.</span></span>
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-xl font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
-            Strategy, filming, editing, posting, partnerships. Built as a repeatable system, not random posts.
-          </p>
-          
-          {/* Target Audience Tag */}
-          <p className="mt-4 text-sm text-white font-medium tracking-wide bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5 inline-block">
-            Best for restaurants, food brands & hospitality businesses
+          <p className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+            Strategy. Production. Distribution. Built for growth.
           </p>
           
           {/* CTA Buttons */}
@@ -287,17 +281,17 @@ export function Hero() {
           <div className="flex flex-col gap-4">
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">8,472+</div>
-              <div className="text-white/70 text-sm">Videos Shipped</div>
+              <div className="text-white/70 text-sm">Projects Delivered</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">287M+</div>
-              <div className="text-white/70 text-sm">Views in 2024</div>
+              <div className="text-white/70 text-sm">Total Views</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">127</div>
-              <div className="text-white/70 text-sm">Clients Served</div>
+              <div className="text-white/70 text-sm">Brands Served</div>
             </div>
           </div>
         </div>
