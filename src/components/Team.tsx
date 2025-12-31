@@ -71,7 +71,7 @@ export function Team() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="inline-block px-4 py-2 bg-golden-yellow/10 text-golden-yellow rounded-full text-sm font-semibold mb-6 border border-golden-yellow/20"
+            className="inline-block px-4 py-2 bg-brick-red/10 text-brick-red rounded-full text-sm font-semibold mb-6 border border-brick-red/20"
           >
             The Squad
           </motion.span>
@@ -136,7 +136,7 @@ export function Team() {
                   <h3 className="font-fredoka text-lg font-bold text-near-black mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-sm text-golden-yellow font-medium">
+                  <p className="text-sm text-brick-red font-medium">
                     {member.role}
                   </p>
                 </div>
