@@ -299,7 +299,7 @@ export function Hero() {
           </p>
           
           {/* Target Audience Tag */}
-          <p className="mt-4 text-sm text-golden-yellow/90 font-medium tracking-wide">
+          <p className="mt-4 text-sm text-white font-medium tracking-wide bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5 inline-block">
             Best for restaurants, food brands & hospitality businesses
           </p>
           

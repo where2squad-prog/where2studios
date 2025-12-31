@@ -124,7 +124,7 @@ export function Services() {
           className="mt-16 text-center"
         >
           <div className="inline-flex flex-wrap justify-center items-center gap-4 bg-cream-highlight/5 border border-cream-highlight/10 rounded-full px-8 py-4">
-            <span className="text-cream-highlight/80 font-medium">Our Process:</span>
+            <span className="text-cream-highlight font-medium">Our Process:</span>
             <div className="flex flex-wrap justify-center items-center gap-2">
               <span className="text-golden-yellow font-fredoka font-semibold">Audit</span>
               <span className="text-cream-highlight/40">→</span>
