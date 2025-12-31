@@ -339,22 +339,22 @@ export function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-16 right-6 sm:right-8 lg:right-16 z-40 hidden lg:block"
+        className="absolute bottom-16 right-4 sm:right-6 lg:right-12 z-40 hidden lg:block max-w-[200px]"
       >
-        <div className="bg-black/40 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+        <div className="bg-black/40 backdrop-blur-md rounded-2xl p-5 border border-white/10">
           <div className="flex flex-col gap-4">
             <div className="text-center">
-              <div className="font-fredoka text-3xl font-bold text-golden-yellow">10,000+</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow">8,472+</div>
               <div className="text-white/70 text-sm">Videos Shipped</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-3xl font-bold text-golden-yellow">300M+</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow">287M+</div>
               <div className="text-white/70 text-sm">Views in 2024</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-3xl font-bold text-golden-yellow">100+</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow">127</div>
               <div className="text-white/70 text-sm">Clients Served</div>
             </div>
           </div>
