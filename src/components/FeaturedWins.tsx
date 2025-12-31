@@ -148,11 +148,11 @@ export function FeaturedWins() {
                   </div>
                   
                   {/* Why It Worked - Shows on hover */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden bg-near-black/80 backdrop-blur-sm rounded-lg p-3 -mx-1 mt-2">
                     <p className="text-golden-yellow text-xs font-semibold uppercase tracking-wide mb-2">Why it worked:</p>
                     <ul className="space-y-1">
                       {video.whyItWorked.map((reason, i) => (
-                        <li key={i} className="text-cream-highlight/80 text-xs flex items-start gap-2">
+                        <li key={i} className="text-white text-xs flex items-start gap-2">
                           <span className="text-golden-yellow mt-0.5">•</span>
                           {reason}
                         </li>
