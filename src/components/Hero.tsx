@@ -76,9 +76,9 @@ export function Hero() {
 
       {/* Full-Width Navbar */}
       <motion.nav
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-0 left-0 right-0 w-full z-[110]"
       >
         <div 
@@ -228,9 +228,9 @@ export function Hero() {
 
       {/* Hero Content - Lower Left */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="absolute bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         <div className="max-w-3xl">
@@ -272,9 +272,9 @@ export function Hero() {
       
       {/* Social Proof Stats Bar */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
         className="absolute bottom-16 right-4 sm:right-6 lg:right-12 z-40 hidden lg:block max-w-[200px]"
       >
         <div className="bg-black/40 backdrop-blur-md rounded-2xl p-5 border border-white/10">

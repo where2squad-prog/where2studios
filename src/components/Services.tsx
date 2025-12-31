@@ -51,10 +51,10 @@ export function Services() {
         {/* Compact Header */}
         <div className="text-center mb-8">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
             className="inline-flex items-center gap-2 mb-3"
           >
             <div className="w-2 h-2 bg-golden-yellow rounded-full" />
@@ -65,10 +65,10 @@ export function Services() {
           </motion.div>
           
           <motion.h2
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-100px" }}
             className="font-fredoka text-3xl sm:text-4xl font-semibold text-cream-highlight"
           >
             Full-Service Creative
@@ -80,10 +80,10 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-50px" }}
               onMouseEnter={() => setActiveService(service.id)}
               onMouseLeave={() => setActiveService(null)}
               onClick={() => setActiveService(activeService === service.id ? null : service.id)}
@@ -128,10 +128,10 @@ export function Services() {
 
         {/* Compact Process */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-center"
         >
           <div className="inline-flex items-center gap-2 text-sm">
