@@ -74,6 +74,10 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-12 bg-cream-highlight overflow-hidden">
+      {/* Subtle gradient accents */}
+      <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-near-black/[0.03] to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-near-black/[0.03] to-transparent pointer-events-none" />
+      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Trusted By - Compact */}

@@ -87,6 +87,10 @@ export function FeaturedWins() {
 
   return (
     <section className="relative py-16 bg-background overflow-hidden">
+      {/* Subtle gradient accents */}
+      <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-brick-red/[0.03] to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-brick-red/[0.03] to-transparent pointer-events-none" />
+      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}

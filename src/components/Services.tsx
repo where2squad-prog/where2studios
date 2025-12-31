@@ -46,6 +46,10 @@ export function Services() {
 
   return (
     <section id="services" className="relative py-12 bg-near-black overflow-hidden">
+      {/* Subtle gradient accents */}
+      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-golden-yellow/[0.02] to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brick-red/[0.02] to-transparent pointer-events-none" />
+      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Compact Header */}
