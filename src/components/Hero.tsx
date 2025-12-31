@@ -316,12 +316,12 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.1] text-white">
-            <span className="block">Dreams Don't</span>
-            <span className="block">Wait.</span>
-            <span className="block text-cream-highlight">Neither Do We.</span>
+            <span className="block">Content That Turns</span>
+            <span className="block">Attention Into</span>
+            <span className="block text-golden-yellow">Action.</span>
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-xl font-medium">
-            Social Media Agency & Creative Community
+            We build social media engines for brands that want real growth.
           </p>
         </div>
       </motion.div>

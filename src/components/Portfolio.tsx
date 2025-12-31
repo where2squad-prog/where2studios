@@ -17,12 +17,12 @@ export function Portfolio() {
             <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
           </div>
           
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-8">
-            <span className="block mb-2">Creative Productions</span>
+          <h2 className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight mb-8">
+            <span className="block mb-2">Work That Works</span>
           </h2>
           
-          <p className="text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Our latest commercial for Hampton - exploring the lonely journey of startup founders and the power of community.
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Content that gets attention, earns trust, and drives customers. Here's what we've built.
           </p>
         </div>
 

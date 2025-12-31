@@ -65,18 +65,17 @@ export function Contact() {
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-3 h-3 bg-accent-emerald rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-muted-foreground">
-              Let's Create Together
+              Let's Build Together
             </span>
             <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
           </div>
           
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-8">
-            <span className="block mb-2">Ready to Light Up the Screen?</span>
-            
+          <h2 className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight mb-8">
+            <span className="block mb-2">Ready to Build Your Engine?</span>
           </h2>
           
-          <p className="text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Book a discovery call to discuss your project and see how we can bring your vision to cinematic reality
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Book a discovery call. Tell us your goals, audience, and offer—and let's build a content system that drives real growth.
           </p>
         </div>
 
@@ -122,9 +121,9 @@ export function Contact() {
               <div className="w-12 h-12 bg-accent-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="w-6 h-6 bg-accent-blue rounded-full" />
               </div>
-              <h4 className="font-black text-foreground mb-2">Project Discussion</h4>
+              <h4 className="font-fredoka font-semibold text-foreground mb-2">Diagnose</h4>
               <p className="text-muted-foreground text-sm">
-                Share your vision and requirements with our team
+                Goals, audience, offer—what does success look like for you?
               </p>
             </div>
             
@@ -132,9 +131,9 @@ export function Contact() {
               <div className="w-12 h-12 bg-accent-emerald/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="w-6 h-6 bg-accent-emerald rounded-full" />
               </div>
-              <h4 className="font-black text-foreground mb-2">Custom Strategy</h4>
+              <h4 className="font-fredoka font-semibold text-foreground mb-2">Custom Strategy</h4>
               <p className="text-muted-foreground text-sm">
-                Get a tailored approach for your unique project
+                Content pillars, hooks, and a posting cadence built for your brand.
               </p>
             </div>
             
@@ -142,9 +141,9 @@ export function Contact() {
               <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="w-6 h-6 bg-accent-purple rounded-full" />
               </div>
-              <h4 className="font-black text-foreground mb-2">Next Steps</h4>
+              <h4 className="font-fredoka font-semibold text-foreground mb-2">Next Steps</h4>
               <p className="text-muted-foreground text-sm">
-                Clear timeline and roadmap to bring your idea to life
+                Clear roadmap to start producing and publishing content.
               </p>
             </div>
           </div>

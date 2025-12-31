@@ -5,22 +5,22 @@ import { motion } from 'framer-motion'
 const values = [
   {
     title: "Dreaming",
-    description: "We never stopped believing in the impossible",
+    description: "We start with bold ideas and the courage to try them in public.",
     icon: "✦"
   },
   {
     title: "Making Things Happen",
-    description: "Ideas are nothing without execution",
+    description: "Execution, consistency, shipping—no theory-only marketing.",
     icon: "→"
   },
   {
     title: "Community",
-    description: "We rise by lifting others",
+    description: "Collaboration over clout. We build with people, not just for views.",
     icon: "◎"
   },
   {
     title: "Creativity",
-    description: "The currency of the future",
+    description: "We make things that feel alive—not templated, not corporate.",
     icon: "◇"
   }
 ]
@@ -34,7 +34,7 @@ export function About() {
       
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
-        {/* Main Story Section */}
+        {/* Welcome Story Section */}
         <div className="max-w-4xl mx-auto text-center mb-24">
           
           {/* Eyebrow */}
@@ -47,12 +47,12 @@ export function About() {
           >
             <div className="w-12 h-px bg-foreground/30" />
             <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
-              The Question
+              Welcome
             </span>
             <div className="w-12 h-px bg-foreground/30" />
           </motion.div>
           
-          {/* Big Question */}
+          {/* Big Welcome */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-8 text-foreground"
           >
-            What is Where2?
+            Welcome to Where2.
           </motion.h2>
           
           {/* Identity Questions */}
@@ -72,13 +72,10 @@ export function About() {
             className="space-y-2 mb-12"
           >
             <p className="text-xl sm:text-2xl text-muted-foreground">
-              A social media agency?
+              Is it a social media agency, a creative community, an event host,
             </p>
             <p className="text-xl sm:text-2xl text-muted-foreground">
-              A creative community?
-            </p>
-            <p className="text-xl sm:text-2xl text-muted-foreground">
-              An event host? A non-profit?
+              a nonprofit, or all of it at once?
             </p>
           </motion.div>
           
@@ -91,10 +88,10 @@ export function About() {
             className="max-w-3xl mx-auto"
           >
             <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground mb-8">
-              Or are we just a bunch of dreamers who realized at some point in life we gave up on our dreams—
+              Maybe it's just a group of people who realized we stopped chasing the things we cared about—
             </p>
             <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold leading-relaxed text-teal">
-              and now we're ready to make them come alive?
+              and decided to bring them back to life.
             </p>
           </motion.div>
         </div>
@@ -104,7 +101,7 @@ export function About() {
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
         </div>
         
-        {/* The Journey */}
+        {/* The Clarity Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -113,13 +110,10 @@ export function About() {
           className="max-w-3xl mx-auto text-center mb-24"
         >
           <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-8">
-            This is our first step into making all of those things a reality.
+            We don't know exactly where it goes from here.
           </p>
           <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-12">
-            Not sure exactly where these dreams are gonna take us.
-          </p>
-          <p className="font-fredoka text-2xl sm:text-3xl text-foreground font-medium leading-relaxed">
-            But that's the exciting question, isn't it?
+            But that's the point.
           </p>
           
           {/* Where2 Logo Text */}
@@ -128,12 +122,22 @@ export function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12"
+            className="mb-16"
           >
             <span className="font-fredoka text-6xl sm:text-7xl lg:text-8xl font-bold text-teal">
               Where2?
             </span>
           </motion.div>
+          
+          {/* Clear Business Answer */}
+          <div className="bg-card/50 backdrop-blur-sm border-2 border-golden-yellow/30 rounded-3xl p-8 sm:p-12">
+            <p className="font-fredoka text-lg sm:text-xl text-golden-yellow font-medium mb-4">
+              Where2Studios
+            </p>
+            <p className="font-fredoka text-xl sm:text-2xl lg:text-3xl font-medium leading-relaxed text-foreground">
+              The agency engine. We help brands grow through content, strategy, and partnerships that drive real customers.
+            </p>
+          </div>
         </motion.div>
         
         {/* Values Grid */}
@@ -189,7 +193,7 @@ export function About() {
             Our Mission
           </p>
           <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground">
-            To empower dreamers with result-driven marketing and creative community—turning "what if" into "what's next."
+            Help creators and brands bring their vision to life through content, community, and momentum.
           </p>
         </motion.div>
         

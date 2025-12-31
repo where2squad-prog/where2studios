@@ -9,52 +9,44 @@ export function Services() {
 
   const services = [
     {
-      id: 'campaigns',
-      title: "Campaign & Ad Content",
-      description: "Multi-platform video campaigns ready for every channel—YouTube, TikTok, Instagram, and beyond.",
+      id: 'strategy',
+      title: "Strategy & Planning",
+      description: "Brand positioning, content pillars, monthly calendars, and campaign planning that drives results.",
       color: 'accent-emerald',
       rotation: 'rotate-2',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&auto=format'
+      image: 'https://images.unsplash.com/photo-1553028826-f4804a6dba3b?w=400&h=300&fit=crop&auto=format'
     },
     {
-      id: 'brand-films',
-      title: "Brand Films & Stories", 
-      description: "Cinematic brand videos that capture your essence and connect with audiences on an emotional level.",
+      id: 'production',
+      title: "Content Production", 
+      description: "Short-form video, photography, editing, motion graphics—thumb-stopping content delivered in batches.",
       color: 'accent-blue',
       rotation: '-rotate-1',
-      image: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=300&fit=crop&auto=format'
+      image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop&auto=format'
     },
     {
-      id: 'trailers',
-      title: "Trailers & Promos",
-      description: "High-impact teasers that hook viewers instantly—perfect for launches, events, and announcements.",
+      id: 'distribution',
+      title: "Social Distribution",
+      description: "Posting cadence, captions, SEO keywords, community management, and performance iteration.",
       color: 'accent-purple',
       rotation: 'rotate-1',
-      image: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=300&fit=crop&auto=format'
+      image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=300&fit=crop&auto=format'
     },
     {
-      id: 'short-films',
-      title: "Short-Form Films",
-      description: "Festival-ready mini-movies up to 5 minutes—ideal for investors, events, and premium content.",
+      id: 'partnerships',
+      title: "Partnership Platform",
+      description: "Brand collabs, influencer sourcing, co-marketing, event activations, and sponsor packaging.",
       color: 'accent-emerald',
       rotation: '-rotate-2',
-      image: 'https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&h=300&fit=crop&auto=format'
+      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop&auto=format'
     },
     {
-      id: 'animation',
-      title: "Animation & Motion",
-      description: "Stylized animated content that explains complex ideas without needing live actors.",
+      id: 'campaigns',
+      title: "Creative Campaigns",
+      description: "Limited-time drops, opening promos, menu launches, event pushes, and seasonal moments.",
       color: 'accent-blue',
       rotation: 'rotate-3',
-      image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop&auto=format'
-    },
-    {
-      id: 'social',
-      title: "Social Content",
-      description: "Thumb-stopping vertical videos delivered in batches to keep your feed consistently engaging.",
-      color: 'accent-purple',
-      rotation: '-rotate-1',
-      image: 'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=400&h=300&fit=crop&auto=format'
+      image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=400&h=300&fit=crop&auto=format'
     }
   ]
 
@@ -93,21 +85,21 @@ export function Services() {
           }`}>
             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-amber-200/80">
-              Fresh from the Darkroom
+              What We Do
             </span>
             <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse" />
           </div>
           
-          <h2 className={`text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6 text-amber-100 transform transition-all duration-1000 delay-200 ${
+          <h2 className={`font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight mb-6 text-amber-100 transform transition-all duration-1000 delay-200 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
           }`}>
-            What We Develop
+            Services
           </h2>
           
           <p className={`text-xl text-amber-200/90 leading-relaxed max-w-3xl mx-auto transform transition-all duration-1000 delay-400 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-            Developed with precision, delivered with passion
+            We don't just post—we build a repeatable engine. Content, distribution, and partnerships that drive outcomes.
           </p>
         </div>
 
