@@ -1,14 +1,47 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export function Services() {
+  const [activeService, setActiveService] = useState<string | null>(null)
+
   const services = [
-    { id: 'strategy', title: "Strategy", subtitle: "Positioning + messaging", icon: "📊" },
-    { id: 'production', title: "Production", subtitle: "Video, photo, creative", icon: "🎬" },
-    { id: 'distribution', title: "Distribution", subtitle: "Posting + optimization", icon: "📱" },
-    { id: 'partnerships', title: "Partnerships", subtitle: "Creators + brands", icon: "🤝" },
-    { id: 'analytics', title: "Performance", subtitle: "Data + iteration", icon: "📈" }
+    { 
+      id: 'strategy', 
+      title: "Strategy", 
+      subtitle: "Positioning + messaging", 
+      icon: "📊",
+      description: "We define what makes you different and turn it into content that converts."
+    },
+    { 
+      id: 'production', 
+      title: "Production", 
+      subtitle: "Video, photo, creative", 
+      icon: "🎬",
+      description: "High-quality content built for attention and action."
+    },
+    { 
+      id: 'distribution', 
+      title: "Distribution", 
+      subtitle: "Posting + optimization", 
+      icon: "📱",
+      description: "We handle publishing and testing so your content reaches the right people."
+    },
+    { 
+      id: 'partnerships', 
+      title: "Partnerships", 
+      subtitle: "Creators + brands", 
+      icon: "🤝",
+      description: "Collaborations that expand your reach and credibility."
+    },
+    { 
+      id: 'analytics', 
+      title: "Performance", 
+      subtitle: "Data + iteration", 
+      icon: "📈",
+      description: "We track what works and double down on it."
+    }
   ]
 
   return (
@@ -42,8 +75,8 @@ export function Services() {
           </motion.h2>
         </div>
 
-        {/* Compact Services Grid - 5 columns on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-5xl mx-auto mb-8">
+        {/* Interactive Services Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-5xl mx-auto mb-6">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -51,10 +84,19 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
               viewport={{ once: true }}
-              className="group bg-cream-highlight/5 border border-cream-highlight/10 rounded-xl p-4 hover:border-golden-yellow/30 hover:bg-cream-highlight/10 transition-all duration-300 text-center"
+              onMouseEnter={() => setActiveService(service.id)}
+              onMouseLeave={() => setActiveService(null)}
+              onClick={() => setActiveService(activeService === service.id ? null : service.id)}
+              className={`group cursor-pointer bg-cream-highlight/5 border rounded-xl p-4 transition-all duration-300 text-center ${
+                activeService === service.id 
+                  ? 'border-golden-yellow bg-cream-highlight/15 scale-105' 
+                  : 'border-cream-highlight/10 hover:border-golden-yellow/30 hover:bg-cream-highlight/10'
+              }`}
             >
               <div className="text-2xl mb-2">{service.icon}</div>
-              <h3 className="font-fredoka text-sm font-semibold text-cream-highlight mb-1 group-hover:text-golden-yellow transition-colors">
+              <h3 className={`font-fredoka text-sm font-semibold mb-1 transition-colors ${
+                activeService === service.id ? 'text-golden-yellow' : 'text-cream-highlight group-hover:text-golden-yellow'
+              }`}>
                 {service.title}
               </h3>
               <p className="text-golden-yellow/60 text-xs">
@@ -63,6 +105,26 @@ export function Services() {
             </motion.div>
           ))}
         </div>
+
+        {/* Expandable Description */}
+        <AnimatePresence mode="wait">
+          {activeService && (
+            <motion.div
+              key={activeService}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="max-w-2xl mx-auto mb-6"
+            >
+              <div className="bg-cream-highlight/10 border border-golden-yellow/20 rounded-xl px-6 py-4 text-center">
+                <p className="text-cream-highlight/90 text-sm leading-relaxed">
+                  {services.find(s => s.id === activeService)?.description}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Compact Process */}
         <motion.div
