@@ -46,10 +46,6 @@ export function Services() {
 
   return (
     <section id="services" className="relative py-12 bg-near-black overflow-hidden">
-      {/* Decorative background blobs */}
-      <div className="absolute top-10 left-[5%] w-32 h-32 bg-golden-yellow/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-[10%] w-40 h-40 bg-brick-red/5 rounded-full blur-3xl" />
-      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Compact Header */}

@@ -74,23 +74,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-12 bg-cream-highlight overflow-hidden">
-      {/* Decorative elements */}
-      <motion.div
-        animate={{ y: [-15, 15, -15], rotate: [0, 5, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-[5%] w-6 h-6 bg-golden-yellow rounded-full opacity-30"
-      />
-      <motion.div
-        animate={{ y: [10, -10, 10] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-40 right-[8%] w-4 h-4 bg-brick-red rounded-full opacity-40"
-      />
-      <motion.div
-        animate={{ y: [-8, 8, -8], x: [5, -5, 5] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-32 left-[15%] w-5 h-5 bg-near-black/20 rounded-full"
-      />
-      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Trusted By - Compact */}

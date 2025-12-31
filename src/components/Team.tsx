@@ -58,10 +58,6 @@ export function Team() {
 
   return (
     <section id="team" className="relative pt-8 pb-24 lg:pb-32 bg-background overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute top-40 left-[2%] w-48 h-48 bg-golden-yellow/5 rounded-full blur-3xl blob-morph" />
-      <div className="absolute bottom-20 right-[5%] w-64 h-64 bg-brick-red/5 rounded-full blur-3xl blob-morph" style={{ animationDelay: '-4s' }} />
-      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
