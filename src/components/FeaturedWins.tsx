@@ -87,7 +87,19 @@ export function FeaturedWins() {
 
   return (
     <section className="relative py-16 bg-background overflow-hidden">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Decorative elements */}
+      <motion.div
+        animate={{ y: [-20, 20, -20], x: [10, -10, 10] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-[5%] w-16 h-16 bg-golden-yellow/10 rounded-full blur-xl"
+      />
+      <motion.div
+        animate={{ y: [15, -15, 15] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-40 right-[8%] w-20 h-20 bg-brick-red/10 rounded-full blur-xl"
+      />
+      
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -98,11 +110,19 @@ export function FeaturedWins() {
             viewport={{ once: true, margin: "-100px" }}
             className="inline-flex items-center gap-3 mb-4"
           >
-            <div className="w-2 h-2 bg-golden-yellow rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-2 h-2 bg-golden-yellow rounded-full" 
+            />
             <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
               Real Results
             </span>
-            <div className="w-2 h-2 bg-brick-red rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              className="w-2 h-2 bg-brick-red rounded-full" 
+            />
           </motion.div>
           
           <motion.h2
@@ -139,29 +159,30 @@ export function FeaturedWins() {
             {reels.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, rotate: -2 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                whileHover={{ y: -8, rotate: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true, margin: "-50px" }}
                 className="flex-shrink-0 snap-start"
               >
-                <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-md w-[140px] aspect-[9/14]">
+                <div className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-lg w-[140px] aspect-[9/14] border-2 border-transparent hover:border-golden-yellow/50 transition-all duration-300">
                   <img
                     src={item.thumbnail}
                     alt={item.client}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   
                   <div className="absolute inset-0 bg-gradient-to-t from-near-black/90 via-near-black/20 to-transparent" />
                   
-                  <div className="absolute top-2 right-2 bg-near-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 flex items-center gap-1">
-                    <Eye className="w-3 h-3 text-white" />
+                  <div className="absolute top-2 right-2 bg-near-black/70 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
+                    <Eye className="w-3 h-3 text-golden-yellow" />
                     <span className="text-white text-[10px] font-semibold">{item.views}</span>
                   </div>
                   
                   <div className="absolute bottom-0 left-0 right-0 p-2">
                     <p className="text-white text-xs font-semibold truncate">{item.client}</p>
-                    <p className="text-white/70 text-[10px]">{item.likes} likes</p>
+                    <p className="text-golden-yellow/80 text-[10px]">{item.likes} likes</p>
                   </div>
                   
                   <div className="absolute inset-0 bg-near-black/90 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center">

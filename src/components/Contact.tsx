@@ -73,8 +73,25 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="relative py-12 bg-cream-highlight">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="contact" className="relative py-12 bg-cream-highlight overflow-hidden">
+      {/* Decorative elements */}
+      <motion.div
+        animate={{ y: [-15, 15, -15], rotate: [0, 5, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-[5%] w-6 h-6 bg-golden-yellow rounded-full opacity-30"
+      />
+      <motion.div
+        animate={{ y: [10, -10, 10] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute top-40 right-[8%] w-4 h-4 bg-brick-red rounded-full opacity-40"
+      />
+      <motion.div
+        animate={{ y: [-8, 8, -8], x: [5, -5, 5] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-32 left-[15%] w-5 h-5 bg-near-black/20 rounded-full"
+      />
+      
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Trusted By - Compact */}
         <motion.div
@@ -89,18 +106,31 @@ export function Contact() {
           </span>
           <div className="flex flex-wrap justify-center items-center gap-4 mt-4 max-w-3xl mx-auto">
             {brandPlaceholders.map((_, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="w-24 h-10 rounded-lg bg-near-black/5 border border-near-black/10 flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                viewport={{ once: true }}
+                className="w-24 h-10 rounded-xl bg-near-black/5 border border-near-black/10 flex items-center justify-center hover:border-golden-yellow/30 transition-colors cursor-pointer"
               >
                 <span className="font-fredoka text-xs text-near-black/30">Logo</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Divider */}
-        <div className="w-16 h-px bg-near-black/10 mx-auto mb-8" />
+        {/* Divider with dots */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="w-12 h-px bg-near-black/10" />
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-2 h-2 bg-golden-yellow rounded-full" 
+          />
+          <div className="w-12 h-px bg-near-black/10" />
+        </div>
 
         {/* Contact Header - Condensed */}
         <motion.div
@@ -111,11 +141,19 @@ export function Contact() {
           className="text-center mb-6"
         >
           <div className="inline-flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-golden-yellow rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-2 h-2 bg-golden-yellow rounded-full" 
+            />
             <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
               Let's Talk
             </span>
-            <div className="w-2 h-2 bg-brick-red rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              className="w-2 h-2 bg-brick-red rounded-full" 
+            />
           </div>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-near-black mb-2">
@@ -129,13 +167,17 @@ export function Contact() {
           {/* Inline Deliverables */}
           <div className="flex flex-wrap justify-center gap-3 mb-2">
             {deliverables.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex items-center gap-1.5 text-xs"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-1.5 text-xs bg-near-black/5 px-3 py-1.5 rounded-full"
               >
                 <Check className="w-3 h-3 text-golden-yellow" />
                 <span className="text-near-black/70">{item}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

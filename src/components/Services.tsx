@@ -45,7 +45,11 @@ export function Services() {
   ]
 
   return (
-    <section id="services" className="relative py-12 bg-near-black">
+    <section id="services" className="relative py-12 bg-near-black overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute top-10 left-[5%] w-32 h-32 bg-golden-yellow/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-[10%] w-40 h-40 bg-brick-red/5 rounded-full blur-3xl" />
+      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Compact Header */}
@@ -57,11 +61,19 @@ export function Services() {
             viewport={{ once: true, margin: "-100px" }}
             className="inline-flex items-center gap-2 mb-3"
           >
-            <div className="w-2 h-2 bg-golden-yellow rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-2 h-2 bg-golden-yellow rounded-full" 
+            />
             <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
               What We Do
             </span>
-            <div className="w-2 h-2 bg-brick-red rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              className="w-2 h-2 bg-brick-red rounded-full" 
+            />
           </motion.div>
           
           <motion.h2
@@ -84,16 +96,23 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
               onMouseEnter={() => setActiveService(service.id)}
               onMouseLeave={() => setActiveService(null)}
               onClick={() => setActiveService(activeService === service.id ? null : service.id)}
-              className={`group cursor-pointer bg-cream-highlight/5 border rounded-xl p-4 transition-all duration-300 text-center ${
+              className={`group cursor-pointer bg-cream-highlight/5 border rounded-2xl p-4 transition-all duration-300 text-center ${
                 activeService === service.id 
-                  ? 'border-golden-yellow bg-cream-highlight/15 scale-105' 
+                  ? 'border-golden-yellow bg-cream-highlight/15 shadow-lg shadow-golden-yellow/10' 
                   : 'border-cream-highlight/10 hover:border-golden-yellow/30 hover:bg-cream-highlight/10'
               }`}
             >
-              <div className="text-2xl mb-2">{service.icon}</div>
+              <motion.div 
+                className="text-3xl mb-2"
+                animate={activeService === service.id ? { rotate: [0, -10, 10, 0] } : {}}
+                transition={{ duration: 0.4 }}
+              >
+                {service.icon}
+              </motion.div>
               <h3 className={`font-fredoka text-sm font-semibold mb-1 transition-colors ${
                 activeService === service.id ? 'text-golden-yellow' : 'text-cream-highlight group-hover:text-golden-yellow'
               }`}>
