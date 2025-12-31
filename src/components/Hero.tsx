@@ -226,23 +226,6 @@ export function Hero() {
 
 
 
-      {/* Decorative floating shapes */}
-      <motion.div
-        animate={{ y: [-10, 10, -10], rotate: [0, 5, -5, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] right-[15%] w-6 h-6 bg-golden-yellow rounded-full opacity-40 blur-[1px] z-30"
-      />
-      <motion.div
-        animate={{ y: [8, -8, 8], x: [-5, 5, -5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-[35%] right-[25%] w-4 h-4 bg-brick-red rounded-full opacity-30 z-30"
-      />
-      <motion.div
-        animate={{ y: [-15, 15, -15] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[30%] right-[35%] w-8 h-8 bg-golden-yellow/30 rounded-full blur-sm z-30"
-      />
-      
       {/* Hero Content - Lower Left */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}

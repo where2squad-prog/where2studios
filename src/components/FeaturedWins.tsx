@@ -87,18 +87,6 @@ export function FeaturedWins() {
 
   return (
     <section className="relative py-16 bg-background overflow-hidden">
-      {/* Decorative elements */}
-      <motion.div
-        animate={{ y: [-20, 20, -20], x: [10, -10, 10] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-[5%] w-16 h-16 bg-golden-yellow/10 rounded-full blur-xl"
-      />
-      <motion.div
-        animate={{ y: [15, -15, 15] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-40 right-[8%] w-20 h-20 bg-brick-red/10 rounded-full blur-xl"
-      />
-      
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
