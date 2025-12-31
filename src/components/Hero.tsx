@@ -260,7 +260,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.6 }}
-            className="mt-3 text-sm sm:text-base text-white/90 drop-shadow-md max-w-md font-medium"
+            className="mt-3 text-sm sm:text-base text-white drop-shadow-md max-w-md font-medium"
           >
             Real stories, turned into repeatable series people actually follow.
           </motion.p>
