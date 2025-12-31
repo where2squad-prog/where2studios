@@ -50,7 +50,7 @@ export function Services() {
   }, [])
 
   return (
-    <section id="services" className="relative py-24 bg-near-black">
+    <section id="services" className="relative pt-8 pb-24 bg-near-black">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Header */}

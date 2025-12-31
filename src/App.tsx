@@ -22,7 +22,6 @@ function HomePage() {
         <Awards />
         <SectionDivider from="cream" to="background" />
         <Team />
-        <SectionDivider from="background" to="background" />
         <Contact />
       </main>
       <Footer />

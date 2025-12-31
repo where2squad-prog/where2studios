@@ -14,7 +14,7 @@ export function Awards() {
   ]
 
   return (
-    <section id="trusted" className="relative py-16 bg-cream-highlight">
+    <section id="trusted" className="relative pt-8 pb-16 bg-cream-highlight">
       
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         

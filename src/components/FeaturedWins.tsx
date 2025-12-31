@@ -60,7 +60,7 @@ export function FeaturedWins() {
   ]
 
   return (
-    <section className="relative py-24 bg-background">
+    <section className="relative pt-8 pb-24 bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Section Header */}
