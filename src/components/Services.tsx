@@ -9,32 +9,37 @@ export function Services() {
   const services = [
     {
       id: 'strategy',
-      title: "Strategy & Content System",
-      description: "We plan content around revenue moments—launches, offers, seasonal spikes.",
+      title: "Growth Strategy",
+      subtitle: "Offer, audience, content angles",
+      description: "We map what to say, who it's for, and why it will convert—then we turn it into a weekly plan.",
       icon: "📊"
     },
     {
       id: 'production',
-      title: "Production",
-      description: "Filming, editing, hooks, captions, thumbnails—thumb-stopping content delivered weekly.",
+      title: "Short-Form Production",
+      subtitle: "Shoot, edit, packaging",
+      description: "We produce scroll-stopping content fast—built around retention, clarity, and brand consistency.",
       icon: "🎬"
     },
     {
       id: 'distribution',
-      title: "Distribution",
-      description: "Posting, community management, creator seeding, and performance optimization.",
+      title: "Distribution + Posting System",
+      subtitle: "Scheduling, captions, testing",
+      description: "We handle posting, captions, creative testing, and consistency so content doesn't die in drafts.",
       icon: "📱"
     },
     {
       id: 'partnerships',
-      title: "Partnerships",
-      description: "Brand deals, influencer trades, events, cross-promos that expand your reach.",
+      title: "Partnerships + Collaborations",
+      subtitle: "Creators, brands, communities",
+      description: "We create collabs that put you in front of new customers, creators, and local communities.",
       icon: "🤝"
     },
     {
       id: 'analytics',
-      title: "Analytics & Iteration",
-      description: "What worked, what we change next—monthly reporting and continuous improvement.",
+      title: "Performance Review + Iteration",
+      subtitle: "Monthly insights, next steps",
+      description: "Monthly review—what hit, what missed, what we change next—so growth compounds.",
       icon: "📈"
     }
   ]
@@ -71,7 +76,7 @@ export function Services() {
             viewport={{ once: true }}
             className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-cream-highlight mb-6"
           >
-            The Full System
+            You Focus on the Business
           </motion.h2>
           
           <motion.p
@@ -79,13 +84,13 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-cream-highlight/70 max-w-2xl mx-auto"
+            className="text-xl text-golden-yellow font-fredoka font-medium max-w-2xl mx-auto"
           >
-            We don't just post—we build a repeatable engine that drives real business outcomes.
+            We bring the customers in.
           </motion.p>
         </div>
 
-        {/* Services Grid - Simple 2-row layout */}
+        {/* Services Grid - 2-row scannable layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <motion.div
@@ -97,9 +102,12 @@ export function Services() {
               className="group bg-gradient-to-br from-cream-highlight/5 to-cream-highlight/10 border border-cream-highlight/10 rounded-2xl p-8 hover:border-golden-yellow/30 hover:bg-cream-highlight/10 transition-all duration-300"
             >
               <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="font-fredoka text-xl font-semibold text-cream-highlight mb-3 group-hover:text-golden-yellow transition-colors">
+              <h3 className="font-fredoka text-xl font-semibold text-cream-highlight mb-1 group-hover:text-golden-yellow transition-colors">
                 {service.title}
               </h3>
+              <p className="text-golden-yellow/70 text-sm font-medium mb-3">
+                {service.subtitle}
+              </p>
               <p className="text-cream-highlight/70 leading-relaxed">
                 {service.description}
               </p>
