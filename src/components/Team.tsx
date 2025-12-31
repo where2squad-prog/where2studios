@@ -69,7 +69,7 @@ export function Team() {
             Meet the Dreamers
           </h2>
           
-          <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-foreground/70 max-w-2xl mx-auto">
             The people who make things happen.
           </p>
         </div>
@@ -122,7 +122,7 @@ export function Team() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-4">
+          <p className="text-foreground/60 mb-4">
             Want to join the squad?
           </p>
           <a 
