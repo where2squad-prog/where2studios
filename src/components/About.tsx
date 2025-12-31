@@ -37,108 +37,49 @@ export function About() {
         {/* Welcome Story Section */}
         <div className="max-w-4xl mx-auto text-center mb-24">
           
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-3 mb-8"
-          >
-            <div className="w-12 h-px bg-foreground/30" />
-            <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
-              Welcome
-            </span>
-            <div className="w-12 h-px bg-foreground/30" />
-          </motion.div>
-          
           {/* Big Welcome */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.8 }}
             className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-8 text-foreground"
           >
             Welcome to Where2.
           </motion.h2>
           
-          {/* Identity Questions */}
+          {/* The Hook */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-2 mb-12"
+            className="max-w-2xl mx-auto mb-12"
           >
-            <p className="text-xl sm:text-2xl text-muted-foreground">
-              Is it a social media agency, a creative community, an event host,
+            <p className="font-fredoka text-2xl sm:text-3xl font-medium leading-relaxed text-foreground">
+              We parked our dreams somewhere along the way.
             </p>
-            <p className="text-xl sm:text-2xl text-muted-foreground">
-              a nonprofit, or all of it at once?
+            <p className="font-fredoka text-2xl sm:text-3xl font-semibold leading-relaxed text-teal mt-4">
+              Now we're bringing them back to life.
             </p>
           </motion.div>
           
-          {/* The Real Answer */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-3xl mx-auto"
-          >
-            <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-medium leading-relaxed text-foreground mb-8">
-              Maybe it's just a group of people who realized we stopped chasing the things we cared about—
-            </p>
-            <p className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold leading-relaxed text-teal">
-              and decided to bring them back to life.
-            </p>
-          </motion.div>
-        </div>
-        
-        {/* Divider */}
-        <div className="flex justify-center mb-24">
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
-        </div>
-        
-        {/* The Clarity Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto text-center mb-24"
-        >
-          <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-8">
-            We don't know exactly where it goes from here.
-          </p>
-          <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed mb-12">
-            But that's the point.
-          </p>
-          
-          {/* Where2 Logo Text */}
+          {/* Where2 + Clear Answer */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-16"
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <span className="font-fredoka text-6xl sm:text-7xl lg:text-8xl font-bold text-teal">
+            <span className="font-fredoka text-5xl sm:text-6xl lg:text-7xl font-bold text-teal block mb-8">
               Where2?
             </span>
+            
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              Where2Studios is the agency engine—content, strategy, and partnerships that drive real growth.
+            </p>
           </motion.div>
-          
-          {/* Clear Business Answer */}
-          <div className="bg-card/50 backdrop-blur-sm border-2 border-golden-yellow/30 rounded-3xl p-8 sm:p-12">
-            <p className="font-fredoka text-lg sm:text-xl text-golden-yellow font-medium mb-4">
-              Where2Studios
-            </p>
-            <p className="font-fredoka text-xl sm:text-2xl lg:text-3xl font-medium leading-relaxed text-foreground">
-              The agency engine. We help brands grow through content, strategy, and partnerships that drive real customers.
-            </p>
-          </div>
-        </motion.div>
+        </div>
         
         {/* Values Grid */}
         <div className="max-w-5xl mx-auto">
