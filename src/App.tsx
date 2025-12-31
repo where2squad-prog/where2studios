@@ -6,6 +6,7 @@ import { Awards } from './components/Awards'
 import { Team } from './components/Team'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
+import { SectionDivider } from './components/SectionDivider'
 import Work from './pages/Work'
 
 function HomePage() {
@@ -13,10 +14,15 @@ function HomePage() {
     <div className="min-h-screen bg-background text-foreground" style={{ overflow: 'visible' }}>
       <main className="relative" role="main" style={{ overflow: 'visible' }}>
         <Hero />
+        <SectionDivider from="near-black" to="background" />
         <FeaturedWins />
+        <SectionDivider from="background" to="near-black" />
         <Services />
+        <SectionDivider from="near-black" to="cream" />
         <Awards />
+        <SectionDivider from="cream" to="background" />
         <Team />
+        <SectionDivider from="background" to="background" />
         <Contact />
       </main>
       <Footer />
