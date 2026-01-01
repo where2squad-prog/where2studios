@@ -97,7 +97,7 @@ export function Hero() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <img src={logo} alt="Where2Studios" className="h-24 sm:h-32 lg:h-40 w-auto drop-shadow-2xl" />
+              <img src={logo} alt="Where2Studios" className="h-16 sm:h-24 lg:h-40 w-auto drop-shadow-2xl" />
             </motion.div>
 
             {/* Navigation Menu */}
@@ -299,7 +299,7 @@ export function Hero() {
         </div>
       </motion.div>
       
-      {/* Social Proof Stats Bar */}
+      {/* Social Proof Stats Bar - Desktop */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -321,6 +321,33 @@ export function Hero() {
             <div className="text-center">
               <div className="font-fredoka text-2xl font-bold text-golden-yellow">127</div>
               <div className="text-cream-highlight text-sm">Brands Served</div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Social Proof Stats Bar - Mobile (horizontal) */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-4 left-4 right-4 z-40 lg:hidden"
+      >
+        <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
+          <div className="flex justify-around items-center">
+            <div className="text-center">
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow">8,472+</div>
+              <div className="text-cream-highlight text-[10px] sm:text-xs">Projects</div>
+            </div>
+            <div className="w-px h-8 bg-white/20" />
+            <div className="text-center">
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow">287M+</div>
+              <div className="text-cream-highlight text-[10px] sm:text-xs">Views</div>
+            </div>
+            <div className="w-px h-8 bg-white/20" />
+            <div className="text-center">
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow">127</div>
+              <div className="text-cream-highlight text-[10px] sm:text-xs">Brands</div>
             </div>
           </div>
         </div>

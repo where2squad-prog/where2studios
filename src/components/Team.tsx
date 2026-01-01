@@ -107,7 +107,7 @@ export function Team() {
               whileHover={{ y: -10, rotate: index % 2 === 0 ? 1 : -1 }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true, margin: "-50px" }}
-              className="group relative"
+              className="group relative active:scale-95 transition-transform"
             >
               {/* Card */}
               <div className="fun-card bg-card rounded-3xl overflow-hidden transition-all duration-300">

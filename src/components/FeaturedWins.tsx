@@ -139,99 +139,123 @@ export function FeaturedWins() {
 
         {/* Reels Row */}
         <div className="mb-8 max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Play className="w-4 h-4 text-brick-red fill-brick-red" />
-            <span className="font-fredoka text-sm font-semibold text-near-black">Reels</span>
+          <div className="flex items-center justify-between mb-4 px-1">
+            <div className="flex items-center gap-2">
+              <Play className="w-4 h-4 text-brick-red fill-brick-red" />
+              <span className="font-fredoka text-sm font-semibold text-near-black">Reels</span>
+            </div>
+            <span className="text-near-black/40 text-xs sm:hidden flex items-center gap-1">
+              Swipe <span className="text-brick-red">→</span>
+            </span>
           </div>
           
-          <div 
-            className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory justify-start lg:justify-center"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {reels.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 30, rotate: -2 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                whileHover={{ y: -8, rotate: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="flex-shrink-0 snap-start"
-              >
-                <div className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-lg w-[140px] aspect-[9/14] border-2 border-transparent hover:border-golden-yellow/50 transition-all duration-300">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.client}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/90 via-near-black/20 to-transparent" />
-                  
-                  <div className="absolute top-2 right-2 bg-near-black/70 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
-                    <Eye className="w-3 h-3 text-golden-yellow" />
-                    <span className="text-white text-[10px] font-semibold">{item.views}</span>
+          <div className="relative">
+            {/* Left fade gradient */}
+            <div className="absolute left-0 top-0 bottom-2 w-6 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none sm:hidden"></div>
+            {/* Right fade gradient */}
+            <div className="absolute right-0 top-0 bottom-2 w-6 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none sm:hidden"></div>
+            
+            <div 
+              className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory justify-start lg:justify-center"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {reels.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 30, rotate: -2 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                  whileHover={{ y: -8, rotate: 1 }}
+                  transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="flex-shrink-0 snap-start"
+                >
+                  <div className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-lg w-[140px] aspect-[9/14] border-2 border-transparent hover:border-golden-yellow/50 active:scale-95 transition-all duration-300">
+                    <img
+                      src={item.thumbnail}
+                      alt={item.client}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-near-black/90 via-near-black/20 to-transparent" />
+                    
+                    <div className="absolute top-2 right-2 bg-near-black/70 backdrop-blur-sm rounded-full px-2 py-0.5 flex items-center gap-1">
+                      <Eye className="w-3 h-3 text-golden-yellow" />
+                      <span className="text-white text-[10px] font-semibold">{item.views}</span>
+                    </div>
+                    
+                    <div className="absolute bottom-0 left-0 right-0 p-2">
+                      <p className="text-white text-xs font-semibold truncate">{item.client}</p>
+                      <p className="text-golden-yellow/80 text-[10px]">{item.likes} likes</p>
+                    </div>
+                    
+                    <div className="absolute inset-0 bg-near-black/90 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center">
+                      <p className="text-golden-yellow text-[10px] font-semibold uppercase tracking-wide mb-1">Why it worked</p>
+                      <p className="text-white text-[11px] leading-relaxed">{item.whyItWorked}</p>
+                    </div>
                   </div>
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-2">
-                    <p className="text-white text-xs font-semibold truncate">{item.client}</p>
-                    <p className="text-golden-yellow/80 text-[10px]">{item.likes} likes</p>
-                  </div>
-                  
-                  <div className="absolute inset-0 bg-near-black/90 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center">
-                    <p className="text-golden-yellow text-[10px] font-semibold uppercase tracking-wide mb-1">Why it worked</p>
-                    <p className="text-white text-[11px] leading-relaxed">{item.whyItWorked}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Photos Row */}
         <div className="mb-10 max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Image className="w-4 h-4 text-golden-yellow" />
-            <span className="font-fredoka text-sm font-semibold text-near-black">Photos</span>
+          <div className="flex items-center justify-between mb-4 px-1">
+            <div className="flex items-center gap-2">
+              <Image className="w-4 h-4 text-golden-yellow" />
+              <span className="font-fredoka text-sm font-semibold text-near-black">Photos</span>
+            </div>
+            <span className="text-near-black/40 text-xs sm:hidden flex items-center gap-1">
+              Swipe <span className="text-golden-yellow">→</span>
+            </span>
           </div>
           
-          <div 
-            className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory justify-start lg:justify-center"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {photos.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="flex-shrink-0 snap-start"
-              >
-                <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-md w-[140px] aspect-square">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.client}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-near-black/90 via-near-black/20 to-transparent" />
-                  
-                  <div className="absolute top-2 right-2 bg-near-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 flex items-center gap-1">
-                    <Heart className="w-3 h-3 text-white" />
-                    <span className="text-white text-[10px] font-semibold">{item.likes}</span>
+          <div className="relative">
+            {/* Left fade gradient */}
+            <div className="absolute left-0 top-0 bottom-2 w-6 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none sm:hidden"></div>
+            {/* Right fade gradient */}
+            <div className="absolute right-0 top-0 bottom-2 w-6 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none sm:hidden"></div>
+            
+            <div 
+              className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory justify-start lg:justify-center"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {photos.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="flex-shrink-0 snap-start"
+                >
+                  <div className="relative group cursor-pointer rounded-xl overflow-hidden shadow-md w-[140px] aspect-square active:scale-95 transition-transform">
+                    <img
+                      src={item.thumbnail}
+                      alt={item.client}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-near-black/90 via-near-black/20 to-transparent" />
+                    
+                    <div className="absolute top-2 right-2 bg-near-black/70 backdrop-blur-sm rounded px-1.5 py-0.5 flex items-center gap-1">
+                      <Heart className="w-3 h-3 text-white" />
+                      <span className="text-white text-[10px] font-semibold">{item.likes}</span>
+                    </div>
+                    
+                    <div className="absolute bottom-0 left-0 right-0 p-2">
+                      <p className="text-white text-xs font-semibold truncate">{item.client}</p>
+                    </div>
+                    
+                    <div className="absolute inset-0 bg-near-black/90 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center">
+                      <p className="text-golden-yellow text-[10px] font-semibold uppercase tracking-wide mb-1">Why it worked</p>
+                      <p className="text-white text-[11px] leading-relaxed">{item.whyItWorked}</p>
+                    </div>
                   </div>
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-2">
-                    <p className="text-white text-xs font-semibold truncate">{item.client}</p>
-                  </div>
-                  
-                  <div className="absolute inset-0 bg-near-black/90 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center">
-                    <p className="text-golden-yellow text-[10px] font-semibold uppercase tracking-wide mb-1">Why it worked</p>
-                    <p className="text-white text-[11px] leading-relaxed">{item.whyItWorked}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -245,7 +269,7 @@ export function FeaturedWins() {
         >
           <a
             href="/work"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm rounded-full hover:bg-orange-accent transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm rounded-full hover:bg-orange-accent active:scale-95 transition-all"
           >
             See All Work
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

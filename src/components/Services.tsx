@@ -100,7 +100,7 @@ export function Services() {
               onMouseEnter={() => setActiveService(service.id)}
               onMouseLeave={() => setActiveService(null)}
               onClick={() => setActiveService(activeService === service.id ? null : service.id)}
-              className={`group cursor-pointer bg-cream-highlight/5 border rounded-2xl p-4 transition-all duration-300 text-center ${
+              className={`group cursor-pointer bg-cream-highlight/5 border rounded-2xl p-4 transition-all duration-300 text-center active:scale-95 ${
                 activeService === service.id 
                   ? 'border-golden-yellow bg-cream-highlight/15 shadow-lg shadow-golden-yellow/10' 
                   : 'border-cream-highlight/10 hover:border-golden-yellow/30 hover:bg-cream-highlight/10'
@@ -153,7 +153,9 @@ export function Services() {
           viewport={{ once: true, margin: "-50px" }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 text-sm">
+          <p className="text-cream-highlight/60 text-xs tracking-widest uppercase mb-3 sm:hidden">Our Process</p>
+          {/* Desktop: inline row */}
+          <div className="hidden sm:inline-flex items-center gap-2 text-sm">
             <span className="text-cream-highlight/60">Process:</span>
             <span className="text-golden-yellow font-fredoka font-medium">Audit</span>
             <span className="text-cream-highlight/30">→</span>
@@ -162,6 +164,21 @@ export function Services() {
             <span className="text-golden-yellow font-fredoka font-medium">Produce</span>
             <span className="text-cream-highlight/30">→</span>
             <span className="text-golden-yellow font-fredoka font-medium">Iterate</span>
+          </div>
+          {/* Mobile: 2x2 grid */}
+          <div className="sm:hidden grid grid-cols-2 gap-2 max-w-[180px] mx-auto">
+            <div className="bg-cream-highlight/10 rounded-lg py-2 px-3 text-golden-yellow font-fredoka text-xs font-medium border border-cream-highlight/10">
+              <span className="text-cream-highlight/50 mr-1">1.</span>Audit
+            </div>
+            <div className="bg-cream-highlight/10 rounded-lg py-2 px-3 text-golden-yellow font-fredoka text-xs font-medium border border-cream-highlight/10">
+              <span className="text-cream-highlight/50 mr-1">2.</span>Plan
+            </div>
+            <div className="bg-cream-highlight/10 rounded-lg py-2 px-3 text-golden-yellow font-fredoka text-xs font-medium border border-cream-highlight/10">
+              <span className="text-cream-highlight/50 mr-1">3.</span>Produce
+            </div>
+            <div className="bg-cream-highlight/10 rounded-lg py-2 px-3 text-golden-yellow font-fredoka text-xs font-medium border border-cream-highlight/10">
+              <span className="text-cream-highlight/50 mr-1">4.</span>Iterate
+            </div>
           </div>
         </motion.div>
 

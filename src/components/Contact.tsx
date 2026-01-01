@@ -195,7 +195,8 @@ export function Contact() {
             
             <div className="p-0 bg-white">
               <div 
-                style={{ width: '100%', height: '500px', overflow: 'scroll' }} 
+                style={{ width: '100%', overflow: 'auto' }} 
+                className="min-h-[400px] sm:min-h-[500px]"
                 id="my-cal-inline-mojju-discovery-call"
               />
             </div>
