@@ -97,7 +97,7 @@ export function Hero() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <img src={logo} alt="Where2Studios" className="h-16 sm:h-24 lg:h-40 w-auto drop-shadow-2xl" />
+              <img src={logo} alt="Where2Studios" className="h-24 sm:h-28 lg:h-40 w-auto drop-shadow-2xl" />
             </motion.div>
 
             {/* Navigation Menu */}
@@ -231,7 +231,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-16 left-6 sm:left-8 lg:left-16 z-40"
+        className="absolute bottom-28 sm:bottom-20 lg:bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         <div className="max-w-3xl">
           <h1 className="font-fredoka font-semibold leading-[0.95] text-white drop-shadow-lg">
