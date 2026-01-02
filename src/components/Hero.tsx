@@ -233,8 +233,8 @@ export function Hero() {
         transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="absolute bottom-28 sm:bottom-20 lg:bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
-        {/* Frosted glass card for text contrast */}
-        <div className="max-w-3xl bg-black/30 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white/10">
+        {/* Subtle glass card for text contrast */}
+        <div className="max-w-3xl bg-black/20 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/5">
           {/* Tagline */}
           <motion.p 
             initial={{ opacity: 0 }}
