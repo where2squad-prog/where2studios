@@ -242,21 +242,21 @@ export function Hero() {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-white/50 font-fredoka text-sm sm:text-base font-medium tracking-widest uppercase mb-4"
           >
-            Brand × Content Studio
+            Social Media Agency
           </motion.p>
           
-          {/* Primary headline - maximum emphasis */}
+          {/* Primary headline - rectangular block layout */}
           <h1 className="font-fredoka leading-[1.05]">
-            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold">
-              Story driven video
+            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold tracking-tight">
+              Stories That
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-golden-yellow font-bold leading-none mt-1" 
+              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-golden-yellow font-bold leading-none mt-1 tracking-tight uppercase" 
             >
-              that converts.
+              SCALE.
             </motion.span>
           </h1>
           
@@ -267,7 +267,7 @@ export function Hero() {
             transition={{ delay: 1, duration: 0.6 }}
             className="mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed"
           >
-            High performing short form content, commercials, and event films. Built to drive growth and ship fast.
+            Real stories, turned into repeatable series people actually follow.
           </motion.p>
           
           {/* CTA Buttons */}
