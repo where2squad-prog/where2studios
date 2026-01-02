@@ -113,7 +113,7 @@ export default function Work() {
               href="/#contact" 
               className="inline-flex px-4 sm:px-6 py-2 sm:py-3 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm sm:text-base rounded-full hover:bg-orange-accent transition-colors active:scale-95"
             >
-              Book a Call
+              Work With Us
             </a>
           </div>
         </div>
@@ -169,7 +169,7 @@ export default function Work() {
             key={activeCount}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center mt-3 text-xs sm:text-sm text-cream-highlight/40"
+            className="text-center mt-3 text-xs sm:text-sm text-white"
           >
             {activeCount} project{activeCount !== 1 ? 's' : ''}
           </motion.p>
@@ -264,7 +264,7 @@ export default function Work() {
                 href="/#contact"
                 className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-golden-yellow text-near-black font-fredoka font-semibold text-base sm:text-lg rounded-full hover:bg-orange-accent transition-all duration-300 hover:shadow-lg hover:shadow-golden-yellow/20 active:scale-95"
               >
-                Book a Growth Audit
+                Start Your Project
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -280,7 +280,7 @@ export default function Work() {
           <div className="flex flex-col items-center gap-6">
             <a href="/" className="group flex flex-col items-center gap-2">
               <img src={logo} alt="Where2Studios" className="h-20 sm:h-28 w-auto opacity-70 group-hover:opacity-100 transition-opacity" />
-              <span className="text-cream-highlight/50 text-xs sm:text-sm group-hover:text-cream-highlight transition-colors flex items-center gap-1">
+              <span className="text-white text-xs sm:text-sm group-hover:text-golden-yellow transition-colors flex items-center gap-1">
                 ← Back to Home
               </span>
             </a>

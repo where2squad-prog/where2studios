@@ -38,13 +38,13 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                 {showHomeButton ? (
                   <a
                     href="/"
-                    className="flex items-center gap-2 text-cream-highlight/70 hover:text-cream-highlight transition-colors text-sm"
+                    className="flex items-center gap-2 text-white hover:text-golden-yellow transition-colors text-sm"
                   >
                     <Home className="w-4 h-4" />
                     <span className="hidden sm:inline">Home</span>
                   </a>
                 ) : (
-                  <span className="text-cream-highlight/50 text-xs sm:text-sm hidden sm:block">
+                  <span className="text-white/70 text-xs sm:text-sm hidden sm:block">
                     Ready to grow?
                   </span>
                 )}
@@ -54,7 +54,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                   href="/#contact"
                   className="flex items-center gap-2 px-5 sm:px-6 py-2.5 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm rounded-full hover:bg-orange-accent transition-all active:scale-95"
                 >
-                  <span>Book a Call</span>
+                  <span>{showHomeButton ? "Let's Talk" : "Get Started"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
