@@ -104,8 +104,8 @@ export default function Work() {
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-16 border-b border-cream-highlight/10">
             <a href="/" className="flex items-center gap-3 group">
-              <ArrowLeft className="w-4 h-4 text-cream-highlight/50 group-hover:text-cream-highlight transition-colors" />
-              <img src={logo} alt="Where2Studios" className="h-10 w-auto" />
+              <ArrowLeft className="w-5 h-5 text-cream-highlight/50 group-hover:text-cream-highlight transition-colors" />
+              <img src={logo} alt="Where2Studios" className="h-16 sm:h-20 w-auto" />
             </a>
             
             <a 
