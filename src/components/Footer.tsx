@@ -70,10 +70,18 @@ export function Footer() {
           {/* Quick Links */}
           <div className="flex flex-col gap-3">
             <h4 className="font-fredoka font-semibold text-cream-highlight mb-2">Quick Links</h4>
-            <a href="#services" className="text-cream-highlight/60 hover:text-golden-yellow gentle-animation text-sm">Services</a>
-            <a href="#team" className="text-cream-highlight/60 hover:text-golden-yellow gentle-animation text-sm">Team</a>
-            <a href="/work" className="text-cream-highlight/60 hover:text-golden-yellow gentle-animation text-sm">Our Work</a>
-            <a href="#contact" className="text-cream-highlight/60 hover:text-golden-yellow gentle-animation text-sm">Book a Call</a>
+            <a href="#services" className="inline-flex items-center gap-2 px-4 py-2 bg-cream-highlight/5 hover:bg-cream-highlight/10 border border-cream-highlight/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow transition-all text-sm w-fit">
+              <span>🎬</span> Services
+            </a>
+            <a href="#team" className="inline-flex items-center gap-2 px-4 py-2 bg-cream-highlight/5 hover:bg-cream-highlight/10 border border-cream-highlight/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow transition-all text-sm w-fit">
+              <span>👥</span> Team
+            </a>
+            <a href="/work" className="inline-flex items-center gap-2 px-4 py-2 bg-cream-highlight/5 hover:bg-cream-highlight/10 border border-cream-highlight/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow transition-all text-sm w-fit">
+              <span>✨</span> Our Work
+            </a>
+            <a href="#contact" className="inline-flex items-center gap-2 px-4 py-2 bg-cream-highlight/5 hover:bg-cream-highlight/10 border border-cream-highlight/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow transition-all text-sm w-fit">
+              <span>📞</span> Contact
+            </a>
           </div>
 
           {/* Platforms We Use */}
