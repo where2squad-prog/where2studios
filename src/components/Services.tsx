@@ -96,7 +96,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-cream-highlight/70 text-base sm:text-lg max-w-2xl mx-auto"
+            className="text-white/90 text-base sm:text-lg max-w-2xl mx-auto"
           >
             From social content and commercials to corporate events and weddings, we focus on clarity, emotion, and fast turnaround.
           </motion.p>
@@ -122,7 +122,7 @@ export function Services() {
               <h3 className="font-fredoka text-lg sm:text-xl font-semibold mb-3 text-cream-highlight group-hover:text-golden-yellow transition-colors">
                 {useCase.title}
               </h3>
-              <p className="text-cream-highlight/70 text-sm sm:text-base leading-relaxed">
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
                 {useCase.description}
               </p>
             </motion.div>
@@ -175,7 +175,7 @@ export function Services() {
               <h4 className="font-fredoka text-xl font-semibold text-golden-yellow mb-3">
                 {step.title}
               </h4>
-              <p className="text-cream-highlight/70 text-sm leading-relaxed">
+              <p className="text-white/90 text-sm leading-relaxed">
                 {step.description}
               </p>
             </motion.div>
@@ -218,10 +218,10 @@ export function Services() {
           viewport={{ once: true }}
           className="text-center mt-16 max-w-2xl mx-auto"
         >
-          <p className="text-cream-highlight/60 text-sm sm:text-base leading-relaxed">
+          <p className="text-white/80 text-sm sm:text-base leading-relaxed">
             We are built for brands and clients who value clarity, speed, and results.
             <br className="hidden sm:block" />
-            <span className="text-cream-highlight/40"> If you are looking for slow timelines or vague creative, we are not the right fit.</span>
+            <span className="text-white/60"> If you are looking for slow timelines or vague creative, we are not the right fit.</span>
           </p>
         </motion.div>
 
