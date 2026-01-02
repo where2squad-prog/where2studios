@@ -102,15 +102,15 @@ export default function Work() {
       {/* Apple-style Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-near-black/80 backdrop-blur-xl">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex items-center justify-between h-16 border-b border-cream-highlight/10">
-            <a href="/" className="flex items-center gap-3 group">
-              <ArrowLeft className="w-5 h-5 text-cream-highlight/50 group-hover:text-cream-highlight transition-colors" />
-              <img src={logo} alt="Where2Studios" className="h-16 sm:h-20 w-auto" />
+          <div className="flex items-center justify-between h-24 sm:h-28 border-b border-cream-highlight/10">
+            <a href="/" className="flex items-center gap-4 group">
+              <ArrowLeft className="w-6 h-6 text-cream-highlight/50 group-hover:text-cream-highlight transition-colors" />
+              <img src={logo} alt="Where2Studios" className="h-24 sm:h-32 w-auto" />
             </a>
             
             <a 
               href="/#contact" 
-              className="hidden sm:inline-flex px-5 py-2 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm rounded-full hover:bg-orange-accent transition-colors"
+              className="hidden sm:inline-flex px-6 py-3 bg-golden-yellow text-near-black font-fredoka font-semibold text-base rounded-full hover:bg-orange-accent transition-colors"
             >
               Book a Call
             </a>
@@ -119,7 +119,7 @@ export default function Work() {
       </nav>
 
       {/* Hero Section - Apple style large typography */}
-      <section className="pt-28 pb-8 sm:pt-32 sm:pb-12">
+      <section className="pt-36 pb-8 sm:pt-44 sm:pb-12">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
