@@ -150,12 +150,12 @@ export default function Work() {
                 className={`relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === category.id
                     ? 'bg-cream-highlight text-near-black'
-                    : 'bg-cream-highlight/5 text-cream-highlight/70 hover:bg-cream-highlight/10 hover:text-cream-highlight'
+                    : 'bg-cream-highlight/10 text-cream-highlight hover:bg-cream-highlight/20'
                 }`}
               >
                 <span className="flex items-center gap-2">
-                  <span className="hidden sm:inline">{category.emoji}</span>
-                  {category.label}
+                  <span>{category.emoji}</span>
+                  <span>{category.label}</span>
                 </span>
               </motion.button>
             ))}
