@@ -101,24 +101,24 @@ export function Hero() {
             </motion.div>
 
             {/* Navigation Menu */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-3">
               <a 
                 href="#services" 
-                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
+                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
               >
-                Services
+                <span>🎬</span> Services
               </a>
               <a 
                 href="#team" 
-                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
+                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
               >
-                Team
+                <span>👥</span> Team
               </a>
               <a 
                 href="#contact" 
-                className="text-white/90 hover:text-white text-sm font-medium tracking-tight gentle-animation"
+                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
               >
-                Contact
+                <span>📞</span> Contact
               </a>
             </div>
 
@@ -183,27 +183,27 @@ export function Hero() {
           
           <div className="flex flex-col px-6 pb-6 h-full">
             {/* Mobile Navigation Links */}
-            <div className="flex flex-col space-y-4 text-white">
+            <div className="flex flex-col space-y-3 text-white">
               <a 
                 href="#services" 
-                className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
+                className="flex items-center gap-3 px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-xl text-white hover:text-golden-yellow font-medium text-lg transition-all active:scale-95"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Services
+                <span>🎬</span> Services
               </a>
               <a 
                 href="#team" 
-                className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
+                className="flex items-center gap-3 px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-xl text-white hover:text-golden-yellow font-medium text-lg transition-all active:scale-95"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Team
+                <span>👥</span> Team
               </a>
               <a 
                 href="#contact" 
-                className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
+                className="flex items-center gap-3 px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-xl text-white hover:text-golden-yellow font-medium text-lg transition-all active:scale-95"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Contact
+                <span>📞</span> Contact
               </a>
             </div>
 
