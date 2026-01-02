@@ -242,7 +242,7 @@ export function Hero() {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-white/50 font-fredoka text-sm sm:text-base font-medium tracking-widest uppercase mb-4"
           >
-            Video Production Studio
+            Brand × Content Studio
           </motion.p>
           
           {/* Primary headline - maximum emphasis */}
