@@ -100,17 +100,17 @@ export default function Work() {
   return (
     <div className="min-h-screen bg-near-black">
       {/* Apple-style Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-near-black/80 backdrop-blur-xl">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex items-center justify-between h-24 sm:h-28 border-b border-cream-highlight/10">
-            <a href="/" className="flex items-center gap-4 group">
-              <ArrowLeft className="w-6 h-6 text-cream-highlight/50 group-hover:text-cream-highlight transition-colors" />
-              <img src={logo} alt="Where2Studios" className="h-24 sm:h-32 w-auto" />
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-near-black/90 backdrop-blur-xl">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="flex items-center justify-between h-20 sm:h-28 border-b border-cream-highlight/10">
+            <a href="/" className="flex items-center gap-2 sm:gap-4 group">
+              <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-cream-highlight/50 group-hover:text-cream-highlight transition-colors" />
+              <img src={logo} alt="Where2Studios" className="h-16 sm:h-32 w-auto" />
             </a>
             
             <a 
               href="/#contact" 
-              className="hidden sm:inline-flex px-6 py-3 bg-golden-yellow text-near-black font-fredoka font-semibold text-base rounded-full hover:bg-orange-accent transition-colors"
+              className="inline-flex px-4 sm:px-6 py-2 sm:py-3 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm sm:text-base rounded-full hover:bg-orange-accent transition-colors active:scale-95"
             >
               Book a Call
             </a>
@@ -119,46 +119,48 @@ export default function Work() {
       </nav>
 
       {/* Hero Section - Apple style large typography */}
-      <section className="pt-36 pb-8 sm:pt-44 sm:pb-12">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="pt-28 pb-6 sm:pt-44 sm:pb-12">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-4xl"
           >
-            <h1 className="font-fredoka text-5xl sm:text-7xl lg:text-8xl font-semibold text-cream-highlight tracking-tight leading-[0.9]">
+            <h1 className="font-fredoka text-4xl sm:text-7xl lg:text-8xl font-semibold text-cream-highlight tracking-tight leading-[0.9]">
               Our Work.
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-white/70 max-w-xl">
+            <p className="mt-4 sm:mt-6 text-base sm:text-xl text-white/70 max-w-xl">
               Real results for real businesses. Content that converts.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Apple-style Category Pills - Centered, clean */}
-      <section className="sticky top-16 z-40 py-4 bg-near-black/80 backdrop-blur-xl border-b border-cream-highlight/5">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? 'bg-cream-highlight text-near-black'
-                    : 'bg-cream-highlight/10 text-cream-highlight hover:bg-cream-highlight/20'
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <span>{category.emoji}</span>
-                  <span>{category.label}</span>
-                </span>
-              </motion.button>
-            ))}
+      {/* Apple-style Category Pills - Horizontally scrollable on mobile */}
+      <section className="sticky top-20 sm:top-28 z-40 py-3 sm:py-4 bg-near-black/90 backdrop-blur-xl border-b border-cream-highlight/5">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+          {/* Scrollable container for mobile */}
+          <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:flex-wrap">
+              {categories.map((category) => (
+                <motion.button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  whileTap={{ scale: 0.95 }}
+                  className={`relative px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                    activeCategory === category.id
+                      ? 'bg-cream-highlight text-near-black'
+                      : 'bg-cream-highlight/10 text-cream-highlight hover:bg-cream-highlight/20 active:bg-cream-highlight/20'
+                  }`}
+                >
+                  <span className="flex items-center gap-1.5 sm:gap-2">
+                    <span>{category.emoji}</span>
+                    <span>{category.label}</span>
+                  </span>
+                </motion.button>
+              ))}
+            </div>
           </div>
           
           {/* Results count */}
@@ -166,16 +168,16 @@ export default function Work() {
             key={activeCount}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center mt-4 text-sm text-cream-highlight/40"
+            className="text-center mt-3 text-xs sm:text-sm text-cream-highlight/40"
           >
             {activeCount} project{activeCount !== 1 ? 's' : ''}
           </motion.p>
         </div>
       </section>
 
-      {/* Portfolio Grid - Cleaner, more spacious */}
-      <section className="py-12 sm:py-16">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Portfolio Grid - Optimized for mobile */}
+      <section className="py-8 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -183,7 +185,7 @@ export default function Work() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6"
+              className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
             >
               {filteredItems.map((item, index) => (
                 <motion.div
@@ -191,9 +193,9 @@ export default function Work() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  className="group cursor-pointer"
+                  className="group cursor-pointer active:scale-95 transition-transform"
                 >
-                  <div className="relative aspect-[9/16] rounded-3xl overflow-hidden bg-cream-highlight/5 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-golden-yellow/10">
+                  <div className="relative aspect-[9/16] rounded-2xl sm:rounded-3xl overflow-hidden bg-cream-highlight/5 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-golden-yellow/10">
                     <img
                       src={item.thumbnail}
                       alt={item.client}
@@ -203,8 +205,8 @@ export default function Work() {
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-near-black via-near-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                     
-                    {/* Play button on hover */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Play button on hover - hidden on mobile */}
+                    <div className="absolute inset-0 hidden sm:flex items-center justify-center">
                       <motion.div 
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileHover={{ scale: 1.1 }}
@@ -215,20 +217,20 @@ export default function Work() {
                     </div>
                     
                     {/* Views badge */}
-                    <div className="absolute top-4 right-4 bg-near-black/70 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center gap-1.5">
-                      <Eye className="w-3.5 h-3.5 text-cream-highlight/70" />
-                      <span className="text-cream-highlight text-xs font-semibold">{item.views}</span>
+                    <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-near-black/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 sm:py-1.5 flex items-center gap-1">
+                      <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-cream-highlight/70" />
+                      <span className="text-cream-highlight text-[10px] sm:text-xs font-semibold">{item.views}</span>
                     </div>
                     
                     {/* Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-5">
-                      <p className="text-golden-yellow text-xs font-semibold uppercase tracking-wider mb-2">
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5">
+                      <p className="text-golden-yellow text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1 sm:mb-2 line-clamp-1">
                         {item.results}
                       </p>
-                      <h3 className="font-fredoka text-xl font-semibold text-cream-highlight mb-1">
+                      <h3 className="font-fredoka text-sm sm:text-xl font-semibold text-cream-highlight mb-0.5 sm:mb-1 line-clamp-1">
                         {item.client}
                       </h3>
-                      <p className="text-white/60 text-sm leading-relaxed line-clamp-2">
+                      <p className="text-white/60 text-[10px] sm:text-sm leading-relaxed line-clamp-2 hidden sm:block">
                         {item.description}
                       </p>
                     </div>
@@ -241,8 +243,8 @@ export default function Work() {
       </section>
 
       {/* CTA Section - Minimal, Apple-style */}
-      <section className="py-24 sm:py-32">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="py-16 sm:py-32">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -250,19 +252,19 @@ export default function Work() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-cream-highlight tracking-tight">
+            <h2 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-cream-highlight tracking-tight">
               Ready to be next?
             </h2>
-            <p className="mt-6 text-lg sm:text-xl text-white/60 max-w-xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-base sm:text-xl text-white/60 max-w-xl mx-auto">
               Let's talk about turning your content into customers.
             </p>
-            <div className="mt-10">
+            <div className="mt-8 sm:mt-10">
               <a
                 href="/#contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-golden-yellow text-near-black font-fredoka font-semibold text-lg rounded-full hover:bg-orange-accent transition-all duration-300 hover:shadow-lg hover:shadow-golden-yellow/20"
+                className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-golden-yellow text-near-black font-fredoka font-semibold text-base sm:text-lg rounded-full hover:bg-orange-accent transition-all duration-300 hover:shadow-lg hover:shadow-golden-yellow/20 active:scale-95"
               >
                 Book a Growth Audit
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
@@ -272,11 +274,11 @@ export default function Work() {
       </section>
 
       {/* Minimal Footer */}
-      <footer className="py-8 border-t border-cream-highlight/5">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <img src={logo} alt="Where2Studios" className="h-8 w-auto opacity-50" />
-            <p className="text-cream-highlight/40 text-sm">
+      <footer className="py-6 sm:py-8 border-t border-cream-highlight/5">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <img src={logo} alt="Where2Studios" className="h-10 sm:h-12 w-auto opacity-50" />
+            <p className="text-cream-highlight/40 text-xs sm:text-sm">
               © 2025 Where2Studios. All rights reserved.
             </p>
           </div>
