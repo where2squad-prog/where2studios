@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, Home } from 'lucide-react'
+import { ArrowRight, Home } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 interface FloatingCTAProps {
@@ -13,8 +13,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show after scrolling past the hero section (roughly 300px)
-      setIsVisible(window.scrollY > 300)
+      setIsVisible(window.scrollY > 400)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -25,34 +24,42 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3"
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed bottom-0 left-0 right-0 z-50"
         >
-          {/* Home button - only on Work page */}
-          {showHomeButton && (
-            <motion.a
-              href="/"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-cream-highlight/10 backdrop-blur-xl border border-cream-highlight/20 text-cream-highlight rounded-full shadow-2xl hover:bg-cream-highlight/20 transition-colors"
-            >
-              <Home className="w-5 h-5 sm:w-6 sm:h-6" />
-            </motion.a>
-          )}
-          
-          {/* Main CTA button - Amazon style */}
-          <motion.a
-            href="/#contact"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm sm:text-base rounded-full shadow-2xl shadow-golden-yellow/30 hover:bg-orange-accent transition-all active:scale-95"
-          >
-            <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span>Book a Call</span>
-          </motion.a>
+          {/* Flush bottom bar */}
+          <div className="bg-near-black/95 backdrop-blur-xl border-t border-cream-highlight/10">
+            <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+              <div className="flex items-center justify-between h-16 sm:h-18">
+                {/* Left side - Home button on Work page */}
+                {showHomeButton ? (
+                  <a
+                    href="/"
+                    className="flex items-center gap-2 text-cream-highlight/70 hover:text-cream-highlight transition-colors text-sm"
+                  >
+                    <Home className="w-4 h-4" />
+                    <span className="hidden sm:inline">Home</span>
+                  </a>
+                ) : (
+                  <span className="text-cream-highlight/50 text-xs sm:text-sm hidden sm:block">
+                    Ready to grow?
+                  </span>
+                )}
+                
+                {/* Right side - CTA */}
+                <a
+                  href="/#contact"
+                  className="flex items-center gap-2 px-5 sm:px-6 py-2.5 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm rounded-full hover:bg-orange-accent transition-all active:scale-95"
+                >
+                  <span>Book a Call</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
