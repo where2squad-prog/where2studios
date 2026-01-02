@@ -6,7 +6,7 @@ import joshuaPhoto from '../assets/team-member-1.png'
 import danielPhoto from '../assets/team-member-2.png'
 import gabbyPhoto from '../assets/team-member-3.png'
 import mattPhoto from '../assets/team-member-4.png'
-import ryanPhoto from '../assets/team-member-5.png'
+import ryanPhoto from '../assets/team-ryan.png'
 import anthonyPhoto from '../assets/team-member-6.png'
 import gavinPhoto from '../assets/team-member-7.png'
 
