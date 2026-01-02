@@ -44,7 +44,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                     <span className="hidden sm:inline">Home</span>
                   </a>
                 ) : (
-                  <span className="text-white/70 text-xs sm:text-sm hidden sm:block">
+                  <span className="text-white text-xs sm:text-sm hidden sm:block px-3 py-1.5 bg-white/10 rounded-full">
                     Ready to grow?
                   </span>
                 )}
