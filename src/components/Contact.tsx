@@ -144,11 +144,11 @@ export function Contact() {
           </div>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-near-black mb-2">
-            Book a 30-Minute <span className="text-brick-red">Growth Audit</span>
+            Need story driven video that <span className="text-brick-red">delivers fast</span> and actually works?
           </h2>
           
           <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-4">
-            Tell us your goals, audience, and bottlenecks. We'll show you how to turn content into customers.
+            Book a call and let us build it right.
           </p>
           
           {/* Inline Deliverables */}
