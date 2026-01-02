@@ -58,10 +58,10 @@ export function Hero() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-near-black">
-      {/* Video Background */}
+      {/* Video Background - slightly blurred for text focus */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover blur-[2px] scale-105"
         autoPlay
         muted
         loop
@@ -71,8 +71,8 @@ export function Hero() {
         <source src="/videos/hero-background.mp4?v=3" type="video/mp4" />
       </video>
       
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Dark overlay for text readability - increased opacity */}
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Full-Width Navbar */}
       <motion.nav
@@ -233,7 +233,8 @@ export function Hero() {
         transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="absolute bottom-28 sm:bottom-20 lg:bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
-        <div className="max-w-3xl">
+        {/* Frosted glass card for text contrast */}
+        <div className="max-w-3xl bg-black/30 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white/10">
           {/* Tagline */}
           <motion.p 
             initial={{ opacity: 0 }}
