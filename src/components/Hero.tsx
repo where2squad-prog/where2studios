@@ -234,35 +234,36 @@ export function Hero() {
         className="absolute bottom-28 sm:bottom-20 lg:bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         <div className="max-w-3xl">
-          <h1 className="font-fredoka font-semibold leading-[0.95] text-white drop-shadow-lg">
-            <span className="block text-4xl sm:text-5xl lg:text-5xl xl:text-6xl" style={{ letterSpacing: '0.04em' }}>
-              Stories That
+          {/* Tagline */}
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="text-golden-yellow font-fredoka text-lg sm:text-xl font-semibold tracking-wide uppercase mb-4"
+          >
+            Turn views into customers.
+          </motion.p>
+          
+          <h1 className="font-fredoka font-semibold leading-[1.05] text-white drop-shadow-lg">
+            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
+              Story driven video that converts
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="block text-6xl sm:text-7xl lg:text-7xl xl:text-8xl text-golden-yellow font-bold leading-none" 
-              style={{ letterSpacing: '0.08em' }}
+              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-golden-yellow font-bold leading-none mt-2" 
             >
-              SCALE<span className="inline">.</span>
+              and delivers fast.
             </motion.span>
           </h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-6 text-lg sm:text-xl text-white drop-shadow-md max-w-lg font-medium bg-black/30 backdrop-blur-sm rounded-2xl px-4 py-2 inline-block border border-white/10"
+            className="mt-6 text-base sm:text-lg text-white/90 drop-shadow-md max-w-xl font-medium"
           >
-            Strategy. Production. Distribution. Built to scale.
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
-            className="mt-3 text-sm sm:text-base text-white/90 drop-shadow-md max-w-md font-medium"
-          >
-            Real stories, turned into repeatable series people actually follow.
+            Where2Studios creates high performing short form content, commercials, and event films, built to drive growth, capture moments, and ship on tight timelines.
           </motion.p>
           
           {/* CTA Buttons */}
@@ -288,12 +289,11 @@ export function Hero() {
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                const servicesSection = document.getElementById('services')
-                servicesSection?.scrollIntoView({ behavior: 'smooth' })
+                window.location.href = '/work'
               }}
               className="bg-white/10 backdrop-blur-sm text-white border border-white/30 font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 gentle-animation cursor-pointer"
             >
-              See How It Works
+              See Our Work
             </motion.button>
           </div>
         </div>
