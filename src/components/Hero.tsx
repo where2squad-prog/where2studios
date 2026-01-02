@@ -235,39 +235,39 @@ export function Hero() {
       >
         {/* Subtle glass card for text contrast */}
         <div className="max-w-3xl bg-black/20 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/5">
-          {/* Eyebrow - subtle, understated */}
+          {/* Tagline - accent color, understated */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-white/50 font-fredoka text-sm sm:text-base font-medium tracking-widest uppercase mb-4"
+            className="text-golden-yellow font-fredoka text-sm sm:text-base font-semibold tracking-wide uppercase mb-4"
           >
-            Social Media Agency
+            Turn views into customers.
           </motion.p>
           
-          {/* Primary headline - rectangular block layout */}
-          <h1 className="font-fredoka leading-[1.05]">
+          {/* Headline */}
+          <h1 className="font-fredoka leading-[1.1]">
             <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold tracking-tight">
-              Stories That
+              Story driven video that
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-golden-yellow font-bold leading-none mt-1 tracking-tight uppercase" 
+              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-none mt-1 tracking-tight" 
             >
-              SCALE.
+              delivers results, <span className="text-golden-yellow">fast.</span>
             </motion.span>
           </h1>
           
-          {/* Supporting text - clearly secondary */}
+          {/* Subheadline */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed"
+            className="mt-6 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed"
           >
-            Real stories, turned into repeatable series people actually follow.
+            Where2Studios creates short form content, commercials, and event films that convert attention, capture moments, and ship on tight timelines.
           </motion.p>
           
           {/* CTA Buttons */}
