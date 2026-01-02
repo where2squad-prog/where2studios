@@ -571,3 +571,12 @@ html {
 .section-spacing-tight {
   padding: clamp(2rem, 6vw, 4rem) 0;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
