@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Play, Eye, ArrowLeft } from 'lucide-react'
+import { Play, Eye, ArrowLeft, Home } from 'lucide-react'
 import logo from '@/assets/where2studios-logo.png'
+import { FloatingCTA } from '@/components/FloatingCTA'
 
 const categories = [
   { id: 'all', label: 'All Work', emoji: '✨' },
@@ -274,16 +275,24 @@ export default function Work() {
       </section>
 
       {/* Minimal Footer */}
-      <footer className="py-6 sm:py-8 border-t border-cream-highlight/5">
+      <footer className="py-8 sm:py-12 border-t border-cream-highlight/5">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-            <img src={logo} alt="Where2Studios" className="h-10 sm:h-12 w-auto opacity-50" />
+          <div className="flex flex-col items-center gap-6">
+            <a href="/" className="group flex flex-col items-center gap-2">
+              <img src={logo} alt="Where2Studios" className="h-20 sm:h-28 w-auto opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="text-cream-highlight/50 text-xs sm:text-sm group-hover:text-cream-highlight transition-colors flex items-center gap-1">
+                ← Back to Home
+              </span>
+            </a>
             <p className="text-cream-highlight/40 text-xs sm:text-sm">
               © 2025 Where2Studios. All rights reserved.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Floating CTA */}
+      <FloatingCTA showHomeButton />
     </div>
   )
 }

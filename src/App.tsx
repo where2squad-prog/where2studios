@@ -6,6 +6,7 @@ import { Team } from './components/Team'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { SectionDivider } from './components/SectionDivider'
+import { FloatingCTA } from './components/FloatingCTA'
 import Work from './pages/Work'
 
 function HomePage() {
@@ -23,6 +24,7 @@ function HomePage() {
         <Team />
       </main>
       <Footer />
+      <FloatingCTA />
     </div>
   )
 }
