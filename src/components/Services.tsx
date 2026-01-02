@@ -201,10 +201,10 @@ export function Services() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 bg-cream-highlight/5 border border-cream-highlight/10 rounded-xl px-4 py-3"
+                className="flex items-center gap-3 bg-cream-highlight/10 border border-cream-highlight/20 rounded-xl px-4 py-3"
               >
                 <div className="w-2 h-2 bg-golden-yellow rounded-full flex-shrink-0" />
-                <span className="text-cream-highlight/90 text-sm">{item}</span>
+                <span className="text-cream-highlight text-sm font-medium">{item}</span>
               </motion.div>
             ))}
           </div>
