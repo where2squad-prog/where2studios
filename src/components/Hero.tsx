@@ -235,36 +235,39 @@ export function Hero() {
       >
         {/* Subtle glass card for text contrast */}
         <div className="max-w-3xl bg-black/20 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/5">
-          {/* Tagline */}
+          {/* Eyebrow - subtle, understated */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-golden-yellow font-fredoka text-lg sm:text-xl font-semibold tracking-wide uppercase mb-4"
+            className="text-white/50 font-fredoka text-sm sm:text-base font-medium tracking-widest uppercase mb-4"
           >
-            Turn views into customers.
+            Video Production Studio
           </motion.p>
           
-          <h1 className="font-fredoka font-semibold leading-[1.05] text-white drop-shadow-lg">
-            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
-              Story driven video that converts
+          {/* Primary headline - maximum emphasis */}
+          <h1 className="font-fredoka leading-[1.05]">
+            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold">
+              Story driven video
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-golden-yellow font-bold leading-none mt-2" 
+              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-golden-yellow font-bold leading-none mt-1" 
             >
-              and delivers fast.
+              that converts.
             </motion.span>
           </h1>
+          
+          {/* Supporting text - clearly secondary */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-6 text-base sm:text-lg text-white/90 drop-shadow-md max-w-xl font-medium"
+            className="mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed"
           >
-            Where2Studios creates high performing short form content, commercials, and event films, built to drive growth, capture moments, and ship on tight timelines.
+            High performing short form content, commercials, and event films. Built to drive growth and ship fast.
           </motion.p>
           
           {/* CTA Buttons */}
