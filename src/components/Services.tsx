@@ -27,26 +27,26 @@ export function Services() {
   const processSteps = [
     {
       number: "01",
-      title: "Clarify",
+      title: "🎯 Clarify",
       description: "We lock the story, the audience, and the outcome before we ever hit record."
     },
     {
       number: "02", 
-      title: "Capture",
+      title: "🎥 Capture",
       description: "Lean crews, intentional shots, and real moments, filmed with speed and purpose."
     },
     {
       number: "03",
-      title: "Deliver",
+      title: "🚀 Deliver",
       description: "Fast turnaround, platform ready edits, and content that is ready to post, share, or sell."
     }
   ]
 
   const whyItWorks = [
-    "Story first, not random footage",
-    "Fast turnaround without sacrificing quality",
-    "Clear outcomes, not just pretty videos",
-    "Content that lives beyond one post or one day"
+    "📖 Story first, not random footage",
+    "⚡ Fast turnaround without sacrificing quality",
+    "✅ Clear outcomes, not just pretty videos",
+    "♾️ Content that lives beyond one post or one day"
   ]
 
   return (
