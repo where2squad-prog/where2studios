@@ -4,12 +4,18 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import logo from '@/assets/where2studios-logo.png'
+import { useAnimatedCounter } from '@/hooks/useAnimatedCounter'
 
 export function Hero() {
   
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Animated counters with different speeds
+  const projectsCount = useAnimatedCounter({ baseValue: 8472, maxIncrement: 50, intervalMs: 800, suffix: '+' })
+  const viewsCount = useAnimatedCounter({ baseValue: 287, maxIncrement: 15, intervalMs: 150, suffix: 'M+' })
+  const brandsCount = useAnimatedCounter({ baseValue: 127, maxIncrement: 8, intervalMs: 2000, suffix: '' })
 
   // Scroll detection
   useEffect(() => {
@@ -313,17 +319,17 @@ export function Hero() {
         <div className="bg-black/40 backdrop-blur-md rounded-2xl p-5 border border-white/10">
           <div className="flex flex-col gap-4">
             <div className="text-center">
-              <div className="font-fredoka text-2xl font-bold text-golden-yellow">8,472+</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{projectsCount}</div>
               <div className="text-cream-highlight text-sm">Projects Delivered</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-2xl font-bold text-golden-yellow">287M+</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{viewsCount}</div>
               <div className="text-cream-highlight text-sm">Total Views</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-2xl font-bold text-golden-yellow">127</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{brandsCount}</div>
               <div className="text-cream-highlight text-sm">Brands Served</div>
             </div>
           </div>
@@ -340,17 +346,17 @@ export function Hero() {
         <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
           <div className="flex justify-around items-center">
             <div className="text-center">
-              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow">8,472+</div>
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{projectsCount}</div>
               <div className="text-cream-highlight text-[10px] sm:text-xs">Projects</div>
             </div>
             <div className="w-px h-8 bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow">287M+</div>
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{viewsCount}</div>
               <div className="text-cream-highlight text-[10px] sm:text-xs">Views</div>
             </div>
             <div className="w-px h-8 bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow">127</div>
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{brandsCount}</div>
               <div className="text-cream-highlight text-[10px] sm:text-xs">Brands</div>
             </div>
           </div>
