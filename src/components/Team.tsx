@@ -2,13 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { ImageWithFallback } from './figma/ImageWithFallback'
-import joshuaPhoto from '../assets/team-member-1.png'
-import danielPhoto from '../assets/team-member-2.png'
-import gabbyPhoto from '../assets/team-member-3.png'
-import mattPhoto from '../assets/team-member-4.png'
+import joshuaPhoto from '../assets/team-joshua.png'
+import danielPhoto from '../assets/team-daniel.png'
+import gabbyPhoto from '../assets/team-gabby.png'
 import ryanPhoto from '../assets/team-ryan.png'
-import anthonyPhoto from '../assets/team-member-6.png'
-import gavinPhoto from '../assets/team-member-7.png'
+import gavinPhoto from '../assets/team-gavin.png'
 
 export function Team() {
   const teamMembers = [
@@ -31,22 +29,10 @@ export function Team() {
       image: gabbyPhoto,
     },
     {
-      name: "Matt",
-      role: "Marketing Manager",
-      vibe: "Strategy that actually converts",
-      image: mattPhoto,
-    },
-    {
       name: "Ryan",
       role: "Production Manager",
       vibe: "Every shot tells a story",
       image: ryanPhoto,
-    },
-    {
-      name: "Anthony",
-      role: "Production Manager",
-      vibe: "Quality is non-negotiable",
-      image: anthonyPhoto,
     },
     {
       name: "Gavin",
