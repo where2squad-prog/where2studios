@@ -26,7 +26,7 @@ export function Hero() {
     startValue: 287, 
     endValue: 1000, 
     durationHours: 24, 
-    intervalMs: 150, 
+    intervalMs: 80, 
     suffix: 'M+' 
   })
   const brandsCount = useAnimatedCounter({ 
@@ -98,8 +98,8 @@ export function Hero() {
         <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
       </video>
       
-      {/* Dark overlay for text readability - 85% transparency */}
-      <div className="absolute inset-0 bg-black/85" />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/60" />
 
       {/* Full-Width Navbar */}
       <motion.nav
