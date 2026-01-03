@@ -14,26 +14,28 @@ export function useAnimatedCounter({
   suffix = ''
 }: UseAnimatedCounterOptions) {
   const [value, setValue] = useState(baseValue)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const directionRef = useRef<1 | -1>(1) // 1 = going up, -1 = going down
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       setValue(prev => {
-        // Small, subtle increment for natural trickle effect
-        const increment = 1
-        const newValue = prev + increment
-        if (newValue > baseValue + maxIncrement) {
-          return baseValue
+        const newValue = prev + directionRef.current
+        
+        // Reverse direction at boundaries
+        if (newValue >= baseValue + maxIncrement) {
+          directionRef.current = -1
+          return prev - 1
         }
+        if (newValue <= baseValue) {
+          directionRef.current = 1
+          return prev + 1
+        }
+        
         return newValue
       })
     }, intervalMs)
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
-    }
+    return () => clearInterval(interval)
   }, [baseValue, maxIncrement, intervalMs])
 
   // Format the number with commas
