@@ -12,10 +12,31 @@ export function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Animated counters with different speeds - subtle trickle effect
-  const projectsCount = useAnimatedCounter({ baseValue: 8472, maxIncrement: 20, intervalMs: 1200, suffix: '+' })
-  const viewsCount = useAnimatedCounter({ baseValue: 287, maxIncrement: 8, intervalMs: 200, suffix: 'M+' })
-  const brandsCount = useAnimatedCounter({ baseValue: 127, maxIncrement: 5, intervalMs: 3000, suffix: '' })
+  // Animated counters - reach targets over 24 hours, persisted via localStorage
+  const projectsCount = useAnimatedCounter({ 
+    storageKey: 'w2s_projects', 
+    startValue: 8472, 
+    endValue: 10000, 
+    durationHours: 24, 
+    intervalMs: 800, 
+    suffix: '+' 
+  })
+  const viewsCount = useAnimatedCounter({ 
+    storageKey: 'w2s_views', 
+    startValue: 287, 
+    endValue: 1000, 
+    durationHours: 24, 
+    intervalMs: 150, 
+    suffix: 'M+' 
+  })
+  const brandsCount = useAnimatedCounter({ 
+    storageKey: 'w2s_brands', 
+    startValue: 127, 
+    endValue: 300, 
+    durationHours: 24, 
+    intervalMs: 2000, 
+    suffix: '' 
+  })
 
   // Scroll detection
   useEffect(() => {
