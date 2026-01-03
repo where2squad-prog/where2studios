@@ -19,8 +19,8 @@ export function useAnimatedCounter({
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setValue(prev => {
-        // Randomly increment, reset when hitting max to create continuous effect
-        const increment = Math.floor(Math.random() * 3) + 1
+        // Small, subtle increment for natural trickle effect
+        const increment = 1
         const newValue = prev + increment
         if (newValue > baseValue + maxIncrement) {
           return baseValue

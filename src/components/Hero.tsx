@@ -12,10 +12,10 @@ export function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Animated counters with different speeds
-  const projectsCount = useAnimatedCounter({ baseValue: 8472, maxIncrement: 50, intervalMs: 800, suffix: '+' })
-  const viewsCount = useAnimatedCounter({ baseValue: 287, maxIncrement: 15, intervalMs: 150, suffix: 'M+' })
-  const brandsCount = useAnimatedCounter({ baseValue: 127, maxIncrement: 8, intervalMs: 2000, suffix: '' })
+  // Animated counters with different speeds - subtle trickle effect
+  const projectsCount = useAnimatedCounter({ baseValue: 8472, maxIncrement: 20, intervalMs: 1200, suffix: '+' })
+  const viewsCount = useAnimatedCounter({ baseValue: 287, maxIncrement: 8, intervalMs: 200, suffix: 'M+' })
+  const brandsCount = useAnimatedCounter({ baseValue: 127, maxIncrement: 5, intervalMs: 3000, suffix: '' })
 
   // Scroll detection
   useEffect(() => {
