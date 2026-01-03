@@ -95,11 +95,11 @@ export function Hero() {
         playsInline
         preload="auto"
       >
-        <source src="/videos/hero-background.mp4?v=3" type="video/mp4" />
+        <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
       </video>
       
-      {/* Dark overlay for text readability - increased opacity */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Dark overlay for text readability - 85% transparency */}
+      <div className="absolute inset-0 bg-black/85" />
 
       {/* Full-Width Navbar */}
       <motion.nav
