@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import logo from '@/assets/where2studios-logo.png'
+import { useCountUp } from '@/hooks/useCountUp'
 
 export function Hero() {
   
@@ -11,10 +12,10 @@ export function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Static social proof numbers
-  const projectsCount = "10,000+"
-  const viewsCount = "1B+"
-  const brandsCount = "300+"
+  // Animated count-up on scroll
+  const projects = useCountUp({ end: 10000, duration: 2000, suffix: '+' })
+  const views = useCountUp({ end: 1, duration: 1500, suffix: 'B+' })
+  const brands = useCountUp({ end: 300, duration: 1800, suffix: '+' })
 
   // Scroll detection
   useEffect(() => {
@@ -313,22 +314,21 @@ export function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-16 right-4 sm:right-6 lg:right-12 z-40 hidden lg:block max-w-[200px]"
       >
-        <div className="bg-black/40 backdrop-blur-md rounded-2xl p-5 border border-white/10">
+        <div className="bg-black/40 backdrop-blur-md rounded-2xl p-5 border border-white/10" ref={projects.ref}>
           <div className="flex flex-col gap-4">
             <div className="text-center">
-              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{projectsCount}</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{projects.formatted}</div>
               <div className="text-cream-highlight text-sm">Projects Delivered</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{viewsCount}</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{views.formatted}</div>
               <div className="text-cream-highlight text-sm">Total Views</div>
             </div>
             <div className="w-full h-px bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{brandsCount}</div>
+              <div className="font-fredoka text-2xl font-bold text-golden-yellow tabular-nums">{brands.formatted}</div>
               <div className="text-cream-highlight text-sm">Brands Served</div>
             </div>
           </div>
@@ -345,17 +345,17 @@ export function Hero() {
         <div className="bg-black/50 backdrop-blur-md rounded-xl p-3 border border-white/10">
           <div className="flex justify-around items-center">
             <div className="text-center">
-              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{projectsCount}</div>
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{projects.formatted}</div>
               <div className="text-cream-highlight text-[10px] sm:text-xs">Projects</div>
             </div>
             <div className="w-px h-8 bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{viewsCount}</div>
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{views.formatted}</div>
               <div className="text-cream-highlight text-[10px] sm:text-xs">Views</div>
             </div>
             <div className="w-px h-8 bg-white/20" />
             <div className="text-center">
-              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{brandsCount}</div>
+              <div className="font-fredoka text-lg sm:text-xl font-bold text-golden-yellow tabular-nums">{brands.formatted}</div>
               <div className="text-cream-highlight text-[10px] sm:text-xs">Brands</div>
             </div>
           </div>
