@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import logo from '@/assets/where2studios-logo.png'
-import { useAnimatedCounter } from '@/hooks/useAnimatedCounter'
 
 export function Hero() {
   
@@ -12,31 +11,10 @@ export function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Animated counters - reach targets over 24 hours, persisted via localStorage
-  const projectsCount = useAnimatedCounter({ 
-    storageKey: 'w2s_projects', 
-    startValue: 8472, 
-    endValue: 10000, 
-    durationHours: 24, 
-    intervalMs: 800, 
-    suffix: '+' 
-  })
-  const viewsCount = useAnimatedCounter({ 
-    storageKey: 'w2s_views', 
-    startValue: 287, 
-    endValue: 1000, 
-    durationHours: 24, 
-    intervalMs: 80, 
-    suffix: 'M+' 
-  })
-  const brandsCount = useAnimatedCounter({ 
-    storageKey: 'w2s_brands', 
-    startValue: 127, 
-    endValue: 300, 
-    durationHours: 24, 
-    intervalMs: 2000, 
-    suffix: '' 
-  })
+  // Static social proof numbers
+  const projectsCount = "10,000+"
+  const viewsCount = "1B+"
+  const brandsCount = "300+"
 
   // Scroll detection
   useEffect(() => {
