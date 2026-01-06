@@ -98,7 +98,7 @@ export function Contact() {
           <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
             Trusted By Growing Brands
           </span>
-          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 mt-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8 mt-6 max-w-5xl mx-auto">
             {brands.map((brand, index) => (
               <motion.div
                 key={brand.name}
@@ -107,16 +107,16 @@ export function Contact() {
                 transition={{ delay: index * 0.05, duration: 0.4 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-3"
               >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white border border-near-black/10 flex items-center justify-center p-3 hover:border-golden-yellow/30 transition-colors cursor-pointer shadow-sm">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-near-black flex items-center justify-center p-4 hover:bg-near-black/90 transition-colors cursor-pointer shadow-lg">
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <span className="font-fredoka text-[10px] sm:text-xs text-near-black/60 text-center max-w-[80px] sm:max-w-[100px] leading-tight">
+                <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium">
                   {brand.name}
                 </span>
               </motion.div>
