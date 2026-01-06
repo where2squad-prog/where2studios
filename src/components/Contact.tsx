@@ -4,6 +4,13 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 
+import brandBackyardBayou from '@/assets/brand-backyard-bayou.png'
+import brandCityline from '@/assets/brand-cityline.png'
+import brandFoodieland from '@/assets/brand-foodieland.png'
+import brandOhgane from '@/assets/brand-ohgane.png'
+import brandPacbio from '@/assets/brand-pacbio.png'
+import brandVisitBerkeley from '@/assets/brand-visit-berkeley.png'
+
 export function Contact() {
 
   useEffect(() => {
@@ -57,13 +64,13 @@ export function Contact() {
     }
   }, [])
 
-  const brandPlaceholders = [
-    { name: "Brand 1" },
-    { name: "Brand 2" },
-    { name: "Brand 3" },
-    { name: "Brand 4" },
-    { name: "Brand 5" },
-    { name: "Brand 6" },
+  const brands = [
+    { name: "Backyard Bayou", logo: brandBackyardBayou },
+    { name: "Cityline", logo: brandCityline },
+    { name: "Foodieland", logo: brandFoodieland },
+    { name: "Ohgane", logo: brandOhgane },
+    { name: "PacBio", logo: brandPacbio },
+    { name: "Visit Berkeley", logo: brandVisitBerkeley },
   ]
 
   const deliverables = [
@@ -91,18 +98,27 @@ export function Contact() {
           <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
             Trusted By Growing Brands
           </span>
-          <div className="flex flex-wrap justify-center items-center gap-4 mt-4 max-w-3xl mx-auto">
-            {brandPlaceholders.map((_, index) => (
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 mt-6 max-w-4xl mx-auto">
+            {brands.map((brand, index) => (
               <motion.div
-                key={index}
+                key={brand.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05, duration: 0.4 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 viewport={{ once: true }}
-                className="w-24 h-10 rounded-xl bg-near-black/5 border border-near-black/10 flex items-center justify-center hover:border-golden-yellow/30 transition-colors cursor-pointer"
+                className="flex flex-col items-center gap-2"
               >
-                <span className="font-fredoka text-xs text-near-black/30">Logo</span>
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white border border-near-black/10 flex items-center justify-center p-3 hover:border-golden-yellow/30 transition-colors cursor-pointer shadow-sm">
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="font-fredoka text-[10px] sm:text-xs text-near-black/60 text-center max-w-[80px] sm:max-w-[100px] leading-tight">
+                  {brand.name}
+                </span>
               </motion.div>
             ))}
           </div>
