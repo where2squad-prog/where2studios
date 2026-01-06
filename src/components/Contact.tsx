@@ -98,7 +98,7 @@ export function Contact() {
           <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
             Trusted By Growing Brands
           </span>
-          <div className="flex flex-wrap justify-center items-center gap-6 mt-6 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center items-start gap-6 sm:gap-8 mt-6 max-w-5xl mx-auto">
             {brands.map((brand, index) => (
               <motion.div
                 key={brand.name}
@@ -107,15 +107,22 @@ export function Contact() {
                 transition={{ delay: index * 0.05, duration: 0.4 }}
                 whileHover={{ scale: 1.05 }}
                 viewport={{ once: true }}
-                className="rounded-[28px] px-5 py-4 sm:px-6 sm:py-5 flex items-center justify-center transition-all duration-200 group"
-                style={{ background: '#0f120a' }}
+                className="flex flex-col items-center gap-3 group"
               >
-                <img 
-                  src={brand.logo} 
-                  alt={brand.name} 
-                  className="h-[38px] sm:h-[48px] w-auto object-contain filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
-                  style={{ background: 'transparent' }}
-                />
+                <div 
+                  className="rounded-[28px] w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center p-4 sm:p-5 transition-all duration-200"
+                  style={{ background: '#0f120a' }}
+                >
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="w-full h-full object-contain filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
+                    style={{ background: 'transparent' }}
+                  />
+                </div>
+                <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium">
+                  {brand.name}
+                </span>
               </motion.div>
             ))}
           </div>
