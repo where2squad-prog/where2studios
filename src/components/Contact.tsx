@@ -7,6 +7,7 @@ import { Check } from 'lucide-react'
 import brandBackyardBayou from '@/assets/brand-backyard-bayou.svg'
 import brandCityline from '@/assets/brand-cityline.svg'
 import brandFoodieland from '@/assets/brand-foodieland.svg'
+import brandHyphyBurger from '@/assets/brand-hyphy-burger.svg'
 import brandOhgane from '@/assets/brand-ohgane.svg'
 import brandPacbio from '@/assets/brand-pacbio.svg'
 import brandVisitBerkeley from '@/assets/brand-visit-berkeley.svg'
@@ -68,6 +69,7 @@ export function Contact() {
     { name: "Backyard Bayou", logo: brandBackyardBayou },
     { name: "Cityline", logo: brandCityline },
     { name: "Foodieland", logo: brandFoodieland },
+    { name: "Hyphy Burger", logo: brandHyphyBurger },
     { name: "Ohgane", logo: brandOhgane },
     { name: "PacBio", logo: brandPacbio },
     { name: "Visit Berkeley", logo: brandVisitBerkeley },
