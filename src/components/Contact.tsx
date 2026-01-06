@@ -4,12 +4,12 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 
-import brandBackyardBayou from '@/assets/brand-backyard-bayou.png'
-import brandCityline from '@/assets/brand-cityline.png'
-import brandFoodieland from '@/assets/brand-foodieland.png'
-import brandOhgane from '@/assets/brand-ohgane.png'
-import brandPacbio from '@/assets/brand-pacbio.png'
-import brandVisitBerkeley from '@/assets/brand-visit-berkeley.png'
+import brandBackyardBayou from '@/assets/brand-backyard-bayou.svg'
+import brandCityline from '@/assets/brand-cityline.svg'
+import brandFoodieland from '@/assets/brand-foodieland.svg'
+import brandOhgane from '@/assets/brand-ohgane.svg'
+import brandPacbio from '@/assets/brand-pacbio.svg'
+import brandVisitBerkeley from '@/assets/brand-visit-berkeley.svg'
 
 export function Contact() {
 
