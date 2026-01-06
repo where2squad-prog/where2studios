@@ -110,13 +110,13 @@ export function Contact() {
                 className="flex flex-col items-center gap-3 group"
               >
                 <div 
-                  className="rounded-[28px] w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center p-4 sm:p-5 transition-all duration-200"
+                  className="rounded-[28px] w-32 h-32 sm:w-40 sm:h-40 flex items-center justify-center p-5 sm:p-6 transition-all duration-200"
                   style={{ background: '#0f120a' }}
                 >
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
-                    className="w-full h-full object-contain filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
+                    className="w-full h-full object-contain transition-all duration-200"
                     style={{ background: 'transparent' }}
                   />
                 </div>
