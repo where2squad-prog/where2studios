@@ -98,27 +98,24 @@ export function Contact() {
           <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
             Trusted By Growing Brands
           </span>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8 mt-6 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center items-center gap-6 mt-6 max-w-5xl mx-auto">
             {brands.map((brand, index) => (
               <motion.div
                 key={brand.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05, duration: 0.4 }}
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center gap-3"
+                className="rounded-[28px] px-5 py-4 sm:px-6 sm:py-5 flex items-center justify-center transition-all duration-200 group"
+                style={{ background: '#0f120a' }}
               >
-                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-near-black flex items-center justify-center p-4 hover:bg-near-black/90 transition-colors cursor-pointer shadow-lg">
-                  <img 
-                    src={brand.logo} 
-                    alt={brand.name} 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium">
-                  {brand.name}
-                </span>
+                <img 
+                  src={brand.logo} 
+                  alt={brand.name} 
+                  className="h-[38px] sm:h-[48px] w-auto object-contain filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
+                  style={{ background: 'transparent' }}
+                />
               </motion.div>
             ))}
           </div>
