@@ -108,7 +108,7 @@ export function FeaturedWins() {
               className="w-2 h-2 bg-brick-red rounded-full" 
             />
             <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
-              Real Results
+              Real Stories, Real Reach, Real People
             </span>
             <motion.div 
               animate={{ scale: [1, 1.3, 1] }}
@@ -124,7 +124,7 @@ export function FeaturedWins() {
             viewport={{ once: true, margin: "-100px" }}
             className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-near-black mb-3"
           >
-            Proof, Not Promises
+            What Happens When People Care
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 25 }}
@@ -133,7 +133,7 @@ export function FeaturedWins() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-lg text-near-black/70"
           >
-            What we've done, and why it worked.
+            Captured moments that resonated, and why they worked.
           </motion.p>
         </div>
 
