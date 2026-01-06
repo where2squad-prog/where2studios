@@ -125,7 +125,7 @@ export function Team() {
                   
                   {/* Hover Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-cream-highlight text-sm font-medium">
+                    <p className="text-white text-sm font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                       "{member.vibe}"
                     </p>
                   </div>
