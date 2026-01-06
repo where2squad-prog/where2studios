@@ -164,11 +164,11 @@ export function Contact() {
           </div>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-near-black mb-2">
-            Need story driven video that <span className="text-brick-red">delivers fast</span> and actually works?
+            Want content that feels <span className="text-brick-red">real</span> and actually works?
           </h2>
           
           <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-4">
-            Book a call and let us build it right.
+            Book a call and let's build something your audience wants to be part of.
           </p>
           
           {/* Inline Deliverables */}

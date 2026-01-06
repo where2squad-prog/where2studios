@@ -7,38 +7,52 @@ import danielPhoto from '../assets/team-daniel.png'
 import gabbyPhoto from '../assets/team-gabby.png'
 import ryanPhoto from '../assets/team-ryan.png'
 import gavinPhoto from '../assets/team-gavin.png'
+import anthonyPhoto from '../assets/team-member-1.png'
+import josephPhoto from '../assets/team-member-2.png'
 
 export function Team() {
   const teamMembers = [
     {
       name: "Joshua Saltiban",
       role: "CEO",
-      vibe: "Building the vision, one frame at a time",
+      vibe: "I help brands and creators translate their purpose into stories people actually connect with.",
       image: joshuaPhoto,
     },
     {
-      name: "Daniel",
+      name: "Daniel Martinez",
       role: "Operations Lead",
-      vibe: "Making the impossible look easy",
+      vibe: "I keep things organized, so everyone can do their best work",
       image: danielPhoto,
     },
     {
-      name: "Gabby",
+      name: "Gabby Guevara",
       role: "Social Media Manager",
-      vibe: "Turning feeds into communities",
+      vibe: "I'm big on community, I make sure people feel seen",
       image: gabbyPhoto,
     },
     {
-      name: "Ryan",
-      role: "Production Manager",
-      vibe: "Every shot tells a story",
+      name: "Ryan Sison",
+      role: "Lead Videographer",
+      vibe: "I'm always looking for the real moment, not just the perfect one",
       image: ryanPhoto,
     },
     {
-      name: "Gavin",
-      role: "Production Manager",
-      vibe: "Content machine energy",
+      name: "Gavin Legaspi",
+      role: "Content Producer",
+      vibe: "I bring steady energy, and I help keep the quality consistent",
       image: gavinPhoto,
+    },
+    {
+      name: "Anthony Gonzalez",
+      role: "Content Producer",
+      vibe: "I move fast, but I care about getting it right",
+      image: anthonyPhoto,
+    },
+    {
+      name: "Joseph Jimenez",
+      role: "Lead Photographer",
+      vibe: "I love catching the little moments that make it feel real",
+      image: josephPhoto,
     }
   ]
 

@@ -239,20 +239,20 @@ export function Hero() {
       >
         {/* Subtle glass card for text contrast */}
         <div className="max-w-3xl bg-black/20 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/5">
-          {/* Tagline - accent color, understated */}
+          {/* Eyebrow */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
             className="text-golden-yellow font-fredoka text-sm sm:text-base font-semibold tracking-wide uppercase mb-4"
           >
-            Turn views into customers.
+            Stories worth telling.
           </motion.p>
           
           {/* Headline */}
           <h1 className="font-fredoka leading-[1.1]">
             <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold tracking-tight">
-              Story driven video that
+              Creating content that reaches
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
@@ -260,7 +260,7 @@ export function Hero() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-none mt-1 tracking-tight" 
             >
-              delivers results, <span className="text-golden-yellow">fast.</span>
+              people and builds <span className="text-golden-yellow">community.</span>
             </motion.span>
           </h1>
           
@@ -271,7 +271,7 @@ export function Hero() {
             transition={{ delay: 1, duration: 0.6 }}
             className="mt-6 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed"
           >
-            Where2Studios creates short form content, commercials, and event films that convert attention, capture moments, and ship on tight timelines.
+            Where2Studios is a collective of visual storytellers helping small businesses and growing brands get seen through short-form content, commercials, and event films rooted in real moments, real people, and real impact.
           </motion.p>
           
           {/* CTA Buttons */}

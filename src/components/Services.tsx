@@ -6,21 +6,21 @@ export function Services() {
   const useCases = [
     { 
       id: 'brand-growth', 
-      title: "Brand Growth Content", 
+      title: "Visual Branding and Growth Content", 
       icon: "📱",
-      description: "Short form content and commercials designed to turn attention into customers."
+      description: "Short-form content and commercials designed to introduce your brand, tell your story, and turn curiosity into customers without feeling like ads."
     },
     { 
       id: 'corporate', 
       title: "Corporate Events and Recaps", 
       icon: "🎬",
-      description: "High energy recap films that capture the moment, highlight the brand, and are delivered fast while the event still matters."
+      description: "High-energy recap films that capture the people, the atmosphere, and the why behind the event so the moment lives on long after the doors close."
     },
     { 
       id: 'weddings', 
       title: "Weddings and Life Events", 
       icon: "💍",
-      description: "Cinematic, story first films that feel personal, emotional, and timeless, not generic."
+      description: "Cinematic, story-driven films that feel honest and personal. No templates. No trends for the sake of trends. Just real memories, told well."
     }
   ]
 
@@ -28,25 +28,25 @@ export function Services() {
     {
       number: "01",
       title: "🎯 Clarify",
-      description: "We lock the story, the audience, and the outcome before we ever hit record."
+      description: "We start by listening. Your story, your audience, and what success actually looks like before a single camera comes out."
     },
     {
       number: "02", 
       title: "🎥 Capture",
-      description: "Lean crews, intentional shots, and real moments, filmed with speed and purpose."
+      description: "Small, intentional crews focused on real moments. We film with purpose to tell the real stories of the people in front of the lens."
     },
     {
       number: "03",
       title: "🚀 Deliver",
-      description: "Fast turnaround, platform ready edits, and content that is ready to post, share, or sell."
+      description: "Thoughtful edits, platform-ready content, and stories that are meant to build community, not just posted once and forgotten."
     }
   ]
 
   const whyItWorks = [
-    "📖 Story first, not random footage",
-    "⚡ Fast turnaround without sacrificing quality",
-    "✅ Clear outcomes, not just pretty videos",
-    "♾️ Content that lives beyond one post or one day"
+    "📖 Story before strategy because people remember stories",
+    "⚡ Collaborative process, not just agency guesswork",
+    "✅ Clear goals tied to real outcomes",
+    "♾️ Content designed to live beyond one post, one trend, or one day"
   ]
 
   return (
@@ -88,7 +88,7 @@ export function Services() {
             viewport={{ once: true, margin: "-100px" }}
             className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-cream-highlight mb-6"
           >
-            Story driven video for results and speed.
+            Your stories. Shared to grow your brand.
           </motion.h2>
           
           <motion.p
@@ -98,7 +98,7 @@ export function Services() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-white/90 text-base sm:text-lg max-w-2xl mx-auto"
           >
-            From social content and commercials to corporate events and weddings, we focus on clarity, emotion, and fast turnaround.
+            From social content and commercials to events and once-in-a-lifetime moments, we focus on clarity, emotion, and capturing content that actually connects with people.
           </motion.p>
         </div>
 
@@ -219,9 +219,9 @@ export function Services() {
           className="text-center mt-16 max-w-2xl mx-auto"
         >
           <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-            We are built for brands and clients who value clarity, speed, and results.
+            We're built for brands and people who care about meaning as much as momentum.
             <br className="hidden sm:block" />
-            <span className="text-white/60"> If you are looking for slow timelines or vague creative, we are not the right fit.</span>
+            <span className="text-white/60"> If you're looking for cookie-cutter content or vain virality, we probably aren't the right fit, and that's okay.</span>
           </p>
         </motion.div>
 

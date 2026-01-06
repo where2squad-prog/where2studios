@@ -10,7 +10,7 @@ const values = [
   },
   {
     title: "Making Things Happen",
-    description: "Execution, consistency, shipping—no theory-only marketing.",
+    description: "Execution, consistency, shipping. No theory-only marketing.",
     icon: "→"
   },
   {
@@ -20,7 +20,7 @@ const values = [
   },
   {
     title: "Creativity",
-    description: "We make things that feel alive—not templated, not corporate.",
+    description: "We make things that feel alive. Not templated, not corporate.",
     icon: "◇"
   }
 ]
