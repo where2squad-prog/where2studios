@@ -100,7 +100,7 @@ export function Contact() {
           <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
             Trusted By Growing Brands
           </span>
-          <div className="flex flex-wrap justify-center items-start gap-4 sm:gap-6 mt-6 max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center items-start gap-6 sm:gap-8 mt-6 max-w-5xl mx-auto">
             {brands.map((brand, index) => (
               <motion.div
                 key={brand.name}
@@ -111,21 +111,18 @@ export function Contact() {
                 viewport={{ once: true }}
                 className="flex flex-col items-center gap-3 group"
               >
-                {/* Logo tile - consistent 1:1 square with uniform styling */}
                 <div 
-                  className="relative aspect-square w-28 h-28 sm:w-36 sm:h-36 rounded-[24px] sm:rounded-[28px] flex items-center justify-center p-7 sm:p-9 transition-all duration-200 overflow-hidden"
+                  className="rounded-[28px] w-32 h-32 sm:w-40 sm:h-40 flex items-center justify-center p-5 sm:p-6 transition-all duration-200"
                   style={{ background: '#0f120a' }}
                 >
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
-                    className="max-w-[60%] max-h-[60%] w-auto h-auto object-contain transition-all duration-200 drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
-                    style={{ 
-                      mixBlendMode: 'lighten',
-                    }}
+                    className="w-full h-full object-contain transition-all duration-200"
+                    style={{ background: 'transparent' }}
                   />
                 </div>
-                <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium max-w-28 sm:max-w-36">
+                <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium">
                   {brand.name}
                 </span>
               </motion.div>
