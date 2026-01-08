@@ -10,19 +10,21 @@ export function Hero() {
   
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Only views gets animated count-up (climbing feel)
   const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' })
 
-  // Scroll detection
+  // Scroll detection + parallax
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
       setIsScrolled(scrollTop > 50) // Show background after 50px scroll
+      setScrollY(scrollTop)
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -62,18 +64,25 @@ export function Hero() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-near-black">
-      {/* Video Background - slightly blurred for text focus */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover blur-[2px] scale-105"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+      {/* Video Background - slightly blurred with parallax effect */}
+      <div 
+        className="absolute inset-0 w-full h-full overflow-hidden"
+        style={{
+          transform: `translateY(${scrollY * 0.3}px)`,
+        }}
       >
-        <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
-      </video>
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-[120%] object-cover blur-[2px] scale-105"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
+        </video>
+      </div>
       
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/60" />
