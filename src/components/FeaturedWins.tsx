@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Play, Eye, Heart, Image } from 'lucide-react'
+import { TrustedBrands } from './TrustedBrands'
 
 export function FeaturedWins() {
   const reels = [
@@ -92,6 +93,20 @@ export function FeaturedWins() {
       <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-brick-red/[0.03] to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
+        {/* Trusted Brands - Above Section Header */}
+        <TrustedBrands />
+
+        {/* Divider */}
+        <div className="flex items-center justify-center gap-3 mb-12">
+          <div className="w-16 h-px bg-near-black/20" />
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-2 h-2 bg-brick-red rounded-full" 
+          />
+          <div className="w-16 h-px bg-near-black/20" />
+        </div>
         
         {/* Section Header */}
         <div className="text-center mb-10">
