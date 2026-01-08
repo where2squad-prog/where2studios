@@ -86,10 +86,10 @@ export function Hero() {
         className="fixed top-0 left-0 right-0 w-full z-[110]"
       >
         <div 
-          className={`w-full px-6 sm:px-8 lg:px-12 py-4 transition-all duration-300 ease-out ${
+          className={`w-full px-4 sm:px-6 lg:px-12 py-3 lg:py-4 transition-all duration-300 ease-out ${
             isScrolled 
-              ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
-              : 'bg-transparent'
+              ? 'bg-black/90 backdrop-blur-xl border-b border-white/10' 
+              : 'bg-gradient-to-b from-black/60 via-black/30 to-transparent'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -101,33 +101,33 @@ export function Hero() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <img src={logo} alt="Where2Studios" className="h-24 sm:h-28 lg:h-40 w-auto drop-shadow-2xl" />
+              <img src={logo} alt="Where2Studios" className="h-14 sm:h-16 lg:h-20 w-auto drop-shadow-2xl" />
             </motion.div>
 
             {/* Navigation Menu */}
-            <div className="hidden md:flex items-center space-x-3">
+            <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
               <a 
                 href="#services" 
-                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
+                className="flex items-center gap-2 px-3 lg:px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
               >
                 <span>🎬</span> Services
               </a>
               <a 
                 href="#team" 
-                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
+                className="flex items-center gap-2 px-3 lg:px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
               >
                 <span>👥</span> Team
               </a>
               <a 
                 href="#contact" 
-                className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
+                className="flex items-center gap-2 px-3 lg:px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 hover:border-golden-yellow/30 rounded-full text-white hover:text-golden-yellow text-sm font-medium transition-all"
               >
                 <span>📞</span> Contact
               </a>
             </div>
 
             {/* Right Side - CTA + Mobile Menu */}
-            <div className="flex items-center space-x-3 relative">
+            <div className="flex items-center space-x-2 sm:space-x-3 relative">
               
               {/* CTA Button - Hidden on mobile */}
               <motion.button
@@ -137,7 +137,7 @@ export function Hero() {
                   const contactSection = document.getElementById('contact')
                   contactSection?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="hidden sm:block bg-golden-yellow text-near-black font-fredoka font-semibold text-sm px-6 py-3 rounded-full hover:bg-orange-accent gentle-animation ml-4 cursor-pointer"
+                className="hidden sm:block bg-golden-yellow text-near-black font-fredoka font-semibold text-sm px-5 lg:px-6 py-2.5 lg:py-3 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer"
               >
                 Book a Call
               </motion.button>
@@ -145,7 +145,7 @@ export function Hero() {
               {/* Mobile Hamburger Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden glass-effect p-3 rounded-full text-white hover:bg-white/20 active:bg-white/30 gentle-animation cursor-pointer z-[120] relative"
+                className="md:hidden glass-effect p-2.5 rounded-full text-white hover:bg-white/20 active:bg-white/30 gentle-animation cursor-pointer z-[120] relative"
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
