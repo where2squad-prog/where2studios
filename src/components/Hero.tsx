@@ -101,7 +101,7 @@ export function Hero() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <img src={logo} alt="Where2Studios" className="h-14 sm:h-16 lg:h-20 w-auto drop-shadow-2xl" />
+              <img src={logo} alt="Where2Studios" className="h-16 sm:h-20 lg:h-28 w-auto drop-shadow-2xl" />
             </motion.div>
 
             {/* Navigation Menu */}
@@ -238,27 +238,27 @@ export function Hero() {
         className="absolute bottom-28 sm:bottom-20 lg:bottom-16 left-6 sm:left-8 lg:left-16 z-40"
       >
         {/* Subtle glass card for text contrast */}
-        <div className="max-w-3xl bg-black/20 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-white/5">
+        <div className="max-w-xl lg:max-w-2xl bg-black/20 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/5">
           {/* Eyebrow */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-golden-yellow font-fredoka text-sm sm:text-base font-semibold tracking-wide uppercase mb-4"
+            className="text-golden-yellow font-fredoka text-xs sm:text-sm font-semibold tracking-wide uppercase mb-3"
           >
             Stories worth telling.
           </motion.p>
           
           {/* Headline */}
           <h1 className="font-fredoka leading-[1.1]">
-            <span className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold tracking-tight">
+            <span className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white font-bold tracking-tight">
               Creating content that reaches
             </span>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="block text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-none mt-1 tracking-tight" 
+              className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white font-bold leading-none mt-1 tracking-tight" 
             >
               people and builds <span className="text-golden-yellow">community.</span>
             </motion.span>
@@ -269,13 +269,13 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="mt-6 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed"
+            className="mt-4 text-sm sm:text-base text-white/70 max-w-lg leading-relaxed"
           >
-            Where2Studios is a collective of visual storytellers helping small businesses and growing brands get seen through short-form content, commercials, and event films rooted in real moments, real people, and real impact.
+            A collective of visual storytellers helping brands get seen through short-form content, commercials, and event films.
           </motion.p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 mt-8">
+          <div className="flex flex-wrap gap-3 mt-6">
             <motion.button
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -286,7 +286,7 @@ export function Hero() {
                 const contactSection = document.getElementById('contact')
                 contactSection?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="bg-golden-yellow text-near-black font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer shadow-lg squish-hover"
+              className="bg-golden-yellow text-near-black font-fredoka font-semibold text-base px-6 py-3 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer shadow-lg squish-hover"
             >
               Book a Call
             </motion.button>
@@ -299,7 +299,7 @@ export function Hero() {
               onClick={() => {
                 window.location.href = '/work'
               }}
-              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 font-fredoka font-semibold text-lg px-8 py-4 rounded-full hover:bg-white/20 gentle-animation cursor-pointer"
+              className="bg-white/10 backdrop-blur-sm text-white border border-white/30 font-fredoka font-semibold text-base px-6 py-3 rounded-full hover:bg-white/20 gentle-animation cursor-pointer"
             >
               See Our Work
             </motion.button>
