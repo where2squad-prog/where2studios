@@ -64,8 +64,11 @@ export function Hero() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-near-black">
-      {/* Video Background - slightly blurred with parallax effect */}
-      <div 
+      {/* Video Background - cinematic entrance with parallax effect */}
+      <motion.div 
+        initial={{ scale: 1.15, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 w-full h-full overflow-hidden"
         style={{
           transform: `translateY(${scrollY * 0.3}px)`,
@@ -82,7 +85,7 @@ export function Hero() {
         >
           <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
         </video>
-      </div>
+      </motion.div>
       
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/60" />
