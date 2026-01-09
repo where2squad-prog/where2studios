@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion'
 
 interface SectionDividerProps {
-  from: 'near-black' | 'cream' | 'background'
-  to: 'near-black' | 'cream' | 'background'
+  from: 'near-black' | 'cream' | 'background' | 'golden-yellow' | 'white'
+  to: 'near-black' | 'cream' | 'background' | 'golden-yellow' | 'white'
   variant?: 'wave' | 'dots' | 'blobs'
 }
 
@@ -17,6 +17,10 @@ export function SectionDivider({ from, to, variant = 'wave' }: SectionDividerPro
         return '#EBC37E'
       case 'background':
         return '#FFFBF5'
+      case 'golden-yellow':
+        return '#E09E24'
+      case 'white':
+        return '#FFFFFF'
       default:
         return '#FFFBF5'
     }
