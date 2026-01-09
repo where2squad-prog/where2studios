@@ -14,13 +14,13 @@ function HomePage() {
     <div className="min-h-screen bg-background text-foreground" style={{ overflow: 'visible' }}>
       <main className="relative" role="main" style={{ overflow: 'visible' }}>
         <Hero />
-        <SectionDivider from="near-black" to="background" />
+        <SectionDivider from="near-black" to="golden-yellow" />
         <FeaturedWins />
-        <SectionDivider from="background" to="near-black" />
+        <SectionDivider from="golden-yellow" to="near-black" />
         <Services />
-        <SectionDivider from="near-black" to="cream" />
+        <SectionDivider from="near-black" to="white" />
         <Contact />
-        <SectionDivider from="cream" to="background" />
+        <SectionDivider from="white" to="background" />
         <Team />
       </main>
       <Footer />
