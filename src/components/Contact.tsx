@@ -85,7 +85,7 @@ export function Contact() {
               transition={{ duration: 2, repeat: Infinity }}
               className="w-2 h-2 bg-brick-red rounded-full" 
             />
-            <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
+            <span className="font-fredoka text-xs font-medium text-white uppercase tracking-widest">
               Let's Talk
             </span>
             <motion.div 
