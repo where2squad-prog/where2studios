@@ -142,7 +142,7 @@ export function Hero() {
             {/* Right Side - CTA + Mobile Menu */}
             <div className="flex items-center space-x-2 sm:space-x-3 relative">
               
-              {/* CTA Button - Hidden on mobile */}
+              {/* CTA Button - Always visible, more prominent */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -150,7 +150,7 @@ export function Hero() {
                   const contactSection = document.getElementById('contact')
                   contactSection?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="hidden sm:block bg-golden-yellow text-near-black font-fredoka font-semibold text-sm px-5 lg:px-6 py-2.5 lg:py-3 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer"
+                className="bg-golden-yellow text-near-black font-fredoka font-semibold text-xs sm:text-sm px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full hover:bg-orange-accent gentle-animation cursor-pointer shadow-lg"
               >
                 Book a Call
               </motion.button>
