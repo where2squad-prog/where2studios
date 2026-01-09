@@ -43,15 +43,11 @@ export function TrustedBrands() {
             viewport={{ once: true }}
             className="flex flex-col items-center gap-3 group"
           >
-            <div 
-              className="rounded-[28px] w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center p-4 sm:p-5 transition-all duration-200"
-              style={{ background: '#0f120a' }}
-            >
+            <div className="w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center p-3 sm:p-4 transition-all duration-200">
               <img 
                 src={brand.logo} 
                 alt={brand.name} 
                 className="w-full h-full object-contain transition-all duration-200"
-                style={{ background: 'transparent' }}
               />
             </div>
             <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium">
