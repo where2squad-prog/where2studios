@@ -27,12 +27,12 @@ export function TrustedBrands() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true, margin: "-100px" }}
-      className="text-center mb-12"
+      className="text-center mb-6"
     >
       <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
         Trusted By Growing Brands
       </span>
-      <div className="flex flex-wrap justify-center items-start gap-6 sm:gap-8 mt-6 max-w-5xl mx-auto">
+      <div className="flex flex-wrap justify-center items-start gap-4 sm:gap-6 mt-4 max-w-5xl mx-auto">
         {brands.map((brand, index) => (
           <motion.div
             key={brand.name}
