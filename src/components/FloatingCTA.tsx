@@ -31,7 +31,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
           className="fixed bottom-0 left-0 right-0 z-50"
         >
           {/* Flush bottom bar - solid background for readability */}
-          <div className="bg-near-black/95 backdrop-blur-xl border-t border-golden-yellow/20 shadow-[0_-4px_20px_rgba(224,158,36,0.15)]">
+          <div className="bg-black/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
             <div className="container mx-auto px-4 sm:px-8 lg:px-12">
               <div className="flex items-center justify-between h-16 sm:h-18">
                 {/* Left side - Home button on Work page */}
