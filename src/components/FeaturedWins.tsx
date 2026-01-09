@@ -122,7 +122,7 @@ export function FeaturedWins() {
               transition={{ duration: 2, repeat: Infinity }}
               className="w-2 h-2 bg-brick-red rounded-full" 
             />
-            <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
+            <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
               Real Stories, Real Reach, Real People
             </span>
             <motion.div 
