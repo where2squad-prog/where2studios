@@ -64,11 +64,7 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="relative py-12 bg-white overflow-hidden">
-      {/* Subtle gradient accents */}
-      <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-golden-yellow/[0.05] to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-golden-yellow/[0.05] to-transparent pointer-events-none" />
-      
+    <section id="contact" className="relative py-10 bg-white overflow-hidden">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
 
         {/* Contact Header - Condensed */}
@@ -77,34 +73,24 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-6"
+          className="text-center mb-4"
         >
-          <div className="inline-flex items-center gap-2 mb-3">
-            <motion.div 
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 bg-brick-red rounded-full" 
-            />
+          <div className="mb-2">
             <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
               Let's Talk
             </span>
-            <motion.div 
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-              className="w-2 h-2 bg-brick-red rounded-full" 
-            />
           </div>
           
-          <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-near-black mb-2">
+          <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-near-black mb-2">
             Want content that feels <span className="text-brick-red">real</span> and actually works?
           </h2>
           
-          <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-4">
+          <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-3">
             Book a call and let's build something your audience wants to be part of.
           </p>
           
           {/* Inline Deliverables */}
-          <div className="flex flex-wrap justify-center gap-3 mb-2">
+          <div className="flex flex-wrap justify-center gap-2 mb-2">
             {deliverables.map((item, index) => (
               <motion.div
                 key={index}
@@ -112,7 +98,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-1.5 text-xs bg-near-black/10 px-3 py-1.5 rounded-full"
+                className="flex items-center gap-1.5 text-xs bg-near-black/10 px-2.5 py-1 rounded-full"
               >
                 <Check className="w-3 h-3 text-brick-red" />
                 <span className="text-near-black">{item}</span>

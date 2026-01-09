@@ -57,21 +57,17 @@ export function Team() {
   ]
 
   return (
-    <section id="team" className="relative pt-8 pb-24 lg:pb-32 bg-background overflow-hidden">
-      {/* Subtle gradient accents */}
-      <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-brick-red/[0.02] to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-brick-red/[0.02] to-transparent pointer-events-none" />
-      
+    <section id="team" className="relative py-10 pb-20 lg:pb-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.span 
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="inline-block px-4 py-2 bg-brick-red/10 text-brick-red rounded-full text-sm font-semibold mb-6 border border-brick-red/20"
+            className="inline-block px-3 py-1.5 bg-brick-red/10 text-brick-red rounded-full text-xs font-semibold mb-4 border border-brick-red/20"
           >
             The Squad
           </motion.span>
@@ -81,7 +77,7 @@ export function Team() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-bold text-near-black mb-6"
+            className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-bold text-near-black mb-3"
           >
             Meet the Dreamers
           </motion.h2>
@@ -91,7 +87,7 @@ export function Team() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-lg lg:text-xl text-near-black/70 max-w-2xl mx-auto"
+            className="text-base lg:text-lg text-near-black/70 max-w-2xl mx-auto"
           >
             The people who make things happen.
           </motion.p>
@@ -154,14 +150,14 @@ export function Team() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="text-center mt-16"
+          className="text-center mt-10"
         >
-          <p className="text-near-black/60 mb-4">
+          <p className="text-near-black/60 text-sm mb-3">
             Want to join the squad?
           </p>
           <a 
             href="#contact" 
-            className="inline-flex items-center gap-2 px-6 py-3 bg-brick-red text-cream-highlight font-semibold rounded-full hover:bg-brick-red/90 transition-all duration-500 hover:scale-105"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-brick-red text-cream-highlight font-semibold text-sm rounded-full hover:bg-brick-red/90 transition-all duration-500 hover:scale-105"
           >
             Get in Touch
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

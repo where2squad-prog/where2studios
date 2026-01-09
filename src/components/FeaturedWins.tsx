@@ -87,49 +87,24 @@ export function FeaturedWins() {
   ]
 
   return (
-    <section className="relative py-16 bg-golden-yellow overflow-hidden">
-      {/* Subtle gradient accents */}
-      <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-near-black/[0.03] to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-near-black/[0.03] to-transparent pointer-events-none" />
-      
+    <section className="relative py-10 sm:py-12 bg-golden-yellow overflow-hidden">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Trusted Brands - Above Section Header */}
         <TrustedBrands />
-
-        {/* Divider */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <div className="w-16 h-px bg-near-black/20" />
-          <motion.div 
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-2 h-2 bg-brick-red rounded-full" 
-          />
-          <div className="w-16 h-px bg-near-black/20" />
-        </div>
         
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="inline-flex items-center gap-3 mb-4"
+            className="mb-3"
           >
-            <motion.div 
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 bg-brick-red rounded-full" 
-            />
             <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
               Real Stories, Real Reach, Real People
             </span>
-            <motion.div 
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-              className="w-2 h-2 bg-brick-red rounded-full" 
-            />
           </motion.div>
           
           <motion.h2
@@ -137,7 +112,7 @@ export function FeaturedWins() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-near-black mb-3"
+            className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-near-black mb-2"
           >
             What Happens When People Care
           </motion.h2>
@@ -146,7 +121,7 @@ export function FeaturedWins() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-lg text-near-black/70"
+            className="text-base text-near-black/70"
           >
             Captured moments that resonated, and why they worked.
           </motion.p>
