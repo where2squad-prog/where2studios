@@ -41,9 +41,9 @@ export function TrustedBrands() {
             transition={{ delay: index * 0.05, duration: 0.4 }}
             whileHover={{ scale: 1.05 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-3 group"
+            className="flex flex-col items-center gap-1 group"
           >
-            <div className="w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center p-3 sm:p-4 transition-all duration-200">
+            <div className="w-44 h-44 sm:w-56 sm:h-56 flex items-center justify-center p-2 sm:p-3 transition-all duration-200">
               <img 
                 src={brand.logo} 
                 alt={brand.name} 
