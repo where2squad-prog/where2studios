@@ -41,7 +41,7 @@ export function TrustedBrands() {
             transition={{ delay: index * 0.05, duration: 0.4 }}
             whileHover={{ scale: 1.05 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-1 group"
+            className="flex flex-col items-center group"
           >
             <div className="w-44 h-44 sm:w-56 sm:h-56 flex items-center justify-center p-2 sm:p-3 transition-all duration-200">
               <img 
@@ -50,7 +50,7 @@ export function TrustedBrands() {
                 className="w-full h-full object-contain transition-all duration-200"
               />
             </div>
-            <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium">
+            <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium -mt-6 sm:-mt-8">
               {brand.name}
             </span>
           </motion.div>
