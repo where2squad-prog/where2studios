@@ -23,36 +23,32 @@ export function TrustedBrands() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true, margin: "-100px" }}
-      className="text-center mb-6"
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-8"
     >
-      <span className="font-fredoka text-xs font-medium text-near-black/50 uppercase tracking-widest">
+      <span className="text-xs font-semibold text-near-black/50 uppercase tracking-widest">
         Trusted By Growing Brands
       </span>
-      <div className="flex flex-wrap justify-center items-start gap-4 sm:gap-6 mt-4 max-w-5xl mx-auto">
+      <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 mt-4 max-w-4xl mx-auto">
         {brands.map((brand, index) => (
           <motion.div
             key={brand.name}
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.05, duration: 0.4 }}
-            whileHover={{ scale: 1.05 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center group"
+            className="flex flex-col items-center"
           >
-            <div className="w-44 h-44 sm:w-56 sm:h-56 flex items-center justify-center p-2 sm:p-3 transition-all duration-200">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
               <img 
                 src={brand.logo} 
                 alt={brand.name} 
-                className="w-full h-full object-contain transition-all duration-200"
+                className="w-full h-full object-contain opacity-80"
               />
             </div>
-            <span className="font-fredoka text-xs sm:text-sm text-near-black/70 text-center font-medium -mt-6 sm:-mt-8">
-              {brand.name}
-            </span>
           </motion.div>
         ))}
       </div>

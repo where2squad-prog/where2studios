@@ -65,60 +65,54 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-10 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
 
-        {/* Contact Header - Condensed */}
+        {/* Contact Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-4"
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-6"
         >
-          <div className="mb-2">
-            <span className="font-fredoka text-xs font-medium text-brick-red uppercase tracking-widest">
-              Let's Talk
-            </span>
-          </div>
+          <span className="text-xs font-semibold text-brick-red uppercase tracking-widest">
+            Let's Talk
+          </span>
           
-          <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-near-black mb-2">
-            Want content that feels <span className="text-brick-red">real</span> and actually works?
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-near-black mt-2 mb-2">
+            Want content that feels <span className="text-brick-red">real</span>?
           </h2>
           
-          <p className="text-sm text-near-black/60 max-w-xl mx-auto mb-3">
+          <p className="text-sm text-near-black/60 max-w-md mx-auto mb-4">
             Book a call and let's build something your audience wants to be part of.
           </p>
           
           {/* Inline Deliverables */}
-          <div className="flex flex-wrap justify-center gap-2 mb-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {deliverables.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-1.5 text-xs bg-near-black/10 px-2.5 py-1 rounded-full"
+                className="flex items-center gap-1.5 text-xs bg-near-black/5 px-3 py-1.5 rounded-full"
               >
                 <Check className="w-3 h-3 text-brick-red" />
                 <span className="text-near-black">{item}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
 
-        {/* Cal.com Widget - Compact */}
+        {/* Cal.com Widget */}
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto"
         >
-          <div className="bg-background border border-border rounded-2xl overflow-hidden shadow-lg">
-            <div className="bg-card/50 px-6 py-4 border-b border-border flex items-center justify-between">
+          <div className="bg-background border border-border rounded-xl overflow-hidden shadow-sm">
+            <div className="bg-muted/50 px-4 sm:px-6 py-4 border-b border-border flex items-center justify-between">
               <div>
-                <h3 className="font-fredoka text-base font-semibold text-near-black">
+                <h3 className="text-base font-bold text-near-black">
                   Where2Studios Growth Audit
                 </h3>
                 <p className="text-near-black/50 text-xs">
@@ -126,7 +120,7 @@ export function Contact() {
                 </p>
               </div>
               <div className="hidden sm:flex items-center gap-1.5">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-green-500 rounded-full" />
                 <span className="text-xs text-near-black/50">Available</span>
               </div>
             </div>
@@ -134,7 +128,7 @@ export function Contact() {
             <div className="p-0 bg-white">
               <div 
                 style={{ width: '100%', overflow: 'auto' }} 
-                className="min-h-[400px] sm:min-h-[500px]"
+                className="min-h-[400px] sm:min-h-[450px]"
                 id="my-cal-inline-mojju-discovery-call"
               />
             </div>
