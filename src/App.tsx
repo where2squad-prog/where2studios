@@ -11,16 +11,16 @@ import Work from './pages/Work'
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground" style={{ overflow: 'visible' }}>
+    <div className="min-h-screen bg-m3-background text-m3-on-background" style={{ overflow: 'visible' }}>
       <main className="relative" role="main" style={{ overflow: 'visible' }}>
         <Hero />
-        <SectionDivider from="near-black" to="golden-yellow" />
+        <SectionDivider from="surface-dark" to="surface-variant" />
         <FeaturedWins />
-        <SectionDivider from="golden-yellow" to="near-black" />
+        <SectionDivider from="surface-variant" to="surface-dark" />
         <Services />
-        <SectionDivider from="near-black" to="white" />
+        <SectionDivider from="surface-dark" to="surface-variant" />
         <Contact />
-        <SectionDivider from="white" to="background" />
+        <SectionDivider from="surface-variant" to="background" />
         <Team />
       </main>
       <Footer />

@@ -28,6 +28,22 @@ export default {
         ring: "var(--ring)",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        
+        // M3 Color System
+        'm3-primary': "hsl(var(--m3-primary))",
+        'm3-on-primary': "hsl(var(--m3-on-primary))",
+        'm3-secondary': "hsl(var(--m3-secondary))",
+        'm3-on-secondary': "hsl(var(--m3-on-secondary))",
+        'm3-background': "hsl(var(--m3-background))",
+        'm3-on-background': "hsl(var(--m3-on-background))",
+        'm3-surface': "hsl(var(--m3-surface))",
+        'm3-surface-variant': "hsl(var(--m3-surface-variant))",
+        'm3-on-surface': "hsl(var(--m3-on-surface))",
+        'm3-surface-dark': "hsl(var(--m3-surface-dark))",
+        'm3-on-dark': "hsl(var(--m3-on-dark))",
+        'm3-outline': "hsl(var(--m3-outline))",
+        
+        // Semantic colors
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
@@ -47,10 +63,6 @@ export default {
         accent: {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
-          blue: "var(--accent-blue)",
-          emerald: "var(--accent-emerald)",
-          purple: "var(--accent-purple)",
-          orange: "var(--accent-orange)",
         },
         popover: {
           DEFAULT: "var(--popover)",
@@ -60,16 +72,12 @@ export default {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
-        // Brand colors
+        
+        // Legacy brand colors (for compatibility)
         'brick-red': "var(--brick-red)",
         'golden-yellow': "var(--golden-yellow)",
-        'teal': "var(--teal)",
         'near-black': "var(--near-black)",
-        'orange-accent': "var(--orange-accent)",
         'cream-highlight': "var(--cream-highlight)",
-        'dark-teal': "var(--dark-teal)",
-        'deep-brown': "var(--deep-brown)",
-        'warm-tan': "var(--warm-tan)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -104,27 +112,6 @@ export default {
           from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
-        "bounce-gentle": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-12px)" },
-        },
-        "wiggle": {
-          "0%, 100%": { transform: "rotate(-2deg)" },
-          "50%": { transform: "rotate(2deg)" },
-        },
-        "blob-morph": {
-          "0%, 100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
-          "50%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
-        },
-        "spin-slow": {
-          from: { transform: "rotate(0deg)" },
-          to: { transform: "rotate(360deg)" },
-        },
-        "bounce-in": {
-          "0%": { transform: "scale(0)", opacity: "0" },
-          "50%": { transform: "scale(1.15)" },
-          "100%": { transform: "scale(1)", opacity: "1" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -132,11 +119,6 @@ export default {
         "fade-in-up": "fade-in-up 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
         "fade-in": "fade-in 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
         "scale-in": "scale-in 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
-        "bounce-gentle": "bounce-gentle 2s ease-in-out infinite",
-        "wiggle": "wiggle 3s ease-in-out infinite",
-        "blob-morph": "blob-morph 8s ease-in-out infinite",
-        "spin-slow": "spin-slow 20s linear infinite",
-        "bounce-in": "bounce-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards",
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.25, 0.1, 0.25, 1)',

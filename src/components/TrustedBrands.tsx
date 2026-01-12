@@ -27,29 +27,26 @@ export function TrustedBrands() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="text-center mb-8"
+      className="text-center mb-10"
     >
-      <span className="text-xs font-semibold text-near-black/50 uppercase tracking-widest">
+      {/* M3 Label style */}
+      <span className="label text-m3-on-surface/50">
         Trusted By Growing Brands
       </span>
-      <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 mt-4 max-w-4xl mx-auto">
-        {brands.map((brand, index) => (
-          <motion.div
+      
+      {/* Passive horizontal logo strip - no hover states */}
+      <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 mt-6 max-w-4xl mx-auto">
+        {brands.map((brand) => (
+          <div
             key={brand.name}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.05, duration: 0.4 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center"
+            className="flex items-center justify-center"
           >
-            <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-              <img 
-                src={brand.logo} 
-                alt={brand.name} 
-                className="w-full h-full object-contain opacity-80"
-              />
-            </div>
-          </motion.div>
+            <img 
+              src={brand.logo} 
+              alt={brand.name} 
+              className="w-20 h-20 sm:w-24 sm:h-24 object-contain opacity-70"
+            />
+          </div>
         ))}
       </div>
     </motion.div>

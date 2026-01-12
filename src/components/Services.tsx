@@ -1,25 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Palette, Video, Heart, Target, Camera, Rocket, BookOpen, Zap, CheckCircle, Infinity } from 'lucide-react'
 
 export function Services() {
   const useCases = [
     { 
       id: 'brand-growth', 
       title: "Visual Branding", 
-      icon: "📱",
+      icon: Palette,
       description: "Short-form content and commercials designed to introduce your brand and turn curiosity into customers."
     },
     { 
       id: 'corporate', 
       title: "Corporate Events", 
-      icon: "🎬",
+      icon: Video,
       description: "High-energy recap films that capture the people, the atmosphere, and the moment."
     },
     { 
       id: 'weddings', 
       title: "Life Events", 
-      icon: "💍",
+      icon: Heart,
       description: "Cinematic, story-driven films that feel honest and personal. Real memories, told well."
     }
   ]
@@ -28,42 +29,42 @@ export function Services() {
     {
       number: "1",
       title: "Clarify",
-      icon: "🎯",
+      icon: Target,
       description: "We start by listening. Your story, your audience, and what success looks like."
     },
     {
       number: "2", 
       title: "Capture",
-      icon: "🎥",
+      icon: Camera,
       description: "Small, intentional crews focused on real moments with purpose."
     },
     {
       number: "3",
       title: "Deliver",
-      icon: "🚀",
+      icon: Rocket,
       description: "Thoughtful edits and platform-ready content built to last."
     }
   ]
 
   const whyItWorks = [
-    { icon: "📖", text: "Story before strategy" },
-    { icon: "⚡", text: "Collaborative process" },
-    { icon: "✅", text: "Clear goals, real outcomes" },
-    { icon: "♾️", text: "Content that lives on" }
+    { icon: BookOpen, text: "Story before strategy" },
+    { icon: Zap, text: "Collaborative process" },
+    { icon: CheckCircle, text: "Clear goals, real outcomes" },
+    { icon: Infinity, text: "Content that lives on" }
   ]
 
   return (
-    <section id="services" className="relative py-10 sm:py-12 bg-near-black overflow-hidden">
+    <section id="services" className="relative py-12 sm:py-16 bg-m3-surface-dark overflow-hidden">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* What We Do Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-xs font-semibold text-golden-yellow uppercase tracking-widest"
+            className="label text-m3-primary"
           >
             What We Do
           </motion.span>
@@ -73,7 +74,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-2 mb-3"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-on-dark mt-2 mb-3"
           >
             Your stories. Shared to grow your brand.
           </motion.h2>
@@ -83,14 +84,14 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-sm sm:text-base text-white/70 max-w-xl mx-auto"
+            className="text-m3-on-dark/60 max-w-xl mx-auto"
           >
             From social content to once-in-a-lifetime moments, we focus on clarity and emotion.
           </motion.p>
         </div>
 
-        {/* Use Cases Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
+        {/* Use Cases - M3 Filled Tonal Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
           {useCases.map((useCase, index) => (
             <motion.div
               key={useCase.id}
@@ -98,13 +99,13 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white/5 border border-white/10 rounded-xl p-5 text-center"
+              className="m3-tonal-card p-6 text-center"
             >
-              <div className="text-3xl mb-3">{useCase.icon}</div>
-              <h3 className="text-base font-semibold text-white mb-2">
+              <useCase.icon className="w-8 h-8 text-m3-primary mx-auto mb-4" />
+              <h3 className="text-base font-semibold text-m3-on-surface mb-2">
                 {useCase.title}
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed">
+              <p className="text-m3-on-surface/60 text-sm leading-relaxed">
                 {useCase.description}
               </p>
             </motion.div>
@@ -118,14 +119,14 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-xl sm:text-2xl font-bold text-white"
+            className="text-xl sm:text-2xl font-bold text-m3-on-dark"
           >
             How It Works
           </motion.h3>
         </div>
 
-        {/* Process Steps - Consistent 1, 2, 3 format */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
+        {/* Process Steps - M3 Outlined Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
           {processSteps.map((step, index) => (
             <motion.div
               key={step.number}
@@ -133,29 +134,29 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative bg-white/5 border border-white/10 rounded-xl p-5 text-center"
+              className="m3-outlined-card p-6 text-center border-m3-on-dark/10"
             >
-              {/* Step Number Circle */}
-              <div className="w-8 h-8 bg-golden-yellow text-near-black rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-3">
+              {/* Step Number - M3 Circular Badge */}
+              <div className="w-10 h-10 bg-m3-primary text-m3-on-primary rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-4">
                 {step.number}
               </div>
               
               {/* Icon + Title */}
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-xl">{step.icon}</span>
-                <h4 className="text-base font-semibold text-golden-yellow">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <step.icon className="w-5 h-5 text-m3-primary" />
+                <h4 className="text-base font-semibold text-m3-primary">
                   {step.title}
                 </h4>
               </div>
               
-              <p className="text-white/60 text-sm leading-relaxed">
+              <p className="text-m3-on-dark/60 text-sm leading-relaxed">
                 {step.description}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Why It Works */}
+        {/* Why It Works - Icon List (not cards) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -163,17 +164,17 @@ export function Services() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <h3 className="text-lg font-bold text-white text-center mb-4">
+          <h3 className="text-lg font-bold text-m3-on-dark text-center mb-6">
             Why It Works
           </h3>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {whyItWorks.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3"
+                className="flex items-center gap-3 px-4 py-3"
               >
-                <span className="text-lg">{item.icon}</span>
-                <span className="text-white/80 text-sm font-medium">{item.text}</span>
+                <item.icon className="w-5 h-5 text-m3-primary flex-shrink-0" />
+                <span className="text-m3-on-dark/80 text-sm font-medium">{item.text}</span>
               </div>
             ))}
           </div>
@@ -185,9 +186,9 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center mt-8 max-w-xl mx-auto"
+          className="text-center mt-10 max-w-xl mx-auto"
         >
-          <p className="text-white/60 text-sm leading-relaxed">
+          <p className="text-m3-on-dark/50 text-sm leading-relaxed">
             We're built for brands who care about meaning as much as momentum.
           </p>
         </motion.div>
