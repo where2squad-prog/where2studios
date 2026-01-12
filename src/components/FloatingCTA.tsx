@@ -30,31 +30,31 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
           transition={{ duration: 0.2 }}
           className="fixed bottom-0 left-0 right-0 z-50"
         >
-          {/* Flush bottom bar */}
-          <div className="bg-near-black/95 backdrop-blur-xl border-t border-white/10">
+          {/* M3 Surface Dark */}
+          <div className="bg-m3-surface-dark/95 backdrop-blur-xl border-t border-m3-on-dark/10">
             <div className="container mx-auto px-4 sm:px-8">
               <div className="flex items-center justify-between h-14 sm:h-16">
                 {/* Left side */}
                 {showHomeButton ? (
                   <a
                     href="/"
-                    className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+                    className="flex items-center gap-2 text-m3-on-dark/70 hover:text-m3-on-dark transition-colors text-sm"
                   >
                     <Home className="w-4 h-4" />
                     <span className="hidden sm:inline">Home</span>
                   </a>
                 ) : (
-                  <span className="text-white/70 text-xs sm:text-sm">
+                  <span className="text-m3-primary text-xs sm:text-sm font-medium">
                     Ready to grow your brand?
                   </span>
                 )}
                 
-                {/* Right side - Primary CTA */}
+                {/* Right side - M3 Filled Button */}
                 <a
                   href="/#contact"
-                  className="flex items-center gap-2 px-5 py-2.5 bg-golden-yellow text-near-black font-semibold text-sm rounded-full hover:bg-orange-accent transition-colors"
+                  className="m3-filled-button flex items-center gap-2 text-sm px-5 py-2.5"
                 >
-                  <span>Contact Us</span>
+                  <span>Book a Call</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>

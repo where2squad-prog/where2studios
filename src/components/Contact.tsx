@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
 
 export function Contact() {
 
@@ -57,51 +56,28 @@ export function Contact() {
     }
   }, [])
 
-  const deliverables = [
-    "3 content angles",
-    "30-day posting system",
-    "Partnership ideas"
-  ]
-
   return (
-    <section id="contact" className="relative py-10 bg-white overflow-hidden">
+    <section id="contact" className="relative py-12 sm:py-16 bg-m3-surface-variant overflow-hidden">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
 
-        {/* Contact Header */}
+        {/* Contact Header - Simplified */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-6"
+          className="text-center mb-8"
         >
-          <span className="text-xs font-semibold text-brick-red uppercase tracking-widest">
-            Let's Talk
-          </span>
-          
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-near-black mt-2 mb-2">
-            Want content that feels <span className="text-brick-red">real</span>?
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-m3-on-surface mb-3">
+            Want content that feels <span className="text-m3-secondary">real</span>?
           </h2>
           
-          <p className="text-sm text-near-black/60 max-w-md mx-auto mb-4">
+          <p className="text-m3-on-surface/60 max-w-md mx-auto">
             Book a call and let's build something your audience wants to be part of.
           </p>
-          
-          {/* Inline Deliverables */}
-          <div className="flex flex-wrap justify-center gap-2">
-            {deliverables.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-1.5 text-xs bg-near-black/5 px-3 py-1.5 rounded-full"
-              >
-                <Check className="w-3 h-3 text-brick-red" />
-                <span className="text-near-black">{item}</span>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Cal.com Widget */}
+        {/* Cal.com Widget - M3 Elevated Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -109,23 +85,23 @@ export function Contact() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
         >
-          <div className="bg-background border border-border rounded-xl overflow-hidden shadow-sm">
-            <div className="bg-muted/50 px-4 sm:px-6 py-4 border-b border-border flex items-center justify-between">
+          <div className="m3-elevated-card overflow-hidden">
+            <div className="bg-m3-surface px-4 sm:px-6 py-4 border-b border-m3-outline flex items-center justify-between">
               <div>
-                <h3 className="text-base font-bold text-near-black">
+                <h3 className="text-base font-bold text-m3-on-surface">
                   Where2Studios Growth Audit
                 </h3>
-                <p className="text-near-black/50 text-xs">
-                  30 min • Video call • Free
+                <p className="text-m3-on-surface/50 text-xs">
+                  30 min · Video call · Free
                 </p>
               </div>
               <div className="hidden sm:flex items-center gap-1.5">
                 <div className="w-2 h-2 bg-green-500 rounded-full" />
-                <span className="text-xs text-near-black/50">Available</span>
+                <span className="text-xs text-m3-on-surface/50">Available</span>
               </div>
             </div>
             
-            <div className="p-0 bg-white">
+            <div className="p-0 bg-m3-surface">
               <div 
                 style={{ width: '100%', overflow: 'auto' }} 
                 className="min-h-[400px] sm:min-h-[450px]"
