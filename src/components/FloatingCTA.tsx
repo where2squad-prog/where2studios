@@ -27,34 +27,34 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.2 }}
           className="fixed bottom-0 left-0 right-0 z-50"
         >
-          {/* Flush bottom bar - solid background for readability */}
-          <div className="bg-black/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
-            <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-              <div className="flex items-center justify-between h-16 sm:h-18">
-                {/* Left side - Home button on Work page */}
+          {/* Flush bottom bar */}
+          <div className="bg-near-black/95 backdrop-blur-xl border-t border-white/10">
+            <div className="container mx-auto px-4 sm:px-8">
+              <div className="flex items-center justify-between h-14 sm:h-16">
+                {/* Left side */}
                 {showHomeButton ? (
                   <a
                     href="/"
-                    className="flex items-center gap-2 text-white hover:text-golden-yellow transition-colors text-sm"
+                    className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
                   >
                     <Home className="w-4 h-4" />
                     <span className="hidden sm:inline">Home</span>
                   </a>
                 ) : (
-                  <span className="text-golden-yellow text-xs sm:text-sm font-medium">
+                  <span className="text-white/70 text-xs sm:text-sm">
                     Ready to grow your brand?
                   </span>
                 )}
                 
-                {/* Right side - CTA - More prominent */}
+                {/* Right side - Primary CTA */}
                 <a
                   href="/#contact"
-                  className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-golden-yellow text-near-black font-fredoka font-semibold text-sm sm:text-base rounded-full hover:bg-orange-accent transition-all active:scale-95 shadow-lg animate-pulse-subtle"
+                  className="flex items-center gap-2 px-5 py-2.5 bg-golden-yellow text-near-black font-semibold text-sm rounded-full hover:bg-orange-accent transition-colors"
                 >
-                  <span>Book a Call</span>
+                  <span>Contact Us</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>

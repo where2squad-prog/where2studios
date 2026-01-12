@@ -6,73 +6,74 @@ export function Services() {
   const useCases = [
     { 
       id: 'brand-growth', 
-      title: "Visual Branding and Growth Content", 
+      title: "Visual Branding", 
       icon: "📱",
-      description: "Short-form content and commercials designed to introduce your brand, tell your story, and turn curiosity into customers without feeling like ads."
+      description: "Short-form content and commercials designed to introduce your brand and turn curiosity into customers."
     },
     { 
       id: 'corporate', 
-      title: "Corporate Events and Recaps", 
+      title: "Corporate Events", 
       icon: "🎬",
-      description: "High-energy recap films that capture the people, the atmosphere, and the why behind the event so the moment lives on long after the doors close."
+      description: "High-energy recap films that capture the people, the atmosphere, and the moment."
     },
     { 
       id: 'weddings', 
-      title: "Weddings and Life Events", 
+      title: "Life Events", 
       icon: "💍",
-      description: "Cinematic, story-driven films that feel honest and personal. No templates. No trends for the sake of trends. Just real memories, told well."
+      description: "Cinematic, story-driven films that feel honest and personal. Real memories, told well."
     }
   ]
 
   const processSteps = [
     {
-      number: "01",
-      title: "🎯 Clarify",
-      description: "We start by listening. Your story, your audience, and what success actually looks like before a single camera comes out."
+      number: "1",
+      title: "Clarify",
+      icon: "🎯",
+      description: "We start by listening. Your story, your audience, and what success looks like."
     },
     {
-      number: "02", 
-      title: "🎥 Capture",
-      description: "Small, intentional crews focused on real moments. We film with purpose to tell the real stories of the people in front of the lens."
+      number: "2", 
+      title: "Capture",
+      icon: "🎥",
+      description: "Small, intentional crews focused on real moments with purpose."
     },
     {
-      number: "03",
-      title: "🚀 Deliver",
-      description: "Thoughtful edits, platform-ready content, and stories that are meant to build community, not just posted once and forgotten."
+      number: "3",
+      title: "Deliver",
+      icon: "🚀",
+      description: "Thoughtful edits and platform-ready content built to last."
     }
   ]
 
   const whyItWorks = [
-    "📖 Story before strategy because people remember stories",
-    "⚡ Collaborative process, not just agency guesswork",
-    "✅ Clear goals tied to real outcomes",
-    "♾️ Content designed to live beyond one post, one trend, or one day"
+    { icon: "📖", text: "Story before strategy" },
+    { icon: "⚡", text: "Collaborative process" },
+    { icon: "✅", text: "Clear goals, real outcomes" },
+    { icon: "♾️", text: "Content that lives on" }
   ]
 
   return (
-    <section id="services" className="relative py-12 sm:py-16 bg-near-black overflow-hidden">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+    <section id="services" className="relative py-10 sm:py-12 bg-near-black overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* What We Do Header */}
         <div className="text-center mb-8">
-          <motion.div
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mb-3"
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-xs font-semibold text-golden-yellow uppercase tracking-widest"
           >
-            <span className="font-fredoka text-xs font-medium text-golden-yellow uppercase tracking-widest">
-              What We Do
-            </span>
-          </motion.div>
+            What We Do
+          </motion.span>
           
           <motion.h2
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-cream-highlight mb-4"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-2 mb-3"
           >
             Your stories. Shared to grow your brand.
           </motion.h2>
@@ -80,33 +81,30 @@ export function Services() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-white/90 text-sm sm:text-base max-w-2xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-sm sm:text-base text-white/70 max-w-xl mx-auto"
           >
-            From social content and commercials to events and once-in-a-lifetime moments, we focus on clarity, emotion, and capturing content that actually connects with people.
+            From social content to once-in-a-lifetime moments, we focus on clarity and emotion.
           </motion.p>
         </div>
 
         {/* Use Cases Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
           {useCases.map((useCase, index) => (
             <motion.div
               key={useCase.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group cursor-pointer bg-cream-highlight/5 border border-cream-highlight/10 rounded-2xl p-5 transition-all duration-300 hover:border-golden-yellow/30 hover:bg-cream-highlight/10 active:scale-95"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white/5 border border-white/10 rounded-xl p-5 text-center"
             >
-              <motion.div className="text-3xl mb-3">
-                {useCase.icon}
-              </motion.div>
-              <h3 className="font-fredoka text-base sm:text-lg font-semibold mb-2 text-cream-highlight group-hover:text-golden-yellow transition-colors">
+              <div className="text-3xl mb-3">{useCase.icon}</div>
+              <h3 className="text-base font-semibold text-white mb-2">
                 {useCase.title}
               </h3>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-white/60 text-sm leading-relaxed">
                 {useCase.description}
               </p>
             </motion.div>
@@ -118,32 +116,39 @@ export function Services() {
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="font-fredoka text-xl sm:text-2xl font-semibold text-cream-highlight"
+            className="text-xl sm:text-2xl font-bold text-white"
           >
             How It Works
           </motion.h3>
         </div>
 
-        {/* Process Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
+        {/* Process Steps - Consistent 1, 2, 3 format */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
           {processSteps.map((step, index) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="relative bg-cream-highlight/5 border border-cream-highlight/10 rounded-2xl p-5 text-center"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="relative bg-white/5 border border-white/10 rounded-xl p-5 text-center"
             >
-              <div className="text-golden-yellow/60 font-fredoka text-xs font-bold mb-2">
+              {/* Step Number Circle */}
+              <div className="w-8 h-8 bg-golden-yellow text-near-black rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-3">
                 {step.number}
               </div>
-              <h4 className="font-fredoka text-lg font-semibold text-golden-yellow mb-2">
-                {step.title}
-              </h4>
-              <p className="text-white/90 text-sm leading-relaxed">
+              
+              {/* Icon + Title */}
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-xl">{step.icon}</span>
+                <h4 className="text-base font-semibold text-golden-yellow">
+                  {step.title}
+                </h4>
+              </div>
+              
+              <p className="text-white/60 text-sm leading-relaxed">
                 {step.description}
               </p>
             </motion.div>
@@ -152,42 +157,38 @@ export function Services() {
 
         {/* Why It Works */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <h3 className="font-fredoka text-lg sm:text-xl font-semibold text-cream-highlight text-center mb-4">
+          <h3 className="text-lg font-bold text-white text-center mb-4">
             Why It Works
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-3">
             {whyItWorks.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-2 bg-cream-highlight/10 border border-cream-highlight/20 rounded-xl px-3 py-2"
+                className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3"
               >
-                <span className="text-cream-highlight text-sm font-medium">{item}</span>
-              </motion.div>
+                <span className="text-lg">{item.icon}</span>
+                <span className="text-white/80 text-sm font-medium">{item.text}</span>
+              </div>
             ))}
           </div>
         </motion.div>
 
         {/* Positioning Statement */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center mt-10 max-w-2xl mx-auto"
+          className="text-center mt-8 max-w-xl mx-auto"
         >
-          <p className="text-white/80 text-sm leading-relaxed">
-            We're built for brands and people who care about meaning as much as momentum.
-            <span className="text-white/60"> If you're looking for cookie-cutter content or vain virality, we probably aren't the right fit.</span>
+          <p className="text-white/60 text-sm leading-relaxed">
+            We're built for brands who care about meaning as much as momentum.
           </p>
         </motion.div>
 
