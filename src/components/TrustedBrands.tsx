@@ -42,7 +42,7 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt={brand.name} 
-                  className="h-12 sm:h-16 md:h-20 w-auto object-contain"
+                  className="h-8 sm:h-10 md:h-12 w-auto max-w-[120px] sm:max-w-[140px] md:max-w-[160px] object-contain"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
                   loading="eager"
                   decoding="async"
@@ -57,7 +57,7 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt="" 
-                  className="h-12 sm:h-16 md:h-20 w-auto object-contain"
+                  className="h-8 sm:h-10 md:h-12 w-auto max-w-[120px] sm:max-w-[140px] md:max-w-[160px] object-contain"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
                   loading="eager"
                   decoding="async"

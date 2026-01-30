@@ -19,8 +19,8 @@
 .marquee-content {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
-  padding: 0 1.25rem;
+  gap: 3rem;
+  padding: 0 1.5rem;
 }
 
 @media (min-width: 640px) {
