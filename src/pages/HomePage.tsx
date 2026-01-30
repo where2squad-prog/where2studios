@@ -1,7 +1,7 @@
 'use client'
 
 import { HeroSection } from '@/components/home/HeroSection'
-import { ServiceLanePicker } from '@/components/home/ServiceLanePicker'
+
 import { FeaturedWorkStrip } from '@/components/home/FeaturedWorkStrip'
 import { ClosingCTA } from '@/components/home/ClosingCTA'
 import { Team } from '@/components/Team'
@@ -31,8 +31,6 @@ export default function HomePage() {
           </div>
         </section>
         
-        {/* Service Lane Picker */}
-        <ServiceLanePicker />
         
         {/* Featured Work Strip */}
         <FeaturedWorkStrip />
