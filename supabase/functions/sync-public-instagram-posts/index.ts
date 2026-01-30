@@ -24,8 +24,8 @@ interface PostData {
   public_comments?: number;
 }
 
-// Extract shortcodes from Instagram profile page HTML
-function extractShortcodesFromProfile(html: string): string[] {
+// Extract shortcodes from Instagram profile page content
+function extractShortcodesFromProfile(content: string): string[] {
   const shortcodes: string[] = [];
   
   // Match patterns like /p/SHORTCODE/ or /reel/SHORTCODE/
@@ -36,7 +36,7 @@ function extractShortcodesFromProfile(html: string): string[] {
   
   for (const pattern of patterns) {
     let match;
-    while ((match = pattern.exec(html)) !== null) {
+    while ((match = pattern.exec(content)) !== null) {
       if (match[1] && !shortcodes.includes(match[1])) {
         shortcodes.push(match[1]);
       }
@@ -46,30 +46,30 @@ function extractShortcodesFromProfile(html: string): string[] {
   return shortcodes.slice(0, 30); // Limit to 30 posts
 }
 
-// Extract post data from Instagram post page HTML
-function extractPostData(html: string, shortcode: string): PostData {
+// Extract post data from Instagram post page content
+function extractPostData(content: string, shortcode: string): PostData {
   const data: PostData = {
     shortcode,
     permalink: `https://www.instagram.com/p/${shortcode}/`,
   };
   
   // Determine media type
-  if (html.includes('/reel/') || html.includes('"video_url"') || html.includes('video_view_count')) {
+  if (content.includes('/reel/') || content.includes('"video_url"') || content.includes('video_view_count')) {
     data.media_type = 'reel';
-  } else if (html.includes('"edge_sidecar_to_children"')) {
+  } else if (content.includes('"edge_sidecar_to_children"')) {
     data.media_type = 'carousel';
   } else {
     data.media_type = 'post';
   }
   
   // Extract thumbnail from og:image meta tag
-  const ogImageMatch = html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/);
+  const ogImageMatch = content.match(/<meta\s+property="og:image"\s+content="([^"]+)"/);
   if (ogImageMatch) {
     data.thumbnail_url = ogImageMatch[1];
   }
   
   // Extract caption from og:description or description meta
-  const descMatch = html.match(/<meta\s+property="og:description"\s+content="([^"]+)"/);
+  const descMatch = content.match(/<meta\s+property="og:description"\s+content="([^"]+)"/);
   if (descMatch) {
     data.caption_snippet = descMatch[1].slice(0, 200);
   }
@@ -81,7 +81,7 @@ function extractPostData(html: string, shortcode: string): PostData {
     /(\d+(?:,\d{3})*)\s*views/i,
   ];
   for (const pattern of viewCountPatterns) {
-    const match = html.match(pattern);
+    const match = content.match(pattern);
     if (match) {
       data.public_views = parseInt(match[1].replace(/,/g, ''), 10);
       break;
@@ -95,7 +95,7 @@ function extractPostData(html: string, shortcode: string): PostData {
     /(\d+(?:,\d{3})*)\s*likes/i,
   ];
   for (const pattern of likePatterns) {
-    const match = html.match(pattern);
+    const match = content.match(pattern);
     if (match) {
       data.public_likes = parseInt(match[1].replace(/,/g, ''), 10);
       break;
@@ -109,7 +109,7 @@ function extractPostData(html: string, shortcode: string): PostData {
     /(\d+(?:,\d{3})*)\s*comments/i,
   ];
   for (const pattern of commentPatterns) {
-    const match = html.match(pattern);
+    const match = content.match(pattern);
     if (match) {
       data.public_comments = parseInt(match[1].replace(/,/g, ''), 10);
       break;
@@ -122,7 +122,7 @@ function extractPostData(html: string, shortcode: string): PostData {
     /"timestamp"\s*:\s*(\d+)/,
   ];
   for (const pattern of timestampPatterns) {
-    const match = html.match(pattern);
+    const match = content.match(pattern);
     if (match) {
       data.posted_at = new Date(parseInt(match[1], 10) * 1000).toISOString();
       break;
@@ -132,42 +132,46 @@ function extractPostData(html: string, shortcode: string): PostData {
   return data;
 }
 
-// Fetch with retry and exponential backoff
-async function fetchWithRetry(url: string, maxRetries = 3): Promise<string | null> {
-  for (let attempt = 0; attempt < maxRetries; attempt++) {
-    try {
-      const response = await fetch(url, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-          'Accept-Language': 'en-US,en;q=0.5',
-          'Cache-Control': 'no-cache',
-        },
-      });
-      
-      if (response.status === 429) {
-        // Rate limited - wait and retry
-        const waitTime = Math.pow(2, attempt) * 5000;
-        console.log(`Rate limited, waiting ${waitTime}ms before retry`);
-        await new Promise(resolve => setTimeout(resolve, waitTime));
-        continue;
-      }
-      
-      if (!response.ok) {
-        console.log(`HTTP ${response.status} for ${url}`);
-        return null;
-      }
-      
-      return await response.text();
-    } catch (error) {
-      console.log(`Fetch error (attempt ${attempt + 1}): ${error}`);
-      if (attempt < maxRetries - 1) {
-        const waitTime = Math.pow(2, attempt) * 1000;
-        await new Promise(resolve => setTimeout(resolve, waitTime));
-      }
+// Scrape a URL using Firecrawl
+async function scrapeWithFirecrawl(url: string, apiKey: string): Promise<{ success: boolean; content?: string; error?: string }> {
+  try {
+    console.log(`Firecrawl scraping: ${url}`);
+    
+    const response = await fetch('https://api.firecrawl.dev/v1/scrape', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        url,
+        formats: ['html', 'markdown'],
+        onlyMainContent: false,
+        waitFor: 3000, // Wait for dynamic content
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('Firecrawl API error:', data);
+      return { success: false, error: data.error || `HTTP ${response.status}` };
     }
+
+    // Get content from the response (check both data.data and data directly)
+    const html = data.data?.html || data.html || '';
+    const markdown = data.data?.markdown || data.markdown || '';
+    const content = html || markdown;
+
+    if (!content) {
+      return { success: false, error: 'No content returned' };
+    }
+
+    return { success: true, content };
+  } catch (error) {
+    console.error('Firecrawl fetch error:', error);
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
-  return null;
 }
 
 Deno.serve(async (req) => {
@@ -178,6 +182,12 @@ Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const firecrawlApiKey = Deno.env.get('FIRECRAWL_API_KEY');
+    
+    if (!firecrawlApiKey) {
+      throw new Error('FIRECRAWL_API_KEY is not configured');
+    }
+    
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Fetch active clients
@@ -190,7 +200,7 @@ Deno.serve(async (req) => {
       throw new Error(`Failed to fetch clients: ${clientsError.message}`);
     }
 
-    console.log(`Processing ${clients?.length || 0} active clients`);
+    console.log(`Processing ${clients?.length || 0} active clients with Firecrawl`);
 
     const results: { client: string; postsProcessed: number; errors: string[] }[] = [];
 
@@ -199,17 +209,24 @@ Deno.serve(async (req) => {
       
       console.log(`Processing client: ${client.name} (@${client.ig_handle})`);
       
-      // Fetch profile page
-      const profileHtml = await fetchWithRetry(client.profile_url);
-      if (!profileHtml) {
-        clientResult.errors.push('Failed to fetch profile page');
+      // Fetch profile page using Firecrawl
+      const profileResult = await scrapeWithFirecrawl(client.profile_url, firecrawlApiKey);
+      
+      if (!profileResult.success || !profileResult.content) {
+        clientResult.errors.push(`Failed to fetch profile: ${profileResult.error}`);
         results.push(clientResult);
         continue;
       }
       
       // Extract shortcodes
-      const shortcodes = extractShortcodesFromProfile(profileHtml);
+      const shortcodes = extractShortcodesFromProfile(profileResult.content);
       console.log(`Found ${shortcodes.length} shortcodes for ${client.name}`);
+      
+      if (shortcodes.length === 0) {
+        clientResult.errors.push('No posts found on profile');
+        results.push(clientResult);
+        continue;
+      }
       
       // Get existing posts to check caching
       const { data: existingPosts } = await supabase
@@ -224,7 +241,10 @@ Deno.serve(async (req) => {
       const now = new Date();
       const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
       
-      for (const shortcode of shortcodes) {
+      // Process up to 12 posts per client to stay within rate limits
+      const postsToProcess = shortcodes.slice(0, 12);
+      
+      for (const shortcode of postsToProcess) {
         try {
           const existing = existingPostMap.get(shortcode);
           
@@ -241,16 +261,16 @@ Deno.serve(async (req) => {
             }
           }
           
-          // Fetch post page
+          // Fetch post page using Firecrawl
           const postUrl = `https://www.instagram.com/p/${shortcode}/`;
-          const postHtml = await fetchWithRetry(postUrl);
+          const postResult = await scrapeWithFirecrawl(postUrl, firecrawlApiKey);
           
-          if (!postHtml) {
-            clientResult.errors.push(`Failed to fetch post ${shortcode}`);
+          if (!postResult.success || !postResult.content) {
+            clientResult.errors.push(`Failed to fetch post ${shortcode}: ${postResult.error}`);
             continue;
           }
           
-          const postData = extractPostData(postHtml, shortcode);
+          const postData = extractPostData(postResult.content, shortcode);
           
           // Upsert into ig_public_posts
           const { error: upsertError } = await supabase
@@ -277,8 +297,8 @@ Deno.serve(async (req) => {
             clientResult.postsProcessed++;
           }
           
-          // Rate limiting - wait between posts
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          // Rate limiting - wait between posts (Firecrawl has its own limits)
+          await new Promise(resolve => setTimeout(resolve, 500));
           
         } catch (error) {
           clientResult.errors.push(`Error processing ${shortcode}: ${error}`);
@@ -288,7 +308,7 @@ Deno.serve(async (req) => {
       results.push(clientResult);
       
       // Wait between clients
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
     console.log('Sync complete:', JSON.stringify(results, null, 2));
