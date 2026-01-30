@@ -21,34 +21,52 @@ export function TrustedBrands() {
     { name: "Visit Berkeley", logo: brandVisitBerkeley },
   ]
 
+  // Duplicate brands for seamless loop
+  const duplicatedBrands = [...brands, ...brands]
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="text-center mb-10"
+      className="text-center mb-10 overflow-hidden"
     >
       {/* M3 Label style */}
       <span className="label text-m3-on-surface/50">
         Trusted By Growing Brands
       </span>
       
-      {/* Passive horizontal logo strip - no hover states */}
-      <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 mt-6 max-w-4xl mx-auto">
-        {brands.map((brand) => (
-          <div
-            key={brand.name}
-            className="flex items-center justify-center"
-          >
-            <img 
-              src={brand.logo} 
-              alt={brand.name} 
-              className="w-24 h-24 sm:w-28 sm:h-28 object-contain"
-              style={{ filter: 'brightness(0) saturate(100%)' }}
-            />
-          </div>
-        ))}
+      {/* Infinite scrolling marquee */}
+      <div className="relative mt-8">
+        <motion.div
+          className="flex items-center gap-16"
+          animate={{
+            x: ['0%', '-50%'],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: 'loop',
+              duration: 30,
+              ease: 'linear',
+            },
+          }}
+        >
+          {duplicatedBrands.map((brand, index) => (
+            <div
+              key={`${brand.name}-${index}`}
+              className="flex-shrink-0 flex items-center justify-center"
+            >
+              <img 
+                src={brand.logo} 
+                alt={brand.name} 
+                className="w-32 h-32 sm:w-40 sm:h-40 object-contain"
+                style={{ filter: 'brightness(0) saturate(100%)' }}
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </motion.div>
   )
