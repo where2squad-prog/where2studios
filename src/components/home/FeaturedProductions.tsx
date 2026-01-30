@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useProjects, getThumbnail, Project } from '@/hooks/useProjects'
+import { VideoModal } from '@/components/VideoModal'
 
 const PRODUCTION_CATEGORIES = ['corporate', 'events', 'weddings', 'commercials']
 const FILTER_LABELS: Record<string, string> = {
@@ -15,15 +16,15 @@ const FILTER_LABELS: Record<string, string> = {
   commercials: 'Commercials',
 }
 
-function ProductionCard({ project, index }: { project: Project; index: number }) {
+interface ProductionCardProps {
+  project: Project
+  index: number
+  onPlay: (project: Project) => void
+}
+
+function ProductionCard({ project, index, onPlay }: ProductionCardProps) {
   const thumbnail = getThumbnail(project)
   const categoryLabel = FILTER_LABELS[project.category] || project.category
-
-  const handleClick = () => {
-    if (project.video_url) {
-      window.open(project.video_url, '_blank', 'noopener,noreferrer')
-    }
-  }
 
   return (
     <motion.div
@@ -32,7 +33,7 @@ function ProductionCard({ project, index }: { project: Project; index: number })
       exit={{ opacity: 0, y: -10 }}
       transition={{ delay: index * 0.05 }}
       className="flex-shrink-0 w-[300px] sm:w-[360px] group cursor-pointer"
-      onClick={handleClick}
+      onClick={() => onPlay(project)}
     >
       <div className="m3-elevated-card overflow-hidden rounded-2xl bg-m3-surface 
                       hover:ring-2 hover:ring-m3-primary/50 transition-all duration-300
@@ -66,11 +67,6 @@ function ProductionCard({ project, index }: { project: Project; index: number })
           <h3 className="font-fredoka text-lg font-semibold text-m3-on-surface line-clamp-1">
             {project.title}
           </h3>
-          {project.description && (
-            <p className="text-m3-on-surface/60 text-sm mt-1 line-clamp-2">
-              {project.description}
-            </p>
-          )}
         </div>
       </div>
     </motion.div>
@@ -103,6 +99,7 @@ function FilterChip({
 export function FeaturedProductions() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeFilter, setActiveFilter] = useState<string>('all')
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const { data: allProjects, isLoading } = useProjects()
 
   // Filter projects: only featured AND production categories
