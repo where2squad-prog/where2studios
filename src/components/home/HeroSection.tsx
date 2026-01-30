@@ -60,8 +60,9 @@ export function HeroSection({
 
             {/* Display Large */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark font-bold leading-tight mb-6">
-              {title}{' '}
-              <span className="text-m3-primary">{titleAccent}</span>
+              {title}
+              <br />
+              people <span className="text-m3-primary">{titleAccent}</span>
             </h1>
 
             {/* Body */}
