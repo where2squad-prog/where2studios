@@ -24,7 +24,7 @@ export function Footer() {
                 <a 
                   key={link.label}
                   href={link.href} 
-                  className="text-m3-on-dark/70 hover:text-m3-on-dark text-sm transition-colors"
+                  className="text-m3-on-dark/80 hover:text-m3-on-dark text-sm transition-colors"
                 >
                   {link.label}
                 </a>
@@ -39,7 +39,7 @@ export function Footer() {
               {platforms.map((platform) => (
                 <span 
                   key={platform}
-                  className="px-3 py-1 bg-m3-on-dark/5 border border-m3-on-dark/10 rounded-full text-m3-on-dark/60 text-xs"
+                  className="px-3 py-1 bg-m3-on-dark/10 border border-m3-on-dark/15 rounded-full text-m3-on-dark/75 text-xs"
                 >
                   {platform}
                 </span>

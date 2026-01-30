@@ -75,7 +75,9 @@ export default function WorkPage() {
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`m3-filter-chip ${
-                    activeCategory === cat ? 'm3-filter-chip-active' : 'm3-filter-chip-inactive'
+                    activeCategory === cat 
+                      ? 'bg-m3-primary/20 text-m3-on-dark border border-m3-primary/40' 
+                      : 'bg-m3-on-dark/5 text-m3-on-dark/90 border border-m3-on-dark/20 hover:bg-m3-on-dark/10'
                   }`}
                 >
                   {categoryLabels[cat] || cat}
