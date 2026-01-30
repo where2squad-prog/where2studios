@@ -22,9 +22,9 @@ export function TrustedBrands() {
   ]
 
   return (
-    <section className="py-12 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
+    <section className="py-16 sm:py-20 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Label */}
-      <p className="label text-center text-m3-on-surface/50 mb-8">
+      <p className="label text-center text-m3-on-surface/50 mb-10 sm:mb-12">
         Trusted By Growing Brands
       </p>
       
@@ -42,10 +42,8 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt={brand.name} 
-                  className="h-10 sm:h-14 lg:h-16 w-auto max-w-[140px] sm:max-w-[180px] lg:max-w-[200px] object-contain"
+                  className="h-16 sm:h-20 lg:h-24 w-auto"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
-                  loading="eager"
-                  decoding="async"
                 />
               </div>
             ))}
@@ -57,10 +55,8 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt="" 
-                  className="h-10 sm:h-14 lg:h-16 w-auto max-w-[140px] sm:max-w-[180px] lg:max-w-[200px] object-contain"
+                  className="h-16 sm:h-20 lg:h-24 w-auto"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
-                  loading="eager"
-                  decoding="async"
                 />
               </div>
             ))}
