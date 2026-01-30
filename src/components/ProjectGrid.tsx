@@ -34,7 +34,12 @@ export function ProjectGrid({ projects, isLoading, aspectRatio = 'vertical' }: P
   if (projects.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-m3-on-surface/60">No projects found in this category.</p>
+        <span className="font-fredoka text-2xl font-semibold text-m3-on-dark">
+          Coming Soon!
+        </span>
+        <p className="mt-2 text-m3-on-dark/60 text-sm">
+          New projects are on the way.
+        </p>
       </div>
     )
   }

@@ -142,9 +142,7 @@ export function FeaturedProductions() {
     )
   }
 
-  if (!productionProjects.length) {
-    return null
-  }
+  // Show section even when empty - individual filter results may show "Coming Soon"
 
   return (
     <section id="featured-productions" className="py-16 sm:py-20 bg-m3-surface-variant scroll-mt-20 overflow-hidden">
@@ -211,54 +209,90 @@ export function FeaturedProductions() {
 
         {/* Desktop: Horizontal scroll carousel */}
         <div className="hidden sm:block">
-          <div
-            ref={scrollRef}
-            className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => (
-                <ProductionCard key={project.id} project={project} index={index} onPlay={setSelectedProject} />
-              ))}
-            </AnimatePresence>
-          </div>
+          {filteredProjects.length > 0 ? (
+            <div
+              ref={scrollRef}
+              className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project, index) => (
+                  <ProductionCard key={project.id} project={project} index={index} onPlay={setSelectedProject} />
+                ))}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center justify-center py-16"
+            >
+              <div className="text-center">
+                <span className="font-fredoka text-2xl font-semibold text-m3-on-surface">
+                  Coming Soon!
+                </span>
+                <p className="mt-2 text-m3-on-surface/60 text-sm">
+                  New projects are on the way.
+                </p>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Mobile: 2-column grid */}
-        <div className="sm:hidden grid grid-cols-2 gap-3">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.slice(0, 6).map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ delay: index * 0.05 }}
-                className="group cursor-pointer"
-                onClick={() => setSelectedProject(project)}
-              >
-                <div className="rounded-xl overflow-hidden bg-m3-surface shadow-md 
-                                hover:ring-2 hover:ring-m3-primary/50 transition-all">
-                  <div className="relative aspect-video">
-                    <img
-                      src={getThumbnail(project)}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                      draggable={false}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-2">
-                      <span className="inline-block px-2 py-0.5 rounded-full bg-m3-surface/90 text-m3-on-surface text-[10px] font-semibold mb-1">
-                        {FILTER_LABELS[project.category] || project.category}
-                      </span>
-                      <h3 className="font-fredoka text-xs font-semibold text-m3-on-dark line-clamp-2">
-                        {project.title}
-                      </h3>
+        <div className="sm:hidden">
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-2 gap-3">
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.slice(0, 6).map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="group cursor-pointer"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    <div className="rounded-xl overflow-hidden bg-m3-surface shadow-md 
+                                    hover:ring-2 hover:ring-m3-primary/50 transition-all">
+                      <div className="relative aspect-video">
+                        <img
+                          src={getThumbnail(project)}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                          draggable={false}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <span className="inline-block px-2 py-0.5 rounded-full bg-m3-surface/90 text-m3-on-surface text-[10px] font-semibold mb-1">
+                            {FILTER_LABELS[project.category] || project.category}
+                          </span>
+                          <h3 className="font-fredoka text-xs font-semibold text-m3-on-dark line-clamp-2">
+                            {project.title}
+                          </h3>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center justify-center py-12"
+            >
+              <div className="text-center">
+                <span className="font-fredoka text-xl font-semibold text-m3-on-surface">
+                  Coming Soon!
+                </span>
+                <p className="mt-2 text-m3-on-surface/60 text-sm">
+                  New projects are on the way.
+                </p>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Video Modal */}
