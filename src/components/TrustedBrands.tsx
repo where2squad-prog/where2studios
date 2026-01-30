@@ -22,13 +22,13 @@ export function TrustedBrands() {
   ]
 
   return (
-    <section className="py-12 overflow-hidden">
+    <section className="py-12 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Label */}
       <p className="label text-center text-m3-on-surface/50 mb-8">
         Trusted By Growing Brands
       </p>
       
-      {/* Seamless marquee with fade edges */}
+      {/* Full-width seamless marquee */}
       <div className="marquee-container">
         {/* Left fade */}
         <div className="marquee-fade marquee-fade-left" />
@@ -42,7 +42,7 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt={brand.name} 
-                  className="h-12 sm:h-16 w-auto object-contain"
+                  className="h-20 sm:h-24 md:h-28 w-auto object-contain"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
                 />
               </div>
@@ -55,7 +55,7 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt="" 
-                  className="h-12 sm:h-16 w-auto object-contain"
+                  className="h-20 sm:h-24 md:h-28 w-auto object-contain"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
                 />
               </div>
