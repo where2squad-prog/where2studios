@@ -1,7 +1,7 @@
 'use client'
 
 import { HeroSection } from '@/components/home/HeroSection'
-import { FeaturedSocialMedia } from '@/components/home/FeaturedSocialMedia'
+import { FeaturedInstagramSection } from '@/components/home/FeaturedInstagramSection'
 import { FeaturedProductions } from '@/components/home/FeaturedProductions'
 import { ClosingCTA } from '@/components/home/ClosingCTA'
 import { Footer } from '@/components/Footer'
@@ -30,8 +30,8 @@ export default function HomePage() {
           </div>
         </section>
         
-        {/* Featured Social Media Section */}
-        <FeaturedSocialMedia />
+        {/* Featured Instagram Section (powered by ig_social_global_rankings) */}
+        <FeaturedInstagramSection />
         
         {/* Featured Productions Section */}
         <FeaturedProductions />
