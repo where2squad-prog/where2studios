@@ -44,7 +44,8 @@ export function TrustedBrands() {
             <img 
               src={brand.logo} 
               alt={brand.name} 
-              className="w-20 h-20 sm:w-24 sm:h-24 object-contain opacity-90"
+              className="w-24 h-24 sm:w-28 sm:h-28 object-contain"
+              style={{ filter: 'brightness(0) saturate(100%)' }}
             />
           </div>
         ))}
