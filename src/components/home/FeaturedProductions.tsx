@@ -217,7 +217,7 @@ export function FeaturedProductions() {
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
-                <ProductionCard key={project.id} project={project} index={index} />
+                <ProductionCard key={project.id} project={project} index={index} onPlay={setSelectedProject} />
               ))}
             </AnimatePresence>
           </div>
@@ -234,7 +234,7 @@ export function FeaturedProductions() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ delay: index * 0.05 }}
                 className="group cursor-pointer"
-                onClick={() => project.video_url && window.open(project.video_url, '_blank', 'noopener,noreferrer')}
+                onClick={() => setSelectedProject(project)}
               >
                 <div className="rounded-xl overflow-hidden bg-m3-surface shadow-md 
                                 hover:ring-2 hover:ring-m3-primary/50 transition-all">
@@ -260,6 +260,14 @@ export function FeaturedProductions() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Video Modal */}
+        <VideoModal
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+          videoUrl={selectedProject?.video_url || null}
+          title={selectedProject?.title}
+        />
 
         {/* View All Link */}
         <motion.div
