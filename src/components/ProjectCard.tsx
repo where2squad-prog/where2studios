@@ -65,14 +65,9 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
             <p className="text-m3-primary text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1">
               {project.category}
             </p>
-            <h3 className={`font-fredoka font-semibold text-m3-on-dark ${isHorizontal ? 'text-base sm:text-xl' : 'text-sm sm:text-xl'}`}>
+            <h3 className={`font-fredoka font-semibold text-m3-on-dark line-clamp-2 ${isHorizontal ? 'text-sm sm:text-lg' : 'text-sm sm:text-xl'}`}>
               {project.title}
             </h3>
-            {project.description && isHorizontal && (
-              <p className="text-m3-on-dark/60 text-xs sm:text-sm mt-1 line-clamp-2">
-                {project.description}
-              </p>
-            )}
           </div>
         </div>
       </div>
