@@ -59,15 +59,6 @@ function ProductionCard({ project, index }: { project: Project; index: number })
               {categoryLabel}
             </span>
           </div>
-
-          {/* Result badge */}
-          {project.result && (
-            <div className="absolute top-3 right-3">
-              <span className="px-3 py-1 rounded-full bg-m3-primary/90 text-m3-on-primary text-xs font-semibold">
-                {project.result}
-              </span>
-            </div>
-          )}
         </div>
 
         {/* Content */}
