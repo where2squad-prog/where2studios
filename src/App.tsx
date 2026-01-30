@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ScrollToTop } from './components/layout/ScrollToTop'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
+import SocialMediaWorkPage from './pages/SocialMediaWorkPage'
+import ProductionsWorkPage from './pages/ProductionsWorkPage'
 import ContactPage from './pages/ContactPage'
 import TeamPage from './pages/TeamPage'
 import CorporatePage from './pages/services/CorporatePage'
@@ -22,6 +24,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/work/social-media" element={<SocialMediaWorkPage />} />
+          <Route path="/work/productions" element={<ProductionsWorkPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/corporate" element={<CorporatePage />} />

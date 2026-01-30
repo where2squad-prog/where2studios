@@ -1,7 +1,6 @@
 'use client'
 
 import { HeroSection } from '@/components/home/HeroSection'
-import { QuickJumpRow } from '@/components/home/QuickJumpRow'
 import { FeaturedSocialMedia } from '@/components/home/FeaturedSocialMedia'
 import { FeaturedProductions } from '@/components/home/FeaturedProductions'
 import { ClosingCTA } from '@/components/home/ClosingCTA'
@@ -23,9 +22,6 @@ export default function HomePage() {
           titleAccent="TRUST"
           subtitle="Creating content that reaches people and builds community"
         />
-        
-        {/* Quick Jump Row */}
-        <QuickJumpRow />
         
         {/* Trusted Brands */}
         <section className="py-10 sm:py-12 bg-m3-surface-variant">
