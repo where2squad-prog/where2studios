@@ -1,10 +1,8 @@
 'use client'
 
 import { HeroSection } from '@/components/home/HeroSection'
-
 import { FeaturedWorkStrip } from '@/components/home/FeaturedWorkStrip'
 import { ClosingCTA } from '@/components/home/ClosingCTA'
-import { Team } from '@/components/Team'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
 import { TrustedBrands } from '@/components/TrustedBrands'
@@ -37,9 +35,6 @@ export default function HomePage() {
         
         {/* Closing CTA with Contact Form */}
         <ClosingCTA />
-        
-        {/* Team */}
-        <Team />
       </main>
       
       <Footer />
