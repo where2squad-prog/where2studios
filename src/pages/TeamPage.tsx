@@ -1,71 +1,103 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { Navbar } from '@/components/layout/Navbar'
-import { Footer } from '@/components/Footer'
-import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
-import joshuaPhoto from '@/assets/team-joshua.png'
-import danielPhoto from '@/assets/team-daniel.png'
-import gabbyPhoto from '@/assets/team-gabby.png'
-import ryanPhoto from '@/assets/team-ryan.png'
-import gavinPhoto from '@/assets/team-gavin.png'
-import anthonyPhoto from '@/assets/team-member-1.png'
-import josephPhoto from '@/assets/team-member-2.png'
-import { FloatingCTA } from '@/components/FloatingCTA'
+import { Instagram, Linkedin } from 'lucide-react'
+import { PageLayout } from '@/components/layout/PageLayout'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 
-const teamMembers = [
+// SVG imports
+import joshuaSvg from '@/assets/team/joshua.svg'
+import danielSvg from '@/assets/team/daniel.svg'
+import gavinSvg from '@/assets/team/gavin.svg'
+import anthonySvg from '@/assets/team/anthony.svg'
+import gabbySvg from '@/assets/team/gabby.svg'
+import ryanSvg from '@/assets/team/ryan.svg'
+import josephSvg from '@/assets/team/joseph.svg'
+import mayadSvg from '@/assets/team/mayad.svg'
+
+interface TeamMember {
+  name: string
+  role: string
+  blurb: string
+  image?: string
+  instagram?: string
+  linkedin?: string
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: 'Joshua Saltiban',
-    role: 'CEO',
-    image: joshuaPhoto,
-    bio: 'Founder and creative visionary behind Where2Studios. Passionate about storytelling that drives real results.',
+    role: 'CEO / Founder',
+    blurb: 'Visionary storyteller building brands that matter.',
+    image: joshuaSvg,
+    instagram: 'joshuasaltiban',
+    linkedin: 'joshuasaltiban',
   },
   {
     name: 'Daniel Martinez',
-    role: 'Operations Lead',
-    image: danielPhoto,
-    bio: 'Keeps everything running smoothly from pre-production to final delivery.',
+    role: 'Co-Founder',
+    blurb: 'Operations mastermind keeping projects on track.',
+    image: danielSvg,
+    instagram: 'danielmartinez',
+    linkedin: 'danielmartinez',
+  },
+  {
+    name: 'Gavin Legaspi',
+    role: 'Co-Founder',
+    blurb: 'Transforms raw footage into compelling stories.',
+    image: gavinSvg,
+    instagram: 'gavinlegaspi',
+  },
+  {
+    name: 'Anthony Gonzalez',
+    role: 'Co-Founder',
+    blurb: 'Expert in short-form content that captures attention.',
+    image: anthonySvg,
+    instagram: 'anthonygonzalez',
   },
   {
     name: 'Gabby Guevara',
     role: 'Social Media Manager',
-    image: gabbyPhoto,
-    bio: 'Crafts social strategies that turn followers into customers.',
+    blurb: 'Crafts strategies that turn followers into customers.',
+    image: gabbySvg,
+    instagram: 'gabbyguevara',
   },
   {
     name: 'Ryan Sison',
-    role: 'Lead Videographer',
-    image: ryanPhoto,
-    bio: 'Brings cinematic vision to every shoot with technical precision.',
-  },
-  {
-    name: 'Gavin Legaspi',
-    role: 'Content Producer',
-    image: gavinPhoto,
-    bio: 'Transforms raw footage into compelling visual stories.',
-  },
-  {
-    name: 'Anthony Gonzalez',
-    role: 'Content Producer',
-    image: anthonyPhoto,
-    bio: 'Expert in short-form content that captures attention.',
+    role: 'Video Operations',
+    blurb: 'Brings cinematic vision with technical precision.',
+    image: ryanSvg,
+    instagram: 'ryansison',
   },
   {
     name: 'Joseph Jimenez',
     role: 'Lead Photographer',
-    image: josephPhoto,
-    bio: 'Captures moments that tell the complete story.',
+    blurb: 'Captures moments that tell the complete story.',
+    image: josephSvg,
+    instagram: 'josephjimenez',
+  },
+  {
+    name: 'Mayad Post Production House',
+    role: 'Overseas Partner',
+    blurb: 'Extended post-production excellence from abroad.',
+    image: mayadSvg,
   },
 ]
 
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2)
+}
+
 export default function TeamPage() {
   return (
-    <div className="min-h-screen bg-m3-background">
-      <Navbar variant="light" />
-
-      {/* Hero */}
-      <section className="pt-32 pb-12 sm:pt-40 sm:pb-16 bg-m3-surface">
+    <PageLayout navVariant="light">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 bg-m3-surface">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -74,19 +106,24 @@ export default function TeamPage() {
           >
             <span className="label text-m3-secondary mb-4 block">Who We Are</span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-m3-on-surface mb-6">
-              Meet the team
+              Who We Are
             </h1>
-            <p className="text-xl text-m3-on-surface/70">
-              A collective of visual storytellers passionate about creating content that matters.
+            <p className="text-xl text-m3-on-surface/80 mb-4">
+              A passionate team of creators dedicated to visual storytelling.
+            </p>
+            <p className="text-lg text-m3-on-surface/70 leading-relaxed">
+              We believe in stories that matter. Every project we take on is an opportunity 
+              to help brands connect authentically with their audience. We're not just content 
+              creators—we're your partners in building something real.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Team Grid */}
-      <section className="py-16 sm:py-24 bg-m3-surface-variant">
+      {/* Team Grid Section */}
+      <section className="pb-24 bg-m3-surface">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -95,50 +132,63 @@ export default function TeamPage() {
                 transition={{ delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
-                <div className="m3-outlined-card overflow-hidden group">
-                  <div className="aspect-square overflow-hidden bg-m3-surface-variant">
-                    <ImageWithFallback
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                <div className="m3-outlined-card p-6 transition-all duration-300 hover:border-m3-primary/30 group">
+                  {/* Avatar */}
+                  <div className="flex justify-center mb-4">
+                    <Avatar className="w-20 h-20">
+                      {member.image ? (
+                        <AvatarImage
+                          src={member.image}
+                          alt={member.name}
+                          className="object-cover"
+                        />
+                      ) : null}
+                      <AvatarFallback className="bg-m3-surface-variant text-m3-on-surface text-lg font-semibold">
+                        {getInitials(member.name)}
+                      </AvatarFallback>
+                    </Avatar>
                   </div>
-                  <div className="p-4 text-center">
-                    <h3 className="font-semibold text-m3-on-surface truncate">{member.name}</h3>
-                    <p className="text-m3-secondary text-sm font-medium">{member.role}</p>
+
+                  {/* Info */}
+                  <div className="text-center">
+                    <h3 className="font-semibold text-m3-on-surface">{member.name}</h3>
+                    <p className="text-m3-primary text-sm font-medium mb-2">{member.role}</p>
+                    <p className="text-m3-on-surface/70 text-sm leading-relaxed">{member.blurb}</p>
                   </div>
+
+                  {/* Social Links */}
+                  {(member.instagram || member.linkedin) && (
+                    <div className="flex justify-center gap-3 mt-4">
+                      {member.instagram && (
+                        <a
+                          href={`https://instagram.com/${member.instagram}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-m3-on-surface/50 hover:text-m3-primary transition-colors"
+                          aria-label={`${member.name} on Instagram`}
+                        >
+                          <Instagram className="w-5 h-5" />
+                        </a>
+                      )}
+                      {member.linkedin && (
+                        <a
+                          href={`https://linkedin.com/in/${member.linkedin}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-m3-on-surface/50 hover:text-m3-primary transition-colors"
+                          aria-label={`${member.name} on LinkedIn`}
+                        >
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Values */}
-      <section className="py-16 sm:py-24 bg-m3-surface">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-m3-on-surface mb-6">
-              What drives us
-            </h2>
-            <p className="text-m3-on-surface/70 text-lg leading-relaxed mb-8">
-              We believe in stories that matter. Every project we take on is an opportunity to help
-              brands connect authentically with their audience. We're not just content creators—we're
-              your partners in building something real.
-            </p>
-            <Link to="/contact" className="m3-filled-button inline-flex">
-              Work With Us
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
-      <FloatingCTA />
-    </div>
+    </PageLayout>
   )
 }
