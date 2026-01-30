@@ -1,16 +1,29 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowLeft } from 'lucide-react'
+import { useState, useMemo } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowLeft, ExternalLink, Eye, Heart, MessageCircle, ChevronDown } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import logo from '@/assets/where2studios-logo.png'
-import { useProjects } from '@/hooks/useProjects'
-import { ProjectGrid } from '@/components/ProjectGrid'
+import { useGlobalSocialRankings, useClientSocialRankings, useInstagramClients, formatCount, getInstagramThumbnail } from '@/hooks/useInstagramRankings'
 import { FloatingCTA } from '@/components/FloatingCTA'
 import { Footer } from '@/components/Footer'
 
 export default function SocialMediaWorkPage() {
-  const { data: projects, isLoading } = useProjects({ category: 'social-media' })
+  const [selectedClientId, setSelectedClientId] = useState<string | null>(null)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  
+  const { data: globalRankings, isLoading: globalLoading } = useGlobalSocialRankings(20)
+  const { data: clientRankings, isLoading: clientLoading } = useClientSocialRankings(selectedClientId || undefined)
+  const { data: clients } = useInstagramClients()
+
+  const isLoading = selectedClientId ? clientLoading : globalLoading
+  const rankings = selectedClientId ? clientRankings : globalRankings
+
+  const selectedClient = useMemo(() => {
+    if (!selectedClientId || !clients) return null
+    return clients.find(c => c.id === selectedClientId) || null
+  }, [selectedClientId, clients])
 
   return (
     <div className="min-h-screen bg-m3-surface-dark">
@@ -51,19 +64,186 @@ export default function SocialMediaWorkPage() {
         </div>
       </section>
 
-      {/* Project Count */}
-      <section className="py-3 sm:py-4 border-b border-m3-on-dark/5">
+      {/* Client Filter */}
+      <section className="py-4 border-b border-m3-on-dark/5">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <p className="text-center text-xs sm:text-sm text-m3-on-dark/70">
-            {projects?.length || 0} project{projects?.length !== 1 ? 's' : ''}
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="text-xs sm:text-sm text-m3-on-dark/70">
+              {rankings?.length || 0} post{rankings?.length !== 1 ? 's' : ''}
+              {selectedClient && ` from ${selectedClient.name}`}
+            </p>
+            
+            {/* Client dropdown */}
+            {clients && clients.length > 0 && (
+              <div className="relative">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-m3-surface-variant/30 
+                             text-m3-on-dark text-sm font-medium hover:bg-m3-surface-variant/50 transition-colors"
+                >
+                  <span>{selectedClient ? selectedClient.name : 'All Clients'}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {dropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute right-0 mt-2 w-56 bg-m3-surface rounded-xl shadow-xl border border-m3-outline z-50"
+                    >
+                      <div className="py-2">
+                        <button
+                          onClick={() => {
+                            setSelectedClientId(null)
+                            setDropdownOpen(false)
+                          }}
+                          className={`w-full text-left px-4 py-2 text-sm hover:bg-m3-surface-variant transition-colors
+                                     ${!selectedClientId ? 'text-m3-primary font-semibold' : 'text-m3-on-surface'}`}
+                        >
+                          All Clients
+                        </button>
+                        {clients.map(client => (
+                          <button
+                            key={client.id}
+                            onClick={() => {
+                              setSelectedClientId(client.id)
+                              setDropdownOpen(false)
+                            }}
+                            className={`w-full text-left px-4 py-2 text-sm hover:bg-m3-surface-variant transition-colors
+                                       ${selectedClientId === client.id ? 'text-m3-primary font-semibold' : 'text-m3-on-surface'}`}
+                          >
+                            {client.name}
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Portfolio Grid */}
+      {/* Posts Grid */}
       <section className="py-8 sm:py-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <ProjectGrid projects={projects || []} isLoading={isLoading} />
+          {isLoading ? (
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="m3-elevated-card aspect-[9/16] animate-pulse bg-m3-surface-variant" />
+              ))}
+            </div>
+          ) : rankings && rankings.length > 0 ? (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedClientId || 'all'}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
+              >
+                {rankings.map((item, index) => {
+                  const thumbnail = getInstagramThumbnail(item.post)
+                  const hasViews = item.post.public_views != null && item.post.public_views > 0
+                  const hasLikes = item.post.public_likes != null && item.post.public_likes > 0
+                  const hasComments = item.post.public_comments != null && item.post.public_comments > 0
+                  const hasAnyStats = hasViews || hasLikes || hasComments
+
+                  return (
+                    <motion.div
+                      key={item.post.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.03 }}
+                      viewport={{ once: true }}
+                      className="group cursor-pointer"
+                      onClick={() => window.open(item.post.permalink, '_blank', 'noopener,noreferrer')}
+                    >
+                      <div className="m3-elevated-card overflow-hidden rounded-2xl bg-m3-surface 
+                                      hover:ring-2 hover:ring-m3-primary/50 transition-all duration-300
+                                      hover:shadow-xl">
+                        <div className="relative aspect-[9/16]">
+                          <img
+                            src={thumbnail}
+                            alt={item.post.caption_snippet || item.client.name}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            draggable={false}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/90 via-transparent to-transparent" />
+                          
+                          {/* Client tag */}
+                          <div className="absolute top-3 left-3">
+                            <span className="px-2 sm:px-3 py-1 rounded-full bg-m3-primary/90 text-m3-on-primary text-[10px] sm:text-xs font-semibold">
+                              @{item.client.ig_handle}
+                            </span>
+                          </div>
+
+                          {/* Pinned badge */}
+                          {item.post.is_pinned && (
+                            <div className="absolute top-3 right-3">
+                              <span className="px-2 py-1 rounded-full bg-m3-secondary text-m3-on-secondary text-[10px] font-semibold">
+                                Pinned
+                              </span>
+                            </div>
+                          )}
+
+                          {/* Content */}
+                          <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                            {/* Stats row */}
+                            {hasAnyStats && (
+                              <div className="flex items-center gap-2 sm:gap-3 mb-2 text-[10px] sm:text-xs text-m3-on-dark/80">
+                                {hasViews && (
+                                  <span className="flex items-center gap-1">
+                                    <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                    {formatCount(item.post.public_views)}
+                                  </span>
+                                )}
+                                {hasLikes && (
+                                  <span className="flex items-center gap-1">
+                                    <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                    {formatCount(item.post.public_likes)}
+                                  </span>
+                                )}
+                                {hasComments && (
+                                  <span className="flex items-center gap-1">
+                                    <MessageCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                    {formatCount(item.post.public_comments)}
+                                  </span>
+                                )}
+                              </div>
+                            )}
+                            
+                            <h3 className="font-fredoka text-sm sm:text-lg font-semibold text-m3-on-dark mb-2 sm:mb-3 line-clamp-1">
+                              {item.client.name}
+                            </h3>
+
+                            <button className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl 
+                                               bg-m3-secondary text-m3-on-secondary text-xs sm:text-sm font-medium
+                                               hover:bg-m3-secondary/90 transition-colors">
+                              <span>View on Instagram</span>
+                              <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+            </AnimatePresence>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-m3-on-dark/60">No posts found. Data will be synced automatically.</p>
+            </div>
+          )}
+
+          {/* Disclaimer */}
+          <p className="text-xs text-m3-on-dark/50 mt-8 text-center">
+            Ranked by publicly visible counts. Counts may be hidden on some posts.
+          </p>
         </div>
       </section>
 
