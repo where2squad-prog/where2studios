@@ -1,34 +1,36 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowLeft, Play, Image } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import logo from '@/assets/where2studios-logo.png'
-import { useProjects, useProjectCategories } from '@/hooks/useProjects'
-import { ProjectGrid } from '@/components/ProjectGrid'
 import { FloatingCTA } from '@/components/FloatingCTA'
 import { Footer } from '@/components/Footer'
 
-const categoryLabels: Record<string, string> = {
-  all: 'All Work',
-  restaurants: 'Restaurants',
-  corporate: 'Corporate',
-  events: 'Events',
-  weddings: 'Weddings',
-  'social-media': 'Social Media',
-  commercials: 'Commercials',
-  lifestyle: 'Lifestyle',
-  personal: 'Personal Brands',
-}
+const workCategories = [
+  {
+    id: 'social-media',
+    title: 'Social Media',
+    subtitle: 'Vertical content for TikTok, Reels & Shorts',
+    description: 'Scroll-stopping vertical videos optimized for social platforms.',
+    icon: Image,
+    href: '/work/social-media',
+    aspectRatio: '9:16',
+    gradient: 'from-m3-primary/20 to-m3-secondary/10',
+  },
+  {
+    id: 'productions',
+    title: 'Productions',
+    subtitle: 'Horizontal content for YouTube & Web',
+    description: 'Professional productions for corporate, events, weddings, and commercials.',
+    icon: Play,
+    href: '/work/productions',
+    aspectRatio: '16:9',
+    gradient: 'from-m3-secondary/20 to-m3-primary/10',
+  },
+]
 
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState('all')
-  const { data: projects, isLoading } = useProjects({ category: activeCategory === 'all' ? undefined : activeCategory })
-  const { data: categories } = useProjectCategories()
-
-  const allCategories = ['all', ...(categories || [])]
-
   return (
     <div className="min-h-screen bg-m3-surface-dark">
       {/* Top App Bar */}
@@ -47,12 +49,12 @@ export default function WorkPage() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-28 pb-6 sm:pt-44 sm:pb-12">
+      <section className="pt-28 pb-8 sm:pt-44 sm:pb-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
             <h1 className="font-fredoka text-4xl sm:text-7xl lg:text-8xl font-semibold text-m3-on-dark tracking-tight">
@@ -65,40 +67,52 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Filter Chips */}
-      <section className="sticky top-20 sm:top-28 z-40 py-3 sm:py-4 bg-m3-surface-dark/90 backdrop-blur-xl border-b border-m3-on-dark/5">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:flex-wrap">
-              {allCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`m3-filter-chip ${
-                    activeCategory === cat 
-                      ? 'bg-m3-primary/20 text-m3-on-dark border border-m3-primary/40' 
-                      : 'bg-m3-on-dark/5 text-m3-on-dark/90 border border-m3-on-dark/20 hover:bg-m3-on-dark/10'
-                  }`}
-                >
-                  {categoryLabels[cat] || cat}
-                </button>
-              ))}
-            </div>
-          </div>
-          <p className="text-center mt-3 text-xs sm:text-sm text-m3-on-dark/70">
-            {projects?.length || 0} project{projects?.length !== 1 ? 's' : ''}
-          </p>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
+      {/* Category Cards */}
       <section className="py-8 sm:py-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <AnimatePresence mode="wait">
-            <motion.div key={activeCategory}>
-              <ProjectGrid projects={projects || []} isLoading={isLoading} />
-            </motion.div>
-          </AnimatePresence>
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            {workCategories.map((category, index) => (
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link
+                  to={category.href}
+                  className={`group block p-8 sm:p-12 rounded-3xl bg-gradient-to-br ${category.gradient} 
+                             border border-m3-on-dark/10 hover:border-m3-primary/40 
+                             transition-all duration-300 hover:shadow-xl`}
+                >
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-m3-primary/20 flex items-center justify-center">
+                      <category.icon className="w-7 h-7 text-m3-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-xs font-semibold text-m3-primary uppercase tracking-wider">
+                        {category.aspectRatio} Aspect Ratio
+                      </span>
+                      <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark mt-1">
+                        {category.title}
+                      </h2>
+                    </div>
+                  </div>
+                  
+                  <p className="text-m3-on-dark/90 font-medium mb-2">
+                    {category.subtitle}
+                  </p>
+                  <p className="text-m3-on-dark/60 text-sm mb-6">
+                    {category.description}
+                  </p>
+                  
+                  <div className="flex items-center gap-2 text-m3-primary font-semibold group-hover:gap-3 transition-all">
+                    View Projects
+                    <ArrowLeft className="w-4 h-4 rotate-180" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
