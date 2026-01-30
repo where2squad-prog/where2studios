@@ -42,7 +42,7 @@ export function ServicePageTemplate({
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-m3-on-dark mb-6">
               {title}
             </h1>
-            <p className="text-xl text-m3-on-dark/70 mb-8">{subtitle}</p>
+            <p className="text-xl text-m3-on-dark/80 mb-8">{subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact" className="m3-filled-button text-center">
                 Book a Discovery Call
@@ -117,7 +117,7 @@ export function ServicePageTemplate({
                   {step.step}
                 </div>
                 <h3 className="font-semibold text-m3-on-surface mb-2">{step.title}</h3>
-                <p className="text-m3-on-surface/60 text-sm">{step.description}</p>
+                <p className="text-m3-on-surface/70 text-sm">{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -210,7 +210,7 @@ export function ServicePageTemplate({
             <h2 className="text-3xl sm:text-4xl font-bold text-m3-on-dark mb-4">
               Ready to get started?
             </h2>
-            <p className="text-m3-on-dark/60 mb-8">
+            <p className="text-m3-on-dark/75 mb-8">
               Let's discuss your project and create something amazing together.
             </p>
             <Link to="/contact" className="m3-filled-button inline-flex items-center gap-2">

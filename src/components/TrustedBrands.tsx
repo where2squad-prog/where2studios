@@ -44,7 +44,7 @@ export function TrustedBrands() {
             <img 
               src={brand.logo} 
               alt={brand.name} 
-              className="w-20 h-20 sm:w-24 sm:h-24 object-contain opacity-70"
+              className="w-20 h-20 sm:w-24 sm:h-24 object-contain opacity-90"
             />
           </div>
         ))}
