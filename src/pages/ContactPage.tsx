@@ -45,22 +45,14 @@ export default function ContactPage() {
               {/* Discovery Call */}
               <div className="m3-elevated-card p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-m3-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1">Discovery Call</h3>
-                    <p className="text-m3-on-surface/60 text-sm mb-3">
-                      30-minute video call to discuss your project, goals, and timeline.
+                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Discovery Call</h3>
+                    <p className="text-m3-on-surface/60 text-xs sm:text-sm">
+                      Fill out the form and we'll schedule a 30-minute video call to discuss your project.
                     </p>
-                    <a
-                      href="https://cal.com/where2-studios-tvdbun/discovery-call"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="m3-text-button text-m3-primary text-sm p-0"
-                    >
-                      Book directly on Cal.com →
-                    </a>
                   </div>
                 </div>
               </div>
@@ -68,13 +60,13 @@ export default function ContactPage() {
               {/* Location */}
               <div className="m3-elevated-card p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-m3-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1">Bay Area Based</h3>
-                    <p className="text-m3-on-surface/60 text-sm">
-                      Serving clients locally and nationwide. We're available for travel for larger productions.
+                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Bay Area Based</h3>
+                    <p className="text-m3-on-surface/60 text-xs sm:text-sm">
+                      Serving clients locally and nationwide. Available for travel.
                     </p>
                   </div>
                 </div>
@@ -83,12 +75,12 @@ export default function ContactPage() {
               {/* Response Time */}
               <div className="m3-elevated-card p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-m3-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1">Quick Response</h3>
-                    <p className="text-m3-on-surface/60 text-sm">
+                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Quick Response</h3>
+                    <p className="text-m3-on-surface/60 text-xs sm:text-sm">
                       We respond to all inquiries within one business day.
                     </p>
                   </div>
@@ -98,17 +90,17 @@ export default function ContactPage() {
               {/* Email */}
               <div className="m3-elevated-card p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-m3-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1">Email Us</h3>
-                    <p className="text-m3-on-surface/60 text-sm mb-2">
+                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Email Us</h3>
+                    <p className="text-m3-on-surface/60 text-xs sm:text-sm mb-2">
                       For general inquiries and press.
                     </p>
                     <a
                       href="mailto:contact@where2studios.com"
-                      className="text-m3-primary text-sm font-medium"
+                      className="text-m3-primary text-xs sm:text-sm font-medium break-all"
                     >
                       contact@where2studios.com
                     </a>
@@ -130,35 +122,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Cal.com Inline Embed */}
-      <section className="py-16 sm:py-24 bg-m3-surface">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-m3-on-surface mb-2">
-              Or book directly below
-            </h2>
-            <p className="text-m3-on-surface/60">
-              Pick a time that works for you.
-            </p>
-          </motion.div>
-
-          <div className="m3-elevated-card overflow-hidden">
-            <iframe
-              src="https://cal.com/where2-studios-tvdbun/discovery-call?embed=true&layout=month_view&theme=light"
-              width="100%"
-              height="600"
-              frameBorder="0"
-              className="w-full"
-              title="Book a Discovery Call"
-            />
-          </div>
-        </div>
-      </section>
 
       <Footer />
       <FloatingCTA />
