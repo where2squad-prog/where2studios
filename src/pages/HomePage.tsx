@@ -19,7 +19,7 @@ export default function HomePage() {
         {/* Hero with stats */}
         <HeroSection
           eyebrow="Full Service Media & Marketing Agency"
-          title="Building brands people"
+          title="Building brands"
           titleAccent="TRUST"
           subtitle="Creating content that reaches people and builds community"
         />
