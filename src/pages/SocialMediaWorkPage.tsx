@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ExternalLink, ChevronDown, Pin } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '@/assets/where2studios-logo.png'
 import { useSocialPosts, useSocialClients, getSocialThumbnail } from '@/hooks/useSocialPosts'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -12,6 +12,7 @@ import { Footer } from '@/components/Footer'
 const POSTS_PER_PAGE = 24
 
 export default function SocialMediaWorkPage() {
+  const navigate = useNavigate()
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE)
@@ -40,10 +41,18 @@ export default function SocialMediaWorkPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-m3-surface-dark/90 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-20 sm:h-28 border-b border-m3-on-dark/10">
-            <Link to="/" className="flex items-center gap-2 sm:gap-4 group">
-              <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-m3-on-dark group-hover:text-m3-primary transition-colors" />
-              <img src={logo} alt="Where2Studios" className="h-14 sm:h-20 w-auto" />
-            </Link>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <button 
+                onClick={() => navigate(-1)} 
+                className="p-2 -ml-2 hover:bg-m3-on-dark/10 rounded-full transition-colors"
+                aria-label="Go back"
+              >
+                <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-m3-on-dark" />
+              </button>
+              <Link to="/">
+                <img src={logo} alt="Where2Studios" className="h-14 sm:h-20 w-auto" />
+              </Link>
+            </div>
             <Link to="/contact" className="m3-filled-button text-sm sm:text-base">
               Book a Discovery Call
             </Link>
