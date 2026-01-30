@@ -20,7 +20,7 @@ export default function HomePage() {
         <HeroSection
           eyebrow="Full Service Media & Marketing Agency"
           title="Building brands people"
-          titleAccent="trust."
+          titleAccent="TRUST"
           subtitle="Creating content that reaches people and builds community"
         />
         
