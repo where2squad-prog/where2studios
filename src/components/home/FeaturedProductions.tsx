@@ -114,10 +114,12 @@ export function FeaturedProductions() {
   const [activeFilter, setActiveFilter] = useState<string>('all')
   const { data: allProjects, isLoading } = useProjects()
 
-  // Filter projects that belong to production categories
+  // Filter projects: only featured AND production categories
   const productionProjects = useMemo(() => {
     if (!allProjects) return []
-    return allProjects.filter(p => PRODUCTION_CATEGORIES.includes(p.category))
+    return allProjects.filter(p => 
+      PRODUCTION_CATEGORIES.includes(p.category) && p.featured === true
+    )
   }, [allProjects])
 
   // Apply category filter
