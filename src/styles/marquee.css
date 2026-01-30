@@ -8,12 +8,9 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
   will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 
 .marquee-content {
@@ -42,11 +39,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.marquee-item img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 /* Fade edges */
@@ -81,7 +73,7 @@
   background: linear-gradient(to left, hsl(var(--background)) 0%, transparent 100%);
 }
 
-/* Seamless infinite scroll - using translate3d for GPU acceleration */
+/* Seamless infinite scroll */
 @keyframes marquee {
   0% {
     transform: translate3d(0, 0, 0);
