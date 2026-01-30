@@ -42,8 +42,10 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt={brand.name} 
-                  className="h-20 sm:h-24 md:h-28 w-auto object-contain"
+                  className="h-12 sm:h-16 md:h-20 w-auto object-contain"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             ))}
@@ -55,8 +57,10 @@ export function TrustedBrands() {
                 <img 
                   src={brand.logo} 
                   alt="" 
-                  className="h-20 sm:h-24 md:h-28 w-auto object-contain"
+                  className="h-12 sm:h-16 md:h-20 w-auto object-contain"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             ))}
