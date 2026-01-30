@@ -16,10 +16,7 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
   const isHorizontal = aspectRatio === 'horizontal'
 
   const handleClick = () => {
-    // Open video URL in new tab instead of modal
-    if (project.video_url) {
-      window.open(project.video_url, '_blank', 'noopener,noreferrer')
-    } else if (onClick) {
+    if (onClick) {
       onClick()
     }
   }
