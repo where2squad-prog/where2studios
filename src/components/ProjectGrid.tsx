@@ -9,16 +9,23 @@ import { VideoModal } from './VideoModal'
 interface ProjectGridProps {
   projects: Project[]
   isLoading?: boolean
+  aspectRatio?: 'vertical' | 'horizontal'
 }
 
-export function ProjectGrid({ projects, isLoading }: ProjectGridProps) {
+export function ProjectGrid({ projects, isLoading, aspectRatio = 'vertical' }: ProjectGridProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  const isHorizontal = aspectRatio === 'horizontal'
+  const gridClasses = isHorizontal
+    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
+    : 'grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6'
+  const skeletonAspect = isHorizontal ? 'aspect-video' : 'aspect-[9/16]'
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-        {[...Array(8)].map((_, i) => (
-          <div key={i} className="m3-elevated-card aspect-[9/16] animate-pulse bg-m3-surface-variant" />
+      <div className={gridClasses}>
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className={`m3-elevated-card ${skeletonAspect} animate-pulse bg-m3-surface-variant`} />
         ))}
       </div>
     )
@@ -39,13 +46,14 @@ export function ProjectGrid({ projects, isLoading }: ProjectGridProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
-          className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6"
+          className={gridClasses}
         >
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               index={index}
+              aspectRatio={aspectRatio}
               onClick={() => setSelectedProject(project)}
             />
           ))}

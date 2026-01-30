@@ -107,7 +107,7 @@ export default function ProductionsWorkPage() {
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <AnimatePresence mode="wait">
             <motion.div key={activeFilter}>
-              <ProjectGrid projects={filteredProjects} isLoading={isLoading} />
+              <ProjectGrid projects={filteredProjects} isLoading={isLoading} aspectRatio="horizontal" />
             </motion.div>
           </AnimatePresence>
         </div>
