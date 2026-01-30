@@ -285,6 +285,71 @@ export type Database = {
         }
         Relationships: []
       }
+      social_clients: {
+        Row: {
+          created_at: string
+          id: string
+          ig_handle: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ig_handle: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ig_handle?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      social_posts: {
+        Row: {
+          client_id: string
+          created_at: string
+          excluded: boolean
+          id: string
+          permalink: string
+          pinned: boolean
+          thumbnail_url: string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          client_id: string
+          created_at?: string
+          excluded?: boolean
+          id?: string
+          permalink: string
+          pinned?: boolean
+          thumbnail_url?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string
+          created_at?: string
+          excluded?: boolean
+          id?: string
+          permalink?: string
+          pinned?: boolean
+          thumbnail_url?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "social_posts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "social_clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string

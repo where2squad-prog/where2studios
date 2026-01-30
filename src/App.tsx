@@ -13,6 +13,7 @@ import WeddingsPage from './pages/services/WeddingsPage'
 import SocialMediaPage from './pages/services/SocialMediaPage'
 import CommercialsPage from './pages/services/CommercialsPage'
 import NotFoundPage from './pages/NotFoundPage'
+import SocialAdminPage from './pages/admin/SocialAdminPage'
 
 const queryClient = new QueryClient()
 
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/weddings" element={<WeddingsPage />} />
           <Route path="/social-media" element={<SocialMediaPage />} />
           <Route path="/commercials" element={<CommercialsPage />} />
+          <Route path="/admin/social" element={<SocialAdminPage />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
