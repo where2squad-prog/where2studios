@@ -1,7 +1,13 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+const supabaseAdmin = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -21,6 +27,20 @@ interface ContactRequest {
   referral?: string;
 }
 
+// HTML escape function to prevent XSS in emails
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Rate limiting constants
+const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
+const MAX_SUBMISSIONS_PER_HOUR = 3;
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -28,6 +48,45 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Get client identifier for rate limiting
+    const identifier = req.headers.get("x-forwarded-for") || 
+                       req.headers.get("x-real-ip") || 
+                       "unknown";
+
+    // Check rate limits
+    const hourAgo = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
+    const { data: recentSubmissions, error: rateLimitError } = await supabaseAdmin
+      .from("rate_limits")
+      .select("*")
+      .eq("identifier", identifier)
+      .eq("action", "contact_form")
+      .gte("created_at", hourAgo);
+
+    if (rateLimitError) {
+      console.error("Rate limit check error:", rateLimitError);
+      // Continue anyway - don't block legitimate users due to rate limit DB issues
+    }
+
+    if (recentSubmissions && recentSubmissions.length >= MAX_SUBMISSIONS_PER_HOUR) {
+      console.log(`Rate limit exceeded for ${identifier}`);
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Rate limit exceeded. Maximum 3 submissions per hour." 
+        }),
+        { 
+          status: 429, 
+          headers: { "Content-Type": "application/json", ...corsHeaders } 
+        }
+      );
+    }
+
+    // Record this submission attempt
+    await supabaseAdmin.from("rate_limits").insert({
+      identifier,
+      action: "contact_form",
+    });
+
     const data: ContactRequest = await req.json();
 
     // Validate required fields
@@ -35,24 +94,35 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Missing required fields: name, email, message");
     }
 
+    // Escape all user-provided data for HTML emails
+    const safeName = escapeHtml(data.name);
+    const safeEmail = escapeHtml(data.email);
+    const safeCompany = data.company ? escapeHtml(data.company) : "";
+    const safePhone = data.phone ? escapeHtml(data.phone) : "";
+    const safeService = data.service ? escapeHtml(data.service) : "";
+    const safeBudget = data.budget ? escapeHtml(data.budget) : "";
+    const safeTimeline = data.timeline ? escapeHtml(data.timeline) : "";
+    const safeReferral = data.referral ? escapeHtml(data.referral) : "";
+    const safeMessage = escapeHtml(data.message).replace(/\n/g, "<br>");
+
     // 1. Send internal notification email
     const internalEmailResponse = await resend.emails.send({
       from: "Where2Studios <notifications@where2studios.com>",
       to: ["contact@where2studios.com"],
-      subject: `New Contact Form Submission from ${data.name}`,
+      subject: `New Contact Form Submission from ${safeName}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ""}
-        ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ""}
-        ${data.service ? `<p><strong>Service:</strong> ${data.service}</p>` : ""}
-        ${data.budget ? `<p><strong>Budget:</strong> ${data.budget}</p>` : ""}
-        ${data.timeline ? `<p><strong>Timeline:</strong> ${data.timeline}</p>` : ""}
-        ${data.referral ? `<p><strong>Referral:</strong> ${data.referral}</p>` : ""}
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ""}
+        ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ""}
+        ${safeService ? `<p><strong>Service:</strong> ${safeService}</p>` : ""}
+        ${safeBudget ? `<p><strong>Budget:</strong> ${safeBudget}</p>` : ""}
+        ${safeTimeline ? `<p><strong>Timeline:</strong> ${safeTimeline}</p>` : ""}
+        ${safeReferral ? `<p><strong>Referral:</strong> ${safeReferral}</p>` : ""}
         <hr />
         <h3>Message:</h3>
-        <p>${data.message.replace(/\n/g, "<br>")}</p>
+        <p>${safeMessage}</p>
       `,
     });
 
@@ -65,7 +135,7 @@ const handler = async (req: Request): Promise<Response> => {
       subject: "Thanks for reaching out to Where2Studios!",
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-          <h1 style="color: #14180A; font-size: 24px; margin-bottom: 20px;">Thanks for reaching out, ${data.name}!</h1>
+          <h1 style="color: #14180A; font-size: 24px; margin-bottom: 20px;">Thanks for reaching out, ${safeName}!</h1>
           
           <p style="color: #333; font-size: 16px; line-height: 1.6;">
             We've received your message and are excited to learn more about your project.
@@ -78,7 +148,7 @@ const handler = async (req: Request): Promise<Response> => {
           <div style="background: #FFF8EE; padding: 20px; border-radius: 12px; margin: 30px 0;">
             <p style="color: #14180A; font-size: 14px; margin: 0;">
               <strong>Your message:</strong><br>
-              ${data.message.replace(/\n/g, "<br>")}
+              ${safeMessage}
             </p>
           </div>
           
