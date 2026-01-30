@@ -1,7 +1,9 @@
 'use client'
 
 import { HeroSection } from '@/components/home/HeroSection'
-import { FeaturedWorkStrip } from '@/components/home/FeaturedWorkStrip'
+import { QuickJumpRow } from '@/components/home/QuickJumpRow'
+import { FeaturedSocialMedia } from '@/components/home/FeaturedSocialMedia'
+import { FeaturedProductions } from '@/components/home/FeaturedProductions'
 import { ClosingCTA } from '@/components/home/ClosingCTA'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -22,16 +24,21 @@ export default function HomePage() {
           subtitle="Creating content that reaches people and builds community"
         />
         
+        {/* Quick Jump Row */}
+        <QuickJumpRow />
+        
         {/* Trusted Brands */}
-        <section className="py-12 sm:py-16 bg-m3-surface-variant">
+        <section className="py-10 sm:py-12 bg-m3-surface-variant">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <TrustedBrands />
           </div>
         </section>
         
+        {/* Featured Social Media Section */}
+        <FeaturedSocialMedia />
         
-        {/* Featured Work Strip */}
-        <FeaturedWorkStrip />
+        {/* Featured Productions Section */}
+        <FeaturedProductions />
         
         {/* Closing CTA with Contact Form */}
         <ClosingCTA />
