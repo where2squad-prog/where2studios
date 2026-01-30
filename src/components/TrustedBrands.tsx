@@ -1,5 +1,7 @@
 'use client'
 
+import { useMarqueeScroll } from '@/hooks/useMarqueeScroll'
+
 import brandBackyardBayou from '@/assets/brand-backyard-bayou.svg'
 import brandCityline from '@/assets/brand-cityline.svg'
 import brandFoodieland from '@/assets/brand-foodieland.svg'
@@ -11,6 +13,8 @@ import brandVisitBerkeley from '@/assets/brand-visit-berkeley.svg'
 import '@/styles/marquee.css'
 
 export function TrustedBrands() {
+  const { viewportRef, contentRef } = useMarqueeScroll({ speed: 36 })
+
   const brands = [
     { name: "Backyard Bayou", logo: brandBackyardBayou },
     { name: "Cityline", logo: brandCityline },
@@ -33,33 +37,38 @@ export function TrustedBrands() {
         {/* Left fade */}
         <div className="marquee-fade marquee-fade-left" />
         
-        {/* Scrolling track */}
-        <div className="marquee-track">
-          {/* First set */}
-          <div className="marquee-content">
+        {/* Scroll viewport (JS-driven for crisp mobile) */}
+        <div className="marquee-viewport" ref={viewportRef}>
+          <div className="marquee-track">
+            {/* First set */}
+            <div className="marquee-content" ref={contentRef}>
             {brands.map((brand) => (
               <div key={brand.name} className="marquee-item">
                 <img 
                   src={brand.logo} 
                   alt={brand.name} 
-                  className="h-16 sm:h-20 lg:h-24 w-auto"
+                  className="h-16 sm:h-20 lg:h-24 w-auto max-w-none"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
+                  draggable={false}
                 />
               </div>
             ))}
-          </div>
-          {/* Duplicate for seamless loop */}
-          <div className="marquee-content" aria-hidden="true">
+            </div>
+
+            {/* Duplicate for seamless loop */}
+            <div className="marquee-content" aria-hidden="true">
             {brands.map((brand) => (
               <div key={`${brand.name}-dup`} className="marquee-item">
                 <img 
                   src={brand.logo} 
                   alt="" 
-                  className="h-16 sm:h-20 lg:h-24 w-auto"
+                  className="h-16 sm:h-20 lg:h-24 w-auto max-w-none"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
+                  draggable={false}
                 />
               </div>
             ))}
+            </div>
           </div>
         </div>
         
