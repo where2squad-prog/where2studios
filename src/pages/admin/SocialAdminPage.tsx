@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowLeft, Plus, Pin, PinOff, Eye, EyeOff, Trash2, Edit2, X, Check } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { ArrowLeft, Plus, Pin, PinOff, Eye, EyeOff, Trash2, Edit2, X, Check, LogOut } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from '@/assets/where2studios-logo.png'
 import {
@@ -14,6 +14,7 @@ import {
   getSocialThumbnail,
   SocialPostWithClient,
 } from '@/hooks/useSocialPosts'
+import { useAuth } from '@/hooks/useAuth'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
@@ -26,11 +27,18 @@ import {
 import { toast } from 'sonner'
 
 export default function SocialAdminPage() {
+  const navigate = useNavigate()
+  const { user, signOut } = useAuth()
   const { data: clients, isLoading: clientsLoading } = useSocialClients()
   const { data: posts, isLoading: postsLoading } = useAdminSocialPosts()
   const createPost = useCreateSocialPost()
   const updatePost = useUpdateSocialPost()
   const deletePost = useDeleteSocialPost()
+
+  const handleSignOut = async () => {
+    await signOut()
+    navigate('/admin/login')
+  }
 
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingPost, setEditingPost] = useState<SocialPostWithClient | null>(null)
@@ -152,9 +160,22 @@ export default function SocialAdminPage() {
               <ArrowLeft className="w-5 h-5 text-m3-on-dark group-hover:text-m3-primary transition-colors" />
               <img src={logo} alt="Where2Studios" className="h-10 sm:h-14 w-auto" />
             </Link>
-            <h1 className="font-fredoka text-lg sm:text-xl font-semibold text-m3-on-dark">
-              Social Media Admin
-            </h1>
+            <div className="flex items-center gap-4">
+              <h1 className="font-fredoka text-lg sm:text-xl font-semibold text-m3-on-dark">
+                Social Media Admin
+              </h1>
+              <div className="hidden sm:flex items-center gap-2 text-sm text-m3-on-dark/60">
+                <span>{user?.email}</span>
+              </div>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm
+                           text-m3-on-dark/70 hover:text-m3-on-dark hover:bg-m3-surface-variant/30 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                <span className="hidden sm:inline">Sign Out</span>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
