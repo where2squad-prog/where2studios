@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      clients: {
+        Row: {
+          created_at: string
+          id: string
+          ig_handle: string
+          is_active: boolean
+          name: string
+          profile_url: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ig_handle: string
+          is_active?: boolean
+          name: string
+          profile_url: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ig_handle?: string
+          is_active?: boolean
+          name?: string
+          profile_url?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           budget: string | null
@@ -58,6 +85,145 @@ export type Database = {
           timeline?: string | null
         }
         Relationships: []
+      }
+      ig_public_posts: {
+        Row: {
+          caption_snippet: string | null
+          captured_at: string | null
+          client_id: string
+          id: string
+          is_excluded: boolean
+          is_pinned: boolean
+          media_type: string | null
+          permalink: string
+          posted_at: string | null
+          public_comments: number | null
+          public_likes: number | null
+          public_views: number | null
+          raw: Json | null
+          shortcode: string
+          thumbnail_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          caption_snippet?: string | null
+          captured_at?: string | null
+          client_id: string
+          id?: string
+          is_excluded?: boolean
+          is_pinned?: boolean
+          media_type?: string | null
+          permalink: string
+          posted_at?: string | null
+          public_comments?: number | null
+          public_likes?: number | null
+          public_views?: number | null
+          raw?: Json | null
+          shortcode: string
+          thumbnail_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          caption_snippet?: string | null
+          captured_at?: string | null
+          client_id?: string
+          id?: string
+          is_excluded?: boolean
+          is_pinned?: boolean
+          media_type?: string | null
+          permalink?: string
+          posted_at?: string | null
+          public_comments?: number | null
+          public_likes?: number | null
+          public_views?: number | null
+          raw?: Json | null
+          shortcode?: string
+          thumbnail_url?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ig_public_posts_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ig_social_global_rankings: {
+        Row: {
+          computed_at: string
+          id: string
+          post_id: string
+          rank: number
+          score: number
+        }
+        Insert: {
+          computed_at?: string
+          id?: string
+          post_id: string
+          rank: number
+          score?: number
+        }
+        Update: {
+          computed_at?: string
+          id?: string
+          post_id?: string
+          rank?: number
+          score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ig_social_global_rankings_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: true
+            referencedRelation: "ig_public_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ig_social_rankings: {
+        Row: {
+          client_id: string
+          computed_at: string
+          id: string
+          post_id: string
+          rank: number
+          score: number
+        }
+        Insert: {
+          client_id: string
+          computed_at?: string
+          id?: string
+          post_id: string
+          rank: number
+          score?: number
+        }
+        Update: {
+          client_id?: string
+          computed_at?: string
+          id?: string
+          post_id?: string
+          rank?: number
+          score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ig_social_rankings_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ig_social_rankings_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "ig_public_posts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       projects: {
         Row: {
