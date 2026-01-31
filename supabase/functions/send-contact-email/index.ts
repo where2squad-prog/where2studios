@@ -9,11 +9,27 @@ const supabaseAdmin = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
 );
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+// Allowed origins for CORS
+const ALLOWED_ORIGINS = [
+  "https://where2studios.com",
+  "https://www.where2studios.com",
+  "https://id-preview--2bb4daec-4a94-4b24-bf81-fcab77007c43.lovable.app",
+  "http://localhost:8080",
+  "http://localhost:5173",
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const allowedOrigin = origin && ALLOWED_ORIGINS.includes(origin) 
+    ? origin 
+    : ALLOWED_ORIGINS[0];
+  
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+  };
+}
 
 interface ContactRequest {
   name: string;
@@ -42,6 +58,9 @@ const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
 const MAX_SUBMISSIONS_PER_HOUR = 3;
 
 const handler = async (req: Request): Promise<Response> => {
+  const origin = req.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
+
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -91,7 +110,16 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Validate required fields
     if (!data.name || !data.email || !data.message) {
-      throw new Error("Missing required fields: name, email, message");
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Please provide your name, email, and message." 
+        }),
+        { 
+          status: 400, 
+          headers: { "Content-Type": "application/json", ...corsHeaders } 
+        }
+      );
     }
 
     // Escape all user-provided data for HTML emails
@@ -181,13 +209,18 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
   } catch (error: unknown) {
+    // Log detailed error server-side for debugging
     console.error("Error in send-contact-email function:", error);
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    
+    // Return generic message to client (don't expose internal details)
     return new Response(
-      JSON.stringify({ success: false, error: errorMessage }),
+      JSON.stringify({ 
+        success: false, 
+        error: "We're unable to process your request at this time. Please try again later." 
+      }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { "Content-Type": "application/json", ...getCorsHeaders(null) },
       }
     );
   }
