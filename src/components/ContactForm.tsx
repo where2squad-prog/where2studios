@@ -126,30 +126,22 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
     setSubmitError(null)
 
     try {
-      // Submit to database
-      const { error: dbError } = await supabase.from('contact_submissions').insert({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        service: formData.service,
-        message: formData.message,
-        phone: formData.phone,
-        budget: formData.budget,
-        timeline: formData.timeline,
-        referral: formData.referral,
+      // Use edge function which has service role access to bypass RLS
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          service: formData.service,
+          message: formData.message,
+          phone: formData.phone,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          referral: formData.referral,
+        },
       })
 
-      if (dbError) throw dbError
-
-      // Send email notification
-      try {
-        await supabase.functions.invoke('send-contact-email', {
-          body: formData,
-        })
-      } catch (emailError) {
-        console.error('Email notification failed:', emailError)
-        // Don't fail the submission if email fails
-      }
+      if (error) throw error
 
       setIsSubmitted(true)
       setPendingCalOpen(openCalAfter)
