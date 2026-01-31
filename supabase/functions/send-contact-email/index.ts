@@ -9,6 +9,21 @@ const supabaseAdmin = createClient(
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
 );
 
+// Brand colors
+const BRAND = {
+  background: "#FFF7ED",
+  surface: "#FFFFFF",
+  surfaceAlt: "#F6E6D6",
+  text: "#231C16",
+  textMuted: "#6F635B",
+  primary: "#E07A5F",
+  accent: "#D9A441",
+  border: "#E7D1BE",
+};
+
+const LOGO_URL = "https://ndnuwfsuanbjjtfflbfc.supabase.co/storage/v1/object/public/email-assets/logo-circle.png";
+const CAL_LINK = "https://cal.com/where2studios/intro";
+
 // Allowed origins for CORS
 const ALLOWED_ORIGINS = [
   "https://where2studios.com",
@@ -42,6 +57,7 @@ interface ContactRequest {
   budget?: string;
   timeline?: string;
   referral?: string;
+  website?: string; // Honeypot field
 }
 
 // HTML escape function to prevent XSS in emails
@@ -56,7 +72,187 @@ function escapeHtml(unsafe: string): string {
 
 // Rate limiting constants
 const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
-const MAX_SUBMISSIONS_PER_HOUR = 3;
+const MAX_SUBMISSIONS_PER_IP = 5;
+const MAX_SUBMISSIONS_PER_EMAIL = 3;
+
+// Internal notification email template
+function buildInternalEmail(data: {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  service: string;
+  budget: string;
+  timeline: string;
+  referral: string;
+  message: string;
+  timestamp: string;
+}): string {
+  const pill = (text: string) => `
+    <span style="display: inline-block; background: ${BRAND.surfaceAlt}; color: ${BRAND.text}; padding: 4px 12px; border-radius: 16px; font-size: 13px; font-weight: 500;">
+      ${text}
+    </span>
+  `;
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: ${BRAND.background}; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+    <!-- Logo -->
+    <div style="text-align: center; margin-bottom: 32px;">
+      <img src="${LOGO_URL}" alt="Where2Studios" width="80" height="80" style="border-radius: 50%;">
+    </div>
+    
+    <!-- Header -->
+    <div style="background: ${BRAND.surface}; border-radius: 16px; padding: 32px; border: 1px solid ${BRAND.border}; margin-bottom: 24px;">
+      <h1 style="margin: 0 0 8px 0; color: ${BRAND.text}; font-size: 24px; font-weight: 700;">
+        New Lead 🎬
+      </h1>
+      <p style="margin: 0; color: ${BRAND.textMuted}; font-size: 14px;">
+        ${data.timestamp}
+      </p>
+    </div>
+    
+    <!-- Contact Details Table -->
+    <div style="background: ${BRAND.surface}; border-radius: 16px; padding: 24px; border: 1px solid ${BRAND.border};">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px; width: 100px;">Name</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px; font-weight: 600;">${data.name}</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Email</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">
+            <a href="mailto:${data.email}" style="color: ${BRAND.primary}; text-decoration: none;">${data.email}</a>
+          </td>
+        </tr>
+        ${data.phone ? `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Phone</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">
+            <a href="tel:${data.phone}" style="color: ${BRAND.primary}; text-decoration: none;">${data.phone}</a>
+          </td>
+        </tr>
+        ` : ""}
+        ${data.company ? `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Company</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">${data.company}</td>
+        </tr>
+        ` : ""}
+        ${data.service ? `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Service</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">${pill(data.service)}</td>
+        </tr>
+        ` : ""}
+        ${data.budget ? `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Budget</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">${pill(data.budget)}</td>
+        </tr>
+        ` : ""}
+        ${data.timeline ? `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Timeline</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">${data.timeline}</td>
+        </tr>
+        ` : ""}
+        ${data.referral ? `
+        <tr>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.textMuted}; font-size: 13px;">Referral</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid ${BRAND.border}; color: ${BRAND.text}; font-size: 14px;">${data.referral}</td>
+        </tr>
+        ` : ""}
+        <tr>
+          <td colspan="2" style="padding: 16px 0 0 0;">
+            <div style="color: ${BRAND.textMuted}; font-size: 13px; margin-bottom: 8px;">Message</div>
+            <div style="color: ${BRAND.text}; font-size: 14px; line-height: 1.6; background: ${BRAND.surfaceAlt}; padding: 16px; border-radius: 12px;">
+              ${data.message}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+// Client confirmation email template
+function buildClientEmail(data: {
+  name: string;
+  message: string;
+}): string {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: ${BRAND.background}; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+    <!-- Logo -->
+    <div style="text-align: center; margin-bottom: 32px;">
+      <img src="${LOGO_URL}" alt="Where2Studios" width="80" height="80" style="border-radius: 50%;">
+    </div>
+    
+    <!-- Main Content -->
+    <div style="background: ${BRAND.surface}; border-radius: 16px; padding: 40px 32px; border: 1px solid ${BRAND.border}; text-align: center;">
+      <h1 style="margin: 0 0 16px 0; color: ${BRAND.text}; font-size: 28px; font-weight: 700;">
+        Thanks for reaching out! 🎬
+      </h1>
+      <p style="margin: 0 0 24px 0; color: ${BRAND.textMuted}; font-size: 16px; line-height: 1.6;">
+        Hey ${data.name}, we've received your message and are excited to learn more about your project!
+      </p>
+      <p style="margin: 0 0 32px 0; color: ${BRAND.text}; font-size: 16px; line-height: 1.6;">
+        A member of our team will get back to you within <strong>24 hours</strong>.
+      </p>
+      
+      <!-- CTA Button -->
+      <a href="${CAL_LINK}" style="display: inline-block; background: ${BRAND.primary}; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px;">
+        Book a Discovery Call
+      </a>
+      
+      <p style="margin: 24px 0 0 0; color: ${BRAND.textMuted}; font-size: 14px;">
+        Skip the wait—schedule a call now!
+      </p>
+    </div>
+    
+    <!-- Your Message Summary -->
+    <div style="background: ${BRAND.surface}; border-radius: 16px; padding: 24px; border: 1px solid ${BRAND.border}; margin-top: 24px;">
+      <h3 style="margin: 0 0 12px 0; color: ${BRAND.textMuted}; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">
+        Your Message
+      </h3>
+      <p style="margin: 0; color: ${BRAND.text}; font-size: 14px; line-height: 1.6;">
+        ${data.message}
+      </p>
+    </div>
+    
+    <!-- Footer -->
+    <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid ${BRAND.border};">
+      <p style="margin: 0 0 8px 0; color: ${BRAND.text}; font-size: 14px; font-weight: 600;">
+        Where2Studios
+      </p>
+      <p style="margin: 0 0 16px 0; color: ${BRAND.textMuted}; font-size: 13px;">
+        Bay Area, CA
+      </p>
+      <a href="https://where2studios.com" style="color: ${BRAND.primary}; text-decoration: none; font-size: 13px;">
+        where2studios.com
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
 
 const handler = async (req: Request): Promise<Response> => {
   const origin = req.headers.get("origin");
@@ -68,46 +264,16 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    // Get client identifier for rate limiting
-    const identifier = req.headers.get("x-forwarded-for") || 
-                       req.headers.get("x-real-ip") || 
-                       "unknown";
+    const data: ContactRequest = await req.json();
 
-    // Check rate limits
-    const hourAgo = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
-    const { data: recentSubmissions, error: rateLimitError } = await supabaseAdmin
-      .from("rate_limits")
-      .select("*")
-      .eq("identifier", identifier)
-      .eq("action", "contact_form")
-      .gte("created_at", hourAgo);
-
-    if (rateLimitError) {
-      console.error("Rate limit check error:", rateLimitError);
-      // Continue anyway - don't block legitimate users due to rate limit DB issues
-    }
-
-    if (recentSubmissions && recentSubmissions.length >= MAX_SUBMISSIONS_PER_HOUR) {
-      console.log(`Rate limit exceeded for ${identifier}`);
+    // Honeypot check - if website field is filled, it's a bot
+    if (data.website && data.website.trim() !== "") {
+      console.log("Honeypot triggered, rejecting submission");
       return new Response(
-        JSON.stringify({ 
-          success: false, 
-          error: "Rate limit exceeded. Maximum 3 submissions per hour." 
-        }),
-        { 
-          status: 429, 
-          headers: { "Content-Type": "application/json", ...corsHeaders } 
-        }
+        JSON.stringify({ success: true }), // Fake success to confuse bots
+        { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
-
-    // Record this submission attempt
-    await supabaseAdmin.from("rate_limits").insert({
-      identifier,
-      action: "contact_form",
-    });
-
-    const data: ContactRequest = await req.json();
 
     // Validate required fields
     if (!data.name || !data.email || !data.message) {
@@ -116,14 +282,63 @@ const handler = async (req: Request): Promise<Response> => {
           success: false, 
           error: "Please provide your name, email, and message." 
         }),
-        { 
-          status: 400, 
-          headers: { "Content-Type": "application/json", ...corsHeaders } 
-        }
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
-    // Save to database using service role (bypasses RLS)
+    // Get client identifier for rate limiting
+    const ipIdentifier = req.headers.get("x-forwarded-for") || 
+                         req.headers.get("x-real-ip") || 
+                         "unknown";
+    const emailIdentifier = data.email.toLowerCase();
+
+    // Check rate limits
+    const hourAgo = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
+    
+    const [ipCheck, emailCheck] = await Promise.all([
+      supabaseAdmin
+        .from("rate_limits")
+        .select("*")
+        .eq("identifier", ipIdentifier)
+        .eq("action", "contact_form")
+        .gte("created_at", hourAgo),
+      supabaseAdmin
+        .from("rate_limits")
+        .select("*")
+        .eq("identifier", emailIdentifier)
+        .eq("action", "contact_form_email")
+        .gte("created_at", hourAgo)
+    ]);
+
+    if (ipCheck.data && ipCheck.data.length >= MAX_SUBMISSIONS_PER_IP) {
+      console.log(`IP rate limit exceeded for ${ipIdentifier}`);
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Too many submissions. Please try again later." 
+        }),
+        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    if (emailCheck.data && emailCheck.data.length >= MAX_SUBMISSIONS_PER_EMAIL) {
+      console.log(`Email rate limit exceeded for ${emailIdentifier}`);
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Too many submissions from this email. Please try again later." 
+        }),
+        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Record rate limit entries
+    await Promise.all([
+      supabaseAdmin.from("rate_limits").insert({ identifier: ipIdentifier, action: "contact_form" }),
+      supabaseAdmin.from("rate_limits").insert({ identifier: emailIdentifier, action: "contact_form_email" })
+    ]);
+
+    // Save to database
     const { error: dbError } = await supabaseAdmin
       .from("contact_submissions")
       .insert({
@@ -140,7 +355,6 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (dbError) {
       console.error("Database insert error:", dbError);
-      // Continue with email sending even if DB insert fails
     }
 
     // Escape all user-provided data for HTML emails
@@ -154,69 +368,47 @@ const handler = async (req: Request): Promise<Response> => {
     const safeReferral = data.referral ? escapeHtml(data.referral) : "";
     const safeMessage = escapeHtml(data.message).replace(/\n/g, "<br>");
 
-    // 1. Send internal notification email
-    const internalEmailResponse = await resend.emails.send({
-      from: "Where2Studios <notifications@where2studios.com>",
-      to: ["contact@where2studios.com"],
-      subject: `New Contact Form Submission from ${safeName}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ""}
-        ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ""}
-        ${safeService ? `<p><strong>Service:</strong> ${safeService}</p>` : ""}
-        ${safeBudget ? `<p><strong>Budget:</strong> ${safeBudget}</p>` : ""}
-        ${safeTimeline ? `<p><strong>Timeline:</strong> ${safeTimeline}</p>` : ""}
-        ${safeReferral ? `<p><strong>Referral:</strong> ${safeReferral}</p>` : ""}
-        <hr />
-        <h3>Message:</h3>
-        <p>${safeMessage}</p>
-      `,
+    const timestamp = new Date().toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZoneName: "short"
     });
 
-    console.log("Internal notification sent:", internalEmailResponse);
+    // Send both emails in parallel
+    const [internalEmailResponse, confirmationEmailResponse] = await Promise.all([
+      resend.emails.send({
+        from: "Where2Studios <notifications@where2studios.com>",
+        to: ["contact@where2studios.com"],
+        subject: `🎬 New Lead: ${safeName}${safeCompany ? ` from ${safeCompany}` : ""}`,
+        html: buildInternalEmail({
+          name: safeName,
+          email: safeEmail,
+          company: safeCompany,
+          phone: safePhone,
+          service: safeService,
+          budget: safeBudget,
+          timeline: safeTimeline,
+          referral: safeReferral,
+          message: safeMessage,
+          timestamp,
+        }),
+      }),
+      resend.emails.send({
+        from: "Where2Studios <no-reply@where2studios.com>",
+        to: [data.email],
+        subject: "Thanks for reaching out to Where2Studios! 🎬",
+        html: buildClientEmail({
+          name: safeName,
+          message: safeMessage,
+        }),
+      })
+    ]);
 
-    // 2. Send confirmation email to user
-    const confirmationEmailResponse = await resend.emails.send({
-      from: "Where2Studios <no-reply@where2studios.com>",
-      to: [data.email],
-      subject: "Thanks for reaching out to Where2Studios!",
-      html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-          <h1 style="color: #14180A; font-size: 24px; margin-bottom: 20px;">Thanks for reaching out, ${safeName}!</h1>
-          
-          <p style="color: #333; font-size: 16px; line-height: 1.6;">
-            We've received your message and are excited to learn more about your project.
-          </p>
-          
-          <p style="color: #333; font-size: 16px; line-height: 1.6;">
-            A member of our team will get back to you within <strong>24 hours</strong>.
-          </p>
-          
-          <div style="background: #FFF8EE; padding: 20px; border-radius: 12px; margin: 30px 0;">
-            <p style="color: #14180A; font-size: 14px; margin: 0;">
-              <strong>Your message:</strong><br>
-              ${safeMessage}
-            </p>
-          </div>
-          
-          <p style="color: #333; font-size: 16px; line-height: 1.6;">
-            In the meantime, feel free to check out our <a href="https://where2studios.com/work" style="color: #E09E24;">recent work</a>.
-          </p>
-          
-          <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;" />
-          
-          <p style="color: #666; font-size: 14px;">
-            Where2Studios<br>
-            Bay Area, CA<br>
-            <a href="https://where2studios.com" style="color: #E09E24;">where2studios.com</a>
-          </p>
-        </div>
-      `,
-    });
-
-    console.log("Confirmation email sent:", confirmationEmailResponse);
+    console.log("Emails sent:", { internal: internalEmailResponse, confirmation: confirmationEmailResponse });
 
     return new Response(
       JSON.stringify({ 
@@ -224,25 +416,16 @@ const handler = async (req: Request): Promise<Response> => {
         internal: internalEmailResponse,
         confirmation: confirmationEmailResponse 
       }),
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
+      { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: unknown) {
-    // Log detailed error server-side for debugging
     console.error("Error in send-contact-email function:", error);
-    
-    // Return generic message to client (don't expose internal details)
     return new Response(
       JSON.stringify({ 
         success: false, 
         error: "We're unable to process your request at this time. Please try again later." 
       }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...getCorsHeaders(null) },
-      }
+      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }
 };
