@@ -46,7 +46,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                     <span className="hidden sm:inline">Home</span>
                   </a>
                 ) : (
-                  <span className="text-m3-primary text-xs sm:text-sm font-medium">
+                  <span className="text-m3-primary text-xs font-medium">
                     Ready to grow your brand?
                   </span>
                 )}
@@ -54,10 +54,10 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                 {/* Right side - M3 Filled Button */}
                 <button
                   onClick={openSheet}
-                  className="m3-filled-button flex items-center gap-2 text-sm px-5 py-2.5"
+                  className="m3-filled-button flex items-center gap-2 text-xs sm:text-sm px-4 py-2"
                 >
                   <span>Book a Call</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
