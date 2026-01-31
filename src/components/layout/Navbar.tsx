@@ -6,6 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import logo from '@/assets/where2studios-logo.png';
 const navLinks = [{
+  href: '/',
+  label: 'Home'
+}, {
   href: '/work',
   label: 'Our Work'
 }, {
