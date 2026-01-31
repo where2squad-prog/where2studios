@@ -10,7 +10,7 @@ export function Footer() {
   const platforms = ['TikTok', 'Instagram', 'YouTube', 'Meta', 'CapCut', 'Adobe']
 
   return (
-    <footer className="relative py-10 sm:py-12 bg-m3-surface-dark text-m3-on-dark">
+    <footer className="relative py-10 sm:py-12 pb-20 sm:pb-24 bg-m3-surface-dark text-m3-on-dark">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Two Column Layout */}
