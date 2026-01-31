@@ -244,7 +244,12 @@ export default function SocialMediaWorkPage() {
             </>
           ) : (
             <div className="text-center py-16">
-              <p className="text-m3-on-dark/60">No posts found. Add posts via the admin page.</p>
+              <span className="font-fredoka text-2xl font-semibold text-m3-on-dark">
+                Coming Soon!
+              </span>
+              <p className="mt-2 text-m3-on-dark/60 text-sm">
+                New posts are on the way.
+              </p>
             </div>
           )}
         </div>
