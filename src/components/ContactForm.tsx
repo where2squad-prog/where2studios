@@ -5,42 +5,57 @@ import { motion } from 'framer-motion'
 import { Check, Loader2, Send, Calendar } from 'lucide-react'
 import { z } from 'zod'
 import { supabase } from '@/integrations/supabase/client'
+import { useCalModal } from '@/hooks/useCalModal'
+import { Link } from 'react-router-dom'
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, 'Name is required').max(100),
   email: z.string().trim().email('Invalid email address').max(255),
-  company: z.string().trim().max(100).optional(),
-  service: z.string().optional(),
+  phone: z.string().trim().min(1, 'Phone is required').max(20),
+  company: z.string().trim().min(1, 'Company is required').max(100),
+  service: z.string().min(1, 'Service is required'),
+  budget: z.string().min(1, 'Budget is required'),
+  timeline: z.string().min(1, 'Timeline is required'),
+  referral: z.string().min(1, 'Please tell us how you heard about us'),
   message: z.string().trim().min(1, 'Message is required').max(2000),
-  phone: z.string().trim().max(20).optional(),
-  budget: z.string().optional(),
-  timeline: z.string().optional(),
-  referral: z.string().trim().max(200).optional(),
-  honeypot: z.string().max(0, 'Bot detected'),
+  website: z.string().max(0, 'Bot detected'), // Honeypot
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
 
 const services = [
-  { value: 'corporate', label: 'Corporate' },
-  { value: 'events', label: 'Events' },
   { value: 'weddings', label: 'Weddings' },
+  { value: 'events', label: 'Events' },
+  { value: 'corporate', label: 'Corporate' },
   { value: 'social-media', label: 'Social Media' },
   { value: 'commercials', label: 'Commercials' },
 ]
 
-const budgets = [
-  { value: 'under-5k', label: 'Under $5,000' },
-  { value: '5k-10k', label: '$5,000 - $10,000' },
-  { value: '10k-25k', label: '$10,000 - $25,000' },
-  { value: '25k-plus', label: '$25,000+' },
+const budgetRanges = [
+  { value: 'under-2k', label: 'Under $2k' },
+  { value: '2k-5k', label: '$2k–$5k' },
+  { value: '5k-10k', label: '$5k–$10k' },
+  { value: '10k-plus', label: '$10k+' },
 ]
 
 const timelines = [
   { value: 'asap', label: 'ASAP' },
-  { value: '1-month', label: 'Within 1 month' },
-  { value: '1-3-months', label: '1-3 months' },
-  { value: '3-plus-months', label: '3+ months' },
+  { value: '2-4-weeks', label: '2–4 weeks' },
+  { value: '1-2-months', label: '1–2 months' },
+  { value: 'flexible', label: 'Flexible' },
+]
+
+const referralSources = [
+  { value: 'instagram', label: 'Instagram' },
+  { value: 'tiktok', label: 'TikTok' },
+  { value: 'linkedin', label: 'LinkedIn' },
+  { value: 'youtube', label: 'YouTube' },
+  { value: 'google', label: 'Google Search' },
+  { value: 'yelp', label: 'Yelp' },
+  { value: 'referral', label: 'Word of mouth/referral' },
+  { value: 'event', label: 'Event/conference' },
+  { value: 'newsletter', label: 'Email newsletter' },
+  { value: 'other', label: 'Other' },
 ]
 
 interface ContactFormProps {
@@ -49,22 +64,24 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ showBookCall = true, compact = false }: ContactFormProps) {
+  const { openCalModal } = useCalModal()
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    phone: '',
     company: '',
     service: '',
-    message: '',
-    phone: '',
     budget: '',
     timeline: '',
     referral: '',
-    honeypot: '',
+    message: '',
+    website: '', // Honeypot
   })
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [pendingCalOpen, setPendingCalOpen] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -113,13 +130,13 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
       const { error: dbError } = await supabase.from('contact_submissions').insert({
         name: formData.name,
         email: formData.email,
-        company: formData.company || null,
-        service: formData.service || null,
+        company: formData.company,
+        service: formData.service,
         message: formData.message,
-        phone: formData.phone || null,
-        budget: formData.budget || null,
-        timeline: formData.timeline || null,
-        referral: formData.referral || null,
+        phone: formData.phone,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        referral: formData.referral,
       })
 
       if (dbError) throw dbError
@@ -135,10 +152,11 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
       }
 
       setIsSubmitted(true)
+      setPendingCalOpen(openCalAfter)
 
       if (openCalAfter) {
-        // Open Cal.com in new tab
-        window.open('https://cal.com/where2-studios-tvdbun/discovery-call', '_blank')
+        // Open Cal.com modal
+        openCalModal()
       }
     } catch (err) {
       console.error('Submission error:', err)
@@ -146,6 +164,23 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  const resetForm = () => {
+    setIsSubmitted(false)
+    setPendingCalOpen(false)
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      budget: '',
+      timeline: '',
+      referral: '',
+      message: '',
+      website: '',
+    })
   }
 
   if (isSubmitted) {
@@ -158,27 +193,35 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         <div className="w-16 h-16 bg-m3-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
           <Check className="w-8 h-8 text-m3-primary" />
         </div>
-        <h3 className="text-2xl font-bold text-m3-on-surface mb-2">Message Sent!</h3>
+        <h3 className="text-2xl font-bold text-m3-on-surface mb-2">
+          {pendingCalOpen ? "You're booked!" : "Thanks, we got your message"}
+        </h3>
         <p className="text-m3-on-surface/60 mb-6">
-          We'll get back to you within 24 hours. Check your email for confirmation.
+          {pendingCalOpen 
+            ? "Check your inbox for the calendar invite. Excited to meet you!"
+            : "We will reply soon. If you want to move faster, you can book a call now."
+          }
         </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          {!pendingCalOpen && (
+            <button
+              onClick={openCalModal}
+              className="m3-filled-button flex items-center justify-center gap-2"
+            >
+              <Calendar className="w-4 h-4" />
+              Book a Call
+            </button>
+          )}
+          <Link
+            to="/work"
+            className="m3-outlined-button inline-flex items-center justify-center"
+          >
+            View Our Work
+          </Link>
+        </div>
         <button
-          onClick={() => {
-            setIsSubmitted(false)
-            setFormData({
-              name: '',
-              email: '',
-              company: '',
-              service: '',
-              message: '',
-              phone: '',
-              budget: '',
-              timeline: '',
-              referral: '',
-              honeypot: '',
-            })
-          }}
-          className="m3-text-button text-m3-primary"
+          onClick={resetForm}
+          className="m3-text-button text-m3-primary mt-4"
         >
           Send another message
         </button>
@@ -192,8 +235,8 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         {/* Honeypot - hidden from users */}
         <input
           type="text"
-          name="honeypot"
-          value={formData.honeypot}
+          name="website"
+          value={formData.website}
           onChange={handleChange}
           className="absolute -left-[9999px] opacity-0"
           tabIndex={-1}
@@ -203,7 +246,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         {/* Name & Email */}
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Name *</label>
+            <label className="label text-m3-on-surface/70 mb-2 block">Full Name *</label>
             <input
               type="text"
               name="name"
@@ -232,29 +275,35 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           </div>
         </div>
 
-        {/* Company & Phone */}
+        {/* Phone & Company */}
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Company</label>
-            <input
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border border-transparent focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
-              placeholder="Your company"
-            />
-          </div>
-          <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Phone</label>
+            <label className="label text-m3-on-surface/70 mb-2 block">Phone *</label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border border-transparent focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
+              className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
+                errors.phone ? 'border-m3-secondary' : 'border-transparent'
+              } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
               placeholder="(555) 123-4567"
             />
+            {errors.phone && <p className="text-m3-secondary text-xs mt-1">{errors.phone}</p>}
+          </div>
+          <div>
+            <label className="label text-m3-on-surface/70 mb-2 block">Company/Brand *</label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
+                errors.company ? 'border-m3-secondary' : 'border-transparent'
+              } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+              placeholder="Your company"
+            />
+            {errors.company && <p className="text-m3-secondary text-xs mt-1">{errors.company}</p>}
           </div>
         </div>
 
@@ -262,32 +311,38 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         {!compact && (
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">Service</label>
+              <label className="label text-m3-on-surface/70 mb-2 block">Service *</label>
               <select
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border border-transparent focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
+                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
+                  errors.service ? 'border-m3-secondary' : 'border-transparent'
+                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
               >
                 <option value="">Select a service</option>
                 {services.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
               </select>
+              {errors.service && <p className="text-m3-secondary text-xs mt-1">{errors.service}</p>}
             </div>
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">Budget</label>
+              <label className="label text-m3-on-surface/70 mb-2 block">Budget *</label>
               <select
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border border-transparent focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
+                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
+                  errors.budget ? 'border-m3-secondary' : 'border-transparent'
+                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
               >
                 <option value="">Select budget</option>
-                {budgets.map((b) => (
+                {budgetRanges.map((b) => (
                   <option key={b.value} value={b.value}>{b.label}</option>
                 ))}
               </select>
+              {errors.budget && <p className="text-m3-secondary text-xs mt-1">{errors.budget}</p>}
             </div>
           </div>
         )}
@@ -296,29 +351,38 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         {!compact && (
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">Timeline</label>
+              <label className="label text-m3-on-surface/70 mb-2 block">Timeline *</label>
               <select
                 name="timeline"
                 value={formData.timeline}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border border-transparent focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
+                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
+                  errors.timeline ? 'border-m3-secondary' : 'border-transparent'
+                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
               >
                 <option value="">Select timeline</option>
                 {timelines.map((t) => (
                   <option key={t.value} value={t.value}>{t.label}</option>
                 ))}
               </select>
+              {errors.timeline && <p className="text-m3-secondary text-xs mt-1">{errors.timeline}</p>}
             </div>
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">How did you hear about us?</label>
-              <input
-                type="text"
+              <label className="label text-m3-on-surface/70 mb-2 block">How did you hear about us? *</label>
+              <select
                 name="referral"
                 value={formData.referral}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border border-transparent focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
-                placeholder="e.g. Instagram, referral"
-              />
+                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
+                  errors.referral ? 'border-m3-secondary' : 'border-transparent'
+                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+              >
+                <option value="">Select an option</option>
+                {referralSources.map((r) => (
+                  <option key={r.value} value={r.value}>{r.label}</option>
+                ))}
+              </select>
+              {errors.referral && <p className="text-m3-secondary text-xs mt-1">{errors.referral}</p>}
             </div>
           </div>
         )}

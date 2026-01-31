@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, MapPin, Phone, Clock } from 'lucide-react'
+import { Calendar, MapPin } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { ContactForm } from '@/components/ContactForm'
@@ -40,18 +40,18 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="lg:col-span-2 space-y-4"
+              className="lg:col-span-2 space-y-4 order-2 lg:order-1"
             >
-              {/* Discovery Call */}
+              {/* Free Discovery Call */}
               <div className="m3-elevated-card p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Discovery Call</h3>
+                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Free Discovery Call</h3>
                     <p className="text-m3-on-surface/60 text-xs sm:text-sm">
-                      Fill out the form and we'll schedule a 30-minute video call to discuss your project.
+                      30-minute video call to discuss your project.
                     </p>
                   </div>
                 </div>
@@ -64,46 +64,10 @@ export default function ContactPage() {
                     <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Bay Area Based</h3>
+                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">San Francisco Bay Area</h3>
                     <p className="text-m3-on-surface/60 text-xs sm:text-sm">
-                      Serving clients locally and nationwide. Available for travel.
+                      Available for travel.
                     </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Response Time */}
-              <div className="m3-elevated-card p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Quick Response</h3>
-                    <p className="text-m3-on-surface/60 text-xs sm:text-sm">
-                      We respond to all inquiries within one business day.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="m3-elevated-card p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-m3-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-m3-on-surface mb-1 text-sm sm:text-base">Email Us</h3>
-                    <p className="text-m3-on-surface/60 text-xs sm:text-sm mb-2">
-                      For general inquiries and press.
-                    </p>
-                    <a
-                      href="mailto:contact@where2studios.com"
-                      className="text-m3-primary text-xs sm:text-sm font-medium break-all"
-                    >
-                      contact@where2studios.com
-                    </a>
                   </div>
                 </div>
               </div>
@@ -114,14 +78,13 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="lg:col-span-3"
+              className="lg:col-span-3 order-1 lg:order-2"
             >
               <ContactForm showBookCall />
             </motion.div>
           </div>
         </div>
       </section>
-
 
       <Footer />
       <FloatingCTA />
