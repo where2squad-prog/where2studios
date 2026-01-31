@@ -213,11 +213,7 @@ export function BookingFormSheet() {
             className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-50 shadow-2xl flex flex-col"
           >
             {/* Header - Fixed */}
-            <div className="flex-shrink-0 bg-m3-surface-variant border-b border-m3-outline/20 px-5 py-4 flex items-center justify-between">
-              <div>
-                <h2 className="font-fredoka text-lg font-semibold text-m3-on-surface">Tell us about yourself</h2>
-                <p className="text-xs text-m3-on-surface/60 mt-0.5">All fields required</p>
-              </div>
+            <div className="flex-shrink-0 bg-m3-surface-variant border-b border-m3-outline/20 px-5 py-3 flex items-center justify-end">
               <button
                 onClick={handleClose}
                 className="p-2 hover:bg-m3-surface rounded-full transition-colors"
@@ -258,7 +254,12 @@ export function BookingFormSheet() {
                   </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Form Header */}
+                  <div className="text-center pb-2">
+                    <h3 className="font-fredoka text-xl font-semibold text-m3-on-surface">Tell us about yourself</h3>
+                    <p className="text-xs text-m3-on-surface/60 mt-1">We'll get back to you within 24 hours</p>
+                  </div>
                   {/* Honeypot */}
                   <input
                     type="text"
@@ -444,7 +445,7 @@ export function BookingFormSheet() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full m3-filled-button flex items-center justify-center gap-2 py-3 text-sm disabled:opacity-50"
+                    className="w-full m3-filled-button flex items-center justify-center gap-2 py-3 text-sm disabled:opacity-50 mt-2"
                   >
                     {isSubmitting ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -453,6 +454,30 @@ export function BookingFormSheet() {
                     )}
                     Book a Discovery Call
                   </button>
+
+                  {/* Trust Signals */}
+                  <div className="pt-4 border-t border-m3-outline/20 mt-4">
+                    <div className="flex items-center justify-center gap-6 text-m3-on-surface/50">
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-xs">30 min call</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-xs">No commitment</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-xs">Free quote</span>
+                      </div>
+                    </div>
+                  </div>
                 </form>
               )}
             </div>
