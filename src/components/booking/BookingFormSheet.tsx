@@ -213,13 +213,15 @@ export function BookingFormSheet() {
             className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-50 shadow-2xl flex flex-col"
           >
             {/* Header - Fixed */}
-            <div className="flex-shrink-0 bg-m3-surface-variant border-b border-m3-outline/20 px-5 py-3 flex items-center justify-end">
+            <div className="flex-shrink-0 bg-m3-surface-variant px-5 pt-5 pb-4 relative">
               <button
                 onClick={handleClose}
-                className="p-2 hover:bg-m3-surface rounded-full transition-colors"
+                className="absolute top-3 right-3 p-2 hover:bg-m3-surface rounded-full transition-colors"
               >
                 <X className="w-5 h-5 text-m3-on-surface/70" />
               </button>
+              <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface text-center">Tell us about yourself</h2>
+              <p className="text-xs text-m3-on-surface/50 text-center mt-1">We'll get back to you within 24 hours</p>
             </div>
 
             {/* Content - Scrollable */}
@@ -255,11 +257,6 @@ export function BookingFormSheet() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Form Header */}
-                  <div className="text-center pb-2">
-                    <h3 className="font-fredoka text-xl font-semibold text-m3-on-surface">Tell us about yourself</h3>
-                    <p className="text-xs text-m3-on-surface/60 mt-1">We'll get back to you within 24 hours</p>
-                  </div>
                   {/* Honeypot */}
                   <input
                     type="text"
