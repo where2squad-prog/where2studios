@@ -27,60 +27,63 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     name: 'Joshua Saltiban',
-    role: 'CEO / Founder',
-    blurb: 'Visionary storyteller building brands that matter.',
+    role: 'Chief Executive Officer, Founder',
+    blurb: 'Building Where2 from the ground up, vision, systems, and execution.',
     image: joshuaSvg,
-    instagram: 'joshuasaltiban',
-    linkedin: 'joshuasaltiban',
+    instagram: 'heyyosalty',
+    linkedin: 'joshua-saltiban-486003209',
   },
   {
     name: 'Daniel Martinez',
-    role: 'Co-Founder',
-    blurb: 'Operations mastermind keeping projects on track.',
+    role: 'Head of Marketing, Co-Founder',
+    blurb: 'Marketing that actually moves, strategy, growth, and real results.',
     image: danielSvg,
-    instagram: 'danielmartinez',
-    linkedin: 'danielmartinez',
+    instagram: 'hungrydanz',
+    linkedin: 'danieldean94',
   },
   {
     name: 'Gavin Legaspi',
-    role: 'Co-Founder',
-    blurb: 'Transforms raw footage into compelling stories.',
+    role: 'Creative Director, Co-Founder',
+    blurb: 'Turning real moments into visuals people feel and remember.',
     image: gavinSvg,
-    instagram: 'gavinlegaspi',
+    instagram: 'batang.gabino',
+    linkedin: 'gavin-legaspi-a85b57250',
   },
   {
     name: 'Anthony Gonzalez',
-    role: 'Co-Founder',
-    blurb: 'Expert in short-form content that captures attention.',
+    role: 'Head of Brand & Content Strategy, Co-Founder',
+    blurb: 'Helping brands stay on point, content strategy with direction and taste.',
     image: anthonySvg,
-    instagram: 'anthonygonzalez',
+    instagram: 'antjgonz',
+    linkedin: 'anthony-gonzalez-7a8378349',
   },
   {
     name: 'Gabby Guevara',
     role: 'Social Media Manager',
-    blurb: 'Crafts strategies that turn followers into customers.',
+    blurb: 'Keeping the socials consistent, clean, and always on brand.',
     image: gabbySvg,
-    instagram: 'gabbyguevara',
+    linkedin: 'gabrielleguevara',
   },
   {
     name: 'Ryan Sison',
-    role: 'Video Operations',
-    blurb: 'Brings cinematic vision with technical precision.',
+    role: 'Video Operations Lead',
+    blurb: 'Making every shoot run smooth, clean process, clean delivery.',
     image: ryanSvg,
-    instagram: 'ryansison',
+    instagram: 'just.ryjo',
   },
   {
     name: 'Joseph Jimenez',
-    role: 'Lead Photographer',
-    blurb: 'Captures moments that tell the complete story.',
+    role: 'Head of Photography',
+    blurb: 'Capturing the details that make the story hit harder.',
     image: josephSvg,
-    instagram: 'josephjimenez',
+    instagram: 'itsjobruh',
   },
   {
     name: 'Mayad Post Production House',
-    role: 'Overseas Partner',
-    blurb: 'Extended post-production excellence from abroad.',
+    role: 'Overseas Post Production Powerhouse',
+    blurb: 'Our overseas post team, fast turnarounds, polished edits, built to scale.',
     image: mayadSvg,
+    instagram: 'mpost.ph',
   },
 ]
 
@@ -109,12 +112,12 @@ export default function TeamPage() {
               Who We Are
             </h1>
             <p className="text-xl text-m3-on-surface/80 mb-4">
-              A passionate team of creators dedicated to visual storytelling.
+              A passionate team of creators who believe every story deserves to be told.
             </p>
             <p className="text-lg text-m3-on-surface/70 leading-relaxed">
-              We believe in stories that matter. Every project we take on is an opportunity 
-              to help brands connect authentically with their audience. We're not just content 
-              creators—we're your partners in building something real.
+              Where2Studios is a media production & marketing agency that helps businesses 
+              connect with real people. We create high quality visuals with fast turnaround times, 
+              tell stories that move people, and help you reach the right audience.
             </p>
           </motion.div>
         </div>
