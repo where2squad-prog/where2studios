@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ScrollToTop } from './components/layout/ScrollToTop'
 import { AuthProvider } from './hooks/useAuth'
 import { AdminRoute } from './components/auth/AdminRoute'
+import { BookingSheetProvider } from './contexts/BookingSheetContext'
+import { BookingFormSheet } from './components/booking/BookingFormSheet'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import SocialMediaWorkPage from './pages/SocialMediaWorkPage'
@@ -24,33 +26,36 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/work" element={<WorkPage />} />
-            <Route path="/work/social-media" element={<SocialMediaWorkPage />} />
-            <Route path="/work/productions" element={<ProductionsWorkPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/team" element={<TeamPage />} />
-            <Route path="/corporate" element={<CorporatePage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/weddings" element={<WeddingsPage />} />
-            <Route path="/social-media" element={<SocialMediaPage />} />
-            <Route path="/commercials" element={<CommercialsPage />} />
-            <Route path="/admin/login" element={<AdminLoginPage />} />
-            <Route
-              path="/admin/social"
-              element={
-                <AdminRoute>
-                  <SocialAdminPage />
-                </AdminRoute>
-              }
-            />
-            <Route path="/404" element={<NotFoundPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </BrowserRouter>
+        <BookingSheetProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/work" element={<WorkPage />} />
+              <Route path="/work/social-media" element={<SocialMediaWorkPage />} />
+              <Route path="/work/productions" element={<ProductionsWorkPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/corporate" element={<CorporatePage />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/weddings" element={<WeddingsPage />} />
+              <Route path="/social-media" element={<SocialMediaPage />} />
+              <Route path="/commercials" element={<CommercialsPage />} />
+              <Route path="/admin/login" element={<AdminLoginPage />} />
+              <Route
+                path="/admin/social"
+                element={
+                  <AdminRoute>
+                    <SocialAdminPage />
+                  </AdminRoute>
+                }
+              />
+              <Route path="/404" element={<NotFoundPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+            <BookingFormSheet />
+          </BrowserRouter>
+        </BookingSheetProvider>
       </AuthProvider>
     </QueryClientProvider>
   )

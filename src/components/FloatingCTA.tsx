@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Home } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 interface FloatingCTAProps {
   showHomeButton?: boolean
@@ -10,6 +11,7 @@ interface FloatingCTAProps {
 
 export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
   const [isVisible, setIsVisible] = useState(false)
+  const { openSheet } = useBookingSheet()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,13 +52,13 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                 )}
                 
                 {/* Right side - M3 Filled Button */}
-                <a
-                  href="/#contact"
+                <button
+                  onClick={openSheet}
                   className="m3-filled-button flex items-center gap-2 text-sm px-5 py-2.5"
                 >
                   <span>Book a Call</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </button>
               </div>
             </div>
           </div>

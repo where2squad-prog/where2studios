@@ -3,12 +3,13 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useCountUp } from '@/hooks/useCountUp'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 interface HeroSectionProps {
   eyebrow?: string
-  title: string
+  title?: string
   titleAccent?: string
-  subtitle: string
+  subtitle?: string
   showStats?: boolean
   showCTAs?: boolean
   videoBackground?: string
@@ -24,6 +25,7 @@ export function HeroSection({
   videoBackground = '/videos/hero-background.mp4',
 }: HeroSectionProps) {
   const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' })
+  const { openSheet } = useBookingSheet()
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-m3-surface-dark">
@@ -73,9 +75,12 @@ export function HeroSection({
             {/* CTA Buttons */}
             {showCTAs && (
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="m3-filled-button text-center">
+                <button
+                  onClick={openSheet}
+                  className="m3-filled-button text-center"
+                >
                   Book a Discovery Call
-                </Link>
+                </button>
                 <Link
                   to="/work"
                   className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
