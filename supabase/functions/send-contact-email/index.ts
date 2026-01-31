@@ -14,6 +14,7 @@ const ALLOWED_ORIGINS = [
   "https://where2studios.com",
   "https://www.where2studios.com",
   "https://id-preview--2bb4daec-4a94-4b24-bf81-fcab77007c43.lovable.app",
+  "https://2bb4daec-4a94-4b24-bf81-fcab77007c43.lovableproject.com",
   "http://localhost:8080",
   "http://localhost:5173",
 ];
