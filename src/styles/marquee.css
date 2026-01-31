@@ -75,3 +75,23 @@
   right: 0;
   background: linear-gradient(to left, hsl(var(--background)) 0%, transparent 100%);
 }
+
+/* CSS animation for mobile (more reliable than JS scrollLeft on mobile browsers) */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track-animated {
+  animation: marquee-scroll 20s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track-animated {
+    animation: none;
+  }
+}
