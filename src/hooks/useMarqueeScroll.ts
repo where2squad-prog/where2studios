@@ -3,21 +3,26 @@ import * as React from "react";
 type UseMarqueeScrollOptions = {
   /** Pixels per second */
   speed?: number;
+  /** Whether the animation is enabled (default: true) */
+  enabled?: boolean;
 };
 
 /**
- * Smooth, constant marquee that scrolls via scrollLeft (crisper on mobile than transform-based animation).
+ * Smooth, constant marquee that scrolls via scrollLeft (crisper on desktop).
  * Optimized to avoid forced reflows by batching layout reads.
+ * Can be disabled to allow CSS animation fallback on mobile.
  *
  * Usage: duplicate the content once; `contentRef` should point to the *first* set.
  */
 export function useMarqueeScroll(options: UseMarqueeScrollOptions = {}) {
-  const { speed = 40 } = options;
+  const { speed = 40, enabled = true } = options;
 
   const viewportRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
+    if (!enabled) return;
+    
     const viewport = viewportRef.current;
     const content = contentRef.current;
     if (!viewport || !content) return;
@@ -75,7 +80,7 @@ export function useMarqueeScroll(options: UseMarqueeScrollOptions = {}) {
       window.cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [speed]);
+  }, [speed, enabled]);
 
   return { viewportRef, contentRef };
 }
