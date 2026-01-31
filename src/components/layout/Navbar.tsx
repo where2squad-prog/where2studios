@@ -82,7 +82,7 @@ export function Navbar({
               scale: isScrolled ? 0.75 : 1
             }} transition={{
               duration: 0.3
-            }} src={logo} alt="Where2Studios" className={`w-auto drop-shadow-2xl origin-left transition-all duration-300 ${isScrolled ? 'h-12 sm:h-14 lg:h-16' : 'h-14 sm:h-18 lg:h-20'}`} />
+            }} src={logo} alt="Where2Studios" className={`w-auto drop-shadow-2xl origin-left transition-all duration-300 ${isScrolled ? 'h-12 sm:h-14 lg:h-18' : 'h-14 sm:h-18 lg:h-24'}`} />
             </Link>
 
             {/* Desktop Navigation */}
