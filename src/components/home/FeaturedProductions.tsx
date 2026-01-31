@@ -235,7 +235,7 @@ export function FeaturedProductions() {
               ref={scrollRef}
               className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4"
             >
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence mode="sync">
                 {filteredProjects.map((project, index) => (
                   <ProductionCard key={project.id} project={project} index={index} onPlay={setSelectedProject} />
                 ))}
@@ -263,7 +263,7 @@ export function FeaturedProductions() {
         <div className="sm:hidden">
           {filteredProjects.length > 0 ? (
             <div className="grid grid-cols-2 gap-3">
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence mode="sync">
                 {filteredProjects.slice(0, 6).map((project, index) => (
                   <motion.div
                     key={project.id}

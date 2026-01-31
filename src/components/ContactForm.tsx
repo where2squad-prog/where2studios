@@ -229,9 +229,21 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
     )
   }
 
+  const inputClasses = (hasError: boolean) =>
+    `w-full px-3 py-2.5 rounded-xl bg-m3-surface-variant text-m3-on-surface text-sm border ${
+      hasError ? 'border-m3-secondary' : 'border-transparent'
+    } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`
+
+  const selectClasses = (hasError: boolean) =>
+    `w-full px-3 py-2.5 rounded-xl bg-m3-surface-variant text-m3-on-surface text-sm border ${
+      hasError ? 'border-m3-secondary' : 'border-transparent'
+    } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`
+
+  const labelClasses = "text-xs font-medium text-m3-on-surface/70 mb-1.5 block"
+
   return (
-    <div className="m3-elevated-card p-6 sm:p-8">
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(false); }} className="space-y-5">
+    <div className="m3-elevated-card p-5 sm:p-6">
+      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(false); }} className="space-y-4">
         {/* Honeypot - hidden from users */}
         <input
           type="text"
@@ -244,177 +256,159 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         />
 
         {/* Name & Email */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3">
           <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Full Name *</label>
+            <label className={labelClasses}>Full Name *</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                errors.name ? 'border-m3-secondary' : 'border-transparent'
-              } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+              className={inputClasses(!!errors.name)}
               placeholder="Your name"
             />
-            {errors.name && <p className="text-m3-secondary text-xs mt-1">{errors.name}</p>}
+            {errors.name && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
           </div>
           <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Email *</label>
+            <label className={labelClasses}>Email *</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                errors.email ? 'border-m3-secondary' : 'border-transparent'
-              } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+              className={inputClasses(!!errors.email)}
               placeholder="you@company.com"
             />
-            {errors.email && <p className="text-m3-secondary text-xs mt-1">{errors.email}</p>}
+            {errors.email && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
           </div>
         </div>
 
         {/* Phone & Company */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3">
           <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Phone *</label>
+            <label className={labelClasses}>Phone *</label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                errors.phone ? 'border-m3-secondary' : 'border-transparent'
-              } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+              className={inputClasses(!!errors.phone)}
               placeholder="(555) 123-4567"
             />
-            {errors.phone && <p className="text-m3-secondary text-xs mt-1">{errors.phone}</p>}
+            {errors.phone && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.phone}</p>}
           </div>
           <div>
-            <label className="label text-m3-on-surface/70 mb-2 block">Company/Brand *</label>
+            <label className={labelClasses}>Company/Brand *</label>
             <input
               type="text"
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                errors.company ? 'border-m3-secondary' : 'border-transparent'
-              } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+              className={inputClasses(!!errors.company)}
               placeholder="Your company"
             />
-            {errors.company && <p className="text-m3-secondary text-xs mt-1">{errors.company}</p>}
+            {errors.company && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.company}</p>}
           </div>
         </div>
 
         {/* Service & Budget */}
         {!compact && (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-3">
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">Service *</label>
+              <label className={labelClasses}>Service *</label>
               <select
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                  errors.service ? 'border-m3-secondary' : 'border-transparent'
-                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+                className={selectClasses(!!errors.service)}
               >
                 <option value="">Select a service</option>
                 {services.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
               </select>
-              {errors.service && <p className="text-m3-secondary text-xs mt-1">{errors.service}</p>}
+              {errors.service && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>}
             </div>
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">Budget *</label>
+              <label className={labelClasses}>Budget *</label>
               <select
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                  errors.budget ? 'border-m3-secondary' : 'border-transparent'
-                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+                className={selectClasses(!!errors.budget)}
               >
                 <option value="">Select budget</option>
                 {budgetRanges.map((b) => (
                   <option key={b.value} value={b.value}>{b.label}</option>
                 ))}
               </select>
-              {errors.budget && <p className="text-m3-secondary text-xs mt-1">{errors.budget}</p>}
+              {errors.budget && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.budget}</p>}
             </div>
           </div>
         )}
 
         {/* Timeline & Referral */}
         {!compact && (
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-3">
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">Timeline *</label>
+              <label className={labelClasses}>Timeline *</label>
               <select
                 name="timeline"
                 value={formData.timeline}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                  errors.timeline ? 'border-m3-secondary' : 'border-transparent'
-                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+                className={selectClasses(!!errors.timeline)}
               >
                 <option value="">Select timeline</option>
                 {timelines.map((t) => (
                   <option key={t.value} value={t.value}>{t.label}</option>
                 ))}
               </select>
-              {errors.timeline && <p className="text-m3-secondary text-xs mt-1">{errors.timeline}</p>}
+              {errors.timeline && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.timeline}</p>}
             </div>
             <div>
-              <label className="label text-m3-on-surface/70 mb-2 block">How did you hear about us? *</label>
+              <label className={labelClasses}>How'd you find us? *</label>
               <select
                 name="referral"
                 value={formData.referral}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-                  errors.referral ? 'border-m3-secondary' : 'border-transparent'
-                } focus:outline-none focus:ring-2 focus:ring-m3-primary/30`}
+                className={selectClasses(!!errors.referral)}
               >
                 <option value="">Select an option</option>
                 {referralSources.map((r) => (
                   <option key={r.value} value={r.value}>{r.label}</option>
                 ))}
               </select>
-              {errors.referral && <p className="text-m3-secondary text-xs mt-1">{errors.referral}</p>}
+              {errors.referral && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.referral}</p>}
             </div>
           </div>
         )}
 
         {/* Message */}
         <div>
-          <label className="label text-m3-on-surface/70 mb-2 block">Message *</label>
+          <label className={labelClasses}>Message *</label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
-            rows={4}
-            className={`w-full px-4 py-3 rounded-xl bg-m3-surface-variant text-m3-on-surface border ${
-              errors.message ? 'border-m3-secondary' : 'border-transparent'
-            } focus:outline-none focus:ring-2 focus:ring-m3-primary/30 resize-none`}
+            rows={3}
+            className={`${inputClasses(!!errors.message)} resize-none`}
             placeholder="Tell us about your project..."
           />
-          {errors.message && <p className="text-m3-secondary text-xs mt-1">{errors.message}</p>}
+          {errors.message && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
         </div>
 
         {submitError && (
-          <p className="text-m3-secondary text-sm">{submitError}</p>
+          <p className="text-m3-secondary text-xs">{submitError}</p>
         )}
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-2">
           {showBookCall && (
             <button
               type="button"
               onClick={() => handleSubmit(true)}
               disabled={isSubmitting || !isValid()}
-              className="m3-filled-button flex items-center justify-center gap-2 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="m3-filled-button flex items-center justify-center gap-2 flex-1 py-2.5 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -427,7 +421,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`${showBookCall ? 'm3-outlined-button' : 'm3-filled-button'} flex items-center justify-center gap-2 flex-1 disabled:opacity-50`}
+            className={`${showBookCall ? 'm3-outlined-button' : 'm3-filled-button'} flex items-center justify-center gap-2 flex-1 py-2.5 text-sm disabled:opacity-50`}
           >
             {isSubmitting ? (
               <Loader2 className="w-4 h-4 animate-spin" />
