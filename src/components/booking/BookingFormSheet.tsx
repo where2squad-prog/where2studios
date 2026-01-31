@@ -121,27 +121,22 @@ export function BookingFormSheet() {
     setSubmitError(null)
 
     try {
-      const { error: dbError } = await supabase.from('contact_submissions').insert({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        service: formData.service,
-        message: formData.message,
-        phone: formData.phone,
-        budget: formData.budget,
-        timeline: formData.timeline,
-        referral: formData.referral,
+      // Use edge function which has service role access to bypass RLS
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          service: formData.service,
+          message: formData.message,
+          phone: formData.phone,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          referral: formData.referral,
+        },
       })
 
-      if (dbError) throw dbError
-
-      try {
-        await supabase.functions.invoke('send-contact-email', {
-          body: formData,
-        })
-      } catch (emailError) {
-        console.error('Email notification failed:', emailError)
-      }
+      if (error) throw error
 
       setIsSubmitted(true)
       // Open Cal.com modal after short delay for smooth transition

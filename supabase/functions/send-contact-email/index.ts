@@ -122,6 +122,26 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Save to database using service role (bypasses RLS)
+    const { error: dbError } = await supabaseAdmin
+      .from("contact_submissions")
+      .insert({
+        name: data.name,
+        email: data.email,
+        company: data.company || null,
+        service: data.service || null,
+        message: data.message,
+        phone: data.phone || null,
+        budget: data.budget || null,
+        timeline: data.timeline || null,
+        referral: data.referral || null,
+      });
+
+    if (dbError) {
+      console.error("Database insert error:", dbError);
+      // Continue with email sending even if DB insert fails
+    }
+
     // Escape all user-provided data for HTML emails
     const safeName = escapeHtml(data.name);
     const safeEmail = escapeHtml(data.email);
