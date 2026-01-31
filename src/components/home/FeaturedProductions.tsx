@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -96,10 +96,21 @@ function FilterChip({
   )
 }
 
+// Fisher-Yates shuffle function
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
 export function FeaturedProductions() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeFilter, setActiveFilter] = useState<string>('all')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [shuffleKey, setShuffleKey] = useState(0) // Trigger re-shuffle
   const { data: allProjects, isLoading } = useProjects()
 
   // Filter projects: only featured AND production categories
@@ -110,13 +121,23 @@ export function FeaturedProductions() {
     )
   }, [allProjects])
 
-  // Apply category filter
+  // Apply category filter with randomization for "All"
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'all') {
-      return productionProjects.slice(0, 8)
+      // Shuffle when "All" is selected (shuffleKey triggers re-shuffle)
+      return shuffleArray(productionProjects).slice(0, 8)
     }
     return productionProjects.filter(p => p.category === activeFilter).slice(0, 8)
-  }, [productionProjects, activeFilter])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productionProjects, activeFilter, shuffleKey])
+
+  // Handle filter change - trigger shuffle when clicking "All"
+  const handleFilterChange = useCallback((filter: string) => {
+    if (filter === 'all') {
+      setShuffleKey(prev => prev + 1) // Trigger re-shuffle
+    }
+    setActiveFilter(filter)
+  }, [])
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -195,14 +216,14 @@ export function FeaturedProductions() {
           <FilterChip
             label="All"
             active={activeFilter === 'all'}
-            onClick={() => setActiveFilter('all')}
+            onClick={() => handleFilterChange('all')}
           />
           {PRODUCTION_CATEGORIES.map(cat => (
             <FilterChip
               key={cat}
               label={FILTER_LABELS[cat]}
               active={activeFilter === cat}
-              onClick={() => setActiveFilter(cat)}
+              onClick={() => handleFilterChange(cat)}
             />
           ))}
         </motion.div>
