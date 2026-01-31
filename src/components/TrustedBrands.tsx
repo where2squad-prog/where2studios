@@ -38,9 +38,9 @@ export function TrustedBrands() {
     name: "Visit Berkeley",
     logo: brandVisitBerkeley
   }];
-  return <section className="py-16 sm:py-20 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
+  return <section className="py-12 sm:py-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Label */}
-      <p className="label text-center text-m3-on-surface/50 mb-10 sm:mb-12 text-destructive">
+      <p className="text-center text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-8 sm:mb-10">
         Trusted By Growing Brands
       </p>
       

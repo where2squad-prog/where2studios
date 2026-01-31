@@ -63,8 +63,8 @@ function ProductionCard({ project, index, onPlay }: ProductionCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-4">
-          <h3 className="font-fredoka text-lg font-semibold text-m3-on-surface line-clamp-1">
+        <div className="p-3 sm:p-4">
+          <h3 className="font-fredoka text-sm sm:text-base font-medium text-m3-on-surface line-clamp-1">
             {project.title}
           </h3>
         </div>
@@ -176,11 +176,11 @@ export function FeaturedProductions() {
           className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-6"
         >
           <div>
-            <span className="label text-m3-primary text-sm font-semibold uppercase tracking-wider">Productions</span>
-            <h2 className="font-fredoka text-2xl sm:text-3xl font-bold text-m3-on-surface mt-2">
+            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">Productions</span>
+            <h2 className="font-fredoka text-xl sm:text-2xl lg:text-3xl font-semibold text-m3-on-surface mt-2">
               Featured Productions
             </h2>
-            <p className="text-m3-on-surface/60 mt-2 max-w-md">
+            <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-md">
               Corporate, events, weddings, and commercials.
             </p>
           </div>

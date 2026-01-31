@@ -50,11 +50,11 @@ export function FeaturedSocialSection() {
           className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8"
         >
           <div>
-            <span className="label text-m3-secondary text-sm font-semibold uppercase tracking-wider">Social Media</span>
-            <h2 className="font-fredoka text-2xl sm:text-3xl font-bold text-m3-on-surface mt-2">
+            <span className="text-m3-secondary text-xs font-semibold uppercase tracking-widest">Social Media</span>
+            <h2 className="font-fredoka text-xl sm:text-2xl lg:text-3xl font-semibold text-m3-on-surface mt-2">
               Social Media Highlights
             </h2>
-            <p className="text-m3-on-surface/60 mt-2 max-w-md">
+            <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-md">
               Recent posts, reels, and campaigns built for growth.
             </p>
           </div>

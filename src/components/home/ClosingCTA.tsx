@@ -13,13 +13,13 @@ export function ClosingCTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <span className="label text-m3-secondary">Get Started</span>
-          <h2 className="text-2xl sm:text-4xl font-bold text-m3-on-surface mt-2">
+          <span className="text-m3-secondary text-xs font-semibold uppercase tracking-widest">Get Started</span>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-m3-on-surface mt-2">
             Ready to build something real?
           </h2>
-          <p className="text-m3-on-surface/60 mt-3 max-w-xl mx-auto">
+          <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg mx-auto">
             Let's talk about your project. Book a discovery call or send us a message.
           </p>
         </motion.div>
