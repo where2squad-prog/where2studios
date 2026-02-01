@@ -1,10 +1,17 @@
 'use client'
 
+import { Link } from 'react-router-dom'
+
 export function Footer() {
   const links = [
     { label: 'Our Work', href: '/work' },
-    { label: 'Team', href: '#team' },
-    { label: 'Book a Call', href: '#contact' },
+    { label: 'Team', href: '/team' },
+    { label: 'Contact', href: '/contact' },
+  ]
+
+  const legalLinks = [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
   ]
 
   const platforms = ['TikTok', 'Instagram', 'YouTube', 'Meta', 'CapCut', 'Adobe']
@@ -13,7 +20,7 @@ export function Footer() {
     <footer className="relative py-10 sm:py-12 pb-20 sm:pb-24 bg-m3-surface-dark text-m3-on-dark">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         
-        {/* Two Column Layout */}
+        {/* Three Column Layout */}
         <div className="flex flex-col md:flex-row justify-between gap-10 max-w-4xl mx-auto">
           
           {/* Links Column */}
@@ -21,13 +28,29 @@ export function Footer() {
             <h4 className="font-fredoka text-sm font-medium text-m3-on-dark mb-3">Links</h4>
             <nav className="flex flex-col gap-1.5">
               {links.map((link) => (
-                <a 
+                <Link 
                   key={link.label}
-                  href={link.href} 
+                  to={link.href} 
                   className="text-m3-on-dark/70 hover:text-m3-on-dark text-sm transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Legal Column */}
+          <div>
+            <h4 className="font-fredoka text-sm font-medium text-m3-on-dark mb-3">Legal</h4>
+            <nav className="flex flex-col gap-1.5">
+              {legalLinks.map((link) => (
+                <Link 
+                  key={link.label}
+                  to={link.href} 
+                  className="text-m3-on-dark/70 hover:text-m3-on-dark text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
               ))}
             </nav>
           </div>
@@ -56,7 +79,7 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-xs text-m3-on-dark/50">
-              © 2025 Where2Studios. All rights reserved.
+              © 2026 Where2Studios. All rights reserved.
             </p>
           </div>
         </div>

@@ -20,6 +20,8 @@ import CommercialsPage from './pages/services/CommercialsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import SocialAdminPage from './pages/admin/SocialAdminPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsOfServicePage from './pages/TermsOfServicePage'
 
 const queryClient = new QueryClient()
 
@@ -42,6 +44,8 @@ export default function App() {
               <Route path="/weddings" element={<WeddingsPage />} />
               <Route path="/social-media" element={<SocialMediaPage />} />
               <Route path="/commercials" element={<CommercialsPage />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms" element={<TermsOfServicePage />} />
               <Route path="/admin/login" element={<AdminLoginPage />} />
               <Route
                 path="/admin/social"
