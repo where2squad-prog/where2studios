@@ -113,7 +113,7 @@ export default function TeamPage() {
       />
 
       <div className="min-h-screen bg-m3-surface">
-        <Navbar variant="light" showServices />
+        <Navbar variant="light" />
 
         {/* Hero Section */}
         <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">

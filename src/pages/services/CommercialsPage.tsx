@@ -8,7 +8,7 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 export default function CommercialsPage() {
   return (
     <div className="min-h-screen bg-m3-background">
-      <Navbar variant="dark" showServices />
+      <Navbar variant="dark" />
       <ServicePageTemplate
         category="Commercials"
         title="Commercials & Ads"

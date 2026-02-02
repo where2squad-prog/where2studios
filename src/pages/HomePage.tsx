@@ -22,7 +22,7 @@ export default function HomePage() {
         schema={organizationSchema}
       />
       <div className="min-h-screen bg-m3-background text-m3-on-background">
-      <Navbar variant="dark" showServices />
+      <Navbar variant="dark" />
       
       <main className="relative">
         {/* A. Hero - Clear positioning and CTAs */}

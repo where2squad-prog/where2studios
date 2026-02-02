@@ -28,7 +28,7 @@ export default function CaseStudyPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-m3-surface-variant">
-        <Navbar variant="light" showServices />
+        <Navbar variant="light" />
         <div className="pt-32 pb-16">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <div className="animate-pulse">
@@ -45,7 +45,7 @@ export default function CaseStudyPage() {
   if (error || !project) {
     return (
       <div className="min-h-screen bg-m3-surface-variant">
-        <Navbar variant="light" showServices />
+        <Navbar variant="light" />
         <div className="pt-32 pb-16">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center">
             <h1 className="font-fredoka text-3xl font-semibold text-m3-on-surface mb-4">
@@ -100,7 +100,7 @@ export default function CaseStudyPage() {
       </Helmet>
 
       <div className="min-h-screen bg-m3-surface-variant">
-        <Navbar variant="light" showServices />
+        <Navbar variant="light" />
 
         {/* Hero Section */}
         <section className="pt-28 pb-8 sm:pt-36 sm:pb-12">
