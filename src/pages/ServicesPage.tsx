@@ -1,0 +1,146 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { Building2, CalendarDays, Heart, Megaphone, Clapperboard, ArrowRight } from 'lucide-react'
+import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/Footer'
+import { FloatingCTA } from '@/components/FloatingCTA'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
+
+const services = [
+  {
+    id: 'corporate',
+    title: 'Corporate',
+    icon: Building2,
+    href: '/corporate',
+    description: 'Brand films, recruiting content, executive comms, product launches',
+    forWho: 'Marketing teams, HR, executives',
+  },
+  {
+    id: 'events',
+    title: 'Events',
+    icon: CalendarDays,
+    href: '/events',
+    description: 'Teasers, recaps, speaker clips, sponsor reels, photo galleries',
+    forWho: 'Event producers, conference organizers',
+  },
+  {
+    id: 'weddings',
+    title: 'Weddings',
+    icon: Heart,
+    href: '/weddings',
+    description: 'Cinematic wedding films, highlight reels, same-day edits',
+    forWho: 'Couples, wedding planners',
+  },
+  {
+    id: 'social',
+    title: 'Social Media',
+    icon: Megaphone,
+    href: '/social-media',
+    description: 'Content systems, vertical video, reels, TikToks, Shorts',
+    forWho: 'Brands, creators, marketing teams',
+  },
+  {
+    id: 'commercials',
+    title: 'Commercials',
+    icon: Clapperboard,
+    href: '/commercials',
+    description: 'TV spots, digital ads, product videos, brand campaigns',
+    forWho: 'Agencies, brands, startups',
+  },
+]
+
+export default function ServicesPage() {
+  const { openSheet } = useBookingSheet()
+
+  return (
+    <div className="min-h-screen bg-m3-surface-variant">
+      <Navbar variant="light" showServices />
+
+      {/* Hero */}
+      <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
+          >
+            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
+              What We Do
+            </span>
+            <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2">
+              Services
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
+              Full-service media production for corporate, events, and everything in between.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-12 sm:py-16">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link
+                  to={service.href}
+                  className="group block h-full m3-elevated-card p-6 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center mb-4">
+                    <service.icon className="w-6 h-6 text-m3-primary" />
+                  </div>
+
+                  <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
+                    {service.title}
+                  </h2>
+
+                  <p className="text-sm text-m3-on-surface/70 mb-4">
+                    {service.description}
+                  </p>
+
+                  <p className="text-xs text-m3-on-surface/50 mb-4">
+                    <span className="font-semibold">For:</span> {service.forWho}
+                  </p>
+
+                  <div className="flex items-center gap-2 text-m3-primary font-medium text-sm group-hover:gap-3 transition-all">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 sm:py-24 bg-m3-surface">
+        <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-3xl">
+          <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
+            Not sure what you need?
+          </h2>
+          <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
+            Book a discovery call and we'll help you figure out the best approach for your goals.
+          </p>
+          <div className="mt-8">
+            <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
+              Book a Discovery Call
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <FloatingCTA />
+    </div>
+  )
+}
