@@ -6,7 +6,7 @@ import { TrustedBrands } from '@/components/TrustedBrands'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { ProcessSection } from '@/components/home/ProcessSection'
-import { TestimonialsSection } from '@/components/home/TestimonialsSection'
+import { WhatWeDeliverSection } from '@/components/home/WhatWeDeliverSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -39,8 +39,8 @@ export default function HomePage() {
         {/* E. Process - Make it feel safe */}
         <ProcessSection />
         
-        {/* F. Testimonials */}
-        <TestimonialsSection />
+        {/* F. What We Deliver - Metrics */}
+        <WhatWeDeliverSection />
         
         {/* G. Final CTA */}
         <FinalCTA />
