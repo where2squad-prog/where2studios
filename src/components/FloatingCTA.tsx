@@ -30,7 +30,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-0 left-0 right-0 z-50"
+          className="fixed bottom-0 left-0 right-0 z-[100]"
         >
           {/* M3 Surface Dark */}
           <div className="bg-m3-surface-dark/95 backdrop-blur-xl border-t border-m3-on-dark/10">
