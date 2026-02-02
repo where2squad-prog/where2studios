@@ -8,7 +8,7 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 export default function WeddingsPage() {
   return (
     <div className="min-h-screen bg-m3-background">
-      <Navbar variant="dark" showServices />
+      <Navbar variant="dark" />
       <ServicePageTemplate
         category="Weddings"
         title="Wedding Films"

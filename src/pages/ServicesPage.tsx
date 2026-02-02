@@ -56,7 +56,7 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-m3-surface-variant">
-      <Navbar variant="light" showServices />
+      <Navbar variant="light" />
 
       {/* Hero */}
       <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">

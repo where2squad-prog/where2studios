@@ -8,7 +8,7 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 export default function SocialMediaPage() {
   return (
     <div className="min-h-screen bg-m3-background">
-      <Navbar variant="dark" showServices />
+      <Navbar variant="dark" />
       <ServicePageTemplate
         category="Social Media"
         title="Social Media Content"

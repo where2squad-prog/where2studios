@@ -10,9 +10,7 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
-  { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'Who We Are' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 const serviceLinks = [
@@ -25,10 +23,9 @@ const serviceLinks = [
 
 interface NavbarProps {
   variant?: 'light' | 'dark';
-  showServices?: boolean;
 }
 
-export function Navbar({ variant = 'dark', showServices = false }: NavbarProps) {
+export function Navbar({ variant = 'dark' }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -93,7 +90,7 @@ export function Navbar({ variant = 'dark', showServices = false }: NavbarProps) 
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1 lg:gap-2">
-              {navLinks.slice(0, 4).map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
@@ -113,33 +110,43 @@ export function Navbar({ variant = 'dark', showServices = false }: NavbarProps) 
                 </Link>
               ))}
 
-              {showServices && (
-                <div className="relative group">
-                  <Link
-                    to="/services"
-                    className={`m3-text-button transition-colors ${
-                      isLight
-                        ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
-                        : 'text-m3-on-dark/80 hover:text-m3-on-dark'
-                    }`}
-                  >
-                    Services
-                  </Link>
-                  <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                    <div className={`m3-elevated-card p-2 min-w-[180px]`}>
-                      {serviceLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          to={link.href}
-                          className="block px-4 py-2 text-sm text-m3-on-surface hover:bg-m3-surface-variant rounded-lg transition-colors"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
+              {/* Services Dropdown */}
+              <div className="relative group">
+                <Link
+                  to="/services"
+                  className={`m3-text-button transition-colors ${
+                    isLight
+                      ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
+                      : 'text-m3-on-dark/80 hover:text-m3-on-dark'
+                  } ${
+                    location.pathname.includes('/services') || 
+                    location.pathname === '/corporate' || 
+                    location.pathname === '/events' ||
+                    location.pathname === '/weddings' ||
+                    location.pathname === '/social-media' ||
+                    location.pathname === '/commercials'
+                      ? isLight
+                        ? 'text-m3-on-surface'
+                        : 'text-m3-on-dark'
+                      : ''
+                  }`}
+                >
+                  Services
+                </Link>
+                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  <div className="m3-elevated-card p-2 min-w-[180px]">
+                    {serviceLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        to={link.href}
+                        className="block px-4 py-2 text-sm text-m3-on-surface hover:bg-m3-surface-variant rounded-lg transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
                   </div>
                 </div>
-              )}
+              </div>
 
               <button onClick={openSheet} className="ml-2 m3-filled-button text-sm">
                 Book a Call

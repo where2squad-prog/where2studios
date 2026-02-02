@@ -29,7 +29,7 @@ export default function ContactPage() {
       />
       
       <div className="min-h-screen bg-m3-background">
-        <Navbar variant="light" showServices />
+        <Navbar variant="light" />
         
         {/* Hero */}
         <section className="pt-28 pb-8 sm:pt-40 sm:pb-12 bg-m3-surface">

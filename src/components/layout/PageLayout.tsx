@@ -8,19 +8,17 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 interface PageLayoutProps {
   children: ReactNode
   navVariant?: 'light' | 'dark'
-  showServices?: boolean
   showFloatingCTA?: boolean
 }
 
 export function PageLayout({
   children,
   navVariant = 'dark',
-  showServices = true,
   showFloatingCTA = true,
 }: PageLayoutProps) {
   return (
     <div className="min-h-screen bg-m3-background text-m3-on-background">
-      <Navbar variant={navVariant} showServices={showServices} />
+      <Navbar variant={navVariant} />
       <main className="relative">{children}</main>
       <Footer />
       {showFloatingCTA && <FloatingCTA />}
