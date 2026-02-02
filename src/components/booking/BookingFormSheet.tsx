@@ -195,7 +195,7 @@ export function BookingFormSheet() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 bg-black/60 z-50"
+            className="fixed inset-0 bg-black/60 z-[120]"
             onClick={handleClose}
           />
 
@@ -205,7 +205,7 @@ export function BookingFormSheet() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 350 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-50 shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-[120] shadow-2xl flex flex-col"
           >
             {/* Header - Fixed */}
             <div className="flex-shrink-0 bg-m3-surface-variant px-5 pt-5 pb-4 relative">
