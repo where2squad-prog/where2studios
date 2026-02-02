@@ -2,8 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { Instagram, Linkedin } from 'lucide-react'
-import { PageLayout } from '@/components/layout/PageLayout'
+import { Link } from 'react-router-dom'
+import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/Footer'
+import { FloatingCTA } from '@/components/FloatingCTA'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { SEOHead, organizationSchema } from '@/components/SEOHead'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 // SVG imports
 import joshuaSvg from '@/assets/team/joshua.svg'
@@ -97,101 +102,138 @@ function getInitials(name: string): string {
 }
 
 export default function TeamPage() {
+  const { openSheet } = useBookingSheet()
+
   return (
-    <PageLayout navVariant="light">
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-m3-surface">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <span className="label text-m3-secondary mb-4 block">Who We Are</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-m3-on-surface mb-6">
-              Who We Are
-            </h1>
-            <p className="text-xl text-m3-on-surface/80 mb-4">
-              A passionate team of creators who believe every story deserves to be told.
-            </p>
-            <p className="text-lg text-m3-on-surface/70 leading-relaxed">
-              Where2Studios is a media production & marketing agency that helps businesses 
-              connect with real people. We create high quality visuals with fast turnaround times, 
-              tell stories that move people, and help you reach the right audience.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <>
+      <SEOHead
+        title="Who We Are"
+        description="Meet the Where2Studios team. A passionate group of creators helping brands across the Bay Area connect with real people through cinematic media."
+        schema={organizationSchema}
+      />
 
-      {/* Team Grid Section */}
-      <section className="pb-24 bg-m3-surface">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                viewport={{ once: true }}
-              >
-                <div className="m3-outlined-card p-6 transition-all duration-300 hover:border-m3-primary/30 group">
-                  {/* Avatar */}
-                  <div className="flex justify-center mb-4">
-                    <Avatar className="w-20 h-20">
-                      {member.image ? (
-                        <AvatarImage
-                          src={member.image}
-                          alt={member.name}
-                          className="object-cover"
-                        />
-                      ) : null}
-                      <AvatarFallback className="bg-m3-surface-variant text-m3-on-surface text-lg font-semibold">
-                        {getInitials(member.name)}
-                      </AvatarFallback>
-                    </Avatar>
-                  </div>
+      <div className="min-h-screen bg-m3-surface">
+        <Navbar variant="light" showServices />
 
-                  {/* Info */}
-                  <div className="text-center">
-                    <h3 className="font-semibold text-m3-on-surface">{member.name}</h3>
-                    <p className="text-m3-primary text-sm font-medium mb-2">{member.role}</p>
-                    <p className="text-m3-on-surface/70 text-sm leading-relaxed">{member.blurb}</p>
-                  </div>
-
-                  {/* Social Links */}
-                  {(member.instagram || member.linkedin) && (
-                    <div className="flex justify-center gap-3 mt-4">
-                      {member.instagram && (
-                        <a
-                          href={`https://instagram.com/${member.instagram}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-m3-on-surface/50 hover:text-m3-primary transition-colors"
-                          aria-label={`${member.name} on Instagram`}
-                        >
-                          <Instagram className="w-5 h-5" />
-                        </a>
-                      )}
-                      {member.linkedin && (
-                        <a
-                          href={`https://linkedin.com/in/${member.linkedin}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-m3-on-surface/50 hover:text-m3-primary transition-colors"
-                          aria-label={`${member.name} on LinkedIn`}
-                        >
-                          <Linkedin className="w-5 h-5" />
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+        {/* Hero Section */}
+        <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">
+          <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-3xl"
+            >
+              <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
+                Who We Are
+              </span>
+              <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2 mb-6">
+                The team behind the work
+              </h1>
+              <p className="text-base sm:text-lg text-m3-on-surface/80 mb-4 max-w-xl">
+                A passionate team of creators who believe every story deserves to be told.
+              </p>
+              <p className="text-base text-m3-on-surface/70 leading-relaxed max-w-2xl">
+                Where2Studios is a media production & marketing agency that helps businesses 
+                connect with real people. We create high quality visuals with fast turnaround times, 
+                tell stories that move people, and help you reach the right audience.
+              </p>
+            </motion.div>
           </div>
-        </div>
-      </section>
-    </PageLayout>
+        </section>
+
+        {/* Team Grid Section */}
+        <section className="pb-16 sm:pb-24">
+          <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="m3-outlined-card p-5 h-full transition-all duration-300 hover:border-m3-primary/30 group">
+                    {/* Avatar */}
+                    <div className="flex justify-center mb-4">
+                      <Avatar className="w-16 h-16">
+                        {member.image ? (
+                          <AvatarImage
+                            src={member.image}
+                            alt={member.name}
+                            className="object-cover"
+                          />
+                        ) : null}
+                        <AvatarFallback className="bg-m3-surface-variant text-m3-on-surface text-lg font-semibold">
+                          {getInitials(member.name)}
+                        </AvatarFallback>
+                      </Avatar>
+                    </div>
+
+                    {/* Info */}
+                    <div className="text-center">
+                      <h3 className="font-fredoka font-semibold text-m3-on-surface text-sm">{member.name}</h3>
+                      <p className="text-m3-primary text-xs font-medium mb-2 line-clamp-2">{member.role}</p>
+                      <p className="text-m3-on-surface/70 text-xs leading-relaxed">{member.blurb}</p>
+                    </div>
+
+                    {/* Social Links */}
+                    {(member.instagram || member.linkedin) && (
+                      <div className="flex justify-center gap-3 mt-4">
+                        {member.instagram && (
+                          <a
+                            href={`https://instagram.com/${member.instagram}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-m3-on-surface/50 hover:text-m3-primary transition-colors"
+                            aria-label={`${member.name} on Instagram`}
+                          >
+                            <Instagram className="w-4 h-4" />
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a
+                            href={`https://linkedin.com/in/${member.linkedin}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-m3-on-surface/50 hover:text-m3-primary transition-colors"
+                            aria-label={`${member.name} on LinkedIn`}
+                          >
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 sm:py-24 bg-m3-surface-variant">
+          <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-3xl">
+            <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
+              Ready to work with us?
+            </h2>
+            <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
+              Let's discuss your project and see how we can help bring your vision to life.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
+                Book a Discovery Call
+              </button>
+              <Link to="/work" className="m3-outlined-button">
+                View Our Work
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+        <FloatingCTA />
+      </div>
+    </>
   )
 }

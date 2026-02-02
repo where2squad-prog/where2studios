@@ -227,37 +227,67 @@ export type Database = {
       }
       projects: {
         Row: {
+          approach: string | null
           category: string
+          challenge: string | null
+          client_name: string | null
           created_at: string
+          deliverables: string[] | null
           description: string | null
           display_order: number | null
           featured: boolean | null
           id: string
+          images: string[] | null
+          location: string | null
+          metrics_json: Json | null
+          published: boolean | null
           result: string | null
+          services: string[] | null
+          slug: string | null
           thumbnail_url: string | null
           title: string
           video_url: string | null
         }
         Insert: {
+          approach?: string | null
           category: string
+          challenge?: string | null
+          client_name?: string | null
           created_at?: string
+          deliverables?: string[] | null
           description?: string | null
           display_order?: number | null
           featured?: boolean | null
           id?: string
+          images?: string[] | null
+          location?: string | null
+          metrics_json?: Json | null
+          published?: boolean | null
           result?: string | null
+          services?: string[] | null
+          slug?: string | null
           thumbnail_url?: string | null
           title: string
           video_url?: string | null
         }
         Update: {
+          approach?: string | null
           category?: string
+          challenge?: string | null
+          client_name?: string | null
           created_at?: string
+          deliverables?: string[] | null
           description?: string | null
           display_order?: number | null
           featured?: boolean | null
           id?: string
+          images?: string[] | null
+          location?: string | null
+          metrics_json?: Json | null
+          published?: boolean | null
           result?: string | null
+          services?: string[] | null
+          slug?: string | null
           thumbnail_url?: string | null
           title?: string
           video_url?: string | null
@@ -349,6 +379,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      testimonials: {
+        Row: {
+          company: string | null
+          created_at: string
+          display_order: number | null
+          headshot_url: string | null
+          id: string
+          name: string
+          published: boolean | null
+          quote: string
+          role: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          display_order?: number | null
+          headshot_url?: string | null
+          id?: string
+          name: string
+          published?: boolean | null
+          quote: string
+          role?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          display_order?: number | null
+          headshot_url?: string | null
+          id?: string
+          name?: string
+          published?: boolean | null
+          quote?: string
+          role?: string | null
+        }
+        Relationships: []
       }
       user_roles: {
         Row: {
