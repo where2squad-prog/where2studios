@@ -3,7 +3,6 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { ConversionHero } from '@/components/home/ConversionHero'
 import { TrustedBrands } from '@/components/TrustedBrands'
-import { ProofStrip } from '@/components/home/ProofStrip'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { ProcessSection } from '@/components/home/ProcessSection'
@@ -28,17 +27,10 @@ export default function HomePage() {
         {/* A. Hero - Clear positioning and CTAs */}
         <ConversionHero />
         
-        {/* Trusted Brands Marquee */}
-        <section className="py-10 sm:py-12 bg-m3-surface-variant">
-          <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-            <TrustedBrands />
-          </div>
-        </section>
+        {/* Trusted Brands Logo Marquee */}
+        <TrustedBrands />
         
-        {/* B. Proof Strip - Metrics and outcomes */}
-        <ProofStrip />
-        
-        {/* C. Service Lane Picker */}
+        {/* B. Service Lane Picker */}
         <ServiceLanes />
         
         {/* D. Featured Case Studies */}
