@@ -6,6 +6,7 @@ import { AuthProvider } from './hooks/useAuth'
 import { AdminRoute } from './components/auth/AdminRoute'
 import { BookingSheetProvider } from './contexts/BookingSheetContext'
 import { BookingFormSheet } from './components/booking/BookingFormSheet'
+import { CookieConsent } from './components/CookieConsent'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import SocialMediaWorkPage from './pages/SocialMediaWorkPage'
@@ -59,6 +60,7 @@ export default function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <BookingFormSheet />
+            <CookieConsent />
           </BrowserRouter>
         </BookingSheetProvider>
       </AuthProvider>
