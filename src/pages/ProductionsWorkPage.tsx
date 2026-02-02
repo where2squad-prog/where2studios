@@ -41,7 +41,7 @@ export default function ProductionsWorkPage() {
   return (
     <div className="min-h-screen bg-m3-surface-dark">
       {/* Top App Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-m3-surface-dark/90 backdrop-blur-xl">
+      <nav className="fixed top-0 left-0 right-0 z-[110] bg-m3-surface-dark/90 backdrop-blur-xl">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-20 sm:h-28 border-b border-m3-on-dark/10">
             <div className="flex items-center gap-2 sm:gap-4">
@@ -86,7 +86,7 @@ export default function ProductionsWorkPage() {
       </section>
 
       {/* Filter Chips */}
-      <section className="sticky top-20 sm:top-28 z-40 py-3 sm:py-4 bg-m3-surface-dark/90 backdrop-blur-xl border-b border-m3-on-dark/5">
+      <section className="sticky top-20 sm:top-28 z-[105] py-3 sm:py-4 bg-m3-surface-dark/90 backdrop-blur-xl border-b border-m3-on-dark/5">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 min-w-max sm:min-w-0 sm:flex-wrap">
