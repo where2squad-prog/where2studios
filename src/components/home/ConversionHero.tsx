@@ -61,7 +61,7 @@ export function ConversionHero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-10">
               <button
                 onClick={openSheet}
                 className="m3-filled-button text-center text-base sm:text-lg px-8 py-4"
@@ -70,16 +70,16 @@ export function ConversionHero() {
               </button>
               <Link
                 to="/work"
-                className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
+                className="m3-outlined-button text-m3-on-dark border-m3-on-dark/40 hover:bg-m3-on-dark/10 text-center px-6 py-3"
               >
                 View Work
               </Link>
             </div>
 
             {/* Trust Bullets */}
-            <div className="flex flex-wrap gap-4 sm:gap-6">
+            <div className="flex flex-wrap gap-6 sm:gap-8">
               {trustBullets.map((bullet) => (
-                <div key={bullet.text} className="flex items-center gap-2">
+                <div key={bullet.text} className="flex items-center gap-2.5">
                   <bullet.icon className="w-4 h-4 text-m3-primary" />
                   <span className="text-m3-on-dark/70 text-sm">{bullet.text}</span>
                 </div>
