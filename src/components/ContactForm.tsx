@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, Loader2, Send, Calendar } from 'lucide-react'
 import { z } from 'zod'
-import { supabase } from '@/integrations/supabase/client'
+import { submitContact } from '@/lib/submitContact'
 import { useCalModal } from '@/hooks/useCalModal'
 import { Link } from 'react-router-dom'
 
@@ -126,37 +126,32 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
     setSubmitError(null)
 
     try {
-      // Use edge function which has service role access to bypass RLS
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          service: formData.service,
-          message: formData.message,
-          phone: formData.phone,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          referral: formData.referral,
-        },
+      await submitContact({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        service: formData.service,
+        message: formData.message,
+        phone: formData.phone,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        referral: formData.referral,
       })
-
-      if (error) throw error
 
       setIsSubmitted(true)
       setPendingCalOpen(openCalAfter)
 
       if (openCalAfter) {
-        // Open Cal.com modal
         openCalModal()
       }
     } catch (err) {
       console.error('Submission error:', err)
-      setSubmitError('Something went wrong. Please try again.')
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
+
 
   const resetForm = () => {
     setIsSubmitted(false)
