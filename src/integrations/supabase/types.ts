@@ -296,22 +296,28 @@ export type Database = {
       }
       rate_limits: {
         Row: {
-          action: string
-          created_at: string
-          id: string
-          identifier: string
+          count: number
+          id: number
+          rl_key: string
+          updated_at: string
+          window_seconds: number
+          window_start: string
         }
         Insert: {
-          action: string
-          created_at?: string
-          id?: string
-          identifier: string
+          count?: number
+          id?: number
+          rl_key: string
+          updated_at?: string
+          window_seconds: number
+          window_start: string
         }
         Update: {
-          action?: string
-          created_at?: string
-          id?: string
-          identifier?: string
+          count?: number
+          id?: number
+          rl_key?: string
+          updated_at?: string
+          window_seconds?: number
+          window_start?: string
         }
         Relationships: []
       }
@@ -442,6 +448,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_rate_limit: {
+        Args: { p_key: string; p_max: number; p_window_seconds: number }
+        Returns: boolean
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
