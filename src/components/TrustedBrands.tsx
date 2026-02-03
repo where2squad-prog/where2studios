@@ -2,6 +2,7 @@
 
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useMarqueeScroll } from '@/hooks/useMarqueeScroll';
+import { useCountUp } from '@/hooks/useCountUp';
 import brandBackyardBayou from '@/assets/brand-backyard-bayou.svg';
 import brandCityline from '@/assets/brand-cityline.svg';
 import brandFoodieland from '@/assets/brand-foodieland.svg';
@@ -13,6 +14,7 @@ import '@/styles/marquee.css';
 
 export function TrustedBrands() {
   const isMobile = useIsMobile();
+  const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' });
   
   // Only use JS-based scroll on desktop (more reliable CSS animation on mobile)
   const {
@@ -98,6 +100,30 @@ export function TrustedBrands() {
         
         {/* Right fade */}
         <div className="marquee-fade marquee-fade-right" />
+      </div>
+
+      {/* Stats Section */}
+      <div className="container mx-auto px-4 sm:px-8 lg:px-12 mt-10 sm:mt-14" ref={views.ref}>
+        <div className="flex justify-center">
+          <div className="grid grid-cols-4 gap-6 sm:gap-12 lg:gap-16">
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">632+</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Projects</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">100+</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brands</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">10K+</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Content</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
