@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useCountUp } from '@/hooks/useCountUp'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { Check, Shield, Zap } from 'lucide-react'
 
@@ -13,7 +12,6 @@ const trustBullets = [
 ]
 
 export function ConversionHero() {
-  const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' })
   const { openSheet } = useBookingSheet()
 
   return (
@@ -88,39 +86,6 @@ export function ConversionHero() {
           </motion.div>
         </div>
       </div>
-
-      {/* Stats + Social Proof Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-4 right-4 sm:left-8 sm:right-8 lg:left-auto lg:right-16 lg:w-auto z-40"
-        ref={views.ref}
-      >
-        <div className="m3-elevated-card bg-m3-surface-dark/85 backdrop-blur-md px-6 py-5 sm:px-10 sm:py-6 border border-m3-on-dark/10 rounded-2xl">
-          <p className="text-m3-on-dark/50 text-[10px] sm:text-xs uppercase tracking-widest font-medium mb-4 text-center">
-            Trusted by brands, founders, and teams across the Bay Area
-          </p>
-          <div className="grid grid-cols-4 gap-4 sm:gap-8">
-            <div className="text-center">
-              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">632+</div>
-              <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Projects</div>
-            </div>
-            <div className="text-center border-l border-m3-on-dark/20 pl-4 sm:pl-8">
-              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
-              <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Views</div>
-            </div>
-            <div className="text-center border-l border-m3-on-dark/20 pl-4 sm:pl-8">
-              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">100+</div>
-              <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Brands</div>
-            </div>
-            <div className="text-center border-l border-m3-on-dark/20 pl-4 sm:pl-8">
-              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">10K+</div>
-              <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Content</div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
 
       {/* Bottom gradient */}
       <div
