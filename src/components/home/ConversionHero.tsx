@@ -97,24 +97,26 @@ export function ConversionHero() {
         className="absolute bottom-8 left-4 right-4 sm:left-8 sm:right-8 lg:left-auto lg:right-16 lg:w-auto z-40"
         ref={views.ref}
       >
-        <div className="m3-elevated-card bg-m3-surface-dark/80 backdrop-blur-md px-5 py-4 sm:px-6 sm:py-5 border border-m3-on-dark/10">
-          <p className="text-m3-on-dark/50 text-[10px] sm:text-xs uppercase tracking-wider font-medium mb-3">
+        <div className="m3-elevated-card bg-m3-surface-dark/85 backdrop-blur-md px-6 py-5 sm:px-10 sm:py-6 border border-m3-on-dark/10 rounded-2xl">
+          <p className="text-m3-on-dark/50 text-[10px] sm:text-xs uppercase tracking-widest font-medium mb-4 text-center">
             Trusted by brands, founders, and teams across the Bay Area
           </p>
-          <div className="flex justify-around lg:justify-start gap-5 sm:gap-7">
+          <div className="grid grid-cols-4 gap-4 sm:gap-8">
             <div className="text-center">
-              <div className="text-lg sm:text-xl font-bold text-m3-primary tabular-nums">632+</div>
+              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">632+</div>
               <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Projects</div>
             </div>
-            <div className="w-px bg-m3-on-dark/20 hidden sm:block" />
-            <div className="text-center">
-              <div className="text-lg sm:text-xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
+            <div className="text-center border-l border-m3-on-dark/20 pl-4 sm:pl-8">
+              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
               <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Views</div>
             </div>
-            <div className="w-px bg-m3-on-dark/20 hidden sm:block" />
-            <div className="text-center">
-              <div className="text-lg sm:text-xl font-bold text-m3-primary tabular-nums">100+</div>
+            <div className="text-center border-l border-m3-on-dark/20 pl-4 sm:pl-8">
+              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">100+</div>
               <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Brands</div>
+            </div>
+            <div className="text-center border-l border-m3-on-dark/20 pl-4 sm:pl-8">
+              <div className="text-xl sm:text-2xl font-bold text-m3-primary tabular-nums">10K+</div>
+              <div className="text-m3-on-dark/60 text-[11px] sm:text-xs font-medium">Content</div>
             </div>
           </div>
         </div>
