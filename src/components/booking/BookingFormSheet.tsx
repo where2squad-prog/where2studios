@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Loader2, Check, Calendar } from 'lucide-react'
 import { z } from 'zod'
-import { supabase } from '@/integrations/supabase/client'
+import { submitContact } from '@/lib/submitContact'
 import { useCalModal } from '@/hooks/useCalModal'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { Link } from 'react-router-dom'
@@ -121,22 +121,17 @@ export function BookingFormSheet() {
     setSubmitError(null)
 
     try {
-      // Use edge function which has service role access to bypass RLS
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          service: formData.service,
-          message: formData.message,
-          phone: formData.phone,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          referral: formData.referral,
-        },
+      await submitContact({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        service: formData.service,
+        message: formData.message,
+        phone: formData.phone,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        referral: formData.referral,
       })
-
-      if (error) throw error
 
       setIsSubmitted(true)
       // Open Cal.com modal after short delay for smooth transition
@@ -145,7 +140,7 @@ export function BookingFormSheet() {
       }, 300)
     } catch (err) {
       console.error('Submission error:', err)
-      setSubmitError('Something went wrong. Please try again.')
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
