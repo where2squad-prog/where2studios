@@ -71,7 +71,7 @@ function escapeHtml(unsafe: string): string {
 }
 
 // Rate limiting constants
-const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
+const RATE_LIMIT_WINDOW_SECONDS = 3600; // 1 hour
 const MAX_SUBMISSIONS_PER_IP = 5;
 const MAX_SUBMISSIONS_PER_EMAIL = 3;
 
@@ -292,25 +292,21 @@ const handler = async (req: Request): Promise<Response> => {
                          "unknown";
     const emailIdentifier = data.email.toLowerCase();
 
-    // Check rate limits
-    const hourAgo = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
-    
-    const [ipCheck, emailCheck] = await Promise.all([
-      supabaseAdmin
-        .from("rate_limits")
-        .select("*")
-        .eq("identifier", ipIdentifier)
-        .eq("action", "contact_form")
-        .gte("created_at", hourAgo),
-      supabaseAdmin
-        .from("rate_limits")
-        .select("*")
-        .eq("identifier", emailIdentifier)
-        .eq("action", "contact_form_email")
-        .gte("created_at", hourAgo)
+    // Check rate limits using atomic database function
+    const [ipRateLimit, emailRateLimit] = await Promise.all([
+      supabaseAdmin.rpc("check_rate_limit", {
+        p_key: `contact_ip:${ipIdentifier}`,
+        p_max: MAX_SUBMISSIONS_PER_IP,
+        p_window_seconds: RATE_LIMIT_WINDOW_SECONDS
+      }),
+      supabaseAdmin.rpc("check_rate_limit", {
+        p_key: `contact_email:${emailIdentifier}`,
+        p_max: MAX_SUBMISSIONS_PER_EMAIL,
+        p_window_seconds: RATE_LIMIT_WINDOW_SECONDS
+      })
     ]);
 
-    if (ipCheck.data && ipCheck.data.length >= MAX_SUBMISSIONS_PER_IP) {
+    if (ipRateLimit.error || !ipRateLimit.data) {
       console.log(`IP rate limit exceeded for ${ipIdentifier}`);
       return new Response(
         JSON.stringify({ 
@@ -321,7 +317,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    if (emailCheck.data && emailCheck.data.length >= MAX_SUBMISSIONS_PER_EMAIL) {
+    if (emailRateLimit.error || !emailRateLimit.data) {
       console.log(`Email rate limit exceeded for ${emailIdentifier}`);
       return new Response(
         JSON.stringify({ 
@@ -331,12 +327,6 @@ const handler = async (req: Request): Promise<Response> => {
         { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
-
-    // Record rate limit entries
-    await Promise.all([
-      supabaseAdmin.from("rate_limits").insert({ identifier: ipIdentifier, action: "contact_form" }),
-      supabaseAdmin.from("rate_limits").insert({ identifier: emailIdentifier, action: "contact_form_email" })
-    ]);
 
     // Save to database
     const { error: dbError } = await supabaseAdmin
