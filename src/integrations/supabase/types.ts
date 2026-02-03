@@ -51,10 +51,12 @@ export type Database = {
           ip_address: string | null
           message: string
           name: string
+          page_url: string | null
           phone: string | null
           referral: string | null
           service: string | null
           timeline: string | null
+          user_agent: string | null
         }
         Insert: {
           budget?: string | null
@@ -65,10 +67,12 @@ export type Database = {
           ip_address?: string | null
           message: string
           name: string
+          page_url?: string | null
           phone?: string | null
           referral?: string | null
           service?: string | null
           timeline?: string | null
+          user_agent?: string | null
         }
         Update: {
           budget?: string | null
@@ -79,10 +83,12 @@ export type Database = {
           ip_address?: string | null
           message?: string
           name?: string
+          page_url?: string | null
           phone?: string | null
           referral?: string | null
           service?: string | null
           timeline?: string | null
+          user_agent?: string | null
         }
         Relationships: []
       }
