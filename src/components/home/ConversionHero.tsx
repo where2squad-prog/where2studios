@@ -50,12 +50,12 @@ export function ConversionHero() {
 
             {/* H1 - Clear positioning */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-m3-on-dark font-bold leading-[1.1] mb-5">
-              High-end content systems for{' '}
-              <span className="text-m3-primary">corporate & events</span>
+              Make your event look{' '}
+              <span className="text-m3-primary">as big as it felt</span>
             </h1>
 
             {/* Subhead */}
-            <p className="text-base sm:text-lg text-m3-on-dark/80 max-w-xl leading-relaxed mb-8">We plan, produce, and distribute cinematic media that drives real bookings and brand trust</p>
+            <p className="text-base sm:text-lg text-m3-on-dark/80 max-w-xl leading-relaxed mb-8">From prep to post, we capture the moments people talk about — then turn them into content that keeps working after the night ends.</p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-10">
