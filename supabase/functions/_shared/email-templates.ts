@@ -229,7 +229,7 @@ ${escapeHtml(name)}${company ? ` from <strong style="color:${BRAND.text};">${esc
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px;">
 <tr>
 ${email ? `<td style="padding-right:10px;">${renderButton("Reply", `mailto:${escapeHtml(email)}`)}</td>` : ""}
-${phone ? `<td style="padding-right:10px;">${renderButton("Call", `tel:${escapeHtml(phone)}`, false)}</td>` : ""}
+${payload.pageUrl ? `<td>${renderButton("View Page", escapeHtml(pageShort || payload.pageUrl), false)}</td>` : ""}
 ${payload.pageUrl ? `<td>${renderButton("View Page", escapeHtml(pageShort || payload.pageUrl), false)}</td>` : ""}
 </tr>
 </table>
