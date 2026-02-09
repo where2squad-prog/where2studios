@@ -177,7 +177,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed inset-0 bg-m3-surface-dark/60 backdrop-blur-sm z-[80]"
+              className="md:hidden fixed inset-0 bg-m3-surface-dark/60 backdrop-blur-sm z-[115]"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -185,7 +185,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="md:hidden fixed top-0 right-0 h-full w-72 bg-m3-surface-dark/95 backdrop-blur-xl border-l border-m3-on-dark/10 z-[90]"
+              className="md:hidden fixed top-0 right-0 h-full w-72 bg-m3-surface-dark/95 backdrop-blur-xl border-l border-m3-on-dark/10 z-[120]"
             >
               <div className="flex flex-col h-full">
                 <div className="flex justify-end p-4">
