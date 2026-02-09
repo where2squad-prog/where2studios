@@ -195,7 +195,7 @@ export default function ContactPage() {
         </section>
 
         <Footer />
-        <FloatingCTA />
+        
       </div>
     </>
   )
