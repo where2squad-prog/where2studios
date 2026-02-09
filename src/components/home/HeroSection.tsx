@@ -16,10 +16,10 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({
-  eyebrow = 'Full Service Media & Marketing Agency',
-  title = 'Building brands people',
-  titleAccent = 'TRUST',
-  subtitle = 'Creating content that reaches people and builds community',
+  eyebrow = 'Full Service Media & Marketing',
+  title = 'Make your event look',
+  titleAccent = 'as big as it felt',
+  subtitle = 'From prep to post, we capture the moments people talk about — then turn them into content that keeps working after the night ends.',
   showStats = true,
   showCTAs = true,
   videoBackground = '/videos/hero-background.mp4',
@@ -62,9 +62,8 @@ export function HeroSection({
 
             {/* Display Large */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-m3-on-dark font-bold leading-[1.15] mb-5">
-              {title}
-              <br />
-              people <span className="text-m3-primary">{titleAccent}</span>
+              {title}{' '}
+              <span className="text-m3-primary">{titleAccent}</span>
             </h1>
 
             {/* Body */}
@@ -85,7 +84,7 @@ export function HeroSection({
                   to="/work"
                   className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
                 >
-                  View Featured Work
+                  View Work
                 </Link>
               </div>
             )}

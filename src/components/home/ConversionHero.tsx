@@ -9,10 +9,10 @@ const trustBullets = [{
   text: 'Fast, organized production'
 }, {
   icon: Shield,
-  text: 'Brand-safe execution'
+  text: 'Brand safe execution'
 }, {
   icon: Check,
-  text: 'Built for busy teams'
+  text: 'Content that lives beyond the event'
 }];
 export function ConversionHero() {
   const {
