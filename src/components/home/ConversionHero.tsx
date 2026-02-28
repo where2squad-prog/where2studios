@@ -6,9 +6,9 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { Zap, Eye, Share2 } from 'lucide-react';
 
 const proofChips = [
-  { icon: Zap, text: 'Launch-ready in 1–3 weeks' },
-  { icon: Eye, text: 'Clear, founder-friendly process' },
-  { icon: Share2, text: 'Built to distribute everywhere' },
+  { icon: Zap, text: 'Deliverables shipped in 1–3 weeks' },
+  { icon: Eye, text: 'Clear deadlines, no back and forth' },
+  { icon: Share2, text: 'Clips and formats for every platform' },
 ];
 
 export function ConversionHero() {
@@ -44,24 +44,23 @@ export function ConversionHero() {
           >
             {/* Eyebrow */}
             <p className="text-m3-primary text-xs font-semibold tracking-widest uppercase mb-3">
-              Your Startup Media Partner
+              Media Production for Startups
             </p>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] mb-4">
-              Tell your startup story
+              Launch videos, podcasts, and event recaps
               <br />
-              like a <span className="text-m3-primary">studio</span>
+              <span className="text-m3-primary">shipped fast</span> with clips included.
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">
-              Launch videos, podcasts, and event recaps that help founders
-              build credibility, attract investors, and win their first thousand fans.
+              You're launching, fundraising, or hosting an event. You need a launch video, a podcast episode, or an event recap. We ship the deliverables on your deadline with clips and cutdowns ready to post.
             </p>
 
             {/* CTA Row */}
-            <div className="flex flex-col sm:flex-row items-start gap-3 mb-5">
+            <div className="flex flex-col sm:flex-row items-start gap-3 mb-3">
               <button
                 onClick={openSheet}
                 className="h-12 inline-flex items-center justify-center rounded-lg bg-m3-primary text-m3-on-primary font-semibold text-base px-7 shadow-sm hover:brightness-110 transition-all"
@@ -69,12 +68,17 @@ export function ConversionHero() {
                 Book a Discovery Call
               </button>
               <Link
-                to="/work"
+                to="/startups"
                 className="h-12 inline-flex items-center justify-center rounded-lg bg-white/10 border border-white/20 text-white backdrop-blur font-medium text-base px-7 hover:bg-white/15 transition-all"
               >
-                See Startup Work
+                See Our Work
               </Link>
             </div>
+
+            {/* Helper line */}
+            <p className="text-white/50 text-xs mb-5">
+              Share the goal and the deadline, we'll reply within 1 business day.
+            </p>
 
             {/* Proof Chips */}
             <div className="flex flex-wrap gap-2 sm:gap-4">

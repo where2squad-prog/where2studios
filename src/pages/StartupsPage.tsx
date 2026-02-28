@@ -10,32 +10,32 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { SEOHead } from '@/components/SEOHead'
 
-const whyStartups = [
-  'We move at your pace — no bloated timelines',
+const whyUs = [
+  'We move on your deadline — no bloated timelines',
   'Founder-friendly pricing and flexible packages',
-  'Launch-ready deliverables in days, not months',
-  'Content designed to convert, not just look pretty',
+  'Deliverables shipped in days, not months',
+  'Content built to convert, not just look pretty',
   'One producer, one point of contact, zero confusion',
-  'Multi-format exports for pitch decks, social, and web',
+  'Clips and cutdowns for every format included',
 ]
 
 const services = [
   {
     icon: Video,
     title: 'Launch Videos',
-    description: 'Product demos, explainers, pitch deck videos, and founder stories that build credibility and attract investors.',
+    description: 'Product demos, founder stories, and pitch videos that build credibility and close investors. Deliverables shipped in 1–3 weeks.',
     href: '/services/launch-videos',
   },
   {
     icon: Mic,
     title: 'Podcasts',
-    description: 'Full-service podcast production — recording, editing, clips, and distribution to establish thought leadership.',
+    description: 'Full-service podcast production — recording, editing, clips, and publishing. Launch an episode every week without the overhead.',
     href: '/services/podcasts',
   },
   {
     icon: CalendarDays,
     title: 'Event Recaps',
-    description: 'Demo days, meetups, launch parties — cinematic coverage that extends your event impact and drives future attendance.',
+    description: 'Demo days, meetups, launch parties — cinematic recap films, speaker clips, and social cutdowns shipped on deadline.',
     href: '/services/event-recaps',
   },
 ]
@@ -46,8 +46,8 @@ export default function StartupsPage() {
   return (
     <>
       <SEOHead
-        title="Startups | Where2Studios"
-        description="Cinematic media production built for startups. Launch videos, podcasts, and event recaps that help founders build credibility and grow fast."
+        title="Our Work | Where2Studios"
+        description="Launch videos, podcasts, and event recaps, shipped fast with clips included. See how we help founders launch, fundraise, and grow."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
@@ -67,26 +67,28 @@ export default function StartupsPage() {
                 </span>
               </div>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface">
-                Your startup deserves{' '}
-                <span className="text-m3-primary">cinematic content</span>
+                Launch videos, podcasts, and event recaps,{' '}
+                <span className="text-m3-primary">shipped fast</span> with clips included.
               </h1>
               <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                We help early-stage and growth-stage startups tell their story with launch videos, 
-                podcasts, and event recaps that build credibility and drive growth.
+                You're launching, fundraising, or hosting an event. We ship the deliverables on your deadline — with clips and cutdowns ready to post everywhere.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
                   Book a Discovery Call
                 </button>
                 <Link to="/work" className="m3-outlined-button">
-                  View Our Work
+                  See Our Work
                 </Link>
               </div>
+              <p className="mt-3 text-m3-on-surface/50 text-xs">
+                Share the goal and the deadline, we'll reply within 1 business day.
+              </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Why Startups Choose Us */}
+        {/* Why Us */}
         <section className="py-12 sm:py-16 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <motion.div
@@ -104,7 +106,7 @@ export default function StartupsPage() {
             </motion.div>
 
             <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-              {whyStartups.map((item, index) => (
+              {whyUs.map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ opacity: 0, x: -20 }}
@@ -121,7 +123,7 @@ export default function StartupsPage() {
           </div>
         </section>
 
-        {/* Services for Startups */}
+        {/* Services */}
         <section className="py-12 sm:py-16 bg-m3-surface-variant">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <motion.div
@@ -134,7 +136,7 @@ export default function StartupsPage() {
                 Services
               </span>
               <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
-                What we do for startups
+                Choose what you need
               </h2>
             </motion.div>
 
@@ -178,10 +180,13 @@ export default function StartupsPage() {
         <section className="py-16 sm:py-24 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-3xl">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-dark">
-              Ready to make your startup impossible to ignore?
+              Ready to ship your next launch?
             </h2>
             <p className="mt-4 text-m3-on-dark/70 max-w-xl mx-auto">
-              Book a free 30-minute startup call. We'll discuss your goals and map out a content plan.
+              Book a free 30-minute discovery call. Tell us the moment, the deadline, and what you need — we'll map out the deliverables.
+            </p>
+            <p className="mt-2 text-m3-on-dark/50 text-sm">
+              Share the goal and the deadline, we'll reply within 1 business day.
             </p>
             <div className="mt-8">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">

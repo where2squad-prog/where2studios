@@ -47,7 +47,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                   </a>
                 ) : (
                   <span className="text-m3-primary text-xs font-medium">
-                    Ready to launch your startup?
+                    Ready to ship your next project?
                   </span>
                 )}
                 

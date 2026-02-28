@@ -44,13 +44,16 @@ export function ServicePageTemplate({
             <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-dark mb-6">
               {title}
             </h1>
-            <p className="text-lg sm:text-xl text-m3-on-dark/80 mb-8 max-w-xl">{subtitle}</p>
+            <p className="text-lg sm:text-xl text-m3-on-dark/80 mb-4 max-w-xl">{subtitle}</p>
+            <p className="text-m3-on-dark/50 text-sm mb-8">
+              Share the goal and the deadline, we'll reply within 1 business day.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-center text-lg px-8 py-4">
                 Book a Discovery Call
               </button>
               <Link
-                to="/work"
+                to="/startups"
                 className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
               >
                 See Our Work
@@ -70,7 +73,7 @@ export function ServicePageTemplate({
             className="max-w-3xl mx-auto"
           >
             <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              What You Get
+              Deliverables
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2 mb-4">
               Everything included
@@ -142,7 +145,7 @@ export function ServicePageTemplate({
             className="max-w-3xl mx-auto"
           >
             <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Deliverables
+              Formats
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2 mb-8 text-center">
               What you'll receive
@@ -188,7 +191,7 @@ export function ServicePageTemplate({
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
                   className="group cursor-pointer"
-                  onClick={() => window.location.href = '/work'}
+                  onClick={() => window.location.href = '/startups'}
                 >
                   <div className="m3-elevated-card overflow-hidden aspect-[9/14]">
                     <img
@@ -201,8 +204,8 @@ export function ServicePageTemplate({
               ))}
             </div>
             <div className="text-center mt-8">
-              <Link to="/work" className="m3-outlined-button inline-flex items-center gap-2">
-                View All Work
+              <Link to="/startups" className="m3-outlined-button inline-flex items-center gap-2">
+                See Our Work
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -219,10 +222,13 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
           >
             <h2 className="font-fredoka text-3xl sm:text-4xl font-semibold text-m3-on-dark mb-4">
-              Ready to get started?
+              Ready to ship?
             </h2>
-            <p className="text-m3-on-dark/75 mb-8">
-              Book a free 30-minute startup call. We'll map out your content plan together.
+            <p className="text-m3-on-dark/75 mb-4">
+              Book a free 30-minute discovery call. Tell us the deadline and we'll map out your deliverables.
+            </p>
+            <p className="text-m3-on-dark/50 text-sm mb-8">
+              Share the goal and the deadline, we'll reply within 1 business day.
             </p>
             <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">
               Book a Discovery Call

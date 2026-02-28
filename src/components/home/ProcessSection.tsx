@@ -8,29 +8,29 @@ const processSteps = [
     step: 1,
     title: 'Strategy',
     icon: Target,
-    description: 'Startup call to nail your audience, message, and launch timeline. We build a creative brief you actually want to read.',
+    description: 'You share your goal and deadline. We build a brief with deliverables, formats, and a timeline you can hold us to.',
     details: 'Clear milestones tied to your launch date.',
   },
   {
     step: 2,
     title: 'Produce',
     icon: Clapperboard,
-    description: 'Fast, focused shoots with a small senior crew. No bloat, no wasted time, no 47-person email chain.',
-    details: 'Professional quality without the agency overhead.',
+    description: 'Fast, focused shoots with a small senior crew. One point of contact, no wasted days, no 47-person email chain.',
+    details: 'Cinematic quality without the overhead.',
   },
   {
     step: 3,
-    title: 'Distribute',
+    title: 'Ship',
     icon: Share2,
-    description: 'Polished edits cut for every platform — website hero, social, pitch deck, investor update. All formats, one delivery.',
-    details: 'Multi-format exports ready to post and present.',
+    description: 'You get the main asset plus clips and cutdowns for every format — website, social, pitch deck, investor update. One delivery.',
+    details: 'All formats delivered, ready to post.',
   },
   {
     step: 4,
     title: 'Iterate',
     icon: BarChart3,
-    description: 'We track what performs and refine the next round. Your content gets sharper every cycle.',
-    details: 'Data-driven insights to fuel future content.',
+    description: 'We review what performed, refine the next round, and ship again. Your content gets sharper every cycle.',
+    details: 'Ship and iterate, every cycle.',
   },
 ]
 
@@ -48,10 +48,10 @@ export function ProcessSection() {
             How It Works
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Built for fast-moving founders
+            Four steps. One deadline. Deliverables shipped.
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            Four steps. No surprises. Content that ships on time.
+            You tell us the moment and the deadline. We handle strategy, production, and delivery.
           </p>
         </motion.div>
 
