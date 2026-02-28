@@ -14,11 +14,10 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { href: '/corporate', label: 'Corporate' },
-  { href: '/events', label: 'Events' },
-  { href: '/weddings', label: 'Weddings' },
+  { href: '/launch-videos', label: 'Launch Videos' },
+  { href: '/podcasts', label: 'Podcasts' },
+  { href: '/events', label: 'Event Recaps' },
   { href: '/social-media', label: 'Social Media' },
-  { href: '/commercials', label: 'Commercials' },
 ];
 
 interface NavbarProps {
@@ -120,11 +119,10 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                       : 'text-m3-on-dark/80 hover:text-m3-on-dark'
                   } ${
                     location.pathname.includes('/services') || 
-                    location.pathname === '/corporate' || 
+                    location.pathname === '/launch-videos' || 
+                    location.pathname === '/podcasts' ||
                     location.pathname === '/events' ||
-                    location.pathname === '/weddings' ||
-                    location.pathname === '/social-media' ||
-                    location.pathname === '/commercials'
+                    location.pathname === '/social-media'
                       ? isLight
                         ? 'text-m3-on-surface'
                         : 'text-m3-on-dark'
@@ -149,14 +147,14 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               </div>
 
               <button onClick={openSheet} className="ml-2 m3-filled-button text-sm">
-                Book a Call
+                Book a Startup Call
               </button>
             </div>
 
             {/* Mobile Menu */}
             <div className="flex items-center gap-3 md:hidden">
               <button onClick={openSheet} className="m3-filled-button text-xs px-4 py-2">
-                Book a Call
+                Book a Startup Call
               </button>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -233,7 +231,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                     }}
                     className="m3-filled-button w-full text-center block"
                   >
-                    Book a Discovery Call
+                    Book a Startup Call
                   </button>
                 </div>
               </div>

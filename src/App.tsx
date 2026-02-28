@@ -16,11 +16,10 @@ import SocialMediaWorkPage from './pages/SocialMediaWorkPage'
 import ProductionsWorkPage from './pages/ProductionsWorkPage'
 import ContactPage from './pages/ContactPage'
 import TeamPage from './pages/TeamPage'
-import CorporatePage from './pages/services/CorporatePage'
+import LaunchVideosPage from './pages/services/LaunchVideosPage'
+import PodcastsPage from './pages/services/PodcastsPage'
 import EventsPage from './pages/services/EventsPage'
-import WeddingsPage from './pages/services/WeddingsPage'
 import SocialMediaPage from './pages/services/SocialMediaPage'
-import CommercialsPage from './pages/services/CommercialsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import SocialAdminPage from './pages/admin/SocialAdminPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
@@ -47,11 +46,10 @@ export default function App() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/team" element={<TeamPage />} />
                 <Route path="/who-we-are" element={<TeamPage />} />
-                <Route path="/corporate" element={<CorporatePage />} />
+                <Route path="/launch-videos" element={<LaunchVideosPage />} />
+                <Route path="/podcasts" element={<PodcastsPage />} />
                 <Route path="/events" element={<EventsPage />} />
-                <Route path="/weddings" element={<WeddingsPage />} />
                 <Route path="/social-media" element={<SocialMediaPage />} />
-                <Route path="/commercials" element={<CommercialsPage />} />
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms" element={<TermsOfServicePage />} />
                 <Route path="/admin/login" element={<AdminLoginPage />} />

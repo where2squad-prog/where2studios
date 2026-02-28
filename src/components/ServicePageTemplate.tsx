@@ -45,7 +45,7 @@ export function ServicePageTemplate({
             <p className="text-xl text-m3-on-dark/80 mb-8">{subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact" className="m3-filled-button text-center">
-                Book a Discovery Call
+                Book a Startup Call
               </Link>
               <Link
                 to="/work"
@@ -214,7 +214,7 @@ export function ServicePageTemplate({
               Let's discuss your project and create something amazing together.
             </p>
             <Link to="/contact" className="m3-filled-button inline-flex items-center gap-2">
-              Book a Discovery Call
+              Book a Startup Call
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>

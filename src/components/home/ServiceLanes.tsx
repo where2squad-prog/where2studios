@@ -2,35 +2,35 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Building2, CalendarDays, Megaphone, ArrowRight } from 'lucide-react'
+import { Video, Mic, CalendarDays, ArrowRight } from 'lucide-react'
 
 const serviceLanes = [
   {
-    id: 'corporate',
-    title: 'Corporate',
-    icon: Building2,
-    href: '/corporate',
-    whatWeDeliver: 'Brand films, recruiting content, product launches, executive comms',
-    whatItSolves: 'Build trust, attract talent, and communicate with clarity',
-    turnaround: '2-4 weeks typical',
+    id: 'launch-videos',
+    title: 'Launch Videos',
+    icon: Video,
+    href: '/launch-videos',
+    whatWeDeliver: 'Product demos, explainer videos, pitch decks, founder stories',
+    whatItSolves: 'Build credibility, explain your product, and attract investors',
+    turnaround: '1-3 weeks typical',
   },
   {
-    id: 'events',
-    title: 'Events',
+    id: 'podcasts',
+    title: 'Podcasts',
+    icon: Mic,
+    href: '/podcasts',
+    whatWeDeliver: 'Full production, editing, clips, guest coordination, show branding',
+    whatItSolves: 'Establish thought leadership and grow your audience on autopilot',
+    turnaround: 'Weekly or bi-weekly episodes',
+  },
+  {
+    id: 'event-recaps',
+    title: 'Event Recaps',
     icon: CalendarDays,
     href: '/events',
-    whatWeDeliver: 'Teasers, recaps, speaker clips, sponsor reels, photo galleries',
+    whatWeDeliver: 'Teasers, recaps, speaker clips, sponsor reels, social cuts',
     whatItSolves: 'Extend event impact and drive attendance to the next one',
     turnaround: '24hr teaser, 1-2 week full recap',
-  },
-  {
-    id: 'social',
-    title: 'Social Media',
-    icon: Megaphone,
-    href: '/social-media',
-    whatWeDeliver: 'Content systems, vertical video, reels, TikToks, Shorts',
-    whatItSolves: 'Consistent, scroll-stopping content without in-house overhead',
-    turnaround: 'Weekly or bi-weekly batches',
   },
 ]
 
@@ -48,10 +48,10 @@ export function ServiceLanes() {
             Services
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            What do you need?
+            What does your startup need?
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            Choose your lane. We'll handle the rest.
+            Pick your lane. We'll handle the production.
           </p>
         </motion.div>
 

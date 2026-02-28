@@ -15,30 +15,19 @@ export default function HomePage() {
   return (
     <>
       <SEOHead
-        title="Where2Studios | Full-Service Media & Marketing Agency"
-        description="High-end content systems for corporate and events. We plan, produce, and distribute cinematic media that drives real bookings and brand trust. San Francisco Bay Area."
+        title="Where2Studios | Startup Media Partner"
+        description="Launch videos, podcasts, and event recaps for startups ready to grow. Cinematic media production that helps founders tell their story and win their first thousand fans. San Francisco Bay Area."
         schema={organizationSchema}
       />
       <div className="min-h-screen bg-m3-background text-m3-on-background">
       <Navbar variant="dark" />
       
       <main className="relative">
-        {/* A. Hero - Clear positioning and CTAs */}
         <ConversionHero />
-        
-        {/* Trusted Brands Logo Marquee */}
         <TrustedBrands />
-        
-        {/* B. Service Lane Picker */}
         <ServiceLanes />
-        
-        {/* D. Featured Case Studies */}
         <FeaturedCaseStudies />
-        
-        {/* E. Process - Make it feel safe */}
         <ProcessSection />
-        
-        {/* F. Final CTA */}
         <FinalCTA />
       </main>
       

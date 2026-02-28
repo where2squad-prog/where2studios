@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Building2, CalendarDays, Heart, Megaphone, Clapperboard, ArrowRight } from 'lucide-react'
+import { Video, Mic, CalendarDays, Megaphone, ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -10,28 +10,28 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 const services = [
   {
-    id: 'corporate',
-    title: 'Corporate',
-    icon: Building2,
-    href: '/corporate',
-    description: 'Brand films, recruiting content, executive comms, product launches',
-    forWho: 'Marketing teams, HR, executives',
+    id: 'launch-videos',
+    title: 'Launch Videos',
+    icon: Video,
+    href: '/launch-videos',
+    description: 'Product demos, explainer videos, pitch decks, founder stories',
+    forWho: 'Founders, product teams, investor relations',
+  },
+  {
+    id: 'podcasts',
+    title: 'Podcasts',
+    icon: Mic,
+    href: '/podcasts',
+    description: 'Full production, editing, clips, guest coordination, show branding',
+    forWho: 'Founders, thought leaders, startup communities',
   },
   {
     id: 'events',
-    title: 'Events',
+    title: 'Event Recaps',
     icon: CalendarDays,
     href: '/events',
-    description: 'Teasers, recaps, speaker clips, sponsor reels, photo galleries',
-    forWho: 'Event producers, conference organizers',
-  },
-  {
-    id: 'weddings',
-    title: 'Weddings',
-    icon: Heart,
-    href: '/weddings',
-    description: 'Cinematic wedding films, highlight reels, same-day edits',
-    forWho: 'Couples, wedding planners',
+    description: 'Teasers, recaps, speaker clips, sponsor reels, social cuts',
+    forWho: 'Event producers, demo days, meetup organizers',
   },
   {
     id: 'social',
@@ -39,15 +39,7 @@ const services = [
     icon: Megaphone,
     href: '/social-media',
     description: 'Content systems, vertical video, reels, TikToks, Shorts',
-    forWho: 'Brands, creators, marketing teams',
-  },
-  {
-    id: 'commercials',
-    title: 'Commercials',
-    icon: Clapperboard,
-    href: '/commercials',
-    description: 'TV spots, digital ads, product videos, brand campaigns',
-    forWho: 'Agencies, brands, startups',
+    forWho: 'Growth teams, founders, marketing leads',
   },
 ]
 
@@ -73,7 +65,7 @@ export default function ServicesPage() {
               Services
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Full-service media production for corporate, events, and everything in between.
+              Cinematic media production built for startups. From launch day to Series A and beyond.
             </p>
           </motion.div>
         </div>
@@ -82,7 +74,7 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -129,11 +121,11 @@ export default function ServicesPage() {
             Not sure what you need?
           </h2>
           <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-            Book a discovery call and we'll help you figure out the best approach for your goals.
+            Book a startup call and we'll help you figure out the best approach for your launch.
           </p>
           <div className="mt-8">
             <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-              Book a Discovery Call
+              Book a Startup Call
             </button>
           </div>
         </div>

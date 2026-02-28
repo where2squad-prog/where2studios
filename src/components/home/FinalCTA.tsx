@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
-import { Clock, Shield, Users } from 'lucide-react'
+import { Clock, Rocket, Users } from 'lucide-react'
 
 const trustSignals = [
   { icon: Clock, text: 'We reply within 1 business day' },
-  { icon: Shield, text: 'Dedicated producer per project' },
-  { icon: Users, text: 'Clear approvals process' },
+  { icon: Rocket, text: 'Dedicated producer per project' },
+  { icon: Users, text: 'Built for fast-moving teams' },
 ]
 
 export function FinalCTA() {
@@ -24,15 +24,15 @@ export function FinalCTA() {
           className="max-w-3xl mx-auto text-center"
         >
           <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-            Ready to Start?
+            Ready to Launch?
           </span>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">
-            Let's create content that works
+            Let's make your startup impossible to ignore
           </h2>
           
           <p className="text-m3-on-dark/70 text-base sm:text-lg mb-8 max-w-xl mx-auto">
-            Book a discovery call or send us an inquiry. We'll get back to you within one business day.
+            Book a startup call or send us an inquiry. We'll get back to you within one business day.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
@@ -40,7 +40,7 @@ export function FinalCTA() {
               onClick={openSheet}
               className="m3-filled-button text-base sm:text-lg px-8 py-4"
             >
-              Book a Discovery Call
+              Book a Startup Call
             </button>
             <Link
               to="/contact"

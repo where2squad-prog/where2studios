@@ -47,7 +47,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                   </a>
                 ) : (
                   <span className="text-m3-primary text-xs font-medium">
-                    Ready to grow your brand?
+                    Ready to launch your startup?
                   </span>
                 )}
                 
@@ -56,7 +56,7 @@ export function FloatingCTA({ showHomeButton = false }: FloatingCTAProps) {
                   onClick={openSheet}
                   className="m3-filled-button flex items-center gap-2 text-xs sm:text-sm px-4 py-2"
                 >
-                  <span>Book a Call</span>
+                  <span>Book a Startup Call</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
