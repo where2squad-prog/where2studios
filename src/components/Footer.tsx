@@ -14,9 +14,9 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'Launch Videos', href: '/services/launch-videos' },
-    { label: 'Podcasts', href: '/services/podcasts' },
-    { label: 'Event Recaps', href: '/services/event-recaps' },
+    { label: 'Brand and Growth Strategy', href: '/services/strategy' },
+    { label: 'High Impact Media Production', href: '/services/production' },
+    { label: 'Full Service Marketing Execution', href: '/services/marketing' },
   ]
 
   const legalLinks = [
@@ -36,8 +36,11 @@ export function Footer() {
             <div className="font-fredoka text-m3-primary text-xl font-medium mb-3">
               Where2Studios
             </div>
-            <p className="text-m3-on-dark/60 text-sm mb-2 max-w-xs">
+            <p className="text-m3-on-dark/60 text-sm mb-1 max-w-xs">
               Your Growth Team, On Demand.
+            </p>
+            <p className="text-m3-on-dark/50 text-xs mb-4 max-w-xs">
+              Strategy first, premium media production, full service marketing execution.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
               Free 30 minute strategy call, we reply within 1 business day.
