@@ -5,7 +5,7 @@ import { Instagram, Linkedin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
@@ -261,7 +261,7 @@ export default function TeamPage() {
         </section>
 
         <Footer />
-        <FloatingCTA />
+        
       </div>
     </>
   )

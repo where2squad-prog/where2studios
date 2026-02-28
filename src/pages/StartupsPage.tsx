@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Rocket, Video, Mic, CalendarDays, ArrowRight, Check } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { SEOHead } from '@/components/SEOHead'
@@ -197,7 +197,7 @@ export default function StartupsPage() {
         </section>
 
         <Footer />
-        <FloatingCTA />
+        
       </div>
     </>
   )

@@ -3,7 +3,7 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { ServicePageTemplate } from '@/components/ServicePageTemplate'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { SEOHead } from '@/components/SEOHead'
 
 export default function LaunchVideosPage() {
@@ -61,7 +61,7 @@ export default function LaunchVideosPage() {
           ]}
         />
         <Footer />
-        <FloatingCTA />
+        
       </div>
     </>
   )
