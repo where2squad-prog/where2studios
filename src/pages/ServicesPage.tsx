@@ -118,33 +118,37 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="m3-elevated-card p-6 sm:p-8 lg:p-10"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center">
-                    <pillar.icon className="w-6 h-6 text-m3-primary" />
+                <Link
+                  to={`/services/${pillar.id}`}
+                  className="block m3-elevated-card p-6 sm:p-8 lg:p-10 hover:shadow-lg transition-shadow cursor-pointer"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center">
+                      <pillar.icon className="w-6 h-6 text-m3-primary" />
+                    </div>
+                    <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface">
+                      {pillar.title}
+                    </h2>
                   </div>
-                  <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface">
-                    {pillar.title}
-                  </h2>
-                </div>
 
-                <p className="text-m3-on-surface/70 text-sm sm:text-base mb-5">
-                  {pillar.intro}
-                </p>
+                  <p className="text-m3-on-surface/70 text-sm sm:text-base mb-5">
+                    {pillar.intro}
+                  </p>
 
-                <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-5">
-                  {pillar.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-m3-on-surface/80">
-                      <CheckCircle2 className="w-4 h-4 text-m3-primary mt-0.5 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-5">
+                    {pillar.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-m3-on-surface/80">
+                        <CheckCircle2 className="w-4 h-4 text-m3-primary mt-0.5 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
 
-                <p className="text-xs text-m3-primary font-semibold">
-                  {pillar.bestFor}
-                </p>
+                  <p className="text-xs text-m3-primary font-semibold">
+                    {pillar.bestFor}
+                  </p>
+                </Link>
               </motion.div>
             ))}
           </div>
