@@ -94,7 +94,7 @@ export default function ServicesPage() {
                   Book a Strategy Call
                 </button>
                 <Link
-                  to="/startups"
+                  to="/work"
                   className="m3-outlined-button text-sm px-6 py-3"
                 >
                   See Our Work

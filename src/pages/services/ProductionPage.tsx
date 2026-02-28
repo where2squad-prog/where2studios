@@ -44,7 +44,7 @@ export default function ProductionPage() {
           bottomCtaSubheadline="We'll confirm deliverables, timeline, and what success looks like."
           bottomCtaPrimary="Book a Strategy Call"
           bottomCtaSecondary="See Our Work"
-          bottomCtaSecondaryHref="/startups"
+          bottomCtaSecondaryHref="/work"
         />
         <Footer />
         <FloatingCTA />

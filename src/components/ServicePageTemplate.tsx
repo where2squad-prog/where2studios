@@ -63,7 +63,7 @@ export function ServicePageTemplate({
                 Book a Strategy Call
               </button>
               <Link
-                to="/startups"
+                to="/work"
                 className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
               >
                 See Our Work
@@ -214,7 +214,7 @@ export function ServicePageTemplate({
               ))}
             </div>
             <div className="text-center mt-8">
-              <Link to="/startups" className="m3-outlined-button inline-flex items-center gap-2">
+              <Link to="/work" className="m3-outlined-button inline-flex items-center gap-2">
                 See Our Work
                 <ArrowRight className="w-4 h-4" />
               </Link>
