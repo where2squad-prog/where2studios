@@ -65,7 +65,7 @@ function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }
           )}
 
           <div className="flex items-center gap-2 text-m3-primary font-medium text-sm group-hover:gap-3 transition-all">
-            View case study
+            See the plan
             <ArrowRight className="w-4 h-4" />
           </div>
         </div>

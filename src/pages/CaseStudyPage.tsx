@@ -376,9 +376,9 @@ export default function CaseStudyPage() {
                 </SectionBlock>
               )}
 
-              {/* 6 — Results */}
+              {/* 6 — Impact */}
               {(metrics || project.result) && (
-                <SectionBlock icon={BarChart3} title="Results">
+                <SectionBlock icon={BarChart3} title="Impact">
                   {metrics && Object.keys(metrics).length > 0 && (
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
                       {Object.entries(metrics).map(([label, value]) => (
@@ -438,7 +438,7 @@ export default function CaseStudyPage() {
         <section className="py-16 sm:py-20 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark mb-4">
-              Want results like these for your startup?
+              Want impact like this for your brand?
             </h2>
             <p className="text-m3-on-dark/70 mb-8">
               Let's map out your content strategy in a free 30-minute call.
