@@ -4,8 +4,10 @@ import { Navbar } from '@/components/layout/Navbar'
 import { ConversionHero } from '@/components/home/ConversionHero'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
+import { PositioningSection } from '@/components/home/PositioningSection'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { ProcessSection } from '@/components/home/ProcessSection'
+import { LeadConversionSection } from '@/components/home/LeadConversionSection'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -26,8 +28,10 @@ export default function HomePage() {
         <ConversionHero />
         <TrustedBrands />
         <ServiceLanes />
+        <PositioningSection />
         <FeaturedCaseStudies />
         <ProcessSection />
+        <LeadConversionSection />
         <FinalCTA />
       </main>
       

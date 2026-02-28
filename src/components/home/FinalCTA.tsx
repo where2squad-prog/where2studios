@@ -22,15 +22,15 @@ export function FinalCTA() {
           </span>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">
-            30 minutes. Real plan. No pressure.
+            If you're building something worth sharing, we'll help the world see it.
           </h2>
           
           <p className="text-m3-on-dark/70 text-base sm:text-lg mb-4 max-w-xl mx-auto">
-            Tell us the goal — a launch, a campaign, an event. We'll map out the deliverables, the timeline, and the budget.
+            Strategy first, premium media, and execution that drives growth.
           </p>
 
           <p className="text-m3-on-dark/50 text-sm mb-8">
-            Free 30 minute strategy call, we reply within 1 business day.
+            We reply within 1 business day.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
