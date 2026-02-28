@@ -142,7 +142,7 @@ export default function WorkPage() {
       </section>
 
       {/* Filters and Sort */}
-      <section className="sticky top-20 sm:top-24 z-50 bg-m3-surface-variant/95 backdrop-blur-sm py-4">
+      <section className="sticky top-20 sm:top-24 z-50 bg-m3-surface-variant backdrop-blur-sm py-4 -mt-px">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             {/* Filter Chips */}
