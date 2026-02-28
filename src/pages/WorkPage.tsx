@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Play, ArrowUpDown, Grid3X3 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 
@@ -227,7 +227,7 @@ export default function WorkPage() {
       </section>
 
       <Footer />
-      <FloatingCTA />
+      
     </div>
   )
 }

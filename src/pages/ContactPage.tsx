@@ -5,7 +5,7 @@ import { Calendar, MapPin, Mail, Clock, CheckCircle2, Rocket, Mic, Video } from 
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { ContactForm } from '@/components/ContactForm'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { Link } from 'react-router-dom'

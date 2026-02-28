@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '@/assets/where2studios-logo.png'
 import { useProjects } from '@/hooks/useProjects'
 import { ProjectGrid } from '@/components/ProjectGrid'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { Footer } from '@/components/Footer'
 
 const PRODUCTION_CATEGORIES = ['corporate', 'events', 'weddings', 'commercials']
@@ -143,7 +143,7 @@ export default function ProductionsWorkPage() {
       </section>
 
       <Footer />
-      <FloatingCTA />
+      
     </div>
   )
 }

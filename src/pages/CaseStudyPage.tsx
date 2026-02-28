@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Play, CheckCircle2, Target, Lightbulb, Package, Users, Share2, BarChart3, Scissors, ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { useCaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail, getYouTubeVideoId } from '@/hooks/useProjects'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
@@ -465,7 +465,7 @@ export default function CaseStudyPage() {
         </section>
 
         <Footer />
-        <FloatingCTA />
+        
       </div>
     </>
   )

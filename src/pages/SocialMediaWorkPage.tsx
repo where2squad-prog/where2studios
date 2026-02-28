@@ -6,7 +6,7 @@ import { ArrowLeft, ExternalLink, ChevronDown, Pin } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '@/assets/where2studios-logo.png'
 import { useSocialPosts, useSocialClients, getSocialThumbnail } from '@/hooks/useSocialPosts'
-import { FloatingCTA } from '@/components/FloatingCTA'
+
 import { Footer } from '@/components/Footer'
 
 const POSTS_PER_PAGE = 24
@@ -276,7 +276,7 @@ export default function SocialMediaWorkPage() {
       </section>
 
       <Footer />
-      <FloatingCTA />
+      
     </div>
   )
 }
