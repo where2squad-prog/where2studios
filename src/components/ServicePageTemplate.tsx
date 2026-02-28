@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Check, ArrowRight } from 'lucide-react'
 import { useProjects, getThumbnail } from '@/hooks/useProjects'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 interface ServicePageTemplateProps {
   category: string
@@ -25,6 +26,7 @@ export function ServicePageTemplate({
   deliverables,
 }: ServicePageTemplateProps) {
   const { data: projects, isLoading } = useProjects({ category })
+  const { openSheet } = useBookingSheet()
 
   return (
     <div className="min-h-screen bg-m3-background">
@@ -38,20 +40,20 @@ export function ServicePageTemplate({
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <span className="label text-m3-primary mb-4 block">{category}</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-m3-on-dark mb-6">
+            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest mb-4 block">{category}</span>
+            <h1 className="font-fredoka text-4xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-dark mb-6">
               {title}
             </h1>
-            <p className="text-xl text-m3-on-dark/80 mb-8">{subtitle}</p>
+            <p className="text-lg sm:text-xl text-m3-on-dark/80 mb-8 max-w-xl">{subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="m3-filled-button text-center">
+              <button onClick={openSheet} className="m3-filled-button text-center text-lg px-8 py-4">
                 Book a Startup Call
-              </Link>
+              </button>
               <Link
                 to="/work"
                 className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
               >
-                View Our Work
+                See Our Work
               </Link>
             </div>
           </motion.div>
@@ -67,8 +69,11 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-m3-on-surface mb-4">
+            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
               What You Get
+            </span>
+            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2 mb-4">
+              Everything included
             </h2>
             <p className="text-m3-on-surface/60 mb-8">{description}</p>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -99,8 +104,11 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-m3-on-surface">
-              How It Works
+            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
+              Process
+            </span>
+            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
+              How it works
             </h2>
           </motion.div>
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -116,7 +124,7 @@ export function ServicePageTemplate({
                 <div className="w-12 h-12 bg-m3-primary text-m3-on-primary rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
                   {step.step}
                 </div>
-                <h3 className="font-semibold text-m3-on-surface mb-2">{step.title}</h3>
+                <h3 className="font-fredoka font-semibold text-m3-on-surface mb-2">{step.title}</h3>
                 <p className="text-m3-on-surface/70 text-sm">{step.description}</p>
               </motion.div>
             ))}
@@ -133,8 +141,11 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-m3-on-surface mb-8 text-center">
-              What You'll Receive
+            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
+              Deliverables
+            </span>
+            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2 mb-8 text-center">
+              What you'll receive
             </h2>
             <div className="flex flex-wrap justify-center gap-3">
               {deliverables.map((item, index) => (
@@ -164,7 +175,7 @@ export function ServicePageTemplate({
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-2xl sm:text-3xl font-bold text-m3-on-surface">
+              <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface">
                 Recent {title} Projects
               </h2>
             </motion.div>
@@ -207,16 +218,16 @@ export function ServicePageTemplate({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-m3-on-dark mb-4">
+            <h2 className="font-fredoka text-3xl sm:text-4xl font-semibold text-m3-on-dark mb-4">
               Ready to get started?
             </h2>
             <p className="text-m3-on-dark/75 mb-8">
-              Let's discuss your project and create something amazing together.
+              Book a free 30-minute startup call. We'll map out your content plan together.
             </p>
-            <Link to="/contact" className="m3-filled-button inline-flex items-center gap-2">
+            <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">
               Book a Startup Call
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>

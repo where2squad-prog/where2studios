@@ -1,205 +1,67 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { CalendarDays, Zap, Clock, Camera, Video, Users, CheckCircle2 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
+import { ServicePageTemplate } from '@/components/ServicePageTemplate'
 import { FloatingCTA } from '@/components/FloatingCTA'
-import { useBookingSheet } from '@/contexts/BookingSheetContext'
-import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
+import { SEOHead } from '@/components/SEOHead'
 
-const deliverables = [
-  { title: 'Teaser in 24hrs', description: 'Same-day or next-day teaser for social' },
-  { title: 'Recap Video', description: 'Full event highlight reel within 1-2 weeks' },
-  { title: 'Speaker Clips', description: 'Individual session recordings and soundbites' },
-  { title: 'Sponsor Reels', description: 'Custom content for your event sponsors' },
-  { title: 'Photo Gallery', description: 'Professional event photography' },
-  { title: 'Social Cuts', description: 'Vertical video optimized for TikTok, Reels, Shorts' },
-]
-
-const timeline = [
-  {
-    phase: 'Pre-Production',
-    time: '1-2 weeks before',
-    tasks: ['Shot list creation', 'Schedule coordination', 'Crew briefing', 'Equipment prep'],
-  },
-  {
-    phase: 'Show Day',
-    time: 'Event day',
-    tasks: ['Multi-camera coverage', 'Speaker recording', 'B-roll capture', 'Same-day teaser edit'],
-  },
-  {
-    phase: 'Post-Production',
-    time: '1-2 weeks after',
-    tasks: ['Full recap edit', 'Speaker clips', 'Social cuts', 'Final delivery'],
-  },
-]
-
-export default function EventsPage() {
-  const { openSheet } = useBookingSheet()
-
+export default function EventRecapsPage() {
   return (
-    <div className="min-h-screen bg-m3-surface-variant">
-      <Navbar variant="light" />
-
-      {/* Hero */}
-      <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 mb-4">
-              <CalendarDays className="w-5 h-5 text-m3-primary" />
-              <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-                Event Recaps
-              </span>
-            </div>
-            <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface">
-              Cinematic coverage that{' '}
-              <span className="text-m3-primary">sells the next event</span>
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Demo days, meetups, launch parties. Extend your event's impact long after it ends with content that drives attendance to the next one.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Startup Call
-              </button>
-              <Link to="/work" className="m3-outlined-button">
-                View Event Work
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Deliverables Matrix */}
-      <section className="py-12 sm:py-16 bg-m3-surface">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Deliverables
-            </span>
-            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
-              What you get
-            </h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {deliverables.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="m3-tonal-card p-5"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="w-5 h-5 text-m3-primary" />
-                  <h3 className="font-fredoka text-lg font-semibold text-m3-on-surface">
-                    {item.title}
-                  </h3>
-                </div>
-                <p className="text-sm text-m3-on-surface/70 pl-7">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-12 sm:py-16 bg-m3-surface-variant">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Timeline
-            </span>
-            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
-              How event coverage works
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {timeline.map((phase, index) => (
-              <motion.div
-                key={phase.phase}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative"
-              >
-                {index < timeline.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[calc(100%+0.5rem)] w-[calc(100%-1rem)] h-px bg-m3-outline z-0" />
-                )}
-                
-                <div className="m3-elevated-card p-6 relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-m3-primary flex items-center justify-center text-m3-on-primary font-bold">
-                      {index + 1}
-                    </div>
-                    <div>
-                      <h3 className="font-fredoka text-lg font-semibold text-m3-on-surface">
-                        {phase.phase}
-                      </h3>
-                      <p className="text-xs text-m3-primary font-medium">
-                        {phase.time}
-                      </p>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-2">
-                    {phase.tasks.map((task) => (
-                      <li key={task} className="flex items-start gap-2 text-sm text-m3-on-surface/70">
-                        <CheckCircle2 className="w-4 h-4 text-m3-primary mt-0.5 flex-shrink-0" />
-                        {task}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <FeaturedCaseStudies />
-
-      {/* CTA */}
-      <section className="py-16 sm:py-24 bg-m3-surface-dark">
-        <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-3xl">
-          <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-dark">
-            Ready to capture your next event?
-          </h2>
-          <p className="mt-4 text-m3-on-dark/70 max-w-xl mx-auto">
-            Let's discuss your event and create a coverage plan that extends its impact.
-          </p>
-          <div className="mt-8">
-            <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-              Book a Startup Call
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-      <FloatingCTA />
-    </div>
+    <>
+      <SEOHead
+        title="Event Recaps for Startups | Where2Studios"
+        description="Cinematic event coverage — highlight films, speaker moments, social cutdowns, and next-day teasers for demo days, meetups, and launch parties."
+      />
+      <div className="min-h-screen bg-m3-background">
+        <Navbar variant="dark" />
+        <ServicePageTemplate
+          category="Event Recaps"
+          title="Cinematic coverage that sells the next event"
+          subtitle="Demo days, meetups, launch parties — we capture the energy and turn it into content that keeps working long after the room clears."
+          description="Multi-camera coverage, same-day teasers, and polished recaps designed for startups that need to extend event impact and drive attendance to the next one."
+          whatYouGet={[
+            'Highlight film (2–4 min recap)',
+            'Speaker moments and soundbites',
+            'Social cutdowns (15s, 30s, 60s)',
+            'Next-day teaser option (24hr turnaround)',
+            'Sponsor and partner reels',
+            'Photo selects from the event',
+            'Multi-camera coverage',
+            'B-roll and atmosphere footage',
+          ]}
+          howItWorks={[
+            {
+              step: 1,
+              title: 'Pre-Production',
+              description: 'Shot list, schedule coordination, and crew briefing 1–2 weeks before your event. No surprises on show day.',
+            },
+            {
+              step: 2,
+              title: 'Show Day',
+              description: 'Multi-camera crew captures speakers, crowd energy, and key moments. Optional same-day teaser edit for social.',
+            },
+            {
+              step: 3,
+              title: 'Post-Production',
+              description: 'Full highlight film, speaker clips, and social cutdowns delivered within 1–2 weeks. Two rounds of revisions included.',
+            },
+          ]}
+          deliverables={[
+            'Highlight film',
+            'Speaker clips',
+            'Next-day teaser',
+            '15s cutdown',
+            '30s cutdown',
+            '60s cutdown',
+            'Sponsor reels',
+            'Photo selects',
+            'B-roll package',
+          ]}
+        />
+        <Footer />
+        <FloatingCTA />
+      </div>
+    </>
   )
 }
