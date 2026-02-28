@@ -112,7 +112,7 @@ export function FeaturedCaseStudies() {
               Featured Work
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Launch videos, podcasts, and event recaps — shipped on deadline with clips included.
+              Strategy first, premium production, and deliverables that drive growth.
             </p>
           </div>
 

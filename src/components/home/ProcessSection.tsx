@@ -8,29 +8,29 @@ const processSteps = [
     step: 1,
     title: 'Strategy',
     icon: Target,
-    description: 'You share your goal and deadline. We build a brief with deliverables, formats, and a timeline you can hold us to.',
-    details: 'Clear milestones tied to your launch date.',
+    description: 'You share your goal, budget, and timeline. We build a plan with deliverables, formats, and milestones you can hold us to.',
+    details: 'Clear plan tied to your launch date.',
   },
   {
     step: 2,
     title: 'Produce',
     icon: Clapperboard,
-    description: 'Fast, focused shoots with a small senior crew. One point of contact, no wasted days, no 47-person email chain.',
-    details: 'Cinematic quality without the overhead.',
+    description: 'Fast, focused production with a senior crew. One point of contact, no wasted days, no confusion.',
+    details: 'Premium quality without the overhead.',
   },
   {
     step: 3,
     title: 'Ship',
     icon: Share2,
-    description: 'You get the main asset plus clips and cutdowns for every format — website, social, pitch deck, investor update. One delivery.',
+    description: 'You get the main asset plus clips and cutdowns for every format — website, social, pitch deck, campaign. One delivery.',
     details: 'All formats delivered, ready to post.',
   },
   {
     step: 4,
     title: 'Iterate',
     icon: BarChart3,
-    description: 'We review what performed, refine the next round, and ship again. Your content gets sharper every cycle.',
-    details: 'Ship and iterate, every cycle.',
+    description: 'We review what performed, refine the next round, and ship again. Your content gets sharper and your ROI grows every cycle.',
+    details: 'Ship, measure, improve, repeat.',
   },
 ]
 
@@ -48,10 +48,10 @@ export function ProcessSection() {
             How It Works
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Four steps. One deadline. Deliverables shipped.
+            Four steps. One plan. Deliverables shipped.
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            You tell us the moment and the deadline. We handle strategy, production, and delivery.
+            You share the goal and the timeline. We handle strategy, production, and delivery.
           </p>
         </motion.div>
 

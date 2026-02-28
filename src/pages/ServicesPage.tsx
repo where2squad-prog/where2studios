@@ -14,8 +14,8 @@ const services = [
     title: 'Launch Videos',
     icon: Video,
     href: '/services/launch-videos',
-    description: 'Launch films, product demos, founder stories, and pitch deck inserts — with social cutdowns included.',
-    forWho: 'Founders launching, fundraising, or hiring',
+    description: 'Launch films, product demos, founder stories, and campaign videos — with social cutdowns included.',
+    forWho: 'Brands launching, fundraising, or building credibility',
   },
   {
     id: 'podcasts',
@@ -23,15 +23,15 @@ const services = [
     icon: Mic,
     href: '/services/podcasts',
     description: 'Full-service episode production — recording, editing, clips, thumbnails, and publishing. You talk, we ship.',
-    forWho: 'Founders building authority with weekly content',
+    forWho: 'Founders and brands building authority with weekly content',
   },
   {
     id: 'event-recaps',
     title: 'Event Recaps',
     icon: CalendarDays,
     href: '/services/event-recaps',
-    description: 'Recap films, speaker clips, next-day teasers, and social cutdowns — shipped on your deadline.',
-    forWho: 'Event hosts, demo days, and meetup organizers',
+    description: 'Recap films, speaker clips, next-day teasers, and social cutdowns — shipped on your timeline.',
+    forWho: 'Event hosts, conferences, and launch party organizers',
   },
 ]
 
@@ -57,7 +57,7 @@ export default function ServicesPage() {
               Choose what you need
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Launch videos, podcasts, and event recaps, shipped fast with clips included. Tell us the moment and the deadline.
+              Strategy first, premium media production, and full service marketing execution. Tell us the goal and the timeline.
             </p>
           </motion.div>
         </div>
@@ -113,14 +113,14 @@ export default function ServicesPage() {
             Not sure what you need?
           </h2>
           <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-            Book a discovery call. Tell us the moment and the deadline — we'll map out the deliverables and formats for you.
+            Book a strategy call. Tell us the goal and the timeline — we'll build a plan with deliverables and budget.
           </p>
           <p className="mt-2 text-m3-on-surface/40 text-sm">
-            Share the goal and the deadline, we'll reply within 1 business day.
+            Free 30 minute strategy call, we reply within 1 business day.
           </p>
           <div className="mt-8">
             <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-              Book a Discovery Call
+              Book a Strategy Call
             </button>
           </div>
         </div>

@@ -37,16 +37,16 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-2 max-w-xs">
-              Launch videos, podcasts, and event recaps, shipped fast with clips included.
+              Your Growth Team, On Demand.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
-              Share the goal and the deadline, we'll reply within 1 business day.
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
             <button
               onClick={openSheet}
               className="m3-filled-button text-sm"
             >
-              Book a Discovery Call
+              Book a Strategy Call
             </button>
           </div>
 

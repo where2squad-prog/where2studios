@@ -6,9 +6,9 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { Zap, Eye, Share2 } from 'lucide-react';
 
 const proofChips = [
-  { icon: Zap, text: 'Deliverables shipped in 1–3 weeks' },
-  { icon: Eye, text: 'Clear deadlines, no back and forth' },
-  { icon: Share2, text: 'Clips and formats for every platform' },
+  { icon: Zap, text: 'Strategy-first approach to every project' },
+  { icon: Eye, text: 'Clear timelines, no back and forth' },
+  { icon: Share2, text: 'Deliverables built to drive growth' },
 ];
 
 export function ConversionHero() {
@@ -44,19 +44,19 @@ export function ConversionHero() {
           >
             {/* Eyebrow */}
             <p className="text-m3-primary text-xs font-semibold tracking-widest uppercase mb-3">
-              Media Production for Startups
+              Your Growth Team, On Demand
             </p>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] mb-4">
-              Launch videos, podcasts, and event recaps
+              Strategy first. Premium production.
               <br />
-              <span className="text-m3-primary">shipped fast</span> with clips included.
+              <span className="text-m3-primary">Full service</span> marketing execution.
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">
-              You're launching, fundraising, or hosting an event. You need a launch video, a podcast episode, or an event recap. We ship the deliverables on your deadline with clips and cutdowns ready to post.
+              You're launching a product, building a brand, or scaling your business. You need a team that combines strategy, storytelling, and execution — so your content has a purpose and drives growth.
             </p>
 
             {/* CTA Row */}
@@ -65,7 +65,7 @@ export function ConversionHero() {
                 onClick={openSheet}
                 className="h-12 inline-flex items-center justify-center rounded-lg bg-m3-primary text-m3-on-primary font-semibold text-base px-7 shadow-sm hover:brightness-110 transition-all"
               >
-                Book a Discovery Call
+                Book a Strategy Call
               </button>
               <Link
                 to="/startups"
@@ -77,7 +77,7 @@ export function ConversionHero() {
 
             {/* Helper line */}
             <p className="text-white/50 text-xs mb-5">
-              Share the goal and the deadline, we'll reply within 1 business day.
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
 
             {/* Proof Chips */}

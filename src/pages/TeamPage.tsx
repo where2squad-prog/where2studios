@@ -108,7 +108,7 @@ export default function TeamPage() {
     <>
       <SEOHead
         title="Who We Are"
-        description="Meet the Where2Studios team. A passionate group of creators helping brands across the Bay Area connect with real people through cinematic media."
+        description="Meet the Where2Studios team. A growth partner for ambitious brands — strategy, storytelling, and execution. Our goal is to tell stories worth sharing."
         schema={organizationSchema}
       />
 
@@ -130,12 +130,12 @@ export default function TeamPage() {
                 The team behind the work
               </h1>
               <p className="text-base sm:text-lg text-m3-on-surface/80 mb-4 max-w-xl">
-                A passionate team of creators who believe every story deserves to be told.
+                Our goal is to tell stories worth sharing.
               </p>
               <p className="text-base text-m3-on-surface/70 leading-relaxed max-w-2xl">
-                Where2Studios is a media production & marketing agency that helps businesses 
-                connect with real people. We create high quality visuals with fast turnaround times, 
-                tell stories that move people, and help you reach the right audience.
+                Where2Studios is a growth partner for ambitious brands, built with startups in mind. 
+                We combine strategy, storytelling, and execution so your content has a purpose and drives growth. 
+                We specialize in startups and small businesses, but we also serve hospitality, tourism, food and beverage, tech, and service brands.
               </p>
             </motion.div>
           </div>
@@ -218,14 +218,17 @@ export default function TeamPage() {
               Ready to work with us?
             </h2>
             <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-              Let's discuss your project and see how we can help bring your vision to life.
+              Let's discuss your goal and build a plan that drives growth.
+            </p>
+            <p className="mt-2 text-m3-on-surface/40 text-sm">
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Discovery Call
+                Book a Strategy Call
               </button>
-              <Link to="/work" className="m3-outlined-button">
-                View Our Work
+              <Link to="/contact" className="m3-outlined-button">
+                Start Your Project
               </Link>
             </div>
           </div>

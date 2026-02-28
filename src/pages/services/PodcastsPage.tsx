@@ -10,7 +10,7 @@ export default function PodcastsPage() {
   return (
     <>
       <SEOHead
-        title="Podcast Production for Startups | Where2Studios"
+        title="Podcast Production | Where2Studios"
         description="Full-service podcast production — recording, editing, clips, thumbnails, and publishing. Ship an episode every week without the overhead."
       />
       <div className="min-h-screen bg-m3-background">
@@ -18,8 +18,8 @@ export default function PodcastsPage() {
         <ServicePageTemplate
           category="Podcasts"
           title="Ship an episode every week without the overhead"
-          subtitle="You need weekly content that builds authority. We handle the full production — you show up and talk, we ship the episode with clips included."
-          description="Whether you're launching a new show or shipping episodes for an existing one, we handle the entire production pipeline so you can focus on the conversation."
+          subtitle="You need a content campaign that builds authority week after week. We handle the full production — you show up and talk, we ship the episode with clips included."
+          description="Whether you're launching a new show or shipping episodes for an existing one, we handle the entire production pipeline so you can focus on the conversation and the ROI."
           whatYouGet={[
             'Studio or remote recording setup',
             'Professional audio editing and mixing',
@@ -34,7 +34,7 @@ export default function PodcastsPage() {
             {
               step: 1,
               title: 'Show Strategy',
-              description: 'We define your format, audience, and episode cadence. You get a content roadmap for the first season.',
+              description: 'We define your format, audience, and episode cadence. You get a content plan for the first season.',
             },
             {
               step: 2,

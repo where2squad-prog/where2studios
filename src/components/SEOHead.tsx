@@ -55,7 +55,7 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Where2Studios",
-  "description": "Cinematic media production for startups. Launch videos, podcasts, and event recaps that help founders tell their story and grow.",
+  "description": "Your Growth Team, On Demand. Strategy first, premium media production, and full service marketing execution for ambitious brands.",
   "url": "https://where2studios.com",
   "logo": "https://where2studios.com/og-image.png",
   "contactPoint": {
@@ -76,7 +76,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Where2Studios",
-  "description": "Cinematic media production for startups. Launch videos, podcasts, and event recaps that help founders tell their story and grow.",
+  "description": "Your Growth Team, On Demand. Strategy first, premium media production, and full service marketing execution for ambitious brands.",
   "url": "https://where2studios.com",
   "image": "https://where2studios.com/og-image.png",
   "address": {

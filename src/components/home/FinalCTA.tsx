@@ -22,15 +22,15 @@ export function FinalCTA() {
           </span>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">
-            30-minute call. Real plan. No pressure.
+            30 minutes. Real plan. No pressure.
           </h2>
           
           <p className="text-m3-on-dark/70 text-base sm:text-lg mb-4 max-w-xl mx-auto">
-            Tell us the moment — a launch, a fundraise, an event. We'll map out the deliverables, the deadline, and the formats you need.
+            Tell us the goal — a launch, a campaign, an event. We'll map out the deliverables, the timeline, and the budget.
           </p>
 
           <p className="text-m3-on-dark/50 text-sm mb-8">
-            Share the goal and the deadline, we'll reply within 1 business day.
+            Free 30 minute strategy call, we reply within 1 business day.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
@@ -38,13 +38,13 @@ export function FinalCTA() {
               onClick={openSheet}
               className="m3-filled-button text-base sm:text-lg px-8 py-4"
             >
-              Book a Discovery Call
+              Book a Strategy Call
             </button>
             <Link
               to="/contact"
               className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10"
             >
-              Send an Inquiry
+              Start Your Project
             </Link>
           </div>
 
@@ -55,11 +55,11 @@ export function FinalCTA() {
             </div>
             <div className="flex items-center gap-2">
               <MessageSquare className="w-4 h-4 text-m3-primary" />
-              <span className="text-m3-on-dark/60 text-sm">Free 30-min discovery call</span>
+              <span className="text-m3-on-dark/60 text-sm">Free 30-min strategy call</span>
             </div>
             <div className="flex items-center gap-2">
               <ArrowRight className="w-4 h-4 text-m3-primary" />
-              <span className="text-m3-on-dark/60 text-sm">Walk away with a content plan</span>
+              <span className="text-m3-on-dark/60 text-sm">Walk away with a real plan</span>
             </div>
           </div>
         </motion.div>

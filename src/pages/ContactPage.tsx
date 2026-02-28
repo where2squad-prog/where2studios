@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 const trustSignals = [
   'We reply within 1 business day',
-  'Free 30-minute discovery call',
+  'Free 30 minute strategy call',
   'No commitment required',
 ]
 
@@ -29,7 +29,7 @@ export default function ContactPage() {
     <>
       <SEOHead
         title="Contact Us | Where2Studios"
-        description="Book a free discovery call or send an inquiry. Launch videos, podcasts, and event recaps shipped fast with clips included. We reply within 1 business day."
+        description="Book a free strategy call or start your project. Your Growth Team, On Demand. We reply within 1 business day."
         schema={organizationSchema}
       />
 
@@ -48,10 +48,10 @@ export default function ContactPage() {
                 Let's Talk
               </span>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2 mb-4">
-                Ready to ship your next project?
+                Ready to start your next project?
               </h1>
               <p className="text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                Book a free 30-minute discovery call or send us an inquiry. Share the goal and the deadline, we'll reply within 1 business day.
+                Book a free 30 minute strategy call or start your project. Share the goal and the timeline, we'll reply within 1 business day.
               </p>
             </motion.div>
           </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
         <section className="py-8 sm:py-12 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {/* Book a Discovery Call */}
+              {/* Book a Strategy Call */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -75,10 +75,10 @@ export default function ContactPage() {
                     <Calendar className="w-6 h-6 text-m3-primary" />
                   </div>
                   <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
-                    Book a Discovery Call
+                    Book a Strategy Call
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
-                    30-minute call to discuss your launch, deadlines, and deliverables. No strings attached.
+                    30 minutes to discuss your goal, timeline, and deliverables. No strings attached.
                   </p>
                   <span className="text-m3-primary font-semibold text-sm">
                     Schedule now →
@@ -86,7 +86,7 @@ export default function ContactPage() {
                 </button>
               </motion.div>
 
-              {/* Send Inquiry */}
+              {/* Start Your Project */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -100,10 +100,10 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-m3-primary" />
                   </div>
                   <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
-                    Send an Inquiry
+                    Start Your Project
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
-                    Tell us what you need and your deadline. We'll reply within 1 business day with a plan.
+                    Tell us what you need and your timeline. We'll reply within 1 business day with a plan.
                   </p>
                   <span className="text-m3-primary font-semibold text-sm">
                     Fill out form →
@@ -164,9 +164,9 @@ export default function ContactPage() {
                       <Calendar className="w-5 h-5 text-m3-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-m3-on-surface mb-1">Free Discovery Call</h3>
+                      <h3 className="font-semibold text-m3-on-surface mb-1">Free Strategy Call</h3>
                       <p className="text-m3-on-surface/60 text-sm">
-                        30-minute call to map out your deliverables and deadline
+                        30 minutes to map out your goal, deliverables, and timeline
                       </p>
                     </div>
                   </div>
@@ -206,7 +206,7 @@ export default function ContactPage() {
               >
                 <div className="m3-elevated-card p-6 sm:p-8">
                   <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-6">
-                    Tell us what you need
+                    Tell us about your project
                   </h2>
                   <ContactForm showBookCall />
                 </div>

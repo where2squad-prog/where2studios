@@ -10,21 +10,21 @@ export default function EventRecapsPage() {
   return (
     <>
       <SEOHead
-        title="Event Recaps for Startups | Where2Studios"
-        description="Recap films, speaker clips, and social cutdowns shipped on deadline. Next-day teasers available. Extend your event impact and drive attendance to the next one."
+        title="Event Recaps | Where2Studios"
+        description="Recap films, speaker clips, and social cutdowns shipped on your timeline. Next-day teasers available. Extend your event ROI and drive attendance to the next one."
       />
       <div className="min-h-screen bg-m3-background">
         <Navbar variant="dark" />
         <ServicePageTemplate
           category="Event Recaps"
-          title="Ship a recap that sells the next event"
-          subtitle="You're hosting a demo day, meetup, or launch party. You need a recap film, speaker clips, and social cutdowns — shipped on your deadline."
-          description="Multi-camera coverage, next-day teasers, and polished recap films with clips and cutdowns for every format. Built for founders who need to extend event impact."
+          title="Ship a recap that drives attendance to the next one"
+          subtitle="You're hosting a demo day, conference, or launch party. You need a recap film, speaker clips, and social cutdowns — shipped on your timeline."
+          description="Multi-camera coverage, next-day teasers, and polished recap films with clips and cutdowns for every format. Built for brands that want to extend event ROI."
           whatYouGet={[
             'Recap film (2–4 min highlight)',
             'Speaker clips and soundbites',
             'Social cutdowns (15s, 30s, 60s)',
-            'Next-day teaser (24hr deadline)',
+            'Next-day teaser (24hr timeline)',
             'Sponsor and partner reels',
             'Photo selects from the event',
             'Multi-camera coverage',
