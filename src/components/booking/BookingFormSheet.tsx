@@ -236,7 +236,7 @@ export function BookingFormSheet() {
               >
                 <X className="w-5 h-5 text-m3-on-surface/70" />
               </button>
-              <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface text-center">Tell us about your startup</h2>
+              <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface text-center">Tell us about your project</h2>
               <p className="text-xs text-m3-on-surface/50 text-center mt-1">We reply within 1 business day</p>
             </div>
 

@@ -12,7 +12,7 @@ const services = [
     href: '/services/launch-videos',
     moment: "You're launching a product, fundraising, or hiring.",
     deliverables: 'Launch film, product demo, founder story, social cutdowns, pitch deck insert',
-    promise: 'Ship a launch video that builds credibility and saves you weeks of back and forth.',
+    promise: 'Build credibility fast with a launch video that tells your story and drives ROI.',
     deadline: '1–3 weeks',
   },
   {
@@ -20,9 +20,9 @@ const services = [
     title: 'Podcasts',
     icon: Mic,
     href: '/services/podcasts',
-    moment: 'You need weekly content that builds authority.',
+    moment: 'You need a content campaign that builds authority week after week.',
     deliverables: 'Full episode, social clips, audiograms, thumbnails, show notes',
-    promise: 'Launch an episode every week without lifting a finger on production.',
+    promise: 'Launch an episode every week. You talk, we handle the rest.',
     deadline: 'Weekly or bi-weekly batches',
   },
   {
@@ -30,9 +30,9 @@ const services = [
     title: 'Event Recaps',
     icon: CalendarDays,
     href: '/services/event-recaps',
-    moment: "You're hosting a demo day, meetup, or launch party.",
+    moment: "You're hosting a demo day, conference, or launch party.",
     deliverables: 'Recap film, speaker clips, social cutdowns, next-day teaser, sponsor reels',
-    promise: 'Extend your event impact and drive attendance to the next one.',
+    promise: 'Extend your event ROI and drive attendance to the next one.',
     deadline: '24hr teaser · 1–2 week recap',
   },
 ]
@@ -54,7 +54,7 @@ export function ServiceLanes() {
             Choose what you need
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            Tell us the moment. We'll ship the deliverables on your deadline.
+            Tell us the goal. We'll plan the deliverables, set the timeline, and ship on your deadline.
           </p>
         </motion.div>
 
@@ -102,7 +102,7 @@ export function ServiceLanes() {
                   
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      Deadline
+                      Timeline
                     </p>
                     <p className="text-sm text-m3-primary font-medium">
                       {service.deadline}

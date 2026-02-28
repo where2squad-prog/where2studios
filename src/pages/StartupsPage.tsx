@@ -11,19 +11,19 @@ import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { SEOHead } from '@/components/SEOHead'
 
 const whyUs = [
-  'We move on your deadline — no bloated timelines',
-  'Founder-friendly pricing and flexible packages',
-  'Deliverables shipped in days, not months',
-  'Content built to convert, not just look pretty',
+  'Strategy first — every project starts with a plan',
+  'Built for startups, scaling brands, and ambitious teams',
+  'Deliverables shipped on your timeline, not ours',
+  'Content built to drive growth, not just look good',
   'One producer, one point of contact, zero confusion',
-  'Clips and cutdowns for every format included',
+  'Clips, cutdowns, and formats included with every project',
 ]
 
 const services = [
   {
     icon: Video,
     title: 'Launch Videos',
-    description: 'Product demos, founder stories, and pitch videos that build credibility and close investors. Deliverables shipped in 1–3 weeks.',
+    description: 'Product demos, founder stories, and campaign videos that build credibility and drive ROI. Deliverables shipped in 1–3 weeks.',
     href: '/services/launch-videos',
   },
   {
@@ -35,7 +35,7 @@ const services = [
   {
     icon: CalendarDays,
     title: 'Event Recaps',
-    description: 'Demo days, meetups, launch parties — cinematic recap films, speaker clips, and social cutdowns shipped on deadline.',
+    description: 'Demo days, conferences, launch parties — recap films, speaker clips, and social cutdowns shipped on your timeline.',
     href: '/services/event-recaps',
   },
 ]
@@ -47,7 +47,7 @@ export default function StartupsPage() {
     <>
       <SEOHead
         title="Our Work | Where2Studios"
-        description="Launch videos, podcasts, and event recaps, shipped fast with clips included. See how we help founders launch, fundraise, and grow."
+        description="Your Growth Team, On Demand. See how we help founders and ambitious brands launch, grow, and look established from day one."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
@@ -63,26 +63,26 @@ export default function StartupsPage() {
               <div className="inline-flex items-center gap-2 mb-4">
                 <Rocket className="w-5 h-5 text-m3-primary" />
                 <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-                  For Startups
+                  Our Work
                 </span>
               </div>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface">
-                Launch videos, podcasts, and event recaps,{' '}
-                <span className="text-m3-primary">shipped fast</span> with clips included.
+                We help ambitious brands look{' '}
+                <span className="text-m3-primary">established, credible, and unforgettable.</span>
               </h1>
               <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                You're launching, fundraising, or hosting an event. We ship the deliverables on your deadline — with clips and cutdowns ready to post everywhere.
+                Strategy first, premium media production, and full service marketing execution. Our goal is to tell stories worth sharing.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                  Book a Discovery Call
+                  Book a Strategy Call
                 </button>
                 <Link to="/work" className="m3-outlined-button">
                   See Our Work
                 </Link>
               </div>
               <p className="mt-3 text-m3-on-surface/50 text-xs">
-                Share the goal and the deadline, we'll reply within 1 business day.
+                Free 30 minute strategy call, we reply within 1 business day.
               </p>
             </motion.div>
           </div>
@@ -101,7 +101,7 @@ export default function StartupsPage() {
                 Why Us
               </span>
               <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
-                Built for founders, not Fortune 500s
+                A growth partner, not just a production company
               </h2>
             </motion.div>
 
@@ -180,17 +180,17 @@ export default function StartupsPage() {
         <section className="py-16 sm:py-24 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-3xl">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-dark">
-              Ready to ship your next launch?
+              Ready to start your next project?
             </h2>
             <p className="mt-4 text-m3-on-dark/70 max-w-xl mx-auto">
-              Book a free 30-minute discovery call. Tell us the moment, the deadline, and what you need — we'll map out the deliverables.
+              Book a free 30 minute strategy call. Tell us the goal, the timeline, and the budget — we'll build a plan.
             </p>
             <p className="mt-2 text-m3-on-dark/50 text-sm">
-              Share the goal and the deadline, we'll reply within 1 business day.
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
             <div className="mt-8">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Discovery Call
+                Book a Strategy Call
               </button>
             </div>
           </div>

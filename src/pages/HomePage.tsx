@@ -15,8 +15,8 @@ export default function HomePage() {
   return (
     <>
       <SEOHead
-        title="Where2Studios | Startup Media Partner"
-        description="Launch videos, podcasts, and event recaps for startups ready to grow. Cinematic media production that helps founders tell their story and win their first thousand fans. San Francisco Bay Area."
+        title="Where2Studios | Your Growth Team, On Demand"
+        description="Your Growth Team, On Demand. Strategy first, premium media production, and full service marketing execution for ambitious brands. San Francisco Bay Area."
         schema={organizationSchema}
       />
       <div className="min-h-screen bg-m3-background text-m3-on-background">

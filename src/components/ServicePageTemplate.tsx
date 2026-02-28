@@ -46,11 +46,11 @@ export function ServicePageTemplate({
             </h1>
             <p className="text-lg sm:text-xl text-m3-on-dark/80 mb-4 max-w-xl">{subtitle}</p>
             <p className="text-m3-on-dark/50 text-sm mb-8">
-              Share the goal and the deadline, we'll reply within 1 business day.
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-center text-lg px-8 py-4">
-                Book a Discovery Call
+                Book a Strategy Call
               </button>
               <Link
                 to="/startups"
@@ -222,16 +222,16 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
           >
             <h2 className="font-fredoka text-3xl sm:text-4xl font-semibold text-m3-on-dark mb-4">
-              Ready to ship?
+              Ready to start?
             </h2>
             <p className="text-m3-on-dark/75 mb-4">
-              Book a free 30-minute discovery call. Tell us the deadline and we'll map out your deliverables.
+              Book a free 30 minute strategy call. Tell us the goal and the timeline — we'll build a plan with deliverables and budget.
             </p>
             <p className="text-m3-on-dark/50 text-sm mb-8">
-              Share the goal and the deadline, we'll reply within 1 business day.
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
             <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">
-              Book a Discovery Call
+              Book a Strategy Call
               <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
