@@ -50,13 +50,12 @@ export function ConversionHero() {
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] mb-4">
               Shaping culture through{' '}
-              <span className="text-m3-primary">your stories.
-              </span>
+              <span className="text-m3-primary">your stories</span>
             </h1>
 
             {/* Subhead */}
-            <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">We help startups, small businesses, and scaling brands build authority, attract customers, and grow through strategy and premium media production
-
+            <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">
+              We help startups and growing brands build authority and attract customers. Strategy plus premium production makes it happen
             </p>
 
             {/* CTA Row */}
