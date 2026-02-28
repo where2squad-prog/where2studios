@@ -61,7 +61,7 @@ export default function ContactPage() {
         <section className="py-8 sm:py-12 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {/* Book a Startup Call */}
+              {/* Book a Discovery Call */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function ContactPage() {
                     <Calendar className="w-6 h-6 text-m3-primary" />
                   </div>
                   <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
-                    Book a Startup Call
+                    Book a Discovery Call
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
                     30-minute video call to discuss your launch, content needs, and timeline. No strings attached.

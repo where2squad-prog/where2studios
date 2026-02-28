@@ -21,7 +21,7 @@ export function ClosingCTA() {
             Ready to launch something great?
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg mx-auto">Let's talk about your startup. 
-Book a startup call or send us a message</p>
+Book a discovery call or send us a message</p>
         </motion.div>
 
         {/* Two Column Layout */}

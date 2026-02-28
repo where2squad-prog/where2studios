@@ -44,7 +44,7 @@ export function Footer() {
               onClick={openSheet}
               className="m3-filled-button text-sm"
             >
-              Book a Startup Call
+              Book a Discovery Call
             </button>
           </div>
 
