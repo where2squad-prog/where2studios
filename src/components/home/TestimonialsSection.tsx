@@ -37,7 +37,7 @@ export function TestimonialsSection() {
               Client Notes
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-              What clients say
+              Teams we've built with
             </h2>
           </motion.div>
 
@@ -71,7 +71,7 @@ export function TestimonialsSection() {
             Testimonials
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            What clients say
+            Teams we've built with
           </h2>
         </motion.div>
 

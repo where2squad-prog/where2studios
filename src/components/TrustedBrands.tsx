@@ -28,7 +28,7 @@ export function TrustedBrands() {
     <section className="py-12 sm:py-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Label */}
       <p className="text-center text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-8 sm:mb-10">
-        Trusted By Ambitious Brands
+        Teams we've built with
       </p>
       
       {/* Full-width seamless marquee */}

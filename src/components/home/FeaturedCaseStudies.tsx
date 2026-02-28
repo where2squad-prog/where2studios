@@ -106,10 +106,10 @@ export function FeaturedCaseStudies() {
         >
           <div>
             <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Recent Projects
+              Portfolio
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-              Featured Work
+              Work we've shipped
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
               Strategy first, premium production, and deliverables that drive growth.

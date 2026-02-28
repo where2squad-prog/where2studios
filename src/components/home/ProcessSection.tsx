@@ -45,10 +45,10 @@ export function ProcessSection() {
           className="text-center mb-12"
         >
           <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-            How It Works
+            Process
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Four steps. One plan. Deliverables shipped.
+            How we work
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
             You share the goal and the timeline. We handle strategy, production, and delivery.
