@@ -52,7 +52,7 @@ export function TrustedBrands() {
     <section className="py-12 sm:py-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Label */}
       <p className="text-center text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-8 sm:mb-10">
-        Trusted By Growing Brands
+        Trusted By Startups &amp; Founders
       </p>
       
       {/* Full-width seamless marquee */}
@@ -107,20 +107,20 @@ export function TrustedBrands() {
         <div className="flex justify-center">
           <div className="grid grid-cols-4 gap-6 sm:gap-12 lg:gap-16">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">632+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Projects</div>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">150+</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Launches</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
               <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">100+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brands</div>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">80+</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Startups</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">10K+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Content</div>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">500+</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Assets Delivered</div>
             </div>
           </div>
         </div>
