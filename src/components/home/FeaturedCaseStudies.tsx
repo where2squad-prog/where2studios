@@ -9,11 +9,9 @@ import { getThumbnail } from '@/hooks/useProjects'
 const FILTER_LABELS: Record<string, string> = {
   'launch-videos': 'Launch Video',
   podcasts: 'Podcast',
-  events: 'Event Recap',
-  social: 'Social',
-  corporate: 'Corporate',
-  commercials: 'Commercial',
-  weddings: 'Wedding',
+  'event-recaps': 'Event Recap',
+  'founder-story': 'Founder Story',
+  'product-demo': 'Product Demo',
 }
 
 function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }) {
@@ -108,13 +106,13 @@ export function FeaturedCaseStudies() {
         >
           <div>
             <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Featured Work
+              Startup Work
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-              Case Studies
+              Featured Projects
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Real results for real startups. Content that drives growth.
+              Launch videos, podcasts, and event recaps that move the needle.
             </p>
           </div>
 
