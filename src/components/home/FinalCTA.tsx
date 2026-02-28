@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { useBookingSheet } from '@/contexts/BookingSheetContext'
-import { Clock, MessageSquare, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useBookingSheet } from '@/contexts/BookingSheetContext';
+import { Clock, MessageSquare, ArrowRight } from 'lucide-react';
 
 export function FinalCTA() {
-  const { openSheet } = useBookingSheet()
+  const { openSheet } = useBookingSheet();
 
   return (
     <section className="py-16 sm:py-24 bg-m3-surface-dark">
@@ -15,19 +15,19 @@ export function FinalCTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
-        >
+          className="max-w-3xl mx-auto text-center">
+
           <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
             Next Step
           </span>
           
-          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">
-            If you're building something worth sharing, we'll help the world see it.
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">If you're building something worth sharing, we'll help the world see it
+
           </h2>
           
-          <p className="text-m3-on-dark/70 text-base sm:text-lg mb-4 max-w-xl mx-auto">
-            Strategy first, premium media, and execution that drives growth.
-          </p>
+          
+
+
 
           <p className="text-m3-on-dark/50 text-sm mb-8">
             We reply within 1 business day.
@@ -36,14 +36,14 @@ export function FinalCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <button
               onClick={openSheet}
-              className="m3-filled-button text-base sm:text-lg px-8 py-4"
-            >
+              className="m3-filled-button text-base sm:text-lg px-8 py-4">
+
               Book a Strategy Call
             </button>
             <Link
               to="/contact"
-              className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10"
-            >
+              className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10">
+
               Start Your Project
             </Link>
           </div>
@@ -64,6 +64,6 @@ export function FinalCTA() {
           </div>
         </motion.div>
       </div>
-    </section>
-  )
+    </section>);
+
 }
