@@ -14,9 +14,9 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { href: '/services/launch-videos', label: 'Launch Videos' },
-  { href: '/services/podcasts', label: 'Podcasts' },
-  { href: '/services/event-recaps', label: 'Event Recaps' },
+  { href: '/services', label: 'Brand and Growth Strategy' },
+  { href: '/services', label: 'High Impact Media Production' },
+  { href: '/services', label: 'Full Service Marketing Execution' },
 ];
 
 interface NavbarProps {
