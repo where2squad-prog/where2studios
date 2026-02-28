@@ -158,7 +158,7 @@ export function ServicePageTemplate({
               Deliverables
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2 mb-8 text-center">
-              What you can ask for
+              What we can ship
             </h2>
             <div className="flex flex-wrap justify-center gap-3">
               {deliverables.map((item, index) => (
