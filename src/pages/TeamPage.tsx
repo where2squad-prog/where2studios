@@ -127,17 +127,46 @@ export default function TeamPage() {
                 Who We Are
               </span>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2 mb-6">
-                The team behind the work
+                We're not just a media company — we're your growth partner.
               </h1>
-              <p className="text-base sm:text-lg text-m3-on-surface/80 mb-4 max-w-xl">
-                Our goal is to tell stories worth sharing.
-              </p>
-              <p className="text-base text-m3-on-surface/70 leading-relaxed max-w-2xl">
-                Where2Studios is a growth partner for ambitious brands, built with startups in mind. 
-                We combine strategy, storytelling, and execution so your content has a purpose and drives growth. 
-                We specialize in startups and small businesses, but we also serve hospitality, tourism, food and beverage, tech, and service brands.
+              <p className="text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
+                Built with startups in mind, we help emerging and scaling brands look established, credible, and unforgettable.
               </p>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Body Sections */}
+        <section className="pb-12 sm:pb-16">
+          <div className="container mx-auto px-4 sm:px-8 lg:px-12">
+            <div className="max-w-3xl space-y-10">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">What we do</h2>
+                <p className="text-m3-on-surface/70 leading-relaxed">
+                  From full scale marketing strategy to cinematic video production, photography, podcast production, event coverage, and brand storytelling — we create media that accelerates businesses forward.
+                </p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">Who we help</h2>
+                <p className="text-m3-on-surface/70 leading-relaxed">
+                  We specialize in startups and small businesses, and our portfolio spans hospitality, tourism, food and beverage, tech, and service based brands.
+                </p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">How we think</h2>
+                <p className="text-m3-on-surface/70 leading-relaxed">
+                  Every project starts with a strategy. Every asset has a purpose. Every campaign has a measurable goal. That's how brands grow.
+                </p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="pt-4">
+                <p className="text-m3-on-surface/80 text-base sm:text-lg leading-relaxed font-medium italic">
+                  "If you're building something worth sharing, we're the team that helps the world see it. Our goal is to tell stories worth sharing."
+                </p>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -218,17 +247,14 @@ export default function TeamPage() {
               Ready to work with us?
             </h2>
             <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-              Let's discuss your goal and build a plan that drives growth.
-            </p>
-            <p className="mt-2 text-m3-on-surface/40 text-sm">
               Free 30 minute strategy call, we reply within 1 business day.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
                 Book a Strategy Call
               </button>
-              <Link to="/contact" className="m3-outlined-button">
-                Start Your Project
+              <Link to="/startups" className="m3-outlined-button">
+                See Our Work
               </Link>
             </div>
           </div>
