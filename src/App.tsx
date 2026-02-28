@@ -16,10 +16,10 @@ import SocialMediaWorkPage from './pages/SocialMediaWorkPage'
 import ProductionsWorkPage from './pages/ProductionsWorkPage'
 import ContactPage from './pages/ContactPage'
 import TeamPage from './pages/TeamPage'
+import StartupsPage from './pages/StartupsPage'
 import LaunchVideosPage from './pages/services/LaunchVideosPage'
 import PodcastsPage from './pages/services/PodcastsPage'
 import EventsPage from './pages/services/EventsPage'
-import SocialMediaPage from './pages/services/SocialMediaPage'
 import NotFoundPage from './pages/NotFoundPage'
 import SocialAdminPage from './pages/admin/SocialAdminPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
@@ -43,13 +43,13 @@ export default function App() {
                 <Route path="/work/social-media" element={<SocialMediaWorkPage />} />
                 <Route path="/work/productions" element={<ProductionsWorkPage />} />
                 <Route path="/services" element={<ServicesPage />} />
+                <Route path="/services/launch-videos" element={<LaunchVideosPage />} />
+                <Route path="/services/podcasts" element={<PodcastsPage />} />
+                <Route path="/services/event-recaps" element={<EventsPage />} />
+                <Route path="/startups" element={<StartupsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/team" element={<TeamPage />} />
                 <Route path="/who-we-are" element={<TeamPage />} />
-                <Route path="/launch-videos" element={<LaunchVideosPage />} />
-                <Route path="/podcasts" element={<PodcastsPage />} />
-                <Route path="/events" element={<EventsPage />} />
-                <Route path="/social-media" element={<SocialMediaPage />} />
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms" element={<TermsOfServicePage />} />
                 <Route path="/admin/login" element={<AdminLoginPage />} />
