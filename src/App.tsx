@@ -20,6 +20,9 @@ import StartupsPage from './pages/StartupsPage'
 import LaunchVideosPage from './pages/services/LaunchVideosPage'
 import PodcastsPage from './pages/services/PodcastsPage'
 import EventsPage from './pages/services/EventsPage'
+import StrategyPage from './pages/services/StrategyPage'
+import ProductionPage from './pages/services/ProductionPage'
+import MarketingPage from './pages/services/MarketingPage'
 import NotFoundPage from './pages/NotFoundPage'
 import SocialAdminPage from './pages/admin/SocialAdminPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
@@ -46,6 +49,9 @@ export default function App() {
                 <Route path="/services/launch-videos" element={<LaunchVideosPage />} />
                 <Route path="/services/podcasts" element={<PodcastsPage />} />
                 <Route path="/services/event-recaps" element={<EventsPage />} />
+                <Route path="/services/strategy" element={<StrategyPage />} />
+                <Route path="/services/production" element={<ProductionPage />} />
+                <Route path="/services/marketing" element={<MarketingPage />} />
                 <Route path="/startups" element={<StartupsPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/team" element={<TeamPage />} />
