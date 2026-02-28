@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Video, Mic, CalendarDays, Megaphone, ArrowRight } from 'lucide-react'
+import { Video, Mic, CalendarDays, ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -13,7 +13,7 @@ const services = [
     id: 'launch-videos',
     title: 'Launch Videos',
     icon: Video,
-    href: '/launch-videos',
+    href: '/services/launch-videos',
     description: 'Product demos, explainer videos, pitch decks, founder stories',
     forWho: 'Founders, product teams, investor relations',
   },
@@ -21,25 +21,17 @@ const services = [
     id: 'podcasts',
     title: 'Podcasts',
     icon: Mic,
-    href: '/podcasts',
+    href: '/services/podcasts',
     description: 'Full production, editing, clips, guest coordination, show branding',
     forWho: 'Founders, thought leaders, startup communities',
   },
   {
-    id: 'events',
+    id: 'event-recaps',
     title: 'Event Recaps',
     icon: CalendarDays,
-    href: '/events',
+    href: '/services/event-recaps',
     description: 'Teasers, recaps, speaker clips, sponsor reels, social cuts',
     forWho: 'Event producers, demo days, meetup organizers',
-  },
-  {
-    id: 'social',
-    title: 'Social Media',
-    icon: Megaphone,
-    href: '/social-media',
-    description: 'Content systems, vertical video, reels, TikToks, Shorts',
-    forWho: 'Growth teams, founders, marketing leads',
   },
 ]
 
@@ -74,7 +66,7 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}

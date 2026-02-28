@@ -10,14 +10,14 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
+  { href: '/startups', label: 'Startups' },
   { href: '/who-we-are', label: 'Who We Are' },
 ];
 
 const serviceLinks = [
-  { href: '/launch-videos', label: 'Launch Videos' },
-  { href: '/podcasts', label: 'Podcasts' },
-  { href: '/events', label: 'Event Recaps' },
-  { href: '/social-media', label: 'Social Media' },
+  { href: '/services/launch-videos', label: 'Launch Videos' },
+  { href: '/services/podcasts', label: 'Podcasts' },
+  { href: '/services/event-recaps', label: 'Event Recaps' },
 ];
 
 interface NavbarProps {
@@ -118,11 +118,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                       ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
                       : 'text-m3-on-dark/80 hover:text-m3-on-dark'
                   } ${
-                    location.pathname.includes('/services') || 
-                    location.pathname === '/launch-videos' || 
-                    location.pathname === '/podcasts' ||
-                    location.pathname === '/events' ||
-                    location.pathname === '/social-media'
+                    location.pathname.startsWith('/services')
                       ? isLight
                         ? 'text-m3-on-surface'
                         : 'text-m3-on-dark'

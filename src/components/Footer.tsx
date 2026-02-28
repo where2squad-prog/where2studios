@@ -8,16 +8,16 @@ export function Footer() {
 
   const links = [
     { label: 'Work', href: '/work' },
+    { label: 'Startups', href: '/startups' },
     { label: 'Services', href: '/services' },
     { label: 'Who We Are', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },
   ]
 
   const services = [
-    { label: 'Launch Videos', href: '/launch-videos' },
-    { label: 'Podcasts', href: '/podcasts' },
-    { label: 'Event Recaps', href: '/events' },
-    { label: 'Social Media', href: '/social-media' },
+    { label: 'Launch Videos', href: '/services/launch-videos' },
+    { label: 'Podcasts', href: '/services/podcasts' },
+    { label: 'Event Recaps', href: '/services/event-recaps' },
   ]
 
   const legalLinks = [
