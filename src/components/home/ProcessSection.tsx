@@ -8,28 +8,28 @@ const processSteps = [
     step: 1,
     title: 'Plan',
     icon: ClipboardList,
-    description: 'Discovery call, creative brief, and timeline alignment. We learn your brand, goals, and approval process.',
-    details: 'Clear milestones, stakeholder sign-off points, and no surprises.',
+    description: 'Startup call, creative brief, and timeline alignment. We learn your product, audience, and launch goals.',
+    details: 'Clear milestones built around your launch timeline.',
   },
   {
     step: 2,
     title: 'Produce',
     icon: Clapperboard,
     description: 'Professional filming with our experienced crew. We handle logistics, equipment, and talent coordination.',
-    details: 'On-site professionalism, minimal disruption to your team.',
+    details: 'Fast, focused shoots that respect your time.',
   },
   {
     step: 3,
     title: 'Publish',
     icon: Upload,
     description: 'Polished edits optimized for your platforms. Review rounds built into the timeline.',
-    details: 'Multi-format exports, platform-specific cuts, brand-safe delivery.',
+    details: 'Multi-format exports, platform-specific cuts, launch-ready delivery.',
   },
   {
     step: 4,
     title: 'Optimize',
     icon: TrendingUp,
-    description: 'Performance tracking and iteration. We refine based on what works.',
+    description: 'Performance tracking and iteration. We refine based on what drives growth.',
     details: 'Data-driven insights to improve future content.',
   },
 ]
@@ -48,7 +48,7 @@ export function ProcessSection() {
             How It Works
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Built for busy teams
+            Built for fast-moving startups
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
             Clear process, predictable timelines, no chaos.

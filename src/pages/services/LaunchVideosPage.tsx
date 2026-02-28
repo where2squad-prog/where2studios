@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Building2, Shield, Clock, FileCheck, Users, CheckCircle2, ArrowRight } from 'lucide-react'
+import { Video, Zap, Clock, Target, Rocket, CheckCircle2 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -10,38 +10,38 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 
 const useCases = [
-  { title: 'Brand Films', description: 'Tell your company story in a way that resonates with customers and talent' },
-  { title: 'Recruiting Content', description: 'Attract top talent by showcasing your culture and people' },
-  { title: 'Product Launches', description: 'Generate buzz and explain complex products with clarity' },
-  { title: 'Executive Communications', description: 'Internal updates, investor relations, and thought leadership' },
-  { title: 'Event Coverage', description: 'Capture company events, conferences, and milestones' },
-  { title: 'Training Content', description: 'Onboarding, compliance, and skill development videos' },
+  { title: 'Product Demos', description: 'Show your product in action with a polished walkthrough that converts' },
+  { title: 'Explainer Videos', description: 'Break down complex ideas into clear, compelling visuals' },
+  { title: 'Pitch Deck Videos', description: 'Elevate your investor pitch with cinematic storytelling' },
+  { title: 'Founder Stories', description: 'Build trust by sharing the why behind your company' },
+  { title: 'Launch Announcements', description: 'Generate buzz for product launches with high-impact video' },
+  { title: 'Customer Testimonials', description: 'Let your users tell the story in their own words' },
 ]
 
 const howWeWork = [
   {
-    icon: Shield,
-    title: 'Brand Safe',
-    description: 'We follow your brand guidelines to the letter. Messaging, visuals, and tone are always on-brand.',
+    icon: Target,
+    title: 'Startup Native',
+    description: 'We understand the pace. No bloated timelines or unnecessary processes.',
   },
   {
     icon: Clock,
     title: 'Fast Turnaround',
-    description: '2-4 week typical timelines. Rush delivery available for urgent projects.',
+    description: '1-3 week typical timelines. Rush delivery available for launches.',
   },
   {
-    icon: FileCheck,
-    title: 'Clear Approvals',
-    description: 'Defined review rounds, stakeholder sign-off points, and no scope creep.',
+    icon: Zap,
+    title: 'Launch Ready',
+    description: 'Multi-format exports optimized for your website, social, and investor decks.',
   },
   {
-    icon: Users,
-    title: 'Legal & Guidelines Friendly',
-    description: 'We work with your legal and compliance teams. NDAs, usage rights, and releases handled.',
+    icon: Rocket,
+    title: 'Growth Focused',
+    description: 'Content designed to convert, not just look pretty.',
   },
 ]
 
-export default function CorporatePage() {
+export default function LaunchVideosPage() {
   const { openSheet } = useBookingSheet()
 
   return (
@@ -57,24 +57,24 @@ export default function CorporatePage() {
             className="max-w-3xl"
           >
             <div className="inline-flex items-center gap-2 mb-4">
-              <Building2 className="w-5 h-5 text-m3-primary" />
+              <Video className="w-5 h-5 text-m3-primary" />
               <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-                Corporate
+                Launch Videos
               </span>
             </div>
             <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface">
-              Brand safe, fast turn,{' '}
-              <span className="text-m3-primary">executive ready</span>
+              Make your launch{' '}
+              <span className="text-m3-primary">impossible to ignore</span>
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Professional video production for companies that need polished, on-brand content without the agency overhead.
+              Cinematic product videos, explainers, and founder stories that help startups build credibility and drive growth.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Discovery Call
+                Book a Startup Call
               </button>
               <Link to="/work" className="m3-outlined-button">
-                View Corporate Work
+                View Our Work
               </Link>
             </div>
           </motion.div>
@@ -94,7 +94,7 @@ export default function CorporatePage() {
               Use Cases
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
-              What we create for corporate teams
+              What we create for startups
             </h2>
           </motion.div>
 
@@ -133,7 +133,7 @@ export default function CorporatePage() {
               How We Work
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2">
-              Built for busy corporate teams
+              Built for fast-moving founders
             </h2>
           </motion.div>
 
@@ -164,21 +164,20 @@ export default function CorporatePage() {
         </div>
       </section>
 
-      {/* Featured Work */}
       <FeaturedCaseStudies />
 
       {/* CTA */}
       <section className="py-16 sm:py-24 bg-m3-surface-dark">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-3xl">
           <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-dark">
-            Ready to elevate your corporate content?
+            Ready to launch with video?
           </h2>
           <p className="mt-4 text-m3-on-dark/70 max-w-xl mx-auto">
-            Let's discuss your goals and create a plan that works for your team.
+            Let's discuss your product and create a video that makes people pay attention.
           </p>
           <div className="mt-8">
             <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-              Book a Discovery Call
+              Book a Startup Call
             </button>
           </div>
         </div>

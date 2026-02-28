@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
-import { Check, Shield, Zap } from 'lucide-react';
+import { Check, Rocket, Zap } from 'lucide-react';
 
 const proofChips = [
-  { icon: Zap, text: 'Fast, organized production' },
-  { icon: Shield, text: 'Brand safe execution' },
-  { icon: Check, text: 'Content that lives beyond the event' },
+  { icon: Rocket, text: 'Launch-ready in weeks' },
+  { icon: Zap, text: 'Built for speed and iteration' },
+  { icon: Check, text: 'Content that scales with you' },
 ];
 
 export function ConversionHero() {
@@ -44,20 +44,20 @@ export function ConversionHero() {
           >
             {/* Eyebrow */}
             <p className="text-m3-primary text-xs font-semibold tracking-widest uppercase mb-3">
-              Full Service Media & Marketing
+              Your Startup Media Partner
             </p>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] mb-4">
-              Make your event look
+              Launch loud,
               <br />
-              as <span className="text-m3-primary">big</span> as it felt
+              <span className="text-m3-primary">grow</span> faster
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">
-              From prep to post, we capture the moments people talk about, then
-              turn them into content that keeps working after the night ends.
+              Launch videos, podcasts, and event recaps that help startups
+              tell their story, build credibility, and win their first thousand fans.
             </p>
 
             {/* CTA Row */}
@@ -66,7 +66,7 @@ export function ConversionHero() {
                 onClick={openSheet}
                 className="h-12 inline-flex items-center justify-center rounded-lg bg-m3-primary text-m3-on-primary font-semibold text-base px-7 shadow-sm hover:brightness-110 transition-all"
               >
-                Book a Discovery Call
+                Book a Startup Call
               </button>
               <Link
                 to="/work"

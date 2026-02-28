@@ -14,11 +14,10 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'Corporate', href: '/corporate' },
-    { label: 'Events', href: '/events' },
-    { label: 'Weddings', href: '/weddings' },
+    { label: 'Launch Videos', href: '/launch-videos' },
+    { label: 'Podcasts', href: '/podcasts' },
+    { label: 'Event Recaps', href: '/events' },
     { label: 'Social Media', href: '/social-media' },
-    { label: 'Commercials', href: '/commercials' },
   ]
 
   const legalLinks = [
@@ -39,13 +38,13 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-4 max-w-xs">
-              Full-service media production for corporate, events, and everything in between.
+              Cinematic media production for startups ready to launch, grow, and stand out.
             </p>
             <button
               onClick={openSheet}
               className="m3-filled-button text-sm"
             >
-              Book a Call
+              Book a Startup Call
             </button>
           </div>
 

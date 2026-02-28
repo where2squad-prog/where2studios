@@ -7,11 +7,13 @@ import { useFeaturedCaseStudies, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 
 const FILTER_LABELS: Record<string, string> = {
-  corporate: 'Corporate',
-  events: 'Events',
-  weddings: 'Weddings',
-  commercials: 'Commercials',
+  'launch-videos': 'Launch Video',
+  podcasts: 'Podcast',
+  events: 'Event Recap',
   social: 'Social',
+  corporate: 'Corporate',
+  commercials: 'Commercial',
+  weddings: 'Wedding',
 }
 
 function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }) {
@@ -38,7 +40,6 @@ function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }
           />
           <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
           
-          {/* Play icon overlay */}
           {project.video_url && (
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <div className="w-14 h-14 rounded-full bg-m3-primary/90 flex items-center justify-center shadow-lg">
@@ -47,7 +48,6 @@ function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }
             </div>
           )}
 
-          {/* Category tag */}
           <div className="absolute top-3 left-3">
             <span className="px-3 py-1 rounded-full bg-m3-surface/90 text-m3-on-surface text-xs font-semibold shadow-sm">
               {categoryLabel}
@@ -114,7 +114,7 @@ export function FeaturedCaseStudies() {
               Case Studies
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Real results for real businesses. Content that converts.
+              Real results for real startups. Content that drives growth.
             </p>
           </div>
 

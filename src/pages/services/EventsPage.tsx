@@ -54,7 +54,7 @@ export default function EventsPage() {
             <div className="inline-flex items-center gap-2 mb-4">
               <CalendarDays className="w-5 h-5 text-m3-primary" />
               <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-                Events
+                Event Recaps
               </span>
             </div>
             <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface">
@@ -62,11 +62,11 @@ export default function EventsPage() {
               <span className="text-m3-primary">sells the next event</span>
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Extend your event's impact long after it ends. Content that drives attendance to your next one.
+              Demo days, meetups, launch parties. Extend your event's impact long after it ends with content that drives attendance to the next one.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Discovery Call
+                Book a Startup Call
               </button>
               <Link to="/work" className="m3-outlined-button">
                 View Event Work
@@ -145,7 +145,6 @@ export default function EventsPage() {
                 transition={{ delay: index * 0.1 }}
                 className="relative"
               >
-                {/* Connector */}
                 {index < timeline.length - 1 && (
                   <div className="hidden md:block absolute top-8 left-[calc(100%+0.5rem)] w-[calc(100%-1rem)] h-px bg-m3-outline z-0" />
                 )}
@@ -180,7 +179,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Featured Work */}
       <FeaturedCaseStudies />
 
       {/* CTA */}
@@ -194,7 +192,7 @@ export default function EventsPage() {
           </p>
           <div className="mt-8">
             <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-              Book a Discovery Call
+              Book a Startup Call
             </button>
           </div>
         </div>
