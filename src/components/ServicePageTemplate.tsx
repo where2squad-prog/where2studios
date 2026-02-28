@@ -155,10 +155,10 @@ export function ServicePageTemplate({
             className="max-w-3xl mx-auto"
           >
             <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Formats
+              Deliverables
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mt-2 mb-8 text-center">
-              What you'll receive
+              What you can ask for
             </h2>
             <div className="flex flex-wrap justify-center gap-3">
               {deliverables.map((item, index) => (
