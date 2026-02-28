@@ -1,36 +1,36 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ClipboardList, Clapperboard, Upload, TrendingUp } from 'lucide-react'
+import { Target, Clapperboard, Share2, BarChart3 } from 'lucide-react'
 
 const processSteps = [
   {
     step: 1,
-    title: 'Plan',
-    icon: ClipboardList,
-    description: 'Startup call, creative brief, and timeline alignment. We learn your product, audience, and launch goals.',
-    details: 'Clear milestones built around your launch timeline.',
+    title: 'Strategy',
+    icon: Target,
+    description: 'Startup call to nail your audience, message, and launch timeline. We build a creative brief you actually want to read.',
+    details: 'Clear milestones tied to your launch date.',
   },
   {
     step: 2,
     title: 'Produce',
     icon: Clapperboard,
-    description: 'Professional filming with our experienced crew. We handle logistics, equipment, and talent coordination.',
-    details: 'Fast, focused shoots that respect your time.',
+    description: 'Fast, focused shoots with a small senior crew. No bloat, no wasted time, no 47-person email chain.',
+    details: 'Professional quality without the agency overhead.',
   },
   {
     step: 3,
-    title: 'Publish',
-    icon: Upload,
-    description: 'Polished edits optimized for your platforms. Review rounds built into the timeline.',
-    details: 'Multi-format exports, platform-specific cuts, launch-ready delivery.',
+    title: 'Distribute',
+    icon: Share2,
+    description: 'Polished edits cut for every platform — website hero, social, pitch deck, investor update. All formats, one delivery.',
+    details: 'Multi-format exports ready to post and present.',
   },
   {
     step: 4,
-    title: 'Optimize',
-    icon: TrendingUp,
-    description: 'Performance tracking and iteration. We refine based on what drives growth.',
-    details: 'Data-driven insights to improve future content.',
+    title: 'Iterate',
+    icon: BarChart3,
+    description: 'We track what performs and refine the next round. Your content gets sharper every cycle.',
+    details: 'Data-driven insights to fuel future content.',
   },
 ]
 
@@ -48,10 +48,10 @@ export function ProcessSection() {
             How It Works
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Built for fast-moving startups
+            Built for fast-moving founders
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            Clear process, predictable timelines, no chaos.
+            Four steps. No surprises. Content that ships on time.
           </p>
         </motion.div>
 

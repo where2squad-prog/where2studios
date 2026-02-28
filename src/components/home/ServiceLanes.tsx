@@ -10,27 +10,27 @@ const serviceLanes = [
     title: 'Launch Videos',
     icon: Video,
     href: '/services/launch-videos',
-    whatWeDeliver: 'Product demos, explainer videos, pitch decks, founder stories',
-    whatItSolves: 'Build credibility, explain your product, and attract investors',
-    turnaround: '1-3 weeks typical',
+    whatWeDeliver: 'Product demos, explainers, pitch videos, founder stories, testimonials',
+    whatItSolves: 'Build credibility, explain your product, and close investors',
+    turnaround: '1–3 weeks',
   },
   {
     id: 'podcasts',
     title: 'Podcasts',
     icon: Mic,
     href: '/services/podcasts',
-    whatWeDeliver: 'Full production, editing, clips, guest coordination, show branding',
+    whatWeDeliver: 'Recording, editing, social clips, guest coordination, show branding',
     whatItSolves: 'Establish thought leadership and grow your audience on autopilot',
-    turnaround: 'Weekly or bi-weekly episodes',
+    turnaround: 'Weekly or bi-weekly batches',
   },
   {
     id: 'event-recaps',
     title: 'Event Recaps',
     icon: CalendarDays,
     href: '/services/event-recaps',
-    whatWeDeliver: 'Teasers, recaps, speaker clips, sponsor reels, social cuts',
+    whatWeDeliver: 'Same-day teasers, full recaps, speaker clips, sponsor reels',
     whatItSolves: 'Extend event impact and drive attendance to the next one',
-    turnaround: '24hr teaser, 1-2 week full recap',
+    turnaround: '24hr teaser · 1–2 week recap',
   },
 ]
 
@@ -81,7 +81,7 @@ export function ServiceLanes() {
                 <div className="space-y-4 mb-6">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      What we deliver
+                      Includes
                     </p>
                     <p className="text-sm text-m3-on-surface/80">
                       {lane.whatWeDeliver}
