@@ -77,7 +77,7 @@ export default function StartupsPage() {
                 <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
                   Book a Strategy Call
                 </button>
-                <Link to="/work" className="m3-outlined-button">
+                <Link to="/work" className="m3-outlined-button text-lg px-8 py-4">
                   See Our Work
                 </Link>
               </div>
