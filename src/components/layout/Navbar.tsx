@@ -9,8 +9,7 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
-  { href: '/startups', label: 'Startups' },
+  { href: '/startups', label: 'Our Work' },
   { href: '/who-we-are', label: 'Who We Are' },
 ];
 
