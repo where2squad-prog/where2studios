@@ -38,7 +38,7 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-4 max-w-xs">
-              Cinematic media production for startups ready to launch, grow, and stand out.
+              Launch videos, podcasts, and event recaps for startups that need to ship content and grow fast.
             </p>
             <button
               onClick={openSheet}
