@@ -14,22 +14,33 @@ const bookingSchema = z.object({
   email: z.string().trim().email('Invalid email').max(255),
   phone: z.string().trim().min(1, 'Required').max(20),
   company: z.string().trim().min(1, 'Required').max(100),
+  role: z.string().trim().min(1, 'Required').max(100),
+  stage: z.string().min(1, 'Required'),
+  companyUrl: z.string().trim().max(255).optional(),
   service: z.string().min(1, 'Required'),
-  referral: z.string().min(1, 'Required'),
+  launchDate: z.string().trim().max(100).optional(),
   budget: z.string().min(1, 'Required'),
   timeline: z.string().min(1, 'Required'),
+  referral: z.string().min(1, 'Required'),
   message: z.string().trim().min(1, 'Required').max(2000),
   website: z.string().max(0, 'Bot detected'),
 })
 
 type BookingFormData = z.infer<typeof bookingSchema>
 
-const services = [
-  { value: 'weddings', label: 'Weddings' },
-  { value: 'events', label: 'Events' },
-  { value: 'corporate', label: 'Corporate' },
-  { value: 'social-media', label: 'Social Media' },
-  { value: 'commercials', label: 'Commercials' },
+const contentNeeds = [
+  { value: 'launch-video', label: 'Launch Video' },
+  { value: 'podcast', label: 'Podcast' },
+  { value: 'event-recap', label: 'Event Recap' },
+  { value: 'multiple', label: 'Multiple / Not Sure' },
+]
+
+const stages = [
+  { value: 'pre-seed', label: 'Pre-Seed' },
+  { value: 'seed', label: 'Seed' },
+  { value: 'series-a', label: 'Series A' },
+  { value: 'series-b-plus', label: 'Series B+' },
+  { value: 'bootstrapped', label: 'Bootstrapped' },
 ]
 
 const budgetRanges = [
@@ -49,6 +60,7 @@ const timelines = [
 const referralSources = [
   { value: 'instagram', label: 'Instagram' },
   { value: 'tiktok', label: 'TikTok' },
+  { value: 'linkedin', label: 'LinkedIn' },
   { value: 'google', label: 'Google' },
   { value: 'referral', label: 'Referral' },
   { value: 'other', label: 'Other' },
@@ -62,10 +74,14 @@ export function BookingFormSheet() {
     email: '',
     phone: '',
     company: '',
+    role: '',
+    stage: '',
+    companyUrl: '',
     service: '',
-    referral: '',
+    launchDate: '',
     budget: '',
     timeline: '',
+    referral: '',
     message: '',
     website: '',
   })
@@ -126,7 +142,7 @@ export function BookingFormSheet() {
         email: formData.email,
         company: formData.company,
         service: formData.service,
-        message: formData.message,
+        message: `[Role: ${formData.role}] [Stage: ${formData.stage}]${formData.companyUrl ? ` [Website: ${formData.companyUrl}]` : ''}${formData.launchDate ? ` [Launch/Event Date: ${formData.launchDate}]` : ''}\n\n${formData.message}`,
         phone: formData.phone,
         budget: formData.budget,
         timeline: formData.timeline,
@@ -134,7 +150,6 @@ export function BookingFormSheet() {
       })
 
       setIsSubmitted(true)
-      // Open Cal.com modal after short delay for smooth transition
       setTimeout(() => {
         openCalModal()
       }, 300)
@@ -148,7 +163,6 @@ export function BookingFormSheet() {
 
   const handleClose = () => {
     closeSheet()
-    // Reset form after close animation
     setTimeout(() => {
       setIsSubmitted(false)
       setFormData({
@@ -156,10 +170,14 @@ export function BookingFormSheet() {
         email: '',
         phone: '',
         company: '',
+        role: '',
+        stage: '',
+        companyUrl: '',
         service: '',
-        referral: '',
+        launchDate: '',
         budget: '',
         timeline: '',
+        referral: '',
         message: '',
         website: '',
       })
@@ -179,6 +197,14 @@ export function BookingFormSheet() {
     } focus:outline-none focus:ring-2 focus:ring-m3-primary/50 focus:border-m3-primary transition-all appearance-none cursor-pointer`
 
   const labelClasses = "text-xs font-medium text-m3-on-surface/80 mb-1 block"
+
+  const SelectArrow = () => (
+    <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">
+      <svg className="w-3.5 h-3.5 text-m3-on-surface/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  )
 
   return (
     <AnimatePresence mode="wait">
@@ -202,7 +228,7 @@ export function BookingFormSheet() {
             transition={{ type: 'spring', damping: 28, stiffness: 350 }}
             className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-[120] shadow-2xl flex flex-col"
           >
-            {/* Header - Fixed */}
+            {/* Header */}
             <div className="flex-shrink-0 bg-m3-surface-variant px-5 pt-5 pb-4 relative">
               <button
                 onClick={handleClose}
@@ -210,11 +236,11 @@ export function BookingFormSheet() {
               >
                 <X className="w-5 h-5 text-m3-on-surface/70" />
               </button>
-              <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface text-center">Tell us about yourself</h2>
-              <p className="text-xs text-m3-on-surface/50 text-center mt-1">We'll get back to you within 24 hours</p>
+              <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface text-center">Tell us about your startup</h2>
+              <p className="text-xs text-m3-on-surface/50 text-center mt-1">We reply within 1 business day</p>
             </div>
 
-            {/* Content - Scrollable */}
+            {/* Content */}
             <div className="flex-1 overflow-y-auto px-5 py-4">
               {isSubmitted ? (
                 <motion.div
@@ -258,153 +284,113 @@ export function BookingFormSheet() {
                     autoComplete="off"
                   />
 
-                  {/* Row 1: Name & Email */}
+                  {/* Name & Email */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className={labelClasses}>Full Name *</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className={inputClasses(!!errors.name)}
-                        placeholder="Your name"
-                      />
+                      <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClasses(!!errors.name)} placeholder="Your name" />
                       {errors.name && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
                     </div>
                     <div>
                       <label className={labelClasses}>Email *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={inputClasses(!!errors.email)}
-                        placeholder="you@company.com"
-                      />
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@startup.com" />
                       {errors.email && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
                     </div>
                   </div>
 
-                  {/* Row 2: Phone & Company */}
+                  {/* Phone & Startup Name */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className={labelClasses}>Phone *</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className={inputClasses(!!errors.phone)}
-                        placeholder="(555) 123-4567"
-                      />
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(!!errors.phone)} placeholder="(555) 123-4567" />
                       {errors.phone && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.phone}</p>}
                     </div>
                     <div>
-                      <label className={labelClasses}>Company *</label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className={inputClasses(!!errors.company)}
-                        placeholder="Your company"
-                      />
+                      <label className={labelClasses}>Startup Name *</label>
+                      <input type="text" name="company" value={formData.company} onChange={handleChange} className={inputClasses(!!errors.company)} placeholder="Your startup" />
                       {errors.company && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.company}</p>}
                     </div>
                   </div>
 
-                  {/* Row 3: Service & Budget */}
+                  {/* Role & Stage */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Service *</label>
+                      <label className={labelClasses}>Your Role *</label>
+                      <input type="text" name="role" value={formData.role} onChange={handleChange} className={inputClasses(!!errors.role)} placeholder="CEO, Head of Marketing…" />
+                      {errors.role && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.role}</p>}
+                    </div>
+                    <div>
+                      <label className={labelClasses}>Stage *</label>
                       <div className="relative">
-                        <select
-                          name="service"
-                          value={formData.service}
-                          onChange={handleChange}
-                          className={selectClasses(!!errors.service)}
-                        >
+                        <select name="stage" value={formData.stage} onChange={handleChange} className={selectClasses(!!errors.stage)}>
                           <option value="">Select</option>
-                          {services.map((s) => (
-                            <option key={s.value} value={s.value}>{s.label}</option>
-                          ))}
+                          {stages.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
                         </select>
-                        <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg className="w-3.5 h-3.5 text-m3-on-surface/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
+                        <SelectArrow />
+                      </div>
+                      {errors.stage && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.stage}</p>}
+                    </div>
+                  </div>
+
+                  {/* Website & Content Need */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className={labelClasses}>Website</label>
+                      <input type="url" name="companyUrl" value={formData.companyUrl} onChange={handleChange} className={inputClasses(false)} placeholder="https://…" />
+                    </div>
+                    <div>
+                      <label className={labelClasses}>Content Need *</label>
+                      <div className="relative">
+                        <select name="service" value={formData.service} onChange={handleChange} className={selectClasses(!!errors.service)}>
+                          <option value="">Select</option>
+                          {contentNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+                        </select>
+                        <SelectArrow />
                       </div>
                       {errors.service && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>}
+                    </div>
+                  </div>
+
+                  {/* Launch Date & Budget */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className={labelClasses}>Launch / Event Date</label>
+                      <input type="text" name="launchDate" value={formData.launchDate} onChange={handleChange} className={inputClasses(false)} placeholder="e.g. March 2026" />
                     </div>
                     <div>
                       <label className={labelClasses}>Budget *</label>
                       <div className="relative">
-                        <select
-                          name="budget"
-                          value={formData.budget}
-                          onChange={handleChange}
-                          className={selectClasses(!!errors.budget)}
-                        >
+                        <select name="budget" value={formData.budget} onChange={handleChange} className={selectClasses(!!errors.budget)}>
                           <option value="">Select</option>
-                          {budgetRanges.map((b) => (
-                            <option key={b.value} value={b.value}>{b.label}</option>
-                          ))}
+                          {budgetRanges.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
                         </select>
-                        <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg className="w-3.5 h-3.5 text-m3-on-surface/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
+                        <SelectArrow />
                       </div>
                       {errors.budget && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.budget}</p>}
                     </div>
                   </div>
 
-                  {/* Row 4: Timeline & Referral */}
+                  {/* Timeline & Referral */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className={labelClasses}>Timeline *</label>
                       <div className="relative">
-                        <select
-                          name="timeline"
-                          value={formData.timeline}
-                          onChange={handleChange}
-                          className={selectClasses(!!errors.timeline)}
-                        >
+                        <select name="timeline" value={formData.timeline} onChange={handleChange} className={selectClasses(!!errors.timeline)}>
                           <option value="">Select</option>
-                          {timelines.map((t) => (
-                            <option key={t.value} value={t.value}>{t.label}</option>
-                          ))}
+                          {timelines.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
                         </select>
-                        <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg className="w-3.5 h-3.5 text-m3-on-surface/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
+                        <SelectArrow />
                       </div>
                       {errors.timeline && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.timeline}</p>}
                     </div>
                     <div>
                       <label className={labelClasses}>How'd you find us? *</label>
                       <div className="relative">
-                        <select
-                          name="referral"
-                          value={formData.referral}
-                          onChange={handleChange}
-                          className={selectClasses(!!errors.referral)}
-                        >
+                        <select name="referral" value={formData.referral} onChange={handleChange} className={selectClasses(!!errors.referral)}>
                           <option value="">Select</option>
-                          {referralSources.map((r) => (
-                            <option key={r.value} value={r.value}>{r.label}</option>
-                          ))}
+                          {referralSources.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
                         </select>
-                        <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg className="w-3.5 h-3.5 text-m3-on-surface/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
+                        <SelectArrow />
                       </div>
                       {errors.referral && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.referral}</p>}
                     </div>
@@ -419,7 +405,7 @@ export function BookingFormSheet() {
                       onChange={handleChange}
                       rows={3}
                       className={`${inputClasses(!!errors.message)} resize-none`}
-                      placeholder="What are you looking for?"
+                      placeholder="What are you launching? What content do you need?"
                     />
                     {errors.message && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
                   </div>
@@ -428,7 +414,7 @@ export function BookingFormSheet() {
                     <p className="text-m3-secondary text-xs">{submitError}</p>
                   )}
 
-                  {/* Submit Button */}
+                  {/* Submit */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -439,7 +425,7 @@ export function BookingFormSheet() {
                     ) : (
                       <Calendar className="w-4 h-4" />
                     )}
-                    Book a Discovery Call
+                    Book a Startup Call
                   </button>
 
                   {/* Trust Signals */}

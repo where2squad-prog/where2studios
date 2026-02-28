@@ -12,8 +12,12 @@ const contactSchema = z.object({
   name: z.string().trim().min(1, 'Name is required').max(100),
   email: z.string().trim().email('Invalid email address').max(255),
   phone: z.string().trim().min(1, 'Phone is required').max(20),
-  company: z.string().trim().min(1, 'Company is required').max(100),
-  service: z.string().min(1, 'Service is required'),
+  company: z.string().trim().min(1, 'Startup name is required').max(100),
+  role: z.string().trim().min(1, 'Role is required').max(100),
+  stage: z.string().min(1, 'Stage is required'),
+  companyUrl: z.string().trim().max(255).optional(),
+  service: z.string().min(1, 'Content need is required'),
+  launchDate: z.string().trim().max(100).optional(),
   budget: z.string().min(1, 'Budget is required'),
   timeline: z.string().min(1, 'Timeline is required'),
   referral: z.string().min(1, 'Please tell us how you heard about us'),
@@ -23,12 +27,19 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>
 
-const services = [
-  { value: 'weddings', label: 'Weddings' },
-  { value: 'events', label: 'Events' },
-  { value: 'corporate', label: 'Corporate' },
-  { value: 'social-media', label: 'Social Media' },
-  { value: 'commercials', label: 'Commercials' },
+const contentNeeds = [
+  { value: 'launch-video', label: 'Launch Video' },
+  { value: 'podcast', label: 'Podcast' },
+  { value: 'event-recap', label: 'Event Recap' },
+  { value: 'multiple', label: 'Multiple / Not Sure' },
+]
+
+const stages = [
+  { value: 'pre-seed', label: 'Pre-Seed' },
+  { value: 'seed', label: 'Seed' },
+  { value: 'series-a', label: 'Series A' },
+  { value: 'series-b-plus', label: 'Series B+' },
+  { value: 'bootstrapped', label: 'Bootstrapped' },
 ]
 
 const budgetRanges = [
@@ -51,10 +62,8 @@ const referralSources = [
   { value: 'linkedin', label: 'LinkedIn' },
   { value: 'youtube', label: 'YouTube' },
   { value: 'google', label: 'Google Search' },
-  { value: 'yelp', label: 'Yelp' },
   { value: 'referral', label: 'Word of mouth/referral' },
   { value: 'event', label: 'Event/conference' },
-  { value: 'newsletter', label: 'Email newsletter' },
   { value: 'other', label: 'Other' },
 ]
 
@@ -70,12 +79,16 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
     email: '',
     phone: '',
     company: '',
+    role: '',
+    stage: '',
+    companyUrl: '',
     service: '',
+    launchDate: '',
     budget: '',
     timeline: '',
     referral: '',
     message: '',
-    website: '', // Honeypot
+    website: '',
   })
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -131,7 +144,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         email: formData.email,
         company: formData.company,
         service: formData.service,
-        message: formData.message,
+        message: `[Role: ${formData.role}] [Stage: ${formData.stage}]${formData.companyUrl ? ` [Website: ${formData.companyUrl}]` : ''}${formData.launchDate ? ` [Launch/Event Date: ${formData.launchDate}]` : ''}\n\n${formData.message}`,
         phone: formData.phone,
         budget: formData.budget,
         timeline: formData.timeline,
@@ -152,7 +165,6 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
     }
   }
 
-
   const resetForm = () => {
     setIsSubmitted(false)
     setPendingCalOpen(false)
@@ -161,7 +173,11 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
       email: '',
       phone: '',
       company: '',
+      role: '',
+      stage: '',
+      companyUrl: '',
       service: '',
+      launchDate: '',
       budget: '',
       timeline: '',
       referral: '',
@@ -184,9 +200,9 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           {pendingCalOpen ? "You're booked!" : "Thanks, we got your message"}
         </h3>
         <p className="text-m3-on-surface/60 mb-6">
-          {pendingCalOpen 
+          {pendingCalOpen
             ? "Check your inbox for the calendar invite. Excited to meet you!"
-            : "We will reply soon. If you want to move faster, you can book a call now."
+            : "We'll reply within 1 business day. Want to move faster? Book a call now."
           }
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -196,7 +212,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               className="m3-filled-button flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              Book a Call
+              Book a Startup Call
             </button>
           )}
           <Link
@@ -231,7 +247,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
   return (
     <div className="m3-elevated-card p-5 sm:p-6">
       <form onSubmit={(e) => { e.preventDefault(); handleSubmit(false); }} className="space-y-4">
-        {/* Honeypot - hidden from users */}
+        {/* Honeypot */}
         <input
           type="text"
           name="website"
@@ -246,88 +262,79 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         <div className="grid sm:grid-cols-2 gap-3">
           <div>
             <label className={labelClasses}>Full Name *</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={inputClasses(!!errors.name)}
-              placeholder="Your name"
-            />
+            <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClasses(!!errors.name)} placeholder="Your name" />
             {errors.name && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
           </div>
           <div>
             <label className={labelClasses}>Email *</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={inputClasses(!!errors.email)}
-              placeholder="you@company.com"
-            />
+            <input type="email" name="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@startup.com" />
             {errors.email && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
           </div>
         </div>
 
-        {/* Phone & Company */}
+        {/* Phone & Startup Name */}
         <div className="grid sm:grid-cols-2 gap-3">
           <div>
             <label className={labelClasses}>Phone *</label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className={inputClasses(!!errors.phone)}
-              placeholder="(555) 123-4567"
-            />
+            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(!!errors.phone)} placeholder="(555) 123-4567" />
             {errors.phone && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.phone}</p>}
           </div>
           <div>
-            <label className={labelClasses}>Company/Brand *</label>
-            <input
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              className={inputClasses(!!errors.company)}
-              placeholder="Your company"
-            />
+            <label className={labelClasses}>Startup Name *</label>
+            <input type="text" name="company" value={formData.company} onChange={handleChange} className={inputClasses(!!errors.company)} placeholder="Your startup" />
             {errors.company && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.company}</p>}
           </div>
         </div>
 
-        {/* Service & Budget */}
+        {/* Role & Stage */}
         {!compact && (
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
-              <label className={labelClasses}>Service *</label>
-              <select
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                className={selectClasses(!!errors.service)}
-              >
-                <option value="">Select a service</option>
-                {services.map((s) => (
-                  <option key={s.value} value={s.value}>{s.label}</option>
-                ))}
+              <label className={labelClasses}>Your Role *</label>
+              <input type="text" name="role" value={formData.role} onChange={handleChange} className={inputClasses(!!errors.role)} placeholder="CEO, Head of Marketing…" />
+              {errors.role && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.role}</p>}
+            </div>
+            <div>
+              <label className={labelClasses}>Stage *</label>
+              <select name="stage" value={formData.stage} onChange={handleChange} className={selectClasses(!!errors.stage)}>
+                <option value="">Select stage</option>
+                {stages.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+              </select>
+              {errors.stage && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.stage}</p>}
+            </div>
+          </div>
+        )}
+
+        {/* Website & Content Need */}
+        {!compact && (
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label className={labelClasses}>Website</label>
+              <input type="url" name="companyUrl" value={formData.companyUrl} onChange={handleChange} className={inputClasses(false)} placeholder="https://…" />
+            </div>
+            <div>
+              <label className={labelClasses}>Content Need *</label>
+              <select name="service" value={formData.service} onChange={handleChange} className={selectClasses(!!errors.service)}>
+                <option value="">Select</option>
+                {contentNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
               </select>
               {errors.service && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>}
             </div>
+          </div>
+        )}
+
+        {/* Launch Date & Budget */}
+        {!compact && (
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div>
+              <label className={labelClasses}>Launch / Event Date</label>
+              <input type="text" name="launchDate" value={formData.launchDate} onChange={handleChange} className={inputClasses(false)} placeholder="e.g. March 2026" />
+            </div>
             <div>
               <label className={labelClasses}>Budget *</label>
-              <select
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className={selectClasses(!!errors.budget)}
-              >
+              <select name="budget" value={formData.budget} onChange={handleChange} className={selectClasses(!!errors.budget)}>
                 <option value="">Select budget</option>
-                {budgetRanges.map((b) => (
-                  <option key={b.value} value={b.value}>{b.label}</option>
-                ))}
+                {budgetRanges.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
               </select>
               {errors.budget && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.budget}</p>}
             </div>
@@ -339,31 +346,17 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
               <label className={labelClasses}>Timeline *</label>
-              <select
-                name="timeline"
-                value={formData.timeline}
-                onChange={handleChange}
-                className={selectClasses(!!errors.timeline)}
-              >
+              <select name="timeline" value={formData.timeline} onChange={handleChange} className={selectClasses(!!errors.timeline)}>
                 <option value="">Select timeline</option>
-                {timelines.map((t) => (
-                  <option key={t.value} value={t.value}>{t.label}</option>
-                ))}
+                {timelines.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
               </select>
               {errors.timeline && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.timeline}</p>}
             </div>
             <div>
               <label className={labelClasses}>How'd you find us? *</label>
-              <select
-                name="referral"
-                value={formData.referral}
-                onChange={handleChange}
-                className={selectClasses(!!errors.referral)}
-              >
+              <select name="referral" value={formData.referral} onChange={handleChange} className={selectClasses(!!errors.referral)}>
                 <option value="">Select an option</option>
-                {referralSources.map((r) => (
-                  <option key={r.value} value={r.value}>{r.label}</option>
-                ))}
+                {referralSources.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
               </select>
               {errors.referral && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.referral}</p>}
             </div>
@@ -372,14 +365,14 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
 
         {/* Message */}
         <div>
-          <label className={labelClasses}>Message *</label>
+          <label className={labelClasses}>Tell us about your project *</label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
             rows={3}
             className={`${inputClasses(!!errors.message)} resize-none`}
-            placeholder="Tell us about your project..."
+            placeholder="What are you launching? What content do you need?"
           />
           {errors.message && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
         </div>
@@ -402,7 +395,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               ) : (
                 <Calendar className="w-4 h-4" />
               )}
-              Book a Call
+              Book a Startup Call
             </button>
           )}
           <button
