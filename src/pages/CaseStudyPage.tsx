@@ -22,11 +22,13 @@ const CATEGORY_LABELS: Record<string, string> = {
 function SectionBlock({
   icon: Icon,
   title,
+  helperLine,
   children,
   delay = 0,
 }: {
   icon: React.ElementType
   title: string
+  helperLine?: string
   children: React.ReactNode
   delay?: number
 }) {
@@ -37,12 +39,16 @@ function SectionBlock({
       viewport={{ once: true }}
       transition={{ delay }}
     >
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-1">
         <Icon className="w-5 h-5 text-m3-primary" />
         <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface">
           {title}
         </h2>
       </div>
+      {helperLine && (
+        <p className="text-m3-on-surface/50 text-sm mb-4 ml-8">{helperLine}</p>
+      )}
+      {!helperLine && <div className="mb-4" />}
       {children}
     </motion.div>
   )
@@ -317,32 +323,25 @@ export default function CaseStudyPage() {
         <section className="py-12 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-4xl mx-auto space-y-14">
-              {/* 1 — Objective */}
+              {/* 1 — Goal */}
               {objectivePoints.length > 0 && (
-                <SectionBlock icon={Target} title="Objective">
+                <SectionBlock icon={Target} title="Goal" helperLine="What the content needed to do.">
                   <BulletList items={objectivePoints} />
                 </SectionBlock>
               )}
 
-              {/* 2 — Audience & Channel Plan */}
+              {/* 2 — Strategy */}
               {project.description && (
-                <SectionBlock icon={Users} title="Audience & Channel Plan">
+                <SectionBlock icon={Users} title="Strategy" helperLine="Positioning, message, and plan.">
                   <p className="text-m3-on-surface/80 leading-relaxed whitespace-pre-line">
                     {project.description}
                   </p>
                 </SectionBlock>
               )}
 
-              {/* 3 — Creative Strategy */}
-              {strategyPoints.length > 0 && (
-                <SectionBlock icon={Lightbulb} title="Creative Strategy">
-                  <NumberedList items={strategyPoints} />
-                </SectionBlock>
-              )}
-
-              {/* 4 — Production & Deliverables */}
+              {/* 3 — Deliverables */}
               {project.deliverables && project.deliverables.length > 0 && (
-                <SectionBlock icon={Package} title="Production & Deliverables">
+                <SectionBlock icon={Package} title="Deliverables" helperLine="What we shipped — assets, formats, cutdowns.">
                   <div className="flex flex-wrap gap-2">
                     {project.deliverables.map((item) => (
                       <span
@@ -356,12 +355,16 @@ export default function CaseStudyPage() {
                 </SectionBlock>
               )}
 
-              {/* 5 — Distribution Assets */}
+              {/* 4 — Timeline */}
+              {strategyPoints.length > 0 && (
+                <SectionBlock icon={Lightbulb} title="Timeline" helperLine="Kickoff to delivery.">
+                  <NumberedList items={strategyPoints} />
+                </SectionBlock>
+              )}
+
+              {/* 5 — Execution */}
               {project.services && project.services.length > 0 && (
-                <SectionBlock icon={Scissors} title="Distribution Assets">
-                  <p className="text-m3-on-surface/60 text-sm mb-3">
-                    Clips, thumbnails, and hooks delivered alongside the hero content:
-                  </p>
+                <SectionBlock icon={Scissors} title="Execution" helperLine="How we produced and launched it.">
                   <div className="grid sm:grid-cols-2 gap-3">
                     {project.services.map((asset) => (
                       <div
@@ -378,7 +381,7 @@ export default function CaseStudyPage() {
 
               {/* 6 — Impact */}
               {(metrics || project.result) && (
-                <SectionBlock icon={BarChart3} title="Impact">
+                <SectionBlock icon={BarChart3} title="Impact" helperLine="What changed — results, learnings, next step.">
                   {metrics && Object.keys(metrics).length > 0 && (
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
                       {Object.entries(metrics).map(([label, value]) => (
@@ -440,16 +443,24 @@ export default function CaseStudyPage() {
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark mb-4">
               Want impact like this for your brand?
             </h2>
-            <p className="text-m3-on-dark/70 mb-8">
-              Let's map out your content strategy in a free 30-minute call.
+            <p className="text-m3-on-dark/70 mb-4">
+              Free 30 minute strategy call, we reply within 1 business day.
             </p>
-            <button
-              onClick={openSheet}
-              className="m3-filled-button text-lg px-8 py-4 inline-flex items-center gap-2"
-            >
-              Book a Discovery Call
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={openSheet}
+                className="m3-filled-button text-lg px-8 py-4 inline-flex items-center gap-2"
+              >
+                Book a Strategy Call
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <Link
+                to="/startups"
+                className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10"
+              >
+                See Our Work
+              </Link>
+            </div>
           </div>
         </section>
 
