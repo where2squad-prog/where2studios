@@ -117,7 +117,7 @@ export function FeaturedCaseStudies() {
           </div>
 
           <Link
-            to="/startups"
+            to="/work"
             className="m3-outlined-button hidden sm:inline-flex items-center gap-2"
           >
             See Our Work
@@ -133,7 +133,7 @@ export function FeaturedCaseStudies() {
 
         <div className="sm:hidden text-center mt-8">
           <Link
-            to="/startups"
+            to="/work"
             className="m3-outlined-button inline-flex items-center gap-2"
           >
             See Our Work
