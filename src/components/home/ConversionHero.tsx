@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
-import { Check, Rocket, Zap } from 'lucide-react';
+import { Zap, Eye, Share2 } from 'lucide-react';
 
 const proofChips = [
-  { icon: Rocket, text: 'Launch-ready in weeks' },
-  { icon: Zap, text: 'Built for speed and iteration' },
-  { icon: Check, text: 'Content that scales with you' },
+  { icon: Zap, text: 'Launch-ready in 1–3 weeks' },
+  { icon: Eye, text: 'Clear, founder-friendly process' },
+  { icon: Share2, text: 'Built to distribute everywhere' },
 ];
 
 export function ConversionHero() {
@@ -49,15 +49,15 @@ export function ConversionHero() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] mb-4">
-              Launch loud,
+              Tell your startup story
               <br />
-              <span className="text-m3-primary">grow</span> faster
+              like a <span className="text-m3-primary">studio</span>
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">
-              Launch videos, podcasts, and event recaps that help startups
-              tell their story, build credibility, and win their first thousand fans.
+              Launch videos, podcasts, and event recaps that help founders
+              build credibility, attract investors, and win their first thousand fans.
             </p>
 
             {/* CTA Row */}
@@ -72,7 +72,7 @@ export function ConversionHero() {
                 to="/work"
                 className="h-12 inline-flex items-center justify-center rounded-lg bg-white/10 border border-white/20 text-white backdrop-blur font-medium text-base px-7 hover:bg-white/15 transition-all"
               >
-                View Work
+                See Startup Work
               </Link>
             </div>
 
