@@ -112,7 +112,7 @@ export function FeaturedCaseStudies() {
               Work we've shipped
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Strategy first, premium production, and deliverables that drive growth.
+              Real goals, clear deliverables, timelines you can plan around.
             </p>
           </div>
 

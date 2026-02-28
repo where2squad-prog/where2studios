@@ -6,9 +6,9 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { Zap, Eye, Share2 } from 'lucide-react';
 
 const proofChips = [
-  { icon: Zap, text: 'Strategy-first approach to every project' },
-  { icon: Eye, text: 'Clear timelines, no back and forth' },
-  { icon: Share2, text: 'Deliverables built to drive growth' },
+  { icon: Zap, text: 'Strategy before production' },
+  { icon: Eye, text: 'Premium media that builds trust' },
+  { icon: Share2, text: 'Execution that drives growth' },
 ];
 
 export function ConversionHero() {
@@ -49,14 +49,13 @@ export function ConversionHero() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] mb-4">
-              Strategy first. Premium production.
-              <br />
-              <span className="text-m3-primary">Full service</span> marketing execution.
+              Shaping culture through{' '}
+              <span className="text-m3-primary">your stories.</span>
             </h1>
 
             {/* Subhead */}
             <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed mb-7">
-              You're launching a product, building a brand, or scaling your business. You need a team that combines strategy, storytelling, and execution — so your content has a purpose and drives growth.
+              We help startups, small businesses, and scaling brands build authority, attract customers, and grow through strategy and premium media production.
             </p>
 
             {/* CTA Row */}

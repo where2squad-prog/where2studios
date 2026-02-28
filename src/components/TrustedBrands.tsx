@@ -26,10 +26,15 @@ export function TrustedBrands() {
 
   return (
     <section className="py-12 sm:py-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
-      {/* Label */}
-      <p className="text-center text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-8 sm:mb-10">
-        Teams we've built with
-      </p>
+      {/* Title and subtitle */}
+      <div className="text-center mb-8 sm:mb-10 px-4">
+        <p className="text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-2">
+          Built for startups. Trusted by growing brands.
+        </p>
+        <p className="text-m3-on-surface/60 text-sm max-w-lg mx-auto">
+          We understand startup speed, startup budgets, and startup ambition — and we bring the same clarity to every industry we serve.
+        </p>
+      </div>
       
       {/* Full-width seamless marquee */}
       <div className="marquee-container">
@@ -84,19 +89,19 @@ export function TrustedBrands() {
           <div className="grid grid-cols-4 gap-6 sm:gap-12 lg:gap-16">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">150+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Launches</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Projects shipped</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views earned</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">80+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brands</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brands supported</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">500+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Assets Delivered</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Assets delivered</div>
             </div>
           </div>
         </div>

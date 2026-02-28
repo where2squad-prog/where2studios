@@ -2,42 +2,59 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Video, Mic, CalendarDays, ArrowRight } from 'lucide-react'
+import { Target, Clapperboard, Megaphone, ArrowRight } from 'lucide-react'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 const services = [
   {
-    id: 'launch-videos',
-    title: 'Launch Videos',
-    icon: Video,
-    href: '/services/launch-videos',
-    moment: "You're launching a product, fundraising, or hiring.",
-    deliverables: 'Launch film, product demo, founder story, social cutdowns, pitch deck insert',
-    promise: 'Build credibility fast with a launch video that tells your story and drives ROI.',
-    deadline: '1–3 weeks',
+    id: 'strategy',
+    title: 'Brand and Growth Strategy',
+    icon: Target,
+    oneLiner: 'Direction before execution, so every asset has a purpose.',
+    bullets: [
+      'Brand positioning',
+      'Campaign planning',
+      'Content strategy',
+      'Funnels and conversion focus',
+    ],
+    ctaLabel: 'Book a Strategy Call',
+    ctaAction: 'sheet' as const,
   },
   {
-    id: 'podcasts',
-    title: 'Podcasts',
-    icon: Mic,
-    href: '/services/podcasts',
-    moment: 'You need a content campaign that builds authority week after week.',
-    deliverables: 'Full episode, social clips, audiograms, thumbnails, show notes',
-    promise: 'Launch an episode every week. You talk, we handle the rest.',
-    deadline: 'Weekly or bi-weekly batches',
+    id: 'production',
+    title: 'High Impact Media Production',
+    icon: Clapperboard,
+    oneLiner: 'Premium media that makes you look established instantly.',
+    bullets: [
+      'Cinematic brand and launch videos',
+      'Podcast production',
+      'Photography',
+      'Event coverage and recaps',
+    ],
+    ctaLabel: 'See Our Work',
+    ctaAction: 'link' as const,
+    ctaHref: '/startups',
   },
   {
-    id: 'event-recaps',
-    title: 'Event Recaps',
-    icon: CalendarDays,
-    href: '/services/event-recaps',
-    moment: "You're hosting a demo day, conference, or launch party.",
-    deliverables: 'Recap film, speaker clips, social cutdowns, next-day teaser, sponsor reels',
-    promise: 'Extend your event ROI and drive attendance to the next one.',
-    deadline: '24hr teaser · 1–2 week recap',
+    id: 'marketing',
+    title: 'Full Service Marketing Execution',
+    icon: Megaphone,
+    oneLiner: 'We do not just hand you content, we help it perform.',
+    bullets: [
+      'Social media management',
+      'Paid ads management',
+      'Email marketing',
+      'Distribution and campaign management',
+    ],
+    ctaLabel: 'Start Your Project',
+    ctaAction: 'link' as const,
+    ctaHref: '/contact',
   },
 ]
 
 export function ServiceLanes() {
+  const { openSheet } = useBookingSheet()
+
   return (
     <section className="py-16 sm:py-20 bg-m3-surface-variant">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -51,10 +68,10 @@ export function ServiceLanes() {
             Services
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Choose what you need
+            Your 3 pillars for growth
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            Tell us the goal. We'll plan the deliverables, set the timeline, and ship on your deadline.
+            You don't need more content. You need content that converts.
           </p>
         </motion.div>
 
@@ -67,11 +84,7 @@ export function ServiceLanes() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Link
-                to={service.href}
-                className="group block h-full m3-outlined-card p-6 sm:p-8 hover:border-m3-primary/40 
-                           hover:shadow-lg transition-all duration-300"
-              >
+              <div className="h-full m3-outlined-card p-6 sm:p-8 flex flex-col">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center">
                     <service.icon className="w-6 h-6 text-m3-primary" />
@@ -81,40 +94,37 @@ export function ServiceLanes() {
                   </h3>
                 </div>
 
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      The moment
-                    </p>
-                    <p className="text-sm text-m3-on-surface/80">
-                      {service.moment}
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      Deliverables
-                    </p>
-                    <p className="text-sm text-m3-on-surface/80">
-                      {service.deliverables}
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      Timeline
-                    </p>
-                    <p className="text-sm text-m3-primary font-medium">
-                      {service.deadline}
-                    </p>
-                  </div>
-                </div>
+                <p className="text-sm text-m3-on-surface/80 mb-4">
+                  {service.oneLiner}
+                </p>
 
-                <div className="flex items-center gap-2 text-m3-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                  Learn more
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </Link>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2 text-sm text-m3-on-surface/70">
+                      <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-1.5 shrink-0" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+
+                {service.ctaAction === 'sheet' ? (
+                  <button
+                    onClick={openSheet}
+                    className="flex items-center gap-2 text-m3-primary font-semibold text-sm hover:gap-3 transition-all"
+                  >
+                    {service.ctaLabel}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <Link
+                    to={service.ctaHref!}
+                    className="flex items-center gap-2 text-m3-primary font-semibold text-sm hover:gap-3 transition-all"
+                  >
+                    {service.ctaLabel}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
