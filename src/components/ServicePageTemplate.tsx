@@ -14,6 +14,11 @@ interface ServicePageTemplateProps {
   whatYouGet: string[]
   howItWorks: { step: number; title: string; description: string }[]
   deliverables: string[]
+  bottomCtaHeadline?: string
+  bottomCtaSubheadline?: string
+  bottomCtaPrimary?: string
+  bottomCtaSecondary?: string
+  bottomCtaSecondaryHref?: string
 }
 
 export function ServicePageTemplate({
@@ -24,6 +29,11 @@ export function ServicePageTemplate({
   whatYouGet,
   howItWorks,
   deliverables,
+  bottomCtaHeadline = 'Ready to start?',
+  bottomCtaSubheadline = 'Book a free 30 minute strategy call. Tell us the goal and the timeline — we\'ll build a plan with deliverables and budget.',
+  bottomCtaPrimary = 'Book a Strategy Call',
+  bottomCtaSecondary,
+  bottomCtaSecondaryHref = '/contact',
 }: ServicePageTemplateProps) {
   const { data: projects, isLoading } = useProjects({ category })
   const { openSheet } = useBookingSheet()
@@ -114,7 +124,7 @@ export function ServicePageTemplate({
               How it works
             </h2>
           </motion.div>
-          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className={`grid gap-6 max-w-4xl mx-auto ${howItWorks.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-3'}`}>
             {howItWorks.map((step, index) => (
               <motion.div
                 key={step.step}
@@ -222,18 +232,28 @@ export function ServicePageTemplate({
             viewport={{ once: true }}
           >
             <h2 className="font-fredoka text-3xl sm:text-4xl font-semibold text-m3-on-dark mb-4">
-              Ready to start?
+              {bottomCtaHeadline}
             </h2>
             <p className="text-m3-on-dark/75 mb-4">
-              Book a free 30 minute strategy call. Tell us the goal and the timeline — we'll build a plan with deliverables and budget.
+              {bottomCtaSubheadline}
             </p>
             <p className="text-m3-on-dark/50 text-sm mb-8">
               Free 30 minute strategy call, we reply within 1 business day.
             </p>
-            <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">
-              Book a Strategy Call
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">
+                {bottomCtaPrimary}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              {bottomCtaSecondary && (
+                <Link
+                  to={bottomCtaSecondaryHref}
+                  className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10 text-center"
+                >
+                  {bottomCtaSecondary}
+                </Link>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
