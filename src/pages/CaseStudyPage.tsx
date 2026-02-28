@@ -2,7 +2,7 @@
 
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, MapPin, Calendar, Play, ExternalLink, CheckCircle2, Target, Lightbulb, Package } from 'lucide-react'
+import { ArrowLeft, MapPin, Play, CheckCircle2, Target, Lightbulb, Package, Users, Share2, BarChart3, Scissors, ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/FloatingCTA'
@@ -12,11 +12,109 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { Helmet } from 'react-helmet-async'
 
 const CATEGORY_LABELS: Record<string, string> = {
-  corporate: 'Corporate',
-  events: 'Events',
-  weddings: 'Weddings',
-  commercials: 'Commercials',
-  social: 'Social',
+  'launch-videos': 'Launch Video',
+  podcasts: 'Podcast',
+  'event-recaps': 'Event Recap',
+  'founder-story': 'Founder Story',
+  'product-demo': 'Product Demo',
+}
+
+function SectionBlock({
+  icon: Icon,
+  title,
+  children,
+  delay = 0,
+}: {
+  icon: React.ElementType
+  title: string
+  children: React.ReactNode
+  delay?: number
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay }}
+    >
+      <div className="flex items-center gap-3 mb-4">
+        <Icon className="w-5 h-5 text-m3-primary" />
+        <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface">
+          {title}
+        </h2>
+      </div>
+      {children}
+    </motion.div>
+  )
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-2">
+      {items.map((point, i) => (
+        <li key={i} className="flex items-start gap-3">
+          <CheckCircle2 className="w-4 h-4 text-m3-secondary mt-1 flex-shrink-0" />
+          <span className="text-m3-on-surface/80">{point}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function NumberedList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-2">
+      {items.map((point, i) => (
+        <li key={i} className="flex items-start gap-3">
+          <span className="w-6 h-6 rounded-full bg-m3-primary/10 text-m3-primary text-xs font-semibold flex items-center justify-center flex-shrink-0">
+            {i + 1}
+          </span>
+          <span className="text-m3-on-surface/80">{point}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function buildJsonLd(project: any, thumbnail: string, isPodcast: boolean) {
+  const base: any = {
+    "@context": "https://schema.org",
+    "@type": project.video_url ? "VideoObject" : "CreativeWork",
+    name: project.title,
+    description: project.result || project.description,
+    thumbnailUrl: thumbnail,
+    author: {
+      "@type": "Organization",
+      name: "Where2Studios",
+    },
+    ...(project.video_url && { embedUrl: project.video_url }),
+  }
+
+  if (isPodcast) {
+    // Add PodcastEpisode as additional structured data
+    return [
+      base,
+      {
+        "@context": "https://schema.org",
+        "@type": "PodcastEpisode",
+        name: project.title,
+        description: project.result || project.description,
+        ...(project.video_url && { url: project.video_url }),
+        productionCompany: {
+          "@type": "Organization",
+          name: "Where2Studios",
+        },
+        partOfSeries: {
+          "@type": "PodcastSeries",
+          name: project.client_name
+            ? `${project.client_name} Podcast`
+            : project.title,
+        },
+      },
+    ]
+  }
+
+  return base
 }
 
 export default function CaseStudyPage() {
@@ -67,45 +165,50 @@ export default function CaseStudyPage() {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
   const categoryLabel = CATEGORY_LABELS[project.category] || project.category
   const videoId = getYouTubeVideoId(project.video_url)
+  const isPodcast = project.category === 'podcasts'
 
-  // Parse challenge and approach into bullet points
-  const challengePoints = project.challenge?.split('\n').filter(Boolean) || []
-  const approachPoints = project.approach?.split('\n').filter(Boolean) || []
+  // Parse newline-delimited fields into bullet arrays
+  const objectivePoints = project.challenge?.split('\n').filter(Boolean) || []
+  const strategyPoints = project.approach?.split('\n').filter(Boolean) || []
+
+  // Metrics from metrics_json
+  const metrics = project.metrics_json as Record<string, string> | null
+
+  const jsonLd = buildJsonLd(project, thumbnail, isPodcast)
 
   return (
     <>
       <Helmet>
         <title>{project.title} | Where2Studios Case Study</title>
-        <meta name="description" content={project.result || project.description || `${project.title} - A ${categoryLabel} project by Where2Studios`} />
+        <meta
+          name="description"
+          content={
+            project.result ||
+            project.description ||
+            `${project.title} - A ${categoryLabel} project by Where2Studios`
+          }
+        />
         <meta property="og:title" content={`${project.title} | Where2Studios`} />
         <meta property="og:description" content={project.result || project.description || ''} />
         <meta property="og:image" content={thumbnail} />
         <meta property="og:type" content="article" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": project.video_url ? "VideoObject" : "CreativeWork",
-            "name": project.title,
-            "description": project.result || project.description,
-            "thumbnailUrl": thumbnail,
-            "author": {
-              "@type": "Organization",
-              "name": "Where2Studios"
-            },
-            ...(project.video_url && {
-              "embedUrl": project.video_url
-            })
-          })}
-        </script>
+        {Array.isArray(jsonLd) ? (
+          jsonLd.map((ld, i) => (
+            <script key={i} type="application/ld+json">
+              {JSON.stringify(ld)}
+            </script>
+          ))
+        ) : (
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        )}
       </Helmet>
 
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
 
-        {/* Hero Section */}
+        {/* Hero */}
         <section className="pt-28 pb-8 sm:pt-36 sm:pb-12">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-            {/* Back button */}
             <button
               onClick={() => navigate(-1)}
               className="inline-flex items-center gap-2 text-m3-on-surface/70 hover:text-m3-on-surface mb-6 transition-colors"
@@ -119,7 +222,6 @@ export default function CaseStudyPage() {
               animate={{ opacity: 1, y: 0 }}
               className="grid lg:grid-cols-3 gap-8"
             >
-              {/* Main content */}
               <div className="lg:col-span-2">
                 <span className="inline-block px-3 py-1 rounded-full bg-m3-primary/10 text-m3-primary text-xs font-semibold mb-4">
                   {categoryLabel}
@@ -147,7 +249,6 @@ export default function CaseStudyPage() {
                       </p>
                     </div>
                   )}
-                  
                   {project.location && (
                     <div className="flex items-start gap-2">
                       <MapPin className="w-4 h-4 text-m3-primary mt-0.5" />
@@ -155,13 +256,10 @@ export default function CaseStudyPage() {
                         <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
                           Location
                         </p>
-                        <p className="text-sm text-m3-on-surface">
-                          {project.location}
-                        </p>
+                        <p className="text-sm text-m3-on-surface">{project.location}</p>
                       </div>
                     </div>
                   )}
-
                   {project.services && project.services.length > 0 && (
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-2">
@@ -185,7 +283,7 @@ export default function CaseStudyPage() {
           </div>
         </section>
 
-        {/* Video/Image Hero */}
+        {/* Video / Image */}
         <section className="pb-12">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <motion.div
@@ -218,70 +316,33 @@ export default function CaseStudyPage() {
         {/* Content Sections */}
         <section className="py-12 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-            <div className="max-w-4xl mx-auto space-y-12">
-              {/* Challenge */}
-              {challengePoints.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Target className="w-5 h-5 text-m3-secondary" />
-                    <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface">
-                      The Challenge
-                    </h2>
-                  </div>
-                  <ul className="space-y-2">
-                    {challengePoints.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-m3-secondary mt-1 flex-shrink-0" />
-                        <span className="text-m3-on-surface/80">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+            <div className="max-w-4xl mx-auto space-y-14">
+              {/* 1 — Objective */}
+              {objectivePoints.length > 0 && (
+                <SectionBlock icon={Target} title="Objective">
+                  <BulletList items={objectivePoints} />
+                </SectionBlock>
               )}
 
-              {/* Approach */}
-              {approachPoints.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Lightbulb className="w-5 h-5 text-m3-primary" />
-                    <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface">
-                      Our Approach
-                    </h2>
-                  </div>
-                  <ul className="space-y-2">
-                    {approachPoints.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-m3-primary/10 text-m3-primary text-xs font-semibold flex items-center justify-center flex-shrink-0">
-                          {i + 1}
-                        </span>
-                        <span className="text-m3-on-surface/80">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+              {/* 2 — Audience & Channel Plan */}
+              {project.description && (
+                <SectionBlock icon={Users} title="Audience & Channel Plan">
+                  <p className="text-m3-on-surface/80 leading-relaxed whitespace-pre-line">
+                    {project.description}
+                  </p>
+                </SectionBlock>
               )}
 
-              {/* Deliverables */}
+              {/* 3 — Creative Strategy */}
+              {strategyPoints.length > 0 && (
+                <SectionBlock icon={Lightbulb} title="Creative Strategy">
+                  <NumberedList items={strategyPoints} />
+                </SectionBlock>
+              )}
+
+              {/* 4 — Production & Deliverables */}
               {project.deliverables && project.deliverables.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Package className="w-5 h-5 text-m3-primary" />
-                    <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface">
-                      Deliverables
-                    </h2>
-                  </div>
+                <SectionBlock icon={Package} title="Production & Deliverables">
                   <div className="flex flex-wrap gap-2">
                     {project.deliverables.map((item) => (
                       <span
@@ -292,20 +353,52 @@ export default function CaseStudyPage() {
                       </span>
                     ))}
                   </div>
-                </motion.div>
+                </SectionBlock>
               )}
 
-              {/* Description */}
-              {project.description && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <p className="text-m3-on-surface/80 leading-relaxed">
-                    {project.description}
+              {/* 5 — Distribution Assets */}
+              {project.services && project.services.length > 0 && (
+                <SectionBlock icon={Scissors} title="Distribution Assets">
+                  <p className="text-m3-on-surface/60 text-sm mb-3">
+                    Clips, thumbnails, and hooks delivered alongside the hero content:
                   </p>
-                </motion.div>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {project.services.map((asset) => (
+                      <div
+                        key={asset}
+                        className="flex items-center gap-3 p-3 m3-tonal-card"
+                      >
+                        <Share2 className="w-4 h-4 text-m3-primary flex-shrink-0" />
+                        <span className="text-sm text-m3-on-surface">{asset}</span>
+                      </div>
+                    ))}
+                  </div>
+                </SectionBlock>
+              )}
+
+              {/* 6 — Results */}
+              {(metrics || project.result) && (
+                <SectionBlock icon={BarChart3} title="Results">
+                  {metrics && Object.keys(metrics).length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                      {Object.entries(metrics).map(([label, value]) => (
+                        <div key={label} className="m3-elevated-card p-4 text-center">
+                          <p className="font-fredoka text-2xl font-semibold text-m3-primary">
+                            {value}
+                          </p>
+                          <p className="text-xs text-m3-on-surface/60 mt-1 uppercase tracking-wider">
+                            {label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {project.result && (
+                    <p className="text-m3-on-surface/80 leading-relaxed">
+                      {project.result}
+                    </p>
+                  )}
+                </SectionBlock>
               )}
             </div>
           </div>
@@ -345,16 +438,17 @@ export default function CaseStudyPage() {
         <section className="py-16 sm:py-20 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark mb-4">
-              Want this for your team?
+              Want results like these for your startup?
             </h2>
             <p className="text-m3-on-dark/70 mb-8">
-              Let's discuss how we can create similar results for your brand.
+              Let's map out your content strategy in a free 30-minute call.
             </p>
             <button
               onClick={openSheet}
-              className="m3-filled-button text-lg px-8 py-4"
+              className="m3-filled-button text-lg px-8 py-4 inline-flex items-center gap-2"
             >
-              Book a Discovery Call
+              Book a Startup Call
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </section>
