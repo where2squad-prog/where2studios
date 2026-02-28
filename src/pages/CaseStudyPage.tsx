@@ -455,7 +455,7 @@ export default function CaseStudyPage() {
                 <ArrowRight className="w-4 h-4" />
               </button>
               <Link
-                to="/startups"
+                to="/work"
                 className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10"
               >
                 See Our Work
