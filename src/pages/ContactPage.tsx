@@ -16,6 +16,7 @@ const trustSignals = [
   'No commitment required',
 ]
 
+
 const serviceHighlights = [
   { icon: Video, label: 'Launch Videos', href: '/services/launch-videos' },
   { icon: Mic, label: 'Podcasts', href: '/services/podcasts' },
@@ -48,10 +49,10 @@ export default function ContactPage() {
                 Let's Talk
               </span>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2 mb-4">
-                Ready to start your next project?
+                Let's build your brand with clarity.
               </h1>
               <p className="text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                Book a free 30 minute strategy call or start your project. Share the goal and the timeline, we'll reply within 1 business day.
+                Tell us what you're trying to grow, what you've tried, and what timeline you're on. We'll recommend the right pillar and next steps.
               </p>
             </motion.div>
           </div>
@@ -78,7 +79,7 @@ export default function ContactPage() {
                     Book a Strategy Call
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
-                    30 minutes to discuss your goal, timeline, and deliverables. No strings attached.
+                    Free 30 minutes, walk away with clarity.
                   </p>
                   <span className="text-m3-primary font-semibold text-sm">
                     Schedule now →
@@ -103,7 +104,7 @@ export default function ContactPage() {
                     Start Your Project
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
-                    Tell us what you need and your timeline. We'll reply within 1 business day with a plan.
+                    If you already know what you need, send details.
                   </p>
                   <span className="text-m3-primary font-semibold text-sm">
                     Fill out form →
@@ -150,9 +151,9 @@ export default function ContactPage() {
                       <Clock className="w-5 h-5 text-m3-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-m3-on-surface mb-1">1 Business Day Reply</h3>
+                      <h3 className="font-semibold text-m3-on-surface mb-1">We reply within 1 business day</h3>
                       <p className="text-m3-on-surface/60 text-sm">
-                        Every inquiry gets a personal response, fast
+                        Every inquiry gets a personal response
                       </p>
                     </div>
                   </div>

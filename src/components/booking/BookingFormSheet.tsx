@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Loader2, Check, Calendar } from 'lucide-react'
+import { X, Loader2, Check, Send } from 'lucide-react'
 import { z } from 'zod'
 import { submitContact } from '@/lib/submitContact'
 import { useCalModal } from '@/hooks/useCalModal'
@@ -12,58 +12,33 @@ import { Link } from 'react-router-dom'
 const bookingSchema = z.object({
   name: z.string().trim().min(1, 'Required').max(100),
   email: z.string().trim().email('Invalid email').max(255),
-  phone: z.string().trim().min(1, 'Required').max(20),
-  company: z.string().trim().min(1, 'Required').max(100),
-  role: z.string().trim().min(1, 'Required').max(100),
-  stage: z.string().min(1, 'Required'),
+  phone: z.string().trim().max(20).optional(),
+  company: z.string().trim().max(100).optional(),
+  role: z.string().trim().max(100).optional(),
   companyUrl: z.string().trim().max(255).optional(),
+  growthGoal: z.string().min(1, 'Required'),
   service: z.string().min(1, 'Required'),
-  launchDate: z.string().trim().max(100).optional(),
-  budget: z.string().min(1, 'Required'),
-  timeline: z.string().min(1, 'Required'),
-  referral: z.string().min(1, 'Required'),
+  budget: z.string().trim().max(100).optional(),
+  timeline: z.string().trim().max(100).optional(),
   message: z.string().trim().min(1, 'Required').max(2000),
   website: z.string().max(0, 'Bot detected'),
 })
 
 type BookingFormData = z.infer<typeof bookingSchema>
 
-const contentNeeds = [
-  { value: 'launch-video', label: 'Launch Video' },
-  { value: 'podcast', label: 'Podcast' },
-  { value: 'event-recap', label: 'Event Recap' },
-  { value: 'multiple', label: 'Multiple / Not Sure' },
+const growthGoals = [
+  { value: 'launch', label: 'Launch' },
+  { value: 'awareness', label: 'Awareness' },
+  { value: 'leads', label: 'Leads' },
+  { value: 'sales', label: 'Sales' },
+  { value: 'hiring', label: 'Hiring' },
+  { value: 'community', label: 'Community' },
 ]
 
-const stages = [
-  { value: 'pre-seed', label: 'Pre-Seed' },
-  { value: 'seed', label: 'Seed' },
-  { value: 'series-a', label: 'Series A' },
-  { value: 'series-b-plus', label: 'Series B+' },
-  { value: 'bootstrapped', label: 'Bootstrapped' },
-]
-
-const budgetRanges = [
-  { value: 'under-2k', label: 'Under $2k' },
-  { value: '2k-5k', label: '$2k–$5k' },
-  { value: '5k-10k', label: '$5k–$10k' },
-  { value: '10k-plus', label: '$10k+' },
-]
-
-const timelines = [
-  { value: 'asap', label: 'ASAP' },
-  { value: '2-4-weeks', label: '2–4 weeks' },
-  { value: '1-2-months', label: '1–2 months' },
-  { value: 'flexible', label: 'Flexible' },
-]
-
-const referralSources = [
-  { value: 'instagram', label: 'Instagram' },
-  { value: 'tiktok', label: 'TikTok' },
-  { value: 'linkedin', label: 'LinkedIn' },
-  { value: 'google', label: 'Google' },
-  { value: 'referral', label: 'Referral' },
-  { value: 'other', label: 'Other' },
+const serviceNeeds = [
+  { value: 'strategy', label: 'Strategy' },
+  { value: 'production', label: 'Production' },
+  { value: 'marketing-execution', label: 'Marketing Execution' },
 ]
 
 export function BookingFormSheet() {
@@ -75,13 +50,11 @@ export function BookingFormSheet() {
     phone: '',
     company: '',
     role: '',
-    stage: '',
     companyUrl: '',
+    growthGoal: '',
     service: '',
-    launchDate: '',
     budget: '',
     timeline: '',
-    referral: '',
     message: '',
     website: '',
   })
@@ -140,19 +113,15 @@ export function BookingFormSheet() {
       await submitContact({
         name: formData.name,
         email: formData.email,
-        company: formData.company,
+        company: formData.company || undefined,
         service: formData.service,
-        message: `[Role: ${formData.role}] [Stage: ${formData.stage}]${formData.companyUrl ? ` [Website: ${formData.companyUrl}]` : ''}${formData.launchDate ? ` [Launch/Event Date: ${formData.launchDate}]` : ''}\n\n${formData.message}`,
-        phone: formData.phone,
-        budget: formData.budget,
-        timeline: formData.timeline,
-        referral: formData.referral,
+        message: `[Growth Goal: ${formData.growthGoal}]${formData.role ? ` [Role: ${formData.role}]` : ''}${formData.companyUrl ? ` [Website: ${formData.companyUrl}]` : ''}\n\n${formData.message}`,
+        phone: formData.phone || undefined,
+        budget: formData.budget || undefined,
+        timeline: formData.timeline || undefined,
       })
 
       setIsSubmitted(true)
-      setTimeout(() => {
-        openCalModal()
-      }, 300)
     } catch (err) {
       console.error('Submission error:', err)
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -171,13 +140,11 @@ export function BookingFormSheet() {
         phone: '',
         company: '',
         role: '',
-        stage: '',
         companyUrl: '',
+        growthGoal: '',
         service: '',
-        launchDate: '',
         budget: '',
         timeline: '',
-        referral: '',
         message: '',
         website: '',
       })
@@ -251,9 +218,9 @@ export function BookingFormSheet() {
                   <div className="w-14 h-14 bg-m3-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Check className="w-7 h-7 text-m3-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-m3-on-surface mb-2">You're booked!</h3>
+                  <h3 className="text-xl font-semibold text-m3-on-surface mb-2">Got it.</h3>
                   <p className="text-m3-on-surface/60 text-sm mb-5">
-                    Check your inbox for the calendar invite.
+                    We'll reply within 1 business day with next steps, then you can book your strategy call.
                   </p>
                   <div className="flex flex-col gap-2">
                     <Link
@@ -261,7 +228,7 @@ export function BookingFormSheet() {
                       onClick={handleClose}
                       className="m3-outlined-button inline-flex items-center justify-center text-sm py-2"
                     >
-                      View Our Work
+                      See Our Work
                     </Link>
                     <button
                       onClick={handleClose}
@@ -287,63 +254,60 @@ export function BookingFormSheet() {
                   {/* Name & Email */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Full Name *</label>
+                      <label className={labelClasses}>Name *</label>
                       <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClasses(!!errors.name)} placeholder="Your name" />
                       {errors.name && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
                     </div>
                     <div>
                       <label className={labelClasses}>Email *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@startup.com" />
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@company.com" />
                       {errors.email && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
                     </div>
                   </div>
 
-                  {/* Phone & Startup Name */}
+                  {/* Phone & Company */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Phone *</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(!!errors.phone)} placeholder="(555) 123-4567" />
-                      {errors.phone && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.phone}</p>}
+                      <label className={labelClasses}>Phone</label>
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(false)} placeholder="Best number to reach you" />
                     </div>
                     <div>
-                      <label className={labelClasses}>Startup Name *</label>
-                      <input type="text" name="company" value={formData.company} onChange={handleChange} className={inputClasses(!!errors.company)} placeholder="Your startup" />
-                      {errors.company && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.company}</p>}
+                      <label className={labelClasses}>Company</label>
+                      <input type="text" name="company" value={formData.company} onChange={handleChange} className={inputClasses(false)} placeholder="Company name" />
                     </div>
                   </div>
 
-                  {/* Role & Stage */}
+                  {/* Role & Website */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Your Role *</label>
-                      <input type="text" name="role" value={formData.role} onChange={handleChange} className={inputClasses(!!errors.role)} placeholder="CEO, Head of Marketing…" />
-                      {errors.role && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.role}</p>}
+                      <label className={labelClasses}>Role</label>
+                      <input type="text" name="role" value={formData.role} onChange={handleChange} className={inputClasses(false)} placeholder="Founder, marketing, ops" />
                     </div>
                     <div>
-                      <label className={labelClasses}>Stage *</label>
+                      <label className={labelClasses}>Website</label>
+                      <input type="url" name="companyUrl" value={formData.companyUrl} onChange={handleChange} className={inputClasses(false)} placeholder="Link, if you have it" />
+                    </div>
+                  </div>
+
+                  {/* Growth Goal & Service Need */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className={labelClasses}>What are you trying to grow? *</label>
                       <div className="relative">
-                        <select name="stage" value={formData.stage} onChange={handleChange} className={selectClasses(!!errors.stage)}>
+                        <select name="growthGoal" value={formData.growthGoal} onChange={handleChange} className={selectClasses(!!errors.growthGoal)}>
                           <option value="">Select</option>
-                          {stages.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+                          {growthGoals.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}
                         </select>
                         <SelectArrow />
                       </div>
-                      {errors.stage && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.stage}</p>}
-                    </div>
-                  </div>
-
-                  {/* Website & Content Need */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className={labelClasses}>Website</label>
-                      <input type="url" name="companyUrl" value={formData.companyUrl} onChange={handleChange} className={inputClasses(false)} placeholder="https://…" />
+                      {errors.growthGoal && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.growthGoal}</p>}
                     </div>
                     <div>
-                      <label className={labelClasses}>Content Need *</label>
+                      <label className={labelClasses}>What do you need help with? *</label>
                       <div className="relative">
                         <select name="service" value={formData.service} onChange={handleChange} className={selectClasses(!!errors.service)}>
                           <option value="">Select</option>
-                          {contentNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+                          {serviceNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
                         </select>
                         <SelectArrow />
                       </div>
@@ -351,61 +315,28 @@ export function BookingFormSheet() {
                     </div>
                   </div>
 
-                  {/* Launch Date & Budget */}
+                  {/* Timeline & Budget */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Launch / Event Date</label>
-                      <input type="text" name="launchDate" value={formData.launchDate} onChange={handleChange} className={inputClasses(false)} placeholder="e.g. March 2026" />
+                      <label className={labelClasses}>Timeline</label>
+                      <input type="text" name="timeline" value={formData.timeline} onChange={handleChange} className={inputClasses(false)} placeholder="When do you want to launch" />
                     </div>
                     <div>
-                      <label className={labelClasses}>Budget *</label>
-                      <div className="relative">
-                        <select name="budget" value={formData.budget} onChange={handleChange} className={selectClasses(!!errors.budget)}>
-                          <option value="">Select</option>
-                          {budgetRanges.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
-                        </select>
-                        <SelectArrow />
-                      </div>
-                      {errors.budget && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.budget}</p>}
+                      <label className={labelClasses}>Budget range</label>
+                      <input type="text" name="budget" value={formData.budget} onChange={handleChange} className={inputClasses(false)} placeholder="A range is fine" />
                     </div>
                   </div>
 
-                  {/* Timeline & Referral */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className={labelClasses}>Timeline *</label>
-                      <div className="relative">
-                        <select name="timeline" value={formData.timeline} onChange={handleChange} className={selectClasses(!!errors.timeline)}>
-                          <option value="">Select</option>
-                          {timelines.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
-                        </select>
-                        <SelectArrow />
-                      </div>
-                      {errors.timeline && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.timeline}</p>}
-                    </div>
-                    <div>
-                      <label className={labelClasses}>How'd you find us? *</label>
-                      <div className="relative">
-                        <select name="referral" value={formData.referral} onChange={handleChange} className={selectClasses(!!errors.referral)}>
-                          <option value="">Select</option>
-                          {referralSources.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
-                        </select>
-                        <SelectArrow />
-                      </div>
-                      {errors.referral && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.referral}</p>}
-                    </div>
-                  </div>
-
-                  {/* Message */}
+                  {/* Notes */}
                   <div>
-                    <label className={labelClasses}>Tell us about your project *</label>
+                    <label className={labelClasses}>Notes *</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={3}
                       className={`${inputClasses(!!errors.message)} resize-none`}
-                      placeholder="What are you launching? What content do you need?"
+                      placeholder="What's working, what's not, what you want to improve"
                     />
                     {errors.message && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
                   </div>
@@ -423,9 +354,9 @@ export function BookingFormSheet() {
                     {isSubmitting ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
-                      <Calendar className="w-4 h-4" />
+                      <Send className="w-4 h-4" />
                     )}
-                    Book a Discovery Call
+                    Send
                   </button>
 
                   {/* Trust Signals */}
