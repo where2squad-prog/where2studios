@@ -22,12 +22,15 @@ export function FinalCTA() {
           </span>
           
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">
-            30-minute call. Zero pressure. Real plan.
+            30-minute call. Real plan. No pressure.
           </h2>
           
-          <p className="text-m3-on-dark/70 text-base sm:text-lg mb-8 max-w-xl mx-auto">
-            Book a free startup call and we'll map out exactly what content 
-            you need for your next launch. We reply within one business day.
+          <p className="text-m3-on-dark/70 text-base sm:text-lg mb-4 max-w-xl mx-auto">
+            Tell us the moment — a launch, a fundraise, an event. We'll map out the deliverables, the deadline, and the formats you need.
+          </p>
+
+          <p className="text-m3-on-dark/50 text-sm mb-8">
+            Share the goal and the deadline, we'll reply within 1 business day.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
@@ -52,7 +55,7 @@ export function FinalCTA() {
             </div>
             <div className="flex items-center gap-2">
               <MessageSquare className="w-4 h-4 text-m3-primary" />
-              <span className="text-m3-on-dark/60 text-sm">Free 30-min strategy call</span>
+              <span className="text-m3-on-dark/60 text-sm">Free 30-min discovery call</span>
             </div>
             <div className="flex items-center gap-2">
               <ArrowRight className="w-4 h-4 text-m3-primary" />

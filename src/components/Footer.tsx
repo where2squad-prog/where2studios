@@ -7,8 +7,7 @@ export function Footer() {
   const { openSheet } = useBookingSheet()
 
   const links = [
-    { label: 'Work', href: '/work' },
-    { label: 'Startups', href: '/startups' },
+    { label: 'Our Work', href: '/startups' },
     { label: 'Services', href: '/services' },
     { label: 'Who We Are', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },
@@ -37,8 +36,11 @@ export function Footer() {
             <div className="font-fredoka text-m3-primary text-xl font-medium mb-3">
               Where2Studios
             </div>
-            <p className="text-m3-on-dark/60 text-sm mb-4 max-w-xs">
-              Launch videos, podcasts, and event recaps for startups that need to ship content and grow fast.
+            <p className="text-m3-on-dark/60 text-sm mb-2 max-w-xs">
+              Launch videos, podcasts, and event recaps, shipped fast with clips included.
+            </p>
+            <p className="text-m3-on-dark/40 text-xs mb-4">
+              Share the goal and the deadline, we'll reply within 1 business day.
             </p>
             <button
               onClick={openSheet}

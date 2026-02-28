@@ -11,20 +11,20 @@ export default function EventRecapsPage() {
     <>
       <SEOHead
         title="Event Recaps for Startups | Where2Studios"
-        description="Cinematic event coverage — highlight films, speaker moments, social cutdowns, and next-day teasers for demo days, meetups, and launch parties."
+        description="Recap films, speaker clips, and social cutdowns shipped on deadline. Next-day teasers available. Extend your event impact and drive attendance to the next one."
       />
       <div className="min-h-screen bg-m3-background">
         <Navbar variant="dark" />
         <ServicePageTemplate
           category="Event Recaps"
-          title="Cinematic coverage that sells the next event"
-          subtitle="Demo days, meetups, launch parties — we capture the energy and turn it into content that keeps working long after the room clears."
-          description="Multi-camera coverage, same-day teasers, and polished recaps designed for startups that need to extend event impact and drive attendance to the next one."
+          title="Ship a recap that sells the next event"
+          subtitle="You're hosting a demo day, meetup, or launch party. You need a recap film, speaker clips, and social cutdowns — shipped on your deadline."
+          description="Multi-camera coverage, next-day teasers, and polished recap films with clips and cutdowns for every format. Built for founders who need to extend event impact."
           whatYouGet={[
-            'Highlight film (2–4 min recap)',
-            'Speaker moments and soundbites',
+            'Recap film (2–4 min highlight)',
+            'Speaker clips and soundbites',
             'Social cutdowns (15s, 30s, 60s)',
-            'Next-day teaser option (24hr turnaround)',
+            'Next-day teaser (24hr deadline)',
             'Sponsor and partner reels',
             'Photo selects from the event',
             'Multi-camera coverage',
@@ -34,21 +34,21 @@ export default function EventRecapsPage() {
             {
               step: 1,
               title: 'Pre-Production',
-              description: 'Shot list, schedule coordination, and crew briefing 1–2 weeks before your event. No surprises on show day.',
+              description: 'Shot list, schedule, and crew briefing 1–2 weeks before your event. No surprises on show day.',
             },
             {
               step: 2,
               title: 'Show Day',
-              description: 'Multi-camera crew captures speakers, crowd energy, and key moments. Optional same-day teaser edit for social.',
+              description: 'Multi-camera crew captures speakers, crowd energy, and key moments. Optional next-day teaser shipped in 24 hours.',
             },
             {
               step: 3,
-              title: 'Post-Production',
-              description: 'Full highlight film, speaker clips, and social cutdowns delivered within 1–2 weeks. Two rounds of revisions included.',
+              title: 'Ship',
+              description: 'Recap film, speaker clips, and social cutdowns shipped within 1–2 weeks. Two rounds of revisions included.',
             },
           ]}
           deliverables={[
-            'Highlight film',
+            'Recap film',
             'Speaker clips',
             'Next-day teaser',
             '15s cutdown',

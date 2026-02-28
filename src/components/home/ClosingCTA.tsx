@@ -18,10 +18,9 @@ export function ClosingCTA() {
       }} className="text-center mb-10">
           <span className="text-m3-secondary text-xs font-semibold uppercase tracking-widest">Get Started</span>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-m3-on-surface mt-2">
-            Ready to launch something great?
+            Ready to ship your next project?
           </h2>
-          <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg mx-auto">Let's talk about your startup. 
-Book a discovery call or send us a message</p>
+          <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg mx-auto">Share the goal and the deadline, we'll reply within 1 business day.</p>
         </motion.div>
 
         {/* Two Column Layout */}
@@ -36,15 +35,15 @@ Book a discovery call or send us a message</p>
         }} viewport={{
           once: true
         }} className="lg:col-span-2 space-y-4 order-2 lg:order-1">
-            {/* Free Startup Call Card */}
+            {/* Free Discovery Call Card */}
             <div className="m3-tonal-card p-6">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-m3-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-6 h-6 text-m3-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-m3-on-surface mb-1">Free Startup Call</h3>
-                  <p className="text-m3-on-surface/60 text-sm">30-minute video call to discuss your launch</p>
+                  <h3 className="font-semibold text-m3-on-surface mb-1">Free Discovery Call</h3>
+                  <p className="text-m3-on-surface/60 text-sm">30-minute call to discuss your launch, deadlines, and deliverables</p>
                 </div>
               </div>
             </div>

@@ -11,22 +11,22 @@ export default function LaunchVideosPage() {
     <>
       <SEOHead
         title="Launch Videos for Startups | Where2Studios"
-        description="Product demos, explainer videos, founder stories, and pitch videos that help startups build credibility and close investors. Launch-ready in 1–3 weeks."
+        description="Product demos, founder stories, and pitch videos shipped in 1–3 weeks. Clips and cutdowns for every format included."
       />
       <div className="min-h-screen bg-m3-background">
         <Navbar variant="dark" />
         <ServicePageTemplate
           category="Launch Videos"
-          title="Videos that launch products and close rounds"
-          subtitle="Cinematic product demos, explainers, and founder stories that make investors lean in and customers click buy."
-          description="We produce launch-ready video for startups at every stage — from your first product demo to your Series A sizzle reel. Fast turnarounds, founder-friendly process, no fluff."
+          title="Ship a launch video that builds credibility and closes rounds"
+          subtitle="You're launching a product, fundraising, or hiring. You need a video that makes people pay attention. We ship it on your deadline with clips included."
+          description="We produce launch-ready video for founders at every stage — from your first product demo to your Series A sizzle reel. Fast deadlines, one point of contact, deliverables that ship."
           whatYouGet={[
             'Launch film (60–90s hero video)',
             'Product demo with screen capture',
             'Founder story / origin video',
-            'Cutdowns for social (15s, 30s, 60s)',
-            'Versions optimized for organic',
-            'Versions optimized for paid ads',
+            'Social cutdowns (15s, 30s, 60s)',
+            'Formats for organic distribution',
+            'Formats for paid ads',
             'Pitch deck video insert',
             'Thumbnail and poster frames',
           ]}
@@ -34,17 +34,17 @@ export default function LaunchVideosPage() {
             {
               step: 1,
               title: 'Strategy Call',
-              description: 'We learn your product, audience, and launch timeline. You walk away with a creative brief and shot list.',
+              description: 'You share your product, audience, and deadline. We build a brief and shot list you can hold us to.',
             },
             {
               step: 2,
               title: 'Produce',
-              description: 'Fast, focused shoot day with a senior crew. We handle everything — gear, location, talent coordination.',
+              description: 'Fast, focused shoot day with a senior crew. We handle gear, location, and coordination — you show up.',
             },
             {
               step: 3,
-              title: 'Deliver',
-              description: 'Polished edits in all formats — hero video, social cutdowns, paid versions. Two rounds of revisions included.',
+              title: 'Ship',
+              description: 'Launch film, social cutdowns, and paid formats delivered on deadline. Two rounds of revisions included.',
             },
           ]}
           deliverables={[
@@ -54,8 +54,8 @@ export default function LaunchVideosPage() {
             '15s cutdown',
             '30s cutdown',
             '60s cutdown',
-            'Organic versions',
-            'Paid ad versions',
+            'Organic formats',
+            'Paid ad formats',
             'Pitch deck insert',
             'Poster frames',
           ]}

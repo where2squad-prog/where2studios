@@ -11,15 +11,15 @@ export default function PodcastsPage() {
     <>
       <SEOHead
         title="Podcast Production for Startups | Where2Studios"
-        description="Full-service podcast production — studio or remote recording, editing, social clips, thumbnails, and publishing support. Build authority on autopilot."
+        description="Full-service podcast production — recording, editing, clips, thumbnails, and publishing. Ship an episode every week without the overhead."
       />
       <div className="min-h-screen bg-m3-background">
         <Navbar variant="dark" />
         <ServicePageTemplate
           category="Podcasts"
-          title="A podcast that builds your authority on autopilot"
-          subtitle="Full-service production from recording to publishing. You show up and talk — we handle everything else."
-          description="Whether you're launching a new show or leveling up an existing one, we handle the entire production pipeline so you can focus on the conversation and your audience."
+          title="Ship an episode every week without the overhead"
+          subtitle="You need weekly content that builds authority. We handle the full production — you show up and talk, we ship the episode with clips included."
+          description="Whether you're launching a new show or shipping episodes for an existing one, we handle the entire production pipeline so you can focus on the conversation."
           whatYouGet={[
             'Studio or remote recording setup',
             'Professional audio editing and mixing',
@@ -28,29 +28,29 @@ export default function PodcastsPage() {
             'Social clips (vertical + square)',
             'Episode thumbnails and cover art',
             'Show notes and timestamps',
-            'Publishing support across platforms',
+            'Publishing across platforms',
           ]}
           howItWorks={[
             {
               step: 1,
               title: 'Show Strategy',
-              description: 'We define your format, audience, episode cadence, and visual brand. You get a content roadmap for the first season.',
+              description: 'We define your format, audience, and episode cadence. You get a content roadmap for the first season.',
             },
             {
               step: 2,
               title: 'Record',
-              description: 'Studio or remote sessions with pro-grade audio. We coordinate guests and handle all the tech so you just talk.',
+              description: 'Studio or remote sessions with pro-grade audio. We coordinate guests and handle the tech — you just talk.',
             },
             {
               step: 3,
-              title: 'Edit & Publish',
-              description: 'Tight edits, social clips, thumbnails, and distribution across Spotify, Apple, YouTube, and more.',
+              title: 'Ship',
+              description: 'Edited episode, social clips, thumbnails, and publishing across Spotify, Apple, YouTube, and more.',
             },
           ]}
           deliverables={[
             'Full episode (audio)',
             'Video episode (optional)',
-            'Social clips (3–5 per ep)',
+            'Social clips (3–5 per episode)',
             'Audiograms',
             'Episode thumbnail',
             'Show notes',

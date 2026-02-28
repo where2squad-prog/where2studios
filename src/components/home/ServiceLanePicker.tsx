@@ -47,9 +47,9 @@ export function ServiceLanePicker() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="label text-m3-secondary">What We Do</span>
+          <span className="label text-m3-secondary">Services</span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-on-surface mt-2">
-            Choose your lane
+            Choose what you need
           </h2>
           <p className="text-m3-on-surface/60 mt-3 max-w-xl mx-auto">
             Click to preview projects. Click again to explore the full service.
@@ -103,10 +103,10 @@ export function ServiceLanePicker() {
                     Recent {services.find((s) => s.id === selectedService)?.label} Projects
                   </h3>
                   <Link
-                    to={services.find((s) => s.id === selectedService)?.route || '/work'}
+                    to={services.find((s) => s.id === selectedService)?.route || '/startups'}
                     className="m3-text-button text-m3-primary text-sm"
                   >
-                    View All →
+                    See Our Work →
                   </Link>
                 </div>
 
@@ -117,7 +117,7 @@ export function ServiceLanePicker() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       className="aspect-[9/14] rounded-xl overflow-hidden group cursor-pointer"
-                      onClick={() => window.location.href = services.find((s) => s.id === selectedService)?.route || '/work'}
+                      onClick={() => window.location.href = services.find((s) => s.id === selectedService)?.route || '/startups'}
                     >
                       <img
                         src={getThumbnail(project)}

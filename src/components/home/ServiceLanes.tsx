@@ -4,33 +4,36 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Video, Mic, CalendarDays, ArrowRight } from 'lucide-react'
 
-const serviceLanes = [
+const services = [
   {
     id: 'launch-videos',
     title: 'Launch Videos',
     icon: Video,
     href: '/services/launch-videos',
-    whatWeDeliver: 'Product demos, explainers, pitch videos, founder stories, testimonials',
-    whatItSolves: 'Build credibility, explain your product, and close investors',
-    turnaround: '1–3 weeks',
+    moment: "You're launching a product, fundraising, or hiring.",
+    deliverables: 'Launch film, product demo, founder story, social cutdowns, pitch deck insert',
+    promise: 'Ship a launch video that builds credibility and saves you weeks of back and forth.',
+    deadline: '1–3 weeks',
   },
   {
     id: 'podcasts',
     title: 'Podcasts',
     icon: Mic,
     href: '/services/podcasts',
-    whatWeDeliver: 'Recording, editing, social clips, guest coordination, show branding',
-    whatItSolves: 'Establish thought leadership and grow your audience on autopilot',
-    turnaround: 'Weekly or bi-weekly batches',
+    moment: 'You need weekly content that builds authority.',
+    deliverables: 'Full episode, social clips, audiograms, thumbnails, show notes',
+    promise: 'Launch an episode every week without lifting a finger on production.',
+    deadline: 'Weekly or bi-weekly batches',
   },
   {
     id: 'event-recaps',
     title: 'Event Recaps',
     icon: CalendarDays,
     href: '/services/event-recaps',
-    whatWeDeliver: 'Same-day teasers, full recaps, speaker clips, sponsor reels',
-    whatItSolves: 'Extend event impact and drive attendance to the next one',
-    turnaround: '24hr teaser · 1–2 week recap',
+    moment: "You're hosting a demo day, meetup, or launch party.",
+    deliverables: 'Recap film, speaker clips, social cutdowns, next-day teaser, sponsor reels',
+    promise: 'Extend your event impact and drive attendance to the next one.',
+    deadline: '24hr teaser · 1–2 week recap',
   },
 ]
 
@@ -48,61 +51,61 @@ export function ServiceLanes() {
             Services
           </span>
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            What does your startup need?
+            Choose what you need
           </h2>
           <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            Pick your lane. We'll handle the production.
+            Tell us the moment. We'll ship the deliverables on your deadline.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {serviceLanes.map((lane, index) => (
+          {services.map((service, index) => (
             <motion.div
-              key={lane.id}
+              key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
               <Link
-                to={lane.href}
+                to={service.href}
                 className="group block h-full m3-outlined-card p-6 sm:p-8 hover:border-m3-primary/40 
                            hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center">
-                    <lane.icon className="w-6 h-6 text-m3-primary" />
+                    <service.icon className="w-6 h-6 text-m3-primary" />
                   </div>
                   <h3 className="font-fredoka text-xl font-semibold text-m3-on-surface">
-                    {lane.title}
+                    {service.title}
                   </h3>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      Includes
+                      The moment
                     </p>
                     <p className="text-sm text-m3-on-surface/80">
-                      {lane.whatWeDeliver}
+                      {service.moment}
                     </p>
                   </div>
                   
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      What it solves
+                      Deliverables
                     </p>
                     <p className="text-sm text-m3-on-surface/80">
-                      {lane.whatItSolves}
+                      {service.deliverables}
                     </p>
                   </div>
                   
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wider text-m3-on-surface/50 mb-1">
-                      Typical turnaround
+                      Deadline
                     </p>
                     <p className="text-sm text-m3-primary font-medium">
-                      {lane.turnaround}
+                      {service.deadline}
                     </p>
                   </div>
                 </div>

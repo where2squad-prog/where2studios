@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 const trustSignals = [
   'We reply within 1 business day',
-  'Free 30-minute startup call',
+  'Free 30-minute discovery call',
   'No commitment required',
 ]
 
@@ -29,7 +29,7 @@ export default function ContactPage() {
     <>
       <SEOHead
         title="Contact Us | Where2Studios"
-        description="Book a free startup call or send an inquiry. Launch videos, podcasts, and event recaps for startups. We reply within 1 business day."
+        description="Book a free discovery call or send an inquiry. Launch videos, podcasts, and event recaps shipped fast with clips included. We reply within 1 business day."
         schema={organizationSchema}
       />
 
@@ -48,10 +48,10 @@ export default function ContactPage() {
                 Let's Talk
               </span>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2 mb-4">
-                Ready to tell your startup story?
+                Ready to ship your next project?
               </h1>
               <p className="text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                Book a free 30-minute call or send us an inquiry. We'll map out your content plan and get back to you within one business day.
+                Book a free 30-minute discovery call or send us an inquiry. Share the goal and the deadline, we'll reply within 1 business day.
               </p>
             </motion.div>
           </div>
@@ -78,7 +78,7 @@ export default function ContactPage() {
                     Book a Discovery Call
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
-                    30-minute video call to discuss your launch, content needs, and timeline. No strings attached.
+                    30-minute call to discuss your launch, deadlines, and deliverables. No strings attached.
                   </p>
                   <span className="text-m3-primary font-semibold text-sm">
                     Schedule now →
@@ -103,7 +103,7 @@ export default function ContactPage() {
                     Send an Inquiry
                   </h2>
                   <p className="text-sm text-m3-on-surface/70 mb-4">
-                    Tell us about your startup and what you need. We'll reply within 1 business day with a plan.
+                    Tell us what you need and your deadline. We'll reply within 1 business day with a plan.
                   </p>
                   <span className="text-m3-primary font-semibold text-sm">
                     Fill out form →
@@ -164,9 +164,9 @@ export default function ContactPage() {
                       <Calendar className="w-5 h-5 text-m3-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-m3-on-surface mb-1">Free Startup Call</h3>
+                      <h3 className="font-semibold text-m3-on-surface mb-1">Free Discovery Call</h3>
                       <p className="text-m3-on-surface/60 text-sm">
-                        30-minute call to map out your content plan
+                        30-minute call to map out your deliverables and deadline
                       </p>
                     </div>
                   </div>
@@ -206,7 +206,7 @@ export default function ContactPage() {
               >
                 <div className="m3-elevated-card p-6 sm:p-8">
                   <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-6">
-                    Tell us about your startup
+                    Tell us what you need
                   </h2>
                   <ContactForm showBookCall />
                 </div>

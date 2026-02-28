@@ -106,21 +106,21 @@ export function FeaturedCaseStudies() {
         >
           <div>
             <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Startup Work
+              Recent Projects
             </span>
             <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-              Featured Projects
+              Featured Work
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Launch videos, podcasts, and event recaps that move the needle.
+              Launch videos, podcasts, and event recaps — shipped on deadline with clips included.
             </p>
           </div>
 
           <Link
-            to="/work"
+            to="/startups"
             className="m3-outlined-button hidden sm:inline-flex items-center gap-2"
           >
-            View all work
+            See Our Work
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
@@ -133,10 +133,10 @@ export function FeaturedCaseStudies() {
 
         <div className="sm:hidden text-center mt-8">
           <Link
-            to="/work"
+            to="/startups"
             className="m3-outlined-button inline-flex items-center gap-2"
           >
-            View all work
+            See Our Work
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
