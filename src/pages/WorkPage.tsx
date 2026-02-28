@@ -10,16 +10,15 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 
-const CATEGORIES = ['all', 'strategy', 'launch-videos', 'brand-videos', 'podcasts', 'photography', 'event-recaps', 'paid-and-social']
+const CATEGORIES = ['all', 'launch-videos', 'brand-videos', 'podcasts', 'photography', 'event-recaps', 'social-clips']
 const CATEGORY_LABELS: Record<string, string> = {
   all: 'All',
-  strategy: 'Strategy',
   'launch-videos': 'Launch Videos',
   'brand-videos': 'Brand Videos',
   podcasts: 'Podcasts',
   photography: 'Photography',
   'event-recaps': 'Event Recaps',
-  'paid-and-social': 'Paid and Social',
+  'social-clips': 'Social Clips',
 }
 
 type SortOption = 'featured' | 'recent'
