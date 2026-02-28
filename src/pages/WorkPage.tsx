@@ -10,14 +10,16 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 
-const CATEGORIES = ['all', 'launch-videos', 'podcasts', 'event-recaps', 'founder-story', 'product-demo']
+const CATEGORIES = ['all', 'strategy', 'launch-videos', 'brand-videos', 'podcasts', 'photography', 'event-recaps', 'paid-and-social']
 const CATEGORY_LABELS: Record<string, string> = {
   all: 'All',
+  strategy: 'Strategy',
   'launch-videos': 'Launch Videos',
+  'brand-videos': 'Brand Videos',
   podcasts: 'Podcasts',
+  photography: 'Photography',
   'event-recaps': 'Event Recaps',
-  'founder-story': 'Founder Story',
-  'product-demo': 'Product Demo',
+  'paid-and-social': 'Paid and Social',
 }
 
 type SortOption = 'featured' | 'recent'
@@ -87,7 +89,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
           )}
 
           <div className="flex items-center gap-1 text-m3-primary font-medium text-sm group-hover:gap-2 transition-all">
-            View project
+            See the plan
             <ArrowRight className="w-3 h-3" />
           </div>
         </div>
@@ -131,10 +133,10 @@ export default function WorkPage() {
               Portfolio
             </span>
             <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2">
-              Our Work
+              Work we've shipped
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Real results for real businesses. Content that converts.
+              Strategy led, premium production, execution that performs. Built for startups, trusted across industries.
             </p>
           </motion.div>
         </div>
@@ -212,11 +214,14 @@ export default function WorkPage() {
             Ready to be next?
           </h2>
           <p className="mt-4 text-m3-on-surface/60">
-            Let's talk about turning your content into customers.
+            Book a strategy call and we'll map deliverables, timeline, and budget.
+          </p>
+          <p className="mt-2 text-m3-on-surface/40 text-sm">
+            Free 30 minute strategy call, we reply within 1 business day.
           </p>
           <div className="mt-8">
             <Link to="/contact" className="m3-filled-button inline-flex items-center gap-2 text-lg">
-              Book a Discovery Call
+              Book a Strategy Call
             </Link>
           </div>
         </div>
