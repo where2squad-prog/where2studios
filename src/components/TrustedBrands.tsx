@@ -32,7 +32,7 @@ export function TrustedBrands() {
           Built for startups. Trusted by growing brands.
         </p>
         <p className="text-m3-on-surface/60 text-sm max-w-lg mx-auto">We understand startup speed, startup budgets, and startup ambition 
- we bring the same clarity to every industry we serve.
+we bring the same clarity to every industry we serve.
         </p>
       </div>
       
