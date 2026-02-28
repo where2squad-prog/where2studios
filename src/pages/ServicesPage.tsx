@@ -113,11 +113,11 @@ export default function ServicesPage() {
             Not sure what you need?
           </h2>
           <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-            Book a startup call and we'll help you figure out the best approach for your launch.
+            Book a discovery call and we'll help you figure out the best approach for your launch.
           </p>
           <div className="mt-8">
             <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-              Book a Startup Call
+              Book a Discovery Call
             </button>
           </div>
         </div>

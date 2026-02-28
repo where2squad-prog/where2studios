@@ -47,7 +47,7 @@ export function ServicePageTemplate({
             <p className="text-lg sm:text-xl text-m3-on-dark/80 mb-8 max-w-xl">{subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-center text-lg px-8 py-4">
-                Book a Startup Call
+                Book a Discovery Call
               </button>
               <Link
                 to="/work"
@@ -225,7 +225,7 @@ export function ServicePageTemplate({
               Book a free 30-minute startup call. We'll map out your content plan together.
             </p>
             <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">
-              Book a Startup Call
+              Book a Discovery Call
               <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>

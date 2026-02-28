@@ -425,7 +425,7 @@ export function BookingFormSheet() {
                     ) : (
                       <Calendar className="w-4 h-4" />
                     )}
-                    Book a Startup Call
+                    Book a Discovery Call
                   </button>
 
                   {/* Trust Signals */}

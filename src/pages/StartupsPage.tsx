@@ -76,7 +76,7 @@ export default function StartupsPage() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                  Book a Startup Call
+                  Book a Discovery Call
                 </button>
                 <Link to="/work" className="m3-outlined-button">
                   View Our Work
@@ -185,7 +185,7 @@ export default function StartupsPage() {
             </p>
             <div className="mt-8">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Startup Call
+                Book a Discovery Call
               </button>
             </div>
           </div>

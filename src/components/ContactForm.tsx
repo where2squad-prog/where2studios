@@ -212,7 +212,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               className="m3-filled-button flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              Book a Startup Call
+              Book a Discovery Call
             </button>
           )}
           <Link
@@ -395,7 +395,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               ) : (
                 <Calendar className="w-4 h-4" />
               )}
-              Book a Startup Call
+              Book a Discovery Call
             </button>
           )}
           <button
