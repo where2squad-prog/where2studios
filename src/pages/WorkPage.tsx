@@ -38,9 +38,18 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
   )
 }
 
+function getCorporateLabel(title: string): string {
+  const lower = title.toLowerCase()
+  if (lower.includes('recap')) return 'Recap'
+  if (lower.includes('montage')) return 'Montage'
+  return 'Corporate'
+}
+
 function ProjectCard({ project, index }: { project: CaseStudy; index: number }) {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
-  const categoryLabel = CATEGORY_LABELS[project.category] || project.category
+  const categoryLabel = project.category === 'corporate'
+    ? getCorporateLabel(project.title)
+    : (CATEGORY_LABELS[project.category] || project.category)
 
   return (
     <motion.div
