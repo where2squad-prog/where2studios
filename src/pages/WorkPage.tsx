@@ -10,11 +10,13 @@ import { Footer } from '@/components/Footer'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 
-const CATEGORIES = ['all', 'launch-videos', 'brand-videos', 'podcasts', 'photography', 'event-recaps', 'social-clips']
+const CATEGORIES = ['all', 'launch-videos', 'brand-videos', 'corporate', 'events', 'podcasts', 'photography', 'event-recaps', 'social-clips']
 const CATEGORY_LABELS: Record<string, string> = {
   all: 'All',
   'launch-videos': 'Launch Videos',
   'brand-videos': 'Brand Videos',
+  corporate: 'Corporate',
+  events: 'Events',
   podcasts: 'Podcasts',
   photography: 'Photography',
   'event-recaps': 'Event Recaps',
@@ -42,6 +44,7 @@ function getCorporateLabel(title: string): string {
   const lower = title.toLowerCase()
   if (lower.includes('recap')) return 'Recap'
   if (lower.includes('montage')) return 'Montage'
+  if (lower.includes('interview')) return 'Recap'
   return 'Corporate'
 }
 

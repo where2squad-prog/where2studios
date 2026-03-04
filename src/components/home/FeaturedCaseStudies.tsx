@@ -10,6 +10,8 @@ const FILTER_LABELS: Record<string, string> = {
   'launch-videos': 'Launch Video',
   podcasts: 'Podcast',
   'event-recaps': 'Event Recap',
+  events: 'Events',
+  corporate: 'Corporate',
   'founder-story': 'Founder Story',
   'product-demo': 'Product Demo',
 }
@@ -18,6 +20,7 @@ function getCorporateLabel(title: string): string {
   const lower = title.toLowerCase()
   if (lower.includes('recap')) return 'Recap'
   if (lower.includes('montage')) return 'Montage'
+  if (lower.includes('interview')) return 'Recap'
   return 'Corporate'
 }
 
