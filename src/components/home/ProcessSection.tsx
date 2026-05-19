@@ -39,9 +39,9 @@ export function ProcessSection() {
     <section className="py-16 sm:py-20 bg-m3-surface-variant">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-12"
         >
           <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
