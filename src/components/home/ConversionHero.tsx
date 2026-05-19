@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { Zap, Eye, Share2 } from 'lucide-react';
@@ -13,6 +13,7 @@ const proofChips = [
 
 export function ConversionHero() {
   const { openSheet } = useBookingSheet();
+  const reduce = useReducedMotion();
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-m3-surface-dark">
@@ -38,9 +39,9 @@ export function ConversionHero() {
         <div className="container mx-auto px-4 sm:px-8 lg:px-12 py-32">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={reduce ? false : { y: 20 }}
+            animate={{ y: 0 }}
+            transition={{ duration: reduce ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-[640px]">
 
             {/* Eyebrow */}
@@ -94,9 +95,9 @@ export function ConversionHero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={reduce ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: reduce ? 0 : 1, delay: reduce ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="hidden lg:block m3-elevated-card overflow-hidden aspect-video">
             <video
               autoPlay
