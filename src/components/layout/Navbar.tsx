@@ -26,6 +26,7 @@ interface NavbarProps {
 export function Navbar({ variant = 'dark' }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
   const { openSheet } = useBookingSheet();
 
@@ -34,6 +35,8 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
   const bgColor = isLight ? 'bg-m3-surface' : 'bg-m3-surface-dark';
 
   const navRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const servicesTriggerRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +73,31 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  // Close services dropdown on outside click / Escape
+  useEffect(() => {
+    if (!isServicesOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsServicesOpen(false);
+        servicesTriggerRef.current?.focus();
+      }
+    };
+    const onClick = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
+    };
+  }, [isServicesOpen]);
+
+  const focusRing =
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 focus-visible:ring-offset-m3-surface-dark rounded-md';
 
   return (
     <>
@@ -112,6 +140,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <Link
                   key={link.href}
                   to={link.href}
+                  aria-current={location.pathname === link.href ? 'page' : undefined}
                   className={`m3-text-button relative transition-colors ${
                     isLight
                       ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
@@ -122,7 +151,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                         ? 'text-m3-on-surface'
                         : 'text-m3-on-dark'
                       : ''
-                  }`}
+                  } ${focusRing}`}
                 >
                   {link.label}
                   {location.pathname === link.href && (
@@ -132,9 +161,28 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               ))}
 
               {/* Services Dropdown */}
-              <div className="relative group">
+              <div
+                className="relative"
+                ref={servicesRef}
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+              >
                 <Link
+                  ref={servicesTriggerRef}
                   to="/services"
+                  aria-current={location.pathname.startsWith('/services') ? 'page' : undefined}
+                  aria-haspopup="menu"
+                  aria-expanded={isServicesOpen}
+                  onKeyDown={(e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setIsServicesOpen(true);
+                      requestAnimationFrame(() => {
+                        const first = servicesRef.current?.querySelector<HTMLAnchorElement>('[role="menuitem"]');
+                        first?.focus();
+                      });
+                    }
+                  }}
                   className={`m3-text-button relative transition-colors ${
                     isLight
                       ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
@@ -145,20 +193,44 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                         ? 'text-m3-on-surface'
                         : 'text-m3-on-dark'
                       : ''
-                  }`}
+                  } ${focusRing}`}
                 >
                   Services
                   {location.pathname.startsWith('/services') && (
                     <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-1.5 h-1.5 rounded-full bg-m3-primary" />
                   )}
                 </Link>
-                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                <div
+                  role="menu"
+                  className={`absolute top-full left-0 pt-2 transition-all ${
+                    isServicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                  }`}
+                >
                   <div className="m3-elevated-card p-2 min-w-[180px]">
-                    {serviceLinks.map((link) => (
+                    {serviceLinks.map((link, i) => (
                       <Link
                         key={link.href}
                         to={link.href}
-                        className="block px-4 py-2 text-sm text-m3-on-surface hover:bg-m3-surface-variant rounded-lg transition-colors"
+                        role="menuitem"
+                        tabIndex={isServicesOpen ? 0 : -1}
+                        onKeyDown={(e) => {
+                          const items = Array.from(
+                            servicesRef.current?.querySelectorAll<HTMLAnchorElement>('[role="menuitem"]') ?? []
+                          );
+                          if (e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            items[(i + 1) % items.length]?.focus();
+                          } else if (e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            items[(i - 1 + items.length) % items.length]?.focus();
+                          } else if (e.key === 'Escape') {
+                            e.preventDefault();
+                            setIsServicesOpen(false);
+                            servicesTriggerRef.current?.focus();
+                          }
+                        }}
+                        onClick={() => setIsServicesOpen(false)}
+                        className={`block px-4 py-2 text-sm text-m3-on-surface hover:bg-m3-surface-variant rounded-lg transition-colors ${focusRing}`}
                       >
                         {link.label}
                       </Link>
@@ -167,19 +239,21 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 </div>
               </div>
 
-              <button onClick={openSheet} className="ml-2 m3-filled-button text-sm">
+              <button onClick={openSheet} className={`ml-2 m3-filled-button text-sm ${focusRing}`}>
                 Book a Strategy Call
               </button>
             </div>
 
             {/* Mobile Menu */}
             <div className="flex items-center gap-3 md:hidden">
-              <button onClick={openSheet} className="m3-filled-button text-xs px-4 py-2">
+              <button onClick={openSheet} className={`m3-filled-button text-xs px-4 py-2 ${focusRing}`}>
                 Book a Strategy Call
               </button>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 rounded-full ${textColor} hover:bg-m3-on-dark/10 transition-colors`}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileMenuOpen}
+                className={`p-2 rounded-full ${textColor} hover:bg-m3-on-dark/10 transition-colors ${focusRing}`}
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -210,7 +284,8 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <div className="flex justify-end p-4">
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-full text-m3-on-dark hover:bg-m3-on-dark/10"
+                    aria-label="Close menu"
+                    className={`p-2 rounded-full text-m3-on-dark hover:bg-m3-on-dark/10 ${focusRing}`}
                   >
                     <X className="w-5 h-5" />
                   </button>
