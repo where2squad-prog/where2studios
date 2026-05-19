@@ -10,6 +10,7 @@ import { ProcessSection } from '@/components/home/ProcessSection'
 
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { Footer } from '@/components/Footer'
+import { FloatingCTA } from '@/components/layout/FloatingCTA'
 
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
 
@@ -36,7 +37,7 @@ export default function HomePage() {
       </main>
       
       <Footer />
-      
+      <FloatingCTA />
     </div>
     </>
   )
