@@ -9,7 +9,7 @@ export function FinalCTA() {
   const { openSheet } = useBookingSheet();
 
   return (
-    <section className="py-16 sm:py-24 bg-m3-surface-dark">
+    <section id="contact" className="py-16 sm:py-24 bg-m3-surface-dark">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
