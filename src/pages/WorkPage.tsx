@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Play, ArrowUpDown, Grid3X3 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
+import { FloatingCTA } from '@/components/layout/FloatingCTA'
 
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
@@ -135,8 +136,8 @@ export default function WorkPage() {
       <section className="pt-28 pb-8 sm:pt-40 sm:pb-12 bg-m3-surface-variant">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
@@ -239,7 +240,7 @@ export default function WorkPage() {
       </section>
 
       <Footer />
-      
+      <FloatingCTA />
     </div>
   )
 }

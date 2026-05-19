@@ -111,9 +111,9 @@ export function FeaturedCaseStudies() {
     <section className="py-16 sm:py-20 bg-m3-surface">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10"
         >
           <div>

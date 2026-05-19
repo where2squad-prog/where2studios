@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { Target, Clapperboard, Megaphone, CheckCircle2 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
+import { FloatingCTA } from '@/components/layout/FloatingCTA'
 
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
@@ -175,7 +176,7 @@ export default function ServicesPage() {
         </section>
 
         <Footer />
-        
+        <FloatingCTA />
       </div>
     </>
   )
