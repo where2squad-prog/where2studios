@@ -284,7 +284,8 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <div className="flex justify-end p-4">
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-full text-m3-on-dark hover:bg-m3-on-dark/10"
+                    aria-label="Close menu"
+                    className={`p-2 rounded-full text-m3-on-dark hover:bg-m3-on-dark/10 ${focusRing}`}
                   >
                     <X className="w-5 h-5" />
                   </button>
