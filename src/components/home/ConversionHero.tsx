@@ -37,7 +37,6 @@ export function ConversionHero() {
       {/* Hero Content */}
       <div className="relative z-40 min-h-screen flex items-center">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12 py-32">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={reduce ? false : { y: 20 }}
             animate={{ y: 0 }}
@@ -93,23 +92,6 @@ export function ConversionHero() {
               )}
             </div>
           </motion.div>
-
-          <motion.div
-            initial={reduce ? false : { opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: reduce ? 0 : 1, delay: reduce ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block m3-elevated-card overflow-hidden aspect-video">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover">
-              <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
-            </video>
-          </motion.div>
-          </div>
         </div>
       </div>
 
