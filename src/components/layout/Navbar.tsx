@@ -9,7 +9,7 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/startups', label: 'Our Work' },
+  { href: '/work', label: 'Work' },
   { href: '/who-we-are', label: 'Who We Are' },
 ];
 
@@ -112,7 +112,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`m3-text-button transition-colors ${
+                  className={`m3-text-button relative transition-colors ${
                     isLight
                       ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
                       : 'text-m3-on-dark/80 hover:text-m3-on-dark'
@@ -125,6 +125,9 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   }`}
                 >
                   {link.label}
+                  {location.pathname === link.href && (
+                    <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-1.5 h-1.5 rounded-full bg-m3-primary" />
+                  )}
                 </Link>
               ))}
 
@@ -132,7 +135,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               <div className="relative group">
                 <Link
                   to="/services"
-                  className={`m3-text-button transition-colors ${
+                  className={`m3-text-button relative transition-colors ${
                     isLight
                       ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
                       : 'text-m3-on-dark/80 hover:text-m3-on-dark'
@@ -145,6 +148,9 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   }`}
                 >
                   Services
+                  {location.pathname.startsWith('/services') && (
+                    <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-1.5 h-1.5 rounded-full bg-m3-primary" />
+                  )}
                 </Link>
                 <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                   <div className="m3-elevated-card p-2 min-w-[180px]">
