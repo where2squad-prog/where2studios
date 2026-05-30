@@ -171,7 +171,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="md:hidden fixed top-0 right-0 h-full w-80 bg-m3-surface-dark/95 backdrop-blur-xl border-l border-m3-on-dark/10 z-[120]"
             >
-              <div className="flex flex-col h-full">
+              <div className="flex flex-col h-full overflow-y-auto">
                 {/* Top: Logo + Close */}
                 <div className="flex items-center justify-between p-4 border-b border-m3-on-dark/10">
                   <Link
@@ -192,7 +192,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 </div>
 
                 {/* Nav links — big Fredoka, left-aligned */}
-                <nav className="flex flex-col px-6 pt-8 gap-2">
+                <nav className="flex flex-col px-6 pt-4 gap-2">
                   {navLinks.map((link) => {
                     const isActive =
                       location.pathname === link.href ||
@@ -213,11 +213,8 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   })}
                 </nav>
 
-                {/* Spacer */}
-                <div className="flex-1" />
-
                 {/* Bottom: CTA + helper + social */}
-                <div className="px-6 pb-8 pt-6 border-t border-m3-on-dark/10 space-y-4">
+                <div className="px-6 pb-8 pt-10 space-y-4">
                   <button
                     onClick={() => {
                       setIsMobileMenuOpen(false);
@@ -227,10 +224,10 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   >
                     Book a Call
                   </button>
-                  <p className="text-xs text-m3-on-dark/60 text-center">
+                  <p className="text-xs text-m3-on-dark/60">
                     Free 30 min strategy call. 1 business day reply.
                   </p>
-                  <div className="flex items-center justify-center gap-2 pt-2">
+                  <div className="flex items-center gap-2 pt-2">
                     <a
                       href="https://www.instagram.com/where2studios/"
                       target="_blank"
