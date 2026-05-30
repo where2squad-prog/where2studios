@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import logo from '@/assets/where2studios-logo.png';
-import { useBookingSheet } from '@/contexts/BookingSheetContext';
 
 const navLinks = [
   { href: '/work', label: 'Work' },
@@ -21,7 +20,6 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { openSheet } = useBookingSheet();
 
   const isLight = variant === 'light';
   const textColor = isLight ? 'text-m3-on-surface' : 'text-m3-on-dark';
@@ -104,7 +102,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1 lg:gap-2">
+            <div className="hidden md:flex items-center gap-1 lg:gap-2 ml-auto">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -136,17 +134,10 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   )}
                 </Link>
               ))}
-
-              <button onClick={openSheet} className={`ml-2 m3-filled-button text-sm ${focusRing}`}>
-                Book a Call
-              </button>
             </div>
 
             {/* Mobile Menu */}
             <div className="flex items-center gap-3 md:hidden">
-              <button onClick={openSheet} className={`m3-filled-button text-xs px-4 py-2 ${focusRing}`}>
-                Book a Call
-              </button>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -201,18 +192,6 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                     </Link>
                   ))}
                 </nav>
-
-                <div className="mt-auto p-6">
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false)
-                      openSheet()
-                    }}
-                    className="m3-filled-button w-full text-center block"
-                  >
-                    Book a Call
-                  </button>
-                </div>
               </div>
             </motion.div>
           </>
