@@ -1,6 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { ImageWithFallback } from './figma/ImageWithFallback'
 import joshuaPhoto from '../assets/team-joshua.png'
 import danielPhoto from '../assets/team-daniel.png'
@@ -10,7 +12,7 @@ import gavinPhoto from '../assets/team-gavin.png'
 import anthonyPhoto from '../assets/team-member-1.png'
 import josephPhoto from '../assets/team-member-2.png'
 
-export function Team() {
+export function Team({ limit }: { limit?: number } = {}) {
   const teamMembers = [
     {
       name: "Joshua Saltiban",
@@ -49,22 +51,14 @@ export function Team() {
     }
   ]
 
+  const visibleMembers = limit ? teamMembers.slice(0, limit) : teamMembers
+
   return (
     <section id="team" className="relative py-12 sm:py-16 bg-m3-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-10">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="label text-m3-secondary"
-          >
-            The Squad
-          </motion.span>
-          
+        <div className="text-center mb-8 sm:mb-10">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +66,7 @@ export function Team() {
             viewport={{ once: true }}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-on-background mt-2 mb-2"
           >
-            Meet the Team
+            Who you'll work with
           </motion.h2>
           
           <motion.p 
@@ -82,13 +76,13 @@ export function Team() {
             viewport={{ once: true }}
             className="text-m3-on-background/60"
           >
-            The people who make things happen.
+            The team behind every shoot.
           </motion.p>
         </div>
 
         {/* Team Grid - M3 Outlined Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
-          {teamMembers.map((member, index) => (
+          {visibleMembers.map((member, index) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 20 }}
@@ -120,6 +114,18 @@ export function Team() {
             </motion.div>
           ))}
         </div>
+
+        {limit && limit < teamMembers.length && (
+          <div className="mt-8 text-center">
+            <Link
+              to="/who-we-are"
+              className="inline-flex items-center gap-2 text-m3-primary font-medium hover:gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 focus-visible:ring-offset-m3-background rounded"
+            >
+              Meet the full team
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

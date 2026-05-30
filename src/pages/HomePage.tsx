@@ -7,6 +7,7 @@ import { ServiceLanes } from '@/components/home/ServiceLanes'
 import { PositioningSection } from '@/components/home/PositioningSection'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { ProcessSection } from '@/components/home/ProcessSection'
+import { Team } from '@/components/Team'
 
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { Footer } from '@/components/Footer'
@@ -47,6 +48,7 @@ export default function HomePage() {
         <ServiceLanes />
         <PositioningSection />
         <FeaturedCaseStudies />
+        <Team limit={4} />
         <ProcessSection />
         
         <FinalCTA />
