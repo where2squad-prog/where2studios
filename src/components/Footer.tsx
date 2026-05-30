@@ -7,7 +7,7 @@ export function Footer() {
   const { openSheet } = useBookingSheet()
 
   const links = [
-    { label: 'Our Work', href: '/startups' },
+    { label: 'Work', href: '/work' },
     { label: 'Services', href: '/services' },
     { label: 'Who We Are', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },

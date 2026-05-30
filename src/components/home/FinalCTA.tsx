@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { Clock, MessageSquare, ArrowRight } from 'lucide-react';
 
@@ -24,28 +23,16 @@ export function FinalCTA() {
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-dark mt-3 mb-4">If you're building something worth sharing, we'll help the world see it
 
           </h2>
-          
-          
-
-
-
           <p className="text-m3-on-dark/50 text-sm mb-8">
             We reply within 1 business day.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          <div className="mb-10">
             <button
               onClick={openSheet}
               className="m3-filled-button text-base sm:text-lg px-8 py-4">
-
               Book a Strategy Call
             </button>
-            <Link
-              to="/contact"
-              className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10">
-
-              Start Your Project
-            </Link>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6">
