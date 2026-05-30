@@ -4,7 +4,6 @@ import { Navbar } from '@/components/layout/Navbar'
 import { ConversionHero } from '@/components/home/ConversionHero'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
-import { PositioningSection } from '@/components/home/PositioningSection'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { ProcessSection } from '@/components/home/ProcessSection'
 import { Team } from '@/components/Team'
@@ -46,7 +45,6 @@ export default function HomePage() {
         <ConversionHero />
         <TrustedBrands />
         <ServiceLanes />
-        <PositioningSection />
         <FeaturedCaseStudies />
         <Team limit={4} />
         <ProcessSection />
