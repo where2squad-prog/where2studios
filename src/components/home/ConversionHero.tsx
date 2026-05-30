@@ -64,7 +64,7 @@ export function ConversionHero() {
               <button onClick={openSheet}
               className="h-12 inline-flex items-center justify-center rounded-lg bg-m3-primary text-m3-on-primary font-semibold text-base px-7 shadow-sm hover:brightness-110 transition-all">
 
-                Book a Strategy Call
+                Book a Call
               </button>
               <Link
                 to="/work"

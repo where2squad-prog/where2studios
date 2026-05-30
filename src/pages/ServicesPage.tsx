@@ -92,7 +92,7 @@ export default function ServicesPage() {
                   onClick={openSheet}
                   className="m3-filled-button text-sm px-6 py-3"
                 >
-                  Book a Strategy Call
+                  Book a Call
                 </button>
                 <Link
                   to="/work"
@@ -168,7 +168,7 @@ export default function ServicesPage() {
             </p>
             <div className="mt-8">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Strategy Call
+                Book a Call
               </button>
             </div>
           </div>

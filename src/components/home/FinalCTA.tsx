@@ -31,7 +31,7 @@ export function FinalCTA() {
             <button
               onClick={openSheet}
               className="m3-filled-button text-base sm:text-lg px-8 py-4">
-              Book a Strategy Call
+              Book a Call
             </button>
           </div>
 

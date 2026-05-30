@@ -31,7 +31,7 @@ export function ServicePageTemplate({
   deliverables,
   bottomCtaHeadline = 'Ready to start?',
   bottomCtaSubheadline = 'Book a free 30 minute strategy call. Tell us the goal and the timeline — we\'ll build a plan with deliverables and budget.',
-  bottomCtaPrimary = 'Book a Strategy Call',
+  bottomCtaPrimary = 'Book a Call',
   bottomCtaSecondary,
   bottomCtaSecondaryHref = '/contact',
 }: ServicePageTemplateProps) {
@@ -60,7 +60,7 @@ export function ServicePageTemplate({
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-center text-lg px-8 py-4">
-                Book a Strategy Call
+                Book a Call
               </button>
               <Link
                 to="/work"
