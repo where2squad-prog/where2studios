@@ -37,39 +37,12 @@ function getCategoryLabel(project: CaseStudy): string {
     : (FILTER_LABELS[project.category] || project.category)
 }
 
-const PACBIO_METRICS = [
-  { value: '7 yrs', label: 'Partnership' },
-  { value: '14+', label: 'Events captured' },
-  { value: 'SF → Tokyo', label: 'Touring reach' },
-]
-
 function isPacbioProject(p: CaseStudy): boolean {
   return (
     !!p.client_name?.toLowerCase().includes('pacbio') ||
     !!p.slug?.toLowerCase().includes('pacbio') ||
     !!p.title?.toLowerCase().includes('pacbio')
   )
-}
-
-function parseMetricsJson(
-  metrics: Record<string, unknown> | null | unknown
-): { value: string; label: string }[] {
-  if (!metrics) return []
-  if (Array.isArray(metrics)) {
-    return metrics
-      .filter((m): m is { value: unknown; label: unknown } => !!m && typeof m === 'object')
-      .map((m) => ({ value: String((m as any).value ?? ''), label: String((m as any).label ?? '') }))
-      .filter((m) => m.value && m.label)
-  }
-  if (typeof metrics === 'object') {
-    return Object.entries(metrics as Record<string, unknown>).map(([k, v]) => ({
-      value: String(v),
-      label: k
-        .replace(/[_-]+/g, ' ')
-        .replace(/\b\w/g, (c) => c.toUpperCase()),
-    }))
-  }
-  return []
 }
 
 function MediaBlock({ project }: { project: CaseStudy }) {
@@ -96,9 +69,6 @@ function MediaBlock({ project }: { project: CaseStudy }) {
 
 function FlagshipCard({ project }: { project: CaseStudy }) {
   const reduce = useReducedMotion()
-  const isPacbio = isPacbioProject(project)
-  const fromDb = parseMetricsJson(project.metrics_json)
-  const metrics = fromDb.length > 0 ? fromDb.slice(0, 3) : isPacbio ? PACBIO_METRICS : []
 
   return (
     <motion.div
@@ -131,23 +101,6 @@ function FlagshipCard({ project }: { project: CaseStudy }) {
             </h3>
             {project.result && (
               <p className="text-m3-on-surface/70 text-base lg:text-lg">{project.result}</p>
-            )}
-            {metrics.length > 0 && (
-              <div className="grid grid-cols-3 gap-3 mt-2">
-                {metrics.map((m, i) => (
-                  <div
-                    key={i}
-                    className="rounded-2xl bg-m3-primary/10 border border-m3-primary/30 p-4 flex flex-col items-start"
-                  >
-                    <span className="font-fredoka text-xl lg:text-2xl font-semibold text-m3-on-surface">
-                      {m.value}
-                    </span>
-                    <span className="text-[11px] uppercase tracking-wider text-m3-on-surface/70 mt-1">
-                      {m.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
             )}
             <span className="m3-filled-button inline-flex items-center gap-2 self-start mt-2">
               See the breakdown
