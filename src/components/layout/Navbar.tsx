@@ -8,15 +8,9 @@ import logo from '@/assets/where2studios-logo.png';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
-  { href: '/who-we-are', label: 'Who We Are' },
-];
-
-const serviceLinks = [
-  { href: '/services#strategy', label: 'Brand and Growth Strategy' },
-  { href: '/services#production', label: 'High Impact Media Production' },
-  { href: '/services#marketing', label: 'Full Service Marketing Execution' },
+  { href: '/services', label: 'Services' },
+  { href: '/who-we-are', label: 'About' },
 ];
 
 interface NavbarProps {
@@ -26,7 +20,6 @@ interface NavbarProps {
 export function Navbar({ variant = 'dark' }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
   const { openSheet } = useBookingSheet();
 
@@ -35,8 +28,6 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
   const bgColor = isLight ? 'bg-m3-surface' : 'bg-m3-surface-dark';
 
   const navRef = useRef<HTMLDivElement>(null);
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const servicesTriggerRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
