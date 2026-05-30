@@ -12,15 +12,9 @@ export function PositioningSection() {
           viewport={{ once: true, amount: 0.1 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-            Our goal is to tell stories worth sharing
-          </span>
-          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-3 mb-4">
-            Content with a job
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
+            We make events that earn their reach.
           </h2>
-          <p className="text-m3-on-surface/70 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            We combine strategy, storytelling, and execution to help ambitious brands grow with clarity and confidence. Whether you're launching, scaling, or repositioning, we become an extension of your team.
-          </p>
         </motion.div>
       </div>
     </section>
