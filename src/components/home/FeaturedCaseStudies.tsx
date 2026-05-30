@@ -323,7 +323,7 @@ export function FeaturedCaseStudies() {
           )}
         </div>
 
-        <div className="sm:hidden text-center mt-8">
+        <div className="text-center mt-10">
           <Link
             to="/work"
             className="m3-outlined-button inline-flex items-center gap-2"
