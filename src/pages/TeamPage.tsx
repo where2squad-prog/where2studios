@@ -252,7 +252,7 @@ export default function TeamPage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
-                Book a Strategy Call
+                Book a Call
               </button>
               <Link to="/work" className="m3-outlined-button">
                 See Our Work

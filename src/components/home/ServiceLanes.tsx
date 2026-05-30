@@ -24,7 +24,7 @@ const services = [
       'Content strategy',
       'Funnels and conversion focus',
     ],
-    ctaLabel: 'Book a Strategy Call',
+    ctaLabel: 'Book a Call',
     ctaAction: 'sheet' as const,
   },
   {

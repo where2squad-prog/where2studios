@@ -233,7 +233,7 @@ export default function WorkPage() {
           </p>
           <div className="mt-8">
             <Link to="/contact" className="m3-filled-button inline-flex items-center gap-2 text-lg">
-              Book a Strategy Call
+              Book a Call
             </Link>
           </div>
         </div>

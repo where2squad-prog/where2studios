@@ -451,7 +451,7 @@ export default function CaseStudyPage() {
                 onClick={openSheet}
                 className="m3-filled-button text-lg px-8 py-4 inline-flex items-center gap-2"
               >
-                Book a Strategy Call
+                Book a Call
                 <ArrowRight className="w-4 h-4" />
               </button>
               <Link

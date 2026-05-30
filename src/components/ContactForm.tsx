@@ -177,7 +177,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               className="m3-filled-button flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              Book a Strategy Call
+              Book a Call
             </button>
           )}
           <Link

@@ -9,7 +9,7 @@ export function Footer() {
   const links = [
     { label: 'Work', href: '/work' },
     { label: 'Services', href: '/services' },
-    { label: 'Who We Are', href: '/who-we-are' },
+    { label: 'About', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },
   ]
 
@@ -49,7 +49,7 @@ export function Footer() {
               onClick={openSheet}
               className="m3-filled-button text-sm"
             >
-              Book a Strategy Call
+              Book a Call
             </button>
           </div>
 

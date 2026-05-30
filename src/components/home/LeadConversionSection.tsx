@@ -29,7 +29,7 @@ export function LeadConversionSection() {
             onClick={openSheet}
             className="m3-filled-button text-base sm:text-lg px-8 py-4 mb-3"
           >
-            Book a Strategy Call
+            Book a Call
           </button>
 
           <p className="text-m3-on-surface/50 text-sm">
