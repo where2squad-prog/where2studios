@@ -201,7 +201,7 @@ export function ServicePageTemplate({
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
                   className="group cursor-pointer"
-                  onClick={() => window.location.href = '/startups'}
+                  onClick={() => window.location.href = '/work'}
                 >
                   <div className="m3-elevated-card overflow-hidden aspect-[9/14]">
                     <img

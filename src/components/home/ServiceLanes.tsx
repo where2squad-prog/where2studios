@@ -40,7 +40,7 @@ const services = [
     ],
     ctaLabel: 'See Our Work',
     ctaAction: 'link' as const,
-    ctaHref: '/startups',
+    ctaHref: '/work',
   },
   {
     id: 'marketing',

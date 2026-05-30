@@ -18,9 +18,9 @@ const trustSignals = [
 
 
 const serviceHighlights = [
-  { icon: Video, label: 'Launch Videos', href: '/services/launch-videos' },
-  { icon: Mic, label: 'Podcasts', href: '/services/podcasts' },
-  { icon: Rocket, label: 'Event Recaps', href: '/services/event-recaps' },
+  { icon: Video, label: 'Launch Videos', href: '/services#production' },
+  { icon: Mic, label: 'Podcasts', href: '/services#production' },
+  { icon: Rocket, label: 'Event Recaps', href: '/services#production' },
 ]
 
 export default function ContactPage() {
