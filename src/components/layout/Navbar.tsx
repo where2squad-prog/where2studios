@@ -65,28 +65,6 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
     };
   }, [isMobileMenuOpen]);
 
-  // Close services dropdown on outside click / Escape
-  useEffect(() => {
-    if (!isServicesOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsServicesOpen(false);
-        servicesTriggerRef.current?.focus();
-      }
-    };
-    const onClick = (e: MouseEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
-        setIsServicesOpen(false);
-      }
-    };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('mousedown', onClick);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('mousedown', onClick);
-    };
-  }, [isServicesOpen]);
-
   const focusRing =
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 focus-visible:ring-offset-m3-surface-dark rounded-md';
 
@@ -131,13 +109,19 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <Link
                   key={link.href}
                   to={link.href}
-                  aria-current={location.pathname === link.href ? 'page' : undefined}
+                  aria-current={
+                    link.href === '/services'
+                      ? location.pathname.startsWith('/services') ? 'page' : undefined
+                      : location.pathname === link.href ? 'page' : undefined
+                  }
                   className={`m3-text-button relative transition-colors ${
                     isLight
                       ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
                       : 'text-m3-on-dark/80 hover:text-m3-on-dark'
                   } ${
-                    location.pathname === link.href
+                    (link.href === '/services'
+                      ? location.pathname.startsWith('/services')
+                      : location.pathname === link.href)
                       ? isLight
                         ? 'text-m3-on-surface'
                         : 'text-m3-on-dark'
@@ -145,90 +129,13 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   } ${focusRing}`}
                 >
                   {link.label}
-                  {location.pathname === link.href && (
+                  {(link.href === '/services'
+                    ? location.pathname.startsWith('/services')
+                    : location.pathname === link.href) && (
                     <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-1.5 h-1.5 rounded-full bg-m3-primary" />
                   )}
                 </Link>
               ))}
-
-              {/* Services Dropdown */}
-              <div
-                className="relative"
-                ref={servicesRef}
-                onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
-              >
-                <Link
-                  ref={servicesTriggerRef}
-                  to="/services"
-                  aria-current={location.pathname.startsWith('/services') ? 'page' : undefined}
-                  aria-haspopup="menu"
-                  aria-expanded={isServicesOpen}
-                  onKeyDown={(e) => {
-                    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setIsServicesOpen(true);
-                      requestAnimationFrame(() => {
-                        const first = servicesRef.current?.querySelector<HTMLAnchorElement>('[role="menuitem"]');
-                        first?.focus();
-                      });
-                    }
-                  }}
-                  className={`m3-text-button relative transition-colors ${
-                    isLight
-                      ? 'text-m3-on-surface/80 hover:text-m3-on-surface'
-                      : 'text-m3-on-dark/80 hover:text-m3-on-dark'
-                  } ${
-                    location.pathname.startsWith('/services')
-                      ? isLight
-                        ? 'text-m3-on-surface'
-                        : 'text-m3-on-dark'
-                      : ''
-                  } ${focusRing}`}
-                >
-                  Services
-                  {location.pathname.startsWith('/services') && (
-                    <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-1.5 h-1.5 rounded-full bg-m3-primary" />
-                  )}
-                </Link>
-                <div
-                  role="menu"
-                  className={`absolute top-full left-0 pt-2 transition-all ${
-                    isServicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                  }`}
-                >
-                  <div className="m3-elevated-card p-2 min-w-[180px]">
-                    {serviceLinks.map((link, i) => (
-                      <Link
-                        key={link.href}
-                        to={link.href}
-                        role="menuitem"
-                        tabIndex={isServicesOpen ? 0 : -1}
-                        onKeyDown={(e) => {
-                          const items = Array.from(
-                            servicesRef.current?.querySelectorAll<HTMLAnchorElement>('[role="menuitem"]') ?? []
-                          );
-                          if (e.key === 'ArrowDown') {
-                            e.preventDefault();
-                            items[(i + 1) % items.length]?.focus();
-                          } else if (e.key === 'ArrowUp') {
-                            e.preventDefault();
-                            items[(i - 1 + items.length) % items.length]?.focus();
-                          } else if (e.key === 'Escape') {
-                            e.preventDefault();
-                            setIsServicesOpen(false);
-                            servicesTriggerRef.current?.focus();
-                          }
-                        }}
-                        onClick={() => setIsServicesOpen(false)}
-                        className={`block px-4 py-2 text-sm text-m3-on-surface hover:bg-m3-surface-variant rounded-lg transition-colors ${focusRing}`}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
               <button onClick={openSheet} className={`ml-2 m3-filled-button text-sm ${focusRing}`}>
                 Book a Call
@@ -288,21 +195,6 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                       key={link.href}
                       to={link.href}
                       className="px-4 py-3 text-m3-on-dark hover:bg-m3-on-dark/10 rounded-lg font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-
-                  <div className="border-t border-m3-on-dark/10 my-2" />
-                  <span className="px-4 py-2 text-m3-on-dark/50 text-xs uppercase tracking-wide">
-                    Services
-                  </span>
-                  {serviceLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      to={link.href}
-                      className="px-4 py-2 text-m3-on-dark/80 hover:bg-m3-on-dark/10 rounded-lg text-sm"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.label}
