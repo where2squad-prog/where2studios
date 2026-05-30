@@ -4,6 +4,12 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { useMarqueeScroll } from '@/hooks/useMarqueeScroll';
 import { useCountUp } from '@/hooks/useCountUp';
 import brandPacbio from '@/assets/brand-pacbio.svg';
+import brandCityline from '@/assets/brand-cityline.svg';
+import brandVisitBerkeley from '@/assets/brand-visit-berkeley.svg';
+import brandBackyardBayou from '@/assets/brand-backyard-bayou.svg';
+import brandFoodieland from '@/assets/brand-foodieland.svg';
+import brandHyphyBurger from '@/assets/brand-hyphy-burger.svg';
+import brandOhgane from '@/assets/brand-ohgane.svg';
 import '@/styles/marquee.css';
 
 export function TrustedBrands() {
@@ -19,10 +25,15 @@ export function TrustedBrands() {
     enabled: !isMobile
   });
 
-  const brands = [{
-    name: "PacBio",
-    logo: brandPacbio
-  }];
+  const brands = [
+    { name: "PacBio", logo: brandPacbio },
+    { name: "Cityline", logo: brandCityline },
+    { name: "Visit Berkeley", logo: brandVisitBerkeley },
+    { name: "Backyard Bayou", logo: brandBackyardBayou },
+    { name: "Foodieland", logo: brandFoodieland },
+    { name: "Hyphy Burger", logo: brandHyphyBurger },
+    { name: "Ohgane", logo: brandOhgane },
+  ];
 
   return (
     <section className="py-12 sm:py-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
