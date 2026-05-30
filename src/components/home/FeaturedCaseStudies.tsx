@@ -267,7 +267,7 @@ function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }
 }
 
 export function FeaturedCaseStudies() {
-  const { data: projects, isLoading } = useFeaturedCaseStudies(3)
+  const { data: projects, isLoading } = useFeaturedCaseStudies(5)
   const reduce = useReducedMotion()
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
@@ -300,6 +300,11 @@ export function FeaturedCaseStudies() {
     return null
   }
 
+  const flagship =
+    projects.find((p) => isPacbioProject(p)) ?? projects[0]
+  const supporting = projects.filter((p) => p.id !== flagship?.id).slice(0, 2)
+  const mobileProjects = projects.slice(0, 3)
+
   return (
     <section className="py-16 sm:py-20 bg-m3-surface">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -330,7 +335,6 @@ export function FeaturedCaseStudies() {
           </Link>
         </motion.div>
 
-        {/* Mobile: swipe carousel */}
         <div className="md:hidden -mx-4 sm:-mx-8">
           <Carousel
             setApi={setApi}
@@ -338,7 +342,7 @@ export function FeaturedCaseStudies() {
             className="w-full"
           >
             <CarouselContent className="-ml-0">
-              {projects.map((project, index) => (
+              {mobileProjects.map((project, index) => (
                 <CarouselItem
                   key={project.id}
                   className={`basis-[88%] sm:basis-[80%] pr-3 ${index === 0 ? 'pl-4 sm:pl-8' : 'pl-0'}`}
@@ -350,12 +354,12 @@ export function FeaturedCaseStudies() {
           </Carousel>
 
           <div className="mt-6 flex justify-center gap-2">
-            {projects.map((_, index) => (
+            {mobileProjects.map((_, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => api?.scrollTo(index)}
-                aria-label={`Go to project ${index + 1} of ${projects.length}`}
+                aria-label={`Go to project ${index + 1} of ${mobileProjects.length}`}
                 aria-current={activeIndex === index ? 'true' : undefined}
                 className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 ${
                   activeIndex === index ? 'w-6 bg-m3-primary' : 'w-2 bg-m3-on-surface/20'
@@ -365,11 +369,16 @@ export function FeaturedCaseStudies() {
           </div>
         </div>
 
-        {/* Desktop: 3-column grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <CaseStudyCard key={project.id} project={project} index={index} />
-          ))}
+        {/* Desktop: 1 flagship + 2 supporting */}
+        <div className="hidden md:flex md:flex-col gap-6">
+          {flagship && <FlagshipCard project={flagship} />}
+          {supporting.length > 0 && (
+            <div className={`grid gap-6 ${supporting.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
+              {supporting.map((p, i) => (
+                <SupportingCard key={p.id} project={p} index={i} />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="sm:hidden text-center mt-8">
