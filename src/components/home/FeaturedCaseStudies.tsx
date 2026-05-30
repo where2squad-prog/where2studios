@@ -315,14 +315,11 @@ export function FeaturedCaseStudies() {
           className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10"
         >
           <div>
-            <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              Portfolio
-            </span>
-            <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-              Work we've shipped
+            <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
+              Work
             </h2>
             <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Real goals, clear deliverables, timelines you can plan around.
+              Recent work for brands that take their reach seriously.
             </p>
           </div>
 

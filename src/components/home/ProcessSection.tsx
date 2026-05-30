@@ -13,31 +13,27 @@ import {
 const processSteps = [
   {
     step: 1,
-    title: 'Start with strategy',
+    title: 'Plan',
     icon: Target,
-    description: 'We define the goal, the audience, and the message people need to remember.',
-    details: 'Clear direction before production.',
+    detail: 'Goals, scope, timeline.',
   },
   {
     step: 2,
-    title: 'Create with purpose',
+    title: 'Produce',
     icon: Clapperboard,
-    description: 'Every shot, script, and edit supports the outcome, not just aesthetics.',
-    details: 'Premium quality with intent.',
+    detail: 'Crew, gear, story.',
   },
   {
     step: 3,
-    title: 'Ship and distribute',
+    title: 'Publish',
     icon: Share2,
-    description: 'We deliver assets sized for where you post, plus guidance to launch them.',
-    details: 'All formats delivered, ready to post.',
+    detail: 'Edits made to perform.',
   },
   {
     step: 4,
-    title: 'Measure and improve',
+    title: 'Optimize',
     icon: BarChart3,
-    description: 'We track what lands, then refine the next campaign.',
-    details: 'Ship, measure, improve, repeat.',
+    detail: 'Data in. Better content out.',
   },
 ]
 
@@ -65,16 +61,12 @@ export function ProcessSection() {
         <item.icon className="w-5 h-5 text-m3-primary" />
       </div>
 
-      <h3 className="font-fredoka text-lg font-semibold text-m3-on-surface mb-2">
+      <h3 className="font-fredoka text-lg font-semibold text-m3-on-surface mb-1">
         {item.title}
       </h3>
 
-      <p className="text-sm text-m3-on-surface/70 mb-3">
-        {item.description}
-      </p>
-
-      <p className="text-xs text-m3-primary font-medium">
-        {item.details}
+      <p className="text-sm text-m3-on-surface/70">
+        {item.detail}
       </p>
     </div>
   )
@@ -88,15 +80,9 @@ export function ProcessSection() {
           viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-12"
         >
-          <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-            Process
-          </span>
-          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
             How we work
           </h2>
-          <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            You share the goal and the timeline. We handle strategy, production, and delivery.
-          </p>
         </motion.div>
 
         {/* Mobile: swipe carousel */}

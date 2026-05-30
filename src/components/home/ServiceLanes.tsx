@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Target, Clapperboard, Megaphone, ArrowRight } from 'lucide-react'
-import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import {
   Carousel,
   CarouselContent,
@@ -15,52 +14,28 @@ import {
 const services = [
   {
     id: 'strategy',
-    title: 'Brand and Growth Strategy',
+    title: 'Strategy',
     icon: Target,
-    oneLiner: 'Direction before execution, so every asset has a purpose.',
-    bullets: [
-      'Brand positioning',
-      'Campaign planning',
-      'Content strategy',
-      'Funnels and conversion focus',
-    ],
-    ctaLabel: 'Book a Call',
-    ctaAction: 'sheet' as const,
+    oneLiner: 'Plan first. Build with intent.',
+    href: '/services#strategy',
   },
   {
     id: 'production',
-    title: 'High Impact Media Production',
+    title: 'Production',
     icon: Clapperboard,
-    oneLiner: 'Premium media that makes you look established instantly.',
-    bullets: [
-      'Cinematic brand and launch videos',
-      'Podcast production',
-      'Photography',
-      'Event coverage and recaps',
-    ],
-    ctaLabel: 'See Our Work',
-    ctaAction: 'link' as const,
-    ctaHref: '/work',
+    oneLiner: 'Premium media that earns attention.',
+    href: '/services#production',
   },
   {
     id: 'marketing',
-    title: 'Full Service Marketing Execution',
+    title: 'Marketing',
     icon: Megaphone,
-    oneLiner: 'We do not just hand you content, we help it perform.',
-    bullets: [
-      'Social media management',
-      'Paid ads management',
-      'Email marketing',
-      'Distribution and campaign management',
-    ],
-    ctaLabel: 'Start Your Project',
-    ctaAction: 'link' as const,
-    ctaHref: '/contact',
+    oneLiner: 'Distribute and grow with data.',
+    href: '/services#marketing',
   },
 ]
 
 export function ServiceLanes() {
-  const { openSheet } = useBookingSheet()
   const reduce = useReducedMotion()
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
@@ -86,36 +61,17 @@ export function ServiceLanes() {
         </h3>
       </div>
 
-      <p className="text-sm text-m3-on-surface/80 mb-4">
+      <p className="text-sm text-m3-on-surface/80 mb-6 flex-1">
         {service.oneLiner}
       </p>
 
-      <ul className="space-y-2 mb-6 flex-1">
-        {service.bullets.map((bullet) => (
-          <li key={bullet} className="flex items-start gap-2 text-sm text-m3-on-surface/70">
-            <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-1.5 shrink-0" />
-            {bullet}
-          </li>
-        ))}
-      </ul>
-
-      {service.ctaAction === 'sheet' ? (
-        <button
-          onClick={openSheet}
-          className="flex items-center gap-2 text-m3-primary font-semibold text-sm hover:gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 rounded"
-        >
-          {service.ctaLabel}
-          <ArrowRight className="w-4 h-4" />
-        </button>
-      ) : (
-        <Link
-          to={service.ctaHref!}
-          className="flex items-center gap-2 text-m3-primary font-semibold text-sm hover:gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 rounded"
-        >
-          {service.ctaLabel}
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      )}
+      <Link
+        to={service.href}
+        className="flex items-center gap-2 text-m3-primary font-semibold text-sm hover:gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 rounded"
+      >
+        Learn more
+        <ArrowRight className="w-4 h-4" />
+      </Link>
     </div>
   )
 
@@ -128,15 +84,9 @@ export function ServiceLanes() {
           viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-10"
         >
-          <span className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-            Services
-          </span>
-          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mt-2">
-            Your 3 pillars for growth
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
+            What we do
           </h2>
-          <p className="text-m3-on-surface/60 text-sm sm:text-base mt-3 max-w-lg mx-auto">
-            You don't need more content. You need content that converts.
-          </p>
         </motion.div>
 
         {/* Mobile: swipe carousel */}
