@@ -38,7 +38,7 @@ export function ConversionHero() {
 
             {/* Eyebrow */}
             <p className="text-m3-primary text-xs font-semibold tracking-widest uppercase mb-2 sm:mb-3 md:mb-4">
-              Where2 Studios
+              Where2Studios
             </p>
 
             {/* Headline */}
