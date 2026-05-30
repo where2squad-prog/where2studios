@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram, Linkedin } from 'lucide-react';
 import logo from '@/assets/where2studios-logo.png';
+import { useBookingSheet } from '@/contexts/BookingSheetContext';
 
 const navLinks = [
   { href: '/work', label: 'Work' },
@@ -20,6 +21,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { openSheet } = useBookingSheet();
 
   const isLight = variant === 'light';
   const textColor = isLight ? 'text-m3-on-surface' : 'text-m3-on-dark';
@@ -167,10 +169,19 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="md:hidden fixed top-0 right-0 h-full w-72 bg-m3-surface-dark/95 backdrop-blur-xl border-l border-m3-on-dark/10 z-[120]"
+              className="md:hidden fixed top-0 right-0 h-full w-80 bg-m3-surface-dark/95 backdrop-blur-xl border-l border-m3-on-dark/10 z-[120]"
             >
               <div className="flex flex-col h-full">
-                <div className="flex justify-end p-4">
+                {/* Top: Logo + Close */}
+                <div className="flex items-center justify-between p-4 border-b border-m3-on-dark/10">
+                  <Link
+                    to="/"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center ${focusRing}`}
+                    aria-label="Where2Studios home"
+                  >
+                    <img src={logo} alt="Where2Studios" className="h-10 w-auto" />
+                  </Link>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-label="Close menu"
@@ -180,18 +191,66 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   </button>
                 </div>
 
-                <nav className="flex flex-col px-6 gap-1">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      to={link.href}
-                      className="px-4 py-3 text-m3-on-dark hover:bg-m3-on-dark/10 rounded-lg font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                {/* Nav links — big Fredoka, left-aligned */}
+                <nav className="flex flex-col px-6 pt-8 gap-2">
+                  {navLinks.map((link) => {
+                    const isActive =
+                      location.pathname === link.href ||
+                      (link.href === '/services' && location.pathname.startsWith('/services'));
+                    return (
+                      <Link
+                        key={link.href}
+                        to={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        aria-current={isActive ? 'page' : undefined}
+                        className={`font-fredoka text-3xl font-semibold py-3 px-2 rounded-lg transition-colors ${
+                          isActive ? 'text-m3-primary' : 'text-m3-on-dark hover:text-m3-primary'
+                        } ${focusRing}`}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
                 </nav>
+
+                {/* Spacer */}
+                <div className="flex-1" />
+
+                {/* Bottom: CTA + helper + social */}
+                <div className="px-6 pb-8 pt-6 border-t border-m3-on-dark/10 space-y-4">
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      openSheet();
+                    }}
+                    className={`w-full m3-filled-button text-base ${focusRing}`}
+                  >
+                    Book a Call
+                  </button>
+                  <p className="text-xs text-m3-on-dark/60 text-center">
+                    Free 30 min strategy call. 1 business day reply.
+                  </p>
+                  <div className="flex items-center justify-center gap-2 pt-2">
+                    <a
+                      href="https://www.instagram.com/where2studios/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Where2Studios on Instagram"
+                      className={`p-2 rounded-full text-m3-on-dark/60 hover:text-m3-primary hover:bg-m3-on-dark/10 transition-colors ${focusRing}`}
+                    >
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/where2studios/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Where2Studios on LinkedIn"
+                      className={`p-2 rounded-full text-m3-on-dark/60 hover:text-m3-primary hover:bg-m3-on-dark/10 transition-colors ${focusRing}`}
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </>
