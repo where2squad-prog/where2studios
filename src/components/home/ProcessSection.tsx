@@ -72,15 +72,15 @@ export function ProcessSection() {
   )
 
   return (
-    <section className="py-16 sm:py-20 bg-m3-surface-variant">
+    <section className="py-16 sm:py-20 lg:py-24 bg-m3-surface-variant">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ y: 20 }}
           whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
-          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3">
             How we work
           </h2>
         </motion.div>
