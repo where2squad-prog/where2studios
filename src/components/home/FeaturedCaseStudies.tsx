@@ -275,14 +275,6 @@ export function FeaturedCaseStudies() {
               Recent work for brands that take their reach seriously.
             </p>
           </div>
-
-          <Link
-            to="/work"
-            className="m3-outlined-button hidden sm:inline-flex items-center gap-2"
-          >
-            See Our Work
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </motion.div>
 
         <div className="md:hidden -mx-4 sm:-mx-8">
