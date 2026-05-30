@@ -43,13 +43,13 @@ export function ConversionHero() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] sm:leading-tight md:leading-tight mb-3 sm:mb-4 md:mb-6">
-              Events that travel{' '}
-              <span className="text-m3-primary">beyond the room.</span>
+              We capture the events that{' '}
+              <span className="text-m3-primary">build your brand.</span>
             </h1>
 
             {/* Subhead */}
             <p className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              Strategy + premium production for ambitious brands.
+              From conference recaps to brand films — strategy, production, and content that performs.
             </p>
 
             {/* CTA Row */}
