@@ -40,11 +40,7 @@ export function TrustedBrands() {
       {/* Title and subtitle */}
       <div className="text-center mb-8 sm:mb-10 px-4">
         <p className="text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-2">
-          Built for startups. Trusted by growing brands.
-        </p>
-        <p className="text-m3-on-surface/60 text-sm max-w-lg mx-auto">
-          We understand startup speed, startup budgets, and startup ambition<br />
-          We bring the same clarity to every industry we serve
+          Trusted by
         </p>
       </div>
       

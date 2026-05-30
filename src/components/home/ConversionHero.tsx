@@ -3,13 +3,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
-import { Zap, Eye, Share2 } from 'lucide-react';
-
-const proofChips = [
-{ icon: Zap, text: 'Strategy before production' },
-{ icon: Eye, text: 'Premium media that builds trust' },
-{ icon: Share2, text: 'Execution that drives growth' }];
-
 
 export function ConversionHero() {
   const { openSheet } = useBookingSheet();
@@ -45,18 +38,18 @@ export function ConversionHero() {
 
             {/* Eyebrow */}
             <p className="text-m3-primary text-xs font-semibold tracking-widest uppercase mb-2 sm:mb-3 md:mb-4">
-              Your Growth Team, On Demand
+              Where2 Studios
             </p>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] sm:leading-tight md:leading-tight mb-3 sm:mb-4 md:mb-6">
-              Shaping culture through{' '}
-              <span className="text-m3-primary">your stories</span>
+              Events that travel{' '}
+              <span className="text-m3-primary">beyond the room.</span>
             </h1>
 
             {/* Subhead */}
             <p className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              We help startups and growing brands build authority and attract customers. Strategy plus premium production makes it happen
+              Strategy + premium production for ambitious brands.
             </p>
 
             {/* CTA Row */}
@@ -76,21 +69,8 @@ export function ConversionHero() {
 
             {/* Helper line */}
             <p className="text-white/50 text-xs sm:text-sm mt-2 sm:mt-3 mb-4 sm:mb-5">
-              Free 30 minute strategy call, we reply within 1 business day.
+              Free 30 min strategy call. 1 business day reply.
             </p>
-
-            {/* Proof Chips */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-5 md:mt-6">
-              {proofChips.map((chip) =>
-              <div
-                key={chip.text}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur">
-
-                  <chip.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-m3-primary" />
-                  <span className="text-white/80 text-xs sm:text-sm">{chip.text}</span>
-                </div>
-              )}
-            </div>
           </motion.div>
         </div>
       </div>
