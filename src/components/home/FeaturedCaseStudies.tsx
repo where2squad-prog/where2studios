@@ -237,7 +237,7 @@ export function FeaturedCaseStudies() {
 
   if (isLoading) {
     return (
-      <section className="py-16 sm:py-20 bg-m3-surface">
+      <section className="py-16 sm:py-20 lg:py-24 bg-m3-surface">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
           <div className="grid md:grid-cols-3 gap-6">
             {[...Array(3)].map((_, i) => (
@@ -259,22 +259,20 @@ export function FeaturedCaseStudies() {
   const mobileProjects = projects.slice(0, 3)
 
   return (
-    <section className="py-16 sm:py-20 bg-m3-surface">
+    <section className="py-16 sm:py-20 lg:py-24 bg-m3-surface">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ y: 20 }}
           whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-10"
+          className="text-center mb-10 sm:mb-12"
         >
-          <div>
-            <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
-              Work
-            </h2>
-            <p className="text-m3-on-surface/60 text-sm sm:text-base mt-2 max-w-lg">
-              Recent work for brands that take their reach seriously.
-            </p>
-          </div>
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3">
+            Work
+          </h2>
+          <p className="text-m3-on-surface/70 text-base sm:text-lg max-w-2xl mx-auto">
+            Recent work for brands that take their reach seriously.
+          </p>
         </motion.div>
 
         <div className="md:hidden -mx-4 sm:-mx-8">

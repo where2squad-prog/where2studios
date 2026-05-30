@@ -36,7 +36,7 @@ export function TrustedBrands() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Title and subtitle */}
       <div className="text-center mb-8 sm:mb-10 px-4">
         <p className="text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-2">

@@ -54,17 +54,17 @@ export function Team({ limit }: { limit?: number } = {}) {
   const visibleMembers = limit ? teamMembers.slice(0, limit) : teamMembers
 
   return (
-    <section id="team" className="relative py-12 sm:py-16 bg-m3-background overflow-hidden">
+    <section id="team" className="relative py-16 sm:py-20 lg:py-24 bg-m3-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-10">
+        <div className="text-center mb-10 sm:mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-on-background mt-2 mb-2"
+            className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3"
           >
             Who you'll work with
           </motion.h2>
@@ -74,7 +74,7 @@ export function Team({ limit }: { limit?: number } = {}) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-m3-on-background/60"
+            className="text-m3-on-surface/70 text-base sm:text-lg max-w-2xl mx-auto"
           >
             The team behind every shoot.
           </motion.p>
