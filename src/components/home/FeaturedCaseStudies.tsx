@@ -31,6 +31,173 @@ function getCorporateLabel(title: string): string {
   return 'Corporate'
 }
 
+function getCategoryLabel(project: CaseStudy): string {
+  return project.category === 'corporate'
+    ? getCorporateLabel(project.title)
+    : (FILTER_LABELS[project.category] || project.category)
+}
+
+const PACBIO_METRICS = [
+  { value: '7 yrs', label: 'Partnership' },
+  { value: '14+', label: 'Events captured' },
+  { value: 'SF → Tokyo', label: 'Touring reach' },
+]
+
+function isPacbioProject(p: CaseStudy): boolean {
+  return (
+    !!p.client_name?.toLowerCase().includes('pacbio') ||
+    !!p.slug?.toLowerCase().includes('pacbio') ||
+    !!p.title?.toLowerCase().includes('pacbio')
+  )
+}
+
+function parseMetricsJson(
+  metrics: Record<string, unknown> | null | unknown
+): { value: string; label: string }[] {
+  if (!metrics) return []
+  if (Array.isArray(metrics)) {
+    return metrics
+      .filter((m): m is { value: unknown; label: unknown } => !!m && typeof m === 'object')
+      .map((m) => ({ value: String((m as any).value ?? ''), label: String((m as any).label ?? '') }))
+      .filter((m) => m.value && m.label)
+  }
+  if (typeof metrics === 'object') {
+    return Object.entries(metrics as Record<string, unknown>).map(([k, v]) => ({
+      value: String(v),
+      label: k
+        .replace(/[_-]+/g, ' ')
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
+    }))
+  }
+  return []
+}
+
+function MediaBlock({ project }: { project: CaseStudy }) {
+  const thumbnail = project.thumbnail_url || getThumbnail(project as any)
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
+      <img
+        src={thumbnail}
+        alt={project.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/60 via-transparent to-transparent" />
+      {project.video_url && (
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="w-16 h-16 rounded-full bg-m3-primary/90 flex items-center justify-center shadow-lg">
+            <Play className="w-7 h-7 text-m3-on-primary fill-current ml-0.5" />
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function FlagshipCard({ project }: { project: CaseStudy }) {
+  const reduce = useReducedMotion()
+  const isPacbio = isPacbioProject(project)
+  const fromDb = parseMetricsJson(project.metrics_json)
+  const metrics = fromDb.length > 0 ? fromDb.slice(0, 3) : isPacbio ? PACBIO_METRICS : []
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: reduce ? 0 : 0.6 }}
+      whileHover={reduce ? undefined : { y: -4 }}
+    >
+      <Link
+        to={`/work/${project.slug || project.id}`}
+        aria-label={`Read the ${project.title} case study`}
+        className="group block m3-elevated-card overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 focus-visible:ring-offset-m3-background"
+      >
+        <div className="grid lg:grid-cols-5 gap-0">
+          <div className="lg:col-span-3 aspect-video lg:aspect-auto lg:min-h-[420px]">
+            <MediaBlock project={project} />
+          </div>
+          <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center gap-4">
+            <span className="text-m3-secondary text-xs font-semibold uppercase tracking-widest">
+              {getCategoryLabel(project)}
+            </span>
+            {project.client_name && (
+              <span className="inline-flex self-start px-3 py-1 rounded-full bg-m3-surface-variant text-m3-on-surface text-xs font-semibold">
+                {project.client_name}
+              </span>
+            )}
+            <h3 className="font-fredoka text-3xl lg:text-4xl font-semibold text-m3-on-surface group-hover:text-m3-primary transition-colors">
+              {project.title}
+            </h3>
+            {project.result && (
+              <p className="text-m3-on-surface/70 text-base lg:text-lg">{project.result}</p>
+            )}
+            {metrics.length > 0 && (
+              <div className="grid grid-cols-3 gap-3 mt-2">
+                {metrics.map((m, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl bg-m3-primary/10 border border-m3-primary/30 p-4 flex flex-col items-start"
+                  >
+                    <span className="font-fredoka text-xl lg:text-2xl font-semibold text-m3-on-surface">
+                      {m.value}
+                    </span>
+                    <span className="text-[11px] uppercase tracking-wider text-m3-on-surface/70 mt-1">
+                      {m.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+            <span className="m3-filled-button inline-flex items-center gap-2 self-start mt-2">
+              See the breakdown
+              <ArrowRight className="w-4 h-4" />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  )
+}
+
+function SupportingCard({ project, index }: { project: CaseStudy; index: number }) {
+  const reduce = useReducedMotion()
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: reduce ? 0 : 0.6, delay: reduce ? 0 : 0.1 * index }}
+      whileHover={reduce ? undefined : { y: -4 }}
+    >
+      <Link
+        to={`/work/${project.slug || project.id}`}
+        aria-label={`Read the ${project.title} case study`}
+        className="group block m3-elevated-card overflow-hidden h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 focus-visible:ring-offset-m3-background"
+      >
+        <div className="aspect-video">
+          <MediaBlock project={project} />
+        </div>
+        <div className="p-6 flex flex-col gap-3">
+          <span className="text-m3-secondary text-xs font-semibold uppercase tracking-widest">
+            {getCategoryLabel(project)}
+          </span>
+          <h3 className="font-fredoka text-xl font-semibold text-m3-on-surface group-hover:text-m3-primary transition-colors line-clamp-2">
+            {project.title}
+          </h3>
+          {project.result && (
+            <p className="text-sm text-m3-on-surface/70 line-clamp-2">{project.result}</p>
+          )}
+          <span className="inline-flex items-center gap-2 text-m3-primary font-medium text-sm mt-1">
+            See the breakdown
+            <ArrowRight className="w-4 h-4" />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  )
+}
+
 function CaseStudyCardInner({ project }: { project: CaseStudy }) {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
   const categoryLabel = project.category === 'corporate'
@@ -100,7 +267,7 @@ function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }
 }
 
 export function FeaturedCaseStudies() {
-  const { data: projects, isLoading } = useFeaturedCaseStudies(3)
+  const { data: projects, isLoading } = useFeaturedCaseStudies(5)
   const reduce = useReducedMotion()
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
@@ -133,6 +300,11 @@ export function FeaturedCaseStudies() {
     return null
   }
 
+  const flagship =
+    projects.find((p) => isPacbioProject(p)) ?? projects[0]
+  const supporting = projects.filter((p) => p.id !== flagship?.id).slice(0, 2)
+  const mobileProjects = projects.slice(0, 3)
+
   return (
     <section className="py-16 sm:py-20 bg-m3-surface">
       <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -163,7 +335,6 @@ export function FeaturedCaseStudies() {
           </Link>
         </motion.div>
 
-        {/* Mobile: swipe carousel */}
         <div className="md:hidden -mx-4 sm:-mx-8">
           <Carousel
             setApi={setApi}
@@ -171,7 +342,7 @@ export function FeaturedCaseStudies() {
             className="w-full"
           >
             <CarouselContent className="-ml-0">
-              {projects.map((project, index) => (
+              {mobileProjects.map((project, index) => (
                 <CarouselItem
                   key={project.id}
                   className={`basis-[88%] sm:basis-[80%] pr-3 ${index === 0 ? 'pl-4 sm:pl-8' : 'pl-0'}`}
@@ -183,12 +354,12 @@ export function FeaturedCaseStudies() {
           </Carousel>
 
           <div className="mt-6 flex justify-center gap-2">
-            {projects.map((_, index) => (
+            {mobileProjects.map((_, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => api?.scrollTo(index)}
-                aria-label={`Go to project ${index + 1} of ${projects.length}`}
+                aria-label={`Go to project ${index + 1} of ${mobileProjects.length}`}
                 aria-current={activeIndex === index ? 'true' : undefined}
                 className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 ${
                   activeIndex === index ? 'w-6 bg-m3-primary' : 'w-2 bg-m3-on-surface/20'
@@ -198,11 +369,16 @@ export function FeaturedCaseStudies() {
           </div>
         </div>
 
-        {/* Desktop: 3-column grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <CaseStudyCard key={project.id} project={project} index={index} />
-          ))}
+        {/* Desktop: 1 flagship + 2 supporting */}
+        <div className="hidden md:flex md:flex-col gap-6">
+          {flagship && <FlagshipCard project={flagship} />}
+          {supporting.length > 0 && (
+            <div className={`grid gap-6 ${supporting.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1'}`}>
+              {supporting.map((p, i) => (
+                <SupportingCard key={p.id} project={p} index={i} />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="sm:hidden text-center mt-8">
