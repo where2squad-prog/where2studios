@@ -103,7 +103,7 @@ export function ServiceLanePicker() {
                     Recent {services.find((s) => s.id === selectedService)?.label} Projects
                   </h3>
                   <Link
-                    to={services.find((s) => s.id === selectedService)?.route || '/startups'}
+                    to={services.find((s) => s.id === selectedService)?.route || '/work'}
                     className="m3-text-button text-m3-primary text-sm"
                   >
                     See Our Work →
@@ -117,7 +117,7 @@ export function ServiceLanePicker() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       className="aspect-[9/14] rounded-xl overflow-hidden group cursor-pointer"
-                      onClick={() => window.location.href = services.find((s) => s.id === selectedService)?.route || '/startups'}
+                      onClick={() => window.location.href = services.find((s) => s.id === selectedService)?.route || '/work'}
                     >
                       <img
                         src={getThumbnail(project)}

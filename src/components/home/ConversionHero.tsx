@@ -67,7 +67,7 @@ export function ConversionHero() {
                 Book a Strategy Call
               </button>
               <Link
-                to="/startups"
+                to="/work"
                 className="h-12 inline-flex items-center justify-center rounded-lg bg-white/10 border border-white/20 text-white backdrop-blur font-medium text-base px-7 hover:bg-white/15 transition-all">
 
                 See Our Work

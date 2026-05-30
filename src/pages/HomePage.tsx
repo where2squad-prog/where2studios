@@ -14,6 +14,22 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
 
+/*
+ * Pass 7 salvage notes — content migrated from deleted /startups route (StartupsPage.tsx).
+ * Review before Pass 9 copy compression to decide what (if anything) belongs on the homepage.
+ *
+ * Headline (from StartupsPage hero):
+ *   "We help ambitious brands look established, credible, and unforgettable."
+ *
+ * "Why Us" bullets (from StartupsPage):
+ *   - Strategy first — every project starts with a plan
+ *   - Built for startups, scaling brands, and ambitious teams
+ *   - Deliverables shipped on your timeline, not ours
+ *   - Content built to drive growth, not just look good
+ *   - One producer, one point of contact, zero confusion
+ *   - Clips, cutdowns, and formats included with every project
+ */
+
 export default function HomePage() {
   return (
     <>

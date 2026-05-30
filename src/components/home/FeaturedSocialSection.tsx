@@ -107,7 +107,7 @@ export function FeaturedSocialSection() {
           className="text-center mt-8"
         >
           <Link 
-            to="/work/social-media" 
+            to="/work?category=social-clips" 
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl 
                        border-2 border-m3-secondary text-m3-secondary font-semibold
                        hover:bg-m3-secondary hover:text-m3-on-secondary transition-colors"

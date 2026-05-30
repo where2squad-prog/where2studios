@@ -32,10 +32,10 @@ const pillars = [
     intro: 'Premium content that elevates perception instantly.',
     items: [
       'Cinematic brand videos',
-      'Launch videos',
+      'Launch videos (product demos, founder stories, pitch deck inserts)',
       'Photography (product, lifestyle, corporate)',
-      'Podcast production',
-      'Event coverage and recaps',
+      'Podcast production (recording, editing, clips, thumbnails, publishing)',
+      'Event coverage and recaps (multi-camera, next-day teasers, speaker clips)',
       'Short form and social content',
     ],
     bestFor: 'Best for brands that want to look as powerful as they are.',
@@ -119,11 +119,10 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                id={pillar.id}
+                style={{ scrollMarginTop: 'var(--nav-h, 80px)' }}
               >
-                <Link
-                  to={`/services/${pillar.id}`}
-                  className="block m3-elevated-card p-6 sm:p-8 lg:p-10 hover:shadow-lg transition-shadow cursor-pointer"
-                >
+                <div className="block m3-elevated-card p-6 sm:p-8 lg:p-10">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center">
                       <pillar.icon className="w-6 h-6 text-m3-primary" />
@@ -149,7 +148,7 @@ export default function ServicesPage() {
                   <p className="text-xs text-m3-primary font-semibold">
                     {pillar.bestFor}
                   </p>
-                </Link>
+                </div>
               </motion.div>
             ))}
           </div>

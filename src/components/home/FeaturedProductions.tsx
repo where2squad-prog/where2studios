@@ -280,7 +280,7 @@ export function FeaturedProductions() {
       }} viewport={{
         once: true
       }} className="text-center mt-8">
-          <Link to="/work/productions" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl 
+          <Link to="/work?category=brand-videos" className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl 
                        bg-m3-primary text-m3-on-primary font-semibold
                        hover:bg-m3-primary/90 transition-colors shadow-md hover:shadow-lg">
             View all Productions

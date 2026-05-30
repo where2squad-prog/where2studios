@@ -14,9 +14,9 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'Brand and Growth Strategy', href: '/services/strategy' },
-    { label: 'High Impact Media Production', href: '/services/production' },
-    { label: 'Full Service Marketing Execution', href: '/services/marketing' },
+    { label: 'Brand and Growth Strategy', href: '/services#strategy' },
+    { label: 'High Impact Media Production', href: '/services#production' },
+    { label: 'Full Service Marketing Execution', href: '/services#marketing' },
   ]
 
   const legalLinks = [
