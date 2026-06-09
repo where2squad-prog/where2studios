@@ -50,6 +50,10 @@ interface ContactRequest {
   website?: string; // Honeypot field
 }
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 // Rate limiting constants
 const RATE_LIMIT_WINDOW_SECONDS = 3600;
 const MAX_SUBMISSIONS_PER_IP = 5;
@@ -82,6 +86,17 @@ const handler = async (req: Request): Promise<Response> => {
           success: false,
           error: "Please provide your name, email, and message.",
         }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    // Validate email format
+    if (!isValidEmail(data.email)) {
+      return new Response(
+        JSON.stringify({ success: false, error: "Invalid email address." }),
         {
           status: 400,
           headers: { "Content-Type": "application/json", ...corsHeaders },
@@ -205,11 +220,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     return new Response(
-      JSON.stringify({
-        success: true,
-        internal: internalEmailResponse,
-        confirmation: confirmationEmailResponse,
-      }),
+      JSON.stringify({ success: true }),
       {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
