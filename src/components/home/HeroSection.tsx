@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useCountUp } from '@/hooks/useCountUp'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
+import heroVideoAsset from '@/assets/hero-background.mp4.asset.json'
 
 interface HeroSectionProps {
   eyebrow?: string
@@ -22,7 +23,7 @@ export function HeroSection({
   subtitle = 'From prep to post, we capture the moments people talk about. Then we turn them into content that keeps working after the night ends.',
   showStats = true,
   showCTAs = true,
-  videoBackground = '/videos/hero-background.mp4',
+  videoBackground = heroVideoAsset.url,
 }: HeroSectionProps) {
   const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' })
   const { openSheet } = useBookingSheet()
@@ -39,7 +40,7 @@ export function HeroSection({
           playsInline
           preload="auto"
         >
-          <source src={`${videoBackground}?v=4`} type="video/mp4" />
+          <source src={videoBackground} type="video/mp4" />
         </video>
       </div>
 
