@@ -14,7 +14,7 @@ export function ConversionHero() {
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video
-          className="absolute inset-0 w-full h-[120%] object-cover blur-[2px] scale-105"
+          className="absolute inset-0 w-full h-full object-cover object-center sm:blur-[2px] sm:scale-105"
           autoPlay
           muted
           loop
@@ -25,8 +25,8 @@ export function ConversionHero() {
         </video>
       </div>
 
-      {/* Directional overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/20 sm:from-black/70 sm:via-black/45 sm:to-black/10" />
+      {/* Overlay for text readability — vertical on mobile, directional on desktop */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70 sm:bg-gradient-to-r sm:from-black/70 sm:via-black/45 sm:to-black/10" />
 
       {/* Hero Content */}
       <div className="relative z-40 min-h-screen flex items-center">
