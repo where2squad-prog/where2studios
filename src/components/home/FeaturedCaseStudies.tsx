@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Play } from 'lucide-react'
 import { useFeaturedCaseStudies, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
+import { isYouTubeUrl, getYouTubeEmbedUrl } from '@/lib/video'
 import {
   Carousel,
   CarouselContent,
@@ -37,16 +38,22 @@ function getCategoryLabel(project: CaseStudy): string {
     : (FILTER_LABELS[project.category] || project.category)
 }
 
-function isPacbioProject(p: CaseStudy): boolean {
-  return (
-    !!p.client_name?.toLowerCase().includes('pacbio') ||
-    !!p.slug?.toLowerCase().includes('pacbio') ||
-    !!p.title?.toLowerCase().includes('pacbio')
-  )
-}
-
 function MediaBlock({ project }: { project: CaseStudy }) {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
+  if (project.video_url && isYouTubeUrl(project.video_url)) {
+    const embed = getYouTubeEmbedUrl(project.video_url, { autoplay: false, controls: true })
+    return (
+      <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
+        <iframe
+          src={embed!}
+          className="absolute inset-0 w-full h-full"
+          title={project.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+    )
+  }
   return (
     <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
       <img
@@ -224,6 +231,7 @@ export function FeaturedCaseStudies() {
   const reduce = useReducedMotion()
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
+  const [randomSeed] = useState(() => Math.random())
 
   useEffect(() => {
     if (!api) return
@@ -253,9 +261,9 @@ export function FeaturedCaseStudies() {
     return null
   }
 
-  const flagship =
-    projects.find((p) => isPacbioProject(p)) ?? projects[0]
-  const supporting = projects.filter((p) => p.id !== flagship?.id).slice(0, 2)
+  const flagshipIndex = projects.length >= 2 ? (randomSeed < 0.5 ? 0 : 1) : 0
+  const flagship = projects[flagshipIndex]
+  const supporting = projects.filter((_, i) => i !== flagshipIndex).slice(0, 2)
   const mobileProjects = projects.slice(0, 3)
 
   return (
