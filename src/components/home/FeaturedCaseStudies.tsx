@@ -261,7 +261,9 @@ export function FeaturedCaseStudies() {
     return null
   }
 
-  const flagshipIndex = projects.length >= 2 ? (randomSeed < 0.5 ? 0 : 1) : 0
+  const FLAGSHIP_POOL_SIZE = 4
+  const poolSize = Math.min(projects.length, FLAGSHIP_POOL_SIZE)
+  const flagshipIndex = poolSize > 0 ? Math.floor(randomSeed * poolSize) : 0
   const flagship = projects[flagshipIndex]
   const supporting = projects.filter((_, i) => i !== flagshipIndex).slice(0, 2)
   const mobileProjects = projects.slice(0, 3)
