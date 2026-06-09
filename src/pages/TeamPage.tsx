@@ -109,7 +109,7 @@ export default function TeamPage() {
     <>
       <SEOHead
         title="Who We Are"
-        description="Meet the Where2Studios team. A growth partner for ambitious brands — strategy, storytelling, and execution. Our goal is to tell stories worth sharing."
+        description="Meet the Where2Studios team. A growth partner for ambitious brands. Strategy, storytelling, and execution. Our goal is to tell stories worth sharing."
         schema={organizationSchema}
       />
 
@@ -128,7 +128,7 @@ export default function TeamPage() {
                 Who We Are
               </span>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2 mb-6">
-                We're not just a media company — we're your growth partner.
+                We're not just a media company. We're your growth partner.
               </h1>
               <p className="text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
                 Built with startups in mind, we help emerging and scaling brands look established, credible, and unforgettable.
@@ -144,7 +144,7 @@ export default function TeamPage() {
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">What we do</h2>
                 <p className="text-m3-on-surface/70 leading-relaxed">
-                  From full scale marketing strategy to cinematic video production, photography, podcast production, event coverage, and brand storytelling — we create media that accelerates businesses forward.
+                  From full scale marketing strategy to cinematic video production, photography, podcast production, event coverage, and brand storytelling, we create media that accelerates businesses forward.
                 </p>
               </motion.div>
 

@@ -49,7 +49,7 @@ export function ConversionHero() {
 
             {/* Subhead */}
             <p className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              From conference recaps to brand films — strategy, production, and content that performs.
+              From conference recaps to brand films. Strategy, production, and content that performs.
             </p>
 
             {/* CTA Row */}

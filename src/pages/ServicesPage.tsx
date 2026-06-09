@@ -15,7 +15,7 @@ const pillars = [
     id: 'strategy',
     title: 'Brand and Growth Strategy',
     icon: Target,
-    intro: "We don't create randomly — we create with purpose.",
+    intro: "We don't create randomly. We create with purpose.",
     items: [
       'Marketing strategy development',
       'Brand positioning',
@@ -44,7 +44,7 @@ const pillars = [
     id: 'marketing',
     title: 'Full Service Marketing Execution',
     icon: Megaphone,
-    intro: "We don't just hand you content — we help it perform.",
+    intro: "We don't just hand you content. We help it perform.",
     items: [
       'Social media management',
       'Paid ads management',
@@ -64,7 +64,7 @@ export default function ServicesPage() {
     <>
       <SEOHead
         title="Services | Where2Studios"
-        description="Strategy, production, and execution — pick the pillar you need or let us be your full growth partner. Free 30 minute strategy call."
+        description="Strategy, production, and execution. Pick the pillar you need or let us be your full growth partner. Free 30 minute strategy call."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
@@ -84,7 +84,7 @@ export default function ServicesPage() {
                 Everything we do ladders into growth.
               </h1>
               <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                Pick the pillar you need — strategy, production, or execution. We can run one piece, or be your full growth partner.
+                Pick the pillar you need: strategy, production, or execution. We can run one piece, or be your full growth partner.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
@@ -161,7 +161,7 @@ export default function ServicesPage() {
               Not sure what you need?
             </h2>
             <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-              Book a strategy call. Tell us the goal and the timeline — we'll build a plan with deliverables and budget.
+              Book a strategy call. Tell us the goal and the timeline. We'll build a plan with deliverables and budget.
             </p>
             <p className="mt-2 text-m3-on-surface/40 text-sm">
               Free 30 minute strategy call, we reply within 1 business day.
