@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
+import heroVideoAsset from '@/assets/hero-background.mp4.asset.json';
 
 export function ConversionHero() {
   const { openSheet } = useBookingSheet();
@@ -20,7 +21,7 @@ export function ConversionHero() {
           playsInline
           preload="auto">
 
-          <source src="/videos/hero-background.mp4?v=4" type="video/mp4" />
+          <source src={heroVideoAsset.url} type="video/mp4" />
         </video>
       </div>
 
