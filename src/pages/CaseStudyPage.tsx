@@ -341,7 +341,7 @@ export default function CaseStudyPage() {
 
               {/* 3 — Deliverables */}
               {project.deliverables && project.deliverables.length > 0 && (
-                <SectionBlock icon={Package} title="Deliverables" helperLine="What we shipped — assets, formats, cutdowns.">
+                <SectionBlock icon={Package} title="Deliverables" helperLine="What we shipped: assets, formats, cutdowns.">
                   <div className="flex flex-wrap gap-2">
                     {project.deliverables.map((item) => (
                       <span
@@ -381,7 +381,7 @@ export default function CaseStudyPage() {
 
               {/* 6 — Impact */}
               {(metrics || project.result) && (
-                <SectionBlock icon={BarChart3} title="Impact" helperLine="What changed — results, learnings, next step.">
+                <SectionBlock icon={BarChart3} title="Impact" helperLine="What changed: results, learnings, next step.">
                   {metrics && Object.keys(metrics).length > 0 && (
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
                       {Object.entries(metrics).map(([label, value]) => (

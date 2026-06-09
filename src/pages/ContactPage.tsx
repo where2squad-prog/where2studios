@@ -11,7 +11,7 @@ export default function ContactPage() {
     <>
       <SEOHead
         title="Contact Us | Where2Studios"
-        description="For press, partnerships, or general questions. Hiring inquiries — use Book a Call."
+        description="For press, partnerships, or general questions. Hiring inquiries? Use Book a Call."
         schema={organizationSchema}
       />
 

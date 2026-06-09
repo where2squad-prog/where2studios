@@ -49,7 +49,7 @@ export function TestimonialsSection() {
                 delivered on time, and the content exceeded our expectations."
               </p>
               <p className="mt-4 text-sm font-semibold text-m3-on-surface">
-                — Bay Area Marketing Team
+                Bay Area Marketing Team
               </p>
             </div>
           </div>

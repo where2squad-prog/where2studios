@@ -22,7 +22,7 @@ export function LeadConversionSection() {
             For founders and marketing directors
           </h2>
           <p className="text-m3-on-surface/70 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-            If you're launching soon, struggling to stand out, inconsistent with content, investing in marketing without ROI, or ready to elevate your brand presence — let's fix that.
+            If you're launching soon, struggling to stand out, inconsistent with content, investing in marketing without ROI, or ready to elevate your brand presence, let's fix that.
           </p>
 
           <button
@@ -33,7 +33,7 @@ export function LeadConversionSection() {
           </button>
 
           <p className="text-m3-on-surface/50 text-sm">
-            Free 30 minute strategy call — you'll walk away with clarity whether we work together or not.
+            Free 30 minute strategy call. You'll walk away with clarity whether we work together or not.
           </p>
         </motion.div>
       </div>

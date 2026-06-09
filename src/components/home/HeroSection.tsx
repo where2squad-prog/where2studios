@@ -19,7 +19,7 @@ export function HeroSection({
   eyebrow = 'Full Service Media & Marketing',
   title = 'Make your event look',
   titleAccent = 'as big as it felt',
-  subtitle = 'From prep to post, we capture the moments people talk about — then turn them into content that keeps working after the night ends.',
+  subtitle = 'From prep to post, we capture the moments people talk about. Then we turn them into content that keeps working after the night ends.',
   showStats = true,
   showCTAs = true,
   videoBackground = '/videos/hero-background.mp4',

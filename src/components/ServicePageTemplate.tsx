@@ -30,7 +30,7 @@ export function ServicePageTemplate({
   howItWorks,
   deliverables,
   bottomCtaHeadline = 'Ready to start?',
-  bottomCtaSubheadline = 'Book a free 30 minute strategy call. Tell us the goal and the timeline — we\'ll build a plan with deliverables and budget.',
+  bottomCtaSubheadline = 'Book a free 30 minute strategy call. Tell us the goal and the timeline. We\'ll build a plan with deliverables and budget.',
   bottomCtaPrimary = 'Book a Call',
   bottomCtaSecondary,
   bottomCtaSecondaryHref = '/contact',
