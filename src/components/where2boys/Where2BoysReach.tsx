@@ -9,8 +9,7 @@ export function Where2BoysReach() {
         </p>
         <h2 className="font-fredoka font-bold text-3xl sm:text-4xl lg:text-5xl mb-12 leading-tight">
           When we feature a spot,{' '}
-          <span style={{ color: '#E09E24' }}>it gets seen!</span>{' '}
-          <span aria-hidden>🙌❤️</span>
+          <span style={{ color: '#E09E24' }}>it gets seen.</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-14 mb-14">

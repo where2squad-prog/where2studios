@@ -67,7 +67,7 @@ export function Where2BoysPillars() {
                 type="button"
                 onClick={() => setActiveIndex(i)}
                 aria-pressed={isActive}
-                className={`rounded-2xl border p-2 sm:p-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                className={`rounded-2xl border px-1 py-2 sm:p-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 min-w-0 ${
                   isActive
                     ? 'bg-m3-surface-dark text-m3-on-dark border-m3-surface-dark'
                     : 'bg-m3-surface text-m3-on-surface border-m3-outline hover:border-m3-on-surface/30'
@@ -75,7 +75,7 @@ export function Where2BoysPillars() {
                 style={{ ['--tw-ring-color' as never]: '#E84228' }}
               >
                 <Icon className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1.5" />
-                <div className="font-fredoka font-semibold text-xs sm:text-sm">
+                <div className="font-fredoka font-semibold text-[10px] leading-tight sm:text-sm break-words">
                   {p.label}
                 </div>
               </button>
