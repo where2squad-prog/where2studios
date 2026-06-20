@@ -22,7 +22,8 @@ export function Where2BoysHero() {
           >
             <img
               src={where2boysLogo.url}
-              alt="Where2Boys logo"
+              alt=""
+              aria-hidden="true"
               className="w-full h-full object-cover"
             />
           </motion.div>
