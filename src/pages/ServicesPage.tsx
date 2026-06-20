@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Target, Clapperboard, Megaphone, CheckCircle2 } from 'lucide-react'
+import { Target, Clapperboard, Megaphone, CheckCircle2, Users, ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
@@ -10,7 +10,18 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 
-const pillars = [
+type Pillar = {
+  id: string
+  title: string
+  icon: React.ElementType
+  intro: string
+  items: string[]
+  bestFor: string
+  linkTo?: string
+  linkLabel?: string
+}
+
+const pillars: Pillar[] = [
   {
     id: 'strategy',
     title: 'Brand and Growth Strategy',
@@ -55,6 +66,23 @@ const pillars = [
     ],
     bestFor: 'Best for brands that are serious about growth.',
   },
+  {
+    id: 'creators',
+    title: 'Creator Brand Partnership',
+    icon: Users,
+    intro:
+      "We don't pitch your brand to strangers. We feature you through Where2Boys, our creator brand with a built-in Bay Area audience.",
+    items: [
+      'Featured content on the @where2boys feed (258K monthly views)',
+      'Restaurant and venue features with built-in audience targeting',
+      'Event coverage and recaps for openings, pop-ups, and festivals',
+      'Brand integrations tailored to Bay Area food and culture',
+      'Co-promotions with other Bay Area creators in the Where2Boys network',
+    ],
+    bestFor: 'Best for brands looking for an authentic audience and Bay Area cultural fit.',
+    linkTo: '/where2boys',
+    linkLabel: 'See the full Where2Boys page',
+  },
 ]
 
 export default function ServicesPage() {
@@ -64,7 +92,7 @@ export default function ServicesPage() {
     <>
       <SEOHead
         title="Services | Where2Studios"
-        description="Strategy, production, and execution. Pick the pillar you need or let us be your full growth partner. Free 30 minute strategy call."
+        description="Strategy, production, execution, and creator brand partnerships. Pick the pillar you need or let us be your full growth partner."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
@@ -84,7 +112,7 @@ export default function ServicesPage() {
                 Everything we do ladders into growth.
               </h1>
               <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                Pick the pillar you need: strategy, production, or execution. We can run one piece, or be your full growth partner.
+                Pick the pillar you need: strategy, production, execution, or our creator brand. We can run one piece, or be your full growth partner.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
@@ -148,6 +176,16 @@ export default function ServicesPage() {
                   <p className="text-xs text-m3-primary font-semibold">
                     {pillar.bestFor}
                   </p>
+
+                  {pillar.linkTo && (
+                    <Link
+                      to={pillar.linkTo}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-m3-brick-red hover:text-m3-brick-red/80 transition-colors mt-4"
+                    >
+                      {pillar.linkLabel || 'Learn more'}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}
