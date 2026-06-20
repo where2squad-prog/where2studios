@@ -1,6 +1,7 @@
 'use client'
 
 import { CalendarClock, UtensilsCrossed, Building2, Users } from 'lucide-react'
+import { useWhere2BoysSheet } from '@/contexts/Where2BoysSheetContext'
 
 const collabTypes = [
   { icon: CalendarClock, title: 'Event coverage', desc: 'Pop-ups, openings, festivals' },
@@ -10,8 +11,9 @@ const collabTypes = [
 ]
 
 export function Where2BoysCollab() {
+  const { openSheet } = useWhere2BoysSheet()
   return (
-    <section id="work-with-us" className="py-20 sm:py-24 lg:py-28 bg-m3-surface-dark text-m3-on-dark">
+    <section className="py-20 sm:py-24 lg:py-28 bg-m3-surface-dark text-m3-on-dark">
       <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-4xl">
         <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#E84228' }}>
           Ways to work with us
@@ -35,13 +37,14 @@ export function Where2BoysCollab() {
           })}
         </div>
 
-        <a
-          href="#tell-us"
-          className="mt-8 sm:mt-10 block text-center text-m3-on-dark font-fredoka font-semibold text-base sm:text-lg py-3.5 sm:py-4 rounded-full hover:opacity-90 transition-opacity"
+        <button
+          type="button"
+          onClick={openSheet}
+          className="mt-8 sm:mt-10 block w-full text-center text-m3-on-dark font-fredoka font-semibold text-base sm:text-lg py-3.5 sm:py-4 rounded-full hover:opacity-90 transition-opacity"
           style={{ background: '#E84228' }}
         >
           Let's work together
-        </a>
+        </button>
       </div>
     </section>
   )
