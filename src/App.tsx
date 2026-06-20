@@ -19,6 +19,7 @@ import SocialAdminPage from './pages/admin/SocialAdminPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import TermsOfServicePage from './pages/TermsOfServicePage'
+import Where2BoysPage from './pages/Where2BoysPage'
 
 const queryClient = new QueryClient()
 
@@ -39,6 +40,7 @@ export default function App() {
                 <Route path="/who-we-are" element={<TeamPage />} />
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms" element={<TermsOfServicePage />} />
+                <Route path="/where2boys" element={<Where2BoysPage />} />
                 <Route path="/admin/login" element={<AdminLoginPage />} />
                 <Route
                   path="/admin/social"

@@ -44,6 +44,8 @@ export type Database = {
       contact_submissions: {
         Row: {
           budget: string | null
+          budget_range: string | null
+          collab_type: string | null
           company: string | null
           created_at: string
           email: string
@@ -55,11 +57,14 @@ export type Database = {
           phone: string | null
           referral: string | null
           service: string | null
+          source: string | null
           timeline: string | null
           user_agent: string | null
         }
         Insert: {
           budget?: string | null
+          budget_range?: string | null
+          collab_type?: string | null
           company?: string | null
           created_at?: string
           email: string
@@ -71,11 +76,14 @@ export type Database = {
           phone?: string | null
           referral?: string | null
           service?: string | null
+          source?: string | null
           timeline?: string | null
           user_agent?: string | null
         }
         Update: {
           budget?: string | null
+          budget_range?: string | null
+          collab_type?: string | null
           company?: string | null
           created_at?: string
           email?: string
@@ -87,6 +95,7 @@ export type Database = {
           phone?: string | null
           referral?: string | null
           service?: string | null
+          source?: string | null
           timeline?: string | null
           user_agent?: string | null
         }
