@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { MapPin, UtensilsCrossed, Plane, Globe, BookOpen, type LucideIcon } from 'lucide-react'
+import { Sparkles, MapPin, UtensilsCrossed, Plane, Globe, type LucideIcon } from 'lucide-react'
 
 type Pillar = {
   icon: LucideIcon
@@ -11,10 +11,16 @@ type Pillar = {
 
 const pillars: Pillar[] = [
   {
+    icon: Sparkles,
+    label: 'Experiences',
+    description:
+      "Pop-ups, openings, classes, tastings, festivals, immersive nights. We capture the moment your guests will remember and the reason others should come next time. The angle, the room, the energy. For business owners, that means an event that lives past the night and fills the room for the next one.",
+  },
+  {
     icon: MapPin,
     label: 'Spots',
     description:
-      "The Bay Area's best places, and who they're for. We seek out hidden gems, viral picks, and neighborhood mainstays. Every feature comes with the angle that makes you want to go. Locals looking for the next favorite, visitors looking for the move. For business owners, that means the right crowd showing up, not just the most.",
+      "The Bay Area's best places, and who they're for. Hidden gems, viral picks, neighborhood mainstays worth knowing. Locals looking for the next favorite, visitors looking for the move. For business owners, that means the right crowd showing up, not just the most.",
   },
   {
     icon: UtensilsCrossed,
@@ -32,13 +38,7 @@ const pillars: Pillar[] = [
     icon: Globe,
     label: 'Culture',
     description:
-      'Bay Area moments and the people behind them. Festivals, communities, neighborhoods. We post what makes a place feel like itself, not just a feed item. Brands and events with a real connection to a community get featured the way they deserve.',
-  },
-  {
-    icon: BookOpen,
-    label: 'Stories',
-    description:
-      "The context behind the spot, the chef, the founder. The reason this is worth a visit, not just a picture. We turn a feature into a story worth sharing. That's what gets people to actually show up, and it's what brands hire us for.",
+      "The people, the communities, and the why behind the place. Festivals, neighborhoods, the chef, the founder. We turn cultural context into content that connects. Brands and events with real community ties get featured the way they deserve.",
   },
 ]
 
@@ -95,7 +95,7 @@ export function Where2BoysPillars() {
           </p>
         </div>
 
-        <p className="text-xs text-m3-on-surface/50 text-center mt-4">Tap a card to see more.</p>
+        <p className="text-xs text-m3-on-surface/50 text-center mt-4">Tap to learn more.</p>
       </div>
     </section>
   )
