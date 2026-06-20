@@ -95,7 +95,6 @@ export function Where2BoysPillars() {
           </p>
         </div>
 
-        <p className="text-xs text-m3-on-surface/50 text-center mt-4">Tap to learn more.</p>
       </div>
     </section>
   )
