@@ -3,9 +3,11 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Instagram, ArrowRight } from 'lucide-react'
 import where2boysLogo from '@/assets/where2boys-logo.png.asset.json'
+import { useWhere2BoysSheet } from '@/contexts/Where2BoysSheetContext'
 
 export function Where2BoysHero() {
   const reduce = useReducedMotion()
+  const { openSheet } = useWhere2BoysSheet()
 
   return (
     <section className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-32 lg:pb-32" style={{ background: '#F5EDDF' }}>
@@ -53,13 +55,14 @@ export function Where2BoysHero() {
             Bay Area food, spots, culture. We travel for the right invite.
           </motion.p>
 
-          <a
-            href="#work-with-us"
+          <button
+            type="button"
+            onClick={openSheet}
             className="inline-flex items-center gap-2 bg-m3-surface-dark text-m3-on-dark font-fredoka font-semibold text-base px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
           >
             Let's work together
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </button>
 
           <p className="mt-5 text-sm text-m3-on-surface/60">
             <a
