@@ -12,14 +12,22 @@ export function Where2BoysReach() {
           <span style={{ color: '#E09E24' }}>it gets seen.</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-14 mb-14">
+        <div className="grid grid-cols-2 gap-6 sm:gap-12 mb-8">
           <div>
-            <div className="font-fredoka font-bold text-6xl sm:text-7xl mb-2" style={{ color: '#E09E24' }}>1.2M</div>
-            <div className="text-base sm:text-lg text-m3-on-dark/70">views on a single post</div>
+            <div className="font-fredoka font-semibold text-4xl sm:text-5xl lg:text-6xl tabular-nums leading-none" style={{ color: '#E09E24' }}>
+              1.2M+
+            </div>
+            <div className="text-xs sm:text-sm text-m3-on-dark/60 mt-2">
+              Top post
+            </div>
           </div>
           <div>
-            <div className="font-fredoka font-bold text-6xl sm:text-7xl mb-2" style={{ color: '#E09E24' }}>258K</div>
-            <div className="text-base sm:text-lg text-m3-on-dark/70">views every month</div>
+            <div className="font-fredoka font-semibold text-4xl sm:text-5xl lg:text-6xl tabular-nums leading-none" style={{ color: '#E09E24' }}>
+              258K+
+            </div>
+            <div className="text-xs sm:text-sm text-m3-on-dark/60 mt-2">
+              Monthly average
+            </div>
           </div>
         </div>
 
