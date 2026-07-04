@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "where2studios-mcp",
+      "version": "0.1.0",
+      "title": "Where2Studios"
+    },
+    "tools": [
+      {
+        "name": "list_projects",
+        "title": "List projects",
+        "description": "List published Where2Studios portfolio projects. Optionally filter by category or featured flag.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Filter by category (e.g. 'corporate', 'social', 'brand')."
+            },
+            "featured": {
+              "type": "boolean",
+              "description": "If true, return only featured projects."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_project",
+        "title": "Get project",
+        "description": "Fetch a full published Where2Studios project (case study) by its slug.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Project slug, e.g. 'linkedin-feature'."
+            }
+          },
+          "required": [
+            "slug"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_testimonials",
+        "title": "List testimonials",
+        "description": "List published Where2Studios client testimonials.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "submit_inquiry",
+        "title": "Submit contact inquiry",
+        "description": "Submit a new contact / partnership inquiry to Where2Studios. Use for prospective clients, collabs, or Where2Boys partnerships.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Full name of the requester."
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Contact email."
+            },
+            "company": {
+              "type": "string",
+              "description": "Company or Instagram handle."
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What they want to work on."
+            },
+            "collab_type": {
+              "type": "string",
+              "description": "Type of collab, e.g. 'Brand partnership', 'Event coverage'."
+            },
+            "timeline": {
+              "type": "string",
+              "description": "Requested timeline, e.g. 'ASAP', 'Next month'."
+            },
+            "budget_range": {
+              "type": "string",
+              "description": "Budget range, e.g. '$3K to $5K'."
+            },
+            "source": {
+              "type": "string",
+              "enum": [
+                "mcp",
+                "where2boys",
+                "website"
+              ],
+              "description": "Source tag (default 'mcp')."
+            }
+          },
+          "required": [
+            "name",
+            "email",
+            "message"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
