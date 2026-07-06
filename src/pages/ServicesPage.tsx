@@ -9,6 +9,7 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
+import { SkipLink } from '@/components/layout/SkipLink'
 
 type Pillar = {
   id: string
@@ -90,13 +91,14 @@ export default function ServicesPage() {
 
   return (
     <>
+      <SkipLink />
       <SEOHead
         title="Services | Where2Studios"
         description="Strategy, production, execution, and creator brand partnerships. Pick the pillar you need or let us be your full growth partner."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
-
+        <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Hero */}
         <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -211,7 +213,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-
+        </main>
         <Footer />
         <FloatingCTA />
       </div>
