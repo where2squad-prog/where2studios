@@ -12,14 +12,15 @@ export function ConversionHero() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-m3-surface-dark">
       {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full overflow-hidden" aria-hidden="true">
         <video
           className="absolute inset-0 w-full h-full object-cover object-center sm:blur-[2px] sm:scale-105"
           autoPlay
           muted
           loop
           playsInline
-          preload="auto">
+          preload="auto"
+          aria-hidden="true">
 
           <source src={heroVideoAsset.url} type="video/mp4" />
         </video>

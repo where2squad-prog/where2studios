@@ -1,6 +1,7 @@
 'use client'
 
 import { Navbar } from '@/components/layout/Navbar'
+import { SkipLink } from '@/components/layout/SkipLink'
 import { ConversionHero } from '@/components/home/ConversionHero'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
@@ -33,6 +34,7 @@ import { SEOHead, organizationSchema } from '@/components/SEOHead'
 export default function HomePage() {
   return (
     <>
+      <SkipLink />
       <SEOHead
         title="Where2Studios | Your Growth Team, On Demand"
         description="Your Growth Team, On Demand. Strategy first, premium media production, and full service marketing execution for ambitious brands. San Francisco Bay Area."
@@ -41,7 +43,7 @@ export default function HomePage() {
       <div className="min-h-screen bg-m3-background text-m3-on-background">
       <Navbar variant="dark" />
       
-      <main className="relative">
+      <main id="main-content" tabIndex={-1} className="relative outline-none">
         <ConversionHero />
         <TrustedBrands />
         <ServiceLanes />
