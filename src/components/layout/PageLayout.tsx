@@ -19,7 +19,7 @@ export function PageLayout({
   return (
     <div className="min-h-screen bg-m3-background text-m3-on-background">
       <Navbar variant={navVariant} />
-      <main className="relative">{children}</main>
+      <main id="main-content" tabIndex={-1} className="relative outline-none">{children}</main>
       <Footer />
       
     </div>

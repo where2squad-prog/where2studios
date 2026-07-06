@@ -28,4 +28,5 @@
   <!-- Legal -->
   <url><loc>https://where2studios.com/privacy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://where2studios.com/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://where2studios.com/accessibility</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
 </urlset>
