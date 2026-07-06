@@ -20,6 +20,7 @@ import AdminLoginPage from './pages/admin/AdminLoginPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import TermsOfServicePage from './pages/TermsOfServicePage'
 import Where2BoysPage from './pages/Where2BoysPage'
+import AccessibilityPage from './pages/AccessibilityPage'
 
 const queryClient = new QueryClient()
 
@@ -41,6 +42,7 @@ export default function App() {
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
                 <Route path="/terms" element={<TermsOfServicePage />} />
                 <Route path="/where2boys" element={<Where2BoysPage />} />
+                <Route path="/accessibility" element={<AccessibilityPage />} />
                 <Route path="/admin/login" element={<AdminLoginPage />} />
                 <Route
                   path="/admin/social"

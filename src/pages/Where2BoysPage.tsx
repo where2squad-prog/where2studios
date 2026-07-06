@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { SEOHead } from '@/components/SEOHead'
+import { SkipLink } from '@/components/layout/SkipLink'
 
 import { Where2BoysSheetProvider } from '@/contexts/Where2BoysSheetContext'
 import { Where2BoysContactSheet } from '@/components/where2boys/Where2BoysContactSheet'
@@ -13,12 +14,13 @@ import { Where2BoysBridge } from '@/components/where2boys/Where2BoysBridge'
 export default function Where2BoysPage() {
   return (
     <Where2BoysSheetProvider>
+      <SkipLink />
       <SEOHead
         title="Where2Boys. Bay Area food, spots, and culture."
         description="Let's work together. Event coverage, restaurant features, brand and creator partnerships. DM @where2boys or tell us where."
         url="https://where2studios.com/where2boys"
       />
-      <main className="min-h-screen bg-m3-surface">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-m3-surface outline-none">
         <Where2BoysHero />
         <Where2BoysReach />
         <Where2BoysPillars />

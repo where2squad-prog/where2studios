@@ -48,6 +48,7 @@ function MediaBlock({ project }: { project: CaseStudy }) {
           src={embed!}
           className="absolute inset-0 w-full h-full"
           title={project.title}
+          aria-label={`Watch ${project.title} on YouTube`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />

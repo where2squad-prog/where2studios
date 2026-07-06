@@ -5,6 +5,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Accessibility / color contrast rules (WCAG 2.1 AA)
+ * --------------------------------------------------
+ * --m3-primary (golden yellow #E09E24) on cream backgrounds is BELOW the
+ * 4.5:1 contrast ratio required for normal body text. It must only be used:
+ *   - As large display text (24px+ regular, or 18.66px+ bold)
+ *   - As an accent inside dark surfaces (--m3-surface-dark)
+ *   - As a background fill with dark text on top
+ *
+ * --m3-secondary (brick red #AE200C) on cream backgrounds is above 4.5:1
+ * and is safe for body text.
+ *
+ * White (--m3-on-dark) on the hero background video requires the dark
+ * gradient overlay to remain at its current opacity or stronger.
+ */
+
 :root {
   --font-size: 17px;
   

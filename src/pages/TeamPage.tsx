@@ -9,6 +9,7 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
+import { SkipLink } from '@/components/layout/SkipLink'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 // SVG imports
@@ -107,6 +108,7 @@ export default function TeamPage() {
 
   return (
     <>
+      <SkipLink />
       <SEOHead
         title="Who We Are"
         description="Meet the Where2Studios team. A growth partner for ambitious brands. Strategy, storytelling, and execution. Our goal is to tell stories worth sharing."
@@ -115,7 +117,7 @@ export default function TeamPage() {
 
       <div className="min-h-screen bg-m3-surface">
         <Navbar variant="light" />
-
+        <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Hero Section */}
         <section className="pt-28 pb-12 sm:pt-40 sm:pb-16">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -260,7 +262,7 @@ export default function TeamPage() {
             </div>
           </div>
         </section>
-
+        </main>
         <Footer />
         <FloatingCTA />
       </div>

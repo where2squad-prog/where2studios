@@ -7,6 +7,7 @@ import { ArrowRight, Play, ArrowUpDown, Grid3X3 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
+import { SkipLink } from '@/components/layout/SkipLink'
 
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
@@ -130,8 +131,9 @@ export default function WorkPage() {
 
   return (
     <div className="min-h-screen bg-m3-surface-variant">
+      <SkipLink />
       <Navbar variant="light" />
-
+      <main id="main-content" tabIndex={-1} className="outline-none">
       {/* Hero */}
       <section className="pt-28 pb-8 sm:pt-40 sm:pb-12 bg-m3-surface-variant">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -238,7 +240,7 @@ export default function WorkPage() {
           </div>
         </div>
       </section>
-
+      </main>
       <Footer />
       <FloatingCTA />
     </div>

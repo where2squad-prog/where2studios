@@ -5,10 +5,12 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { ContactForm } from '@/components/ContactForm'
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
+import { SkipLink } from '@/components/layout/SkipLink'
 
 export default function ContactPage() {
   return (
     <>
+      <SkipLink />
       <SEOHead
         title="Contact Us | Where2Studios"
         description="For press, partnerships, or general questions. Hiring inquiries? Use Book a Call."
@@ -17,7 +19,7 @@ export default function ContactPage() {
 
       <div className="min-h-screen bg-m3-background">
         <Navbar variant="light" />
-
+        <main id="main-content" tabIndex={-1} className="outline-none">
         <section className="pt-28 pb-8 sm:pt-40 sm:pb-12 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <motion.div
@@ -49,7 +51,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </section>
-
+        </main>
         <Footer />
       </div>
     </>

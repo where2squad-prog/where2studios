@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Play, CheckCircle2, Target, Lightbulb, Package, Users, Share2, BarChart3, Scissors, ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
+import { SkipLink } from '@/components/layout/SkipLink'
 
 import { useCaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail, getYouTubeVideoId } from '@/hooks/useProjects'
@@ -210,8 +211,9 @@ export default function CaseStudyPage() {
       </Helmet>
 
       <div className="min-h-screen bg-m3-surface-variant">
+        <SkipLink />
         <Navbar variant="light" />
-
+        <main id="main-content" tabIndex={-1} className="outline-none">
         {/* Hero */}
         <section className="pt-28 pb-8 sm:pt-36 sm:pb-12">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
@@ -303,6 +305,7 @@ export default function CaseStudyPage() {
                   <iframe
                     src={`https://www.youtube.com/embed/${videoId}?rel=0`}
                     title={project.title}
+                    aria-label={`Watch ${project.title} on YouTube`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="absolute inset-0 w-full h-full"
@@ -464,8 +467,8 @@ export default function CaseStudyPage() {
           </div>
         </section>
 
+        </main>
         <Footer />
-        
       </div>
     </>
   )

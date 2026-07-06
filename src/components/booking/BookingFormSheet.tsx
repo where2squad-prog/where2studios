@@ -213,6 +213,8 @@ export function BookingFormSheet() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
+                  role="status"
+                  aria-live="polite"
                   className="text-center py-8"
                 >
                   <div className="w-14 h-14 bg-m3-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -254,13 +256,13 @@ export function BookingFormSheet() {
                   {/* Name & Email */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Name *</label>
-                      <input type="text" name="name" value={formData.name} onChange={handleChange} className={inputClasses(!!errors.name)} placeholder="Your name" />
+                      <label htmlFor="booking-name" className={labelClasses}>Name *</label>
+                      <input id="booking-name" type="text" name="name" required aria-required="true" value={formData.name} onChange={handleChange} className={inputClasses(!!errors.name)} placeholder="Your name" />
                       {errors.name && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
                     </div>
                     <div>
-                      <label className={labelClasses}>Email *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@company.com" />
+                      <label htmlFor="booking-email" className={labelClasses}>Email *</label>
+                      <input id="booking-email" type="email" name="email" required aria-required="true" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@company.com" />
                       {errors.email && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
                     </div>
                   </div>
@@ -268,33 +270,33 @@ export function BookingFormSheet() {
                   {/* Phone & Company */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Phone</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(false)} placeholder="Best number to reach you" />
+                      <label htmlFor="booking-phone" className={labelClasses}>Phone</label>
+                      <input id="booking-phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} className={inputClasses(false)} placeholder="Best number to reach you" />
                     </div>
                     <div>
-                      <label className={labelClasses}>Company</label>
-                      <input type="text" name="company" value={formData.company} onChange={handleChange} className={inputClasses(false)} placeholder="Company name" />
+                      <label htmlFor="booking-company" className={labelClasses}>Company</label>
+                      <input id="booking-company" type="text" name="company" value={formData.company} onChange={handleChange} className={inputClasses(false)} placeholder="Company name" />
                     </div>
                   </div>
 
                   {/* Role & Website */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Role</label>
-                      <input type="text" name="role" value={formData.role} onChange={handleChange} className={inputClasses(false)} placeholder="Founder, marketing, ops" />
+                      <label htmlFor="booking-role" className={labelClasses}>Role</label>
+                      <input id="booking-role" type="text" name="role" value={formData.role} onChange={handleChange} className={inputClasses(false)} placeholder="Founder, marketing, ops" />
                     </div>
                     <div>
-                      <label className={labelClasses}>Website</label>
-                      <input type="url" name="companyUrl" value={formData.companyUrl} onChange={handleChange} className={inputClasses(false)} placeholder="Link, if you have it" />
+                      <label htmlFor="booking-companyUrl" className={labelClasses}>Website</label>
+                      <input id="booking-companyUrl" type="url" name="companyUrl" value={formData.companyUrl} onChange={handleChange} className={inputClasses(false)} placeholder="Link, if you have it" />
                     </div>
                   </div>
 
                   {/* Growth Goal & Service Need */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>What are you trying to grow? *</label>
+                      <label htmlFor="booking-growthGoal" className={labelClasses}>What are you trying to grow? *</label>
                       <div className="relative">
-                        <select name="growthGoal" value={formData.growthGoal} onChange={handleChange} className={selectClasses(!!errors.growthGoal)}>
+                        <select id="booking-growthGoal" name="growthGoal" required aria-required="true" value={formData.growthGoal} onChange={handleChange} className={selectClasses(!!errors.growthGoal)}>
                           <option value="">Select</option>
                           {growthGoals.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}
                         </select>
@@ -303,9 +305,9 @@ export function BookingFormSheet() {
                       {errors.growthGoal && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.growthGoal}</p>}
                     </div>
                     <div>
-                      <label className={labelClasses}>What do you need help with? *</label>
+                      <label htmlFor="booking-service" className={labelClasses}>What do you need help with? *</label>
                       <div className="relative">
-                        <select name="service" value={formData.service} onChange={handleChange} className={selectClasses(!!errors.service)}>
+                        <select id="booking-service" name="service" required aria-required="true" value={formData.service} onChange={handleChange} className={selectClasses(!!errors.service)}>
                           <option value="">Select</option>
                           {serviceNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
                         </select>
@@ -318,20 +320,23 @@ export function BookingFormSheet() {
                   {/* Timeline & Budget */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className={labelClasses}>Timeline</label>
-                      <input type="text" name="timeline" value={formData.timeline} onChange={handleChange} className={inputClasses(false)} placeholder="When do you want to launch" />
+                      <label htmlFor="booking-timeline" className={labelClasses}>Timeline</label>
+                      <input id="booking-timeline" type="text" name="timeline" value={formData.timeline} onChange={handleChange} className={inputClasses(false)} placeholder="When do you want to launch" />
                     </div>
                     <div>
-                      <label className={labelClasses}>Budget range</label>
-                      <input type="text" name="budget" value={formData.budget} onChange={handleChange} className={inputClasses(false)} placeholder="A range is fine" />
+                      <label htmlFor="booking-budget" className={labelClasses}>Budget range</label>
+                      <input id="booking-budget" type="text" name="budget" value={formData.budget} onChange={handleChange} className={inputClasses(false)} placeholder="A range is fine" />
                     </div>
                   </div>
 
                   {/* Notes */}
                   <div>
-                    <label className={labelClasses}>Notes *</label>
+                    <label htmlFor="booking-message" className={labelClasses}>Notes *</label>
                     <textarea
+                      id="booking-message"
                       name="message"
+                      required
+                      aria-required="true"
                       value={formData.message}
                       onChange={handleChange}
                       rows={3}
@@ -342,7 +347,7 @@ export function BookingFormSheet() {
                   </div>
 
                   {submitError && (
-                    <p className="text-m3-secondary text-xs">{submitError}</p>
+                    <p role="alert" className="text-m3-secondary text-xs">{submitError}</p>
                   )}
 
                   {/* Submit */}
