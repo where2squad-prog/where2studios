@@ -467,8 +467,8 @@ export default function CaseStudyPage() {
           </div>
         </section>
 
+        </main>
         <Footer />
-        
       </div>
     </>
   )
