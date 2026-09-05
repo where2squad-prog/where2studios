@@ -9,33 +9,22 @@ import { submitContact } from '@/lib/submitContact'
 const auditSchema = z.object({
   restaurant: z.string().trim().min(1, 'Required').max(100),
   name: z.string().trim().min(1, 'Required').max(100),
-  email: z.string().trim().email('Enter a valid email').max(255),
-  phone: z.string().trim().max(20).optional(),
-  handle: z.string().trim().min(1, 'Required').max(60),
-  goal: z.string().min(1, 'Required'),
-  notes: z.string().trim().max(2000).optional(),
+  contact: z.string().trim().min(1, 'Required').max(255),
+  handle: z.string().trim().max(60).optional(),
   website: z.string().max(0, 'Bot detected'),
 })
 
 type AuditFormData = z.infer<typeof auditSchema>
 
-const goals = [
-  { value: 'foot-traffic', label: 'Foot traffic' },
-  { value: 'followers', label: 'Followers' },
-  { value: 'catering-events', label: 'Catering & events' },
-  { value: 'online-orders', label: 'Online orders' },
-]
-
 const emptyForm: AuditFormData = {
   restaurant: '',
   name: '',
-  email: '',
-  phone: '',
+  contact: '',
   handle: '',
-  goal: '',
-  notes: '',
   website: '',
 }
+
+const FALLBACK_EMAIL = 'noemail@where2studios.com'
 
 export function AuditForm() {
   const reduce = useReducedMotion()
@@ -45,9 +34,7 @@ export function AuditForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
     if (errors[name as keyof AuditFormData]) {
@@ -79,18 +66,19 @@ export function AuditForm() {
     setIsSubmitting(true)
     setSubmitError(null)
 
-    const handle = formData.handle.replace(/^@+/, '')
-    const goalLabel = goals.find((g) => g.value === formData.goal)?.label ?? formData.goal
+    const rawContact = formData.contact.trim()
+    const isEmail = rawContact.includes('@') && !rawContact.startsWith('@')
+    const handle = (formData.handle || '').replace(/^@+/, '')
 
     try {
       await submitContact({
         name: formData.name,
-        email: formData.email,
-        phone: formData.phone || undefined,
+        email: isEmail ? rawContact : FALLBACK_EMAIL,
+        phone: isEmail ? undefined : rawContact,
         company: formData.restaurant,
         service: 'social-media',
         referral: 'where2socials-page',
-        message: `[IG: @${handle}] [Goal: ${goalLabel}]\n\n${formData.notes || ''}`,
+        message: `[IG: @${handle}] [Contact: ${rawContact}] Where2Socials page inquiry`,
       })
       setIsSubmitted(true)
     } catch (err) {
@@ -120,7 +108,7 @@ export function AuditForm() {
           <Check className="w-7 h-7 text-m3-primary" />
         </div>
         <p className="text-m3-on-surface/80 text-base max-w-sm mx-auto">
-          Got it. We will look at your Instagram and reply within 1 business day.
+          Got it. We will reach out within 1 business day.
         </p>
       </motion.div>
     )
@@ -145,12 +133,14 @@ export function AuditForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="socials-restaurant" className={labelClasses}>
-            Restaurant name *
+            Restaurant *
           </label>
           <input
             id="socials-restaurant"
             name="restaurant"
             type="text"
+            required
+            aria-required="true"
             value={formData.restaurant}
             onChange={handleChange}
             aria-invalid={!!errors.restaurant}
@@ -171,6 +161,8 @@ export function AuditForm() {
             id="socials-name"
             name="name"
             type="text"
+            required
+            aria-required="true"
             value={formData.name}
             onChange={handleChange}
             aria-invalid={!!errors.name}
@@ -184,42 +176,30 @@ export function AuditForm() {
         </div>
 
         <div>
-          <label htmlFor="socials-email" className={labelClasses}>
-            Email *
+          <label htmlFor="socials-contact" className={labelClasses}>
+            Phone or email *
           </label>
           <input
-            id="socials-email"
-            name="email"
-            type="email"
-            value={formData.email}
+            id="socials-contact"
+            name="contact"
+            type="text"
+            required
+            aria-required="true"
+            value={formData.contact}
             onChange={handleChange}
-            aria-invalid={!!errors.email}
-            className={inputClasses(!!errors.email)}
+            aria-invalid={!!errors.contact}
+            className={inputClasses(!!errors.contact)}
           />
-          {errors.email && (
+          {errors.contact && (
             <p role="alert" className="text-xs text-m3-secondary mt-1">
-              {errors.email}
+              {errors.contact}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="socials-phone" className={labelClasses}>
-            Phone
-          </label>
-          <input
-            id="socials-phone"
-            name="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={handleChange}
-            className={inputClasses(false)}
-          />
-        </div>
-
-        <div>
           <label htmlFor="socials-handle" className={labelClasses}>
-            Instagram handle *
+            Instagram handle
           </label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-m3-on-surface/50 pointer-events-none">
@@ -231,56 +211,10 @@ export function AuditForm() {
               type="text"
               value={formData.handle}
               onChange={handleChange}
-              aria-invalid={!!errors.handle}
-              className={`${inputClasses(!!errors.handle)} pl-7`}
+              className={`${inputClasses(false)} pl-7`}
             />
           </div>
-          {errors.handle && (
-            <p role="alert" className="text-xs text-m3-secondary mt-1">
-              {errors.handle}
-            </p>
-          )}
         </div>
-
-        <div>
-          <label htmlFor="socials-goal" className={labelClasses}>
-            What do you want more of? *
-          </label>
-          <select
-            id="socials-goal"
-            name="goal"
-            value={formData.goal}
-            onChange={handleChange}
-            aria-invalid={!!errors.goal}
-            className={`${inputClasses(!!errors.goal)} cursor-pointer`}
-          >
-            <option value=""></option>
-            {goals.map((g) => (
-              <option key={g.value} value={g.value}>
-                {g.label}
-              </option>
-            ))}
-          </select>
-          {errors.goal && (
-            <p role="alert" className="text-xs text-m3-secondary mt-1">
-              {errors.goal}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="socials-notes" className={labelClasses}>
-          Notes
-        </label>
-        <textarea
-          id="socials-notes"
-          name="notes"
-          rows={4}
-          value={formData.notes}
-          onChange={handleChange}
-          className={inputClasses(false)}
-        />
       </div>
 
       {submitError && (
@@ -295,7 +229,7 @@ export function AuditForm() {
         className="m3-filled-button w-full inline-flex items-center justify-center gap-2 disabled:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2"
       >
         {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
-        {isSubmitting ? 'Sending' : 'Send my audit request'}
+        {isSubmitting ? 'Sending' : 'Send'}
       </button>
     </form>
   )
