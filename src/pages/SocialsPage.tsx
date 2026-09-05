@@ -9,6 +9,15 @@ import { SEOHead } from '@/components/SEOHead'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { AuditForm } from '@/components/socials/AuditForm'
 import { socialsProofReels } from '@/data/socialsProof'
+import crabLogo from '@/assets/backyard-bayou-crab.png'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from '@/components/ui/carousel'
 
 /** Replace this once pricing is locked. */
 export const STARTING_PRICE = '$TBD'
@@ -62,7 +71,7 @@ function CountUp({ stat }: { stat: Stat }) {
   }, [inView, reduce, stat.value])
 
   return (
-    <span ref={ref} className="font-fredoka font-bold text-4xl sm:text-5xl text-m3-primary">
+    <span ref={ref} className="font-fredoka font-bold text-3xl sm:text-4xl text-m3-primary">
       {display.toFixed(stat.decimals)}
       {stat.suffix}
     </span>
@@ -99,6 +108,71 @@ const serviceSchema = {
 const focusRing =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2'
 
+function WorkCarousel() {
+  const [api, setApi] = useState<CarouselApi>()
+  const [selected, setSelected] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+    const onSelect = () => setSelected(api.selectedScrollSnap())
+    onSelect()
+    api.on('select', onSelect)
+    return () => {
+      api.off('select', onSelect)
+    }
+  }, [api])
+
+  return (
+    <Carousel
+      setApi={setApi}
+      opts={{ align: 'start', loop: true, dragFree: false }}
+      className="w-full"
+    >
+      <CarouselContent className="-ml-4">
+        {socialsProofReels.map((reel) => (
+          <CarouselItem
+            key={reel.shortcode}
+            className="pl-4 basis-[85%] md:basis-1/2 lg:basis-1/3"
+          >
+            <div className="mb-3">
+              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-m3-surface-variant text-m3-on-surface/80">
+                {reel.stats[0]}
+              </span>
+            </div>
+            <iframe
+              src={`https://www.instagram.com/reel/${reel.shortcode}/embed`}
+              title={reel.title}
+              loading="lazy"
+              height={600}
+              className="w-full rounded-2xl border border-m3-outline bg-m3-surface"
+              style={{ height: 600 }}
+              scrolling="no"
+              frameBorder={0}
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className={`hidden md:flex -left-4 ${focusRing}`} />
+      <CarouselNext className={`hidden md:flex -right-4 ${focusRing}`} />
+
+      <div className="flex justify-center gap-2 mt-6">
+        {socialsProofReels.map((reel, i) => (
+          <button
+            key={reel.shortcode}
+            type="button"
+            aria-label={`Go to reel ${i + 1}`}
+            aria-current={selected === i}
+            onClick={() => api?.scrollTo(i)}
+            className={`h-2 rounded-full transition-all ${focusRing} ${
+              selected === i ? 'w-6 bg-m3-primary' : 'w-2 bg-m3-on-surface/25'
+            }`}
+          />
+        ))}
+      </div>
+    </Carousel>
+  )
+}
+
 export default function SocialsPage() {
   const reduce = useReducedMotion()
 
@@ -122,7 +196,7 @@ export default function SocialsPage() {
 
       <main id="main-content" tabIndex={-1} className="outline-none">
         {/* 1. Hero */}
-        <section className="relative overflow-hidden bg-m3-surface-dark pt-32 pb-14">
+        <section className="relative overflow-hidden bg-m3-surface-dark pt-28 pb-16">
           <div
             aria-hidden="true"
             className="absolute inset-0"
@@ -131,88 +205,73 @@ export default function SocialsPage() {
                 'radial-gradient(60% 55% at 50% 15%, hsl(var(--m3-primary) / 0.18) 0%, transparent 70%), linear-gradient(to bottom, hsl(var(--m3-surface-dark)) 0%, hsl(var(--m3-surface-dark) / 0.85) 60%, hsl(var(--m3-surface-dark)) 100%)',
             }}
           />
-          <div className="relative container mx-auto px-5 sm:px-8 lg:px-12 max-w-5xl text-center sm:text-left">
-            <motion.h1
-              {...fade(0)}
-              className="font-fredoka font-bold text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark tracking-tight leading-tight mb-4"
-            >
-              We run @thebackyardbayou.
-            </motion.h1>
-            <motion.p {...fade(0.08)} className="text-lg text-m3-on-dark/70 mb-8">
-              59.7K followers. 14.4M views. Union City.
-            </motion.p>
-            <motion.div {...fade(0.16)}>
-              <button
-                type="button"
-                onClick={() => scrollToId('work-with-us', !!reduce)}
-                className={`m3-filled-button ${focusRing}`}
-              >
-                Work with us
-              </button>
-            </motion.div>
+          <div className="relative container mx-auto px-5 sm:px-8 lg:px-12 max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-10">
+              <motion.img
+                {...fade(0.05)}
+                src={crabLogo}
+                alt=""
+                aria-hidden="true"
+                width={260}
+                className="order-first lg:order-last mx-auto w-[140px] lg:w-[260px] drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)]"
+              />
+
+              <div className="text-center lg:text-left">
+                <motion.h1
+                  {...fade(0)}
+                  className="font-fredoka font-bold text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark tracking-tight leading-tight mb-8"
+                >
+                  We run @thebackyardbayou.
+                </motion.h1>
+
+                <motion.div
+                  {...fade(0.08)}
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10"
+                >
+                  {stats.map((stat) => (
+                    <div key={stat.label} className="text-center lg:text-left">
+                      <CountUp stat={stat} />
+                      <p className="mt-1 text-sm text-m3-on-dark/60 leading-snug">{stat.label}</p>
+                    </div>
+                  ))}
+                </motion.div>
+
+                <motion.h2
+                  {...fade(0.16)}
+                  className="font-fredoka font-bold text-2xl text-m3-on-dark mb-5"
+                >
+                  Want this for your restaurant?
+                </motion.h2>
+                <motion.div {...fade(0.2)}>
+                  <button
+                    type="button"
+                    onClick={() => scrollToId('work-with-us', !!reduce)}
+                    className={`m3-filled-button ${focusRing}`}
+                  >
+                    Work with us
+                  </button>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* 2. The work */}
-        <section className="bg-m3-surface py-12">
+        <section className="bg-m3-surface py-10">
           <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-6xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {socialsProofReels.map((reel) => (
-                <div key={reel.shortcode}>
-                  <div className="mb-3">
-                    <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-m3-surface-variant text-m3-on-surface/80">
-                      {reel.stats[0]}
-                    </span>
-                  </div>
-                  <iframe
-                    src={`https://www.instagram.com/reel/${reel.shortcode}/embed`}
-                    title={reel.title}
-                    loading="lazy"
-                    height={620}
-                    className="w-full rounded-2xl border border-m3-outline bg-m3-surface"
-                    style={{ height: 620 }}
-                    allowTransparency
-                    scrolling="no"
-                    frameBorder={0}
-                  />
-                </div>
-              ))}
-            </div>
-            <p className="mt-8 text-center text-sm text-m3-on-surface/60">
-              Shot, cut, and posted by us.
-            </p>
+            <WorkCarousel />
           </div>
         </section>
 
-        {/* 3. Stats */}
-        <section className="bg-m3-background py-12">
-          <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-6xl">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <CountUp stat={stat} />
-                  <p className="mt-2 text-sm text-m3-on-surface/65 leading-snug">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 4. Work with us */}
+        {/* 3. Work with us */}
         <section id="work-with-us" className="bg-m3-surface-variant py-16 scroll-mt-24">
           <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-2xl">
             <motion.h2
               {...fade(0)}
-              className="font-fredoka font-bold text-3xl sm:text-4xl text-m3-on-surface text-center mb-3"
+              className="font-fredoka font-bold text-3xl sm:text-4xl text-m3-on-surface text-center mb-8"
             >
               Want this for your restaurant?
             </motion.h2>
-            <motion.p
-              {...fade(0.08)}
-              className="text-base text-m3-on-surface/70 text-center mb-8"
-            >
-              Tell us where you are. We will send you a plan.
-            </motion.p>
             <AuditForm />
             <p className="mt-5 text-center text-sm text-m3-on-surface/55">
               Plans from {STARTING_PRICE}/month. Month to month.
