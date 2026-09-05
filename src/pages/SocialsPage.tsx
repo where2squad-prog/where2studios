@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/carousel'
 
 /** Replace this once pricing is locked. */
-export const STARTING_PRICE = '$TBD'
+export const STARTING_PRICE = '$1,500'
 
 function scrollToId(id: string, instant: boolean) {
   document.getElementById(id)?.scrollIntoView({
