@@ -274,7 +274,10 @@ export default function SocialsPage() {
             </motion.h2>
             <AuditForm />
             <p className="mt-5 text-center text-sm text-m3-on-surface/55">
-              Plans from {STARTING_PRICE}/month. Month to month.
+              From {STARTING_PRICE} a month. Month to month.
+            </p>
+            <p className="mt-1 text-center text-sm text-m3-on-surface/55">
+              One film day. Two to three posts a week.
             </p>
           </div>
         </section>
