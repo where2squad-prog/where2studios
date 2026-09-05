@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'About' },
+  { href: '/socials', label: 'Socials' },
 ];
 
 interface NavbarProps {
