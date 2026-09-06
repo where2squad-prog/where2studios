@@ -266,10 +266,11 @@ export default function SocialsPage() {
     <div className="min-h-screen bg-m3-background text-m3-on-background">
       <SkipLink />
       <SEOHead
-        title="Where2Socials | Social Media for Union City Restaurants"
-        description="We run @thebackyardbayou. 59.7K followers, 14.4M views. Social media for Union City restaurants."
+        title="Social Media Marketing in Union City, CA | Where2Socials by Where2Studios"
+        description={PAGE_DESCRIPTION}
         url="https://where2studios.com/socials"
-        schema={serviceSchema}
+        image="https://where2studios.com/og-image.png"
+        schema={pageSchema}
       />
       <Navbar variant="dark" />
 
@@ -289,8 +290,7 @@ export default function SocialsPage() {
               <motion.img
                 {...fade(0.05)}
                 src={crabLogo}
-                alt=""
-                aria-hidden="true"
+                alt="Backyard Bayou crab logo. Union City restaurant whose Instagram is run by Where2Socials."
                 width={260}
                 className="order-first lg:order-last mx-auto w-[140px] lg:w-[260px] drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)]"
               />
