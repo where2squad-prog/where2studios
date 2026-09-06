@@ -9,7 +9,7 @@ import { SEOHead } from '@/components/SEOHead'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { AuditForm } from '@/components/socials/AuditForm'
 import { socialsProofReels } from '@/data/socialsProof'
-import crabLogo from '@/assets/backyard-bayou-logo.png'
+import crabLogo from '@/assets/backyard-bayou-crab.png'
 import {
   Carousel,
   CarouselContent,
