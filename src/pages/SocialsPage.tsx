@@ -11,6 +11,12 @@ import { AuditForm } from '@/components/socials/AuditForm'
 import { socialsProofReels } from '@/data/socialsProof'
 import crabLogo from '@/assets/backyard-bayou-crab.png'
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -343,6 +349,9 @@ export default function SocialsPage() {
         {/* 2. The work */}
         <section className="bg-m3-surface py-10">
           <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-6xl">
+            <h2 className="font-fredoka font-bold text-xl text-m3-on-surface mb-4">
+              Our work in Union City
+            </h2>
             <WorkCarousel />
           </div>
         </section>
@@ -363,6 +372,27 @@ export default function SocialsPage() {
             <p className="mt-1 text-center text-sm text-m3-on-surface/55">
               One film day. Two to three posts a week.
             </p>
+          </div>
+        </section>
+
+        {/* 4. FAQ */}
+        <section className="bg-m3-background py-12">
+          <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-2xl">
+            <h2 className="font-fredoka font-bold text-2xl text-m3-on-background mb-6">
+              Questions
+            </h2>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((item, i) => (
+                <AccordionItem key={item.q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left font-fredoka text-base">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-m3-on-background/70">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 
