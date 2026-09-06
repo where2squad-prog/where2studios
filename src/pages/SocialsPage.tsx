@@ -324,7 +324,7 @@ export default function SocialsPage() {
                   {...fade(0.16)}
                   className="font-fredoka font-bold text-2xl text-m3-on-dark mb-5"
                 >
-                  Want this for your restaurant?
+                  Want this for your business?
                 </motion.h2>
                 <motion.div {...fade(0.2)}>
                   <button
@@ -354,7 +354,7 @@ export default function SocialsPage() {
               {...fade(0)}
               className="font-fredoka font-bold text-3xl sm:text-4xl text-m3-on-surface text-center mb-8"
             >
-              Want this for your restaurant?
+              Want this for your business?
             </motion.h2>
             <AuditForm />
             <p className="mt-5 text-center text-sm text-m3-on-surface/55">
