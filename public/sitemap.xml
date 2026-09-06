@@ -3,15 +3,11 @@
   <!-- Base domain: update this if the production domain changes -->
   <!-- DOMAIN: https://where2studios.com -->
 
-  <url><loc>https://where2studios.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://where2studios.com/startups</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://where2studios.com/</loc><lastmod>2026-09-06</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://where2studios.com/services</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://where2studios.com/services/launch-videos</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://where2studios.com/services/podcasts</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://where2studios.com/services/event-recaps</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://where2studios.com/work</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://where2studios.com/team</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://where2studios.com/socials</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://where2studios.com/who-we-are</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://where2studios.com/socials</loc><lastmod>2026-09-06</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://where2studios.com/where2boys</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://where2studios.com/contact</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 

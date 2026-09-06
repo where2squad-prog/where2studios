@@ -11,6 +11,12 @@ import { AuditForm } from '@/components/socials/AuditForm'
 import { socialsProofReels } from '@/data/socialsProof'
 import crabLogo from '@/assets/backyard-bayou-crab.png'
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -80,29 +86,108 @@ function CountUp({ stat }: { stat: Stat }) {
 
 /* ---------------- Page ---------------- */
 
-const serviceSchema = {
+const PAGE_DESCRIPTION =
+  "Union City's social media team. We run @thebackyardbayou at Union Landing: 59.7K followers, reels past 1M views. Management, content, influencer invites, commercials. Starting from $1,500 a month."
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: 'Do you work with businesses in Union Landing and Union City?',
+    a: 'Yes. We are based in Union City and we run @thebackyardbayou at Union Landing. We also work with businesses in Fremont, Hayward, and Newark.',
+  },
+  {
+    q: 'What does social media management include?',
+    a: 'One film day a month at your business, editing, two to three posts a week on Instagram and TikTok, captions, and replies to comments and DMs.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'Starting from $1,500 a month. Month to month. Bigger plans add film days and posts.',
+  },
+  {
+    q: 'Do you do more than social media?',
+    a: 'Yes. Content creation, influencer invites, commercials, and event recaps through Where2Studios.',
+  },
+  {
+    q: 'How do I start?',
+    a: 'Send the short form on this page. We reply within one business day and come by to see your spot.',
+  },
+]
+
+const areaServed = ['Union City', 'Union Landing', 'Fremont', 'Hayward', 'Newark'].map((name) => ({
+  '@type': 'Place',
+  name,
+}))
+
+const pageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Where2Socials, social media management for restaurants',
-  serviceType: 'Social media management',
-  description:
-    'Instagram and TikTok management for Union City restaurants. Filming, editing, posting, community replies, and a monthly report.',
-  provider: {
-    '@type': 'Organization',
-    name: 'Where2Studios',
-    url: 'https://where2studios.com',
-  },
-  areaServed: {
-    '@type': 'City',
-    name: 'Union City',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Union City',
-      addressRegion: 'CA',
-      addressCountry: 'US',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': 'https://where2studios.com/socials#business',
+      name: 'Where2Socials',
+      alternateName: 'Where2Studios Social',
+      url: 'https://where2studios.com/socials',
+      image: 'https://where2studios.com/og-image.png',
+      description: PAGE_DESCRIPTION,
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'Where2Studios',
+        url: 'https://where2studios.com',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Union City',
+        addressRegion: 'CA',
+        postalCode: '94587',
+        addressCountry: 'US',
+      },
+      areaServed,
+      priceRange: '$1,500+/month',
+      email: 'socials@where2studios.com',
+      sameAs: ['https://www.instagram.com/where2studios'],
+      knowsAbout: [
+        'social media marketing',
+        'social media management',
+        'content creation',
+        'Instagram Reels',
+        'TikTok',
+        'influencer marketing',
+        'commercials',
+      ],
     },
-  },
-  url: 'https://where2studios.com/socials',
+    {
+      '@type': 'Service',
+      name: 'Social media management',
+      serviceType: 'Social media marketing',
+      provider: { '@id': 'https://where2studios.com/socials#business' },
+      areaServed,
+      offers: {
+        '@type': 'Offer',
+        price: 1500,
+        priceCurrency: 'USD',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: 1500,
+          priceCurrency: 'USD',
+          unitText: 'MONTH',
+        },
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://where2studios.com' },
+        { '@type': 'ListItem', position: 2, name: 'Socials', item: 'https://where2studios.com/socials' },
+      ],
+    },
+  ],
 }
 
 const focusRing =
@@ -141,7 +226,7 @@ function WorkCarousel() {
             </div>
             <iframe
               src={`https://www.instagram.com/reel/${reel.shortcode}/embed`}
-              title={reel.title}
+              title={`Backyard Bayou Instagram reel, ${reel.stats[0]}, Union City`}
               loading="lazy"
               height={600}
               className="w-full rounded-2xl border border-m3-outline bg-m3-surface"
@@ -187,10 +272,11 @@ export default function SocialsPage() {
     <div className="min-h-screen bg-m3-background text-m3-on-background">
       <SkipLink />
       <SEOHead
-        title="Where2Socials | Social Media for Union City Restaurants"
-        description="We run @thebackyardbayou. 59.7K followers, 14.4M views. Social media for Union City restaurants."
+        title="Social Media Marketing in Union City, CA | Where2Socials by Where2Studios"
+        description={PAGE_DESCRIPTION}
         url="https://where2studios.com/socials"
-        schema={serviceSchema}
+        image="https://where2studios.com/og-image.png"
+        schema={pageSchema}
       />
       <Navbar variant="dark" />
 
@@ -210,8 +296,7 @@ export default function SocialsPage() {
               <motion.img
                 {...fade(0.05)}
                 src={crabLogo}
-                alt=""
-                aria-hidden="true"
+                alt="Backyard Bayou crab logo. Union City restaurant whose Instagram is run by Where2Socials."
                 width={260}
                 className="order-first lg:order-last mx-auto w-[140px] lg:w-[260px] drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)]"
               />
@@ -219,10 +304,15 @@ export default function SocialsPage() {
               <div className="text-center lg:text-left">
                 <motion.h1
                   {...fade(0)}
-                  className="font-fredoka font-bold text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark tracking-tight leading-tight mb-8"
+                  className="font-fredoka font-bold text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark tracking-tight leading-tight mb-4"
                 >
                   We run @thebackyardbayou.
                 </motion.h1>
+
+                <motion.p {...fade(0.04)} className="text-base text-m3-on-dark/70 mb-8">
+                  Social media marketing for Union City and Union Landing businesses.
+                </motion.p>
+
 
                 <motion.div
                   {...fade(0.08)}
@@ -240,7 +330,7 @@ export default function SocialsPage() {
                   {...fade(0.16)}
                   className="font-fredoka font-bold text-2xl text-m3-on-dark mb-5"
                 >
-                  Want this for your restaurant?
+                  Want this for your business?
                 </motion.h2>
                 <motion.div {...fade(0.2)}>
                   <button
@@ -259,6 +349,9 @@ export default function SocialsPage() {
         {/* 2. The work */}
         <section className="bg-m3-surface py-10">
           <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-6xl">
+            <h2 className="font-fredoka font-bold text-xl text-m3-on-surface mb-4">
+              Our work in Union City
+            </h2>
             <WorkCarousel />
           </div>
         </section>
@@ -270,7 +363,7 @@ export default function SocialsPage() {
               {...fade(0)}
               className="font-fredoka font-bold text-3xl sm:text-4xl text-m3-on-surface text-center mb-8"
             >
-              Want this for your restaurant?
+              Want this for your business?
             </motion.h2>
             <AuditForm />
             <p className="mt-5 text-center text-sm text-m3-on-surface/55">
@@ -279,6 +372,27 @@ export default function SocialsPage() {
             <p className="mt-1 text-center text-sm text-m3-on-surface/55">
               One film day. Two to three posts a week.
             </p>
+          </div>
+        </section>
+
+        {/* 4. FAQ */}
+        <section className="bg-m3-background py-12">
+          <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-2xl">
+            <h2 className="font-fredoka font-bold text-2xl text-m3-on-background mb-6">
+              Questions
+            </h2>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((item, i) => (
+                <AccordionItem key={item.q} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left font-fredoka text-base">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm text-m3-on-background/70">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 
