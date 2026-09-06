@@ -11,6 +11,7 @@ export function Footer() {
     { label: 'Services', href: '/services' },
     { label: 'About', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },
+    { label: 'Social media marketing in Union City', href: '/socials' },
   ]
 
   const services = [
