@@ -80,29 +80,108 @@ function CountUp({ stat }: { stat: Stat }) {
 
 /* ---------------- Page ---------------- */
 
-const serviceSchema = {
+const PAGE_DESCRIPTION =
+  "Union City's social media team. We run @thebackyardbayou at Union Landing: 59.7K followers, reels past 1M views. Management, content, influencer invites, commercials. Starting from $1,500 a month."
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: 'Do you work with businesses in Union Landing and Union City?',
+    a: 'Yes. We are based in Union City and we run @thebackyardbayou at Union Landing. We also work with businesses in Fremont, Hayward, and Newark.',
+  },
+  {
+    q: 'What does social media management include?',
+    a: 'One film day a month at your business, editing, two to three posts a week on Instagram and TikTok, captions, and replies to comments and DMs.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'Starting from $1,500 a month. Month to month. Bigger plans add film days and posts.',
+  },
+  {
+    q: 'Do you do more than social media?',
+    a: 'Yes. Content creation, influencer invites, commercials, and event recaps through Where2Studios.',
+  },
+  {
+    q: 'How do I start?',
+    a: 'Send the short form on this page. We reply within one business day and come by to see your spot.',
+  },
+]
+
+const areaServed = ['Union City', 'Union Landing', 'Fremont', 'Hayward', 'Newark'].map((name) => ({
+  '@type': 'Place',
+  name,
+}))
+
+const pageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Where2Socials, social media management for restaurants',
-  serviceType: 'Social media management',
-  description:
-    'Instagram and TikTok management for Union City restaurants. Filming, editing, posting, community replies, and a monthly report.',
-  provider: {
-    '@type': 'Organization',
-    name: 'Where2Studios',
-    url: 'https://where2studios.com',
-  },
-  areaServed: {
-    '@type': 'City',
-    name: 'Union City',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Union City',
-      addressRegion: 'CA',
-      addressCountry: 'US',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': 'https://where2studios.com/socials#business',
+      name: 'Where2Socials',
+      alternateName: 'Where2Studios Social',
+      url: 'https://where2studios.com/socials',
+      image: 'https://where2studios.com/og-image.png',
+      description: PAGE_DESCRIPTION,
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'Where2Studios',
+        url: 'https://where2studios.com',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Union City',
+        addressRegion: 'CA',
+        postalCode: '94587',
+        addressCountry: 'US',
+      },
+      areaServed,
+      priceRange: '$1,500+/month',
+      email: 'socials@where2studios.com',
+      sameAs: ['https://www.instagram.com/where2studios'],
+      knowsAbout: [
+        'social media marketing',
+        'social media management',
+        'content creation',
+        'Instagram Reels',
+        'TikTok',
+        'influencer marketing',
+        'commercials',
+      ],
     },
-  },
-  url: 'https://where2studios.com/socials',
+    {
+      '@type': 'Service',
+      name: 'Social media management',
+      serviceType: 'Social media marketing',
+      provider: { '@id': 'https://where2studios.com/socials#business' },
+      areaServed,
+      offers: {
+        '@type': 'Offer',
+        price: 1500,
+        priceCurrency: 'USD',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: 1500,
+          priceCurrency: 'USD',
+          unitText: 'MONTH',
+        },
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://where2studios.com' },
+        { '@type': 'ListItem', position: 2, name: 'Socials', item: 'https://where2studios.com/socials' },
+      ],
+    },
+  ],
 }
 
 const focusRing =
@@ -141,7 +220,7 @@ function WorkCarousel() {
             </div>
             <iframe
               src={`https://www.instagram.com/reel/${reel.shortcode}/embed`}
-              title={reel.title}
+              title={`Backyard Bayou Instagram reel, ${reel.stats[0]}, Union City`}
               loading="lazy"
               height={600}
               className="w-full rounded-2xl border border-m3-outline bg-m3-surface"
