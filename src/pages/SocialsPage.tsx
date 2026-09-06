@@ -298,10 +298,15 @@ export default function SocialsPage() {
               <div className="text-center lg:text-left">
                 <motion.h1
                   {...fade(0)}
-                  className="font-fredoka font-bold text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark tracking-tight leading-tight mb-8"
+                  className="font-fredoka font-bold text-4xl sm:text-5xl lg:text-6xl text-m3-on-dark tracking-tight leading-tight mb-4"
                 >
                   We run @thebackyardbayou.
                 </motion.h1>
+
+                <motion.p {...fade(0.04)} className="text-base text-m3-on-dark/70 mb-8">
+                  Social media marketing for Union City and Union Landing businesses.
+                </motion.p>
+
 
                 <motion.div
                   {...fade(0.08)}
