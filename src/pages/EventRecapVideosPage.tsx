@@ -42,7 +42,7 @@ const deliverables = [
     line: 'Reframed versions sized for Instagram, TikTok and LinkedIn.',
   },
   { title: 'Photo selects', line: 'Edited stills from the day for decks, recaps and press.' },
-  { title: 'Raw footage archive', line: 'The full card dump handed over so you keep the source files.' },
+  
 ]
 
 const steps = [
@@ -337,8 +337,7 @@ export default function EventRecapVideosPage() {
                 </p>
                 <p>
                   We shoot regularly down the peninsula and through the South Bay in Sunnyvale, Santa
-                  Clara and Palo Alto, and across the East Bay in Berkeley, Fremont and Union City,
-                  where our studio is based.
+                  Clara and Palo Alto, and across the East Bay in Berkeley, Fremont and Union City.
                 </p>
                 <p>
                   If your event sits anywhere else in the wider Bay Area, we can get there, and we
