@@ -8,6 +8,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { SkipLink } from '@/components/layout/SkipLink'
+import { SEOHead } from '@/components/SEOHead'
 
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
@@ -69,7 +70,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
         <div className="relative aspect-video overflow-hidden">
           <img
             src={thumbnail}
-            alt={project.title}
+            alt={`Event recap video for ${project.title}`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
@@ -132,6 +133,21 @@ export default function WorkPage() {
   return (
     <div className="min-h-screen bg-m3-surface-variant">
       <SkipLink />
+      <SEOHead
+        title="Event Recap Video Portfolio | Bay Area Event Films | Where2Studios"
+        description="See our event recap videos: conference recaps, summit coverage, brand activations and corporate event films shot across San Francisco, San Jose and the Bay Area."
+        url="https://where2studios.com/work"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Event Recap Video Portfolio',
+          url: 'https://where2studios.com/work',
+          description:
+            'Event recap videos, conference and summit coverage, brand activation films and corporate event videography by Where2Studios in the San Francisco Bay Area.',
+          isPartOf: { '@id': 'https://where2studios.com/#website' },
+          about: { '@id': 'https://where2studios.com/#event-recap-video-production' },
+        }}
+      />
       <Navbar variant="light" />
       <main id="main-content" tabIndex={-1} className="outline-none">
       {/* Hero */}
@@ -147,10 +163,10 @@ export default function WorkPage() {
               Portfolio
             </span>
             <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2">
-              Work we've shipped
+              Event recap videos and brand films we've shipped
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-              Strategy led, premium production, execution that performs. Built for startups, trusted across industries.
+              Recaps from conferences, summits, brand activations and corporate events across San Francisco, San Jose and the Bay Area.
             </p>
           </motion.div>
         </div>

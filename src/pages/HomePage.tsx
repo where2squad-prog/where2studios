@@ -36,8 +36,9 @@ export default function HomePage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Where2Studios | Your Growth Team, On Demand"
-        description="Your Growth Team, On Demand. Strategy first, premium media production, and full service marketing execution for ambitious brands. San Francisco Bay Area."
+        title="Event Recap Video Production in the San Francisco Bay Area | Where2Studios"
+        description="Where2Studios produces event recap videos for conferences, summits, brand activations and corporate events across the San Francisco Bay Area. Next day teasers, speaker clips, full recap edits."
+        url="https://where2studios.com/"
         schema={organizationSchema}
       />
       <div className="min-h-screen bg-m3-background text-m3-on-background">

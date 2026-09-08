@@ -12,6 +12,7 @@ export default function AccessibilityPage() {
         title="Accessibility | Where2Studios"
         description="Where2Studios is committed to digital accessibility. Read our accessibility statement, conformance level, and how to report issues."
         url="https://where2studios.com/accessibility"
+        robots="noindex, follow"
       />
       <div className="min-h-screen bg-m3-background text-m3-on-background">
         <Navbar variant="light" />
