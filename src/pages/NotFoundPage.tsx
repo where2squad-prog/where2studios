@@ -3,10 +3,16 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Home, ArrowLeft } from 'lucide-react'
+import { SEOHead } from '@/components/SEOHead'
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-m3-surface-dark flex items-center justify-center px-4">
+      <SEOHead
+        title="Page not found | Where2Studios"
+        description="This page does not exist. Head back to Where2Studios for event recap video production in the San Francisco Bay Area."
+        robots="noindex, follow"
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

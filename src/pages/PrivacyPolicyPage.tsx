@@ -1,8 +1,15 @@
 import { PageLayout } from "@/components/layout";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function PrivacyPolicyPage() {
   return (
     <PageLayout>
+      <SEOHead
+        title="Privacy Policy | Where2Studios"
+        description="How Where2Studios collects, uses and protects your information when you use our site or our event video and social media services."
+        url="https://where2studios.com/privacy"
+        robots="noindex, follow"
+      />
       <div className="min-h-screen bg-background pt-24 pb-16">
         <div className="container max-w-4xl mx-auto px-6">
           {/* Header */}

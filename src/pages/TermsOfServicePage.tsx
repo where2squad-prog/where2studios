@@ -1,8 +1,15 @@
 import { PageLayout } from "@/components/layout";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function TermsOfServicePage() {
   return (
     <PageLayout>
+      <SEOHead
+        title="Terms of Service | Where2Studios"
+        description="The terms that apply when you use the Where2Studios website and our event video production and social media services."
+        url="https://where2studios.com/terms"
+        robots="noindex, follow"
+      />
       <div className="min-h-screen bg-background pt-24 pb-16">
         <div className="container max-w-4xl mx-auto px-6">
           {/* Header */}

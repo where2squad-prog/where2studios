@@ -110,8 +110,9 @@ export default function TeamPage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Who We Are"
-        description="Meet the Where2Studios team. A growth partner for ambitious brands. Strategy, storytelling, and execution. Our goal is to tell stories worth sharing."
+        title="Meet the Bay Area Event Video Team | Where2Studios"
+        description="Meet the Where2Studios team. Producers, shooters and editors covering conferences, summits and brand activations across the San Francisco Bay Area."
+        url="https://where2studios.com/who-we-are"
         schema={organizationSchema}
       />
 
