@@ -10,7 +10,7 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { useCaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail, getYouTubeVideoId } from '@/hooks/useProjects'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
-import { Helmet } from 'react-helmet-async'
+import { SEOHead } from '@/components/SEOHead'
 
 const CATEGORY_LABELS: Record<string, string> = {
   'launch-videos': 'Launch Video',
@@ -251,6 +251,9 @@ export default function CaseStudyPage() {
                 <h1 className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-m3-on-surface mb-4">
                   {project.title}
                 </h1>
+                {answerLine && (
+                  <p className="text-base text-m3-on-surface/80 max-w-2xl mb-3">{answerLine}</p>
+                )}
                 {project.result && (
                   <p className="text-lg text-m3-on-surface/70 max-w-2xl">
                     {project.result}
@@ -328,7 +331,7 @@ export default function CaseStudyPage() {
               ) : (
                 <img
                   src={thumbnail}
-                  alt={project.title}
+                  alt={`Still frame from the ${categoryLabel.toLowerCase()} Where2Studios produced for ${project.client_name || project.title}`}
                   className="w-full aspect-video object-cover"
                 />
               )}
@@ -443,7 +446,7 @@ export default function CaseStudyPage() {
                   >
                     <img
                       src={img}
-                      alt={`${project.title} gallery ${i + 1}`}
+                      alt={`Photo ${i + 1} from the ${categoryLabel.toLowerCase()} Where2Studios produced for ${project.client_name || project.title}`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
