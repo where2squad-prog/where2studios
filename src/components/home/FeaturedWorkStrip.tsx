@@ -89,7 +89,7 @@ export function FeaturedWorkStrip() {
                 <div className="relative w-full h-full">
                   <img
                     src={getThumbnail(project)}
-                    alt={project.title}
+                    alt={`Video still from the ${project.title} project by Where2Studios`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   

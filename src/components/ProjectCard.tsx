@@ -33,7 +33,7 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
         <div className="relative w-full h-full">
           <img
             src={thumbnail}
-            alt={project.title}
+            alt={`Video still from the ${project.title} project by Where2Studios`}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
 

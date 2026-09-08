@@ -121,7 +121,7 @@ export function ServiceLanePicker() {
                     >
                       <img
                         src={getThumbnail(project)}
-                        alt={project.title}
+                        alt={`Video still from the ${project.title} project by Where2Studios`}
                         className="w-full h-full object-cover transition-transform group-hover:scale-105"
                       />
                     </motion.div>

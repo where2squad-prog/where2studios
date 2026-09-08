@@ -61,7 +61,7 @@ export function TrustedBrands() {
               <div key={brand.name} className="marquee-item">
                   <img
                   src={brand.logo}
-                  alt={brand.name}
+                  alt={`${brand.name} logo, a Where2Studios client`}
                   className="h-16 sm:h-20 lg:h-24 w-auto max-w-none"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
                   draggable={false} />
