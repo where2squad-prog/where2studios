@@ -84,44 +84,58 @@ function NumberedList({ items }: { items: string[] }) {
 }
 
 function buildJsonLd(project: any, thumbnail: string, isPodcast: boolean) {
+  const pageUrl = `https://where2studios.com/work/${project.slug || project.id}`
+  const description = project.result || project.description || project.title
+
   const base: any = {
-    "@context": "https://schema.org",
-    "@type": project.video_url ? "VideoObject" : "CreativeWork",
+    '@context': 'https://schema.org',
+    '@type': project.video_url ? 'VideoObject' : 'CreativeWork',
     name: project.title,
-    description: project.result || project.description,
+    description,
     thumbnailUrl: thumbnail,
+    url: pageUrl,
+    ...(project.created_at && { uploadDate: new Date(project.created_at).toISOString() }),
+    ...(project.video_url && { embedUrl: project.video_url, contentUrl: project.video_url }),
     author: {
-      "@type": "Organization",
-      name: "Where2Studios",
+      '@type': 'Organization',
+      name: 'Where2Studios',
     },
-    ...(project.video_url && { embedUrl: project.video_url }),
+    publisher: { '@id': 'https://where2studios.com/#business' },
+  }
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://where2studios.com' },
+      { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://where2studios.com/work' },
+      { '@type': 'ListItem', position: 3, name: project.title, item: pageUrl },
+    ],
   }
 
   if (isPodcast) {
-    // Add PodcastEpisode as additional structured data
     return [
       base,
       {
-        "@context": "https://schema.org",
-        "@type": "PodcastEpisode",
+        '@context': 'https://schema.org',
+        '@type': 'PodcastEpisode',
         name: project.title,
         description: project.result || project.description,
         ...(project.video_url && { url: project.video_url }),
         productionCompany: {
-          "@type": "Organization",
-          name: "Where2Studios",
+          '@type': 'Organization',
+          name: 'Where2Studios',
         },
         partOfSeries: {
-          "@type": "PodcastSeries",
-          name: project.client_name
-            ? `${project.client_name} Podcast`
-            : project.title,
+          '@type': 'PodcastSeries',
+          name: project.client_name ? `${project.client_name} Podcast` : project.title,
         },
       },
+      breadcrumb,
     ]
   }
 
-  return base
+  return [base, breadcrumb]
 }
 
 export default function CaseStudyPage() {
