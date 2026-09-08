@@ -51,6 +51,8 @@ const pillars: Pillar[] = [
       'Short form and social content',
     ],
     bestFor: 'Best for brands that want to look as powerful as they are.',
+    linkTo: '/event-recap-videos',
+    linkLabel: 'See how our event recap videos work',
   },
   {
     id: 'marketing',

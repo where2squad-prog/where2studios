@@ -8,6 +8,7 @@ import logo from '@/assets/where2studios-logo.png';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
 
 const navLinks = [
+  { href: '/event-recap-videos', label: 'Event Recap Videos' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'About' },

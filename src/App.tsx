@@ -10,6 +10,7 @@ import { BookingFormSheet } from './components/booking/BookingFormSheet'
 import { CookieConsent } from './components/CookieConsent'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
+import EventRecapVideosPage from './pages/EventRecapVideosPage'
 import CaseStudyPage from './pages/CaseStudyPage'
 import ServicesPage from './pages/ServicesPage'
 import ContactPage from './pages/ContactPage'
@@ -35,7 +36,8 @@ export default function App() {
               <ScrollToTop />
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/work" element={<WorkPage />} />
+                <Route path="/event-recap-videos" element={<EventRecapVideosPage />} />
+               <Route path="/work" element={<WorkPage />} />
                 <Route path="/work/:slug" element={<CaseStudyPage />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/contact" element={<ContactPage />} />

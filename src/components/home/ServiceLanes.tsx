@@ -23,8 +23,8 @@ const services = [
     id: 'production',
     title: 'Production',
     icon: Clapperboard,
-    oneLiner: 'Premium media that earns attention.',
-    href: '/services#production',
+    oneLiner: 'Event recap videos and premium media that earns attention.',
+    href: '/event-recap-videos',
   },
   {
     id: 'marketing',
