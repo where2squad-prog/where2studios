@@ -168,6 +168,15 @@ export default function WorkPage() {
             <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
               Recaps from conferences, summits, brand activations and corporate events across San Francisco, San Jose and the Bay Area.
             </p>
+            <p className="mt-3">
+              <Link
+                to="/event-recap-videos"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-m3-primary hover:gap-2 transition-all"
+              >
+                How our event recap video production works
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </p>
           </motion.div>
         </div>
       </section>

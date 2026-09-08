@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 const SITE_URL = 'https://where2studios.com'
 
-const areaServed = [
+export const areaServed = [
   { '@type': 'City', name: 'San Francisco' },
   { '@type': 'City', name: 'Oakland' },
   { '@type': 'City', name: 'San Jose' },
