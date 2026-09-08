@@ -61,5 +61,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /404
 
+# LLM readable summary: https://where2studios.com/llms.txt
 Sitemap: https://where2studios.com/sitemap.xml
-Sitemap: https://where2studios.com/llms.txt

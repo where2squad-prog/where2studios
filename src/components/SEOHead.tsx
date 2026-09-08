@@ -106,11 +106,12 @@ export const organizationSchema = {
   description: BUSINESS_DESCRIPTION,
   email: 'contact@where2studios.com',
   priceRange: '$$$',
+  // Replace with the real street address and postal code once the Google Business Profile is set up,
+  // and keep geo.position in index.html in sync with it.
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Union City',
+    addressLocality: 'San Francisco Bay Area',
     addressRegion: 'CA',
-    postalCode: '94587',
     addressCountry: 'US',
   },
   areaServed,
@@ -141,11 +142,12 @@ export const localBusinessSchema = {
   description: BUSINESS_DESCRIPTION,
   email: 'contact@where2studios.com',
   priceRange: '$$$',
+  // Replace with the real street address and postal code once the Google Business Profile is set up,
+  // and keep geo.position in index.html in sync with it.
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Union City',
+    addressLocality: 'San Francisco Bay Area',
     addressRegion: 'CA',
-    postalCode: '94587',
     addressCountry: 'US',
   },
   areaServed,
