@@ -42,7 +42,7 @@ function ProductionCard({
                       hover:ring-2 hover:ring-m3-primary/50 transition-all duration-300
                       hover:shadow-xl">
         <div className="relative aspect-video">
-          <img src={thumbnail} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" draggable={false} />
+          <img src={thumbnail} alt={`Video still from the ${project.title} project by Where2Studios`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" draggable={false} />
           <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
           
           {/* Play button overlay */}
@@ -237,7 +237,7 @@ export function FeaturedProductions() {
                     <div className="rounded-xl overflow-hidden bg-m3-surface shadow-md 
                                     hover:ring-2 hover:ring-m3-primary/50 transition-all">
                       <div className="relative aspect-video">
-                        <img src={getThumbnail(project)} alt={project.title} className="w-full h-full object-cover" draggable={false} />
+                        <img src={getThumbnail(project)} alt={`Video still from the ${project.title} project by Where2Studios`} className="w-full h-full object-cover" draggable={false} />
                         <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-2">
                           <span className="inline-block px-2 py-0.5 rounded-full bg-m3-surface/90 text-m3-on-surface text-[10px] font-semibold mb-1">

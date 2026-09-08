@@ -10,7 +10,7 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { useCaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail, getYouTubeVideoId } from '@/hooks/useProjects'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
-import { Helmet } from 'react-helmet-async'
+import { SEOHead } from '@/components/SEOHead'
 
 const CATEGORY_LABELS: Record<string, string> = {
   'launch-videos': 'Launch Video',
@@ -84,44 +84,58 @@ function NumberedList({ items }: { items: string[] }) {
 }
 
 function buildJsonLd(project: any, thumbnail: string, isPodcast: boolean) {
+  const pageUrl = `https://where2studios.com/work/${project.slug || project.id}`
+  const description = project.result || project.description || project.title
+
   const base: any = {
-    "@context": "https://schema.org",
-    "@type": project.video_url ? "VideoObject" : "CreativeWork",
+    '@context': 'https://schema.org',
+    '@type': project.video_url ? 'VideoObject' : 'CreativeWork',
     name: project.title,
-    description: project.result || project.description,
+    description,
     thumbnailUrl: thumbnail,
+    url: pageUrl,
+    ...(project.created_at && { uploadDate: new Date(project.created_at).toISOString() }),
+    ...(project.video_url && { embedUrl: project.video_url, contentUrl: project.video_url }),
     author: {
-      "@type": "Organization",
-      name: "Where2Studios",
+      '@type': 'Organization',
+      name: 'Where2Studios',
     },
-    ...(project.video_url && { embedUrl: project.video_url }),
+    publisher: { '@id': 'https://where2studios.com/#business' },
+  }
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://where2studios.com' },
+      { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://where2studios.com/work' },
+      { '@type': 'ListItem', position: 3, name: project.title, item: pageUrl },
+    ],
   }
 
   if (isPodcast) {
-    // Add PodcastEpisode as additional structured data
     return [
       base,
       {
-        "@context": "https://schema.org",
-        "@type": "PodcastEpisode",
+        '@context': 'https://schema.org',
+        '@type': 'PodcastEpisode',
         name: project.title,
         description: project.result || project.description,
         ...(project.video_url && { url: project.video_url }),
         productionCompany: {
-          "@type": "Organization",
-          name: "Where2Studios",
+          '@type': 'Organization',
+          name: 'Where2Studios',
         },
         partOfSeries: {
-          "@type": "PodcastSeries",
-          name: project.client_name
-            ? `${project.client_name} Podcast`
-            : project.title,
+          '@type': 'PodcastSeries',
+          name: project.client_name ? `${project.client_name} Podcast` : project.title,
         },
       },
+      breadcrumb,
     ]
   }
 
-  return base
+  return [base, breadcrumb]
 }
 
 export default function CaseStudyPage() {
@@ -182,33 +196,33 @@ export default function CaseStudyPage() {
   const metrics = project.metrics_json as Record<string, string> | null
 
   const jsonLd = buildJsonLd(project, thumbnail, isPodcast)
+  const isEventProject = project.category === 'event-recaps' || project.category === 'events'
+  const pageTitle = isEventProject
+    ? `${project.title} | Event Recap Video Case Study | Where2Studios`
+    : `${project.title} | Where2Studios Case Study`
+  const pageDescription =
+    project.result ||
+    project.description ||
+    `${project.title}, a ${categoryLabel} project by Where2Studios.`
+
+  const answerLine =
+    project.client_name && project.location
+      ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name} at ${project.location}.`
+      : project.client_name
+        ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name}.`
+        : null
 
   return (
     <>
-      <Helmet>
-        <title>{project.title} | Where2Studios Case Study</title>
-        <meta
-          name="description"
-          content={
-            project.result ||
-            project.description ||
-            `${project.title} - A ${categoryLabel} project by Where2Studios`
-          }
-        />
-        <meta property="og:title" content={`${project.title} | Where2Studios`} />
-        <meta property="og:description" content={project.result || project.description || ''} />
-        <meta property="og:image" content={thumbnail} />
-        <meta property="og:type" content="article" />
-        {Array.isArray(jsonLd) ? (
-          jsonLd.map((ld, i) => (
-            <script key={i} type="application/ld+json">
-              {JSON.stringify(ld)}
-            </script>
-          ))
-        ) : (
-          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        )}
-      </Helmet>
+      <SEOHead
+        title={pageTitle}
+        description={pageDescription}
+        image={thumbnail}
+        url={`https://where2studios.com/work/${project.slug || project.id}`}
+        type="article"
+        schema={jsonLd}
+      />
+
 
       <div className="min-h-screen bg-m3-surface-variant">
         <SkipLink />
@@ -237,6 +251,9 @@ export default function CaseStudyPage() {
                 <h1 className="font-fredoka text-3xl sm:text-4xl lg:text-5xl font-semibold text-m3-on-surface mb-4">
                   {project.title}
                 </h1>
+                {answerLine && (
+                  <p className="text-base text-m3-on-surface/80 max-w-2xl mb-3">{answerLine}</p>
+                )}
                 {project.result && (
                   <p className="text-lg text-m3-on-surface/70 max-w-2xl">
                     {project.result}
@@ -314,7 +331,7 @@ export default function CaseStudyPage() {
               ) : (
                 <img
                   src={thumbnail}
-                  alt={project.title}
+                  alt={`Still frame from the ${categoryLabel.toLowerCase()} Where2Studios produced for ${project.client_name || project.title}`}
                   className="w-full aspect-video object-cover"
                 />
               )}
@@ -429,7 +446,7 @@ export default function CaseStudyPage() {
                   >
                     <img
                       src={img}
-                      alt={`${project.title} gallery ${i + 1}`}
+                      alt={`Photo ${i + 1} from the ${categoryLabel.toLowerCase()} Where2Studios produced for ${project.client_name || project.title}`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />

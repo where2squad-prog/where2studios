@@ -206,7 +206,7 @@ export function ServicePageTemplate({
                   <div className="m3-elevated-card overflow-hidden aspect-[9/14]">
                     <img
                       src={getThumbnail(project)}
-                      alt={project.title}
+                      alt={`Video still from the ${project.title} project by Where2Studios`}
                       className="w-full h-full object-cover transition-transform group-hover:scale-105"
                     />
                   </div>

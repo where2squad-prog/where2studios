@@ -193,7 +193,7 @@ export default function TeamPage() {
                         {member.image ? (
                           <AvatarImage
                             src={member.image}
-                            alt={member.name}
+                            alt={`Portrait of ${member.name} of the Where2Studios team`}
                             className="object-cover"
                           />
                         ) : null}

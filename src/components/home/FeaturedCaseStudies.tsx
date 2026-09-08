@@ -59,7 +59,7 @@ function MediaBlock({ project }: { project: CaseStudy }) {
     <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
       <img
         src={thumbnail}
-        alt={project.title}
+        alt={`Video still from the ${project.title} project by Where2Studios`}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       />
@@ -173,7 +173,7 @@ function CaseStudyCardInner({ project }: { project: CaseStudy }) {
         <div className="relative aspect-video overflow-hidden">
           <img
             src={thumbnail}
-            alt={project.title}
+            alt={`Video still from the ${project.title} project by Where2Studios`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />

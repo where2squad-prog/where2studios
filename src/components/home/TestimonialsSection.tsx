@@ -95,7 +95,7 @@ export function TestimonialsSection() {
                 {testimonial.headshot_url ? (
                   <img
                     src={testimonial.headshot_url}
-                    alt={testimonial.name}
+                    alt={`Headshot of ${testimonial.name}, Where2Studios client`}
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 ) : (

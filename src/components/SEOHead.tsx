@@ -115,7 +115,8 @@ export const organizationSchema = {
   },
   areaServed,
   knowsAbout,
-  sameAs: ['https://www.instagram.com/where2studios'],
+  // Paste the real Instagram, YouTube, LinkedIn and TikTok profile URLs here.
+  sameAs: [],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Video production services',
@@ -149,5 +150,6 @@ export const localBusinessSchema = {
   },
   areaServed,
   knowsAbout,
-  sameAs: ['https://www.instagram.com/where2studios'],
+  // Paste the real Instagram, YouTube, LinkedIn and TikTok profile URLs here.
+  sameAs: [],
 }

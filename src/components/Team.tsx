@@ -96,7 +96,7 @@ export function Team({ limit }: { limit?: number } = {}) {
                 <div className="relative aspect-square overflow-hidden bg-m3-surface-variant">
                   <ImageWithFallback
                     src={member.image}
-                    alt={member.name}
+                    alt={`Portrait of ${member.name} of the Where2Studios team`}
                     className="w-full h-full object-cover"
                   />
                 </div>
