@@ -196,33 +196,33 @@ export default function CaseStudyPage() {
   const metrics = project.metrics_json as Record<string, string> | null
 
   const jsonLd = buildJsonLd(project, thumbnail, isPodcast)
+  const isEventProject = project.category === 'event-recaps' || project.category === 'events'
+  const pageTitle = isEventProject
+    ? `${project.title} | Event Recap Video Case Study | Where2Studios`
+    : `${project.title} | Where2Studios Case Study`
+  const pageDescription =
+    project.result ||
+    project.description ||
+    `${project.title}, a ${categoryLabel} project by Where2Studios.`
+
+  const answerLine =
+    project.client_name && project.location
+      ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name} at ${project.location}.`
+      : project.client_name
+        ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name}.`
+        : null
 
   return (
     <>
-      <Helmet>
-        <title>{project.title} | Where2Studios Case Study</title>
-        <meta
-          name="description"
-          content={
-            project.result ||
-            project.description ||
-            `${project.title} - A ${categoryLabel} project by Where2Studios`
-          }
-        />
-        <meta property="og:title" content={`${project.title} | Where2Studios`} />
-        <meta property="og:description" content={project.result || project.description || ''} />
-        <meta property="og:image" content={thumbnail} />
-        <meta property="og:type" content="article" />
-        {Array.isArray(jsonLd) ? (
-          jsonLd.map((ld, i) => (
-            <script key={i} type="application/ld+json">
-              {JSON.stringify(ld)}
-            </script>
-          ))
-        ) : (
-          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        )}
-      </Helmet>
+      <SEOHead
+        title={pageTitle}
+        description={pageDescription}
+        image={thumbnail}
+        url={`https://where2studios.com/work/${project.slug || project.id}`}
+        type="article"
+        schema={jsonLd}
+      />
+
 
       <div className="min-h-screen bg-m3-surface-variant">
         <SkipLink />
