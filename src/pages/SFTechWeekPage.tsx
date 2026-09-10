@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     q: 'How much does Tech Week video coverage cost?',
-    a: 'A Tech Week event recap video is priced on hours, crew and how many events. It depends on hours, crew and how many events. Send us your dates and we quote you the same day.',
+    a: 'A Tech Week event recap video is priced on hours, crew and how many events. Send us your dates and we quote you the same day.',
   },
   {
     q: 'Can you cover more than one event during Tech Week?',
