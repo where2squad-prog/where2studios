@@ -3,7 +3,7 @@
 import { useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { getYouTubeVideoId } from '@/hooks/useProjects'
+import { getVideoEmbedUrl } from '@/lib/video'
 
 interface VideoModalProps {
   isOpen: boolean
@@ -13,7 +13,7 @@ interface VideoModalProps {
 }
 
 export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps) {
-  const videoId = getYouTubeVideoId(videoUrl)
+  const embedUrl = getVideoEmbedUrl(videoUrl, { autoplay: true })
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -66,12 +66,12 @@ export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps
             className="relative z-10 w-full max-w-5xl aspect-video m3-elevated-card overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {videoId ? (
+            {embedUrl ? (
               <iframe
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                src={embedUrl}
                 title={title || 'Video'}
                 className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
               />
             ) : (

@@ -37,6 +37,7 @@ export function getYouTubeThumbnail(videoUrl: string | null): string | null {
 // Get thumbnail with fallback
 export function getThumbnail(project: Project): string {
   if (project.thumbnail_url) return project.thumbnail_url
+  // Vimeo thumbnails cannot be derived from the video ID, so those rely on thumbnail_url.
   const ytThumbnail = getYouTubeThumbnail(project.video_url)
   if (ytThumbnail) return ytThumbnail
   return 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=800&fit=crop'

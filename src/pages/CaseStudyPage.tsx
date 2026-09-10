@@ -8,7 +8,8 @@ import { Footer } from '@/components/Footer'
 import { SkipLink } from '@/components/layout/SkipLink'
 
 import { useCaseStudy } from '@/hooks/useCaseStudy'
-import { getThumbnail, getYouTubeVideoId } from '@/hooks/useProjects'
+import { getThumbnail } from '@/hooks/useProjects'
+import { getVideoEmbedUrl, isVimeoUrl } from '@/lib/video'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 
@@ -185,7 +186,8 @@ export default function CaseStudyPage() {
 
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
   const categoryLabel = CATEGORY_LABELS[project.category] || project.category
-  const videoId = getYouTubeVideoId(project.video_url)
+  const videoEmbedUrl = getVideoEmbedUrl(project.video_url, { controls: true })
+  const videoHost = isVimeoUrl(project.video_url) ? 'Vimeo' : 'YouTube'
   const isPodcast = project.category === 'podcasts'
 
   // Parse newline-delimited fields into bullet arrays
@@ -317,13 +319,13 @@ export default function CaseStudyPage() {
               transition={{ delay: 0.2 }}
               className="rounded-2xl overflow-hidden shadow-xl"
             >
-              {videoId ? (
+              {videoEmbedUrl ? (
                 <div className="relative aspect-video">
                   <iframe
-                    src={`https://www.youtube.com/embed/${videoId}?rel=0`}
+                    src={videoEmbedUrl}
                     title={project.title}
-                    aria-label={`Watch ${project.title} on YouTube`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    aria-label={`Watch ${project.title} on ${videoHost}`}
+                    allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     className="absolute inset-0 w-full h-full"
                   />

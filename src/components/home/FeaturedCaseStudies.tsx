@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Play } from 'lucide-react'
 import { useFeaturedCaseStudies, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
-import { isYouTubeUrl, getYouTubeEmbedUrl } from '@/lib/video'
+import { isYouTubeUrl, isVimeoUrl, getVideoEmbedUrl } from '@/lib/video'
 import {
   Carousel,
   CarouselContent,
@@ -40,16 +40,17 @@ function getCategoryLabel(project: CaseStudy): string {
 
 function MediaBlock({ project }: { project: CaseStudy }) {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
-  if (project.video_url && isYouTubeUrl(project.video_url)) {
-    const embed = getYouTubeEmbedUrl(project.video_url, { autoplay: false, controls: true })
+  if (project.video_url && (isYouTubeUrl(project.video_url) || isVimeoUrl(project.video_url))) {
+    const embed = getVideoEmbedUrl(project.video_url, { autoplay: false, controls: true })
+    const host = isVimeoUrl(project.video_url) ? 'Vimeo' : 'YouTube'
     return (
       <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
         <iframe
           src={embed!}
           className="absolute inset-0 w-full h-full"
           title={project.title}
-          aria-label={`Watch ${project.title} on YouTube`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          aria-label={`Watch ${project.title} on ${host}`}
+          allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
         />
       </div>
