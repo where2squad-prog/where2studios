@@ -4,6 +4,7 @@ import { AdminRoute } from './components/auth/AdminRoute'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import EventRecapVideosPage from './pages/EventRecapVideosPage'
+import SFTechWeekPage from './pages/SFTechWeekPage'
 import CaseStudyPage from './pages/CaseStudyPage'
 import ServicesPage from './pages/ServicesPage'
 import ContactPage from './pages/ContactPage'
@@ -25,6 +26,7 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'event-recap-videos', element: <EventRecapVideosPage /> },
+      { path: 'sf-tech-week', element: <SFTechWeekPage /> },
       { path: 'work', element: <WorkPage /> },
       {
         path: 'work/:slug',

@@ -6,14 +6,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Instagram, Linkedin } from 'lucide-react';
 import logo from '@/assets/where2studios-logo.png';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
+import { AnnouncementBar } from '@/components/techweek/AnnouncementBar';
+import { isTechWeekCampaignLive } from '@/lib/techWeek';
 
-const navLinks = [
+const baseNavLinks = [
   { href: '/event-recap-videos', label: 'Event Recap Videos' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'About' },
   { href: '/socials', label: 'Socials' },
 ];
+
+const techWeekLink = { href: '/sf-tech-week', label: 'SF Tech Week', timely: true };
 
 interface NavbarProps {
   variant?: 'light' | 'dark';
@@ -30,6 +34,10 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
   const bgColor = isLight ? 'bg-m3-surface' : 'bg-m3-surface-dark';
 
   const navRef = useRef<HTMLDivElement>(null);
+
+  const navLinks = isTechWeekCampaignLive()
+    ? [techWeekLink, ...baseNavLinks]
+    : baseNavLinks;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,6 +87,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="fixed top-0 left-0 right-0 w-full z-[110]"
       >
+        <AnnouncementBar />
         <div
           className={`w-full px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
             isScrolled
@@ -130,6 +139,9 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                       : ''
                   } ${focusRing}`}
                 >
+                  {'timely' in link && link.timely && (
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-m3-primary mr-1.5 align-middle" />
+                  )}
                   {link.label}
                   {(link.href === '/services'
                     ? location.pathname.startsWith('/services')
@@ -209,6 +221,9 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                           isActive ? 'text-m3-primary' : 'text-m3-on-dark hover:text-m3-primary'
                         } ${focusRing}`}
                       >
+                        {'timely' in link && link.timely && (
+                          <span className="inline-block w-2 h-2 rounded-full bg-m3-primary mr-2 align-middle" />
+                        )}
                         {link.label}
                       </Link>
                     );

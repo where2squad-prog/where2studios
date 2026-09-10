@@ -13,6 +13,8 @@ interface ContactFormData {
   timeline?: string;
   referral?: string;
   message: string;
+  /** Tags the lead so it can be told apart in the admin panel. */
+  source?: string;
 }
 
 interface SubmitContactResponse {

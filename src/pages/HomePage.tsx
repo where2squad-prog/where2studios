@@ -4,6 +4,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { ConversionHero } from '@/components/home/ConversionHero'
 import { TrustedBrands } from '@/components/TrustedBrands'
+import { TechWeekHomeBlock } from '@/components/techweek/TechWeekCallout'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { ProcessSection } from '@/components/home/ProcessSection'
@@ -46,6 +47,7 @@ export default function HomePage() {
       
       <main id="main-content" tabIndex={-1} className="relative outline-none">
         <ConversionHero />
+        <TechWeekHomeBlock />
         <TrustedBrands />
         <ServiceLanes />
         <FeaturedCaseStudies />
