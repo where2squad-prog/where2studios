@@ -13,9 +13,10 @@ import { SEOHead } from '@/components/SEOHead'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 
-const CATEGORIES = ['all', 'launch-videos', 'brand-videos', 'corporate', 'events', 'podcasts', 'photography', 'event-recaps', 'social-clips']
+const CATEGORIES = ['all', 'convention-week', 'launch-videos', 'brand-videos', 'corporate', 'events', 'podcasts', 'photography', 'event-recaps', 'social-clips']
 const CATEGORY_LABELS: Record<string, string> = {
   all: 'All',
+  'convention-week': 'Convention Week HQ',
   'launch-videos': 'Launch Videos',
   'brand-videos': 'Brand Videos',
   corporate: 'Corporate',
