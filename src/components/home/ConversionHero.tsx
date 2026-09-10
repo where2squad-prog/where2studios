@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
-import heroVideoAsset from '@/assets/hero-background.mp4.asset.json';
+import heroVideoAsset from '@/assets/hero-background-v2.mp4.asset.json';
 
 export function ConversionHero() {
   const { openSheet } = useBookingSheet();
