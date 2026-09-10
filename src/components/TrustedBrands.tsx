@@ -91,32 +91,17 @@ export function TrustedBrands() {
             {/* First set */}
             <div className="marquee-content" ref={isMobile ? undefined : contentRef}>
               {brands.map((brand) =>
-              <div key={brand.name} className="marquee-item">
-                  <img
-                  src={brand.logo}
-                  alt={`${brand.name} logo, a Where2Studios client`}
-                  className="h-16 sm:h-20 lg:h-24 w-auto max-w-none"
-                  style={{ filter: 'brightness(0) saturate(100%)' }}
-                  draggable={false} />
-
-                </div>
+              <div key={brand.name}>{renderBrand(brand, false)}</div>
               )}
             </div>
 
             {/* Duplicate for seamless loop */}
             <div className="marquee-content" aria-hidden="true">
               {brands.map((brand) =>
-              <div key={`${brand.name}-dup`} className="marquee-item">
-                  <img
-                  src={brand.logo}
-                  alt=""
-                  className="h-16 sm:h-20 lg:h-24 w-auto max-w-none"
-                  style={{ filter: 'brightness(0) saturate(100%)' }}
-                  draggable={false} />
-
-                </div>
+              <div key={`${brand.name}-dup`}>{renderBrand(brand, true)}</div>
               )}
             </div>
+
           </div>
         </div>
         
