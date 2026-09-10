@@ -178,7 +178,7 @@ export default function SFTechWeekPage() {
       />
       <PageLayout navVariant="dark">
         {/* Hero */}
-        <section className="bg-m3-surface-dark pt-28 pb-12 sm:pt-36 sm:pb-16">
+        <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <p className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
               October 5 to 11, 2026
