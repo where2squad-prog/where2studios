@@ -8,6 +8,8 @@ import { SEOHead, areaServed } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
 import { TechWeekCountdown } from '@/components/techweek/TechWeekCountdown'
+import { TrustedBrands } from '@/components/TrustedBrands'
+
 import { TechWeekForm } from '@/components/techweek/TechWeekForm'
 import { useProjects, type Project } from '@/hooks/useProjects'
 import { techWeekPackages, SPONSOR_OPTION } from '@/lib/techWeek'
@@ -211,7 +213,13 @@ export default function SFTechWeekPage() {
           </div>
         </section>
 
+        {/* Brand strip */}
+        <div className="bg-m3-background">
+          <TrustedBrands />
+        </div>
+
         {/* Quotable answer */}
+
         <section className="py-10 sm:py-12 bg-m3-background">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <div className="m3-outlined-card p-5 sm:p-6">
