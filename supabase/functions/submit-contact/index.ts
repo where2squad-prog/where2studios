@@ -62,6 +62,9 @@ serve(async (req) => {
   const referral = String(rawPayload.referral || "").trim();
   const message = String(rawPayload.message || "").trim();
   const page_url = String(rawPayload.page_url || "").trim();
+  const ALLOWED_SOURCES = ["contact", "sf-tech-week", "socials", "where2boys"];
+  const rawSource = String(rawPayload.source || "contact").trim();
+  const source = ALLOWED_SOURCES.includes(rawSource) ? rawSource : "contact";
 
   if (!name || !email || !message) return json(400, { error: "Missing required fields" });
   if (!isValidEmail(email)) return json(400, { error: "Invalid email" });
@@ -102,6 +105,7 @@ serve(async (req) => {
         referral: referral || null,
         message,
         page_url: page_url || null,
+        source,
         ip_address: ip,
         user_agent: ua,
       },
