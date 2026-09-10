@@ -282,7 +282,7 @@ export default function SocialsPage() {
 
       <main id="main-content" tabIndex={-1} className="outline-none">
         {/* 1. Hero */}
-        <section className="relative overflow-hidden bg-m3-surface-dark pt-28 pb-16">
+        <section className="relative overflow-hidden bg-m3-surface-dark pb-16 pt-[calc(var(--nav-h,112px)+2rem)]">
           <div
             aria-hidden="true"
             className="absolute inset-0"
