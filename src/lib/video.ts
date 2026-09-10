@@ -44,3 +44,44 @@ export function getYouTubeThumbnail(url: string | null | undefined): string | nu
   if (!id) return null
   return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
 }
+
+export function isVimeoUrl(url: string | null | undefined): boolean {
+  if (!url) return false
+  return /vimeo\.com/i.test(url)
+}
+
+export function getVimeoVideoId(url: string | null | undefined): string | null {
+  if (!url) return null
+  const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/)
+  return match ? match[1] : null
+}
+
+export function getVimeoEmbedUrl(
+  url: string | null | undefined,
+  options: { autoplay?: boolean; mute?: boolean; loop?: boolean; controls?: boolean } = {}
+): string | null {
+  const id = getVimeoVideoId(url)
+  if (!id) return null
+  const params = new URLSearchParams()
+  if (options.autoplay) {
+    params.set('autoplay', '1')
+    params.set('muted', '1')
+  } else if (options.mute) {
+    params.set('muted', '1')
+  }
+  if (options.loop) params.set('loop', '1')
+  if (options.controls === false) params.set('controls', '0')
+  const query = params.toString()
+  return query
+    ? `https://player.vimeo.com/video/${id}?${query}`
+    : `https://player.vimeo.com/video/${id}`
+}
+
+/** Dispatches to the right provider embed for a project video URL. */
+export function getVideoEmbedUrl(
+  url: string | null | undefined,
+  options: { autoplay?: boolean; mute?: boolean; loop?: boolean; controls?: boolean } = {}
+): string | null {
+  if (isVimeoUrl(url)) return getVimeoEmbedUrl(url, options)
+  return getYouTubeEmbedUrl(url, options)
+}
