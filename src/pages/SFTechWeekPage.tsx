@@ -211,7 +211,13 @@ export default function SFTechWeekPage() {
           </div>
         </section>
 
+        {/* Brand strip */}
+        <div className="bg-m3-background">
+          <TrustedBrands />
+        </div>
+
         {/* Quotable answer */}
+
         <section className="py-10 sm:py-12 bg-m3-background">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <div className="m3-outlined-card p-5 sm:p-6">
