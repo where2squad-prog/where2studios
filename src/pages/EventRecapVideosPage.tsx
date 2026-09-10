@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { SEOHead, areaServed } from '@/components/SEOHead'
+import { TechWeekInlineCallout } from '@/components/techweek/TechWeekCallout'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
@@ -248,6 +249,10 @@ export default function EventRecapVideosPage() {
               </motion.div>
             </div>
           </section>
+
+          <div className="pb-8">
+            <TechWeekInlineCallout />
+          </div>
 
           {/* Short answer block */}
           <section className="pb-12">
