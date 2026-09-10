@@ -50,7 +50,7 @@ const PRIORITY_TITLES = [
 const faqs = [
   {
     q: 'Do you cover SF Tech Week events?',
-    a: 'Yes. October 5 to 11, 2026, anywhere in San Francisco, plus the wider Bay Area.',
+    a: 'Yes. We work as an SF Tech Week videographer across San Francisco from October 5 to 11, 2026, and across the wider Bay Area.',
   },
   {
     q: 'How fast can I get video from my Tech Week event?',
@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     q: 'How much does Tech Week video coverage cost?',
-    a: 'It depends on hours, crew and how many events. Send us your dates and we quote you the same day.',
+    a: 'A Tech Week event recap video is priced on hours, crew and how many events. It depends on hours, crew and how many events. Send us your dates and we quote you the same day.',
   },
   {
     q: 'Can you cover more than one event during Tech Week?',
@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     q: 'Do you cover LA Tech Week?',
-    a: 'Yes, October 12 to 18. Tell us early so we can plan the travel.',
+    a: 'Yes. We take LA Tech Week videographer bookings for October 12 to 18. Tell us early so we can plan the travel.',
   },
   {
     q: 'My event is a private founder dinner. Can you still shoot it?',
@@ -228,6 +228,10 @@ export default function SFTechWeekPage() {
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface">
               A recap that lands three weeks later lands in a dead feed
             </h2>
+            <p className="mt-4 text-sm sm:text-base text-m3-on-surface/75">
+              Every October the city fills up with side events and everyone needs the same thing, a
+              videographer who can turn it around fast.
+            </p>
             <ul className="mt-6 space-y-4">
               {whyPoints.map((point) => (
                 <li
@@ -287,9 +291,12 @@ export default function SFTechWeekPage() {
         {/* Packages */}
         <section className="py-12 sm:py-16 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mb-8">
+            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface">
               Four ways to book us for Tech Week
             </h2>
+            <p className="mt-2 mb-8 text-sm sm:text-base text-m3-on-surface/70">
+              Side event video coverage, priced per event or per week.
+            </p>
             <div className="grid sm:grid-cols-2 gap-5">
               {techWeekPackages.map((pkg) => (
                 <div key={pkg.id} className="m3-elevated-card p-5 flex flex-col">
@@ -363,23 +370,6 @@ export default function SFTechWeekPage() {
               We run a limited number of crews per night from October 5 to 11. Once a night is full
               it is full.
             </p>
-            <div className="mt-6 space-y-2 text-sm text-m3-on-surface/70">
-              <p>
-                We work as an SF Tech Week videographer for side event hosts and for sponsors.
-                San Francisco Tech Week video production here means your panel, your mixer or your
-                founder dinner shot the way it happened.
-              </p>
-              <p>
-                Ask for a Tech Week event recap video and the teaser comes first. If you want a
-                Tech Week videographer San Francisco founders can brief in one message, send the
-                date.
-              </p>
-              <p>
-                We do side event video coverage all week, then work as an LA Tech Week videographer
-                from October 12 to 18. Outside Tech Week we are a tech conference videographer
-                San Francisco teams call back.
-              </p>
-            </div>
           </div>
         </section>
 
@@ -424,7 +414,8 @@ export default function SFTechWeekPage() {
               October 5 is close
             </h2>
             <p className="mt-3 text-sm sm:text-base text-m3-on-surface/70">
-              Send us your date and we will tell you today if we can cover it.
+              San Francisco Tech Week video production books out fast. Send us your date and we
+              will tell you today if we can cover it.
             </p>
             <button
               onClick={() => scrollTo('tech-week-form')}
