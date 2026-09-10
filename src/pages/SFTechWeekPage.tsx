@@ -8,6 +8,8 @@ import { SEOHead, areaServed } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
 import { TechWeekCountdown } from '@/components/techweek/TechWeekCountdown'
+import { TrustedBrands } from '@/components/TrustedBrands'
+
 import { TechWeekForm } from '@/components/techweek/TechWeekForm'
 import { useProjects, type Project } from '@/hooks/useProjects'
 import { techWeekPackages, SPONSOR_OPTION } from '@/lib/techWeek'
