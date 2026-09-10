@@ -1,70 +1,110 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useMarqueeScroll } from '@/hooks/useMarqueeScroll';
 import { useCountUp } from '@/hooks/useCountUp';
 import brandPacbio from '@/assets/brand-pacbio.svg';
-import brandCityline from '@/assets/brand-cityline.svg';
-import brandVisitBerkeley from '@/assets/brand-visit-berkeley.svg';
 import brandTurbopuffer from '@/assets/brand-turbopuffer.png';
+import glyphCoinbase from '@/assets/icons/coinbase.svg';
+import glyphStripe from '@/assets/icons/stripe.svg';
+import glyphGithub from '@/assets/icons/github.svg';
+import glyph1password from '@/assets/icons/1password.svg';
+import glyphCursor from '@/assets/icons/cursor.svg';
+import glyphModal from '@/assets/icons/modal.svg';
+import glyphBraintrust from '@/assets/icons/braintrust.svg';
 import '@/styles/marquee.css';
 
-type Brand = { name: string; logo?: string };
+type Brand = { name: string; wordmark?: string; glyph?: string };
+
+const MOBILE_SPEED = 24; // px per second
 
 export function TrustedBrands() {
   const isMobile = useIsMobile();
   const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' });
+  const trackRef = useRef<HTMLDivElement>(null);
 
   // Only use JS-based scroll on desktop (more reliable CSS animation on mobile)
   const {
     viewportRef,
     contentRef
   } = useMarqueeScroll({
-    speed: 36,
+    speed: 22,
     enabled: !isMobile
   });
 
+  // Mobile: derive the CSS animation duration from the measured track width
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track || !isMobile) return;
+
+    const apply = () => {
+      const half = track.scrollWidth / 2;
+      if (half > 0) {
+        track.style.setProperty('--marquee-duration', `${(half / MOBILE_SPEED).toFixed(2)}s`);
+      }
+    };
+
+    apply();
+    const observer = new ResizeObserver(apply);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
   const brands: Brand[] = [
-    { name: 'Coinbase' },
+    { name: 'Coinbase', glyph: glyphCoinbase },
     { name: 'Gourmet Provisions' },
-    { name: 'Stripe' },
-    { name: 'Cursor' },
-    { name: 'Modal' },
-    { name: 'Braintrust' },
+    { name: 'Stripe', glyph: glyphStripe },
+    { name: 'Cursor', glyph: glyphCursor },
+    { name: 'Modal', glyph: glyphModal },
+    { name: 'Braintrust', glyph: glyphBraintrust },
     { name: 'LlamaIndex' },
     { name: 'Browserbase' },
     { name: 'Parallel' },
-    { name: 'turbopuffer', logo: brandTurbopuffer },
-    { name: 'GitHub' },
-    { name: '1Password' },
+    { name: 'turbopuffer', wordmark: brandTurbopuffer },
+    { name: 'GitHub', glyph: glyphGithub },
+    { name: '1Password', glyph: glyph1password },
     { name: 'Immuta' },
     { name: 'Cohesity' },
     { name: 'ReliaQuest' },
     { name: 'Xsolla' },
     { name: 'Club Hex' },
     { name: 'Datahaiku' },
-    { name: 'PacBio', logo: brandPacbio },
-    { name: 'Cityline', logo: brandCityline },
-    { name: 'Visit Berkeley', logo: brandVisitBerkeley },
+    { name: 'PacBio', wordmark: brandPacbio },
   ];
 
-  const renderBrand = (brand: Brand, decorative: boolean) => (
-    <div className="marquee-item h-10 sm:h-12 lg:h-14">
-      {brand.logo ?
-      <img
-        src={brand.logo}
-        alt={decorative ? '' : `${brand.name} logo, a Where2Studios client`}
-        className="h-10 sm:h-12 lg:h-14 w-auto max-w-none"
-        style={{ filter: 'brightness(0) saturate(100%)' }}
-        draggable={false} /> :
+  const renderBrand = (brand: Brand, decorative: boolean) => {
+    const textClass =
+      'font-fredoka font-semibold text-xl sm:text-2xl text-m3-on-surface tracking-tight whitespace-nowrap leading-none';
 
-      <span
-        aria-hidden={decorative || undefined}
-        className="font-fredoka font-semibold text-2xl sm:text-3xl text-m3-on-surface tracking-tight whitespace-nowrap leading-none">
-          {brand.name}
-        </span>
-      }
-    </div>);
+    return (
+      <div className="marquee-item h-10 sm:h-12 flex items-center gap-3">
+        {brand.wordmark ?
+        <img
+          src={brand.wordmark}
+          alt={decorative ? '' : `${brand.name} logo, a Where2Studios client`}
+          className="h-7 sm:h-8 w-auto max-w-[170px] sm:max-w-[210px] object-contain"
+          style={{ filter: 'brightness(0) saturate(100%)' }}
+          draggable={false} /> :
+        brand.glyph ?
+        <>
+            <img
+            src={brand.glyph}
+            alt=""
+            aria-hidden="true"
+            className="h-6 sm:h-7 w-auto"
+            style={{ filter: 'brightness(0) saturate(100%)' }}
+            draggable={false} />
+            <span aria-hidden={decorative || undefined} className={textClass}>{brand.name}</span>
+          </> :
+
+        <span aria-hidden={decorative || undefined} className={textClass}>{brand.name}</span>
+        }
+      </div>);
+
+  };
+
+
 
 
   return (
@@ -87,7 +127,7 @@ export function TrustedBrands() {
           className={`marquee-viewport ${isMobile ? 'marquee-css-animated' : ''}`}
           ref={isMobile ? undefined : viewportRef}>
 
-          <div className={`marquee-track ${isMobile ? 'marquee-track-animated' : ''}`}>
+          <div className={`marquee-track ${isMobile ? 'marquee-track-animated' : ''}`} ref={trackRef}>
             {/* First set */}
             <div className="marquee-content" ref={isMobile ? undefined : contentRef}>
               {brands.map((brand) =>

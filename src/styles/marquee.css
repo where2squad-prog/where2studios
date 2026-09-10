@@ -87,7 +87,7 @@
 }
 
 .marquee-track-animated {
-  animation: marquee-scroll 20s linear infinite;
+  animation: marquee-scroll var(--marquee-duration, 90s) linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
