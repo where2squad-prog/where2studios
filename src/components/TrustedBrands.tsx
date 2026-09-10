@@ -6,11 +6,10 @@ import { useCountUp } from '@/hooks/useCountUp';
 import brandPacbio from '@/assets/brand-pacbio.svg';
 import brandCityline from '@/assets/brand-cityline.svg';
 import brandVisitBerkeley from '@/assets/brand-visit-berkeley.svg';
-import brandBackyardBayou from '@/assets/brand-backyard-bayou.svg';
-import brandFoodieland from '@/assets/brand-foodieland.svg';
-import brandHyphyBurger from '@/assets/brand-hyphy-burger.svg';
-import brandOhgane from '@/assets/brand-ohgane.svg';
+import brandTurbopuffer from '@/assets/brand-turbopuffer.png';
 import '@/styles/marquee.css';
+
+type Brand = { name: string; logo?: string };
 
 export function TrustedBrands() {
   const isMobile = useIsMobile();
@@ -25,24 +24,58 @@ export function TrustedBrands() {
     enabled: !isMobile
   });
 
-  const brands = [
-    { name: "PacBio", logo: brandPacbio },
-    { name: "Cityline", logo: brandCityline },
-    { name: "Visit Berkeley", logo: brandVisitBerkeley },
-    { name: "Backyard Bayou", logo: brandBackyardBayou },
-    { name: "Foodieland", logo: brandFoodieland },
-    { name: "Hyphy Burger", logo: brandHyphyBurger },
-    { name: "Ohgane", logo: brandOhgane },
+  const brands: Brand[] = [
+    { name: 'Coinbase' },
+    { name: 'Gourmet Provisions' },
+    { name: 'Stripe' },
+    { name: 'Cursor' },
+    { name: 'Modal' },
+    { name: 'Braintrust' },
+    { name: 'LlamaIndex' },
+    { name: 'Browserbase' },
+    { name: 'Parallel' },
+    { name: 'turbopuffer', logo: brandTurbopuffer },
+    { name: 'GitHub' },
+    { name: '1Password' },
+    { name: 'Immuta' },
+    { name: 'Cohesity' },
+    { name: 'ReliaQuest' },
+    { name: 'Xsolla' },
+    { name: 'Club Hex' },
+    { name: 'Datahaiku' },
+    { name: 'PacBio', logo: brandPacbio },
+    { name: 'Cityline', logo: brandCityline },
+    { name: 'Visit Berkeley', logo: brandVisitBerkeley },
   ];
+
+  const renderBrand = (brand: Brand, decorative: boolean) => (
+    <div className="marquee-item h-10 sm:h-12 lg:h-14">
+      {brand.logo ?
+      <img
+        src={brand.logo}
+        alt={decorative ? '' : `${brand.name} logo, a Where2Studios client`}
+        className="h-10 sm:h-12 lg:h-14 w-auto max-w-none"
+        style={{ filter: 'brightness(0) saturate(100%)' }}
+        draggable={false} /> :
+
+      <span
+        aria-hidden={decorative || undefined}
+        className="font-fredoka font-semibold text-2xl sm:text-3xl text-m3-on-surface tracking-tight whitespace-nowrap leading-none">
+          {brand.name}
+        </span>
+      }
+    </div>);
+
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
       {/* Title and subtitle */}
       <div className="text-center mb-8 sm:mb-10 px-4">
         <p className="text-m3-on-surface/50 text-xs font-semibold uppercase tracking-widest mb-2">
-          Trusted by
+          Worked with
         </p>
       </div>
+
       
       {/* Full-width seamless marquee */}
       <div className="marquee-container">
