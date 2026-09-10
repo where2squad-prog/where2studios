@@ -242,7 +242,10 @@ export default function SFTechWeekPage() {
         </section>
 
         {/* Proof */}
-        <section id="tech-week-proof" className="py-12 sm:py-20 bg-m3-background">
+        <section
+          id="tech-week-proof"
+          className="py-12 sm:py-20 bg-m3-background scroll-mt-[calc(var(--nav-h,80px)+16px)]"
+        >
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
               Tech events we have already covered
@@ -364,7 +367,10 @@ export default function SFTechWeekPage() {
         </section>
 
         {/* Form */}
-        <section id="tech-week-form" className="py-12 sm:py-16 bg-m3-surface-variant">
+        <section
+          id="tech-week-form"
+          className="py-12 sm:py-16 bg-m3-surface-variant scroll-mt-[calc(var(--nav-h,80px)+16px)]"
+        >
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface mb-6">
               Lock your Tech Week date
