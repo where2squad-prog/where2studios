@@ -127,7 +127,7 @@ export function TrustedBrands() {
           className={`marquee-viewport ${isMobile ? 'marquee-css-animated' : ''}`}
           ref={isMobile ? undefined : viewportRef}>
 
-          <div className={`marquee-track ${isMobile ? 'marquee-track-animated' : ''}`}>
+          <div className={`marquee-track ${isMobile ? 'marquee-track-animated' : ''}`} ref={trackRef}>
             {/* First set */}
             <div className="marquee-content" ref={isMobile ? undefined : contentRef}>
               {brands.map((brand) =>
