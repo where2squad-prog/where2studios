@@ -363,6 +363,23 @@ export default function SFTechWeekPage() {
               We run a limited number of crews per night from October 5 to 11. Once a night is full
               it is full.
             </p>
+            <div className="mt-6 space-y-2 text-sm text-m3-on-surface/70">
+              <p>
+                We work as an SF Tech Week videographer for side event hosts and for sponsors.
+                San Francisco Tech Week video production here means your panel, your mixer or your
+                founder dinner shot the way it happened.
+              </p>
+              <p>
+                Ask for a Tech Week event recap video and the teaser comes first. If you want a
+                Tech Week videographer San Francisco founders can brief in one message, send the
+                date.
+              </p>
+              <p>
+                We do side event video coverage all week, then work as an LA Tech Week videographer
+                from October 12 to 18. Outside Tech Week we are a tech conference videographer
+                San Francisco teams call back.
+              </p>
+            </div>
           </div>
         </section>
 
