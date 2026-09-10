@@ -6,6 +6,7 @@ import { AuthProvider } from './hooks/useAuth'
 import { BookingSheetProvider } from './contexts/BookingSheetContext'
 import { BookingFormSheet } from './components/booking/BookingFormSheet'
 import { CookieConsent } from './components/CookieConsent'
+import { Toaster } from './components/ui/sonner'
 import { queryClient } from './lib/queryClient'
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Outlet />
           <BookingFormSheet />
           <CookieConsent />
+          <Toaster />
         </BookingSheetProvider>
       </AuthProvider>
     </QueryClientProvider>

@@ -15,6 +15,7 @@ export function Footer() {
   ]
 
   const services = [
+    { label: 'SF Tech Week video coverage', href: '/sf-tech-week' },
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
     { label: 'Brand and Growth Strategy', href: '/services#strategy' },
     { label: 'High Impact Media Production', href: '/services#production' },
