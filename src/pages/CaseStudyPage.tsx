@@ -345,7 +345,7 @@ export default function CaseStudyPage() {
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <button
               onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-m3-on-surface/70 hover:text-m3-on-surface mb-6 transition-colors"
+              className="inline-flex items-center gap-2 min-h-11 text-m3-on-surface/70 hover:text-m3-on-surface mb-4 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-medium">Back to Work</span>

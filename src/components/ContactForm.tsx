@@ -213,7 +213,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
 
   return (
     <div className="m3-elevated-card p-5 sm:p-6">
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(false); }} className="space-y-4">
+      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(false); }} className="space-y-4" noValidate>
         {/* Honeypot */}
         <input
           type="text"
@@ -230,12 +230,12 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           <div>
             <label htmlFor="contact-name" className={labelClasses}>Name *</label>
             <input id="contact-name" type="text" name="name" required aria-required="true" value={formData.name} onChange={handleChange} className={inputClasses(!!errors.name)} placeholder="Your name" />
-            {errors.name && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
+            {errors.name && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>}
           </div>
           <div>
             <label htmlFor="contact-email" className={labelClasses}>Email *</label>
             <input id="contact-email" type="email" name="email" required aria-required="true" value={formData.email} onChange={handleChange} className={inputClasses(!!errors.email)} placeholder="you@company.com" />
-            {errors.email && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
+            {errors.email && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>}
           </div>
         </div>
 
@@ -273,7 +273,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               <option value="">Select</option>
               {growthGoals.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}
             </select>
-            {errors.growthGoal && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.growthGoal}</p>}
+            {errors.growthGoal && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.growthGoal}</p>}
           </div>
           <div>
             <label htmlFor="contact-service" className={labelClasses}>What do you need help with? *</label>
@@ -281,7 +281,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
               <option value="">Select</option>
               {serviceNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
             </select>
-            {errors.service && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>}
+            {errors.service && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>}
           </div>
         </div>
 
@@ -313,7 +313,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
             className={`${inputClasses(!!errors.message)} resize-none`}
             placeholder="What's working, what's not, what you want to improve"
           />
-          {errors.message && <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
+          {errors.message && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
         </div>
 
         {submitError && (

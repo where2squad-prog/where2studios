@@ -161,7 +161,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={isMobileMenuOpen}
-                className={`p-2 rounded-full ${textColor} hover:bg-m3-on-dark/10 transition-colors ${focusRing}`}
+                className={`min-w-11 min-h-11 flex items-center justify-center rounded-full ${textColor} hover:bg-m3-on-dark/10 transition-colors ${focusRing}`}
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -178,7 +178,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed inset-0 bg-m3-surface-dark/60 backdrop-blur-sm z-[115]"
+              className="md:hidden fixed inset-0 bg-m3-surface-dark/60 backdrop-blur-sm z-[105]"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -202,7 +202,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-label="Close menu"
-                    className={`p-2 rounded-full text-m3-on-dark hover:bg-m3-on-dark/10 ${focusRing}`}
+                    className={`min-w-11 min-h-11 flex items-center justify-center rounded-full text-m3-on-dark hover:bg-m3-on-dark/10 ${focusRing}`}
                   >
                     <X className="w-5 h-5" />
                   </button>

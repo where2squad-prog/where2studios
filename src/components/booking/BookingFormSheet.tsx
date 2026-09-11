@@ -91,17 +91,23 @@ export function BookingFormSheet() {
     }))
   }, [isOpen, prefill])
 
-  // Prevent body scroll when sheet is open
+  // Prevent body scroll when sheet is open, and close on Escape
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) closeSheet()
+    }
+    document.addEventListener('keydown', onKeyDown)
     return () => {
       document.body.style.overflow = ''
+      document.removeEventListener('keydown', onKeyDown)
     }
-  }, [isOpen])
+  }, [isOpen, closeSheet])
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -201,7 +207,7 @@ export function BookingFormSheet() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 bg-black/60 z-[120]"
+            className="fixed inset-0 bg-black/60 z-[140]"
             onClick={handleClose}
           />
 
@@ -211,7 +217,7 @@ export function BookingFormSheet() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 350 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-[120] shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-m3-surface-variant z-[145] shadow-2xl flex flex-col"
           >
             {/* Header */}
             <div className="flex-shrink-0 bg-m3-surface-variant px-5 pt-5 pb-4 relative">
@@ -291,7 +297,7 @@ export function BookingFormSheet() {
                         placeholder="Your name"
                       />
                       {errors.name && (
-                        <p className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>
+                        <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.name}</p>
                       )}
                     </div>
                     <div>
@@ -310,7 +316,7 @@ export function BookingFormSheet() {
                         placeholder="you@company.com"
                       />
                       {errors.email && (
-                        <p className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>
+                        <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.email}</p>
                       )}
                     </div>
                   </div>
@@ -389,7 +395,7 @@ export function BookingFormSheet() {
                         <SelectArrow />
                       </div>
                       {errors.conference && (
-                        <p className="text-m3-secondary text-[10px] mt-0.5">{errors.conference}</p>
+                        <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.conference}</p>
                       )}
                     </div>
                     <div>
@@ -433,7 +439,7 @@ export function BookingFormSheet() {
                       <SelectArrow />
                     </div>
                     {errors.running && (
-                      <p className="text-m3-secondary text-[10px] mt-0.5">{errors.running}</p>
+                      <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.running}</p>
                     )}
                   </div>
 
@@ -462,7 +468,7 @@ export function BookingFormSheet() {
                       <SelectArrow />
                     </div>
                     {errors.service && (
-                      <p className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>
+                      <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.service}</p>
                     )}
                   </div>
 
@@ -499,7 +505,7 @@ export function BookingFormSheet() {
                       placeholder="Venue, run of show, deliverables"
                     />
                     {errors.message && (
-                      <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>
+                      <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>
                     )}
                   </div>
 

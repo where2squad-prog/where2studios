@@ -249,7 +249,7 @@ function WorkCarousel() {
             aria-label={`Go to reel ${i + 1}`}
             aria-current={selected === i}
             onClick={() => api?.scrollTo(i)}
-            className={`h-2 rounded-full transition-all ${focusRing} ${
+            className={`h-2 my-3 box-content py-4 px-4 bg-clip-content rounded-full transition-all ${focusRing} ${
               selected === i ? 'w-6 bg-m3-primary' : 'w-2 bg-m3-on-surface/25'
             }`}
           />

@@ -64,20 +64,19 @@ function revealAnimatedContentWithoutJs(html: string) {
 }
 
 // The data the page was prerendered with travels to the browser, so the first
-// client render matches the static HTML instead of a loading skeleton.
-function inlinePrerenderedData(route: string, html: string) {
-  const store = (globalThis as Record<string, unknown>).__SSG_QUERY_STATE__ as
-    | Record<string, string>
-    | undefined;
-  const key = route.startsWith("/") ? route : `/${route}`;
-  const state = store?.[key] ?? store?.[key.replace(/\/$/, "") || "/"];
-  if (typeof state !== "string") return html;
-  const payload = JSON.stringify(state).replace(/</g, "\\u003c");
+// client render matches the static HTML instead of a loading skeleton. The
+// state comes from the per route render context, which is isolated even when
+// several routes render concurrently.
+function inlinePrerenderedData(html: string, appCtx?: { initialState?: unknown }) {
+  const state = appCtx?.initialState;
+  if (!state || typeof state !== "object" || Object.keys(state).length === 0) return html;
+  const payload = JSON.stringify(JSON.stringify(state)).replace(/</g, "\\u003c");
   return html.replace(
     "</head>",
     `<script>window.__INITIAL_STATE__=${payload}</script></head>`,
   );
 }
+
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -100,7 +99,8 @@ export default defineConfig(({ mode }) => ({
     concurrency: 4,
     beastiesOptions: false,
     onBeforePageRender: (_route: string, indexHTML: string) => stripDuplicateTemplateTags(indexHTML),
-    onPageRendered: (route: string, html: string) =>
-      inlinePrerenderedData(route, revealAnimatedContentWithoutJs(html)),
+    onPageRendered: (_route: string, html: string, appCtx?: { initialState?: unknown }) =>
+      inlinePrerenderedData(revealAnimatedContentWithoutJs(html), appCtx),
+
   },
 }));

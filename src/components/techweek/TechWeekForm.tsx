@@ -114,7 +114,7 @@ export function TechWeekForm({ preselected, onPreselect }: TechWeekFormProps) {
             value={values.name}
             onChange={(e) => set('name', e.target.value)}
           />
-          {errors.name && <p className="text-xs text-m3-secondary mt-1">{errors.name}</p>}
+          {errors.name && <p role="alert" className="text-xs text-m3-secondary mt-1">{errors.name}</p>}
         </div>
         <div>
           <label className={labelClass} htmlFor="tw-email">
@@ -127,7 +127,7 @@ export function TechWeekForm({ preselected, onPreselect }: TechWeekFormProps) {
             value={values.email}
             onChange={(e) => set('email', e.target.value)}
           />
-          {errors.email && <p className="text-xs text-m3-secondary mt-1">{errors.email}</p>}
+          {errors.email && <p role="alert" className="text-xs text-m3-secondary mt-1">{errors.email}</p>}
         </div>
       </div>
 
@@ -141,7 +141,7 @@ export function TechWeekForm({ preselected, onPreselect }: TechWeekFormProps) {
           value={values.company}
           onChange={(e) => set('company', e.target.value)}
         />
-        {errors.company && <p className="text-xs text-m3-secondary mt-1">{errors.company}</p>}
+        {errors.company && <p role="alert" className="text-xs text-m3-secondary mt-1">{errors.company}</p>}
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4">
@@ -156,7 +156,7 @@ export function TechWeekForm({ preselected, onPreselect }: TechWeekFormProps) {
             value={values.eventDates}
             onChange={(e) => set('eventDates', e.target.value)}
           />
-          {errors.eventDates && <p className="text-xs text-m3-secondary mt-1">{errors.eventDates}</p>}
+          {errors.eventDates && <p role="alert" className="text-xs text-m3-secondary mt-1">{errors.eventDates}</p>}
         </div>
         <div>
           <label className={labelClass} htmlFor="tw-venue">
@@ -169,7 +169,7 @@ export function TechWeekForm({ preselected, onPreselect }: TechWeekFormProps) {
             value={values.venue}
             onChange={(e) => set('venue', e.target.value)}
           />
-          {errors.venue && <p className="text-xs text-m3-secondary mt-1">{errors.venue}</p>}
+          {errors.venue && <p role="alert" className="text-xs text-m3-secondary mt-1">{errors.venue}</p>}
         </div>
       </div>
 
@@ -190,7 +190,7 @@ export function TechWeekForm({ preselected, onPreselect }: TechWeekFormProps) {
             </option>
           ))}
         </select>
-        {errors.need && <p className="text-xs text-m3-secondary mt-1">{errors.need}</p>}
+        {errors.need && <p role="alert" className="text-xs text-m3-secondary mt-1">{errors.need}</p>}
       </div>
 
       <button

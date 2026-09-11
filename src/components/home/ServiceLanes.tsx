@@ -90,7 +90,7 @@ export function ServiceLanes() {
                 onClick={() => api?.scrollTo(index)}
                 aria-label={`Go to item ${index + 1} of ${deliverables.length}`}
                 aria-current={activeIndex === index ? 'true' : undefined}
-                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 ${
+                className={`h-2 my-3 box-content py-4 px-4 bg-clip-content rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 ${
                   activeIndex === index ? 'w-6 bg-m3-primary' : 'w-2 bg-m3-on-surface/20'
                 }`}
               />
