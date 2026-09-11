@@ -438,6 +438,8 @@
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+  /* clip beats hidden here: it stops sideways drift without creating a scroll container */
+  overflow-x: clip;
 }
 
 /* Performance optimizations */
