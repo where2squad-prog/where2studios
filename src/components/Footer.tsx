@@ -12,6 +12,7 @@ export function Footer() {
 
   const links = [
     { label: 'Work', href: '/work' },
+    { label: 'Convention calendar', href: '/conventions' },
     { label: 'Services', href: '/services' },
     { label: 'About', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },

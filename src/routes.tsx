@@ -18,6 +18,8 @@ import TermsOfServicePage from './pages/TermsOfServicePage'
 import Where2BoysPage from './pages/Where2BoysPage'
 import AccessibilityPage from './pages/AccessibilityPage'
 import SocialsPage from './pages/SocialsPage'
+import ConventionsPage from './pages/ConventionsPage'
+import ConventionPage, { getConventionStaticPaths } from './pages/ConventionPage'
 import { getPublishedCaseStudyPaths } from './lib/prerenderData'
 
 export const routes: RouteRecord[] = [
@@ -33,6 +35,12 @@ export const routes: RouteRecord[] = [
         path: 'work/:slug',
         element: <CaseStudyPage />,
         getStaticPaths: getPublishedCaseStudyPaths,
+      },
+      { path: 'conventions', element: <ConventionsPage /> },
+      {
+        path: 'conventions/:slug',
+        element: <ConventionPage />,
+        getStaticPaths: getConventionStaticPaths,
       },
       { path: 'services', element: <ServicesPage /> },
       { path: 'contact', element: <ContactPage /> },
