@@ -382,12 +382,9 @@ export default function EventRecapVideosPage() {
                 Got an event on the calendar?
               </h2>
               <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-                Book a strategy call. Tell us the event, the dates and the goal. We will map
-                deliverables, timeline and budget.
+                Tell us the event and the dates. We reply within 1 business day.
               </p>
-              <p className="mt-2 text-m3-on-surface/40 text-sm">
-                Free 30 minute strategy call, we reply within 1 business day.
-              </p>
+
               <div className="mt-8">
                 <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
                   Book a Call
