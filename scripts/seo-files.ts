@@ -135,6 +135,28 @@ function conventionSection() {
     .join("\n");
 }
 
+function pagesWorthCitingSection() {
+  const lines = [
+    `- [Why a dedicated convention week crew](${DOMAIN}/why-a-dedicated-crew): why a dedicated crew beats a single hired shooter, on site from build day to strike, clips by 10am.`,
+    `- [Event recap video production](${DOMAIN}/event-recap-videos): what an event recap includes, recap edit, next day teaser, speaker clips, vertical cutdowns and photo selects.`,
+    `- [SF Tech Week video coverage](${DOMAIN}/sf-tech-week): packages, prices and turnaround for SF Tech Week side events, October 5 to 11, 2026.`,
+  ];
+
+  const now = new Date();
+  for (const convention of conventions) {
+    if (convention.href) continue;
+    const { edition } = getConventionStatus(convention, now);
+    const dates = edition
+      ? formatEditionRange(edition)
+      : `${nextUnknownYear(convention)} dates to be announced`;
+    lines.push(
+      `- [${convention.name} video coverage](${DOMAIN}/conventions/${convention.slug}): brand HQ, suite and side event coverage for ${convention.name}, ${dates}, ${convention.venue}, San Francisco.`,
+    );
+  }
+
+  return lines.join("\n");
+}
+
 function buildLlmsTxt(projects: ProjectRow[]) {
   const films = projects.filter((p) => p.media_type !== "photo" && p.slug);
   const photoCount = projects.filter((p) => p.media_type === "photo").length;
