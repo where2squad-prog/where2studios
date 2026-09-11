@@ -123,10 +123,10 @@ const pageSchema = {
   '@graph': [
     {
       '@type': 'LocalBusiness',
-      '@id': 'https://where2studios.com/socials#business',
+      '@id': 'https://where2studios.com/backyard-bayou-socials#business',
       name: 'Where2Socials',
       alternateName: 'Where2Studios Social',
-      url: 'https://where2studios.com/socials',
+      url: 'https://where2studios.com/backyard-bayou-socials',
       image: 'https://where2studios.com/og-image.png',
       description: PAGE_DESCRIPTION,
       parentOrganization: {
@@ -159,7 +159,7 @@ const pageSchema = {
       '@type': 'Service',
       name: 'Social media management',
       serviceType: 'Social media marketing',
-      provider: { '@id': 'https://where2studios.com/socials#business' },
+      provider: { '@id': 'https://where2studios.com/backyard-bayou-socials#business' },
       areaServed,
       offers: {
         '@type': 'Offer',
@@ -185,7 +185,7 @@ const pageSchema = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://where2studios.com' },
-        { '@type': 'ListItem', position: 2, name: 'Socials', item: 'https://where2studios.com/socials' },
+        { '@type': 'ListItem', position: 2, name: 'Socials', item: 'https://where2studios.com/backyard-bayou-socials' },
       ],
     },
   ],
@@ -275,7 +275,7 @@ export default function SocialsPage() {
       <SEOHead
         title="Social Media Marketing in Union City, CA | Where2Socials by Where2Studios"
         description={PAGE_DESCRIPTION}
-        url="https://where2studios.com/socials"
+        url="https://where2studios.com/backyard-bayou-socials"
         image="https://where2studios.com/og-image.png"
         schema={pageSchema}
       />
