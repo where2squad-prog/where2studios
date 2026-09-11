@@ -74,7 +74,7 @@ export default defineConfig(({ mode }) => ({
   define: {
     __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
   },
-  plugins: [helmetCjsInterop, react(), mode === "development" && componentTagger(), mcpPlugin()].filter(Boolean),
+  plugins: [helmetCjsInterop, react(), mode === "development" && componentTagger(), mcpPlugin(), seoFilesPlugin()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
