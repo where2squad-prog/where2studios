@@ -231,28 +231,13 @@ export default function SFTechWeekPage() {
           <TrustedBrands />
         </div>
 
-        {/* Quotable answer */}
-
-        <section className="py-10 sm:py-12 bg-m3-background">
-          <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
-            <div className="m3-outlined-card p-5 sm:p-6">
-              <p className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed">
-                {QUOTABLE}
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Why next morning matters */}
         <section className="py-10 sm:py-14 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface">
               A recap that lands three weeks later lands in a dead feed
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-m3-on-surface/75">
-              Every October the city fills up with side events and everyone needs the same thing, a
-              videographer who can turn it around fast.
-            </p>
+
             <ul className="mt-6 space-y-4">
               {whyPoints.map((point) => (
                 <li
