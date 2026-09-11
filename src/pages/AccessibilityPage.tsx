@@ -10,7 +10,7 @@ export default function AccessibilityPage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Accessibility | Where2Studios"
+        title="Accessibility Statement and Conformance"
         description="Where2Studios is committed to digital accessibility. Read our accessibility statement, conformance level, and how to report issues."
         url="https://where2studios.com/accessibility"
         robots="noindex, follow"

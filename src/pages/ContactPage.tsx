@@ -13,7 +13,7 @@ export default function ContactPage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Contact Us | Where2Studios"
+        title="Contact Our San Francisco Video Crew"
         description="For press, partnerships, or general questions. Hiring inquiries? Use Book a Call."
         schema={organizationSchema}
       />

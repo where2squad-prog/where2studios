@@ -5,7 +5,7 @@ export default function TermsOfServicePage() {
   return (
     <PageLayout>
       <SEOHead
-        title="Terms of Service | Where2Studios"
+        title="Terms of Service and Site Use"
         description="The terms that apply when you use the Where2Studios website and our event video production and social media services."
         url="https://where2studios.com/terms"
         robots="noindex, follow"

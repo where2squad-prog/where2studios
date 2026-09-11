@@ -10,7 +10,7 @@ export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-m3-surface-dark flex items-center justify-center px-4">
       <SEOHead
-        title="Page not found | Where2Studios"
+        title="Page Not Found on Where2Studios"
         description="This page does not exist. Head back to Where2Studios for event recap video production in the San Francisco Bay Area."
         robots="noindex, follow"
       />
