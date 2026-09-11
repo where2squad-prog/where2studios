@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowRight, Play, ArrowUpDown, Grid3X3 } from 'lucide-react'
@@ -125,8 +125,13 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
 export default function WorkPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const viewParam = searchParams.get('view')
-  const activeCategory =
+  // The static HTML is built without a view param, so the first client render
+  // ignores it too and the filter is applied straight after mount.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  const requested =
     viewParam && [...CATEGORIES, 'photos'].includes(viewParam) ? viewParam : 'all'
+  const activeCategory = mounted ? requested : 'all'
   const [sortBy, setSortBy] = useState<SortOption>('featured')
 
   const setActiveCategory = (category: string) => {
