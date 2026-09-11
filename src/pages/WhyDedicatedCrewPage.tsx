@@ -131,17 +131,10 @@ export default function WhyDedicatedCrewPage() {
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-surface mt-3">
               You do not book a videographer for convention week. You deploy a content crew.
             </h1>
-            <p className="mt-5 text-base sm:text-lg text-m3-on-surface/75">
-              During a convention week a brand HQ runs exec meetings in the morning, product demos at
-              noon and a reception at night. A single hired shooter who shows up for the party gets
-              you one deliverable three weeks later. A dedicated crew is on site from build day to
-              strike, cutting while the week is still running.
+            <p id="answer" className="mt-5 text-base sm:text-lg text-m3-on-surface/75">
+              {HERO_ANSWER}
             </p>
-            <div className="m3-outlined-card p-5 sm:p-6 mt-8">
-              <p className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed">
-                {QUOTABLE}
-              </p>
-            </div>
+
           </div>
         </section>
 
