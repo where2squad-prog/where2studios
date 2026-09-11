@@ -5,6 +5,7 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { ConversionHero } from '@/components/home/ConversionHero'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { TechWeekHomeBlock } from '@/components/techweek/TechWeekCallout'
+import { UpcomingConventions } from '@/components/home/UpcomingConventions'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
 import { FromTheFloor } from '@/components/home/FromTheFloor'
@@ -49,6 +50,7 @@ export default function HomePage() {
       <main id="main-content" tabIndex={-1} className="relative outline-none">
         <ConversionHero />
         <TechWeekHomeBlock />
+        <UpcomingConventions />
         <TrustedBrands />
         <ServiceLanes />
         <FeaturedCaseStudies />

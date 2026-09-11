@@ -16,28 +16,12 @@ Where2Studios is a video and photo production team based in Union City, Californ
 ## Work
 
 - [Portfolio](https://where2studios.com/work)
-- [LinkedIn Feature](https://where2studios.com/work/linkedin-feature)
-- [Faculty Interview Recap](https://where2studios.com/work/faculty-interview-recap)
-- [Cloudflare Experience Hub at RSA Conference 2025, The Howard](https://where2studios.com/work/cloudflare-rsa-conference-2025)
-- [Student Interview Recap](https://where2studios.com/work/student-interview-recap)
 - [Google Pixel House at NBA All-Star Weekend 2025, The Howard and Dimes Gallery](https://where2studios.com/work/google-pixel-house-nba-all-star-2025)
-- [PacBio Discoveries](https://where2studios.com/work/pacbio)
+- [The Agent Open San Francisco, The Howard](https://where2studios.com/work/the-agent-open-san-francisco)
+- [Cloudflare Experience Hub at RSA Conference 2025, The Howard](https://where2studios.com/work/cloudflare-rsa-conference-2025)
 - [Immuta Lounge at Snowflake Summit 2025, The Howard](https://where2studios.com/work/immuta-snowflake-summit-2025)
-- [Franco Finn TV Show Trailer](https://where2studios.com/work/franco-finn-tv-show-trailer)
 - [OwnBackup Brand HQ at Dreamforce 2024, The Howard](https://where2studios.com/work/ownbackup-dreamforce-2024)
 - [Onchain Summit 2024, The Howard and Dimes Gallery](https://where2studios.com/work/onchain-summit-2024)
-- [Passionfroot Tech Event Recap](https://where2studios.com/work/passionfroot-tech-event-recap)
-- [Claroty Hospitality Suite at RSA Conference 2024, B Restaurant](https://where2studios.com/work/claroty-rsa-conference-2024)
-- [Claroty Podcast Day at RSA Conference 2024, B Restaurant](https://where2studios.com/work/claroty-podcast-day-rsa-2024)
-- [Kiterocket Hospitality Suite at SEMICON West 2023, The Veranda](https://where2studios.com/work/kiterocket-semicon-west-2023)
-- [Corporate/Non Profit Interview, Lily Version 1 (School 1)](https://where2studios.com/work/corporate-non-profit-interview-lily-version-1-school-1-)
-- [Corporate/Non Profit Interview, Version 2 (School 2)](https://where2studios.com/work/corporate-non-profit-interview-version-2-school-2-)
-- [The Agent Open San Francisco, The Howard](https://where2studios.com/work/the-agent-open-san-francisco)
-- [RSA Conference 2025 Convention Week at B Restaurant](https://where2studios.com/work/rsa-conference-2025-b-restaurant)
-- [Snowflake Summit 2025 Convention Week at B Restaurant](https://where2studios.com/work/snowflake-summit-2025-b-restaurant)
-- [OwnBackup at Dreamforce 2023, San Francisco](https://where2studios.com/work/ownbackup-dreamforce-2023)
-- [The Howard, Event Venue Film Near Moscone Center](https://where2studios.com/work/the-howard-venue-film)
-- [The Veranda, Event Venue Film, San Francisco](https://where2studios.com/work/the-veranda-venue-film)
 - [Dataiku Brand HQ Build Montage](https://where2studios.com/work/dataiku-brand-hq-build-montage)
 - [GitHub Brand HQ Build Montage](https://where2studios.com/work/github-brand-hq-build-montage)
 - [Hex Brand HQ Build Montage](https://where2studios.com/work/hex-brand-hq-build-montage)
@@ -46,7 +30,33 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [ReliaQuest Brand HQ Build Montage](https://where2studios.com/work/reliaquest-brand-hq-build-montage)
 - [Xsolla Brand HQ Build Montage](https://where2studios.com/work/xsolla-brand-hq-build-montage)
 - [phData & Omni Brand HQ Build Montage](https://where2studios.com/work/phdata-omni-brand-hq-build-montage)
+- [Claroty Hospitality Suite at RSA Conference 2024, B Restaurant](https://where2studios.com/work/claroty-rsa-conference-2024)
+- [Claroty Podcast Day at RSA Conference 2024, B Restaurant](https://where2studios.com/work/claroty-podcast-day-rsa-2024)
+- [Kiterocket Hospitality Suite at SEMICON West 2023, The Veranda](https://where2studios.com/work/kiterocket-semicon-west-2023)
+- [RSA Conference 2025 Convention Week at B Restaurant](https://where2studios.com/work/rsa-conference-2025-b-restaurant)
+- [Snowflake Summit 2025 Convention Week at B Restaurant](https://where2studios.com/work/snowflake-summit-2025-b-restaurant)
+- [OwnBackup at Dreamforce 2023, San Francisco](https://where2studios.com/work/ownbackup-dreamforce-2023)
+- [The Howard, Event Venue Film Near Moscone Center](https://where2studios.com/work/the-howard-venue-film)
+- [The Veranda, Event Venue Film, San Francisco](https://where2studios.com/work/the-veranda-venue-film)
+- [Passionfroot Tech Event Recap](https://where2studios.com/work/passionfroot-tech-event-recap)
+- [PacBio Discoveries](https://where2studios.com/work/pacbio)
+- [Franco Finn TV Show Trailer](https://where2studios.com/work/franco-finn-tv-show-trailer)
+- [Faculty Interview Recap](https://where2studios.com/work/faculty-interview-recap)
+- [Student Interview Recap](https://where2studios.com/work/student-interview-recap)
+- [Corporate/Non Profit Interview, Lily Version 1 (School 1)](https://where2studios.com/work/corporate-non-profit-interview-lily-version-1-school-1-)
+- [Corporate/Non Profit Interview, Version 2 (School 2)](https://where2studios.com/work/corporate-non-profit-interview-version-2-school-2-)
+- [LinkedIn Feature](https://where2studios.com/work/linkedin-feature)
 - Event photography: 94 published photos, see https://where2studios.com/work?view=photos
+
+## San Francisco convention week calendar
+
+- [Dreamforce](https://where2studios.com/conventions/dreamforce): September 15 to 17, 2026. Moscone North, South and West, San Francisco. Organizer: Salesforce.
+- [RSAC Conference](https://where2studios.com/conventions/rsac): April 5 to 8, 2027. Moscone Center, San Francisco. Organizer: RSA Conference.
+- [Snowflake Summit](https://where2studios.com/conventions/snowflake-summit): June 7 to 10, 2027. Moscone Center, San Francisco. Organizer: Snowflake.
+- [Data + AI Summit](https://where2studios.com/conventions/data-ai-summit): June 21 to 24, 2027. Moscone North, West and South, San Francisco. Organizer: Databricks.
+- [TechCrunch Disrupt](https://where2studios.com/conventions/techcrunch-disrupt): October 13 to 15, 2026. Moscone West, San Francisco. Organizer: TechCrunch.
+- [GDC Festival of Gaming](https://where2studios.com/conventions/gdc): March 1 to 5, 2027. Moscone Center, San Francisco. Organizer: Informa.
+- [SF Tech Week](https://where2studios.com/sf-tech-week): October 5 to 11, 2026. citywide side events, San Francisco. Organizer: a16z.
 
 ## About
 

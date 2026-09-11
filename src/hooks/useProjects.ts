@@ -10,6 +10,7 @@ export interface Project {
   thumbnail_url: string | null
   result: string | null
   description: string | null
+  client_name?: string | null
   featured: boolean
   display_order: number
   show_on_main_site?: boolean

@@ -2,6 +2,13 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 import { loadEnv, type Plugin } from "vite";
 import { getTechWeekPhase } from "../src/lib/techWeek";
+import {
+  conventions,
+  conventionHref,
+  formatEditionRange,
+  getConventionStatus,
+  nextUnknownYear,
+} from "../src/lib/conventions";
 
 const DOMAIN = "https://where2studios.com";
 
@@ -22,6 +29,7 @@ const STATIC_ROUTES: { path: string; priority: string; changefreq: string; dated
   { path: "/event-recap-videos", priority: "0.9", changefreq: "monthly" },
   { path: "/services", priority: "0.8", changefreq: "monthly" },
   { path: "/work", priority: "0.8", changefreq: "weekly", dated: true },
+  { path: "/conventions", priority: "0.9", changefreq: "weekly", dated: true },
   { path: "/who-we-are", priority: "0.7", changefreq: "monthly" },
   { path: "/socials", priority: "0.9", changefreq: "monthly" },
   { path: "/where2boys", priority: "0.8", changefreq: "monthly" },
@@ -74,6 +82,14 @@ function buildSitemap(projects: ProjectRow[], buildDate: string) {
     );
   }
 
+  lines.push("", "  <!-- Convention week pages -->");
+  for (const convention of conventions) {
+    if (convention.href) continue;
+    lines.push(
+      `  <url><loc>${DOMAIN}/conventions/${convention.slug}</loc><lastmod>${buildDate}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq></url>`,
+    );
+  }
+
   lines.push("", "  <!-- Legal -->");
   for (const legal of LEGAL_ROUTES) {
     lines.push(
@@ -105,6 +121,19 @@ ${DOMAIN}/sf-tech-week
 `;
 }
 
+function conventionSection() {
+  const now = new Date();
+  return conventions
+    .map((convention) => {
+      const { edition } = getConventionStatus(convention, now);
+      const dates = edition
+        ? formatEditionRange(edition)
+        : `${nextUnknownYear(convention)} dates to be announced`;
+      return `- [${convention.name}](${DOMAIN}${conventionHref(convention)}): ${dates}. ${convention.venue}, San Francisco. Organizer: ${convention.organizer}.`;
+    })
+    .join("\n");
+}
+
 function buildLlmsTxt(projects: ProjectRow[]) {
   const films = projects.filter((p) => p.media_type !== "photo" && p.slug);
   const photoCount = projects.filter((p) => p.media_type === "photo").length;
@@ -133,6 +162,10 @@ Where2Studios is a video and photo production team based in Union City, Californ
 ## Work
 
 ${workList}
+
+## San Francisco convention week calendar
+
+${conventionSection()}
 
 ## About
 
