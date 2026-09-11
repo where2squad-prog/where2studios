@@ -30,13 +30,8 @@ export const createRoot = ViteReactSSG(
         shouldDehydrateQuery: (query) =>
           query.queryKey[0] === 'case-study' ? query.queryKey[1] === slug : true,
       })
-      // The build reads this in onPageRendered and writes it into the HTML.
-      const store = ((globalThis as Record<string, unknown>).__SSG_QUERY_STATE__ ??= {}) as Record<
-        string,
-        string
-      >
-      store[route] = JSON.stringify({ reactQuery: initialState.reactQuery })
       return
+
     }
 
     // The data that produced the static HTML, so the first client render is

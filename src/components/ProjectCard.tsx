@@ -26,9 +26,23 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05 }}
-      className="group cursor-pointer active:scale-95 transition-transform"
+      className="group cursor-pointer active:scale-95 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary rounded-2xl"
       onClick={handleClick}
+      {...(onClick
+        ? {
+            role: 'button',
+            tabIndex: 0,
+            'aria-label': `Play ${project.title}`,
+            onKeyDown: (event: React.KeyboardEvent) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                handleClick()
+              }
+            },
+          }
+        : {})}
     >
+
       <div className={`m3-elevated-card overflow-hidden ${isHorizontal ? 'aspect-video' : 'aspect-[9/16]'}`}>
         <div className="relative w-full h-full">
           <img

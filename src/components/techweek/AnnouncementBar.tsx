@@ -108,7 +108,7 @@ export function AnnouncementBar() {
       <button
         onClick={dismiss}
         aria-label="Dismiss notice"
-        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full hover:bg-m3-on-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-on-primary"
+        className="absolute right-2 top-1/2 -translate-y-1/2 min-w-10 min-h-10 flex items-center justify-center rounded-full hover:bg-m3-on-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-on-primary"
       >
         <X className="w-4 h-4" />
       </button>
