@@ -12,6 +12,7 @@ export interface CaseStudy {
   description: string | null
   client_name: string | null
   location: string | null
+  convention_slug?: string | null
   services: string[] | null
   challenge: string | null
   approach: string | null

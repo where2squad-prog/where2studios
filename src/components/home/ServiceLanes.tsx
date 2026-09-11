@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   Carousel,
@@ -52,6 +54,13 @@ export function ServiceLanes() {
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
             What we do
           </h2>
+          <Link
+            to="/why-a-dedicated-crew"
+            className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm mt-3"
+          >
+            Why a dedicated crew
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
 
         {/* Mobile: swipe carousel */}

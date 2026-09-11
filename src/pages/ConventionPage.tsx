@@ -91,6 +91,12 @@ function ConventionContent({ convention }: { convention: Convention }) {
     return joinNames([...new Set(names)])
   }, [proof])
 
+  /** How many published projects carry this convention slug, used for the extra work link. */
+  const taggedCount = useMemo(
+    () => (projects || []).filter((p) => p.convention_slug === convention.slug).length,
+    [projects, convention.slug]
+  )
+
   const tbaYear = nextUnknownYear(convention)
   const year = edition?.year ?? tbaYear
   const dateLine = edition ? formatEditionRange(edition) : null
@@ -282,7 +288,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
                 />
               ))}
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
               <Link
                 to="/work"
                 className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm"
@@ -290,6 +296,15 @@ function ConventionContent({ convention }: { convention: Convention }) {
                 See all our work
                 <ArrowRight className="w-4 h-4" />
               </Link>
+              {taggedCount > proof.length && (
+                <Link
+                  to="/work?category=convention-week"
+                  className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm"
+                >
+                  All {convention.name} work
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
             </div>
           </div>
         </section>

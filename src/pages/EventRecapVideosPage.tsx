@@ -136,7 +136,7 @@ function EventProjectCard({ project, index }: { project: CaseStudy; index: numbe
             <p className="text-sm text-m3-on-surface/60 line-clamp-2 mb-2">{project.result}</p>
           )}
           <div className="flex items-center gap-1 text-m3-primary font-medium text-sm group-hover:gap-2 transition-all">
-            See the plan
+            Watch the film
             <ArrowRight className="w-3 h-3" />
           </div>
         </div>

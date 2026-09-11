@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { hashFile } from '@/lib/sha256'
+import { conventions } from '@/lib/conventions'
 import {
   UPLOAD_ACCEPT,
   UPLOAD_CATEGORIES,
@@ -487,6 +488,7 @@ function UploadRow({
   const [title, setTitle] = useState(project.title)
   const [clientName, setClientName] = useState(project.client_name ?? '')
   const [category, setCategory] = useState(project.category)
+  const [conventionSlug, setConventionSlug] = useState(project.convention_slug ?? 'none')
   const [published, setPublished] = useState(project.published)
   const [onMainSite, setOnMainSite] = useState(project.show_on_main_site)
   const [featured, setFeatured] = useState(project.featured)
@@ -530,6 +532,21 @@ function UploadRow({
             </SelectContent>
           </Select>
 
+          <Select value={conventionSlug} onValueChange={setConventionSlug}>
+            <SelectTrigger>
+              <SelectValue placeholder="Convention" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">No convention</SelectItem>
+              {conventions.map((c) => (
+                <SelectItem key={c.slug} value={c.slug}>
+                  {c.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+
           <div className="flex flex-wrap items-center gap-4 text-sm text-m3-on-dark/80">
             <label className="flex items-center gap-2">
               <Switch checked={published} onCheckedChange={setPublished} />
@@ -554,6 +571,7 @@ function UploadRow({
                 title,
                 client_name: clientName || null,
                 category,
+                convention_slug: conventionSlug === 'none' ? null : conventionSlug,
                 published,
                 show_on_main_site: onMainSite,
                 featured,

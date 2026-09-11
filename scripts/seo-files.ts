@@ -28,6 +28,7 @@ const STATIC_ROUTES: { path: string; priority: string; changefreq: string; dated
   { path: "/sf-tech-week", priority: "0.9", changefreq: "daily", dated: true },
   { path: "/event-recap-videos", priority: "0.9", changefreq: "monthly" },
   { path: "/services", priority: "0.8", changefreq: "monthly" },
+  { path: "/why-a-dedicated-crew", priority: "0.7", changefreq: "monthly" },
   { path: "/work", priority: "0.8", changefreq: "weekly", dated: true },
   { path: "/conventions", priority: "0.9", changefreq: "weekly", dated: true },
   { path: "/who-we-are", priority: "0.7", changefreq: "monthly" },
@@ -157,6 +158,7 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Speaker and panel clips](${DOMAIN}/event-recap-videos): standalone clips of talks and panels.
 - [Brand activation films](${DOMAIN}/services): launch and activation coverage, plus photography.
 - [All services](${DOMAIN}/services)
+- [Why a dedicated convention week crew](${DOMAIN}/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
 - [Social media content and management](${DOMAIN}/socials)
 
 ## Work

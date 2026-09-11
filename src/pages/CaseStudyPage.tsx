@@ -14,6 +14,7 @@ import { isUploadedVideo } from '@/lib/portfolioMedia'
 import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
+import { conventions, conventionHref } from '@/lib/conventions'
 
 const CATEGORY_LABELS: Record<string, string> = {
   'convention-week': 'Convention Week HQ',
@@ -191,6 +192,9 @@ export default function CaseStudyPage() {
   const videoEmbedUrl = getVideoEmbedUrl(project.video_url, { controls: true })
   const videoHost = isVimeoUrl(project.video_url) ? 'Vimeo' : 'YouTube'
   const isPodcast = project.category === 'podcasts'
+  const convention = project.convention_slug
+    ? conventions.find((c) => c.slug === project.convention_slug)
+    : undefined
 
   // Parse newline-delimited fields into bullet arrays
   const objectivePoints = project.challenge?.split('\n').filter(Boolean) || []
@@ -472,28 +476,38 @@ export default function CaseStudyPage() {
         <section className="py-16 sm:py-20 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark mb-4">
-              Want impact like this for your brand?
+              Want this for your convention week?
             </h2>
             <p className="text-m3-on-dark/70 mb-4">
-              Free 30 minute strategy call, we reply within 1 business day.
+              Tell us the conference and what you are running and we will scope it the same day.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
-                onClick={openSheet}
+                onClick={() =>
+                  openSheet({
+                    conference: convention?.name,
+                    venue: project.location || undefined,
+                    need: 'Activation recap',
+                    source: `case-study:${project.slug || project.id}`,
+                  })
+                }
                 className="m3-filled-button text-lg px-8 py-4 inline-flex items-center gap-2"
               >
-                Book a Call
+                Book coverage like this
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <Link
-                to="/work"
-                className="m3-outlined-button text-m3-on-dark border-m3-on-dark/30 hover:bg-m3-on-dark/10"
-              >
-                See Our Work
-              </Link>
+              {convention && (
+                <Link
+                  to={conventionHref(convention)}
+                  className="text-sm text-m3-on-dark/70 underline hover:text-m3-on-dark transition-colors"
+                >
+                  See our {convention.name} coverage
+                </Link>
+              )}
             </div>
           </div>
         </section>
+
 
         </main>
         <Footer />

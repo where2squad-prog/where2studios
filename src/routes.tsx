@@ -7,6 +7,7 @@ import EventRecapVideosPage from './pages/EventRecapVideosPage'
 import SFTechWeekPage from './pages/SFTechWeekPage'
 import CaseStudyPage from './pages/CaseStudyPage'
 import ServicesPage from './pages/ServicesPage'
+import WhyDedicatedCrewPage from './pages/WhyDedicatedCrewPage'
 import ContactPage from './pages/ContactPage'
 import TeamPage from './pages/TeamPage'
 import NotFoundPage from './pages/NotFoundPage'
@@ -43,6 +44,7 @@ export const routes: RouteRecord[] = [
         getStaticPaths: getConventionStaticPaths,
       },
       { path: 'services', element: <ServicesPage /> },
+      { path: 'why-a-dedicated-crew', element: <WhyDedicatedCrewPage /> },
       { path: 'contact', element: <ContactPage /> },
       { path: 'who-we-are', element: <TeamPage /> },
       { path: 'socials', element: <SocialsPage /> },

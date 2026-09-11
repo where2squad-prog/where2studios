@@ -40,7 +40,7 @@ export const conventions: Convention[] = [
     proofSlugs: [
       'ownbackup-dreamforce-2024',
       'ownbackup-dreamforce-2023',
-      'the-howard-venue-film',
+      'immuta-brand-hq-build-montage',
     ],
     faqs: [
       {
