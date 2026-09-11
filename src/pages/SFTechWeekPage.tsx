@@ -97,7 +97,8 @@ const heroCopy = {
     eyebrow: 'October 5 to 11, 2026',
     h1: 'Event video for SF Tech Week',
     subhead:
-      'We cover your Tech Week event and send the first clips back the next morning, while the week is still going.',
+      'We cover SF Tech Week side events October 5 to 11 and send a teaser and a vertical clip back by 10am the next day.',
+
     cta: 'Lock your date',
   },
   'la-week': {
