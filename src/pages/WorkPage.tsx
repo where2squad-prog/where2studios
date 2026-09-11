@@ -203,7 +203,7 @@ export default function WorkPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             {/* Filter Chips */}
             <div className="flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => (
+              {visibleCategories.map((cat) => (
                 <FilterChip
                   key={cat}
                   label={CATEGORY_LABELS[cat]}
@@ -232,7 +232,17 @@ export default function WorkPage() {
       {/* Projects Grid */}
       <section className="py-10 sm:py-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          {isLoading ? (
+          {showPhotos ? (
+            <PhotoGrid
+              photos={(photos ?? []).map((photo) => ({
+                id: photo.id,
+                title: photo.title,
+                url: photo.thumbnail_url || '',
+                width: photo.width,
+                height: photo.height,
+              }))}
+            />
+          ) : isLoading ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="aspect-[4/3] bg-m3-surface rounded-2xl animate-pulse" />
