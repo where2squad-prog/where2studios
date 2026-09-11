@@ -23,8 +23,16 @@ export function BookingSheetProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   const [prefill, setPrefill] = useState<BookingPrefill>({})
 
+  // Some call sites pass openSheet straight to onClick, so only keep known string fields.
   const openSheet = (next?: BookingPrefill) => {
-    setPrefill(next ?? {})
+    const clean: BookingPrefill = {}
+    if (next && typeof next === 'object') {
+      for (const key of ['conference', 'running', 'need', 'venue', 'source'] as const) {
+        const value = next[key]
+        if (typeof value === 'string' && value) clean[key] = value
+      }
+    }
+    setPrefill(clean)
     setIsOpen(true)
   }
   const closeSheet = () => setIsOpen(false)
