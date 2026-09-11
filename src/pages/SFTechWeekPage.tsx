@@ -8,6 +8,7 @@ import { SEOHead, areaServed } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
 import { TechWeekCountdown } from '@/components/techweek/TechWeekCountdown'
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
 import { TrustedBrands } from '@/components/TrustedBrands'
 
 import { TechWeekForm } from '@/components/techweek/TechWeekForm'
