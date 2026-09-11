@@ -13,12 +13,12 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 import {
-import { KeepReading } from '@/components/layout/KeepReading'
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 const PAGE_DESCRIPTION =
   'Event recap videos for conferences, summits, brand activations and corporate events in the San Francisco Bay Area. Next day teaser edits, speaker and panel clips, full recap edits, vertical cutdowns.'

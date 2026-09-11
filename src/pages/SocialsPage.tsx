@@ -17,7 +17,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import {
-import { KeepReading } from '@/components/layout/KeepReading'
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -25,6 +24,7 @@ import { KeepReading } from '@/components/layout/KeepReading'
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 /** Replace this once pricing is locked. */
 export const STARTING_PRICE = '$1,500'
