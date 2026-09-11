@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Play } from 'lucide-react'
-import { useFeaturedCaseStudies, CaseStudy } from '@/hooks/useCaseStudy'
+import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 import { isYouTubeUrl, isVimeoUrl, getVideoEmbedUrl } from '@/lib/video'
 import {
@@ -15,14 +15,12 @@ import {
 } from '@/components/ui/carousel'
 
 const FILTER_LABELS: Record<string, string> = {
-  'launch-videos': 'Launch Video',
-  podcasts: 'Podcast',
+  'convention-week': 'Convention Week HQ',
   'event-recaps': 'Event Recap',
-  events: 'Events',
-  corporate: 'Corporate',
-  'founder-story': 'Founder Story',
-  'product-demo': 'Product Demo',
+  'brand-films': 'Brand Film',
 }
+
+const PINNED_SLUGS = ['google-pixel-house-nba-all-star-2025', 'the-agent-open-san-francisco']
 
 function getCorporateLabel(title: string): string {
   const lower = title.toLowerCase()

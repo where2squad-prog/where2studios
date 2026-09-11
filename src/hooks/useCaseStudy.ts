@@ -20,6 +20,7 @@ export interface CaseStudy {
   images: string[] | null
   featured: boolean
   published: boolean
+  show_on_main_site: boolean
   display_order: number
   created_at: string
 }
@@ -51,6 +52,7 @@ export function useFeaturedCaseStudies(limit = 3) {
         .select('*')
         .eq('featured', true)
         .eq('published', true)
+        .eq('show_on_main_site', true)
         .order('display_order', { ascending: true })
         .limit(limit)
 
@@ -68,6 +70,7 @@ export function useAllProjects(options?: { category?: string }) {
         .from('projects')
         .select('*')
         .eq('published', true)
+        .eq('show_on_main_site', true)
         .order('display_order', { ascending: true })
 
       if (options?.category && options.category !== 'all') {
