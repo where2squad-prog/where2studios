@@ -192,8 +192,8 @@ async function render(spec: CardSpec) {
           <stop offset="1" stop-color="#000000" stop-opacity="0.45"/>
         </linearGradient>
         <radialGradient id="vignette" cx="0.5" cy="${(vignetteY / H).toFixed(3)}" r="0.62">
-          <stop offset="0" stop-color="#000000" stop-opacity="0.34"/>
-          <stop offset="0.6" stop-color="#000000" stop-opacity="0.18"/>
+          <stop offset="0" stop-color="#000000" stop-opacity="0.45"/>
+          <stop offset="0.6" stop-color="#000000" stop-opacity="0.24"/>
           <stop offset="1" stop-color="#000000" stop-opacity="0"/>
         </radialGradient>
       </defs>
