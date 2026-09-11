@@ -30,8 +30,8 @@ const SECTIONS = [
     id: 'build-to-strike',
     title: 'On site from build to strike',
     body: [
-      'We shoot a time lapse of the build the morning before doors, so the empty room becomes part of the story.',
-      'Then we are in the space every day of the week, not just for the party. One point of contact runs the whole booking, so your team is not briefing a new shooter each morning.',
+      'We shoot a time lapse of the build the morning before doors.',
+      'Then we are in the space every day of the week, not just for the party.',
     ],
   },
   {
@@ -39,38 +39,38 @@ const SECTIONS = [
     title: 'Clips by 10am',
     body: [
       'Shoot day one, teaser and one vertical clip in your inbox by 10am day two.',
-      'Exec clips follow the same rhythm, so a keynote or a panel is posted while the person who said it is still in town.',
-      'Your field and social teams post while attendees are still walking the halls.',
+      'Exec clips follow the same rhythm, so a keynote posts while the speaker is still in town.',
     ],
   },
   {
     id: 'one-folder',
     title: 'One folder for every stakeholder',
     body: [
-      'Exec, sponsor, social and sales all need a different cut of the same week.',
-      'Everything lands in one shared folder, organised by day and by deliverable, so nobody has to ask us for a re-send.',
+      'Exec, sponsor, social and sales each need a different cut of the same week.',
+      'Everything lands in one shared folder, organised by day and by deliverable.',
     ],
   },
   {
     id: 'moscone-venues',
     title: 'Built for the venues around Moscone',
     body: [
-      'We have shot The Howard, B Restaurant and The Veranda, the Gourmet Provisions venue cluster that hosts most brand headquarters near Moscone.',
-      'We know the load in doors, the light at 6pm, where the power is and which corner holds the good angle when the room fills up.',
+      'We have shot The Howard, B Restaurant and The Veranda, the Gourmet Provisions venue cluster near Moscone.',
+      'We know the load in doors, the light at 6pm and where the power is.',
     ],
   },
   {
     id: 'photo-and-video',
     title: 'Photo and video from one crew',
     body: [
-      'Edited photo selects ship with every booking, shot by the same crew that is already in the room.',
-      'One call sheet, one invoice, one set of people your guests get used to seeing.',
+      'Edited photo selects ship with every booking.',
+      'They are shot by the same crew already in the room.',
     ],
   },
 ]
 
-const QUOTABLE =
-  'A convention week is not one shoot. A brand headquarters runs exec meetings in the morning, demos at noon and a reception at night. A dedicated crew is on site from build day to strike, cuts overnight, and puts a teaser and a vertical clip in your inbox by 10am, while attendees are still in the city.'
+const HERO_ANSWER =
+  'A brand HQ runs exec meetings in the morning, demos at noon and a reception at night. One hired shooter gets you one edit three weeks later. A dedicated crew is on site from build to strike, cuts overnight, and puts a teaser and a vertical clip in your inbox by 10am.'
+
 
 export default function WhyDedicatedCrewPage() {
   const { openSheet } = useBookingSheet()
