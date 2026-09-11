@@ -210,9 +210,9 @@ function ConventionContent({ convention }: { convention: Convention }) {
               {h1}
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              Brand HQ, hospitality suite and side event coverage steps from Moscone. Exec clips,
-              activation recaps and same week social cutdowns.
+              Brand HQ, suite and side event coverage near Moscone. Clips by 10am the next day.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => scrollTo('convention-form')}
