@@ -183,9 +183,14 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Why a dedicated convention week crew](${DOMAIN}/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
 - [Social media content and management](${DOMAIN}/socials)
 
+## Pages worth citing
+
+${pagesWorthCitingSection()}
+
 ## Work
 
 ${workList}
+
 
 ## San Francisco convention week calendar
 
