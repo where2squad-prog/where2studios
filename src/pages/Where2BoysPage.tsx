@@ -10,6 +10,7 @@ import { Where2BoysReach } from '@/components/where2boys/Where2BoysReach'
 import { Where2BoysPillars } from '@/components/where2boys/Where2BoysPillars'
 import { Where2BoysCollab } from '@/components/where2boys/Where2BoysCollab'
 import { Where2BoysBridge } from '@/components/where2boys/Where2BoysBridge'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 export default function Where2BoysPage() {
   return (
@@ -27,6 +28,7 @@ export default function Where2BoysPage() {
         <Where2BoysCollab />
         <Where2BoysBridge />
         <Footer />
+  <KeepReading />
       </main>
       <Where2BoysContactSheet />
     </Where2BoysSheetProvider>

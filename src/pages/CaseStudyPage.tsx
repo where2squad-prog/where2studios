@@ -15,6 +15,7 @@ import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 import { conventions, conventionHref } from '@/lib/conventions'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 const CATEGORY_LABELS: Record<string, string> = {
   'convention-week': 'Convention Week HQ',
@@ -87,9 +88,22 @@ function NumberedList({ items }: { items: string[] }) {
   )
 }
 
-function buildJsonLd(project: any, thumbnail: string, isPodcast: boolean) {
+function isoDuration(seconds?: number | null) {
+  if (!seconds || seconds <= 0) return undefined
+  const total = Math.round(seconds)
+  const m = Math.floor(total / 60)
+  const s = total % 60
+  return `PT${m > 0 ? `${m}M` : ''}${s}S`
+}
+
+function buildJsonLd(
+  project: any,
+  thumbnail: string,
+  isPodcast: boolean,
+  description: string,
+  convention?: { name: string; slug: string; venue?: string; organizer?: string }
+) {
   const pageUrl = `https://where2studios.com/work/${project.slug || project.id}`
-  const description = project.result || project.description || project.title
 
   const base: any = {
     '@context': 'https://schema.org',
@@ -100,6 +114,14 @@ function buildJsonLd(project: any, thumbnail: string, isPodcast: boolean) {
     url: pageUrl,
     ...(project.created_at && { uploadDate: new Date(project.created_at).toISOString() }),
     ...(project.video_url && { embedUrl: project.video_url, contentUrl: project.video_url }),
+    ...(project.media_url && { contentUrl: project.media_url }),
+    ...(isoDuration(project.duration_seconds) && { duration: isoDuration(project.duration_seconds) }),
+    ...(project.width && project.height ? { width: project.width, height: project.height } : {}),
+    ...(project.location && {
+      contentLocation: { '@type': 'Place', name: project.location },
+    }),
+    inLanguage: 'en-US',
+    isFamilyFriendly: true,
     author: {
       '@type': 'Organization',
       name: 'Where2Studios',
@@ -139,7 +161,33 @@ function buildJsonLd(project: any, thumbnail: string, isPodcast: boolean) {
     ]
   }
 
-  return [base, breadcrumb]
+  const eventSchema = convention
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: convention.name,
+        url: `https://where2studios.com/conventions/${convention.slug}`,
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        ...(convention.venue && {
+          location: {
+            '@type': 'Place',
+            name: convention.venue,
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'San Francisco',
+              addressRegion: 'CA',
+              addressCountry: 'US',
+            },
+          },
+        }),
+        ...(convention.organizer && {
+          organizer: { '@type': 'Organization', name: convention.organizer },
+        }),
+        subjectOf: { '@id': pageUrl },
+      }
+    : null
+
+  return eventSchema ? [base, breadcrumb, eventSchema] : [base, breadcrumb]
 }
 
 export default function CaseStudyPage() {
@@ -203,21 +251,33 @@ export default function CaseStudyPage() {
   // Metrics from metrics_json
   const metrics = project.metrics_json as Record<string, string> | null
 
-  const jsonLd = buildJsonLd(project, thumbnail, isPodcast)
   const isEventProject = project.category === 'event-recaps' || project.category === 'events'
+  const titleSubject =
+    project.title.length < 34 && project.client_name && !project.title.includes(project.client_name)
+      ? `${project.title}, ${project.client_name}`
+      : project.title
   const pageTitle = isEventProject
-    ? `${project.title} | Event Recap Video Case Study | Where2Studios`
-    : `${project.title} | Where2Studios Case Study`
-  const pageDescription =
-    project.result ||
-    project.description ||
-    `${project.title}, a ${categoryLabel} project by Where2Studios.`
+    ? `${titleSubject} | Event Recap Video Case Study | Where2Studios`
+    : `${titleSubject} | ${categoryLabel} Case Study | Where2Studios`
+  // Built per project so no two case studies share a description.
+  const descriptionSubject = [
+    project.client_name ? `${project.client_name}` : project.title,
+    convention ? `at ${convention.name}` : null,
+    project.location ? `at ${project.location}` : null,
+  ]
+    .filter(Boolean)
+    .join(' ')
+  const pageDescription = `${project.title}${
+    descriptionSubject && descriptionSubject !== project.title ? `, ${descriptionSubject}` : ''
+  }. ${project.result || project.description || `${categoryLabel} by Where2Studios.`}`.trim()
+
+  const jsonLd = buildJsonLd(project, thumbnail, isPodcast, pageDescription, convention)
 
   const answerLine =
     project.client_name && project.location
-      ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name} at ${project.location}.`
+      ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name} at ${project.location}${convention ? `, during ${convention.name}` : ''}.`
       : project.client_name
-        ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name}.`
+        ? `${isEventProject ? 'Event recap video' : categoryLabel} produced by Where2Studios for ${project.client_name}${convention ? `, during ${convention.name}` : ''}.`
         : null
 
   return (
@@ -509,6 +569,17 @@ export default function CaseStudyPage() {
         </section>
 
 
+        <KeepReading
+          links={[
+            { label: 'All our work', href: '/work' },
+            ...(convention
+              ? [{ label: `${convention.name} coverage`, href: conventionHref(convention) }]
+              : [{ label: 'Convention calendar', href: '/conventions' }]),
+            { label: 'Why a dedicated crew', href: '/why-a-dedicated-crew' },
+            { label: 'Services', href: '/services' },
+            { label: 'Contact', href: '/contact' },
+          ]}
+        />
         </main>
         <Footer />
       </div>

@@ -6,13 +6,14 @@ import { Footer } from '@/components/Footer'
 import { ContactForm } from '@/components/ContactForm'
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
 import { SkipLink } from '@/components/layout/SkipLink'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 export default function ContactPage() {
   return (
     <>
       <SkipLink />
       <SEOHead
-        title="Contact Us | Where2Studios"
+        title="Contact Our San Francisco Video Crew"
         description="For press, partnerships, or general questions. Hiring inquiries? Use Book a Call."
         schema={organizationSchema}
       />
@@ -51,6 +52,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </section>
+  <KeepReading />
         </main>
         <Footer />
       </div>

@@ -11,6 +11,7 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { deliverables } from '@/data/deliverables'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 export default function ServicesPage() {
   const { openSheet } = useBookingSheet()
@@ -130,6 +131,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+        <KeepReading />
         </main>
         <Footer />
         <FloatingCTA />

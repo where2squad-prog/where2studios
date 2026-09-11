@@ -3,13 +3,14 @@ import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { SEOHead } from '@/components/SEOHead'
 import { SkipLink } from '@/components/layout/SkipLink'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 export default function AccessibilityPage() {
   return (
     <>
       <SkipLink />
       <SEOHead
-        title="Accessibility | Where2Studios"
+        title="Accessibility Statement and Conformance"
         description="Where2Studios is committed to digital accessibility. Read our accessibility statement, conformance level, and how to report issues."
         url="https://where2studios.com/accessibility"
         robots="noindex, follow"
@@ -90,6 +91,7 @@ export default function AccessibilityPage() {
               </p>
             </section>
           </div>
+  <KeepReading />
         </main>
 
         <Footer />

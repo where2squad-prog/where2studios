@@ -5,7 +5,7 @@ export default function PrivacyPolicyPage() {
   return (
     <PageLayout>
       <SEOHead
-        title="Privacy Policy | Where2Studios"
+        title="Privacy Policy and Data Practices"
         description="How Where2Studios collects, uses and protects your information when you use our site or our event video and social media services."
         url="https://where2studios.com/privacy"
         robots="noindex, follow"

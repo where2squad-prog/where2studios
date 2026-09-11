@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 const PAGE_DESCRIPTION =
   'Event recap videos for conferences, summits, brand activations and corporate events in the San Francisco Bay Area. Next day teaser edits, speaker and panel clips, full recap edits, vertical cutdowns.'
@@ -207,8 +208,9 @@ export default function EventRecapVideosPage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Event Recap Videos | Bay Area Conference Video Production | Where2Studios"
+        title="Event Recap Videos for Bay Area Conferences"
         description={PAGE_DESCRIPTION}
+        answer
         url="https://where2studios.com/event-recap-videos"
         schema={[serviceSchema, faqSchema, breadcrumbSchema]}
       />
@@ -363,7 +365,7 @@ export default function EventRecapVideosPage() {
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, i) => (
                   <AccordionItem key={`faq-${i}`} value={`faq-${i}`}>
-                    <AccordionTrigger className="text-left text-sm sm:text-base text-m3-on-surface">
+                    <AccordionTrigger data-faq-question className="text-left text-sm sm:text-base text-m3-on-surface">
                       {faq.q}
                     </AccordionTrigger>
                     <AccordionContent className="text-sm text-m3-on-surface/70">
@@ -392,6 +394,7 @@ export default function EventRecapVideosPage() {
               </div>
             </div>
           </section>
+  <KeepReading />
         </main>
         <Footer />
         <FloatingCTA />

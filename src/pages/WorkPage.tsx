@@ -15,6 +15,7 @@ import { getThumbnail } from '@/hooks/useProjects'
 import { isUploadedVideo } from '@/lib/portfolioMedia'
 import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { PhotoGrid } from '@/components/portfolio/PhotoGrid'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 const CATEGORIES = ['all', 'convention-week', 'event-recaps', 'brand-films']
 const CATEGORY_LABELS: Record<string, string> = {
@@ -101,9 +102,9 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
         </div>
 
         <div className="p-4">
-          <h3 className="font-fredoka text-base font-semibold text-m3-on-surface mb-1 line-clamp-1 group-hover:text-m3-primary transition-colors">
+          <h2 className="font-fredoka text-base font-semibold text-m3-on-surface mb-1 line-clamp-1 group-hover:text-m3-primary transition-colors">
             {project.title}
-          </h3>
+          </h2>
           
           {project.result && (
             <p className="text-sm text-m3-on-surface/60 line-clamp-2 mb-2">
@@ -271,9 +272,9 @@ export default function WorkPage() {
               className="text-center py-16"
             >
               <Grid3X3 className="w-12 h-12 text-m3-on-surface/30 mx-auto mb-4" />
-              <h3 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-2">
+              <h2 className="font-fredoka text-xl font-semibold text-m3-on-surface mb-2">
                 Coming Soon
-              </h3>
+              </h2>
               <p className="text-m3-on-surface/60 max-w-md mx-auto">
                 New projects are on the way. Check back soon or contact us to discuss your project.
               </p>
@@ -301,6 +302,7 @@ export default function WorkPage() {
           </div>
         </div>
       </section>
+  <KeepReading />
       </main>
       <Footer />
       <FloatingCTA />

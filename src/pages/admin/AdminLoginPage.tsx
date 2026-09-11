@@ -207,7 +207,7 @@ export default function AdminLoginPage() {
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
-                  <img src={googleIcon} alt="" className="w-4 h-4" />
+                  <img src={googleIcon} alt="" aria-hidden="true" className="w-4 h-4" />
                   Continue with Google
                 </span>
               )}

@@ -24,6 +24,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 /** Replace this once pricing is locked. */
 export const STARTING_PRICE = '$1,500'
@@ -384,7 +385,7 @@ export default function SocialsPage() {
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((item, i) => (
                 <AccordionItem key={item.q} value={`faq-${i}`}>
-                  <AccordionTrigger className="text-left font-fredoka text-base">
+                  <AccordionTrigger data-faq-question className="text-left font-fredoka text-base">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-sm text-m3-on-background/70">
@@ -397,6 +398,7 @@ export default function SocialsPage() {
         </section>
 
         <Footer />
+  <KeepReading />
       </main>
 
       <FloatingCTA

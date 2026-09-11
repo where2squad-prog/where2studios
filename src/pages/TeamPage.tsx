@@ -21,6 +21,7 @@ import anthonySvg from '@/assets/team/anthony.svg'
 import ryanSvg from '@/assets/team/ryan.svg'
 import josephSvg from '@/assets/team/joseph.svg'
 import mayadSvg from '@/assets/team/mayad.svg'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 interface TeamMember {
   name: string
@@ -256,6 +257,7 @@ export default function TeamPage() {
             </div>
           </div>
         </section>
+  <KeepReading />
         </main>
         <Footer />
         <FloatingCTA />

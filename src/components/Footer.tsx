@@ -69,7 +69,7 @@ export function Footer() {
 
           {/* Links Column */}
           <div>
-            <h4 className="font-fredoka text-sm font-medium text-m3-on-dark mb-4">Links</h4>
+            <h2 className="font-fredoka text-sm font-medium text-m3-on-dark mb-4">Links</h2>
             <nav className="flex flex-col gap-2">
               {links.map((link) => (
                 <Link 
@@ -85,7 +85,7 @@ export function Footer() {
 
           {/* Services Column */}
           <div>
-            <h4 className="font-fredoka text-sm font-medium text-m3-on-dark mb-4">Services</h4>
+            <h2 className="font-fredoka text-sm font-medium text-m3-on-dark mb-4">Services</h2>
             <nav className="flex flex-col gap-2">
               {services.map((link) => (
                 <Link 
@@ -102,7 +102,7 @@ export function Footer() {
 
           {/* Legal Column */}
           <div>
-            <h4 className="font-fredoka text-sm font-medium text-m3-on-dark mb-4">Legal</h4>
+            <h2 className="font-fredoka text-sm font-medium text-m3-on-dark mb-4">Legal</h2>
             <nav className="flex flex-col gap-2">
               {legalLinks.map((link) => (
                 <Link 

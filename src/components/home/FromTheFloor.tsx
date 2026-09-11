@@ -102,6 +102,9 @@ export function FromTheFloor() {
             creator: { '@id': 'https://where2studios.com/#business' },
             copyrightHolder: { '@id': 'https://where2studios.com/#business' },
             contentLocation: 'San Francisco, CA',
+            license: 'https://where2studios.com/terms',
+            acquireLicensePage: 'https://where2studios.com/contact',
+            creditText: 'Where2Studios',
           })),
         }
       : null
