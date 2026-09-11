@@ -91,6 +91,12 @@ function ConventionContent({ convention }: { convention: Convention }) {
     return joinNames([...new Set(names)])
   }, [proof])
 
+  /** How many published projects carry this convention slug, used for the extra work link. */
+  const taggedCount = useMemo(
+    () => (projects || []).filter((p) => p.convention_slug === convention.slug).length,
+    [projects, convention.slug]
+  )
+
   const tbaYear = nextUnknownYear(convention)
   const year = edition?.year ?? tbaYear
   const dateLine = edition ? formatEditionRange(edition) : null
