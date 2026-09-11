@@ -13,6 +13,7 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 import {
+import { KeepReading } from '@/components/layout/KeepReading'
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -209,6 +210,7 @@ export default function EventRecapVideosPage() {
       <SEOHead
         title="Event Recap Videos | Bay Area Conference Video Production | Where2Studios"
         description={PAGE_DESCRIPTION}
+        answer
         url="https://where2studios.com/event-recap-videos"
         schema={[serviceSchema, faqSchema, breadcrumbSchema]}
       />
@@ -363,7 +365,7 @@ export default function EventRecapVideosPage() {
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, i) => (
                   <AccordionItem key={`faq-${i}`} value={`faq-${i}`}>
-                    <AccordionTrigger className="text-left text-sm sm:text-base text-m3-on-surface">
+                    <AccordionTrigger data-faq-question className="text-left text-sm sm:text-base text-m3-on-surface">
                       {faq.q}
                     </AccordionTrigger>
                     <AccordionContent className="text-sm text-m3-on-surface/70">
@@ -392,6 +394,7 @@ export default function EventRecapVideosPage() {
               </div>
             </div>
           </section>
+  <KeepReading />
         </main>
         <Footer />
         <FloatingCTA />

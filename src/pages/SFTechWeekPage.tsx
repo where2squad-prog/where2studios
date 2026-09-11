@@ -191,6 +191,9 @@ export default function SFTechWeekPage() {
         title={phase.kind === 'wrapped' ? WRAPPED_TITLE : PAGE_TITLE}
         description={phase.kind === 'wrapped' ? WRAPPED_DESCRIPTION : PAGE_DESCRIPTION}
         url={PAGE_URL}
+        answer
+        image={proof[0]?.thumbnail_url || undefined}
+        breadcrumbName="SF Tech Week"
         robots="index, follow"
         schema={[serviceSchema, faqSchema, breadcrumbSchema]}
       />
@@ -406,7 +409,7 @@ export default function SFTechWeekPage() {
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
                 <AccordionItem key={`tw-faq-${i}`} value={`tw-faq-${i}`}>
-                  <AccordionTrigger className="text-left text-sm sm:text-base text-m3-on-surface">
+                  <AccordionTrigger data-faq-question className="text-left text-sm sm:text-base text-m3-on-surface">
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-sm text-m3-on-surface/70">

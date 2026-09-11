@@ -118,6 +118,9 @@ export default function WhyDedicatedCrewPage() {
         title={title}
         description={description}
         canonical="/why-a-dedicated-crew"
+        answer
+        image={proof[0]?.thumbnail_url || undefined}
+        breadcrumbName="Why a dedicated crew"
         type="article"
         schema={[articleSchema, breadcrumbSchema]}
       />

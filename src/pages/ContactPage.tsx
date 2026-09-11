@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer'
 import { ContactForm } from '@/components/ContactForm'
 import { SEOHead, organizationSchema } from '@/components/SEOHead'
 import { SkipLink } from '@/components/layout/SkipLink'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 export default function ContactPage() {
   return (
@@ -51,6 +52,7 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </section>
+  <KeepReading />
         </main>
         <Footer />
       </div>

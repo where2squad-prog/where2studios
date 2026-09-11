@@ -3,6 +3,7 @@ import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { SEOHead } from '@/components/SEOHead'
 import { SkipLink } from '@/components/layout/SkipLink'
+import { KeepReading } from '@/components/layout/KeepReading'
 
 export default function AccessibilityPage() {
   return (
@@ -90,6 +91,7 @@ export default function AccessibilityPage() {
               </p>
             </section>
           </div>
+  <KeepReading />
         </main>
 
         <Footer />

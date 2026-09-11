@@ -88,6 +88,7 @@ export function TrustedBrands() {
         <img
           src={brand.wordmark}
           alt={decorative ? '' : `${brand.name} logo, a Where2Studios client`}
+          aria-hidden={decorative || undefined}
           className="h-7 sm:h-8 w-auto max-w-[170px] sm:max-w-[210px] object-contain"
           style={{ filter: 'brightness(0) saturate(100%)' }}
           draggable={false} /> :

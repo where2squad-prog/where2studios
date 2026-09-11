@@ -120,8 +120,8 @@ function ConventionContent({ convention }: { convention: Convention }) {
   const pageUrl = `${SITE_URL}/conventions/${convention.slug}`
   const title = `${convention.name} Video Coverage in San Francisco | Where2Studios`
   const description = dateLine
-    ? `Video coverage for ${convention.name}, ${dateLine}. Brand HQ, hospitality suite and side event coverage near Moscone. Exec clips by the next morning, full recap the same week.`
-    : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Brand HQ, hospitality suite and side event coverage near Moscone, with exec clips by the next morning.`
+    ? `Video coverage for ${convention.name}, ${dateLine}. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
+    : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
 
   const faqs = [...convention.faqs, ...sharedConventionFaqs]
 
@@ -193,6 +193,9 @@ function ConventionContent({ convention }: { convention: Convention }) {
         title={title}
         description={description}
         canonical={`/conventions/${convention.slug}`}
+        answer
+        image={proof[0]?.thumbnail_url || undefined}
+        breadcrumbName={convention.name}
         schema={
           eventSchema
             ? [serviceSchema, faqSchema, breadcrumbSchema, eventSchema]
@@ -355,7 +358,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
                 <AccordionItem key={`cv-faq-${i}`} value={`cv-faq-${i}`}>
-                  <AccordionTrigger className="text-left text-sm sm:text-base text-m3-on-surface">
+                  <AccordionTrigger data-faq-question className="text-left text-sm sm:text-base text-m3-on-surface">
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-sm text-m3-on-surface/70">
@@ -397,5 +400,5 @@ export default function ConventionPage() {
 }
 
 export function getConventionStaticPaths(): string[] {
-  return conventions.map((c) => `/conventions/${c.slug}`)
+  return conventions.filter((c) => !c.href).map((c) => `/conventions/${c.slug}`)
 }
