@@ -9,5 +9,12 @@ from the variable sources with fontTools:
   python3 -m fontTools.varLib.instancer Inter.ttf wght=500 opsz=28 -o Inter-Medium.ttf
   rm Fredoka.ttf Inter.ttf
 
-Keep only the instanced files here: the renderer matches fonts by family name and
-the variable sources claim the same names.
+The instancer keeps the variable default-instance name records, so the cut files
+claimed to be "Fredoka Light" and "Inter Thin". fontconfig then failed to match
+font-family="Fredoka" and the renderer silently fell back to a system sans, so
+name IDs 1, 2, 4, 6, 16 and 17 were rewritten to Fredoka/SemiBold and
+Inter/Medium with fontTools. If these files are ever regenerated, redo that
+rename, then check the caption line in public/og/home.png is the rounded
+Fredoka shape and not a generic sans.
+
+Keep only the instanced files here: the renderer matches fonts by family name.
