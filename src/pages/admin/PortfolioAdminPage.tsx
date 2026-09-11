@@ -75,10 +75,44 @@ function formatSize(bytes: number | null) {
   return mb >= 1024 ? `${(mb / 1024).toFixed(2)} GB` : `${mb.toFixed(1)} MB`
 }
 
+// Hidden files like .DS_Store never belong in the queue.
+function visibleFiles(files: File[]) {
+  return files.filter((file) => !file.name.startsWith('.'))
+}
+
+// Walk a dropped entry: files come back directly, folders are read recursively.
+async function readEntry(entry: FileSystemEntry): Promise<File[]> {
+  if (entry.name.startsWith('.')) return []
+
+  if (entry.isFile) {
+    const file = await new Promise<File | null>((resolve) =>
+      (entry as FileSystemFileEntry).file(resolve, () => resolve(null))
+    )
+    return file ? [file] : []
+  }
+
+  const reader = (entry as FileSystemDirectoryEntry).createReader()
+  const children: FileSystemEntry[] = []
+  let batch: FileSystemEntry[] = []
+  do {
+    batch = await new Promise<FileSystemEntry[]>((resolve) =>
+      reader.readEntries(resolve, () => resolve([]))
+    )
+    children.push(...batch)
+  } while (batch.length > 0)
+
+  const files: File[] = []
+  for (const child of children) files.push(...(await readEntry(child)))
+  return files
+}
+
+
+
 export default function PortfolioAdminPage() {
   const navigate = useNavigate()
   const { user, signOut } = useAuth()
   const inputRef = useRef<HTMLInputElement>(null)
+  const folderInputRef = useRef<HTMLInputElement>(null)
   const [dragActive, setDragActive] = useState(false)
   const [queue, setQueue] = useState<QueueItem[]>([])
   const [busy, setBusy] = useState(false)
@@ -221,10 +255,23 @@ export default function PortfolioAdminPage() {
     [insertProject, patch]
   )
 
-  const onDrop = (event: React.DragEvent) => {
+  const onDrop = async (event: React.DragEvent) => {
     event.preventDefault()
     setDragActive(false)
-    processFiles(Array.from(event.dataTransfer.files))
+
+    const items = Array.from(event.dataTransfer.items ?? [])
+    const entries = items
+      .map((item) => (typeof item.webkitGetAsEntry === 'function' ? item.webkitGetAsEntry() : null))
+      .filter((entry): entry is FileSystemEntry => Boolean(entry))
+
+    if (entries.length === 0) {
+      processFiles(visibleFiles(Array.from(event.dataTransfer.files)))
+      return
+    }
+
+    const collected: File[] = []
+    for (const entry of entries) collected.push(...(await readEntry(entry)))
+    processFiles(visibleFiles(collected))
   }
 
   return (
@@ -283,9 +330,30 @@ export default function PortfolioAdminPage() {
               Drop videos and photos here
             </p>
             <p className="mt-2 text-sm text-m3-on-dark/60">
-              mp4, mov, webm, jpg, png, heic, webp. Many files at once. Large videos resume if the
-              connection drops.
+              mp4, mov, webm, jpg, png, heic, webp. Whole folders work too. Large videos resume if
+              the connection drops.
             </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  inputRef.current?.click()
+                }}
+              >
+                Choose files
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  folderInputRef.current?.click()
+                }}
+              >
+                Choose folder
+              </Button>
+            </div>
             <input
               ref={inputRef}
               type="file"
@@ -293,7 +361,19 @@ export default function PortfolioAdminPage() {
               accept={UPLOAD_ACCEPT}
               className="hidden"
               onChange={(e) => {
-                processFiles(Array.from(e.target.files ?? []))
+                processFiles(visibleFiles(Array.from(e.target.files ?? [])))
+                e.target.value = ''
+              }}
+            />
+            <input
+              ref={folderInputRef}
+              type="file"
+              multiple
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              {...({ webkitdirectory: '', directory: '' } as any)}
+              className="hidden"
+              onChange={(e) => {
+                processFiles(visibleFiles(Array.from(e.target.files ?? [])))
                 e.target.value = ''
               }}
             />
