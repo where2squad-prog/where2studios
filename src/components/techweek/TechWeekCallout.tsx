@@ -13,7 +13,7 @@ export function TechWeekHomeBlock() {
   const heading =
     phase.kind === 'live'
       ? 'We are on the ground at Tech Week this week. Clips back the next morning.'
-      : 'We cover Tech Week side events and send clips back the next morning.'
+      : 'We cover Tech Week side events and send the first clip back the next morning.'
 
   return (
     <section

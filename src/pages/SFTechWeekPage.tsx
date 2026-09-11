@@ -27,7 +27,7 @@ const PAGE_DESCRIPTION =
 const PAGE_URL = 'https://where2studios.com/sf-tech-week'
 
 const QUOTABLE =
-  'Where2Studios covers SF Tech Week events from October 5 to 11, 2026. We shoot your panel, mixer, founder dinner or hackathon and deliver a next morning teaser plus vertical clips you can post while Tech Week is still running. The full recap edit follows. Bay Area based. We also cover LA Tech Week, October 12 to 18.'
+  'Where2Studios covers SF Tech Week events from October 5 to 11, 2026. We shoot your panel, mixer, founder dinner or hackathon and deliver a next morning teaser plus a vertical clip you can post while Tech Week is still running. The full recap edit follows. Bay Area based. We also cover LA Tech Week, October 12 to 18.'
 
 const whyPoints = [
   'Hundreds of events run that week. Attention is highest while it is happening.',
@@ -58,11 +58,11 @@ const faqs = [
   },
   {
     q: 'How fast can I get video from my Tech Week event?',
-    a: 'A teaser and three vertical clips by 10am the next morning. The full recap edit comes after the week.',
+    a: 'A 30 second teaser and one vertical clip by 10am the next morning on the Next Morning package. Recap edits deliver within 5 business days.',
   },
   {
     q: 'How much does Tech Week video coverage cost?',
-    a: 'A Tech Week event recap video is priced on hours, crew and how many events. Send us your dates and we quote you the same day.',
+    a: 'Next Morning coverage starts at $2,500 per event, a Single Event Recap at $3,500, Recap + Social Pack at $4,800 and Full Week Coverage at $15,000. Sponsor cuts are $1,500 on top of any package. We quote the same day.',
   },
   {
     q: 'Can you cover more than one event during Tech Week?',
@@ -350,6 +350,10 @@ export default function SFTechWeekPage() {
                 </div>
               ))}
             </div>
+            <p className="text-xs sm:text-sm text-m3-on-surface/60 mt-6">
+              Prices are per event. Speaker and panel clips, extra cutdowns and a full recap edit on
+              the Next Morning package are quoted as add ons.
+            </p>
           </div>
         </section>
 
@@ -367,6 +371,10 @@ export default function SFTechWeekPage() {
               We cut a sponsor version of the recap. Your branding in frame, your people talking,
               your logo on the step and repeat, and vertical clips your marketing team can run after
               the week ends.
+            </p>
+            <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
+              Sponsor cut: from $1,500 added to any package. A second edit with your branding, your
+              people and your verticals.
             </p>
             <button
               onClick={() => requestQuote(SPONSOR_OPTION)}
