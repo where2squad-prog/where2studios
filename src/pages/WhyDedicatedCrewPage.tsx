@@ -181,7 +181,7 @@ export default function WhyDedicatedCrewPage() {
           <section className="py-12 sm:py-16 bg-m3-surface">
             <div className="container mx-auto px-4 sm:px-8 lg:px-12">
               <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
-                What that looks like
+                The work
               </h2>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8">
                 {proof.map((project, index) => (
