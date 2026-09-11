@@ -196,6 +196,29 @@ export default function CaseStudyPage() {
   const { openSheet } = useBookingSheet()
   const { data: project, isLoading, error } = useCaseStudy(slug || '')
 
+  // Photos live in the gallery, not on their own page. Hidden rows go back to Work.
+  const isPhoto = project?.media_type === 'photo'
+  const isHidden = !!project && project.show_on_main_site === false
+  const redirectTo = isPhoto ? '/work?view=photos' : isHidden ? '/work' : null
+
+  useEffect(() => {
+    if (redirectTo) navigate(redirectTo, { replace: true })
+  }, [redirectTo, navigate])
+
+  if (redirectTo) {
+    return (
+      <>
+        <SEOHead
+          title={`${project!.title} | Where2Studios`}
+          description="This item lives in the Where2Studios portfolio gallery."
+          url={`https://where2studios.com/work/${project!.slug || project!.id}`}
+          robots="noindex, follow"
+        />
+        <div className="min-h-screen bg-m3-surface-variant" />
+      </>
+    )
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-m3-surface-variant">
