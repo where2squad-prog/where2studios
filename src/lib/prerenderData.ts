@@ -18,12 +18,17 @@ async function publishedProjects(category?: string) {
   return data
 }
 
-/** Slugs of every published project, read from the database at build time. */
+/**
+ * Slugs of every published film or case study, read at build time.
+ * Photos and hidden rows are excluded so we do not prerender thin pages.
+ */
 export async function getPublishedCaseStudyPaths(): Promise<string[]> {
   const { data, error } = await supabase
     .from('projects')
     .select('slug')
     .eq('published', true)
+    .eq('show_on_main_site', true)
+    .neq('media_type', 'photo')
     .not('slug', 'is', null)
 
   if (error) {
