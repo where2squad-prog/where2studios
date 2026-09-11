@@ -7,12 +7,12 @@
  *
  *   bun scripts/og-images.ts
  *
- * Text is converted to vector paths with opentype.js, so nothing depends on the
- * machine having the fonts installed.
+ * Fonts live in scripts/fonts and are exposed to the SVG renderer through a
+ * throwaway fontconfig file, so nothing depends on system fonts.
  */
-import { readFileSync, mkdirSync, existsSync, statSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import path from 'node:path'
-import sharp from 'sharp'
 import opentype from 'opentype.js'
 import { createClient } from '@supabase/supabase-js'
 import {
@@ -26,16 +26,33 @@ import {
 
 const ROOT = path.resolve(import.meta.dirname, '..')
 const OUT_DIR = path.join(ROOT, 'public/og')
+const FONT_DIR = path.join(ROOT, 'scripts/fonts')
 const LOGO = path.join(ROOT, 'src/assets/where2studios-logo-full.png')
 
 /** --m3-primary in src/index.css: hsl(43 80% 51%). */
 const YELLOW = '#E09E24'
 
+/* Point the SVG renderer at scripts/fonts before sharp is loaded. */
+const FC_DIR = path.join(tmpdir(), 'w2s-og-fontconfig')
+mkdirSync(path.join(FC_DIR, 'cache'), { recursive: true })
+writeFileSync(
+  path.join(FC_DIR, 'fonts.conf'),
+  `<?xml version="1.0"?><!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <dir>${FONT_DIR}</dir>
+  <cachedir>${path.join(FC_DIR, 'cache')}</cachedir>
+</fontconfig>`
+)
+process.env.FONTCONFIG_FILE = path.join(FC_DIR, 'fonts.conf')
+
+const sharp = (await import('sharp')).default
+type Sharp = typeof sharp
+
 const FREDOKA = opentype.parse(
-  readFileSync(path.join(ROOT, 'scripts/fonts/Fredoka-SemiBold.ttf')).buffer as ArrayBuffer
+  readFileSync(path.join(FONT_DIR, 'Fredoka-SemiBold.ttf')).buffer as ArrayBuffer
 )
 const INTER = opentype.parse(
-  readFileSync(path.join(ROOT, 'scripts/fonts/Inter-Medium.ttf')).buffer as ArrayBuffer
+  readFileSync(path.join(FONT_DIR, 'Inter-Medium.ttf')).buffer as ArrayBuffer
 )
 
 const SUPABASE_URL = 'https://ndnuwfsuanbjjtfflbfc.supabase.co'
@@ -48,35 +65,34 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 /* --------------------------------- text ---------------------------------- */
 
-interface TextLine {
+function escapeXml(value: string) {
+  return value.replace(/[<>&'"]/g, (c) => `&#${c.charCodeAt(0)};`)
+}
+
+function textWidth(font: opentype.Font, text: string, size: number, tracking: number) {
+  const chars = [...text]
+  return (
+    chars.reduce((w, ch) => w + font.getAdvanceWidth(ch, size), 0) +
+    tracking * Math.max(0, chars.length - 1)
+  )
+}
+
+interface LineSpec {
   text: string
   font: opentype.Font
+  family: string
+  weight: number
   size: number
   color: string
   opacity: number
   tracking: number
 }
 
-function measure(line: TextLine) {
-  const chars = [...line.text]
-  return (
-    chars.reduce((w, ch) => w + line.font.getAdvanceWidth(ch, line.size), 0) +
-    line.tracking * Math.max(0, chars.length - 1)
-  )
-}
-
-/** Centred single line as SVG path data, laid out character by character so tracking applies. */
-function linePaths(line: TextLine, centerX: number, baseline: number, maxWidth: number) {
+/** Centred line, shrunk until it clears the safe margins. */
+function svgLine(line: LineSpec, centerX: number, baseline: number, maxWidth: number) {
   let size = line.size
-  while (measure({ ...line, size }) > maxWidth && size > 12) size -= 1
-  const scaled = { ...line, size }
-  let x = centerX - measure(scaled) / 2
-  const parts: string[] = []
-  for (const ch of scaled.text) {
-    parts.push(scaled.font.getPath(ch, x, baseline, scaled.size).toPathData(2))
-    x += scaled.font.getAdvanceWidth(ch, scaled.size) + scaled.tracking
-  }
-  return `<path d="${parts.join(' ')}" fill="${line.color}" fill-opacity="${line.opacity}"/>`
+  while (textWidth(line.font, line.text, size, line.tracking) > maxWidth && size > 12) size -= 1
+  return `<text x="${centerX}" y="${baseline}" text-anchor="middle" font-family="${line.family}" font-weight="${line.weight}" font-size="${size}" letter-spacing="${line.tracking}" fill="${line.color}" fill-opacity="${line.opacity}">${escapeXml(line.text)}</text>`
 }
 
 /* -------------------------------- stills --------------------------------- */
@@ -111,10 +127,10 @@ async function loadThumbnails() {
 }
 
 /** First slug in the list whose thumbnail actually downloads. */
-async function stillFromSlugs(slugs: string[]): Promise<{ buf: Buffer; slug: string }> {
+async function stillFromSlugs(slugs: string[]): Promise<Buffer> {
   for (const slug of slugs) {
     const buf = await fetchStill(thumbnails.get(slug) ?? null)
-    if (buf) return { buf, slug }
+    if (buf) return buf
   }
   throw new Error(`no usable still among: ${slugs.join(', ')}`)
 }
@@ -132,22 +148,23 @@ interface CardSpec {
 
 async function render(spec: CardSpec) {
   const { width: W, height: H } = spec
+  const square = W === H
 
-  const logoWidth = Math.round(W * (spec.height === spec.width ? 0.47 : 0.433)) // ~520 on 1200x630
-  const logo = await sharp(spec.still ? LOGO : LOGO)
+  const logoWidth = Math.round(square ? W * 0.47 : W * 0.433) // 520 on 1200x630
+  const logo = await sharp(LOGO)
     .trim({ threshold: 10 })
     .resize({ width: logoWidth })
     .png()
     .toBuffer()
-  const logoMeta = await sharp(logo).metadata()
-  const logoH = logoMeta.height ?? 0
+  const logoH = (await sharp(logo).metadata()).height ?? 0
 
   // Wordmark block sits a little above the middle, caption lines below it.
-  const blockHeight = logoH + Math.round(H * 0.185)
-  const top = Math.round((H - blockHeight) / 2 - H * 0.045)
-  const logoTop = top
-  const captionBaseline = logoTop + logoH + Math.round(H * 0.095)
-  const secondBaseline = captionBaseline + Math.round(H * 0.07)
+  const captionGap = square ? 96 : 60
+  const secondGap = square ? 52 : 44
+  const blockHeight = logoH + captionGap + secondGap
+  const logoTop = Math.max(60, Math.round((H - blockHeight) / 2 - H * 0.05))
+  const captionBaseline = logoTop + logoH + captionGap
+  const secondBaseline = captionBaseline + secondGap
   const maxTextWidth = W - 200 // keeps 80px+ of safe margin on both sides
 
   const background = await sharp(spec.still)
@@ -170,6 +187,7 @@ async function render(spec: CardSpec) {
     </svg>`
   )
 
+  // Faint film grain so the blurred still does not look like flat plastic.
   const grain = await sharp({
     create: {
       width: Math.round(W / 3),
@@ -186,27 +204,31 @@ async function render(spec: CardSpec) {
 
   const text = Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
-      ${linePaths(
+      ${svgLine(
         {
           text: spec.caption,
           font: FREDOKA,
-          size: Math.round(H * 0.0635),
+          family: 'Fredoka',
+          weight: 600,
+          size: square ? 46 : 40,
           color: YELLOW,
           opacity: 1,
-          tracking: 0.8,
+          tracking: 1,
         },
         W / 2,
         captionBaseline,
         maxTextWidth
       )}
-      ${linePaths(
+      ${svgLine(
         {
           text: spec.second,
           font: INTER,
-          size: Math.round(H * 0.0413),
+          family: 'Inter',
+          weight: 500,
+          size: square ? 30 : 26,
           color: '#FFFFFF',
           opacity: 0.7,
-          tracking: 0.6,
+          tracking: 0.5,
         },
         W / 2,
         secondBaseline,
@@ -225,7 +247,7 @@ async function render(spec: CardSpec) {
       { input: logo, left: Math.round((W - logoWidth) / 2), top: logoTop },
       { input: text },
     ])
-    .png({ compressionLevel: 9, quality: 90, palette: true })
+    .png({ compressionLevel: 9, palette: true, quality: 90 })
     .toFile(out)
 
   return out
@@ -247,8 +269,7 @@ async function main() {
 
   const written: string[] = []
   const add = async (spec: Omit<CardSpec, 'still'> & { slugs: string[] }) => {
-    const { buf } = await stillFromSlugs(spec.slugs)
-    written.push(await render({ ...spec, still: buf }))
+    written.push(await render({ ...spec, still: await stillFromSlugs(spec.slugs) }))
   }
 
   const home = {
@@ -303,12 +324,9 @@ async function main() {
   for (const file of written) {
     const kb = statSync(file).size / 1024
     if (kb > 400) over += 1
-    console.log(`  ${path.relative(ROOT, file).padEnd(40)} ${kb.toFixed(0)} KB`)
+    console.log(`  ${path.relative(ROOT, file).padEnd(42)} ${kb.toFixed(0)} KB`)
   }
   if (over) console.warn(`\n${over} file(s) over 400 KB`)
 }
 
-main().catch((error) => {
-  console.error(error)
-  process.exit(1)
-})
+await main()
