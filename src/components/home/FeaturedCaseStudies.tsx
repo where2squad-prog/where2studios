@@ -20,7 +20,15 @@ const FILTER_LABELS: Record<string, string> = {
   'brand-films': 'Brand Film',
 }
 
-const PINNED_SLUGS = ['google-pixel-house-nba-all-star-2025', 'the-agent-open-san-francisco']
+const FLAGSHIP_SLUG = 'the-agent-open-san-francisco'
+const EXCLUDED_SLUGS = [FLAGSHIP_SLUG, 'google-pixel-house-nba-all-star-2025']
+
+/** Recent pool: 2025 or later in the title, or created in 2026. */
+function isRecent(project: CaseStudy) {
+  if (/\b(202[5-9]|20[3-9]\d)\b/.test(project.title)) return true
+  return (project.created_at || '').startsWith('2026')
+}
+
 
 function getCorporateLabel(title: string): string {
   const lower = title.toLowerCase()
