@@ -222,10 +222,23 @@ export default function PortfolioAdminPage() {
     [insertProject, patch]
   )
 
-  const onDrop = (event: React.DragEvent) => {
+  const onDrop = async (event: React.DragEvent) => {
     event.preventDefault()
     setDragActive(false)
-    processFiles(Array.from(event.dataTransfer.files))
+
+    const items = Array.from(event.dataTransfer.items ?? [])
+    const entries = items
+      .map((item) => (typeof item.webkitGetAsEntry === 'function' ? item.webkitGetAsEntry() : null))
+      .filter((entry): entry is FileSystemEntry => Boolean(entry))
+
+    if (entries.length === 0) {
+      processFiles(visibleFiles(Array.from(event.dataTransfer.files)))
+      return
+    }
+
+    const collected: File[] = []
+    for (const entry of entries) collected.push(...(await readEntry(entry)))
+    processFiles(visibleFiles(collected))
   }
 
   return (
