@@ -487,6 +487,7 @@ function UploadRow({
   const [title, setTitle] = useState(project.title)
   const [clientName, setClientName] = useState(project.client_name ?? '')
   const [category, setCategory] = useState(project.category)
+  const [conventionSlug, setConventionSlug] = useState(project.convention_slug ?? 'none')
   const [published, setPublished] = useState(project.published)
   const [onMainSite, setOnMainSite] = useState(project.show_on_main_site)
   const [featured, setFeatured] = useState(project.featured)
