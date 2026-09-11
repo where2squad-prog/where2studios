@@ -121,6 +121,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <Link
                   key={link.href}
                   to={link.href}
+                  {...('timely' in link && link.timely ? { 'data-techweek-promo': true } : {})}
                   aria-current={
                     link.href === '/services'
                       ? location.pathname.startsWith('/services') ? 'page' : undefined

@@ -15,7 +15,7 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'SF Tech Week video coverage', href: '/sf-tech-week' },
+    { label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true },
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
     { label: 'Activation recap', href: '/services#activation-recap' },
     { label: 'Exec clips for LinkedIn', href: '/services#exec-clips' },
@@ -82,6 +82,7 @@ export function Footer() {
                 <Link 
                   key={link.label}
                   to={link.href} 
+                  {...('promo' in link && link.promo ? { 'data-techweek-promo': true } : {})}
                   className="text-m3-on-dark/70 hover:text-m3-on-dark text-sm transition-colors"
                 >
                   {link.label}
