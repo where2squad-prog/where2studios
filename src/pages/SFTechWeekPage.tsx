@@ -113,7 +113,7 @@ export default function SFTechWeekPage() {
     const fallback = all.filter(
       (p) =>
         !picked.some((picked) => picked.id === p.id) &&
-        ['events', 'event-recaps', 'corporate'].includes(p.category.toLowerCase())
+        ['convention-week', 'event-recaps', 'brand-films'].includes(p.category.toLowerCase())
     )
     return [...picked, ...fallback, ...all.filter((p) => !picked.some((x) => x.id === p.id))].slice(
       0,
