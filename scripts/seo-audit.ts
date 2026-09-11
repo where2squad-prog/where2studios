@@ -94,8 +94,12 @@ const titles = new Map<string, string[]>()
 const descs = new Map<string, string[]>()
 const rows: Row[] = []
 
+/** Intentional noindex redirect stubs for old URLs. Not real pages. */
+const REDIRECT_ROUTES = ['/socials']
+
 for (const file of files) {
   const route = routeOf(file)
+  if (REDIRECT_ROUTES.includes(route)) continue
   const html = readFileSync(file, 'utf8')
   const head = html.slice(0, html.toLowerCase().indexOf('</head>') + 7)
   const main = mainHtml(html)

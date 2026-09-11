@@ -21,7 +21,8 @@ const FILTER_LABELS: Record<string, string> = {
 }
 
 const FLAGSHIP_SLUG = 'the-agent-open-san-francisco'
-const EXCLUDED_SLUGS = [FLAGSHIP_SLUG, 'google-pixel-house-nba-all-star-2025']
+const CLOSING_SLUG = 'google-pixel-house-nba-all-star-2025'
+const EXCLUDED_SLUGS = [FLAGSHIP_SLUG, CLOSING_SLUG]
 
 /** Recent pool: 2025 or later in the title, or created in 2026. */
 function isRecent(project: CaseStudy) {
@@ -240,7 +241,7 @@ export function FeaturedCaseStudies() {
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
   // Chosen after mount so the prerendered HTML stays deterministic.
-  const [picked, setPicked] = useState<string[] | null>(null)
+  const [picked, setPicked] = useState<string | null>(null)
 
   useEffect(() => {
     if (!api) return
@@ -253,6 +254,7 @@ export function FeaturedCaseStudies() {
   }, [api])
 
   const flagship = allProjects?.find((p) => p.slug === FLAGSHIP_SLUG)
+  const closing = allProjects?.find((p) => p.slug === CLOSING_SLUG)
 
   const pool = (allProjects || [])
     .filter(
@@ -267,12 +269,11 @@ export function FeaturedCaseStudies() {
 
   useEffect(() => {
     const ids = poolKey ? poolKey.split(',') : []
-    if (ids.length < 2) {
+    if (ids.length === 0) {
       setPicked(null)
       return
     }
-    const shuffled = [...ids].sort(() => Math.random() - 0.5)
-    setPicked(shuffled.slice(0, 2))
+    setPicked(ids[Math.floor(Math.random() * ids.length)])
   }, [poolKey])
 
   if (isLoading) {
@@ -293,12 +294,12 @@ export function FeaturedCaseStudies() {
     return null
   }
 
-  const supporting = (
-    picked
-      ? picked.map((id) => pool.find((p) => p.id === id)).filter((p): p is CaseStudy => Boolean(p))
-      : pool.slice(0, 2)
-  ).slice(0, 2)
+  const rotating = (picked ? pool.find((p) => p.id === picked) : pool[0]) || pool[0]
+  // Google Pixel House always closes the row.
+  const supporting = [rotating, closing].filter((p): p is CaseStudy => Boolean(p))
   const mobileProjects = [flagship, ...supporting]
+
+
 
 
   return (

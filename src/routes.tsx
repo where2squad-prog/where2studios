@@ -19,6 +19,7 @@ import TermsOfServicePage from './pages/TermsOfServicePage'
 import Where2BoysPage from './pages/Where2BoysPage'
 import AccessibilityPage from './pages/AccessibilityPage'
 import SocialsPage from './pages/SocialsPage'
+import SocialsRedirectPage from './pages/SocialsRedirectPage'
 import ConventionsPage from './pages/ConventionsPage'
 import ConventionPage, { getConventionStaticPaths } from './pages/ConventionPage'
 import { getPublishedCaseStudyPaths } from './lib/prerenderData'
@@ -47,7 +48,8 @@ export const routes: RouteRecord[] = [
       { path: 'why-a-dedicated-crew', element: <WhyDedicatedCrewPage /> },
       { path: 'contact', element: <ContactPage /> },
       { path: 'who-we-are', element: <TeamPage /> },
-      { path: 'socials', element: <SocialsPage /> },
+      { path: 'socials', element: <SocialsRedirectPage /> },
+      { path: 'backyard-bayou-socials', element: <SocialsPage /> },
       { path: 'privacy', element: <PrivacyPolicyPage /> },
       { path: 'terms', element: <TermsOfServicePage /> },
       { path: 'where2boys', element: <Where2BoysPage /> },

@@ -17,7 +17,7 @@ export function Footer() {
     { label: 'Why a dedicated crew', href: '/why-a-dedicated-crew' },
     { label: 'About', href: '/who-we-are' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Social media marketing in Union City', href: '/socials' },
+    
   ]
 
   const services = [
