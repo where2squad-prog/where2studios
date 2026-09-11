@@ -246,8 +246,9 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                     Book a Call
                   </button>
                   <p className="text-xs text-m3-on-dark/60">
-                    Free 30 min strategy call. 1 business day reply.
+                    We reply within 1 business day.
                   </p>
+
                   <div className="flex items-center gap-2 pt-2">
                     <a
                       href="https://www.instagram.com/where2studios/"
