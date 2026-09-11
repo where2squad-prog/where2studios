@@ -13,6 +13,8 @@ import glyph1password from '@/assets/icons/1password.svg';
 import glyphCursor from '@/assets/icons/cursor.svg';
 import glyphModal from '@/assets/icons/modal.svg';
 import glyphBraintrust from '@/assets/icons/braintrust.svg';
+import glyphCloudflare from '@/assets/icons/cloudflare.svg';
+import glyphGoogle from '@/assets/icons/google.svg';
 import '@/styles/marquee.css';
 
 type Brand = { name: string; wordmark?: string; glyph?: string };
@@ -52,24 +54,25 @@ export function TrustedBrands() {
   }, [isMobile]);
 
   const brands: Brand[] = [
-    { name: 'Coinbase', glyph: glyphCoinbase },
-    { name: 'Gourmet Provisions' },
-    { name: 'Stripe', glyph: glyphStripe },
-    { name: 'Cursor', glyph: glyphCursor },
-    { name: 'Modal', glyph: glyphModal },
-    { name: 'Braintrust', glyph: glyphBraintrust },
-    { name: 'LlamaIndex' },
-    { name: 'Browserbase' },
-    { name: 'Parallel' },
-    { name: 'turbopuffer', wordmark: brandTurbopuffer },
+    { name: 'Cloudflare', glyph: glyphCloudflare },
+    { name: 'Google', glyph: glyphGoogle },
     { name: 'GitHub', glyph: glyphGithub },
     { name: '1Password', glyph: glyph1password },
     { name: 'Immuta' },
-    { name: 'Cohesity' },
     { name: 'ReliaQuest' },
+    { name: 'Cohesity' },
+    { name: 'Coinbase', glyph: glyphCoinbase },
+    { name: 'Stripe', glyph: glyphStripe },
+    { name: 'Salesforce' },
+    { name: 'turbopuffer', wordmark: brandTurbopuffer },
+    { name: 'Parallel' },
+    { name: 'LlamaIndex' },
+    { name: 'Braintrust', glyph: glyphBraintrust },
+    { name: 'Modal', glyph: glyphModal },
+    { name: 'Browserbase' },
+    { name: 'Cursor', glyph: glyphCursor },
     { name: 'Xsolla' },
-    { name: 'Club Hex' },
-    { name: 'Datahaiku' },
+    { name: 'Gourmet Provisions' },
     { name: 'PacBio', wordmark: brandPacbio },
   ];
 
@@ -155,11 +158,11 @@ export function TrustedBrands() {
           <div className="grid grid-cols-4 gap-6 sm:gap-12 lg:gap-16">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">150+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Projects shipped</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Convention weeks covered</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views earned</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Events covered</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">80+</div>
