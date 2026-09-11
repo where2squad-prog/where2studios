@@ -79,6 +79,7 @@ export default function PortfolioAdminPage() {
   const navigate = useNavigate()
   const { user, signOut } = useAuth()
   const inputRef = useRef<HTMLInputElement>(null)
+  const folderInputRef = useRef<HTMLInputElement>(null)
   const [dragActive, setDragActive] = useState(false)
   const [queue, setQueue] = useState<QueueItem[]>([])
   const [busy, setBusy] = useState(false)
