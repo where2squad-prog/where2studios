@@ -65,37 +65,38 @@ const eventTypes = [
 const faqs = [
   {
     q: 'What is an event recap video?',
-    a: 'It is a short edit that captures what your event felt like and what it was about. We cover the stage, the room, the details and short interviews, then cut it into one main film. Most brands use it for follow up email, social and next year promotion.',
+    a: 'A short edit that captures what your event was about. Most brands use it for follow up email, social and next year promotion.',
   },
   {
     q: 'How much does an event recap video cost in the Bay Area?',
-    a: 'Pricing is quote based, not a fixed package. It depends on how long the event runs, how many shooters we need, how many deliverables you want and how fast you need them back. Book the free 30 minute strategy call and we will give you deliverables, timeline and budget.',
+    a: 'Quote based, not a fixed package. It depends on event length, crew size, deliverables and turnaround. Book a call and we scope it same day.',
   },
   {
     q: 'How fast can you turn around a recap?',
-    a: 'The teaser comes first so you have something to post right after the event. The full recap, clips and verticals follow once the edit is locked. Exact dates depend on event length and deliverable count, and we agree on them before the shoot.',
+    a: 'The teaser comes first so you have something to post right away. The full recap, clips and verticals follow once the edit is locked.',
   },
   {
     q: 'What is the difference between a teaser and a full recap?',
-    a: 'The teaser is a short cut built for speed and attention while the event is still fresh. The full recap is the longer hero edit, usually 60 to 120 seconds, with more of the story, the speakers and the audience. Most clients use both, teaser first then recap.',
+    a: 'The teaser is a short cut built for speed. The full recap is the 60 to 120 second hero edit with more of the story.',
   },
   {
     q: 'How many shooters do you send?',
-    a: 'It depends on the event. A single room with one stage can work with a small crew, while multi stage conferences and activations need more coverage. We size the crew on the strategy call so nothing important gets missed.',
+    a: 'It depends on the event. We size the crew on the call so nothing important gets missed.',
   },
   {
     q: 'Do you cover multi day conferences?',
-    a: 'Yes. We plan coverage day by day against your run of show and keep the same crew across the event. We can also travel for multi day conferences outside the Bay Area.',
+    a: 'Yes. We plan coverage day by day against your run of show and keep the same crew across the event.',
   },
   {
     q: 'Do you handle photo as well as video?',
-    a: 'Yes. Photography is part of what we produce, so you can add edited photo selects to any event package. Running photo and video with one team means one point of contact and one shot list.',
+    a: 'Yes. You can add edited photo selects to any event package, shot by the same team.',
   },
   {
     q: 'Do you help with posting and distribution?',
-    a: 'Yes. Beyond production we offer social media management, content distribution and ongoing campaign work. If you want the recap posted, cut for each platform and tracked, we can run that side too.',
+    a: 'Yes. We also offer social media management and content distribution if you want the recap posted and cut per platform.',
   },
 ]
+
 
 function EventProjectCard({ project, index }: { project: CaseStudy; index: number }) {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
