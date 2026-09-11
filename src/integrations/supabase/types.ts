@@ -258,6 +258,7 @@ export type Database = {
           published: boolean | null
           result: string | null
           services: string[] | null
+          show_on_main_site: boolean
           slug: string | null
           thumbnail_url: string | null
           title: string
@@ -280,6 +281,7 @@ export type Database = {
           published?: boolean | null
           result?: string | null
           services?: string[] | null
+          show_on_main_site?: boolean
           slug?: string | null
           thumbnail_url?: string | null
           title: string
@@ -302,6 +304,7 @@ export type Database = {
           published?: boolean | null
           result?: string | null
           services?: string[] | null
+          show_on_main_site?: boolean
           slug?: string | null
           thumbnail_url?: string | null
           title?: string
