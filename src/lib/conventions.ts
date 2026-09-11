@@ -26,9 +26,9 @@ export const conventions: Convention[] = [
     organizer: 'Salesforce',
     venue: 'Moscone North, South and West',
     audience:
-      'Salesforce customers, partners and ISVs fill SoMa for three days and every partner needs proof their brand HQ was busy.',
+      'Salesforce customers, partners and ISVs fill SoMa for three days and every partner needs proof their activation was busy.',
     buyers: [
-      'Salesforce partners and ISVs running a brand HQ',
+      'Salesforce partners and ISVs running an activation',
       'sponsors',
       'hospitality suites near Moscone',
     ],
@@ -121,8 +121,8 @@ export const conventions: Convention[] = [
     organizer: 'Databricks',
     venue: 'Moscone North, West and South',
     audience:
-      'Data and AI vendors run brand HQs within a block of Moscone and need clips their field teams can post the same week.',
-    buyers: ['data and AI vendors running brand HQs and side events'],
+      'Data and AI vendors run activations within a block of Moscone and need clips their field teams can post the same week.',
+    buyers: ['data and AI vendors running activations and side events'],
     editions: [{ year: 2027, start: '2027-06-21', end: '2027-06-24' }],
     proofSlugs: [
       'dataiku-brand-hq-build-montage',
@@ -131,7 +131,7 @@ export const conventions: Convention[] = [
     ],
     faqs: [
       {
-        q: 'Do you shoot brand HQ build montages for Data + AI Summit?',
+        q: 'Do you shoot activation build montages for Data + AI Summit?',
         a: 'Yes. Build montages are one of our most requested films for this week, from empty room to opening night.',
       },
       {
@@ -225,7 +225,7 @@ export const conventions: Convention[] = [
 export const sharedConventionFaqs = [
   {
     q: 'Do you work inside Moscone?',
-    a: "We cover side events, brand HQs and suites around Moscone. Inside the halls depends on the organizer's media rules.",
+    a: "We cover side events, activations and suites around Moscone. Inside the halls depends on the organizer's media rules.",
   },
   {
     q: 'How early should we book?',

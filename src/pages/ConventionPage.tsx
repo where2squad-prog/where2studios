@@ -127,14 +127,14 @@ function ConventionContent({ convention }: { convention: Convention }) {
   const pageUrl = `${SITE_URL}/conventions/${convention.slug}`
   const title = conventionTitle(convention.name)
   const description = dateLine
-    ? `Video coverage for ${convention.name}, ${dateLine}. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
-    : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
+    ? `Video coverage for ${convention.name}, ${dateLine}. Activation, suite and side event films near Moscone, clips by 10am the next day.`
+    : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Activation, suite and side event films near Moscone, clips by 10am the next day.`
 
   const faqs = [...convention.faqs, ...sharedConventionFaqs]
 
   const answer = `Where2Studios covers ${convention.name} in San Francisco for ${joinNames(
     convention.buyers
-  )}. Brand HQs, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
+  )}. Activations, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
     clientNames
       ? ` Past ${convention.name} and conference week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
       : ''
@@ -220,7 +220,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
               {h1}
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              Brand HQ, suite and side event coverage near Moscone. Clips by 10am the next day.
+              Activation, lounge and side event coverage near Moscone. Clips by 10am the next day.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6">

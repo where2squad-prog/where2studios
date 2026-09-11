@@ -21,7 +21,7 @@ const PROOF_SLUGS = [
 const STATS = [
   { value: '9+', label: 'Conference weeks covered' },
   { value: '20+', label: 'Tech brands' },
-  { value: '22', label: 'Brand HQ films' },
+  { value: '22', label: 'Activation films' },
   { value: '10am', label: 'Next morning clip delivery' },
 ]
 
@@ -69,7 +69,7 @@ const SECTIONS = [
 ]
 
 const HERO_ANSWER =
-  'A brand HQ runs exec meetings in the morning, demos at noon and a reception at night. One hired shooter gets you one edit three weeks later. A dedicated crew is on site from build to strike, cuts overnight, and puts a teaser and a vertical clip in your inbox by 10am.'
+  'Whatever you call it, experience hub, lounge, house or brand HQ, it runs from morning meetings to the evening reception. One hired shooter gets you one edit three weeks later. A dedicated crew is on site from build to strike, cuts overnight, and puts a teaser and a vertical clip in your inbox by 10am.'
 
 
 export default function WhyDedicatedCrewPage() {

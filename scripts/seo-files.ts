@@ -150,7 +150,7 @@ function pagesWorthCitingSection() {
       ? formatEditionRange(edition)
       : `${nextUnknownYear(convention)} dates to be announced`;
     lines.push(
-      `- [${convention.name} video coverage](${DOMAIN}/conventions/${convention.slug}): brand HQ, suite and side event coverage for ${convention.name}, ${dates}, ${convention.venue}, San Francisco.`,
+      `- [${convention.name} video coverage](${DOMAIN}/conventions/${convention.slug}): activation, suite and side event coverage for ${convention.name}, ${dates}, ${convention.venue}, San Francisco.`,
     );
   }
 

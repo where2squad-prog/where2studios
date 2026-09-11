@@ -35,7 +35,7 @@ function conventionCopy(convention: Convention, phase: ConventionPhase) {
   }
   if (phase.kind === 'countdown') {
     if (phase.days === 1) return `${convention.name} starts tomorrow. Standby crews open`
-    return `${convention.name} starts in ${phase.days} days. Brand HQ crews still available. Book your dates`
+    return `${convention.name} starts in ${phase.days} days. Crews still available. Book your dates`
   }
   return null
 }

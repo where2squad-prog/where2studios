@@ -300,7 +300,7 @@ export function FeaturedCaseStudies() {
             Recent conference week work
           </h2>
           <p className="text-m3-on-surface/70 text-base sm:text-lg max-w-2xl mx-auto">
-            Brand headquarters, hospitality suites and side events in San Francisco.
+            Activations, hospitality suites and side events in San Francisco.
           </p>
         </motion.div>
 

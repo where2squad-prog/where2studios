@@ -12,7 +12,7 @@ export function Footer() {
 
   const links = [
     { label: 'Work', href: '/work' },
-    { label: 'Convention calendar', href: '/conventions' },
+    { label: 'Conference calendar', href: '/conventions' },
     { label: 'Services', href: '/services' },
     { label: 'Why a dedicated crew', href: '/why-a-dedicated-crew' },
     { label: 'About', href: '/who-we-are' },
@@ -50,10 +50,10 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-1 max-w-xs">
-              Video coverage for conference week brand headquarters.
+              Video coverage for conference week activations.
             </p>
             <p className="text-m3-on-dark/50 text-xs mb-4 max-w-xs">
-              Activation recaps, exec clips and same week social cutdowns, San Francisco Bay Area.
+              Activation recaps, exec clips and same week social cutdowns, San Francisco.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
               We reply within 1 business day.

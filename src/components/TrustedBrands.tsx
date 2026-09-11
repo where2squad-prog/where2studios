@@ -169,7 +169,7 @@ export function TrustedBrands() {
             </div>
             <div className="text-center" ref={hqFilms.ref}>
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{hqFilms.formatted}</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brand HQ films</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Activation films</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">10am</div>

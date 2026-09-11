@@ -618,7 +618,7 @@ export default function CaseStudyPage() {
             { label: 'All our work', href: '/work' },
             ...(convention
               ? [{ label: `${convention.name} coverage`, href: conventionHref(convention) }]
-              : [{ label: 'Convention calendar', href: '/conventions' }]),
+              : [{ label: 'Conference calendar', href: '/conventions' }]),
             { label: 'Why a dedicated crew', href: '/why-a-dedicated-crew' },
             { label: 'Services', href: '/services' },
             { label: 'Contact', href: '/contact' },

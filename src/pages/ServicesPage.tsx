@@ -21,7 +21,7 @@ export default function ServicesPage() {
       <SkipLink />
       <SEOHead
         title="Conference Week Video Services | Where2Studios"
-        description="Activation recaps, exec clips for LinkedIn, same week social cutdowns and full week crew coverage for conference week brand headquarters in San Francisco."
+        description="Activation recaps, exec clips for LinkedIn, same week social cutdowns and full week crew coverage for conference week activations in San Francisco."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />

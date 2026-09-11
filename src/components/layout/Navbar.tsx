@@ -12,7 +12,7 @@ import { useTechWeekPhase } from '@/hooks/useTechWeekPhase';
 
 const baseNavLinks = [
   { href: '/work', label: 'Work' },
-  { href: '/conventions', label: 'Conventions' },
+  { href: '/conventions', label: 'Conferences' },
   { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'About' },
   { href: '/socials', label: 'Socials' },
