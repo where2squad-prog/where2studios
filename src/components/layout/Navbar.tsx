@@ -217,6 +217,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                       <Link
                         key={link.href}
                         to={link.href}
+                        {...('timely' in link && link.timely ? { 'data-techweek-promo': true } : {})}
                         onClick={() => setIsMobileMenuOpen(false)}
                         aria-current={isActive ? 'page' : undefined}
                         className={`font-fredoka text-3xl font-semibold py-3 px-2 rounded-lg transition-colors ${
