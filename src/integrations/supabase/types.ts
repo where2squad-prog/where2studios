@@ -250,19 +250,26 @@ export type Database = {
           deliverables: string[] | null
           description: string | null
           display_order: number | null
+          duration_seconds: number | null
           featured: boolean | null
+          file_hash: string | null
+          file_size: number | null
+          height: number | null
           id: string
           images: string[] | null
           location: string | null
+          media_type: string
           metrics_json: Json | null
           published: boolean | null
           result: string | null
           services: string[] | null
           show_on_main_site: boolean
           slug: string | null
+          source: string
           thumbnail_url: string | null
           title: string
           video_url: string | null
+          width: number | null
         }
         Insert: {
           approach?: string | null
@@ -273,19 +280,26 @@ export type Database = {
           deliverables?: string[] | null
           description?: string | null
           display_order?: number | null
+          duration_seconds?: number | null
           featured?: boolean | null
+          file_hash?: string | null
+          file_size?: number | null
+          height?: number | null
           id?: string
           images?: string[] | null
           location?: string | null
+          media_type?: string
           metrics_json?: Json | null
           published?: boolean | null
           result?: string | null
           services?: string[] | null
           show_on_main_site?: boolean
           slug?: string | null
+          source?: string
           thumbnail_url?: string | null
           title: string
           video_url?: string | null
+          width?: number | null
         }
         Update: {
           approach?: string | null
@@ -296,19 +310,26 @@ export type Database = {
           deliverables?: string[] | null
           description?: string | null
           display_order?: number | null
+          duration_seconds?: number | null
           featured?: boolean | null
+          file_hash?: string | null
+          file_size?: number | null
+          height?: number | null
           id?: string
           images?: string[] | null
           location?: string | null
+          media_type?: string
           metrics_json?: Json | null
           published?: boolean | null
           result?: string | null
           services?: string[] | null
           show_on_main_site?: boolean
           slug?: string | null
+          source?: string
           thumbnail_url?: string | null
           title?: string
           video_url?: string | null
+          width?: number | null
         }
         Relationships: []
       }
