@@ -226,3 +226,23 @@ export const UPLOAD_CATEGORIES: { value: string; label: string }[] = [
   { value: 'brand-films', label: 'Brand Films' },
   { value: 'photos', label: 'Photos' },
 ]
+
+/**
+ * Storage image transforms are available on this project, so large originals
+ * are served resized. Falls back to the original URL for anything that is not
+ * a public portfolio object.
+ */
+export function portfolioImageUrl(url: string, width: number, quality = 75): string {
+  if (!url) return url
+  const marker = '/storage/v1/object/public/'
+  if (!url.includes(marker)) return url
+  const rendered = url.replace(marker, '/storage/v1/render/image/public/')
+  return `${rendered}?width=${width}&quality=${quality}`
+}
+
+export const PORTFOLIO_IMAGE_WIDTHS = [600, 900, 1200]
+
+export function portfolioImageSrcSet(url: string): string | undefined {
+  if (!url || !url.includes('/storage/v1/object/public/')) return undefined
+  return PORTFOLIO_IMAGE_WIDTHS.map((w) => `${portfolioImageUrl(url, w)} ${w}w`).join(', ')
+}

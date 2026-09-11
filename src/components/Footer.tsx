@@ -2,9 +2,13 @@
 
 import { Link } from 'react-router-dom'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
+import { isTechWeekPromoLive } from '@/lib/techWeek'
 
 export function Footer() {
   const { openSheet } = useBookingSheet()
+  const techWeekPhase = useTechWeekPhase()
+  const showTechWeek = isTechWeekPromoLive(techWeekPhase)
 
   const links = [
     { label: 'Work', href: '/work' },
@@ -15,7 +19,9 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true },
+    ...(showTechWeek
+      ? [{ label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true }]
+      : []),
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
     { label: 'Activation recap', href: '/services#activation-recap' },
     { label: 'Exec clips for LinkedIn', href: '/services#exec-clips' },

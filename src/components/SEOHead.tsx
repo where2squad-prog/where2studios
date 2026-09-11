@@ -23,6 +23,7 @@ const knowsAbout = [
   'highlight reel',
   'speaker reel',
   'brand activation video',
+  'Event Photography',
 ]
 
 const BUSINESS_DESCRIPTION =

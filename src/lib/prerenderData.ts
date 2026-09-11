@@ -67,6 +67,31 @@ export async function prefetchForRoute(queryClient: QueryClient, routePath: stri
     if (error) throw error
     return data
   })
+  // Homepage "from the floor" rows. Keys must match the hooks exactly.
+  prefetch(['photo-projects'], async () => {
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .eq('media_type', 'photo')
+      .eq('published', true)
+      .eq('show_on_main_site', true)
+      .order('display_order', { ascending: true })
+    if (error) throw error
+    return data
+  })
+  prefetch(['uploaded-video-projects', 4], async () => {
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .eq('source', 'upload')
+      .eq('media_type', 'video')
+      .eq('published', true)
+      .eq('show_on_main_site', true)
+      .order('display_order', { ascending: true })
+      .limit(4)
+    if (error) throw error
+    return data
+  })
   prefetch(['testimonials'], async () => {
     const { data, error } = await supabase
       .from('testimonials')

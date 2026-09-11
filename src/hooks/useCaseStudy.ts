@@ -109,3 +109,24 @@ export function useAllProjects(options?: { category?: string }) {
     },
   })
 }
+
+/** Most recent videos hosted in our own media store, used on the homepage. */
+export function useUploadedVideoProjects(limit = 4) {
+  return useQuery({
+    queryKey: ['uploaded-video-projects', limit],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('source', 'upload')
+        .eq('media_type', 'video')
+        .eq('published', true)
+        .eq('show_on_main_site', true)
+        .order('display_order', { ascending: true })
+        .limit(limit)
+
+      if (error) throw error
+      return data as CaseStudy[]
+    },
+  })
+}

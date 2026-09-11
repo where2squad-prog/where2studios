@@ -1,0 +1,208 @@
+import { writeFileSync } from "node:fs";
+import path from "node:path";
+import { loadEnv, type Plugin } from "vite";
+import { getTechWeekPhase } from "../src/lib/techWeek";
+
+const DOMAIN = "https://where2studios.com";
+
+interface ProjectRow {
+  slug: string | null;
+  title: string;
+  category: string;
+  media_type: string | null;
+  thumbnail_url: string | null;
+  width: number | null;
+  height: number | null;
+  created_at: string;
+}
+
+const STATIC_ROUTES: { path: string; priority: string; changefreq: string; dated?: boolean }[] = [
+  { path: "/", priority: "1.0", changefreq: "weekly", dated: true },
+  { path: "/sf-tech-week", priority: "0.9", changefreq: "daily", dated: true },
+  { path: "/event-recap-videos", priority: "0.9", changefreq: "monthly" },
+  { path: "/services", priority: "0.8", changefreq: "monthly" },
+  { path: "/work", priority: "0.8", changefreq: "weekly", dated: true },
+  { path: "/who-we-are", priority: "0.7", changefreq: "monthly" },
+  { path: "/socials", priority: "0.9", changefreq: "monthly" },
+  { path: "/where2boys", priority: "0.8", changefreq: "monthly" },
+  { path: "/contact", priority: "0.7", changefreq: "monthly" },
+];
+
+const LEGAL_ROUTES = ["/privacy", "/terms", "/accessibility"];
+const STATIC_LASTMOD = "2026-09-08";
+
+function escapeXml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function buildSitemap(projects: ProjectRow[], buildDate: string) {
+  const photos = projects.filter((p) => p.media_type === "photo" && p.thumbnail_url);
+  const films = projects.filter((p) => p.media_type !== "photo" && p.slug);
+
+  const lines: string[] = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+    "  <!-- Generated at build time by scripts/seo-files.ts. Do not edit by hand. -->",
+    `  <!-- DOMAIN: ${DOMAIN} -->`,
+    "",
+  ];
+
+  for (const route of STATIC_ROUTES) {
+    const lastmod = route.dated ? buildDate : STATIC_LASTMOD;
+    const head = `  <url><loc>${DOMAIN}${route.path}</loc><lastmod>${lastmod}</lastmod><priority>${route.priority}</priority><changefreq>${route.changefreq}</changefreq>`;
+    if (route.path === "/work" && photos.length > 0) {
+      lines.push(head);
+      for (const photo of photos) {
+        lines.push(
+          `    <image:image><image:loc>${escapeXml(photo.thumbnail_url!)}</image:loc><image:title>${escapeXml(photo.title)}</image:title></image:image>`,
+        );
+      }
+      lines.push("  </url>");
+    } else {
+      lines.push(`${head}</url>`);
+    }
+  }
+
+  lines.push("", "  <!-- Case studies and films (published projects) -->");
+  for (const film of films) {
+    lines.push(
+      `  <url><loc>${DOMAIN}/work/${film.slug}</loc><lastmod>${film.created_at.slice(0, 10)}</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>`,
+    );
+  }
+
+  lines.push("", "  <!-- Legal -->");
+  for (const legal of LEGAL_ROUTES) {
+    lines.push(
+      `  <url><loc>${DOMAIN}${legal}</loc><lastmod>${STATIC_LASTMOD}</lastmod><priority>0.3</priority><changefreq>yearly</changefreq></url>`,
+    );
+  }
+
+  lines.push("</urlset>", "");
+  return lines.join("\n");
+}
+
+function techWeekSection() {
+  const phase = getTechWeekPhase(new Date());
+  if (phase.kind === "countdown" || phase.kind === "live") {
+    return `## SF Tech Week 2026
+
+- [SF Tech Week video coverage](${DOMAIN}/sf-tech-week): event video for SF Tech Week side events, October 5 to 11, 2026. We also cover LA Tech Week, October 12 to 18, 2026.
+- Next Morning: one event, a 30 to 45 second teaser and 3 vertical clips by 10am the next day.
+- Single Event Recap: full coverage of one event, a 60 to 120 second recap edit, speaker and panel clips, edited photo selects.
+- Recap + Social Pack: the recap edit plus 8 vertical cutdowns for Reels, TikTok and LinkedIn.
+- Full Week Coverage: every event from October 5 to 11, clips dropped daily, one week long recap film, shared folder for your team and sponsors.
+`;
+  }
+  return `## Tech Week
+
+We cover SF Tech Week and LA Tech Week side events each October.
+${DOMAIN}/sf-tech-week
+`;
+}
+
+function buildLlmsTxt(projects: ProjectRow[]) {
+  const films = projects.filter((p) => p.media_type !== "photo" && p.slug);
+  const photoCount = projects.filter((p) => p.media_type === "photo").length;
+
+  const workList = [
+    `- [Portfolio](${DOMAIN}/work)`,
+    ...films.map((film) => `- [${film.title}](${DOMAIN}/work/${film.slug})`),
+    `- Event photography: ${photoCount} published photos, see ${DOMAIN}/work?view=photos`,
+  ].join("\n");
+
+  return `# Where2Studios
+
+> Event recap video production for conferences, summits and brand activations in the San Francisco Bay Area.
+
+Where2Studios is a video and photo production team based in Union City, California. We cover events across the Bay Area, then deliver a next day teaser edit, a full recap edit, speaker and panel clips, vertical cutdowns for social, and photo selects. We work with tech conferences, corporate teams, brands running activations, festivals, nonprofits and community events. We also produce social media content and run accounts for local businesses.
+
+## Services
+
+- [Event recap videos](${DOMAIN}/event-recap-videos): full recap edits, next day teasers, speaker and panel clips, vertical cutdowns.
+- [Conference and summit coverage](${DOMAIN}/event-recap-videos): multi day coverage planned against your run of show.
+- [Speaker and panel clips](${DOMAIN}/event-recap-videos): standalone clips of talks and panels.
+- [Brand activation films](${DOMAIN}/services): launch and activation coverage, plus photography.
+- [All services](${DOMAIN}/services)
+- [Social media content and management](${DOMAIN}/socials)
+
+## Work
+
+${workList}
+
+## About
+
+- [Who we are](${DOMAIN}/who-we-are)
+- [Contact](${DOMAIN}/contact)
+
+## Key facts
+
+- Cities we serve: San Francisco, Oakland, San Jose, Sunnyvale, Santa Clara, Palo Alto, Berkeley, Fremont, Union City and the wider San Francisco Bay Area.
+- Pricing is quote based. It depends on event length, crew size, number of deliverables and turnaround.
+- Free 30 minute strategy call. We reply within 1 business day.
+- We travel for multi day conferences.
+
+## Contact
+
+Email: contact@where2studios.com
+
+${techWeekSection()}`;
+}
+
+export async function generateSeoFiles(root: string, mode: string) {
+  const env = { ...loadEnv(mode, root, "VITE_"), ...process.env };
+  const url = env.VITE_SUPABASE_URL;
+  const key = env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) {
+    console.warn("[seo-files] Supabase env vars missing, keeping existing sitemap.xml and llms.txt");
+    return;
+  }
+
+  const query =
+    "projects?select=slug,title,category,media_type,thumbnail_url,width,height,created_at&published=eq.true&show_on_main_site=eq.true&order=display_order.asc";
+
+  try {
+    const response = await fetch(`${url}/rest/v1/${query}`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+    });
+    if (!response.ok) throw new Error(`${response.status} ${await response.text()}`);
+    const projects = (await response.json()) as ProjectRow[];
+    if (!Array.isArray(projects) || projects.length === 0) {
+      throw new Error("no rows returned");
+    }
+
+    const buildDate = new Date().toISOString().slice(0, 10);
+    writeFileSync(path.join(root, "public/sitemap.xml"), buildSitemap(projects, buildDate));
+    writeFileSync(path.join(root, "public/llms.txt"), buildLlmsTxt(projects));
+    console.log(`[seo-files] wrote sitemap.xml and llms.txt from ${projects.length} projects`);
+  } catch (error) {
+    console.warn(
+      "[seo-files] could not refresh SEO files, keeping the committed versions:",
+      error instanceof Error ? error.message : error,
+    );
+  }
+}
+
+/** Regenerates public/sitemap.xml and public/llms.txt from the database on build. */
+export function seoFilesPlugin(): Plugin {
+  let root = process.cwd();
+  let mode = "production";
+  let isBuild = false;
+
+  return {
+    name: "seo-files",
+    apply: "build",
+    configResolved(config) {
+      root = config.root;
+      mode = config.mode;
+      isBuild = config.command === "build";
+    },
+    async buildStart() {
+      if (!isBuild) return;
+      await generateSeoFiles(root, mode);
+    },
+  };
+}
