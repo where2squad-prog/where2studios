@@ -55,11 +55,11 @@ const faqs = [
   },
   {
     q: 'How fast can I get video from my Tech Week event?',
-    a: 'On the Next Morning package, a 30 second teaser and one vertical clip by 10am the next morning. Standard recap edits deliver within 5 business days.',
+    a: 'On the Next Morning package, a 30 second teaser and one vertical clip by 10am the next morning. Recap edits follow within 5 business days.',
   },
   {
     q: 'How much does Tech Week video coverage cost?',
-    a: 'Single Event Recap starts at $3,500, Next Morning at $4,500, Recap + Social Pack at $5,500 and Full Week Coverage at $18,000. Sponsor cuts start at $1,500 on top of any package. Every event is different, so send your dates and we quote the same day.',
+    a: 'Single Event Recap $3,500, Next Morning $4,500, Recap + Social Pack $5,500, Full Week Coverage $18,000. Sponsor cuts start at $1,500. We quote same day.',
   },
   {
     q: 'Can you cover more than one event during Tech Week?',
@@ -74,17 +74,10 @@ const faqs = [
     a: 'Yes. We shoot quiet, no big lights, and you approve every clip before anything goes out.',
   },
   {
-    q: 'Can you shoot vertical for Reels, TikTok and LinkedIn?',
-    a: 'Yes. Vertical is the default for Tech Week, not an add on.',
-  },
-  {
     q: 'How late can I book before October 5?',
     a: 'Book as early as you can. Nights fill first. If we still have a crew we will take a booking the day before.',
   },
-  {
-    q: 'Do you shoot photo as well as video?',
-    a: 'Yes. Edited photo selects come with the recap packages.',
-  },
+
   {
     q: 'Do you handle sponsor deliverables?',
     a: 'Yes. We cut a sponsor version with their branding, their people and their logo placements.',
