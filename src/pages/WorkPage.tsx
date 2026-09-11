@@ -128,9 +128,16 @@ export default function WorkPage() {
   const { data: projects, isLoading } = useAllProjects({ 
     category: activeCategory === 'all' ? undefined : activeCategory 
   })
+  const { data: photos } = usePhotoProjects()
+  const hasPhotos = (photos?.length ?? 0) > 0
+  const visibleCategories = hasPhotos ? [...CATEGORIES, 'photos'] : CATEGORIES
+  const showPhotos = activeCategory === 'photos'
 
   // Sort projects
-  const sortedProjects = projects?.slice().sort((a, b) => {
+  const sortedProjects = projects
+    ?.filter((project) => project.media_type !== 'photo')
+    .slice()
+    .sort((a, b) => {
     if (sortBy === 'featured') {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
