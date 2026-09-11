@@ -5,25 +5,52 @@ export const SF_TECH_WEEK_END = '2026-10-11'
 export const LA_TECH_WEEK_START = '2026-10-12'
 export const LA_TECH_WEEK_END = '2026-10-18'
 
-// The campaign hides itself after LA Tech Week ends.
-const CAMPAIGN_END = new Date('2026-10-19T00:00:00-07:00')
-const SF_START = new Date('2026-10-05T00:00:00-07:00')
-const LA_END = new Date('2026-10-19T00:00:00-07:00')
+// All boundaries are America/Los_Angeles midnights.
+export const SF_START = new Date('2026-10-05T00:00:00-07:00')
+export const SF_END_EXCLUSIVE = new Date('2026-10-12T00:00:00-07:00')
+export const LA_END_EXCLUSIVE = new Date('2026-10-19T00:00:00-07:00')
 
-export function isTechWeekCampaignLive(now: Date = new Date()) {
-  return now < CAMPAIGN_END
+const DAY = 86400000
+
+export type TechWeekPhase =
+  | { kind: 'countdown'; days: number }
+  | { kind: 'live'; day: number; daysLeft: number }
+  | { kind: 'la-week' }
+  | { kind: 'wrapped' }
+
+export function getTechWeekPhase(now: Date = new Date()): TechWeekPhase {
+  const t = now.getTime()
+  if (t < SF_START.getTime()) {
+    return { kind: 'countdown', days: Math.ceil((SF_START.getTime() - t) / DAY) }
+  }
+  if (t < SF_END_EXCLUSIVE.getTime()) {
+    const day = Math.min(7, Math.floor((t - SF_START.getTime()) / DAY) + 1)
+    return { kind: 'live', day, daysLeft: Math.ceil((SF_END_EXCLUSIVE.getTime() - t) / DAY) }
+  }
+  if (t < LA_END_EXCLUSIVE.getTime()) return { kind: 'la-week' }
+  return { kind: 'wrapped' }
 }
 
+/** Gates every site wide promo. The /sf-tech-week page itself always stays up. */
+export function isTechWeekPromoLive(phase: TechWeekPhase) {
+  return phase.kind === 'countdown' || phase.kind === 'live'
+}
+
+// Compatibility wrappers. Do not call these during render.
 export type CountdownState =
   | { kind: 'countdown'; days: number }
   | { kind: 'live' }
   | { kind: 'hidden' }
 
+export function isTechWeekCampaignLive(now: Date = new Date()) {
+  return isTechWeekPromoLive(getTechWeekPhase(now))
+}
+
 export function getCountdownState(now: Date = new Date()): CountdownState {
-  if (now >= LA_END) return { kind: 'hidden' }
-  if (now >= SF_START) return { kind: 'live' }
-  const days = Math.ceil((SF_START.getTime() - now.getTime()) / 86400000)
-  return { kind: 'countdown', days }
+  const phase = getTechWeekPhase(now)
+  if (phase.kind === 'countdown') return { kind: 'countdown', days: phase.days }
+  if (phase.kind === 'live') return { kind: 'live' }
+  return { kind: 'hidden' }
 }
 
 export interface TechWeekPackage {

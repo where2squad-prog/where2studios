@@ -7,7 +7,8 @@ import { Menu, X, Instagram, Linkedin } from 'lucide-react';
 import logo from '@/assets/where2studios-logo.png';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { AnnouncementBar } from '@/components/techweek/AnnouncementBar';
-import { isTechWeekCampaignLive } from '@/lib/techWeek';
+import { isTechWeekPromoLive } from '@/lib/techWeek';
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase';
 
 const baseNavLinks = [
   { href: '/work', label: 'Work' },
@@ -34,7 +35,8 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
 
   const navRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = isTechWeekCampaignLive()
+  const techWeekPhase = useTechWeekPhase();
+  const navLinks = isTechWeekPromoLive(techWeekPhase)
     ? [techWeekLink, ...baseNavLinks]
     : baseNavLinks;
 
@@ -119,6 +121,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                 <Link
                   key={link.href}
                   to={link.href}
+                  {...('timely' in link && link.timely ? { 'data-techweek-promo': true } : {})}
                   aria-current={
                     link.href === '/services'
                       ? location.pathname.startsWith('/services') ? 'page' : undefined
@@ -214,6 +217,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                       <Link
                         key={link.href}
                         to={link.href}
+                        {...('timely' in link && link.timely ? { 'data-techweek-promo': true } : {})}
                         onClick={() => setIsMobileMenuOpen(false)}
                         aria-current={isActive ? 'page' : undefined}
                         className={`font-fredoka text-3xl font-semibold py-3 px-2 rounded-lg transition-colors ${

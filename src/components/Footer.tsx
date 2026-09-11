@@ -15,7 +15,7 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'SF Tech Week video coverage', href: '/sf-tech-week' },
+    { label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true },
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
     { label: 'Activation recap', href: '/services#activation-recap' },
     { label: 'Exec clips for LinkedIn', href: '/services#exec-clips' },
@@ -42,10 +42,10 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-1 max-w-xs">
-              Your Growth Team, On Demand.
+              Video coverage for convention week brand headquarters.
             </p>
             <p className="text-m3-on-dark/50 text-xs mb-4 max-w-xs">
-              Strategy first, premium media production, full service marketing execution.
+              Activation recaps, exec clips and same week social cutdowns, San Francisco Bay Area.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
               Free 30 minute strategy call, we reply within 1 business day.
@@ -82,6 +82,7 @@ export function Footer() {
                 <Link 
                   key={link.label}
                   to={link.href} 
+                  {...('promo' in link && link.promo ? { 'data-techweek-promo': true } : {})}
                   className="text-m3-on-dark/70 hover:text-m3-on-dark text-sm transition-colors"
                 >
                   {link.label}

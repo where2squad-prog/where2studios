@@ -8,6 +8,7 @@ import { SEOHead, areaServed } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
 import { TechWeekCountdown } from '@/components/techweek/TechWeekCountdown'
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
 import { TrustedBrands } from '@/components/TrustedBrands'
 
 import { TechWeekForm } from '@/components/techweek/TechWeekForm'
@@ -96,10 +97,46 @@ function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+const WRAPPED_TITLE = 'SF Tech Week Videographer, Event Video Coverage | Where2Studios'
+const WRAPPED_DESCRIPTION =
+  'Where2Studios covers SF Tech Week side events, panels, mixers and founder dinners with next morning recaps and vertical clips. Bay Area crew. Book early for Tech Week 2027.'
+
+const heroCopy = {
+  current: {
+    eyebrow: 'October 5 to 11, 2026',
+    h1: 'Event video for SF Tech Week',
+    subhead:
+      'We cover your Tech Week event and send the first clips back the next morning, while the week is still going.',
+    cta: 'Lock your date',
+  },
+  'la-week': {
+    eyebrow: 'SF Tech Week has wrapped',
+    h1: 'SF recaps are cutting now. LA Tech Week is next.',
+    subhead:
+      'We are covering LA Tech Week October 12 to 18 and delivering SF Tech Week recaps this week. Book LA dates while crews are open.',
+    cta: 'Book LA Tech Week',
+  },
+  wrapped: {
+    eyebrow: 'SF Tech Week 2026 has wrapped',
+    h1: 'Get on the list for Tech Week 2027',
+    subhead:
+      'We covered SF Tech Week 2026 side events, activations and founder dinners. Tell us about your next conference week and we will hold the date.',
+    cta: 'Book your next event',
+  },
+} as const
+
 export default function SFTechWeekPage() {
   const { data: projects } = useProjects()
   const [activeVideo, setActiveVideo] = useState<Project | null>(null)
   const [preselected, setPreselected] = useState('')
+  const phase = useTechWeekPhase()
+  const isPast = phase.kind === 'la-week' || phase.kind === 'wrapped'
+  const hero =
+    phase.kind === 'la-week'
+      ? heroCopy['la-week']
+      : phase.kind === 'wrapped'
+        ? heroCopy.wrapped
+        : heroCopy.current
 
   const proof = useMemo(() => {
     const all = projects || []
@@ -172,8 +209,8 @@ export default function SFTechWeekPage() {
   return (
     <>
       <SEOHead
-        title={PAGE_TITLE}
-        description={PAGE_DESCRIPTION}
+        title={phase.kind === 'wrapped' ? WRAPPED_TITLE : PAGE_TITLE}
+        description={phase.kind === 'wrapped' ? WRAPPED_DESCRIPTION : PAGE_DESCRIPTION}
         url={PAGE_URL}
         robots="index, follow"
         schema={[serviceSchema, faqSchema, breadcrumbSchema]}
@@ -183,21 +220,18 @@ export default function SFTechWeekPage() {
         <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <p className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              October 5 to 11, 2026
+              {hero.eyebrow}
             </p>
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-dark mt-3">
-              Event video for SF Tech Week
+              {hero.h1}
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              We cover your Tech Week event and send the first clips back the next morning, while
-              the week is still going.
-            </p>
+            <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">{hero.subhead}</p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => scrollTo('tech-week-form')}
                 className="m3-filled-button text-sm px-6 py-3"
               >
-                Lock your date
+                {hero.cta}
               </button>
               <button
                 onClick={() => scrollTo('tech-week-proof')}
@@ -374,10 +408,12 @@ export default function SFTechWeekPage() {
                 </li>
               ))}
             </ol>
-            <p className="mt-6 text-sm text-m3-on-surface/60">
-              We run a limited number of crews per night from October 5 to 11. Once a night is full
-              it is full.
-            </p>
+            {!isPast && (
+              <p className="mt-6 text-sm text-m3-on-surface/60">
+                We run a limited number of crews per night from October 5 to 11. Once a night is
+                full it is full.
+              </p>
+            )}
           </div>
         </section>
 
@@ -419,17 +455,19 @@ export default function SFTechWeekPage() {
         <section className="py-14 sm:py-20 bg-m3-surface text-center">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
-              October 5 is close
+              {isPast ? 'Planning a conference week?' : 'October 5 is close'}
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-m3-on-surface/70">
-              San Francisco Tech Week video production books out fast. Send us your date and we
-              will tell you today if we can cover it.
-            </p>
+            {!isPast && (
+              <p className="mt-3 text-sm sm:text-base text-m3-on-surface/70">
+                San Francisco Tech Week video production books out fast. Send us your date and we
+                will tell you today if we can cover it.
+              </p>
+            )}
             <button
               onClick={() => scrollTo('tech-week-form')}
               className="m3-filled-button text-base px-7 py-3.5 mt-6"
             >
-              Lock your date
+              {isPast ? hero.cta : 'Lock your date'}
             </button>
           </div>
         </section>

@@ -3,12 +3,26 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, X } from 'lucide-react'
-import { isTechWeekCampaignLive } from '@/lib/techWeek'
+import { isTechWeekPromoLive, type TechWeekPhase } from '@/lib/techWeek'
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
 
 const STORAGE_KEY = 'w2s-techweek-bar-dismissed'
 
+function barCopy(phase: TechWeekPhase) {
+  if (phase.kind === 'live') {
+    return `Tech Week is live, day ${phase.day} of 7. Same day crews still available`
+  }
+  if (phase.kind === 'countdown') {
+    if (phase.days === 1) return 'SF Tech Week starts tomorrow. Last crew nights open'
+    if (phase.days <= 7) return `SF Tech Week starts in ${phase.days} days. Crew nights are filling up`
+    return 'SF Tech Week, Oct 5 to 11. Next morning recaps. Book your date'
+  }
+  return null
+}
+
 export function AnnouncementBar() {
   const [dismissed, setDismissed] = useState(false)
+  const phase = useTechWeekPhase()
 
   useEffect(() => {
     try {
@@ -18,7 +32,8 @@ export function AnnouncementBar() {
     }
   }, [])
 
-  if (dismissed || !isTechWeekCampaignLive()) return null
+  const copy = barCopy(phase)
+  if (dismissed || !isTechWeekPromoLive(phase) || !copy) return null
 
   const dismiss = () => {
     setDismissed(true)
@@ -30,15 +45,13 @@ export function AnnouncementBar() {
   }
 
   return (
-    <div className="relative bg-m3-primary text-m3-on-primary">
+    <div data-techweek-promo className="relative bg-m3-primary text-m3-on-primary">
       <div className="max-w-7xl mx-auto flex items-center gap-2 px-3 sm:px-6 py-2 pr-10">
         <Link
           to="/sf-tech-week"
           className="flex items-center gap-1.5 min-w-0 text-[11px] sm:text-sm font-semibold leading-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-on-primary rounded"
         >
-          <span className="min-w-0">
-            SF Tech Week, Oct 5 to 11. Next morning recaps. Book your date
-          </span>
+          <span className="min-w-0">{copy}</span>
           <ArrowRight className="w-3.5 h-3.5 shrink-0" />
         </Link>
       </div>
