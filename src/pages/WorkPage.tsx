@@ -67,14 +67,24 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
         className="group block m3-elevated-card overflow-hidden hover:shadow-xl transition-all duration-300"
       >
         <div className="relative aspect-video overflow-hidden">
-          <img
-            src={thumbnail}
-            alt={`Event recap video for ${project.title}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
-          
+          {isUploadedVideo(project) && project.video_url ? (
+            <UploadVideo
+              src={project.video_url}
+              poster={thumbnail}
+              title={project.title}
+              hoverPreview
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={thumbnail}
+              alt={`Event recap video for ${project.title}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          )}
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
+
           {project.video_url && (
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <div className="w-12 h-12 rounded-full bg-m3-primary/90 flex items-center justify-center shadow-lg">
