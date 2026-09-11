@@ -343,18 +343,13 @@ export default function SFTechWeekPage() {
               Sponsoring an event that week?
             </h2>
             <p className="mt-4 text-sm sm:text-base text-m3-on-dark/75">
-              You paid for the logo, the bar tab and the booth. Without footage all you keep is a
-              badge scan list.
+              You paid for the logo, the bar tab and the booth. We cut a sponsor version with your
+              branding, your people and your verticals.
             </p>
             <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
-              We cut a sponsor version of the recap. Your branding in frame, your people talking,
-              your logo on the step and repeat, and vertical clips your marketing team can run after
-              the week ends.
+              Sponsor cut: starting at $1,500 added to any package.
             </p>
-            <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
-              Sponsor cut: starting at $1,500 added to any package. A second edit with your branding, your
-              people and your verticals.
-            </p>
+
             <button
               onClick={() => requestQuote(SPONSOR_OPTION)}
               className="m3-filled-button text-sm px-6 py-3 mt-6"
