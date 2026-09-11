@@ -229,10 +229,8 @@ export default function EventRecapVideosPage() {
                 <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2">
                   Event recap videos for Bay Area conferences and brand events
                 </h1>
-                <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                  We cover the event, then deliver a teaser you can post while people are still
-                  talking about it. After that comes the full recap edit, speaker clips and vertical
-                  cutdowns for social.
+                <p id="answer" className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-2xl">
+                  {SHORT_ANSWER}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
@@ -245,7 +243,7 @@ export default function EventRecapVideosPage() {
                 </div>
 
                 <p className="text-m3-on-surface/50 text-xs mt-3">
-                  Free 30 minute strategy call, we reply within 1 business day.
+                  We reply within 1 business day.
                 </p>
               </motion.div>
             </div>
@@ -255,16 +253,6 @@ export default function EventRecapVideosPage() {
             <TechWeekInlineCallout />
           </div>
 
-          {/* Short answer block */}
-          <section className="pb-12">
-            <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-              <div className="m3-outlined-card p-5 sm:p-6 max-w-3xl">
-                <p className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed">
-                  {SHORT_ANSWER}
-                </p>
-              </div>
-            </div>
-          </section>
 
           {/* What you get */}
           <section className="py-12 sm:py-16 bg-m3-surface">
