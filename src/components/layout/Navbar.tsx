@@ -7,7 +7,8 @@ import { Menu, X, Instagram, Linkedin } from 'lucide-react';
 import logo from '@/assets/where2studios-logo.png';
 import { useBookingSheet } from '@/contexts/BookingSheetContext';
 import { AnnouncementBar } from '@/components/techweek/AnnouncementBar';
-import { isTechWeekCampaignLive } from '@/lib/techWeek';
+import { isTechWeekPromoLive } from '@/lib/techWeek';
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase';
 
 const baseNavLinks = [
   { href: '/work', label: 'Work' },
