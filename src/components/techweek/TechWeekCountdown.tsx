@@ -1,25 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { getCountdownState, type CountdownState } from '@/lib/techWeek'
+import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
 
 export function TechWeekCountdown({ className = '' }: { className?: string }) {
-  const [state, setState] = useState<CountdownState | null>(null)
+  const phase = useTechWeekPhase()
 
-  useEffect(() => {
-    const tick = () => setState(getCountdownState())
-    tick()
-    const id = setInterval(tick, 60000)
-    return () => clearInterval(id)
-  }, [])
+  let text: string | null = null
+  if (phase.kind === 'live') text = `Tech Week is live, day ${phase.day} of 7`
+  else if (phase.kind === 'countdown')
+    text =
+      phase.days === 1
+        ? 'SF Tech Week starts tomorrow'
+        : `${phase.days} days until SF Tech Week`
 
-  if (!state || state.kind === 'hidden') return null
+  if (!text) return null
 
   return (
     <p className={`font-fredoka font-semibold text-m3-primary ${className}`} aria-live="polite">
-      {state.kind === 'live'
-        ? 'Tech Week is live'
-        : `${state.days} ${state.days === 1 ? 'day' : 'days'} until Tech Week`}
+      {text}
     </p>
   )
 }
