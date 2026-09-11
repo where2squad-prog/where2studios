@@ -7,6 +7,7 @@ export interface UploadedProject {
   slug: string | null
   title: string
   client_name: string | null
+  convention_slug: string | null
   category: string
   media_type: string
   source: string
@@ -25,7 +26,7 @@ export interface UploadedProject {
 }
 
 const SELECT =
-  'id, slug, title, client_name, category, media_type, source, video_url, thumbnail_url, file_hash, file_size, duration_seconds, width, height, featured, published, show_on_main_site, display_order, created_at'
+  'id, slug, title, client_name, convention_slug, category, media_type, source, video_url, thumbnail_url, file_hash, file_size, duration_seconds, width, height, featured, published, show_on_main_site, display_order, created_at'
 
 export function useUploadedProjects() {
   return useQuery({

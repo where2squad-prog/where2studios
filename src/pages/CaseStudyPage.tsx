@@ -14,6 +14,7 @@ import { isUploadedVideo } from '@/lib/portfolioMedia'
 import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
+import { conventions, conventionHref } from '@/lib/conventions'
 
 const CATEGORY_LABELS: Record<string, string> = {
   'convention-week': 'Convention Week HQ',
@@ -191,6 +192,9 @@ export default function CaseStudyPage() {
   const videoEmbedUrl = getVideoEmbedUrl(project.video_url, { controls: true })
   const videoHost = isVimeoUrl(project.video_url) ? 'Vimeo' : 'YouTube'
   const isPodcast = project.category === 'podcasts'
+  const convention = project.convention_slug
+    ? conventions.find((c) => c.slug === project.convention_slug)
+    : undefined
 
   // Parse newline-delimited fields into bullet arrays
   const objectivePoints = project.challenge?.split('\n').filter(Boolean) || []

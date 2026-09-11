@@ -11,6 +11,7 @@ export interface Project {
   result: string | null
   description: string | null
   client_name?: string | null
+  convention_slug?: string | null
   featured: boolean
   display_order: number
   show_on_main_site?: boolean
