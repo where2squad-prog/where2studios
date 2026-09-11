@@ -198,10 +198,12 @@ function ConventionContent({ convention }: { convention: Convention }) {
     <>
       <SEOHead
         title={title}
+        ogTitle={`${convention.name} video coverage`}
         description={description}
         canonical={`/conventions/${convention.slug}`}
         answer
-        image={proof[0]?.thumbnail_url || undefined}
+        image={`/og/conventions/${convention.slug}.png`}
+        imageAlt={`${convention.name} video coverage`}
         breadcrumbName={convention.name}
         schema={
           eventSchema
@@ -209,6 +211,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
             : [serviceSchema, faqSchema, breadcrumbSchema]
         }
       />
+
       <PageLayout navVariant="dark">
         {/* Hero */}
         <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
