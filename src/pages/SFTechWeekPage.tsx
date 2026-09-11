@@ -455,17 +455,19 @@ export default function SFTechWeekPage() {
         <section className="py-14 sm:py-20 bg-m3-surface text-center">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
-              October 5 is close
+              {isPast ? 'Planning a conference week?' : 'October 5 is close'}
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-m3-on-surface/70">
-              San Francisco Tech Week video production books out fast. Send us your date and we
-              will tell you today if we can cover it.
-            </p>
+            {!isPast && (
+              <p className="mt-3 text-sm sm:text-base text-m3-on-surface/70">
+                San Francisco Tech Week video production books out fast. Send us your date and we
+                will tell you today if we can cover it.
+              </p>
+            )}
             <button
               onClick={() => scrollTo('tech-week-form')}
               className="m3-filled-button text-base px-7 py-3.5 mt-6"
             >
-              Lock your date
+              {isPast ? hero.cta : 'Lock your date'}
             </button>
           </div>
         </section>
