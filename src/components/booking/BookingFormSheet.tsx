@@ -170,6 +170,21 @@ export function BookingFormSheet() {
     }, 300)
   }, [closeSheet])
 
+  // Escape closes the sheet and resets it, same as the close button
+  useEffect(() => {
+    if (!isOpen) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.stopPropagation()
+        handleClose()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isOpen, handleClose])
+
+
+
   const inputClasses = (hasError: boolean) =>
     `w-full px-3 py-2 rounded-lg bg-m3-surface text-m3-on-surface text-sm border ${
       hasError ? 'border-m3-secondary ring-1 ring-m3-secondary' : 'border-m3-outline/30'
