@@ -1,4 +1,6 @@
 import { defineMcp, auth } from "@lovable.dev/mcp-js";
+
+declare const process: { env: Record<string, string | undefined> };
 import listProjects from "./tools/list-projects";
 import getProject from "./tools/get-project";
 import listTestimonials from "./tools/list-testimonials";
