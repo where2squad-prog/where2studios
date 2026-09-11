@@ -11,6 +11,7 @@ import ContactPage from './pages/ContactPage'
 import TeamPage from './pages/TeamPage'
 import NotFoundPage from './pages/NotFoundPage'
 import SocialAdminPage from './pages/admin/SocialAdminPage'
+import PortfolioAdminPage from './pages/admin/PortfolioAdminPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import TermsOfServicePage from './pages/TermsOfServicePage'
@@ -47,6 +48,14 @@ export const routes: RouteRecord[] = [
         element: (
           <AdminRoute>
             <SocialAdminPage />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'admin/portfolio',
+        element: (
+          <AdminRoute>
+            <PortfolioAdminPage />
           </AdminRoute>
         ),
       },
