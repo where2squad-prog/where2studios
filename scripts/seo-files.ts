@@ -91,10 +91,11 @@ function techWeekSection() {
     return `## SF Tech Week 2026
 
 - [SF Tech Week video coverage](${DOMAIN}/sf-tech-week): event video for SF Tech Week side events, October 5 to 11, 2026. We also cover LA Tech Week, October 12 to 18, 2026.
-- Next Morning: one event, a 30 to 45 second teaser and 3 vertical clips by 10am the next day.
-- Single Event Recap: full coverage of one event, a 60 to 120 second recap edit, speaker and panel clips, edited photo selects.
-- Recap + Social Pack: the recap edit plus 8 vertical cutdowns for Reels, TikTok and LinkedIn.
-- Full Week Coverage: every event from October 5 to 11, clips dropped daily, one week long recap film, shared folder for your team and sponsors.
+- Next Morning, from $2,500 per event: one event, up to 3 hours on site, a 30 second teaser and one vertical clip by 10am the next day. Full recap edit available as an add on.
+- Single Event Recap, from $3,500 per event: one event, up to 5 hours on site, a 60 to 90 second recap edit and 20 edited photo selects within 5 business days.
+- Recap + Social Pack, from $4,800 per event: the Single Event Recap plus 5 vertical cutdowns for Reels, TikTok and LinkedIn, sized and captioned.
+- Full Week Coverage, from $15,000: up to 4 events across October 5 to 11, one crew per event, two vertical clips per event by the next morning, one 60 to 90 second week recap film, shared folder for your team and sponsors.
+- Sponsor cut: from $1,500 added to any package, a second edit with your branding, your people and your verticals.
 `;
   }
   return `## Tech Week
