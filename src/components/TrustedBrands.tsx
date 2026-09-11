@@ -155,24 +155,24 @@ export function TrustedBrands() {
       </div>
 
       {/* Stats Section */}
-      <div className="container mx-auto px-4 sm:px-8 lg:px-12 mt-10 sm:mt-14" ref={views.ref}>
+      <div className="container mx-auto px-4 sm:px-8 lg:px-12 mt-10 sm:mt-14" ref={conventionWeeks.ref}>
         <div className="flex justify-center">
           <div className="grid grid-cols-4 gap-6 sm:gap-12 lg:gap-16">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">150+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Projects shipped</div>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{conventionWeeks.formatted}</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Convention weeks covered</div>
+            </div>
+            <div className="text-center" ref={techBrands.ref}>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{techBrands.formatted}</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Tech brands</div>
+            </div>
+            <div className="text-center" ref={hqFilms.ref}>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{hqFilms.formatted}</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brand HQ films</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views earned</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">80+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Brands supported</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">500+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Assets delivered</div>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">10am</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Next morning clip delivery</div>
             </div>
           </div>
         </div>
