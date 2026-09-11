@@ -161,6 +161,12 @@ export default function SocialAdminPage() {
               <img src={logo} alt="Where2Studios" className="h-10 sm:h-14 w-auto" />
             </Link>
             <div className="flex items-center gap-4">
+              <Link
+                to="/admin/portfolio"
+                className="hidden sm:inline text-sm text-m3-on-dark/70 hover:text-m3-on-dark transition-colors"
+              >
+                Portfolio Uploads
+              </Link>
               <h1 className="font-fredoka text-lg sm:text-xl font-semibold text-m3-on-dark">
                 Social Media Admin
               </h1>

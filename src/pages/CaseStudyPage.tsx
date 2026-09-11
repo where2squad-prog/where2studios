@@ -10,6 +10,8 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { useCaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 import { getVideoEmbedUrl, isVimeoUrl } from '@/lib/video'
+import { isUploadedVideo } from '@/lib/portfolioMedia'
+import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 
