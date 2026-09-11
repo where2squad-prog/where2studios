@@ -350,6 +350,10 @@ export default function SFTechWeekPage() {
                 </div>
               ))}
             </div>
+            <p className="text-xs sm:text-sm text-m3-on-surface/60 mt-6">
+              Prices are per event. Speaker and panel clips, extra cutdowns and a full recap edit on
+              the Next Morning package are quoted as add ons.
+            </p>
           </div>
         </section>
 
@@ -367,6 +371,10 @@ export default function SFTechWeekPage() {
               We cut a sponsor version of the recap. Your branding in frame, your people talking,
               your logo on the step and repeat, and vertical clips your marketing team can run after
               the week ends.
+            </p>
+            <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
+              Sponsor cut: from $1,500 added to any package. A second edit with your branding, your
+              people and your verticals.
             </p>
             <button
               onClick={() => requestQuote(SPONSOR_OPTION)}
