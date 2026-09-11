@@ -166,6 +166,32 @@ export default function AdminLoginPage() {
                 )}
               </Button>
             </form>
+
+            <div className="flex items-center gap-3 my-5">
+              <div className="h-px flex-1 bg-m3-outline" />
+              <span className="text-xs text-m3-on-surface/50">or</span>
+              <div className="h-px flex-1 bg-m3-outline" />
+            </div>
+
+            <Button
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={isGoogleLoading}
+              variant="outline"
+              className="w-full h-11 font-semibold border-m3-outline bg-m3-surface-variant text-m3-on-surface hover:bg-m3-surface-variant/70"
+            >
+              {isGoogleLoading ? (
+                <span className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-m3-on-surface border-t-transparent rounded-full animate-spin" />
+                  Signing in...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  <img src={googleIcon} alt="" className="w-4 h-4" />
+                  Continue with Google
+                </span>
+              )}
+            </Button>
           </div>
 
           <p className="text-center text-m3-on-dark/40 text-xs mt-6">
