@@ -91,22 +91,18 @@ export function BookingFormSheet() {
     }))
   }, [isOpen, prefill])
 
-  // Prevent body scroll when sheet is open, and close on Escape
+  // Prevent body scroll while the sheet is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) closeSheet()
-    }
-    document.addEventListener('keydown', onKeyDown)
     return () => {
       document.body.style.overflow = ''
-      document.removeEventListener('keydown', onKeyDown)
     }
-  }, [isOpen, closeSheet])
+  }, [isOpen])
+
 
 
   const handleChange = (
