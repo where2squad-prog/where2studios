@@ -96,10 +96,46 @@ function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+const WRAPPED_TITLE = 'SF Tech Week Videographer, Event Video Coverage | Where2Studios'
+const WRAPPED_DESCRIPTION =
+  'Where2Studios covers SF Tech Week side events, panels, mixers and founder dinners with next morning recaps and vertical clips. Bay Area crew. Book early for Tech Week 2027.'
+
+const heroCopy = {
+  current: {
+    eyebrow: 'October 5 to 11, 2026',
+    h1: 'Event video for SF Tech Week',
+    subhead:
+      'We cover your Tech Week event and send the first clips back the next morning, while the week is still going.',
+    cta: 'Lock your date',
+  },
+  'la-week': {
+    eyebrow: 'SF Tech Week has wrapped',
+    h1: 'SF recaps are cutting now. LA Tech Week is next.',
+    subhead:
+      'We are covering LA Tech Week October 12 to 18 and delivering SF Tech Week recaps this week. Book LA dates while crews are open.',
+    cta: 'Book LA Tech Week',
+  },
+  wrapped: {
+    eyebrow: 'SF Tech Week 2026 has wrapped',
+    h1: 'Get on the list for Tech Week 2027',
+    subhead:
+      'We covered SF Tech Week 2026 side events, activations and founder dinners. Tell us about your next conference week and we will hold the date.',
+    cta: 'Book your next event',
+  },
+} as const
+
 export default function SFTechWeekPage() {
   const { data: projects } = useProjects()
   const [activeVideo, setActiveVideo] = useState<Project | null>(null)
   const [preselected, setPreselected] = useState('')
+  const phase = useTechWeekPhase()
+  const isPast = phase.kind === 'la-week' || phase.kind === 'wrapped'
+  const hero =
+    phase.kind === 'la-week'
+      ? heroCopy['la-week']
+      : phase.kind === 'wrapped'
+        ? heroCopy.wrapped
+        : heroCopy.current
 
   const proof = useMemo(() => {
     const all = projects || []
