@@ -337,7 +337,7 @@ export default function SFTechWeekPage() {
                   </h3>
                   {pkg.startingPrice !== null && (
                     <p className="text-sm font-semibold text-m3-primary mt-1">
-                      From ${pkg.startingPrice.toLocaleString()}
+                      Starting at ${pkg.startingPrice.toLocaleString()}
                     </p>
                   )}
                   <p className="text-sm text-m3-on-surface/70 mt-2 flex-1">{pkg.description}</p>
