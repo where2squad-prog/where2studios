@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { hashFile } from '@/lib/sha256'
+import { conventions } from '@/lib/conventions'
 import {
   UPLOAD_ACCEPT,
   UPLOAD_CATEGORIES,
