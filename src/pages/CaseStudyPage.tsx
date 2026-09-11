@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Play, CheckCircle2, Target, Lightbulb, Package, Users, Share2, BarChart3, Scissors, ArrowRight } from 'lucide-react'
