@@ -23,7 +23,9 @@ const MOBILE_SPEED = 24; // px per second
 
 export function TrustedBrands() {
   const isMobile = useIsMobile();
-  const views = useCountUp({ end: 259, duration: 2000, suffix: 'M+' });
+  const conventionWeeks = useCountUp({ end: 9, duration: 2000, suffix: '+' });
+  const techBrands = useCountUp({ end: 20, duration: 2000, suffix: '+' });
+  const hqFilms = useCountUp({ end: 22, duration: 2000 });
   const trackRef = useRef<HTMLDivElement>(null);
 
   // Only use JS-based scroll on desktop (more reliable CSS animation on mobile)
