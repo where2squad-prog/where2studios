@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowRight, Play, ArrowUpDown, Grid3X3 } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
@@ -122,8 +122,18 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
 }
 
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const viewParam = searchParams.get('view')
+  const activeCategory =
+    viewParam && [...CATEGORIES, 'photos'].includes(viewParam) ? viewParam : 'all'
   const [sortBy, setSortBy] = useState<SortOption>('featured')
+
+  const setActiveCategory = (category: string) => {
+    const next = new URLSearchParams(searchParams)
+    if (category === 'all') next.delete('view')
+    else next.set('view', category)
+    setSearchParams(next, { replace: true })
+  }
   
   const { data: projects, isLoading } = useAllProjects({ 
     category: activeCategory === 'all' ? undefined : activeCategory 
