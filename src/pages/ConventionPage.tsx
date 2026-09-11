@@ -29,6 +29,13 @@ import {
 
 const SITE_URL = 'https://where2studios.com'
 
+
+/** Keeps the brand suffix inside the title cap by dropping the city on long names. */
+function conventionTitle(name: string) {
+  const withCity = `${name} Video Coverage, San Francisco`
+  return `${withCity.length + 16 <= 65 ? withCity : `${name} Video Coverage`} | Where2Studios`
+}
+
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
@@ -50,7 +57,7 @@ function ConventionRedirect({ convention }: { convention: Convention }) {
   return (
     <>
       <SEOHead
-        title={`${convention.name} Video Coverage in San Francisco | Where2Studios`}
+        title={conventionTitle(convention.name)}
         description={`Video coverage for ${convention.name} in San Francisco.`}
         canonical={href}
         robots="noindex, follow"
@@ -118,7 +125,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
   }
 
   const pageUrl = `${SITE_URL}/conventions/${convention.slug}`
-  const title = `${convention.name} Video Coverage in San Francisco | Where2Studios`
+  const title = conventionTitle(convention.name)
   const description = dateLine
     ? `Video coverage for ${convention.name}, ${dateLine}. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
     : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`

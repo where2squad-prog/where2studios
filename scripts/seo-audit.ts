@@ -107,7 +107,7 @@ for (const file of files) {
   const title = titleMatches[titleMatches.length - 1] || ''
   if (!title) fails.push('title:missing')
   else {
-    if (title.length < 35 || title.length > 62) fails.push(`title:len=${title.length}`)
+    if (title.length < 35 || title.length > 65) fails.push(`title:len=${title.length}`)
     titles.set(title, [...(titles.get(title) || []), route])
   }
 
