@@ -77,6 +77,13 @@ export function getVimeoEmbedUrl(
     : `https://player.vimeo.com/video/${id}`
 }
 
+/** True for self hosted mp4 files served straight from our media store. */
+export function isDirectVideoUrl(url: string | null | undefined): boolean {
+  if (!url) return false
+  if (isYouTubeUrl(url) || isVimeoUrl(url)) return false
+  return /\.(mp4|webm|mov)(\?.*)?$/i.test(url)
+}
+
 /** Dispatches to the right provider embed for a project video URL. */
 export function getVideoEmbedUrl(
   url: string | null | undefined,

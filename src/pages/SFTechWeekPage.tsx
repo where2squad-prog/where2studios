@@ -42,12 +42,13 @@ const bookingSteps = [
   'Teaser and vertical clips by 10am the next day. Full recap after the week.',
 ]
 
-const PRIORITY_TITLES = [
-  'onchain summit recap highlight',
-  'passionfroot tech event recap',
-  'google pixel activation build montage',
-  'pacbio discoveries',
-  'sunnyvale cityline event recap',
+const PROOF_SLUGS = [
+  'the-agent-open-san-francisco',
+  'dataiku-brand-hq-build-montage',
+  'cloudflare-rsa-conference-2025',
+  'claroty-rsa-conference-2024',
+  'claroty-podcast-day-rsa-2024',
+  'rsa-conference-2025-b-restaurant',
 ]
 
 const faqs = [
@@ -140,21 +141,8 @@ export default function SFTechWeekPage() {
 
   const proof = useMemo(() => {
     const all = projects || []
-    const picked: Project[] = []
-    PRIORITY_TITLES.forEach((wanted) => {
-      const match = all.find(
-        (p) => p.title.toLowerCase().includes(wanted) || wanted.includes(p.title.toLowerCase())
-      )
-      if (match && !picked.some((p) => p.id === match.id)) picked.push(match)
-    })
-    const fallback = all.filter(
-      (p) =>
-        !picked.some((picked) => picked.id === p.id) &&
-        ['convention-week', 'event-recaps', 'brand-films'].includes(p.category.toLowerCase())
-    )
-    return [...picked, ...fallback, ...all.filter((p) => !picked.some((x) => x.id === p.id))].slice(
-      0,
-      6
+    return PROOF_SLUGS.map((slug) => all.find((p) => p.slug === slug)).filter(
+      (p): p is Project => !!p
     )
   }, [projects])
 
@@ -300,10 +288,7 @@ export default function SFTechWeekPage() {
               Real work, not a mood board.
             </p>
             <p className="mt-5 text-sm font-semibold text-m3-on-surface/80">
-              Onchain Summit. Passionfroot. Google Pixel. PacBio. Cityline.
-            </p>
-            <p className="mt-1 text-sm text-m3-on-surface/60">
-              Five years shooting PacBio conference recaps, speaker talks and panel sessions.
+              The Agent Open. Dataiku. Cloudflare. Claroty. RSA Conference week.
             </p>
 
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8">

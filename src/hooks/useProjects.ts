@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client'
 
 export interface Project {
   id: string
+  slug?: string | null
   title: string
   category: string
   video_url: string | null

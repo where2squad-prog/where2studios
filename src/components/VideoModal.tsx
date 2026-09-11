@@ -3,7 +3,7 @@
 import { useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { getVideoEmbedUrl } from '@/lib/video'
+import { getVideoEmbedUrl, isDirectVideoUrl } from '@/lib/video'
 
 interface VideoModalProps {
   isOpen: boolean
@@ -13,7 +13,8 @@ interface VideoModalProps {
 }
 
 export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps) {
-  const embedUrl = getVideoEmbedUrl(videoUrl, { autoplay: true })
+  const isDirect = isDirectVideoUrl(videoUrl)
+  const embedUrl = isDirect ? null : getVideoEmbedUrl(videoUrl, { autoplay: true })
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -66,7 +67,17 @@ export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps
             className="relative z-10 w-full max-w-5xl aspect-video m3-elevated-card overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {embedUrl ? (
+            {isDirect && videoUrl ? (
+              <video
+                src={videoUrl}
+                title={title || 'Video'}
+                aria-label={title || 'Video'}
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain bg-m3-surface-dark"
+              />
+            ) : embedUrl ? (
               <iframe
                 src={embedUrl}
                 title={title || 'Video'}
