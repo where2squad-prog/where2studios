@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Target, Clapperboard, Megaphone, CheckCircle2, Users, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
@@ -10,83 +10,7 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 import { SkipLink } from '@/components/layout/SkipLink'
-
-type Pillar = {
-  id: string
-  title: string
-  icon: React.ElementType
-  intro: string
-  items: string[]
-  bestFor: string
-  linkTo?: string
-  linkLabel?: string
-}
-
-const pillars: Pillar[] = [
-  {
-    id: 'strategy',
-    title: 'Brand and Growth Strategy',
-    icon: Target,
-    intro: "We don't create randomly. We create with purpose.",
-    items: [
-      'Marketing strategy development',
-      'Brand positioning',
-      'Campaign planning',
-      'Content strategy',
-      'Funnel and conversion optimization',
-    ],
-    bestFor: 'Best for brands that want direction before execution.',
-  },
-  {
-    id: 'production',
-    title: 'High Impact Media Production',
-    icon: Clapperboard,
-    intro: 'Premium content that elevates perception instantly.',
-    items: [
-      'Cinematic brand videos',
-      'Launch videos (product demos, founder stories, pitch deck inserts)',
-      'Photography (product, lifestyle, corporate)',
-      'Podcast production (recording, editing, clips, thumbnails, publishing)',
-      'Event coverage and recaps (multi-camera, next-day teasers, speaker clips)',
-      'Short form and social content',
-    ],
-    bestFor: 'Best for brands that want to look as powerful as they are.',
-    linkTo: '/event-recap-videos',
-    linkLabel: 'See how our event recap videos work',
-  },
-  {
-    id: 'marketing',
-    title: 'Full Service Marketing Execution',
-    icon: Megaphone,
-    intro: "We don't just hand you content. We help it perform.",
-    items: [
-      'Social media management',
-      'Paid ads management',
-      'Email marketing',
-      'Content distribution',
-      'Ongoing campaign management',
-      'Analytics and optimization',
-    ],
-    bestFor: 'Best for brands that are serious about growth.',
-  },
-  {
-    id: 'creators',
-    title: 'Creator Brand Partnership',
-    icon: Users,
-    intro:
-      "We don't pitch your brand to strangers. We feature you through Where2Boys, our creator brand with a built-in Bay Area audience.",
-    items: [
-      'Featured content on the @where2boys feed (258K monthly views)',
-      'Restaurant and venue features with built-in audience targeting',
-      'Event coverage and recaps for openings, pop-ups, and festivals',
-      'Brand integrations tailored to Bay Area food and culture',
-      'Co-promotions with other Bay Area creators in the Where2Boys network',
-    ],
-    bestFor: 'Best for brands looking for an authentic audience and Bay Area cultural fit.',
-    linkTo: '/where2boys',
-    linkLabel: 'See the full Where2Boys page',
-  },
-]
+import { deliverables } from '@/data/deliverables'
 
 export default function ServicesPage() {
   const { openSheet } = useBookingSheet()
