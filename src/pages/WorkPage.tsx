@@ -86,7 +86,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
 
           {project.video_url && (
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <div className="w-12 h-12 rounded-full bg-m3-primary/90 flex items-center justify-center shadow-lg">
                 <Play className="w-5 h-5 text-m3-on-primary fill-current ml-0.5" />
               </div>
