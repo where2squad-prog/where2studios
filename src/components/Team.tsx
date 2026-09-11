@@ -6,7 +6,6 @@ import { ArrowRight } from 'lucide-react'
 import { ImageWithFallback } from './figma/ImageWithFallback'
 import joshuaPhoto from '../assets/team-joshua.png'
 import danielPhoto from '../assets/team-daniel.png'
-import gabbyPhoto from '../assets/team-gabby.png'
 import ryanPhoto from '../assets/team-ryan.png'
 import gavinPhoto from '../assets/team-gavin.png'
 import anthonyPhoto from '../assets/team-member-1.png'
@@ -20,24 +19,19 @@ export function Team({ limit }: { limit?: number } = {}) {
       image: joshuaPhoto,
     },
     {
+      name: "Gavin Legaspi",
+      role: "Creative Director",
+      image: gavinPhoto,
+    },
+    {
       name: "Daniel Martinez",
       role: "Operations Lead",
       image: danielPhoto,
     },
     {
-      name: "Gabby Guevara",
-      role: "Social Media Manager",
-      image: gabbyPhoto,
-    },
-    {
       name: "Ryan Sison",
       role: "Lead Videographer",
       image: ryanPhoto,
-    },
-    {
-      name: "Gavin Legaspi",
-      role: "Content Producer",
-      image: gavinPhoto,
     },
     {
       name: "Anthony Gonzalez",

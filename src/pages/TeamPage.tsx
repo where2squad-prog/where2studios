@@ -17,7 +17,7 @@ import joshuaSvg from '@/assets/team/joshua.svg'
 import danielSvg from '@/assets/team/daniel.svg'
 import gavinSvg from '@/assets/team/gavin.svg'
 import anthonySvg from '@/assets/team/anthony.svg'
-import gabbySvg from '@/assets/team/gabby.svg'
+
 import ryanSvg from '@/assets/team/ryan.svg'
 import josephSvg from '@/assets/team/joseph.svg'
 import mayadSvg from '@/assets/team/mayad.svg'
@@ -63,13 +63,6 @@ const teamMembers: TeamMember[] = [
     image: anthonySvg,
     instagram: 'antjgonz',
     linkedin: 'anthony-gonzalez-7a8378349',
-  },
-  {
-    name: 'Gabby Guevara',
-    role: 'Social Media Manager',
-    blurb: 'Keeping the socials consistent, clean, and always on brand.',
-    image: gabbySvg,
-    linkedin: 'gabrielleguevara',
   },
   {
     name: 'Ryan Sison',

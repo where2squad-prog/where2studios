@@ -17,10 +17,10 @@ export function Footer() {
   const services = [
     { label: 'SF Tech Week video coverage', href: '/sf-tech-week' },
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
-    { label: 'Brand and Growth Strategy', href: '/services#strategy' },
-    { label: 'High Impact Media Production', href: '/services#production' },
-    { label: 'Full Service Marketing Execution', href: '/services#marketing' },
-    { label: 'Creator Brand Partnership', href: '/services#creators' },
+    { label: 'Activation recap', href: '/services#activation-recap' },
+    { label: 'Exec clips for LinkedIn', href: '/services#exec-clips' },
+    { label: 'Same week social cutdowns', href: '/services#social-cutdowns' },
+    { label: 'Full week coverage', href: '/services#full-week-coverage' },
   ]
 
   const legalLinks = [

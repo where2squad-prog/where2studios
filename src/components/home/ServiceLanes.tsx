@@ -2,38 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { Target, Clapperboard, Megaphone, ArrowRight } from 'lucide-react'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from '@/components/ui/carousel'
-
-const services = [
-  {
-    id: 'strategy',
-    title: 'Strategy',
-    icon: Target,
-    oneLiner: 'Plan first. Build with intent.',
-    href: '/services#strategy',
-  },
-  {
-    id: 'production',
-    title: 'Production',
-    icon: Clapperboard,
-    oneLiner: 'Event recap videos and premium media that earns attention.',
-    href: '/event-recap-videos',
-  },
-  {
-    id: 'marketing',
-    title: 'Marketing',
-    icon: Megaphone,
-    oneLiner: 'Distribute and grow with data.',
-    href: '/services#marketing',
-  },
-]
+import { deliverables } from '@/data/deliverables'
 
 export function ServiceLanes() {
   const reduce = useReducedMotion()
@@ -50,28 +25,18 @@ export function ServiceLanes() {
     }
   }, [api])
 
-  const renderCard = (service: typeof services[number]) => (
+  const renderCard = (item: typeof deliverables[number]) => (
     <div className="h-full m3-outlined-card p-6 sm:p-8 flex flex-col">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-12 h-12 rounded-xl bg-m3-primary/10 flex items-center justify-center">
-          <service.icon className="w-6 h-6 text-m3-primary" />
+          <item.icon className="w-6 h-6 text-m3-primary" />
         </div>
-        <h3 className="font-fredoka text-xl font-semibold text-m3-on-surface">
-          {service.title}
+        <h3 className="font-fredoka text-lg sm:text-xl font-semibold text-m3-on-surface">
+          {item.title}
         </h3>
       </div>
 
-      <p className="text-sm text-m3-on-surface/80 mb-6 flex-1">
-        {service.oneLiner}
-      </p>
-
-      <Link
-        to={service.href}
-        className="flex items-center gap-2 text-m3-primary font-semibold text-sm hover:gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 rounded"
-      >
-        Learn more
-        <ArrowRight className="w-4 h-4" />
-      </Link>
+      <p className="text-sm text-m3-on-surface/80">{item.line}</p>
     </div>
   )
 
@@ -84,7 +49,7 @@ export function ServiceLanes() {
           viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-10 sm:mb-12"
         >
-          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3">
+          <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
             What we do
           </h2>
         </motion.div>
@@ -97,24 +62,24 @@ export function ServiceLanes() {
             className="w-full"
           >
             <CarouselContent className="-ml-0">
-              {services.map((service, index) => (
+              {deliverables.map((item, index) => (
                 <CarouselItem
-                  key={service.id}
+                  key={item.id}
                   className={`basis-[88%] sm:basis-[80%] pr-3 ${index === 0 ? 'pl-4 sm:pl-8' : 'pl-0'}`}
                 >
-                  {renderCard(service)}
+                  {renderCard(item)}
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
 
           <div className="mt-6 flex justify-center gap-2">
-            {services.map((_, index) => (
+            {deliverables.map((_, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => api?.scrollTo(index)}
-                aria-label={`Go to service ${index + 1} of ${services.length}`}
+                aria-label={`Go to item ${index + 1} of ${deliverables.length}`}
                 aria-current={activeIndex === index ? 'true' : undefined}
                 className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2 ${
                   activeIndex === index ? 'w-6 bg-m3-primary' : 'w-2 bg-m3-on-surface/20'
@@ -124,17 +89,17 @@ export function ServiceLanes() {
           </div>
         </div>
 
-        {/* Desktop: 3-column grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+        {/* Desktop: grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {deliverables.map((item, index) => (
             <motion.div
-              key={service.id}
+              key={item.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              {renderCard(service)}
+              {renderCard(item)}
             </motion.div>
           ))}
         </div>
