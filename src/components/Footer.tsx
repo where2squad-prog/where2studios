@@ -19,7 +19,9 @@ export function Footer() {
   ]
 
   const services = [
-    { label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true },
+    ...(showTechWeek
+      ? [{ label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true }]
+      : []),
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
     { label: 'Activation recap', href: '/services#activation-recap' },
     { label: 'Exec clips for LinkedIn', href: '/services#exec-clips' },
