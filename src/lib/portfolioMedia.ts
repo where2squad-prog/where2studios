@@ -237,7 +237,7 @@ export function portfolioImageUrl(url: string, width: number, quality = 75): str
   const marker = '/storage/v1/object/public/'
   if (!url.includes(marker)) return url
   const rendered = url.replace(marker, '/storage/v1/render/image/public/')
-  return `${rendered}?width=${width}&quality=${quality}`
+  return `${rendered}?width=${width}&quality=${quality}&resize=contain`
 }
 
 export const PORTFOLIO_IMAGE_WIDTHS = [600, 900, 1200]
