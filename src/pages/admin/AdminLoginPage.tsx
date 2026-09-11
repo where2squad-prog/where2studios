@@ -5,7 +5,9 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, LogIn, AlertCircle } from 'lucide-react'
 import logo from '@/assets/where2studios-logo.png'
+import googleIcon from '@/assets/icons/google.svg'
 import { useAuth } from '@/hooks/useAuth'
+import { lovable } from '@/integrations/lovable/index'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
@@ -18,6 +20,7 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false)
 
   // Get the page they were trying to access
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/admin/social'
@@ -42,6 +45,25 @@ export default function AdminLoginPage() {
     }
 
     // Redirect to the page they were trying to access
+    navigate(from, { replace: true })
+  }
+
+  const handleGoogleSignIn = async () => {
+    setError('')
+    setIsGoogleLoading(true)
+
+    const result = await lovable.auth.signInWithOAuth('google', {
+      redirect_uri: window.location.origin,
+    })
+
+    if (result.error) {
+      setError(result.error.message || 'Could not sign in with Google')
+      setIsGoogleLoading(false)
+      return
+    }
+
+    if (result.redirected) return
+
     navigate(from, { replace: true })
   }
 
@@ -144,6 +166,32 @@ export default function AdminLoginPage() {
                 )}
               </Button>
             </form>
+
+            <div className="flex items-center gap-3 my-5">
+              <div className="h-px flex-1 bg-m3-outline" />
+              <span className="text-xs text-m3-on-surface/50">or</span>
+              <div className="h-px flex-1 bg-m3-outline" />
+            </div>
+
+            <Button
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={isGoogleLoading}
+              variant="outline"
+              className="w-full h-11 font-semibold border-m3-outline bg-m3-surface-variant text-m3-on-surface hover:bg-m3-surface-variant/70"
+            >
+              {isGoogleLoading ? (
+                <span className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-m3-on-surface border-t-transparent rounded-full animate-spin" />
+                  Signing in...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  <img src={googleIcon} alt="" className="w-4 h-4" />
+                  Continue with Google
+                </span>
+              )}
+            </Button>
           </div>
 
           <p className="text-center text-m3-on-dark/40 text-xs mt-6">
