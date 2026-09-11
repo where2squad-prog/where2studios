@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
 import { isTechWeekPromoLive } from '@/lib/techWeek'
 
@@ -26,11 +26,18 @@ export function KeepReading({
   className?: string
 }) {
   const phase = useTechWeekPhase()
-  const items =
+  const { pathname } = useLocation()
+  const here = pathname.replace(/\/+$/, '') || '/'
+  const all =
     links ??
     (isTechWeekPromoLive(phase)
       ? [...BASE_LINKS, { label: 'SF Tech Week coverage', href: '/sf-tech-week' }]
       : BASE_LINKS)
+  // Never link the page the reader is already on.
+  const items = all.filter((item) => (item.href.replace(/\/+$/, '') || '/') !== here)
+
+  if (items.length === 0) return null
+
 
   return (
     <section className={`py-8 bg-m3-background border-t border-m3-on-surface/10 ${className}`}>

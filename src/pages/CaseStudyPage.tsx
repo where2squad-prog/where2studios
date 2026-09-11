@@ -284,16 +284,23 @@ export default function CaseStudyPage() {
     ? `${titleSubject} | Event Recap Video Case Study | Where2Studios`
     : `${titleSubject} | ${categoryLabel} Case Study | Where2Studios`
   // Built per project so no two case studies share a description.
-  const descriptionSubject = [
-    project.client_name ? `${project.client_name}` : project.title,
-    convention ? `at ${convention.name}` : null,
-    project.location ? `at ${project.location}` : null,
-  ]
-    .filter(Boolean)
-    .join(' ')
-  const pageDescription = `${project.title}${
-    descriptionSubject && descriptionSubject !== project.title ? `, ${descriptionSubject}` : ''
-  }. ${project.result || project.description || `${categoryLabel} by Where2Studios.`}`.trim()
+  const bodyText = project.description || project.result || ''
+  const firstSentence = (() => {
+    const clean = bodyText.replace(/\s+/g, ' ').trim()
+    if (!clean) return ''
+    const match = clean.match(/^.*?[.!?](\s|$)/)
+    return (match ? match[0] : clean).trim()
+  })()
+  const editionYear = project.title.match(/\b(20\d{2})\b/)?.[1]
+  const pageDescription = (
+    project.client_name && convention
+      ? `${project.client_name} at ${convention.name}${editionYear ? ` (${editionYear})` : ''}${
+          project.location ? `, ${project.location}` : ''
+        }. ${firstSentence}`
+      : `${firstSentence} Filmed by Where2Studios in ${project.location || 'San Francisco'}.`
+  )
+    .replace(/\s+/g, ' ')
+    .trim()
 
   const jsonLd = buildJsonLd(project, thumbnail, isPodcast, pageDescription, convention)
 
