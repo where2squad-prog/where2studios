@@ -127,16 +127,16 @@ function ConventionContent({ convention }: { convention: Convention }) {
   const pageUrl = `${SITE_URL}/conventions/${convention.slug}`
   const title = conventionTitle(convention.name)
   const description = dateLine
-    ? `Video coverage for ${convention.name}, ${dateLine}. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
-    : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Brand HQ, suite and side event films near Moscone, clips by 10am the next day.`
+    ? `Video coverage for ${convention.name}, ${dateLine}. Activation, suite and side event films near Moscone, clips by 10am the next day.`
+    : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Activation, suite and side event films near Moscone, clips by 10am the next day.`
 
   const faqs = [...convention.faqs, ...sharedConventionFaqs]
 
   const answer = `Where2Studios covers ${convention.name} in San Francisco for ${joinNames(
     convention.buyers
-  )}. Brand HQs, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
+  )}. Activations, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
     clientNames
-      ? ` Past ${convention.name} and convention week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
+      ? ` Past ${convention.name} and conference week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
       : ''
   }`
 
@@ -220,7 +220,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
               {h1}
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              Brand HQ, suite and side event coverage near Moscone. Clips by 10am the next day.
+              Activation, lounge and side event coverage near Moscone. Clips by 10am the next day.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
@@ -274,7 +274,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
         >
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
-              Convention week work
+              Conference week work
             </h2>
             <p className="mt-2 text-sm sm:text-base text-m3-on-surface/70">
               Real work, not a mood board.
@@ -379,7 +379,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
                 to="/conventions"
                 className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm"
               >
-                See the full convention calendar
+                See the full conference calendar
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

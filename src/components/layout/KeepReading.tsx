@@ -7,7 +7,7 @@ import { isTechWeekPromoLive } from '@/lib/techWeek'
 type LinkItem = { label: string; href: string }
 
 const BASE_LINKS: LinkItem[] = [
-  { label: 'Convention calendar', href: '/conventions' },
+  { label: 'Conference calendar', href: '/conventions' },
   { label: 'Why a dedicated crew', href: '/why-a-dedicated-crew' },
   { label: 'Our work', href: '/work' },
   { label: 'Services', href: '/services' },

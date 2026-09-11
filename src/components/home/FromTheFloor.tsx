@@ -125,7 +125,7 @@ export function FromTheFloor() {
             Stills and build montages from the floor
           </h2>
           <p className="text-m3-on-background/70">
-            Photo selects and build films ship with every booking.
+            Photo selects and build films ship with every conference booking.
           </p>
 
         </div>

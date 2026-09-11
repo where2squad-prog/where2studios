@@ -15,12 +15,20 @@ import {
 } from '@/components/ui/carousel'
 
 const FILTER_LABELS: Record<string, string> = {
-  'convention-week': 'Convention Week HQ',
+  'convention-week': 'Conference Activations',
   'event-recaps': 'Event Recap',
   'brand-films': 'Brand Film',
 }
 
-const PINNED_SLUGS = ['google-pixel-house-nba-all-star-2025', 'the-agent-open-san-francisco']
+const FLAGSHIP_SLUG = 'the-agent-open-san-francisco'
+const EXCLUDED_SLUGS = [FLAGSHIP_SLUG, 'google-pixel-house-nba-all-star-2025']
+
+/** Recent pool: 2025 or later in the title, or created in 2026. */
+function isRecent(project: CaseStudy) {
+  if (/\b(202[5-9]|20[3-9]\d)\b/.test(project.title)) return true
+  return (project.created_at || '').startsWith('2026')
+}
+
 
 function getCorporateLabel(title: string): string {
   const lower = title.toLowerCase()
@@ -231,8 +239,8 @@ export function FeaturedCaseStudies() {
   const reduce = useReducedMotion()
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
-  // Chosen after mount so the prerendered HTML never locks one video in place.
-  const [rotationIndex, setRotationIndex] = useState<number | null>(null)
+  // Chosen after mount so the prerendered HTML stays deterministic.
+  const [picked, setPicked] = useState<string[] | null>(null)
 
   useEffect(() => {
     if (!api) return
@@ -244,21 +252,28 @@ export function FeaturedCaseStudies() {
     }
   }, [api])
 
-  const pinned = PINNED_SLUGS
-    .map((slug) => allProjects?.find((p) => p.slug === slug))
-    .filter((p): p is CaseStudy => Boolean(p))
+  const flagship = allProjects?.find((p) => p.slug === FLAGSHIP_SLUG)
 
-  const rotationPool = (allProjects || []).filter(
-    (p) => p.category === 'convention-week' && !PINNED_SLUGS.includes(p.slug || '')
-  )
+  const pool = (allProjects || [])
+    .filter(
+      (p) =>
+        p.category === 'convention-week' &&
+        !EXCLUDED_SLUGS.includes(p.slug || '') &&
+        isRecent(p)
+    )
+    .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0))
+
+  const poolKey = pool.map((p) => p.id).join(',')
 
   useEffect(() => {
-    if (rotationPool.length === 0) {
-      setRotationIndex(null)
+    const ids = poolKey ? poolKey.split(',') : []
+    if (ids.length < 2) {
+      setPicked(null)
       return
     }
-    setRotationIndex(Math.floor(Math.random() * rotationPool.length))
-  }, [rotationPool.length])
+    const shuffled = [...ids].sort(() => Math.random() - 0.5)
+    setPicked(shuffled.slice(0, 2))
+  }, [poolKey])
 
   if (isLoading) {
     return (
@@ -274,18 +289,17 @@ export function FeaturedCaseStudies() {
     )
   }
 
-  if (pinned.length === 0) {
+  if (!flagship) {
     return null
   }
 
-  // Third slot: the first convention week project before mount, then a random one.
-  const rotating = rotationPool.length
-    ? rotationPool[(rotationIndex ?? 0) % rotationPool.length]
-    : undefined
-
-  const flagship = pinned[0]
-  const supporting = [pinned[1], rotating].filter((p): p is CaseStudy => Boolean(p)).slice(0, 2)
+  const supporting = (
+    picked
+      ? picked.map((id) => pool.find((p) => p.id === id)).filter((p): p is CaseStudy => Boolean(p))
+      : pool.slice(0, 2)
+  ).slice(0, 2)
   const mobileProjects = [flagship, ...supporting]
+
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-m3-surface">
@@ -297,10 +311,10 @@ export function FeaturedCaseStudies() {
           className="text-center mb-10 sm:mb-12"
         >
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3">
-            Recent convention week work
+            Recent conference week work
           </h2>
           <p className="text-m3-on-surface/70 text-base sm:text-lg max-w-2xl mx-auto">
-            Brand headquarters, hospitality suites and side events in San Francisco.
+            Activations, hospitality suites and side events in San Francisco.
           </p>
         </motion.div>
 

@@ -45,14 +45,15 @@ export function ConversionHero() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] sm:leading-tight md:leading-tight mb-3 sm:mb-4 md:mb-6">
-              Video coverage for convention week{' '}
-              <span className="text-m3-primary">brand headquarters.</span>
+              Video coverage for conference week{' '}
+              <span className="text-m3-primary">activations.</span>
             </h1>
 
             {/* Subhead */}
             <p id="answer" className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              Cloudflare at RSAC, Google's Pixel House, Immuta at Snowflake Summit, OwnBackup at Dreamforce. Exec clips, activation recaps and social cutdowns your team posts the same week.
+              Experience hubs, lounges, off-site HQs and side events near Moscone. Cloudflare at RSAC, Google's Pixel House, Immuta at Snowflake Summit, OwnBackup at Dreamforce.
             </p>
+
 
 
             {/* CTA Row */}
@@ -72,7 +73,7 @@ export function ConversionHero() {
 
             {/* Helper line */}
             <p className="text-white/50 text-xs sm:text-sm mt-2 sm:mt-3 mb-4 sm:mb-5">
-              Tell us your convention week dates. We reply within 1 business day.
+              Tell us your conference dates. We reply within 1 business day.
             </p>
           </motion.div>
         </div>

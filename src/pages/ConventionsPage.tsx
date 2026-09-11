@@ -16,7 +16,7 @@ import {
 
 const SITE_URL = 'https://where2studios.com'
 const PAGE_URL = `${SITE_URL}/conventions`
-const PAGE_TITLE = 'San Francisco Convention Calendar, Video Coverage | Where2Studios'
+const PAGE_TITLE = 'San Francisco Conference Calendar, Video Coverage | Where2Studios'
 const PAGE_DESCRIPTION =
   'Every San Francisco conference week we cover near Moscone, with dates. Dreamforce, RSAC, Snowflake Summit, Data + AI Summit, TechCrunch Disrupt, GDC and SF Tech Week.'
 
@@ -33,7 +33,7 @@ export default function ConventionsPage() {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'San Francisco convention week calendar',
+    name: 'San Francisco conference week calendar',
     description: PAGE_DESCRIPTION,
     url: PAGE_URL,
   }
@@ -61,7 +61,7 @@ export default function ConventionsPage() {
         <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-dark">
-              San Francisco convention week calendar
+              San Francisco conference week calendar
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
               Every conference week we cover near Moscone, with dates.

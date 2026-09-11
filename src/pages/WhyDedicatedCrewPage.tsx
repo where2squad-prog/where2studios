@@ -19,9 +19,9 @@ const PROOF_SLUGS = [
 ]
 
 const STATS = [
-  { value: '9+', label: 'Convention weeks covered' },
+  { value: '9+', label: 'Conference weeks covered' },
   { value: '20+', label: 'Tech brands' },
-  { value: '22', label: 'Brand HQ films' },
+  { value: '22', label: 'Activation films' },
   { value: '10am', label: 'Next morning clip delivery' },
 ]
 
@@ -69,7 +69,7 @@ const SECTIONS = [
 ]
 
 const HERO_ANSWER =
-  'A brand HQ runs exec meetings in the morning, demos at noon and a reception at night. One hired shooter gets you one edit three weeks later. A dedicated crew is on site from build to strike, cuts overnight, and puts a teaser and a vertical clip in your inbox by 10am.'
+  'Whatever you call it, experience hub, lounge, house or brand HQ, it runs from morning meetings to the evening reception. One hired shooter gets you one edit three weeks later. A dedicated crew is on site from build to strike, cuts overnight, and puts a teaser and a vertical clip in your inbox by 10am.'
 
 
 export default function WhyDedicatedCrewPage() {
@@ -84,14 +84,14 @@ export default function WhyDedicatedCrewPage() {
     )
   }, [projects])
 
-  const title = 'Why a Dedicated Convention Week Video Crew | Where2Studios'
+  const title = 'Why a Dedicated Conference Week Video Crew | Where2Studios'
   const description =
-    'A single hired shooter gives you one deliverable three weeks later. A dedicated convention week crew is on site from build to strike and delivers clips by 10am the next morning.'
+    'A single hired shooter gives you one deliverable three weeks later. A dedicated conference week crew is on site from build to strike and delivers clips by 10am the next morning.'
 
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'You do not book a videographer for convention week. You deploy a content crew.',
+    headline: 'You do not book a videographer for conference week. You deploy a content crew.',
     description,
     mainEntityOfPage: `${SITE_URL}/why-a-dedicated-crew`,
     author: { '@id': `${SITE_URL}/#business` },
@@ -132,7 +132,7 @@ export default function WhyDedicatedCrewPage() {
               Why Where2Studios
             </p>
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-surface mt-3">
-              You do not book a videographer for convention week. You deploy a content crew.
+              You do not book a videographer for conference week. You deploy a content crew.
             </h1>
             <p id="answer" className="mt-5 text-base sm:text-lg text-m3-on-surface/75">
               {HERO_ANSWER}
@@ -205,7 +205,7 @@ export default function WhyDedicatedCrewPage() {
         <section className="py-14 sm:py-20 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-2xl text-center">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark">
-              Planning a convention week?
+              Planning a conference week?
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6">
               <button
@@ -219,7 +219,7 @@ export default function WhyDedicatedCrewPage() {
                 to="/conventions"
                 className="text-sm text-m3-on-dark/70 underline hover:text-m3-on-dark transition-colors"
               >
-                See the convention calendar
+                See the conference calendar
               </Link>
             </div>
           </div>

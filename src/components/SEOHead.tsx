@@ -20,8 +20,8 @@ export const areaServed = [
 ]
 
 const knowsAbout = [
-  'convention week video coverage',
-  'brand headquarters film',
+  'conference week video coverage',
+  'activation film',
   'event recap video',
   'conference video production',
   'event videography',
@@ -74,7 +74,7 @@ export function normalizeTitle(raw: string) {
 }
 
 const DESCRIPTION_TAIL =
-  ' Where2Studios covers convention week brand headquarters, suites and side events in San Francisco.'
+  ' Where2Studios covers conference week activations, suites and side events in San Francisco.'
 
 /** Keeps meta description inside the 90 to 158 character window. */
 export function normalizeDescription(raw: string) {
@@ -100,7 +100,7 @@ export function normalizeDescription(raw: string) {
 
 const SEGMENT_LABELS: Record<string, string> = {
   work: 'Work',
-  conventions: 'Convention calendar',
+  conventions: 'Conference calendar',
   services: 'Services',
   contact: 'Contact',
   socials: 'Social media management',

@@ -20,8 +20,8 @@ export default function ServicesPage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Convention Week Video Services | Where2Studios"
-        description="Activation recaps, exec clips for LinkedIn, same week social cutdowns and full week crew coverage for convention week brand headquarters in San Francisco."
+        title="Conference Week Video Services | Where2Studios"
+        description="Activation recaps, exec clips for LinkedIn, same week social cutdowns and full week crew coverage for conference week activations in San Francisco."
       />
       <div className="min-h-screen bg-m3-surface-variant">
         <Navbar variant="light" />
@@ -38,7 +38,7 @@ export default function ServicesPage() {
                 Services
               </span>
               <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2">
-                Four things we deliver for convention week.
+                Four things we deliver for conference week.
               </h1>
               <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
                 You have the venue and the activation. We make the week exist on Monday.

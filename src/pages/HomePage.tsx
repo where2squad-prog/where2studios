@@ -39,8 +39,8 @@ export default function HomePage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Convention Week Video Coverage, San Francisco | Where2Studios"
-        description="Convention week video coverage in San Francisco. Brand HQ, suite and side event films for Cloudflare, Google, Immuta and OwnBackup, with clips by 10am."
+        title="Conference Week Video Coverage, San Francisco | Where2Studios"
+        description="Conference week video coverage in San Francisco. Activation, suite and side event films for Cloudflare, Google, Immuta and OwnBackup, with clips by 10am."
         url="https://where2studios.com/"
         answer
         breadcrumbName="Home"
