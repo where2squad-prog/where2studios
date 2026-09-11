@@ -112,7 +112,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
           )}
 
           <div className="flex items-center gap-1 text-m3-primary font-medium text-sm group-hover:gap-2 transition-all">
-            See the plan
+            Watch the film
             <ArrowRight className="w-3 h-3" />
           </div>
         </div>

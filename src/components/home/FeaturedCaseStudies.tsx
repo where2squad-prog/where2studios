@@ -110,7 +110,7 @@ function FlagshipCard({ project }: { project: CaseStudy }) {
               <p className="text-m3-on-surface/70 text-base lg:text-lg">{project.result}</p>
             )}
             <span className="m3-filled-button inline-flex items-center gap-2 self-start mt-2">
-              See the breakdown
+              Watch the film
               <ArrowRight className="w-4 h-4" />
             </span>
           </div>
@@ -149,7 +149,7 @@ function SupportingCard({ project, index }: { project: CaseStudy; index: number 
             <p className="text-sm text-m3-on-surface/70 line-clamp-2">{project.result}</p>
           )}
           <span className="inline-flex items-center gap-2 text-m3-primary font-medium text-sm mt-1">
-            See the breakdown
+            Watch the film
             <ArrowRight className="w-4 h-4" />
           </span>
         </div>
@@ -205,7 +205,7 @@ function CaseStudyCardInner({ project }: { project: CaseStudy }) {
           )}
 
           <div className="flex items-center gap-2 text-m3-primary font-medium text-sm group-hover:gap-3 transition-all">
-            See the plan
+            Watch the film
             <ArrowRight className="w-4 h-4" />
           </div>
         </div>
