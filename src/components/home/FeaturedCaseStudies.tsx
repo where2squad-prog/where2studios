@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/carousel'
 
 const FILTER_LABELS: Record<string, string> = {
-  'convention-week': 'Convention Week HQ',
+  'convention-week': 'Conference Activations',
   'event-recaps': 'Event Recap',
   'brand-films': 'Brand Film',
 }
@@ -278,7 +278,7 @@ export function FeaturedCaseStudies() {
     return null
   }
 
-  // Third slot: the first convention week project before mount, then a random one.
+  // Third slot: the first conference week project before mount, then a random one.
   const rotating = rotationPool.length
     ? rotationPool[(rotationIndex ?? 0) % rotationPool.length]
     : undefined
@@ -297,7 +297,7 @@ export function FeaturedCaseStudies() {
           className="text-center mb-10 sm:mb-12"
         >
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3">
-            Recent convention week work
+            Recent conference week work
           </h2>
           <p className="text-m3-on-surface/70 text-base sm:text-lg max-w-2xl mx-auto">
             Brand headquarters, hospitality suites and side events in San Francisco.

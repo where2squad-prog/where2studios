@@ -50,7 +50,7 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-1 max-w-xs">
-              Video coverage for convention week brand headquarters.
+              Video coverage for conference week brand headquarters.
             </p>
             <p className="text-m3-on-dark/50 text-xs mb-4 max-w-xs">
               Activation recaps, exec clips and same week social cutdowns, San Francisco Bay Area.

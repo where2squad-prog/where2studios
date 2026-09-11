@@ -1,4 +1,4 @@
-// San Francisco convention week calendar. Dates are inclusive, America/Los_Angeles.
+// San Francisco conference week calendar. Dates are inclusive, America/Los_Angeles.
 
 export interface ConventionEdition {
   year: number
@@ -229,11 +229,11 @@ export const sharedConventionFaqs = [
   },
   {
     q: 'How early should we book?',
-    a: 'Convention week crews book out four to six weeks ahead. If you are inside two weeks, message us anyway, we hold a standby crew.',
+    a: 'Conference week crews book out four to six weeks ahead. If you are inside two weeks, message us anyway, we hold a standby crew.',
   },
   {
     q: 'Do you deliver photo too?',
-    a: 'Yes, edited photo selects come with every convention week booking.',
+    a: 'Yes, edited photo selects come with every conference week booking.',
   },
 ]
 

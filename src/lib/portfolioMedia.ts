@@ -221,7 +221,7 @@ export async function removePortfolioObjects(paths: string[]) {
 }
 
 export const UPLOAD_CATEGORIES: { value: string; label: string }[] = [
-  { value: 'convention-week', label: 'Convention Week HQ' },
+  { value: 'convention-week', label: 'Conference Activations' },
   { value: 'event-recaps', label: 'Event Recaps' },
   { value: 'brand-films', label: 'Brand Films' },
   { value: 'photos', label: 'Photos' },

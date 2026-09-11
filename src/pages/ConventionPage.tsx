@@ -136,7 +136,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
     convention.buyers
   )}. Brand HQs, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
     clientNames
-      ? ` Past ${convention.name} and convention week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
+      ? ` Past ${convention.name} and conference week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
       : ''
   }`
 
@@ -274,7 +274,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
         >
           <div className="container mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="font-fredoka text-2xl sm:text-4xl font-semibold text-m3-on-surface">
-              Convention week work
+              Conference week work
             </h2>
             <p className="mt-2 text-sm sm:text-base text-m3-on-surface/70">
               Real work, not a mood board.

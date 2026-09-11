@@ -45,7 +45,7 @@ export function ConversionHero() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] sm:leading-tight md:leading-tight mb-3 sm:mb-4 md:mb-6">
-              Video coverage for convention week{' '}
+              Video coverage for conference week{' '}
               <span className="text-m3-primary">brand headquarters.</span>
             </h1>
 
@@ -72,7 +72,7 @@ export function ConversionHero() {
 
             {/* Helper line */}
             <p className="text-white/50 text-xs sm:text-sm mt-2 sm:mt-3 mb-4 sm:mb-5">
-              Tell us your convention week dates. We reply within 1 business day.
+              Tell us your conference week dates. We reply within 1 business day.
             </p>
           </motion.div>
         </div>

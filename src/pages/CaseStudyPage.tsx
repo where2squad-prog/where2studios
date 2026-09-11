@@ -19,7 +19,7 @@ import { conventions, conventionHref } from '@/lib/conventions'
 import { KeepReading } from '@/components/layout/KeepReading'
 
 const CATEGORY_LABELS: Record<string, string> = {
-  'convention-week': 'Convention Week HQ',
+  'convention-week': 'Conference Activations',
   'event-recaps': 'Event Recap',
   'brand-films': 'Brand Film',
   'founder-story': 'Founder Story',
@@ -580,7 +580,7 @@ export default function CaseStudyPage() {
         <section className="py-16 sm:py-20 bg-m3-surface-dark">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 text-center max-w-2xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-dark mb-4">
-              Want this for your convention week?
+              Want this for your conference week?
             </h2>
             <p className="text-m3-on-dark/70 mb-4">
               Tell us the conference and what you are running and we will scope it the same day.

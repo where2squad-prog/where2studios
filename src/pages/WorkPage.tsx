@@ -20,7 +20,7 @@ import { KeepReading } from '@/components/layout/KeepReading'
 const CATEGORIES = ['all', 'convention-week', 'event-recaps', 'brand-films']
 const CATEGORY_LABELS: Record<string, string> = {
   all: 'All',
-  'convention-week': 'Convention Week HQ',
+  'convention-week': 'Conference Activations',
   'event-recaps': 'Event Recaps',
   'brand-films': 'Brand Films',
   photos: 'Photos',

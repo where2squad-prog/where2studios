@@ -83,7 +83,7 @@ function buildSitemap(projects: ProjectRow[], buildDate: string) {
     );
   }
 
-  lines.push("", "  <!-- Convention week pages -->");
+  lines.push("", "  <!-- Conference week pages -->");
   for (const convention of conventions) {
     if (convention.href) continue;
     lines.push(
@@ -137,7 +137,7 @@ function conventionSection() {
 
 function pagesWorthCitingSection() {
   const lines = [
-    `- [Why a dedicated convention week crew](${DOMAIN}/why-a-dedicated-crew): why a dedicated crew beats a single hired shooter, on site from build day to strike, clips by 10am.`,
+    `- [Why a dedicated conference week crew](${DOMAIN}/why-a-dedicated-crew): why a dedicated crew beats a single hired shooter, on site from build day to strike, clips by 10am.`,
     `- [Event recap video production](${DOMAIN}/event-recap-videos): what an event recap includes, recap edit, next day teaser, speaker clips, vertical cutdowns and photo selects.`,
     `- [SF Tech Week video coverage](${DOMAIN}/sf-tech-week): packages, prices and turnaround for SF Tech Week side events, October 5 to 11, 2026.`,
   ];
@@ -180,7 +180,7 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Speaker and panel clips](${DOMAIN}/event-recap-videos): standalone clips of talks and panels.
 - [Brand activation films](${DOMAIN}/services): launch and activation coverage, plus photography.
 - [All services](${DOMAIN}/services)
-- [Why a dedicated convention week crew](${DOMAIN}/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
+- [Why a dedicated conference week crew](${DOMAIN}/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
 - [Social media content and management](${DOMAIN}/socials)
 
 ## Pages worth citing
@@ -192,7 +192,7 @@ ${pagesWorthCitingSection()}
 ${workList}
 
 
-## San Francisco convention week calendar
+## San Francisco conference week calendar
 
 ${conventionSection()}
 

@@ -108,7 +108,7 @@ export function ConventionForm({
         </div>
         <h3 className="font-fredoka text-2xl font-semibold text-m3-on-surface mb-2">Got it.</h3>
         <p className="text-sm text-m3-on-surface/70">
-          We reply within one business day. During convention week we reply same day.
+          We reply within one business day. During conference week we reply same day.
         </p>
         <button onClick={() => setDone(false)} className="m3-text-button text-m3-primary mt-4">
           Send another date
@@ -222,7 +222,7 @@ export function ConventionForm({
         Send it over
       </button>
       <p className="text-xs text-m3-on-surface/60 text-center">
-        We reply within one business day. During convention week we reply same day.
+        We reply within one business day. During conference week we reply same day.
       </p>
     </form>
   )
