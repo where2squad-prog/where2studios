@@ -50,19 +50,33 @@ function stripDuplicateTemplateTags(html: string) {
   return stripped.replace(/<noscript>[\s\S]*?<\/noscript>/, "");
 }
 
-// Framer Motion renders its pre animation state during prerendering, which
-// would bake opacity:0 and transforms into the static markup and hide real copy
-// from crawlers. Strip those declarations so the static HTML shows the end state.
-function unhideAnimatedContent(html: string) {
-  return html.replace(/style="([^"]*)"/g, (match, styles: string) => {
-    if (!/opacity\s*:\s*0(\D|$)|transform\s*:/.test(styles)) return match;
-    const cleaned = styles
-      .split(";")
-      .map((decl) => decl.trim())
-      .filter((decl) => decl && !/^opacity\s*:\s*0(\D|$)/.test(decl) && !/^transform\s*:/.test(decl))
-      .join("; ");
-    return cleaned ? `style="${cleaned}"` : "";
-  });
+// Framer Motion renders its pre animation state during prerendering, so the
+// static markup carries opacity:0 and transforms. Removing those declarations
+// from the HTML would make the server markup differ from the first client
+// render and break hydration, so they stay and a no script stylesheet reveals
+// the content for clients that never run the animation.
+const REVEAL_STYLE =
+  '<noscript><style>[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;transform:none!important}</style></noscript>';
+
+function revealAnimatedContentWithoutJs(html: string) {
+  if (html.includes("[style*=\"opacity:0\"]")) return html;
+  return html.replace("</head>", `${REVEAL_STYLE}</head>`);
+}
+
+// The data the page was prerendered with travels to the browser, so the first
+// client render matches the static HTML instead of a loading skeleton.
+function inlinePrerenderedData(route: string, html: string) {
+  const store = (globalThis as Record<string, unknown>).__SSG_QUERY_STATE__ as
+    | Record<string, string>
+    | undefined;
+  const key = route.startsWith("/") ? route : `/${route}`;
+  const state = store?.[key] ?? store?.[key.replace(/\/$/, "") || "/"];
+  if (typeof state !== "string") return html;
+  const payload = JSON.stringify(state).replace(/</g, "\\u003c");
+  return html.replace(
+    "</head>",
+    `<script>window.__INITIAL_STATE__=${payload}</script></head>`,
+  );
 }
 
 // https://vitejs.dev/config/
@@ -86,6 +100,7 @@ export default defineConfig(({ mode }) => ({
     concurrency: 4,
     beastiesOptions: false,
     onBeforePageRender: (_route: string, indexHTML: string) => stripDuplicateTemplateTags(indexHTML),
-    onPageRendered: (_route: string, html: string) => unhideAnimatedContent(html),
+    onPageRendered: (route: string, html: string) =>
+      inlinePrerenderedData(route, revealAnimatedContentWithoutJs(html)),
   },
 }));

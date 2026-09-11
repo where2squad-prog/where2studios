@@ -9,6 +9,7 @@ async function publishedProjects(category?: string) {
     .from('projects')
     .select('*')
     .eq('published', true)
+    .eq('show_on_main_site', true)
     .order('display_order', { ascending: true })
 
   if (category) query = query.eq('category', category)
@@ -57,6 +58,7 @@ export async function prefetchForRoute(queryClient: QueryClient, routePath: stri
     const { data, error } = await supabase
       .from('projects')
       .select('*')
+      .eq('show_on_main_site', true)
       .order('display_order', { ascending: true })
     if (error) throw error
     return data
@@ -67,6 +69,7 @@ export async function prefetchForRoute(queryClient: QueryClient, routePath: stri
       .select('*')
       .eq('featured', true)
       .eq('published', true)
+      .eq('show_on_main_site', true)
       .order('display_order', { ascending: true })
       .limit(5)
     if (error) throw error

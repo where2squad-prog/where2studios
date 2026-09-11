@@ -9,16 +9,21 @@ interface UseCountUpOptions {
 }
 
 export function useCountUp({ end, duration = 2000, suffix = '', prefix = '', startDelay = 1500 }: UseCountUpOptions) {
-  const [count, setCount] = useState(0)
+  // The first render shows the final number so the prerendered HTML and the
+  // first client render match. The count down to zero and back up happens after
+  // mount, where React no longer compares against the server markup.
+  const [count, setCount] = useState(end)
   const [hasAnimated, setHasAnimated] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (hasAnimated) return
+    setCount(0)
 
     // Start animation after a delay (to sync with page load animations)
     const timeout = setTimeout(() => {
       setHasAnimated(true)
+      
       
       const startTime = performance.now()
       const animate = (currentTime: number) => {

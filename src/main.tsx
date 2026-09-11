@@ -1,4 +1,5 @@
 import { ViteReactSSG } from 'vite-react-ssg'
+import { dehydrate, hydrate } from '@tanstack/react-query'
 import { routes } from './routes'
 import { queryClient } from './lib/queryClient'
 import { prefetchForRoute } from './lib/prerenderData'
@@ -16,8 +17,32 @@ export const includedRoutes = (paths: string[]) =>
     )
   })
 
-export const createRoot = ViteReactSSG({ routes }, async ({ isClient, routePath }) => {
-  if (!isClient) {
-    await prefetchForRoute(queryClient, routePath ?? '/')
-  }
-})
+export const createRoot = ViteReactSSG(
+  { routes },
+  async ({ isClient, routePath, initialState }) => {
+    if (!isClient) {
+      const route = routePath ?? '/'
+      await prefetchForRoute(queryClient, route)
+      // The build renders several routes at once against one cache, so a page
+      // only ships the case study it is actually about.
+      const slug = route.match(/^\/work\/(.+)$/)?.[1]
+      initialState.reactQuery = dehydrate(queryClient, {
+        shouldDehydrateQuery: (query) =>
+          query.queryKey[0] === 'case-study' ? query.queryKey[1] === slug : true,
+      })
+      // The build reads this in onPageRendered and writes it into the HTML.
+      const store = ((globalThis as Record<string, unknown>).__SSG_QUERY_STATE__ ??= {}) as Record<
+        string,
+        string
+      >
+      store[route] = JSON.stringify({ reactQuery: initialState.reactQuery })
+      return
+    }
+
+    // The data that produced the static HTML, so the first client render is
+    // identical and hydration does not throw the whole page away.
+    if (initialState.reactQuery) {
+      hydrate(queryClient, initialState.reactQuery)
+    }
+  },
+)
