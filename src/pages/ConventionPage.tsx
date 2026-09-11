@@ -125,11 +125,14 @@ function ConventionContent({ convention }: { convention: Convention }) {
 
   const faqs = [...convention.faqs, ...sharedConventionFaqs]
 
-  const quotable = `Where2Studios covers ${convention.name} in San Francisco: brand headquarters, hospitality suites, exec meetings and side events near Moscone, with clips delivered by the next morning and a full recap the same week.${
+  const answer = `Where2Studios covers ${convention.name} in San Francisco for ${joinNames(
+    convention.buyers
+  )}. Brand HQs, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
     clientNames
-      ? ` We have shot ${clientNames} during ${convention.name} and other convention weeks at The Howard, B Restaurant and The Veranda.`
+      ? ` Past ${convention.name} and convention week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
       : ''
   }`
+
 
   const serviceSchema = {
     '@context': 'https://schema.org',
