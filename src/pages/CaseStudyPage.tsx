@@ -284,8 +284,11 @@ export default function CaseStudyPage() {
   const titleSubject = (() => {
     let subject = rawSubject
     while (subject.length + 16 > 65 && subject.includes(', ')) {
-      const shorter = subject.slice(0, subject.lastIndexOf(', ')).trim()
-      if (shorter.length < 20) break
+      const cut = subject.lastIndexOf(', ')
+      const tail = subject.slice(cut + 2).trim()
+      const isVenue = /^(the |b restaurant)/i.test(tail) || (project.location || '').includes(tail)
+      const shorter = subject.slice(0, cut).trim()
+      if (!isVenue || shorter.length < 20) break
       subject = shorter
     }
     return subject
