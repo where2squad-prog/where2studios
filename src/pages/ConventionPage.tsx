@@ -282,7 +282,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
                 />
               ))}
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
               <Link
                 to="/work"
                 className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm"
@@ -290,6 +290,15 @@ function ConventionContent({ convention }: { convention: Convention }) {
                 See all our work
                 <ArrowRight className="w-4 h-4" />
               </Link>
+              {taggedCount > proof.length && (
+                <Link
+                  to="/work?category=convention-week"
+                  className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm"
+                >
+                  All {convention.name} work
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
             </div>
           </div>
         </section>
