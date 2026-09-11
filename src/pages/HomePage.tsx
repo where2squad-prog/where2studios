@@ -37,8 +37,8 @@ export default function HomePage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Event Recap Video Production in the San Francisco Bay Area | Where2Studios"
-        description="Where2Studios produces event recap videos for conferences, summits, brand activations and corporate events across the San Francisco Bay Area. Next day teasers, speaker clips, full recap edits."
+        title="Convention Week Video Coverage in San Francisco | Where2Studios"
+        description="Where2Studios covers convention week brand headquarters in San Francisco. Cloudflare at RSA Conference, Google Pixel House, Immuta at Snowflake Summit, OwnBackup at Dreamforce."
         url="https://where2studios.com/"
         schema={organizationSchema}
       />

@@ -14,9 +14,9 @@ import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 
 const CATEGORY_LABELS: Record<string, string> = {
-  'launch-videos': 'Launch Video',
-  podcasts: 'Podcast',
+  'convention-week': 'Convention Week HQ',
   'event-recaps': 'Event Recap',
+  'brand-films': 'Brand Film',
   'founder-story': 'Founder Story',
   'product-demo': 'Product Demo',
 }

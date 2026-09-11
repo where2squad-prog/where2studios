@@ -11,6 +11,7 @@ export interface Project {
   description: string | null
   featured: boolean
   display_order: number
+  show_on_main_site?: boolean
   created_at: string
 }
 
@@ -50,6 +51,7 @@ export function useProjects(options: UseProjectsOptions = {}) {
       let query = supabase
         .from('projects')
         .select('*')
+        .eq('show_on_main_site', true)
         .order('display_order', { ascending: true })
 
       if (options.category && options.category !== 'all') {

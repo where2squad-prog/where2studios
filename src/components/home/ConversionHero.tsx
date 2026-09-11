@@ -45,13 +45,13 @@ export function ConversionHero() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-bold leading-[1.1] sm:leading-tight md:leading-tight mb-3 sm:mb-4 md:mb-6">
-              We capture the events that{' '}
-              <span className="text-m3-primary">build your brand.</span>
+              Video coverage for convention week{' '}
+              <span className="text-m3-primary">brand headquarters.</span>
             </h1>
 
             {/* Subhead */}
             <p className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              Event recap videos for conferences, summits and brand activations across the San Francisco Bay Area. Next day teasers, speaker clips, and a full recap edit.
+              We shot Cloudflare's Experience Hub at RSA Conference 2025, Google's Pixel House, Immuta's lounge at Snowflake Summit and OwnBackup's Dreamforce HQ. Exec meetings, hospitality, run of show, and post event content your leadership can see on Monday.
             </p>
 
             {/* CTA Row */}
@@ -71,7 +71,7 @@ export function ConversionHero() {
 
             {/* Helper line */}
             <p className="text-white/50 text-xs sm:text-sm mt-2 sm:mt-3 mb-4 sm:mb-5">
-              Free 30 min strategy call. 1 business day reply.
+              Tell us your convention week dates. We reply within 1 business day.
             </p>
           </motion.div>
         </div>

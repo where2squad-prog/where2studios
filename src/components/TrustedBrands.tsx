@@ -13,6 +13,8 @@ import glyph1password from '@/assets/icons/1password.svg';
 import glyphCursor from '@/assets/icons/cursor.svg';
 import glyphModal from '@/assets/icons/modal.svg';
 import glyphBraintrust from '@/assets/icons/braintrust.svg';
+import glyphCloudflare from '@/assets/icons/cloudflare.svg';
+import glyphGoogle from '@/assets/icons/google.svg';
 import '@/styles/marquee.css';
 
 type Brand = { name: string; wordmark?: string; glyph?: string };
@@ -52,24 +54,25 @@ export function TrustedBrands() {
   }, [isMobile]);
 
   const brands: Brand[] = [
-    { name: 'Coinbase', glyph: glyphCoinbase },
-    { name: 'Gourmet Provisions' },
-    { name: 'Stripe', glyph: glyphStripe },
-    { name: 'Cursor', glyph: glyphCursor },
-    { name: 'Modal', glyph: glyphModal },
-    { name: 'Braintrust', glyph: glyphBraintrust },
-    { name: 'LlamaIndex' },
-    { name: 'Browserbase' },
-    { name: 'Parallel' },
-    { name: 'turbopuffer', wordmark: brandTurbopuffer },
+    { name: 'Cloudflare', glyph: glyphCloudflare },
+    { name: 'Google', glyph: glyphGoogle },
     { name: 'GitHub', glyph: glyphGithub },
     { name: '1Password', glyph: glyph1password },
     { name: 'Immuta' },
-    { name: 'Cohesity' },
     { name: 'ReliaQuest' },
+    { name: 'Cohesity' },
+    { name: 'Coinbase', glyph: glyphCoinbase },
+    { name: 'Stripe', glyph: glyphStripe },
+    { name: 'Salesforce' },
+    { name: 'turbopuffer', wordmark: brandTurbopuffer },
+    { name: 'Parallel' },
+    { name: 'LlamaIndex' },
+    { name: 'Braintrust', glyph: glyphBraintrust },
+    { name: 'Modal', glyph: glyphModal },
+    { name: 'Browserbase' },
+    { name: 'Cursor', glyph: glyphCursor },
     { name: 'Xsolla' },
-    { name: 'Club Hex' },
-    { name: 'Datahaiku' },
+    { name: 'Gourmet Provisions' },
     { name: 'PacBio', wordmark: brandPacbio },
   ];
 

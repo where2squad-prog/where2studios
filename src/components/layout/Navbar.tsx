@@ -10,7 +10,6 @@ import { AnnouncementBar } from '@/components/techweek/AnnouncementBar';
 import { isTechWeekCampaignLive } from '@/lib/techWeek';
 
 const baseNavLinks = [
-  { href: '/event-recap-videos', label: 'Event Recap Videos' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'About' },
