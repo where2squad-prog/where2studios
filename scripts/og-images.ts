@@ -159,33 +159,50 @@ async function render(spec: CardSpec) {
   const logoH = (await sharp(logo).metadata()).height ?? 0
 
   // Wordmark block sits a little above the middle, caption lines below it.
-  const captionGap = square ? 96 : 60
+  const captionSize = square ? 46 : 40
+  const secondSize = square ? 30 : 26
+  // Clear space between the trimmed wordmark and the top of the caption glyphs.
+  const captionClearance = square ? 44 : 36
+  const captionGap = captionClearance + Math.round(captionSize * 0.75)
   const secondGap = square ? 52 : 44
   const blockHeight = logoH + captionGap + secondGap
-  const logoTop = Math.max(60, Math.round((H - blockHeight) / 2 - H * 0.05))
+  const logoTop = Math.max(
+    48,
+    Math.round((H - blockHeight) / 2 - H * 0.05) - 30 // group reads centred as a whole
+  )
   const captionBaseline = logoTop + logoH + captionGap
   const secondBaseline = captionBaseline + secondGap
   const maxTextWidth = W - 200 // keeps 80px+ of safe margin on both sides
 
   const background = await sharp(spec.still)
     .resize(W, H, { fit: 'cover', position: 'attention' })
-    .blur(18)
+    .blur(10)
     .modulate({ saturation: 1.05 })
     .toColourspace('srgb')
     .toBuffer()
+
+  // Vignette centre: the middle of the wordmark plus caption group.
+  const vignetteY = Math.round((logoTop + secondBaseline) / 2)
 
   const scrim = Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
       <defs>
         <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0.45" stop-color="#000000" stop-opacity="0"/>
-          <stop offset="1" stop-color="#000000" stop-opacity="0.4"/>
+          <stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+          <stop offset="1" stop-color="#000000" stop-opacity="0.45"/>
         </linearGradient>
+        <radialGradient id="vignette" cx="0.5" cy="${(vignetteY / H).toFixed(3)}" r="0.62">
+          <stop offset="0" stop-color="#000000" stop-opacity="0.34"/>
+          <stop offset="0.6" stop-color="#000000" stop-opacity="0.18"/>
+          <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
       </defs>
-      <rect width="${W}" height="${H}" fill="#000000" fill-opacity="0.55"/>
+      <rect width="${W}" height="${H}" fill="#000000" fill-opacity="0.45"/>
+      <rect width="${W}" height="${H}" fill="url(#vignette)"/>
       <rect width="${W}" height="${H}" fill="url(#fade)"/>
     </svg>`
   )
+
 
   // Faint film grain so the blurred still does not look like flat plastic.
   const grain = await sharp({
