@@ -67,6 +67,25 @@ export default function AdminLoginPage() {
     navigate(from, { replace: true })
   }
 
+  const handleAppleSignIn = async () => {
+    setError('')
+    setIsAppleLoading(true)
+
+    const result = await lovable.auth.signInWithOAuth('apple', {
+      redirect_uri: window.location.origin,
+    })
+
+    if (result.error) {
+      setError(result.error.message || 'Could not sign in with Apple')
+      setIsAppleLoading(false)
+      return
+    }
+
+    if (result.redirected) return
+
+    navigate(from, { replace: true })
+  }
+
   if (authLoading) {
     return (
       <div className="min-h-screen bg-m3-surface-dark flex items-center justify-center">
