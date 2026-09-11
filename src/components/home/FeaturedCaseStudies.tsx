@@ -21,7 +21,8 @@ const FILTER_LABELS: Record<string, string> = {
 }
 
 const FLAGSHIP_SLUG = 'the-agent-open-san-francisco'
-const EXCLUDED_SLUGS = [FLAGSHIP_SLUG, 'google-pixel-house-nba-all-star-2025']
+const CLOSING_SLUG = 'google-pixel-house-nba-all-star-2025'
+const EXCLUDED_SLUGS = [FLAGSHIP_SLUG, CLOSING_SLUG]
 
 /** Recent pool: 2025 or later in the title, or created in 2026. */
 function isRecent(project: CaseStudy) {
