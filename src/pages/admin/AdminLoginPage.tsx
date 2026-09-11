@@ -47,6 +47,25 @@ export default function AdminLoginPage() {
     navigate(from, { replace: true })
   }
 
+  const handleGoogleSignIn = async () => {
+    setError('')
+    setIsGoogleLoading(true)
+
+    const result = await lovable.auth.signInWithOAuth('google', {
+      redirect_uri: window.location.origin,
+    })
+
+    if (result.error) {
+      setError(result.error.message || 'Could not sign in with Google')
+      setIsGoogleLoading(false)
+      return
+    }
+
+    if (result.redirected) return
+
+    navigate(from, { replace: true })
+  }
+
   if (authLoading) {
     return (
       <div className="min-h-screen bg-m3-surface-dark flex items-center justify-center">
