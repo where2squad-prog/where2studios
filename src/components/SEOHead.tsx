@@ -100,7 +100,7 @@ export function normalizeDescription(raw: string) {
 
 const SEGMENT_LABELS: Record<string, string> = {
   work: 'Work',
-  conventions: 'Convention calendar',
+  conventions: 'Conference calendar',
   services: 'Services',
   contact: 'Contact',
   socials: 'Social media management',

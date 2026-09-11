@@ -379,7 +379,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
                 to="/conventions"
                 className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm"
               >
-                See the full convention calendar
+                See the full conference calendar
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

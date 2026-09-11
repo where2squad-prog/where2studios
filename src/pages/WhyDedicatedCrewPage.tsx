@@ -219,7 +219,7 @@ export default function WhyDedicatedCrewPage() {
                 to="/conventions"
                 className="text-sm text-m3-on-dark/70 underline hover:text-m3-on-dark transition-colors"
               >
-                See the convention calendar
+                See the conference calendar
               </Link>
             </div>
           </div>
