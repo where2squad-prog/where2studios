@@ -10,6 +10,8 @@ import { SkipLink } from '@/components/layout/SkipLink'
 import { useCaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
 import { getVideoEmbedUrl, isVimeoUrl } from '@/lib/video'
+import { isUploadedVideo } from '@/lib/portfolioMedia'
+import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 import { SEOHead } from '@/components/SEOHead'
 
@@ -319,7 +321,14 @@ export default function CaseStudyPage() {
               transition={{ delay: 0.2 }}
               className="rounded-2xl overflow-hidden shadow-xl"
             >
-              {videoEmbedUrl ? (
+              {isUploadedVideo(project) && project.video_url ? (
+                <UploadVideo
+                  src={project.video_url}
+                  poster={project.thumbnail_url}
+                  title={project.title}
+                  className="w-full aspect-video bg-m3-surface-dark object-cover"
+                />
+              ) : videoEmbedUrl ? (
                 <div className="relative aspect-video">
                   <iframe
                     src={videoEmbedUrl}

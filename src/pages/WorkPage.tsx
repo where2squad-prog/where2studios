@@ -10,8 +10,11 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { SEOHead } from '@/components/SEOHead'
 
-import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
+import { useAllProjects, usePhotoProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
+import { isUploadedVideo } from '@/lib/portfolioMedia'
+import { UploadVideo } from '@/components/portfolio/UploadVideo'
+import { PhotoGrid } from '@/components/portfolio/PhotoGrid'
 
 const CATEGORIES = ['all', 'convention-week', 'event-recaps', 'brand-films']
 const CATEGORY_LABELS: Record<string, string> = {
@@ -19,6 +22,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   'convention-week': 'Convention Week HQ',
   'event-recaps': 'Event Recaps',
   'brand-films': 'Brand Films',
+  photos: 'Photos',
 }
 
 type SortOption = 'featured' | 'recent'
@@ -63,16 +67,26 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
         className="group block m3-elevated-card overflow-hidden hover:shadow-xl transition-all duration-300"
       >
         <div className="relative aspect-video overflow-hidden">
-          <img
-            src={thumbnail}
-            alt={`Event recap video for ${project.title}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
-          
+          {isUploadedVideo(project) && project.video_url ? (
+            <UploadVideo
+              src={project.video_url}
+              poster={thumbnail}
+              title={project.title}
+              hoverPreview
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={thumbnail}
+              alt={`Event recap video for ${project.title}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          )}
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-m3-surface-dark/80 via-transparent to-transparent" />
+
           {project.video_url && (
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <div className="w-12 h-12 rounded-full bg-m3-primary/90 flex items-center justify-center shadow-lg">
                 <Play className="w-5 h-5 text-m3-on-primary fill-current ml-0.5" />
               </div>
@@ -114,9 +128,16 @@ export default function WorkPage() {
   const { data: projects, isLoading } = useAllProjects({ 
     category: activeCategory === 'all' ? undefined : activeCategory 
   })
+  const { data: photos } = usePhotoProjects()
+  const hasPhotos = (photos?.length ?? 0) > 0
+  const visibleCategories = hasPhotos ? [...CATEGORIES, 'photos'] : CATEGORIES
+  const showPhotos = activeCategory === 'photos'
 
   // Sort projects
-  const sortedProjects = projects?.slice().sort((a, b) => {
+  const sortedProjects = projects
+    ?.filter((project) => project.media_type !== 'photo')
+    .slice()
+    .sort((a, b) => {
     if (sortBy === 'featured') {
       if (a.featured && !b.featured) return -1
       if (!a.featured && b.featured) return 1
@@ -182,7 +203,7 @@ export default function WorkPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             {/* Filter Chips */}
             <div className="flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => (
+              {visibleCategories.map((cat) => (
                 <FilterChip
                   key={cat}
                   label={CATEGORY_LABELS[cat]}
@@ -211,7 +232,17 @@ export default function WorkPage() {
       {/* Projects Grid */}
       <section className="py-10 sm:py-16">
         <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-          {isLoading ? (
+          {showPhotos ? (
+            <PhotoGrid
+              photos={(photos ?? []).map((photo) => ({
+                id: photo.id,
+                title: photo.title,
+                url: photo.thumbnail_url || '',
+                width: photo.width,
+                height: photo.height,
+              }))}
+            />
+          ) : isLoading ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="aspect-[4/3] bg-m3-surface rounded-2xl animate-pulse" />
