@@ -29,6 +29,7 @@ const STATIC_ROUTES: { path: string; priority: string; changefreq: string; dated
   { path: "/event-recap-videos", priority: "0.9", changefreq: "monthly" },
   { path: "/services", priority: "0.8", changefreq: "monthly" },
   { path: "/work", priority: "0.8", changefreq: "weekly", dated: true },
+  { path: "/conventions", priority: "0.9", changefreq: "weekly", dated: true },
   { path: "/who-we-are", priority: "0.7", changefreq: "monthly" },
   { path: "/socials", priority: "0.9", changefreq: "monthly" },
   { path: "/where2boys", priority: "0.8", changefreq: "monthly" },
@@ -78,6 +79,14 @@ function buildSitemap(projects: ProjectRow[], buildDate: string) {
   for (const film of films) {
     lines.push(
       `  <url><loc>${DOMAIN}/work/${film.slug}</loc><lastmod>${film.created_at.slice(0, 10)}</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>`,
+    );
+  }
+
+  lines.push("", "  <!-- Convention week pages -->");
+  for (const convention of conventions) {
+    if (convention.href) continue;
+    lines.push(
+      `  <url><loc>${DOMAIN}/conventions/${convention.slug}</loc><lastmod>${buildDate}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq></url>`,
     );
   }
 
