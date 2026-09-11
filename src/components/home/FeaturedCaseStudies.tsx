@@ -227,11 +227,12 @@ function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }
 }
 
 export function FeaturedCaseStudies() {
-  const { data: projects, isLoading } = useFeaturedCaseStudies(5)
+  const { data: allProjects, isLoading } = useAllProjects()
   const reduce = useReducedMotion()
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
-  const [randomSeed] = useState(() => Math.random())
+  // Chosen after mount so the prerendered HTML never locks one video in place.
+  const [rotationIndex, setRotationIndex] = useState<number | null>(null)
 
   useEffect(() => {
     if (!api) return
@@ -242,6 +243,22 @@ export function FeaturedCaseStudies() {
       api.off('select', onSelect)
     }
   }, [api])
+
+  const pinned = PINNED_SLUGS
+    .map((slug) => allProjects?.find((p) => p.slug === slug))
+    .filter((p): p is CaseStudy => Boolean(p))
+
+  const rotationPool = (allProjects || []).filter(
+    (p) => p.category === 'convention-week' && !PINNED_SLUGS.includes(p.slug || '')
+  )
+
+  useEffect(() => {
+    if (rotationPool.length === 0) {
+      setRotationIndex(null)
+      return
+    }
+    setRotationIndex(Math.floor(Math.random() * rotationPool.length))
+  }, [rotationPool.length])
 
   if (isLoading) {
     return (
@@ -257,16 +274,18 @@ export function FeaturedCaseStudies() {
     )
   }
 
-  if (!projects || projects.length === 0) {
+  if (pinned.length === 0) {
     return null
   }
 
-  const FLAGSHIP_POOL_SIZE = 4
-  const poolSize = Math.min(projects.length, FLAGSHIP_POOL_SIZE)
-  const flagshipIndex = poolSize > 0 ? Math.floor(randomSeed * poolSize) : 0
-  const flagship = projects[flagshipIndex]
-  const supporting = projects.filter((_, i) => i !== flagshipIndex).slice(0, 2)
-  const mobileProjects = projects.slice(0, 3)
+  // Third slot: the first convention week project before mount, then a random one.
+  const rotating = rotationPool.length
+    ? rotationPool[(rotationIndex ?? 0) % rotationPool.length]
+    : undefined
+
+  const flagship = pinned[0]
+  const supporting = [pinned[1], rotating].filter((p): p is CaseStudy => Boolean(p)).slice(0, 2)
+  const mobileProjects = [flagship, ...supporting]
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-m3-surface">
@@ -278,10 +297,10 @@ export function FeaturedCaseStudies() {
           className="text-center mb-10 sm:mb-12"
         >
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface mb-3">
-            Work
+            Recent convention week work
           </h2>
           <p className="text-m3-on-surface/70 text-base sm:text-lg max-w-2xl mx-auto">
-            Recent work for brands that take their reach seriously.
+            Brand headquarters, hospitality suites and side events in San Francisco.
           </p>
         </motion.div>
 
