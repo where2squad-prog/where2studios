@@ -26,14 +26,11 @@ const PAGE_DESCRIPTION =
   'Event video and next morning recaps for SF Tech Week 2026 side events, panels, mixers and founder dinners. Bay Area crew. We cover LA Tech Week too.'
 const PAGE_URL = 'https://where2studios.com/sf-tech-week'
 
-const QUOTABLE =
-  'Where2Studios covers SF Tech Week events from October 5 to 11, 2026. We shoot your panel, mixer, founder dinner or hackathon and deliver a next morning teaser plus a vertical clip you can post while Tech Week is still running. The full recap edit follows. Bay Area based. We also cover LA Tech Week, October 12 to 18.'
-
 const whyPoints = [
   'Hundreds of events run that week. Attention is highest while it is happening.',
   'Post the morning after and your event stays in the feed for the rest of the week, while everyone who came is still in town.',
-  'The people who missed it see what they missed and ask to be on the list next time.',
 ]
+
 
 const bookingSteps = [
   'Send us the event, the date and the times.',
