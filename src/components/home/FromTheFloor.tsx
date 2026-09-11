@@ -122,8 +122,9 @@ export function FromTheFloor() {
             Stills and build montages from the floor
           </h2>
           <p className="text-m3-on-background/70">
-            Edited photo selects and time-lapse build films ship with every convention week booking.
+            Photo selects and build films ship with every booking.
           </p>
+
         </div>
 
         {videos && videos.length > 0 && (

@@ -11,13 +11,13 @@ export const deliverables: Deliverable[] = [
   {
     id: 'activation-recap',
     title: 'Activation recap',
-    line: 'The film of the week, ready for the sponsorship deck and next year budget ask.',
+    line: 'The film of the week, ready for the sponsorship deck.',
     icon: Film,
   },
   {
     id: 'exec-clips',
     title: 'Exec clips for LinkedIn',
-    line: 'Your CEO and speakers, cut and delivered while the show is still on.',
+    line: 'Your CEO and speakers, cut while the show is still on.',
     icon: Mic,
   },
   {
@@ -29,7 +29,7 @@ export const deliverables: Deliverable[] = [
   {
     id: 'full-week-coverage',
     title: 'Full week coverage',
-    line: 'A crew on site across the convention, from load in to the last customer dinner.',
+    line: 'A crew on site from load in to the last dinner.',
     icon: CalendarDays,
   },
 ]

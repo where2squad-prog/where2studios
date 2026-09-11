@@ -56,8 +56,9 @@ export function Footer() {
               Activation recaps, exec clips and same week social cutdowns, San Francisco Bay Area.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
-              Free 30 minute strategy call, we reply within 1 business day.
+              We reply within 1 business day.
             </p>
+
             <button
               onClick={openSheet}
               className="m3-filled-button text-sm"

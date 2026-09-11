@@ -67,7 +67,7 @@ export const techWeekPackages: TechWeekPackage[] = [
     id: 'single-event-recap',
     name: 'Single Event Recap',
     description:
-      'One event, up to 5 hours on site. A 60 to 90 second recap edit and 20 edited photo selects, delivered within 5 business days.',
+      'One event, up to 5 hours on site. A 60 to 90 second recap edit and 20 edited photo selects within 5 business days.',
     startingPrice: 3500,
   },
   {
@@ -75,24 +75,25 @@ export const techWeekPackages: TechWeekPackage[] = [
     name: 'Next Morning',
     tag: 'Most booked for Tech Week',
     description:
-      'Everything in Single Event Recap, plus an overnight edit. A 30 second teaser and one vertical clip in your inbox by 10am the next day, while the week is still running. The recap edit follows within 5 business days.',
+      'Everything in Single Event Recap, plus an overnight edit. A 30 second teaser and one vertical clip by 10am the next day.',
     startingPrice: 4500,
   },
   {
     id: 'recap-social-pack',
     name: 'Recap + Social Pack',
     description:
-      'Everything in Next Morning, plus 5 vertical cutdowns cut for Reels, TikTok and LinkedIn. Sized, captioned and ready to post within 5 business days.',
+      'Everything in Next Morning, plus 5 vertical cutdowns for Reels, TikTok and LinkedIn, captioned and ready within 5 business days.',
     startingPrice: 5500,
   },
   {
     id: 'full-week',
     name: 'Full Week Coverage',
     description:
-      'Up to 4 events across October 5 to 11, one crew per event. Teaser and vertical clip per event by 10am the next day, one 60 to 90 second week recap film, and a shared folder your team and your sponsors can pull from.',
+      'Up to 4 events across October 5 to 11, one crew per event. Teaser and vertical clip by 10am daily, one week recap film, shared folder.',
     startingPrice: 18000,
   },
 ]
+
 
 export const SPONSOR_OPTION = 'Sponsor coverage'
 

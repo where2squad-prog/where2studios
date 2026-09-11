@@ -40,8 +40,9 @@ export default function ServicesPage() {
                 Four things we deliver for convention week.
               </h1>
               <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                You have the venue and the activation. We make sure the week still exists on Monday.
+                You have the venue and the activation. We make the week exist on Monday.
               </p>
+
 
               <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
                 <button
@@ -59,8 +60,9 @@ export default function ServicesPage() {
               </div>
 
               <p className="text-m3-on-surface/50 text-xs mt-3">
-                Free 30 minute strategy call, we reply within 1 business day.
+                We reply within 1 business day.
               </p>
+
               <Link
                 to="/why-a-dedicated-crew"
                 className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm mt-4"
@@ -118,11 +120,9 @@ export default function ServicesPage() {
               Not sure what you need?
             </h2>
             <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-              Book a strategy call. Tell us the goal and the timeline. We'll build a plan with deliverables and budget.
+              Tell us the dates and what you are running. We scope it the same day.
             </p>
-            <p className="mt-2 text-m3-on-surface/40 text-sm">
-              Free 30 minute strategy call, we reply within 1 business day.
-            </p>
+
             <div className="mt-8">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
                 Book a Call

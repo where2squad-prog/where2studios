@@ -26,14 +26,11 @@ const PAGE_DESCRIPTION =
   'Event video and next morning recaps for SF Tech Week 2026 side events, panels, mixers and founder dinners. Bay Area crew. We cover LA Tech Week too.'
 const PAGE_URL = 'https://where2studios.com/sf-tech-week'
 
-const QUOTABLE =
-  'Where2Studios covers SF Tech Week events from October 5 to 11, 2026. We shoot your panel, mixer, founder dinner or hackathon and deliver a next morning teaser plus a vertical clip you can post while Tech Week is still running. The full recap edit follows. Bay Area based. We also cover LA Tech Week, October 12 to 18.'
-
 const whyPoints = [
   'Hundreds of events run that week. Attention is highest while it is happening.',
   'Post the morning after and your event stays in the feed for the rest of the week, while everyone who came is still in town.',
-  'The people who missed it see what they missed and ask to be on the list next time.',
 ]
+
 
 const bookingSteps = [
   'Send us the event, the date and the times.',
@@ -58,11 +55,11 @@ const faqs = [
   },
   {
     q: 'How fast can I get video from my Tech Week event?',
-    a: 'On the Next Morning package, a 30 second teaser and one vertical clip by 10am the next morning. Standard recap edits deliver within 5 business days.',
+    a: 'On the Next Morning package, a 30 second teaser and one vertical clip by 10am the next morning. Recap edits follow within 5 business days.',
   },
   {
     q: 'How much does Tech Week video coverage cost?',
-    a: 'Single Event Recap starts at $3,500, Next Morning at $4,500, Recap + Social Pack at $5,500 and Full Week Coverage at $18,000. Sponsor cuts start at $1,500 on top of any package. Every event is different, so send your dates and we quote the same day.',
+    a: 'Single Event Recap $3,500, Next Morning $4,500, Recap + Social Pack $5,500, Full Week Coverage $18,000. Sponsor cuts start at $1,500. We quote same day.',
   },
   {
     q: 'Can you cover more than one event during Tech Week?',
@@ -77,17 +74,10 @@ const faqs = [
     a: 'Yes. We shoot quiet, no big lights, and you approve every clip before anything goes out.',
   },
   {
-    q: 'Can you shoot vertical for Reels, TikTok and LinkedIn?',
-    a: 'Yes. Vertical is the default for Tech Week, not an add on.',
-  },
-  {
     q: 'How late can I book before October 5?',
     a: 'Book as early as you can. Nights fill first. If we still have a crew we will take a booking the day before.',
   },
-  {
-    q: 'Do you shoot photo as well as video?',
-    a: 'Yes. Edited photo selects come with the recap packages.',
-  },
+
   {
     q: 'Do you handle sponsor deliverables?',
     a: 'Yes. We cut a sponsor version with their branding, their people and their logo placements.',
@@ -107,7 +97,8 @@ const heroCopy = {
     eyebrow: 'October 5 to 11, 2026',
     h1: 'Event video for SF Tech Week',
     subhead:
-      'We cover your Tech Week event and send the first clips back the next morning, while the week is still going.',
+      'We cover SF Tech Week side events October 5 to 11 and send a teaser and a vertical clip back by 10am the next day.',
+
     cta: 'Lock your date',
   },
   'la-week': {
@@ -213,7 +204,10 @@ export default function SFTechWeekPage() {
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-dark mt-3">
               {hero.h1}
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">{hero.subhead}</p>
+            <p id="answer" className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
+              {hero.subhead}
+            </p>
+
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => scrollTo('tech-week-form')}
@@ -240,28 +234,13 @@ export default function SFTechWeekPage() {
           <TrustedBrands />
         </div>
 
-        {/* Quotable answer */}
-
-        <section className="py-10 sm:py-12 bg-m3-background">
-          <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
-            <div className="m3-outlined-card p-5 sm:p-6">
-              <p className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed">
-                {QUOTABLE}
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Why next morning matters */}
         <section className="py-10 sm:py-14 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface">
               A recap that lands three weeks later lands in a dead feed
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-m3-on-surface/75">
-              Every October the city fills up with side events and everyone needs the same thing, a
-              videographer who can turn it around fast.
-            </p>
+
             <ul className="mt-6 space-y-4">
               {whyPoints.map((point) => (
                 <li
@@ -364,18 +343,13 @@ export default function SFTechWeekPage() {
               Sponsoring an event that week?
             </h2>
             <p className="mt-4 text-sm sm:text-base text-m3-on-dark/75">
-              You paid for the logo, the bar tab and the booth. Without footage all you keep is a
-              badge scan list.
+              You paid for the logo, the bar tab and the booth. We cut a sponsor version with your
+              branding, your people and your verticals.
             </p>
             <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
-              We cut a sponsor version of the recap. Your branding in frame, your people talking,
-              your logo on the step and repeat, and vertical clips your marketing team can run after
-              the week ends.
+              Sponsor cut: starting at $1,500 added to any package.
             </p>
-            <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
-              Sponsor cut: starting at $1,500 added to any package. A second edit with your branding, your
-              people and your verticals.
-            </p>
+
             <button
               onClick={() => requestQuote(SPONSOR_OPTION)}
               className="m3-filled-button text-sm px-6 py-3 mt-6"

@@ -125,11 +125,14 @@ function ConventionContent({ convention }: { convention: Convention }) {
 
   const faqs = [...convention.faqs, ...sharedConventionFaqs]
 
-  const quotable = `Where2Studios covers ${convention.name} in San Francisco: brand headquarters, hospitality suites, exec meetings and side events near Moscone, with clips delivered by the next morning and a full recap the same week.${
+  const answer = `Where2Studios covers ${convention.name} in San Francisco for ${joinNames(
+    convention.buyers
+  )}. Brand HQs, suites, exec meetings and side events near Moscone, clips by 10am, full recap the same week.${
     clientNames
-      ? ` We have shot ${clientNames} during ${convention.name} and other convention weeks at The Howard, B Restaurant and The Veranda.`
+      ? ` Past ${convention.name} and convention week work includes ${clientNames} at The Howard, B Restaurant and The Veranda.`
       : ''
   }`
+
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -207,9 +210,9 @@ function ConventionContent({ convention }: { convention: Convention }) {
               {h1}
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              Brand HQ, hospitality suite and side event coverage steps from Moscone. Exec clips,
-              activation recaps and same week social cutdowns.
+              Brand HQ, suite and side event coverage near Moscone. Clips by 10am the next day.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => scrollTo('convention-form')}
@@ -241,29 +244,18 @@ function ConventionContent({ convention }: { convention: Convention }) {
           <TrustedBrands />
         </div>
 
-        {/* Quotable answer */}
-        <section className="py-10 sm:py-12 bg-m3-background">
+        {/* Answer */}
+        <section className="py-10 sm:py-14 bg-m3-surface">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
-            <div className="m3-outlined-card p-5 sm:p-6">
-              <p className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed">
-                {quotable}
-              </p>
-            </div>
+            <p
+              id="answer"
+              className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed"
+            >
+              {answer}
+            </p>
           </div>
         </section>
 
-        {/* Buyers */}
-        <section className="py-10 sm:py-14 bg-m3-surface">
-          <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
-            <h2 className="font-fredoka text-2xl sm:text-3xl font-semibold text-m3-on-surface">
-              Who books us during {convention.name}
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-m3-on-surface/75">
-              {joinNames(convention.buyers)}.
-            </p>
-            <p className="mt-3 text-sm sm:text-base text-m3-on-surface/75">{convention.audience}</p>
-          </div>
-        </section>
 
         {/* Proof */}
         <section

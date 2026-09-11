@@ -65,37 +65,38 @@ const eventTypes = [
 const faqs = [
   {
     q: 'What is an event recap video?',
-    a: 'It is a short edit that captures what your event felt like and what it was about. We cover the stage, the room, the details and short interviews, then cut it into one main film. Most brands use it for follow up email, social and next year promotion.',
+    a: 'A short edit that captures what your event was about. Most brands use it for follow up email, social and next year promotion.',
   },
   {
     q: 'How much does an event recap video cost in the Bay Area?',
-    a: 'Pricing is quote based, not a fixed package. It depends on how long the event runs, how many shooters we need, how many deliverables you want and how fast you need them back. Book the free 30 minute strategy call and we will give you deliverables, timeline and budget.',
+    a: 'Quote based, not a fixed package. It depends on event length, crew size, deliverables and turnaround. Book a call and we scope it same day.',
   },
   {
     q: 'How fast can you turn around a recap?',
-    a: 'The teaser comes first so you have something to post right after the event. The full recap, clips and verticals follow once the edit is locked. Exact dates depend on event length and deliverable count, and we agree on them before the shoot.',
+    a: 'The teaser comes first so you have something to post right away. The full recap, clips and verticals follow once the edit is locked.',
   },
   {
     q: 'What is the difference between a teaser and a full recap?',
-    a: 'The teaser is a short cut built for speed and attention while the event is still fresh. The full recap is the longer hero edit, usually 60 to 120 seconds, with more of the story, the speakers and the audience. Most clients use both, teaser first then recap.',
+    a: 'The teaser is a short cut built for speed. The full recap is the 60 to 120 second hero edit with more of the story.',
   },
   {
     q: 'How many shooters do you send?',
-    a: 'It depends on the event. A single room with one stage can work with a small crew, while multi stage conferences and activations need more coverage. We size the crew on the strategy call so nothing important gets missed.',
+    a: 'It depends on the event. We size the crew on the call so nothing important gets missed.',
   },
   {
     q: 'Do you cover multi day conferences?',
-    a: 'Yes. We plan coverage day by day against your run of show and keep the same crew across the event. We can also travel for multi day conferences outside the Bay Area.',
+    a: 'Yes. We plan coverage day by day against your run of show and keep the same crew across the event.',
   },
   {
     q: 'Do you handle photo as well as video?',
-    a: 'Yes. Photography is part of what we produce, so you can add edited photo selects to any event package. Running photo and video with one team means one point of contact and one shot list.',
+    a: 'Yes. You can add edited photo selects to any event package, shot by the same team.',
   },
   {
     q: 'Do you help with posting and distribution?',
-    a: 'Yes. Beyond production we offer social media management, content distribution and ongoing campaign work. If you want the recap posted, cut for each platform and tracked, we can run that side too.',
+    a: 'Yes. We also offer social media management and content distribution if you want the recap posted and cut per platform.',
   },
 ]
+
 
 function EventProjectCard({ project, index }: { project: CaseStudy; index: number }) {
   const thumbnail = project.thumbnail_url || getThumbnail(project as any)
@@ -228,10 +229,8 @@ export default function EventRecapVideosPage() {
                 <h1 className="font-fredoka text-3xl sm:text-5xl lg:text-6xl font-semibold text-m3-on-surface mt-2">
                   Event recap videos for Bay Area conferences and brand events
                 </h1>
-                <p className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                  We cover the event, then deliver a teaser you can post while people are still
-                  talking about it. After that comes the full recap edit, speaker clips and vertical
-                  cutdowns for social.
+                <p id="answer" className="mt-4 text-base sm:text-lg text-m3-on-surface/70 max-w-2xl">
+                  {SHORT_ANSWER}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start gap-3 mt-6">
@@ -244,7 +243,7 @@ export default function EventRecapVideosPage() {
                 </div>
 
                 <p className="text-m3-on-surface/50 text-xs mt-3">
-                  Free 30 minute strategy call, we reply within 1 business day.
+                  We reply within 1 business day.
                 </p>
               </motion.div>
             </div>
@@ -254,16 +253,6 @@ export default function EventRecapVideosPage() {
             <TechWeekInlineCallout />
           </div>
 
-          {/* Short answer block */}
-          <section className="pb-12">
-            <div className="container mx-auto px-4 sm:px-8 lg:px-12">
-              <div className="m3-outlined-card p-5 sm:p-6 max-w-3xl">
-                <p className="text-sm sm:text-base text-m3-on-surface/80 leading-relaxed">
-                  {SHORT_ANSWER}
-                </p>
-              </div>
-            </div>
-          </section>
 
           {/* What you get */}
           <section className="py-12 sm:py-16 bg-m3-surface">
@@ -337,18 +326,15 @@ export default function EventRecapVideosPage() {
               </h2>
               <div className="space-y-3 text-sm sm:text-base text-m3-on-surface/75">
                 <p>
-                  Most of our event work happens in San Francisco, Oakland and San Jose, where the
-                  conference and summit calendar is busiest.
+                  Most of our event work happens in San Francisco, Oakland and San Jose. We travel
+                  for multi day conferences.
                 </p>
                 <p>
-                  We shoot regularly down the peninsula and through the South Bay in Sunnyvale, Santa
-                  Clara and Palo Alto, and across the East Bay in Berkeley, Fremont and Union City.
-                </p>
-                <p>
-                  If your event sits anywhere else in the wider Bay Area, we can get there, and we
-                  travel for multi day conferences.
+                  We also shoot Sunnyvale, Santa Clara and Palo Alto, plus Berkeley, Fremont and
+                  Union City in the East Bay.
                 </p>
               </div>
+
             </div>
           </section>
 
@@ -396,12 +382,9 @@ export default function EventRecapVideosPage() {
                 Got an event on the calendar?
               </h2>
               <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-                Book a strategy call. Tell us the event, the dates and the goal. We will map
-                deliverables, timeline and budget.
+                Tell us the event and the dates. We reply within 1 business day.
               </p>
-              <p className="mt-2 text-m3-on-surface/40 text-sm">
-                Free 30 minute strategy call, we reply within 1 business day.
-              </p>
+
               <div className="mt-8">
                 <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">
                   Book a Call

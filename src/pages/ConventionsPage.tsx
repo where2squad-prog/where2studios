@@ -64,9 +64,9 @@ export default function ConventionsPage() {
               San Francisco convention week calendar
             </h1>
             <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              Every conference week we cover near Moscone, with dates. Pick yours and tell us what
-              you are running.
+              Every conference week we cover near Moscone, with dates.
             </p>
+
           </div>
         </section>
 

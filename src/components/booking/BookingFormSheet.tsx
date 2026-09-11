@@ -403,7 +403,7 @@ export function BookingFormSheet() {
                         value={formData.eventDates}
                         onChange={handleChange}
                         className={inputClasses(false)}
-                        placeholder="Oct 5 to 7, or still deciding"
+                        placeholder="Oct 5 to 7"
                       />
                     </div>
                   </div>
@@ -496,7 +496,7 @@ export function BookingFormSheet() {
                       onChange={handleChange}
                       rows={3}
                       className={`${inputClasses(!!errors.message)} resize-none`}
-                      placeholder="Venue if you have one, run of show, who needs the footage"
+                      placeholder="Venue, run of show, deliverables"
                     />
                     {errors.message && (
                       <p className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>

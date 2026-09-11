@@ -51,8 +51,9 @@ export function ConversionHero() {
 
             {/* Subhead */}
             <p className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              We shot Cloudflare's Experience Hub at RSA Conference 2025, Google's Pixel House, Immuta's lounge at Snowflake Summit and OwnBackup's Dreamforce HQ. Exec meetings, hospitality, run of show, and post event content your leadership can see on Monday.
+              Cloudflare at RSAC, Google's Pixel House, Immuta at Snowflake Summit, OwnBackup at Dreamforce. Exec clips, activation recaps and social cutdowns your team posts the same week.
             </p>
+
 
             {/* CTA Row */}
             <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-3">
