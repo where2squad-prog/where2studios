@@ -242,7 +242,7 @@ async function render(spec: CardSpec) {
           font: INTER,
           family: 'Inter',
           weight: 500,
-          size: square ? 30 : 26,
+          size: secondSize,
           color: '#FFFFFF',
           opacity: 0.7,
           tracking: 0.5,
