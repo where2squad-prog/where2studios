@@ -50,20 +50,22 @@ function absoluteUrl(path: string) {
 
 const BRAND_SUFFIX = ' | Where2Studios'
 
-/** Keeps <title> inside the 35 to 62 character window search results render. */
+const TITLE_MAX = 65
+
+/** Keeps <title> inside the 35 to 65 character window search results render. */
 export function normalizeTitle(raw: string) {
   let base = raw.replace(/\s*\|\s*Where2Studios(\s+Case Study)?\s*$/i, '').trim()
 
   // Drop trailing keyword segments while the branded title still reads long enough.
-  while (base.length + BRAND_SUFFIX.length > 62 && base.includes(' | ')) {
+  while (base.length + BRAND_SUFFIX.length > TITLE_MAX && base.includes(' | ')) {
     const shorter = base.slice(0, base.lastIndexOf(' | ')).trim()
     if (shorter.length + BRAND_SUFFIX.length < 35) break
     base = shorter
   }
 
-  let full = base.length + BRAND_SUFFIX.length <= 62 ? `${base}${BRAND_SUFFIX}` : base
-  if (full.length > 62) {
-    full = full.slice(0, 62)
+  let full = base.length + BRAND_SUFFIX.length <= TITLE_MAX ? `${base}${BRAND_SUFFIX}` : base
+  if (full.length > TITLE_MAX) {
+    full = full.slice(0, TITLE_MAX)
     const cut = full.lastIndexOf(' ')
     if (cut > 40) full = full.slice(0, cut)
     full = full.replace(/[,;:.\-\s|]+$/, '')

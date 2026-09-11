@@ -16,7 +16,7 @@ import {
 
 const SITE_URL = 'https://where2studios.com'
 const PAGE_URL = `${SITE_URL}/conventions`
-const PAGE_TITLE = 'San Francisco Convention Calendar, Video Coverage Near Moscone | Where2Studios'
+const PAGE_TITLE = 'San Francisco Convention Calendar, Video Coverage | Where2Studios'
 const PAGE_DESCRIPTION =
   'Every San Francisco conference week we cover near Moscone, with dates. Dreamforce, RSAC, Snowflake Summit, Data + AI Summit, TechCrunch Disrupt, GDC and SF Tech Week.'
 

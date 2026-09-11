@@ -39,7 +39,7 @@ export default function HomePage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Convention Week Video Coverage in San Francisco | Where2Studios"
+        title="Convention Week Video Coverage, San Francisco | Where2Studios"
         description="Convention week video coverage in San Francisco. Brand HQ, suite and side event films for Cloudflare, Google, Immuta and OwnBackup, with clips by 10am."
         url="https://where2studios.com/"
         answer
