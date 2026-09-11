@@ -52,7 +52,7 @@ export default function HomePage() {
         <ServiceLanes />
         <FeaturedCaseStudies />
         <Team limit={4} />
-        <ProcessSection />
+        
         
         <FinalCTA />
       </main>
