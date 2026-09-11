@@ -276,10 +276,20 @@ export default function CaseStudyPage() {
   const metrics = project.metrics_json as Record<string, string> | null
 
   const isEventProject = project.category === 'event-recaps' || project.category === 'events'
-  const titleSubject =
+  const rawSubject =
     project.title.length < 34 && project.client_name && !project.title.includes(project.client_name)
       ? `${project.title}, ${project.client_name}`
       : project.title
+  // Drop trailing venue segments so the brand suffix still fits the title cap.
+  const titleSubject = (() => {
+    let subject = rawSubject
+    while (subject.length + 16 > 65 && subject.includes(', ')) {
+      const shorter = subject.slice(0, subject.lastIndexOf(', ')).trim()
+      if (shorter.length < 20) break
+      subject = shorter
+    }
+    return subject
+  })()
   const pageTitle = isEventProject
     ? `${titleSubject} | Event Recap Video Case Study | Where2Studios`
     : `${titleSubject} | ${categoryLabel} Case Study | Where2Studios`
