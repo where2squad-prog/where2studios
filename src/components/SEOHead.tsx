@@ -236,11 +236,13 @@ export function SEOHead({
       <meta name="robots" content={robots} />
 
       {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
+      <meta property="og:title" content={socialTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:width" content={String(imageWidth)} />
       <meta property="og:image:height" content={String(imageHeight)} />
+      <meta property="og:image:type" content={imageType} />
+      <meta property="og:image:alt" content={imageAlt || socialTitle} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={pageUrl} />
       <meta property="og:site_name" content="Where2Studios" />
@@ -248,9 +250,11 @@ export function SEOHead({
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:title" content={socialTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={imageAlt || socialTitle} />
+
 
       {/* Canonical */}
       <link rel="canonical" href={pageUrl} />
