@@ -330,9 +330,30 @@ export default function PortfolioAdminPage() {
               Drop videos and photos here
             </p>
             <p className="mt-2 text-sm text-m3-on-dark/60">
-              mp4, mov, webm, jpg, png, heic, webp. Many files at once. Large videos resume if the
-              connection drops.
+              mp4, mov, webm, jpg, png, heic, webp. Whole folders work too. Large videos resume if
+              the connection drops.
             </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  inputRef.current?.click()
+                }}
+              >
+                Choose files
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  folderInputRef.current?.click()
+                }}
+              >
+                Choose folder
+              </Button>
+            </div>
             <input
               ref={inputRef}
               type="file"
@@ -340,7 +361,19 @@ export default function PortfolioAdminPage() {
               accept={UPLOAD_ACCEPT}
               className="hidden"
               onChange={(e) => {
-                processFiles(Array.from(e.target.files ?? []))
+                processFiles(visibleFiles(Array.from(e.target.files ?? [])))
+                e.target.value = ''
+              }}
+            />
+            <input
+              ref={folderInputRef}
+              type="file"
+              multiple
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              {...({ webkitdirectory: '', directory: '' } as any)}
+              className="hidden"
+              onChange={(e) => {
+                processFiles(visibleFiles(Array.from(e.target.files ?? [])))
                 e.target.value = ''
               }}
             />
