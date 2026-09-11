@@ -2,6 +2,13 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 import { loadEnv, type Plugin } from "vite";
 import { getTechWeekPhase } from "../src/lib/techWeek";
+import {
+  conventions,
+  conventionHref,
+  formatEditionRange,
+  getConventionStatus,
+  nextUnknownYear,
+} from "../src/lib/conventions";
 
 const DOMAIN = "https://where2studios.com";
 
