@@ -9,7 +9,7 @@ import { techWeekNeedOptions } from '@/lib/techWeek'
 
 const schema = z.object({
   name: z.string().trim().min(1, 'Add your name').max(100),
-  email: z.string().trim().email('Add a valid email').max(255),
+  email: z.string().trim().min(1, 'Add your email').email('Add a valid email').max(255),
   company: z.string().trim().min(1, 'Add your company').max(120),
   eventDates: z.string().trim().min(1, 'Add your date').max(120),
   venue: z.string().trim().min(1, 'Add a venue or neighborhood').max(120),
