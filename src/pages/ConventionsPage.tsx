@@ -53,10 +53,14 @@ export default function ConventionsPage() {
     <>
       <SEOHead
         title={PAGE_TITLE}
+        ogTitle="San Francisco conference calendar"
         description={PAGE_DESCRIPTION}
         canonical="/conventions"
+        image="/og/conventions.png"
+        imageAlt="San Francisco conference calendar"
         schema={[collectionSchema, itemListSchema]}
       />
+
       <PageLayout navVariant="dark">
         <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">

@@ -40,12 +40,16 @@ export default function HomePage() {
       <SkipLink />
       <SEOHead
         title="Conference Week Video Coverage, San Francisco | Where2Studios"
+        ogTitle="Where2Studios"
         description="Conference week video coverage in San Francisco. Activation, suite and side event films for Cloudflare, Google, Immuta and OwnBackup, with clips by 10am."
         url="https://where2studios.com/"
+        image="/og/home.png"
+        imageAlt="Conference week video coverage"
         answer
         breadcrumbName="Home"
         schema={organizationSchema}
       />
+
       <div className="min-h-screen bg-m3-background text-m3-on-background">
       <Navbar variant="dark" />
       

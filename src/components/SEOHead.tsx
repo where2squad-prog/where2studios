@@ -41,7 +41,8 @@ export const sameAs = [
 ]
 
 const LOGO_URL = `${SITE_URL}/email-assets/logo-circle.png`
-const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
+const OG_IMAGE_URL = `${SITE_URL}/og/home.png`
+
 
 function absoluteUrl(path: string) {
   if (/^https?:\/\//i.test(path)) return path
@@ -151,7 +152,11 @@ function buildBreadcrumb(pathname: string, leafName: string) {
 interface SEOHeadProps {
   title: string
   description: string
+  /** Card headline for social previews. `<title>` stays as is for search. */
+  ogTitle?: string
   image?: string
+  /** og:image:alt, normally the caption baked into the share image. */
+  imageAlt?: string
   imageWidth?: number
   imageHeight?: number
   url?: string
@@ -168,7 +173,9 @@ interface SEOHeadProps {
 export function SEOHead({
   title,
   description,
-  image = '/og-image.png',
+  ogTitle,
+  image = '/og/home.png',
+  imageAlt,
   imageWidth = 1200,
   imageHeight = 630,
   url,
@@ -181,12 +188,15 @@ export function SEOHead({
 }: SEOHeadProps) {
   const location = useLocation()
   const fullTitle = normalizeTitle(title)
+  const socialTitle = ogTitle || fullTitle
   const metaDescription = normalizeDescription(description)
   const rawPath = canonical || url || location.pathname || '/'
   const absolute = absoluteUrl(rawPath)
   const pageUrl = absolute === `${SITE_URL}/` ? absolute : absolute.replace(/\/$/, '')
   const imageUrl = absoluteUrl(image)
+  const imageType = /\.jpe?g(\?|$)/i.test(imageUrl) ? 'image/jpeg' : 'image/png'
   const pathname = pageUrl.replace(SITE_URL, '') || '/'
+
 
   const provided = schema ? (Array.isArray(schema) ? schema : [schema]) : []
   const schemas = [...provided]
@@ -226,11 +236,13 @@ export function SEOHead({
       <meta name="robots" content={robots} />
 
       {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
+      <meta property="og:title" content={socialTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:width" content={String(imageWidth)} />
       <meta property="og:image:height" content={String(imageHeight)} />
+      <meta property="og:image:type" content={imageType} />
+      <meta property="og:image:alt" content={imageAlt || socialTitle} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={pageUrl} />
       <meta property="og:site_name" content="Where2Studios" />
@@ -238,9 +250,11 @@ export function SEOHead({
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:title" content={socialTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={imageAlt || socialTitle} />
+
 
       {/* Canonical */}
       <link rel="canonical" href={pageUrl} />

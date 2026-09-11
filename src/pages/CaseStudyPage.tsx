@@ -328,12 +328,19 @@ export default function CaseStudyPage() {
     <>
       <SEOHead
         title={pageTitle}
+        ogTitle={
+          project.client_name && convention
+            ? `${project.client_name} at ${convention.name}`
+            : project.title
+        }
         description={pageDescription}
         image={thumbnail}
+        imageAlt={project.title}
         url={`https://where2studios.com/work/${project.slug || project.id}`}
         type="article"
         schema={jsonLd}
       />
+
 
 
       <div className="min-h-screen bg-m3-surface-variant">
