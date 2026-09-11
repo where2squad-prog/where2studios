@@ -21,6 +21,7 @@ export default function AdminLoginPage() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
+  const [isAppleLoading, setIsAppleLoading] = useState(false)
 
   // Get the page they were trying to access
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/admin/social'
