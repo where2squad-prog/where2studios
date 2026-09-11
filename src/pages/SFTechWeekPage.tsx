@@ -204,7 +204,10 @@ export default function SFTechWeekPage() {
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-dark mt-3">
               {hero.h1}
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">{hero.subhead}</p>
+            <p id="answer" className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
+              {hero.subhead}
+            </p>
+
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => scrollTo('tech-week-form')}
