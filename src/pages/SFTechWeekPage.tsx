@@ -58,11 +58,11 @@ const faqs = [
   },
   {
     q: 'How fast can I get video from my Tech Week event?',
-    a: 'A 30 second teaser and one vertical clip by 10am the next morning on the Next Morning package. Recap edits deliver within 5 business days.',
+    a: 'On the Next Morning package, a 30 second teaser and one vertical clip by 10am the next morning. Standard recap edits deliver within 5 business days.',
   },
   {
     q: 'How much does Tech Week video coverage cost?',
-    a: 'Next Morning coverage starts at $2,500 per event, a Single Event Recap at $3,500, Recap + Social Pack at $4,800 and Full Week Coverage at $15,000. Sponsor cuts are $1,500 on top of any package. We quote the same day.',
+    a: 'Single Event Recap starts at $3,500, Next Morning at $4,500, Recap + Social Pack at $5,500 and Full Week Coverage at $18,000. Sponsor cuts start at $1,500 on top of any package. Every event is different, so send your dates and we quote the same day.',
   },
   {
     q: 'Can you cover more than one event during Tech Week?',
@@ -337,7 +337,7 @@ export default function SFTechWeekPage() {
                   </h3>
                   {pkg.startingPrice !== null && (
                     <p className="text-sm font-semibold text-m3-primary mt-1">
-                      From ${pkg.startingPrice.toLocaleString()}
+                      Starting at ${pkg.startingPrice.toLocaleString()}
                     </p>
                   )}
                   <p className="text-sm text-m3-on-surface/70 mt-2 flex-1">{pkg.description}</p>
@@ -351,8 +351,8 @@ export default function SFTechWeekPage() {
               ))}
             </div>
             <p className="text-xs sm:text-sm text-m3-on-surface/60 mt-6">
-              Prices are per event. Speaker and panel clips, extra cutdowns and a full recap edit on
-              the Next Morning package are quoted as add ons.
+              Starting prices. Every event is different, so we scope each one and quote the same day.
+              Speaker and panel clips, extra cutdowns and additional hours are quoted as add ons.
             </p>
           </div>
         </section>
@@ -373,7 +373,7 @@ export default function SFTechWeekPage() {
               the week ends.
             </p>
             <p className="mt-3 text-sm sm:text-base text-m3-on-dark/75">
-              Sponsor cut: from $1,500 added to any package. A second edit with your branding, your
+              Sponsor cut: starting at $1,500 added to any package. A second edit with your branding, your
               people and your verticals.
             </p>
             <button
