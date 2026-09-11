@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
+import { defineMcp, auth } from "npm:@lovable.dev/mcp-js@0.20.0";
 
 // src/lib/mcp/tools/list-projects.ts
 import { createClient } from "npm:@supabase/supabase-js@^2.93.3";
@@ -125,7 +125,12 @@ var mcp_default = defineMcp({
   title: "Where2Studios",
   version: "0.1.0",
   instructions: "Tools for Where2Studios, a creative production studio and the Where2Boys creator brand. Use `list_projects` and `get_project` to browse the portfolio, `list_testimonials` for client quotes, and `submit_inquiry` to send a new partnership or contact request.",
-  tools: [list_projects_default, get_project_default, list_testimonials_default, submit_inquiry_default]
+  tools: [list_projects_default, get_project_default, list_testimonials_default, submit_inquiry_default],
+  auth: auth.oauth.issuer({
+    issuer: `${process.env.SUPABASE_URL}/auth/v1`,
+    acceptedAudiences: ["authenticated"],
+    resourceName: "Where2Studios"
+  })
 });
 
 // lovable-mcp-supabase-entry.ts
