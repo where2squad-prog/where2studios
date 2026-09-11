@@ -326,18 +326,15 @@ export default function EventRecapVideosPage() {
               </h2>
               <div className="space-y-3 text-sm sm:text-base text-m3-on-surface/75">
                 <p>
-                  Most of our event work happens in San Francisco, Oakland and San Jose, where the
-                  conference and summit calendar is busiest.
+                  Most of our event work happens in San Francisco, Oakland and San Jose. We travel
+                  for multi day conferences.
                 </p>
                 <p>
-                  We shoot regularly down the peninsula and through the South Bay in Sunnyvale, Santa
-                  Clara and Palo Alto, and across the East Bay in Berkeley, Fremont and Union City.
-                </p>
-                <p>
-                  If your event sits anywhere else in the wider Bay Area, we can get there, and we
-                  travel for multi day conferences.
+                  We also shoot Sunnyvale, Santa Clara and Palo Alto, plus Berkeley, Fremont and
+                  Union City in the East Bay.
                 </p>
               </div>
+
             </div>
           </section>
 
