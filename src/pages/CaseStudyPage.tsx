@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Play, CheckCircle2, Target, Lightbulb, Package, Users, Share2, BarChart3, Scissors, ArrowRight } from 'lucide-react'
@@ -195,6 +196,29 @@ export default function CaseStudyPage() {
   const navigate = useNavigate()
   const { openSheet } = useBookingSheet()
   const { data: project, isLoading, error } = useCaseStudy(slug || '')
+
+  // Photos live in the gallery, not on their own page. Hidden rows go back to Work.
+  const isPhoto = project?.media_type === 'photo'
+  const isHidden = !!project && project.show_on_main_site === false
+  const redirectTo = isPhoto ? '/work?view=photos' : isHidden ? '/work' : null
+
+  useEffect(() => {
+    if (redirectTo) navigate(redirectTo, { replace: true })
+  }, [redirectTo, navigate])
+
+  if (redirectTo) {
+    return (
+      <>
+        <SEOHead
+          title={`${project!.title} | Where2Studios`}
+          description="This item lives in the Where2Studios portfolio gallery."
+          url={`https://where2studios.com/work/${project!.slug || project!.id}`}
+          robots="noindex, follow"
+        />
+        <div className="min-h-screen bg-m3-surface-variant" />
+      </>
+    )
+  }
 
   if (isLoading) {
     return (
