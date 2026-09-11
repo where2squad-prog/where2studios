@@ -246,6 +246,7 @@ export type Database = {
           category: string
           challenge: string | null
           client_name: string | null
+          convention_slug: string | null
           created_at: string
           deliverables: string[] | null
           description: string | null
@@ -276,6 +277,7 @@ export type Database = {
           category: string
           challenge?: string | null
           client_name?: string | null
+          convention_slug?: string | null
           created_at?: string
           deliverables?: string[] | null
           description?: string | null
@@ -306,6 +308,7 @@ export type Database = {
           category?: string
           challenge?: string | null
           client_name?: string | null
+          convention_slug?: string | null
           created_at?: string
           deliverables?: string[] | null
           description?: string | null
