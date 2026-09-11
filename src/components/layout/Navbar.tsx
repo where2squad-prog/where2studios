@@ -15,7 +15,7 @@ const baseNavLinks = [
   { href: '/conventions', label: 'Conferences' },
   { href: '/services', label: 'Services' },
   { href: '/who-we-are', label: 'About' },
-  { href: '/socials', label: 'Socials' },
+  
 ];
 
 const techWeekLink = { href: '/sf-tech-week', label: 'SF Tech Week', timely: true };

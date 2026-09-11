@@ -104,6 +104,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   services: 'Services',
   contact: 'Contact',
   socials: 'Social media management',
+  'backyard-bayou-socials': 'Social media management',
   'who-we-are': 'About',
   'sf-tech-week': 'SF Tech Week',
   'event-recap-videos': 'Event recap videos',

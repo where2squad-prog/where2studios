@@ -51,7 +51,7 @@ export function ConversionHero() {
 
             {/* Subhead */}
             <p id="answer" className="text-sm sm:text-base md:text-lg text-white/75 max-w-md sm:max-w-lg md:max-w-2xl leading-snug sm:leading-relaxed md:leading-relaxed mb-4 sm:mb-6 md:mb-8">
-              Experience hubs, lounges, off-site HQs and side events near Moscone. Cloudflare at RSAC, Google's Pixel House, Immuta at Snowflake Summit, OwnBackup at Dreamforce.
+              Experience hubs, lounges, off-site HQs and side events near Moscone. Cloudflare at RSAC, Google's Pixel House, Immuta at Snowflake Summit, OwnBackup at Dreamforce. Clips by 10am the next day.
             </p>
 
 
