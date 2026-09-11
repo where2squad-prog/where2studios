@@ -189,14 +189,17 @@ export default function SFTechWeekPage() {
     <>
       <SEOHead
         title={phase.kind === 'wrapped' ? WRAPPED_TITLE : PAGE_TITLE}
+        ogTitle="SF Tech Week video coverage"
         description={phase.kind === 'wrapped' ? WRAPPED_DESCRIPTION : PAGE_DESCRIPTION}
         url={PAGE_URL}
         answer
-        image={proof[0]?.thumbnail_url || undefined}
+        image="/og/sf-tech-week.png"
+        imageAlt="SF Tech Week video coverage"
         breadcrumbName="SF Tech Week"
         robots="index, follow"
         schema={[serviceSchema, faqSchema, breadcrumbSchema]}
       />
+
       <PageLayout navVariant="dark">
         {/* Hero */}
         <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">

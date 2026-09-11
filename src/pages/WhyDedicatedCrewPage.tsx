@@ -116,14 +116,17 @@ export default function WhyDedicatedCrewPage() {
     <>
       <SEOHead
         title={title}
+        ogTitle="Why a dedicated conference week crew"
         description={description}
         canonical="/why-a-dedicated-crew"
         answer
-        image={proof[0]?.thumbnail_url || undefined}
+        image="/og/why.png"
+        imageAlt="A dedicated conference week crew"
         breadcrumbName="Why a dedicated crew"
         type="article"
         schema={[articleSchema, breadcrumbSchema]}
       />
+
       <PageLayout navVariant="light">
         {/* Hero */}
         <section className="bg-m3-background pb-10 sm:pb-14 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
