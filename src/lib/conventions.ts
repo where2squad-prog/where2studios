@@ -225,7 +225,7 @@ export const conventions: Convention[] = [
 export const sharedConventionFaqs = [
   {
     q: 'Do you work inside Moscone?',
-    a: "We cover side events, brand HQs and suites around Moscone. Inside the halls depends on the organizer's media rules, tell us what you have and we will confirm.",
+    a: "We cover side events, brand HQs and suites around Moscone. Inside the halls depends on the organizer's media rules.",
   },
   {
     q: 'How early should we book?',
