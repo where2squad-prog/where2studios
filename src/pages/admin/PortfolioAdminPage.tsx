@@ -531,6 +531,21 @@ function UploadRow({
             </SelectContent>
           </Select>
 
+          <Select value={conventionSlug} onValueChange={setConventionSlug}>
+            <SelectTrigger>
+              <SelectValue placeholder="Convention" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">No convention</SelectItem>
+              {conventions.map((c) => (
+                <SelectItem key={c.slug} value={c.slug}>
+                  {c.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+
           <div className="flex flex-wrap items-center gap-4 text-sm text-m3-on-dark/80">
             <label className="flex items-center gap-2">
               <Switch checked={published} onCheckedChange={setPublished} />
@@ -555,6 +570,7 @@ function UploadRow({
                 title,
                 client_name: clientName || null,
                 category,
+                convention_slug: conventionSlug === 'none' ? null : conventionSlug,
                 published,
                 show_on_main_site: onMainSite,
                 featured,
