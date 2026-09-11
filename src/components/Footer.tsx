@@ -42,10 +42,10 @@ export function Footer() {
               Where2Studios
             </div>
             <p className="text-m3-on-dark/60 text-sm mb-1 max-w-xs">
-              Your Growth Team, On Demand.
+              Video coverage for convention week brand headquarters.
             </p>
             <p className="text-m3-on-dark/50 text-xs mb-4 max-w-xs">
-              Strategy first, premium media production, full service marketing execution.
+              Activation recaps, exec clips and same week social cutdowns, San Francisco Bay Area.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
               Free 30 minute strategy call, we reply within 1 business day.

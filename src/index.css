@@ -486,3 +486,8 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Tech Week promos hide themselves once SF Tech Week ends, even without a rebuild. */
+html[data-techweek="over"] [data-techweek-promo] {
+  display: none !important;
+}

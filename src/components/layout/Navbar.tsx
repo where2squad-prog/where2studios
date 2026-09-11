@@ -35,7 +35,8 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
 
   const navRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = isTechWeekCampaignLive()
+  const techWeekPhase = useTechWeekPhase();
+  const navLinks = isTechWeekPromoLive(techWeekPhase)
     ? [techWeekLink, ...baseNavLinks]
     : baseNavLinks;
 
