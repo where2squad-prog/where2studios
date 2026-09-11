@@ -10,8 +10,11 @@ import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { SkipLink } from '@/components/layout/SkipLink'
 import { SEOHead } from '@/components/SEOHead'
 
-import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
+import { useAllProjects, usePhotoProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
+import { isUploadedVideo } from '@/lib/portfolioMedia'
+import { UploadVideo } from '@/components/portfolio/UploadVideo'
+import { PhotoGrid } from '@/components/portfolio/PhotoGrid'
 
 const CATEGORIES = ['all', 'convention-week', 'event-recaps', 'brand-films']
 const CATEGORY_LABELS: Record<string, string> = {
@@ -19,6 +22,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   'convention-week': 'Convention Week HQ',
   'event-recaps': 'Event Recaps',
   'brand-films': 'Brand Films',
+  photos: 'Photos',
 }
 
 type SortOption = 'featured' | 'recent'
