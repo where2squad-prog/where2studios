@@ -28,7 +28,7 @@ export async function getPublishedCaseStudyPaths(): Promise<string[]> {
     .select('slug')
     .eq('published', true)
     .eq('show_on_main_site', true)
-    .neq('media_type', 'photo')
+    .or('media_type.is.null,media_type.neq.photo')
     .not('slug', 'is', null)
 
   if (error) {
