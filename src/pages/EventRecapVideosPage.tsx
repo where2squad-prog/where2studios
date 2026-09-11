@@ -208,7 +208,7 @@ export default function EventRecapVideosPage() {
     <>
       <SkipLink />
       <SEOHead
-        title="Event Recap Videos | Bay Area Conference Video Production | Where2Studios"
+        title="Event Recap Videos for Bay Area Conferences"
         description={PAGE_DESCRIPTION}
         answer
         url="https://where2studios.com/event-recap-videos"

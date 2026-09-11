@@ -54,9 +54,11 @@ const BRAND_SUFFIX = ' | Where2Studios'
 export function normalizeTitle(raw: string) {
   let base = raw.replace(/\s*\|\s*Where2Studios(\s+Case Study)?\s*$/i, '').trim()
 
-  // Drop trailing keyword segments until the branded title fits.
+  // Drop trailing keyword segments while the branded title still reads long enough.
   while (base.length + BRAND_SUFFIX.length > 62 && base.includes(' | ')) {
-    base = base.slice(0, base.lastIndexOf(' | ')).trim()
+    const shorter = base.slice(0, base.lastIndexOf(' | ')).trim()
+    if (shorter.length + BRAND_SUFFIX.length < 35) break
+    base = shorter
   }
 
   let full = base.length + BRAND_SUFFIX.length <= 62 ? `${base}${BRAND_SUFFIX}` : base

@@ -252,9 +252,13 @@ export default function CaseStudyPage() {
   const metrics = project.metrics_json as Record<string, string> | null
 
   const isEventProject = project.category === 'event-recaps' || project.category === 'events'
+  const titleSubject =
+    project.title.length < 34 && project.client_name && !project.title.includes(project.client_name)
+      ? `${project.title}, ${project.client_name}`
+      : project.title
   const pageTitle = isEventProject
-    ? `${project.title} | Event Recap Video Case Study | Where2Studios`
-    : `${project.title} | Where2Studios Case Study`
+    ? `${titleSubject} | Event Recap Video Case Study | Where2Studios`
+    : `${titleSubject} | ${categoryLabel} Case Study | Where2Studios`
   // Built per project so no two case studies share a description.
   const descriptionSubject = [
     project.client_name ? `${project.client_name}` : project.title,
@@ -263,9 +267,9 @@ export default function CaseStudyPage() {
   ]
     .filter(Boolean)
     .join(' ')
-  const pageDescription = `${
-    project.result || project.description || `${categoryLabel} by Where2Studios`
-  } ${descriptionSubject ? `Project: ${descriptionSubject}.` : ''}`.trim()
+  const pageDescription = `${project.title}${
+    descriptionSubject && descriptionSubject !== project.title ? `, ${descriptionSubject}` : ''
+  }. ${project.result || project.description || `${categoryLabel} by Where2Studios.`}`.trim()
 
   const jsonLd = buildJsonLd(project, thumbnail, isPodcast, pageDescription, convention)
 
