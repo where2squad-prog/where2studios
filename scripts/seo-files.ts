@@ -121,6 +121,19 @@ ${DOMAIN}/sf-tech-week
 `;
 }
 
+function conventionSection() {
+  const now = new Date();
+  return conventions
+    .map((convention) => {
+      const { edition } = getConventionStatus(convention, now);
+      const dates = edition
+        ? formatEditionRange(edition)
+        : `${nextUnknownYear(convention)} dates to be announced`;
+      return `- [${convention.name}](${DOMAIN}${conventionHref(convention)}): ${dates}. ${convention.venue}, San Francisco. Organizer: ${convention.organizer}.`;
+    })
+    .join("\n");
+}
+
 function buildLlmsTxt(projects: ProjectRow[]) {
   const films = projects.filter((p) => p.media_type !== "photo" && p.slug);
   const photoCount = projects.filter((p) => p.media_type === "photo").length;
@@ -149,6 +162,10 @@ Where2Studios is a video and photo production team based in Union City, Californ
 ## Work
 
 ${workList}
+
+## San Francisco convention week calendar
+
+${conventionSection()}
 
 ## About
 
