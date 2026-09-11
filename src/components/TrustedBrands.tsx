@@ -158,11 +158,11 @@ export function TrustedBrands() {
           <div className="grid grid-cols-4 gap-6 sm:gap-12 lg:gap-16">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">150+</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Convention weeks covered</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Projects shipped</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">{views.formatted}</div>
-              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Events covered</div>
+              <div className="text-m3-on-surface/60 text-xs sm:text-sm font-medium mt-1">Views earned</div>
             </div>
             <div className="text-center">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-m3-primary tabular-nums">80+</div>
