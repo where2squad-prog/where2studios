@@ -7,7 +7,7 @@ import { TrustedBrands } from '@/components/TrustedBrands'
 import { TechWeekHomeBlock } from '@/components/techweek/TechWeekCallout'
 import { ServiceLanes } from '@/components/home/ServiceLanes'
 import { FeaturedCaseStudies } from '@/components/home/FeaturedCaseStudies'
-import { ProcessSection } from '@/components/home/ProcessSection'
+
 import { Team } from '@/components/Team'
 
 import { FinalCTA } from '@/components/home/FinalCTA'
