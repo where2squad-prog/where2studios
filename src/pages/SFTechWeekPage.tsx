@@ -209,8 +209,8 @@ export default function SFTechWeekPage() {
   return (
     <>
       <SEOHead
-        title={PAGE_TITLE}
-        description={PAGE_DESCRIPTION}
+        title={phase.kind === 'wrapped' ? WRAPPED_TITLE : PAGE_TITLE}
+        description={phase.kind === 'wrapped' ? WRAPPED_DESCRIPTION : PAGE_DESCRIPTION}
         url={PAGE_URL}
         robots="index, follow"
         schema={[serviceSchema, faqSchema, breadcrumbSchema]}
@@ -220,21 +220,18 @@ export default function SFTechWeekPage() {
         <section className="bg-m3-surface-dark pb-12 sm:pb-16 pt-[calc(var(--nav-h,112px)+1.5rem)] sm:pt-[calc(var(--nav-h,112px)+2.5rem)]">
           <div className="container mx-auto px-4 sm:px-8 lg:px-12 max-w-3xl">
             <p className="text-m3-primary text-xs font-semibold uppercase tracking-widest">
-              October 5 to 11, 2026
+              {hero.eyebrow}
             </p>
             <h1 className="font-fredoka text-3xl sm:text-5xl font-semibold text-m3-on-dark mt-3">
-              Event video for SF Tech Week
+              {hero.h1}
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">
-              We cover your Tech Week event and send the first clips back the next morning, while
-              the week is still going.
-            </p>
+            <p className="mt-4 text-base sm:text-lg text-m3-on-dark/75">{hero.subhead}</p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={() => scrollTo('tech-week-form')}
                 className="m3-filled-button text-sm px-6 py-3"
               >
-                Lock your date
+                {hero.cta}
               </button>
               <button
                 onClick={() => scrollTo('tech-week-proof')}
