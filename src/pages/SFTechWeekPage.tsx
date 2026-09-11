@@ -408,10 +408,12 @@ export default function SFTechWeekPage() {
                 </li>
               ))}
             </ol>
-            <p className="mt-6 text-sm text-m3-on-surface/60">
-              We run a limited number of crews per night from October 5 to 11. Once a night is full
-              it is full.
-            </p>
+            {!isPast && (
+              <p className="mt-6 text-sm text-m3-on-surface/60">
+                We run a limited number of crews per night from October 5 to 11. Once a night is
+                full it is full.
+              </p>
+            )}
           </div>
         </section>
 
