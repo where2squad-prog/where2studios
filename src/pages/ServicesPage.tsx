@@ -61,6 +61,13 @@ export default function ServicesPage() {
               <p className="text-m3-on-surface/50 text-xs mt-3">
                 Free 30 minute strategy call, we reply within 1 business day.
               </p>
+              <Link
+                to="/why-a-dedicated-crew"
+                className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm mt-4"
+              >
+                Why a dedicated crew
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           </div>
         </section>
