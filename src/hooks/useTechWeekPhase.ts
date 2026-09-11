@@ -3,7 +3,11 @@
 import { useEffect, useState } from 'react'
 import { getTechWeekPhase, type TechWeekPhase } from '@/lib/techWeek'
 
-const BUILD_TIME = typeof __BUILD_TIME__ === 'string' ? __BUILD_TIME__ : undefined
+declare const __BUILD_TIME__: string | undefined
+
+const buildTime: string | undefined =
+  typeof __BUILD_TIME__ === 'string' ? __BUILD_TIME__ : undefined
+const BUILD_TIME = buildTime
 
 /**
  * The first render uses the build time, so hydration matches the prerendered
