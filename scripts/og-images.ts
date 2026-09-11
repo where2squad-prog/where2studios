@@ -227,7 +227,7 @@ async function render(spec: CardSpec) {
           font: FREDOKA,
           family: 'Fredoka',
           weight: 600,
-          size: square ? 46 : 40,
+          size: captionSize,
           color: YELLOW,
           opacity: 1,
           tracking: 1,
