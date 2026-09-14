@@ -101,9 +101,9 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
 
           {/* Views badge */}
           {project.result && !isHorizontal && (
-            <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1">
-              <Eye className="w-3 h-3 text-m3-on-dark/70" />
-              <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold">
+            <div className={`absolute top-2 sm:top-4 right-2 sm:right-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1 ${isPortrait ? 'max-w-[55%]' : 'max-w-[80%]'}`}>
+              <Eye className="w-3 h-3 shrink-0 text-m3-on-dark/70" />
+              <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold truncate">
                 {project.result}
               </span>
             </div>
