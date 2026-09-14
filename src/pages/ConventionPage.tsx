@@ -394,7 +394,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
         onClose={() => setActiveVideo(null)}
         videoUrl={activeVideo?.video_url || null}
         title={activeVideo?.title}
-        portrait={(() => { console.log("DBG", JSON.stringify({w: activeVideo?.width, h: activeVideo?.height})); return isPortraitMedia(activeVideo) })()}
+        portrait={isPortraitMedia(activeVideo)}
       />
     </>
   )
