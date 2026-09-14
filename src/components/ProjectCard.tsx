@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Eye } from 'lucide-react'
 import { Project, getThumbnail } from '@/hooks/useProjects'
-import { isPortraitMedia } from '@/lib/video'
 
 interface ProjectCardProps {
   project: Project
@@ -16,7 +15,6 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onClick }: ProjectCardProps) {
   const thumbnail = getThumbnail(project)
   const isHorizontal = aspectRatio === 'horizontal'
-  const isPortrait = isPortraitMedia(project)
   // Vimeo and YouTube hand back a 16:9 still even for a 9:16 film, so the
   // blurred backdrop treatment keys off the still itself.
   const [portraitStill, setPortraitStill] = useState(false)
@@ -94,7 +92,7 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
 
           {/* Views badge */}
           {project.result && !isHorizontal && (
-            <div className={`absolute top-2 sm:top-4 right-2 sm:right-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1 ${isPortrait ? 'max-w-[55%]' : 'max-w-[80%]'}`}>
+            <div className={`absolute top-2 sm:top-4 right-2 sm:right-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1 max-w-[80%]`}>
               <Eye className="w-3 h-3 shrink-0 text-m3-on-dark/70" />
               <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold truncate">
                 {project.result}

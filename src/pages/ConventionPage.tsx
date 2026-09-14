@@ -7,6 +7,7 @@ import { PageLayout } from '@/components/layout/PageLayout'
 import { SEOHead, areaServed } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
+import { isPortraitMedia } from '@/lib/video'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { ConventionForm } from '@/components/conventions/ConventionForm'
 import { useProjects, proofWall, type Project } from '@/hooks/useProjects'
@@ -393,6 +394,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
         onClose={() => setActiveVideo(null)}
         videoUrl={activeVideo?.video_url || null}
         title={activeVideo?.title}
+        portrait={isPortraitMedia(activeVideo)}
       />
     </>
   )
