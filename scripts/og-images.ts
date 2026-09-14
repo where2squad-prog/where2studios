@@ -17,7 +17,6 @@ import opentype from 'opentype.js'
 import { createClient } from '@supabase/supabase-js'
 import {
   conventions,
-  hasConventionPage,
   formatEditionRange,
   getNextEdition,
   nextUnknownYear,
@@ -326,16 +325,7 @@ async function main() {
     slugs: ['immuta-snowflake-summit-2025', 'cloudflare-rsa-conference-2025'],
   })
 
-  await add({
-    file: 'rsa-conference-video.png',
-    width: 1200,
-    height: 630,
-    caption: 'RSA Conference video coverage',
-    second: 'Moscone, April 5 to 8, 2027',
-    slugs: ['cloudflare-rsa-conference-2025', 'rsa-conference-2025-b-restaurant'],
-  })
-
-  for (const convention of conventions.filter(hasConventionPage)) {
+  for (const convention of conventions.filter((c) => !c.href)) {
     await add({
       file: `conventions/${convention.slug}.png`,
       width: 1200,

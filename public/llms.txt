@@ -11,7 +11,6 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Speaker and panel clips](https://where2studios.com/event-recap-videos): standalone clips of talks and panels.
 - [Brand activation films](https://where2studios.com/services): launch and activation coverage, plus photography.
 - [All services](https://where2studios.com/services)
-- [RSA Conference video coverage](https://where2studios.com/rsa-conference-video): experience hubs, hospitality suites, podcast days and evening receptions near Moscone during RSAC week.
 - [Why a dedicated conference week crew](https://where2studios.com/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
 - [Social media content and management](https://where2studios.com/backyard-bayou-socials)
 
@@ -20,9 +19,8 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Why a dedicated conference week crew](https://where2studios.com/why-a-dedicated-crew): why a dedicated crew beats a single hired shooter, on site from build day to strike, clips by 10am.
 - [Event recap video production](https://where2studios.com/event-recap-videos): what an event recap includes, recap edit, next day teaser, speaker clips, vertical cutdowns and photo selects.
 - [SF Tech Week video coverage](https://where2studios.com/sf-tech-week): packages, prices and turnaround for SF Tech Week side events, October 5 to 11, 2026.
-- [RSA Conference video coverage](https://where2studios.com/rsa-conference-video): experience hub, hospitality suite, podcast day and evening reception coverage near Moscone during RSAC week, April 5 to 8, 2027.
 - [Dreamforce video coverage](https://where2studios.com/conventions/dreamforce): activation, suite and side event coverage for Dreamforce, September 15 to 17, 2026, Moscone North, South and West, San Francisco.
-- [RSA Conference video coverage](https://where2studios.com/conventions/rsac): activation, suite and side event coverage for RSA Conference, April 5 to 8, 2027, Moscone North, South and West, San Francisco.
+- [RSAC Conference video coverage](https://where2studios.com/conventions/rsac): activation, suite and side event coverage for RSAC Conference, April 5 to 8, 2027, Moscone Center, San Francisco.
 - [Snowflake Summit video coverage](https://where2studios.com/conventions/snowflake-summit): activation, suite and side event coverage for Snowflake Summit, June 7 to 10, 2027, Moscone Center, San Francisco.
 - [Data + AI Summit video coverage](https://where2studios.com/conventions/data-ai-summit): activation, suite and side event coverage for Data + AI Summit, June 21 to 24, 2027, Moscone North, West and South, San Francisco.
 - [TechCrunch Disrupt video coverage](https://where2studios.com/conventions/techcrunch-disrupt): activation, suite and side event coverage for TechCrunch Disrupt, October 13 to 15, 2026, Moscone West, San Francisco.
@@ -46,6 +44,7 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Xsolla Brand HQ Build Montage](https://where2studios.com/work/xsolla-brand-hq-build-montage)
 - [phData & Omni Brand HQ Build Montage](https://where2studios.com/work/phdata-omni-brand-hq-build-montage)
 - [Claroty Hospitality Suite at RSA Conference 2024, B Restaurant](https://where2studios.com/work/claroty-rsa-conference-2024)
+- [Claroty Podcast Day at RSA Conference 2024, B Restaurant](https://where2studios.com/work/claroty-podcast-day-rsa-2024)
 - [Kiterocket Hospitality Suite at SEMICON West 2023, The Veranda](https://where2studios.com/work/kiterocket-semicon-west-2023)
 - [RSA Conference 2025 Convention Week at B Restaurant](https://where2studios.com/work/rsa-conference-2025-b-restaurant)
 - [Snowflake Summit 2025 Convention Week at B Restaurant](https://where2studios.com/work/snowflake-summit-2025-b-restaurant)
@@ -65,7 +64,7 @@ Where2Studios is a video and photo production team based in Union City, Californ
 ## San Francisco conference week calendar
 
 - [Dreamforce](https://where2studios.com/conventions/dreamforce): September 15 to 17, 2026. Moscone North, South and West, San Francisco. Organizer: Salesforce.
-- [RSA Conference](https://where2studios.com/rsa-conference-video): April 5 to 8, 2027. Moscone North, South and West, San Francisco. Organizer: RSA Conference.
+- [RSAC Conference](https://where2studios.com/conventions/rsac): April 5 to 8, 2027. Moscone Center, San Francisco. Organizer: RSA Conference.
 - [Snowflake Summit](https://where2studios.com/conventions/snowflake-summit): June 7 to 10, 2027. Moscone Center, San Francisco. Organizer: Snowflake.
 - [Data + AI Summit](https://where2studios.com/conventions/data-ai-summit): June 21 to 24, 2027. Moscone North, West and South, San Francisco. Organizer: Databricks.
 - [TechCrunch Disrupt](https://where2studios.com/conventions/techcrunch-disrupt): October 13 to 15, 2026. Moscone West, San Francisco. Organizer: TechCrunch.
