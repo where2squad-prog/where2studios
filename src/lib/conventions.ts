@@ -72,7 +72,6 @@ export const conventions: Convention[] = [
     proofSlugs: [
       'cloudflare-rsa-conference-2025',
       'claroty-rsa-conference-2024',
-      'claroty-podcast-day-rsa-2024',
       'rsa-conference-2025-b-restaurant',
     ],
     faqs: [

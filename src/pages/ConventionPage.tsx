@@ -9,7 +9,7 @@ import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { ConventionForm } from '@/components/conventions/ConventionForm'
-import { useProjects, type Project } from '@/hooks/useProjects'
+import { useProjects, proofWall, type Project } from '@/hooks/useProjects'
 import { useConventionStatus } from '@/hooks/useConventionStatus'
 import { deliverables } from '@/data/deliverables'
 import {
@@ -86,9 +86,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
 
   const proof = useMemo(() => {
     const all = projects || []
-    return convention.proofSlugs
-      .map((slug) => all.find((p) => p.slug === slug))
-      .filter((p): p is Project => !!p)
+    return proofWall(all, convention.proofSlugs)
   }, [projects, convention.proofSlugs])
 
   const clientNames = useMemo(() => {

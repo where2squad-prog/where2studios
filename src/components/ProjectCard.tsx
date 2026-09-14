@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Eye, Smartphone } from 'lucide-react'
+import { Play, Eye } from 'lucide-react'
 import { Project, getThumbnail } from '@/hooks/useProjects'
 import { isPortraitMedia } from '@/lib/video'
 
@@ -91,13 +91,6 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
             </div>
           </div>
 
-          {/* Vertical badge, so a 9:16 source reads as intentional */}
-          {isPortrait && (
-            <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1">
-              <Smartphone className="w-3 h-3 text-m3-on-dark/70" aria-hidden="true" />
-              <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold">Vertical</span>
-            </div>
-          )}
 
           {/* Views badge */}
           {project.result && !isHorizontal && (
