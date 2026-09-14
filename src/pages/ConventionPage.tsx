@@ -7,16 +7,15 @@ import { PageLayout } from '@/components/layout/PageLayout'
 import { SEOHead, areaServed } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
+import { isPortraitMedia } from '@/lib/video'
 import { TrustedBrands } from '@/components/TrustedBrands'
 import { ConventionForm } from '@/components/conventions/ConventionForm'
 import { useProjects, proofWall, type Project } from '@/hooks/useProjects'
-import { isPortraitMedia } from '@/lib/video'
 import { useConventionStatus } from '@/hooks/useConventionStatus'
 import { deliverables } from '@/data/deliverables'
 import {
   conventions,
   formatEditionRange,
-  hasConventionPage,
   nextUnknownYear,
   sharedConventionFaqs,
   type Convention,
@@ -33,10 +32,7 @@ const SITE_URL = 'https://where2studios.com'
 
 
 /** Keeps the brand suffix inside the title cap by dropping the city on long names. */
-function conventionTitle(name: string, calendarOnly = false) {
-  // A convention with its own campaign page owns the "video coverage" title,
-  // so the calendar entry takes a distinct one.
-  if (calendarOnly) return `${name} Week Dates and Coverage | Where2Studios`
+function conventionTitle(name: string) {
   const withCity = `${name} Video Coverage, San Francisco`
   return `${withCity.length + 16 <= 65 ? withCity : `${name} Video Coverage`} | Where2Studios`
 }
@@ -128,7 +124,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
   }
 
   const pageUrl = `${SITE_URL}/conventions/${convention.slug}`
-  const title = conventionTitle(convention.name, !!convention.href)
+  const title = conventionTitle(convention.name)
   const description = dateLine
     ? `Video coverage for ${convention.name}, ${dateLine}. Activation, suite and side event films near Moscone, clips by 10am the next day.`
     : `Video coverage for ${convention.name} ${tbaYear} in San Francisco. Activation, suite and side event films near Moscone, clips by 10am the next day.`
@@ -398,7 +394,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
         onClose={() => setActiveVideo(null)}
         videoUrl={activeVideo?.video_url || null}
         title={activeVideo?.title}
-        portrait={activeVideo ? isPortraitMedia(activeVideo) : false}
+        portrait={isPortraitMedia(activeVideo)}
       />
     </>
   )
@@ -409,10 +405,10 @@ export default function ConventionPage() {
   const convention = conventions.find((c) => c.slug === slug)
 
   if (!convention) return <NotFoundPage />
-  if (!hasConventionPage(convention)) return <ConventionRedirect convention={convention} />
+  if (convention.href) return <ConventionRedirect convention={convention} />
   return <ConventionContent convention={convention} />
 }
 
 export function getConventionStaticPaths(): string[] {
-  return conventions.filter(hasConventionPage).map((c) => `/conventions/${c.slug}`)
+  return conventions.filter((c) => !c.href).map((c) => `/conventions/${c.slug}`)
 }

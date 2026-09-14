@@ -5,7 +5,6 @@ import { getTechWeekPhase } from "../src/lib/techWeek";
 import {
   conventions,
   conventionHref,
-  hasConventionPage,
   formatEditionRange,
   getConventionStatus,
   nextUnknownYear,
@@ -27,7 +26,6 @@ interface ProjectRow {
 const STATIC_ROUTES: { path: string; priority: string; changefreq: string; dated?: boolean }[] = [
   { path: "/", priority: "1.0", changefreq: "weekly", dated: true },
   { path: "/sf-tech-week", priority: "0.9", changefreq: "daily", dated: true },
-  { path: "/rsa-conference-video", priority: "0.9", changefreq: "weekly", dated: true },
   { path: "/event-recap-videos", priority: "0.9", changefreq: "monthly" },
   { path: "/services", priority: "0.8", changefreq: "monthly" },
   { path: "/why-a-dedicated-crew", priority: "0.7", changefreq: "monthly" },
@@ -87,7 +85,7 @@ function buildSitemap(projects: ProjectRow[], buildDate: string) {
 
   lines.push("", "  <!-- Conference week pages -->");
   for (const convention of conventions) {
-    if (!hasConventionPage(convention)) continue;
+    if (convention.href) continue;
     lines.push(
       `  <url><loc>${DOMAIN}/conventions/${convention.slug}</loc><lastmod>${buildDate}</lastmod><priority>0.8</priority><changefreq>weekly</changefreq></url>`,
     );
@@ -142,12 +140,11 @@ function pagesWorthCitingSection() {
     `- [Why a dedicated conference week crew](${DOMAIN}/why-a-dedicated-crew): why a dedicated crew beats a single hired shooter, on site from build day to strike, clips by 10am.`,
     `- [Event recap video production](${DOMAIN}/event-recap-videos): what an event recap includes, recap edit, next day teaser, speaker clips, vertical cutdowns and photo selects.`,
     `- [SF Tech Week video coverage](${DOMAIN}/sf-tech-week): packages, prices and turnaround for SF Tech Week side events, October 5 to 11, 2026.`,
-    `- [RSA Conference video coverage](${DOMAIN}/rsa-conference-video): experience hub, hospitality suite, podcast day and evening reception coverage near Moscone during RSAC week, April 5 to 8, 2027.`,
   ];
 
   const now = new Date();
   for (const convention of conventions) {
-    if (!hasConventionPage(convention)) continue;
+    if (convention.href) continue;
     const { edition } = getConventionStatus(convention, now);
     const dates = edition
       ? formatEditionRange(edition)
@@ -183,7 +180,6 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [Speaker and panel clips](${DOMAIN}/event-recap-videos): standalone clips of talks and panels.
 - [Brand activation films](${DOMAIN}/services): launch and activation coverage, plus photography.
 - [All services](${DOMAIN}/services)
-- [RSA Conference video coverage](${DOMAIN}/rsa-conference-video): experience hubs, hospitality suites, podcast days and evening receptions near Moscone during RSAC week.
 - [Why a dedicated conference week crew](${DOMAIN}/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
 - [Social media content and management](${DOMAIN}/backyard-bayou-socials)
 

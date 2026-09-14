@@ -28,7 +28,6 @@ const ROUTES = [
   '/work/dataiku-brand-hq-build-montage',
   '/work/linkedin-feature',
   '/sf-tech-week',
-  '/rsa-conference-video',
   '/conventions',
   '/conventions/dreamforce',
   '/why-a-dedicated-crew',
@@ -247,10 +246,7 @@ async function main() {
 
       for (const text of new Set(consoleErrors)) {
         // External players are blocked in this sandbox, so they are not app bugs.
-        // External players are blocked in this sandbox and the preview host sets
-        // its own Content Security Policy headers, so neither is an app bug.
         if (/vimeo|youtube|cloudflare|401|ERR_/i.test(text)) continue
-        if (/content security policy/i.test(text)) continue
         add(route, vp, /exception/.test(text) ? 'blocker' : 'bug', `console: ${text}`, 'window')
       }
       for (const req of new Set(badRequests)) {
@@ -359,14 +355,6 @@ async function runFlows(route: string, vp: string, page: Page) {
   const fail = (what: string, selector = '') => add(route, vp, 'blocker', what, selector)
 
   try {
-    // A redirect stub is not a page: only assert that it redirects.
-    if (route === '/socials') {
-      if (!page.url().includes('/backyard-bayou-socials')) {
-        fail('/socials does not redirect to /backyard-bayou-socials')
-      }
-      return
-    }
-
     // Mobile hamburger
     if (isMobile) {
       const burger = page.locator('button[aria-label="Open menu"]').first()
@@ -536,6 +524,12 @@ async function runFlows(route: string, vp: string, page: Page) {
         await page.waitForTimeout(700)
         const invalid = await page.locator('[aria-invalid="true"], [role=alert], form :invalid').count()
         if (!invalid) fail('contact form shows no validation on empty submit', 'form')
+      }
+    }
+
+    if (route === '/socials') {
+      if (!page.url().includes('/backyard-bayou-socials')) {
+        fail('/socials does not redirect to /backyard-bayou-socials')
       }
     }
 

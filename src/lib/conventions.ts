@@ -16,10 +16,7 @@ export interface Convention {
   editions: ConventionEdition[]
   proofSlugs: string[]
   faqs: { q: string; a: string }[]
-  /** Cards, calendar rows and the announcement bar link here instead of /conventions/{slug}. */
   href?: string
-  /** Keep /conventions/{slug} rendering and indexed even though href points elsewhere. */
-  keepCalendarPage?: boolean
 }
 
 export const conventions: Convention[] = [
@@ -58,9 +55,9 @@ export const conventions: Convention[] = [
   },
   {
     slug: 'rsac',
-    name: 'RSA Conference',
+    name: 'RSAC Conference',
     organizer: 'RSA Conference',
-    venue: 'Moscone North, South and West',
+    venue: 'Moscone Center',
     audience:
       'Security buyers walk the halls all day, so vendors need footage from the hub and the suite, not just the booth.',
     buyers: [
@@ -76,10 +73,7 @@ export const conventions: Convention[] = [
       'cloudflare-rsa-conference-2025',
       'claroty-rsa-conference-2024',
       'rsa-conference-2025-b-restaurant',
-      '1password-brand-hq-build-montage',
     ],
-    href: '/rsa-conference-video',
-    keepCalendarPage: true,
     faqs: [
       {
         q: 'Can you run a podcast day during RSAC?',
@@ -88,18 +82,6 @@ export const conventions: Convention[] = [
       {
         q: 'Can one crew cover a hub and an evening party?',
         a: 'Usually yes for a single day. Across the full week we put a fresh crew on each day so the edits keep landing overnight.',
-      },
-      {
-        q: 'When is RSA Conference 2027?',
-        a: 'RSAC 2027 runs April 5 to 8, 2027 at Moscone North, South and West in San Francisco.',
-      },
-      {
-        q: 'How early do RSAC crews book out?',
-        a: 'RSAC week is the busiest week of the year for crews in SoMa. Most of our RSAC bookings are locked four to six months ahead. If you are inside a month, message us anyway, we hold a standby crew.',
-      },
-      {
-        q: 'Do you cover the hotel suites and restaurants around Moscone?',
-        a: 'That is most of what we shoot during RSAC. Experience hubs, hospitality suites, podcast days, analyst briefings and evening receptions at venues within a few blocks of Moscone, including The Howard and B Restaurant.',
       },
     ],
   },
@@ -358,13 +340,6 @@ export function formatEditionRangeShort(edition: ConventionEdition): string {
 export function conventionHref(convention: Convention): string {
   return convention.href ?? `/conventions/${convention.slug}`
 }
-
-/** True when /conventions/{slug} renders real content and should stay indexed. */
-export function hasConventionPage(convention: Convention): boolean {
-  return !convention.href || convention.keepCalendarPage === true
-}
-
-export const rsaConvention = conventions.find((c) => c.slug === 'rsac')!
 
 export function statusChip(convention: Convention, phase: ConventionPhase): string {
   if (phase.kind === 'live') return 'Live now'

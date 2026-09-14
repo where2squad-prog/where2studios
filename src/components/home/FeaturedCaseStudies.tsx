@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Play } from 'lucide-react'
 import { useAllProjects, CaseStudy } from '@/hooks/useCaseStudy'
 import { getThumbnail } from '@/hooks/useProjects'
-import { isYouTubeUrl, isVimeoUrl, getVideoEmbedUrl } from '@/lib/video'
+import { isYouTubeUrl, isVimeoUrl, getVideoEmbedUrl, isPortraitMedia } from '@/lib/video'
 import {
   Carousel,
   CarouselContent,
@@ -50,6 +50,29 @@ function MediaBlock({ project }: { project: CaseStudy }) {
   if (project.video_url && (isYouTubeUrl(project.video_url) || isVimeoUrl(project.video_url))) {
     const embed = getVideoEmbedUrl(project.video_url, { autoplay: false, controls: true })
     const host = isVimeoUrl(project.video_url) ? 'Vimeo' : 'YouTube'
+    if (isPortraitMedia(project)) {
+      // A 9:16 film keeps its shape, centred over a blurred copy of its own still.
+      return (
+        <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
+          <img
+            src={thumbnail}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl brightness-[0.45]"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <iframe
+              src={embed!}
+              className="h-full max-w-full aspect-[9/16]"
+              title={project.title}
+              aria-label={`Watch ${project.title} on ${host}`}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="relative w-full h-full overflow-hidden bg-m3-surface-dark">
         <iframe

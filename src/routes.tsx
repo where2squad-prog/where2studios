@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import EventRecapVideosPage from './pages/EventRecapVideosPage'
 import SFTechWeekPage from './pages/SFTechWeekPage'
-import RSAConferencePage from './pages/RSAConferencePage'
 import CaseStudyPage from './pages/CaseStudyPage'
 import ServicesPage from './pages/ServicesPage'
 import WhyDedicatedCrewPage from './pages/WhyDedicatedCrewPage'
@@ -33,7 +32,6 @@ export const routes: RouteRecord[] = [
       { index: true, element: <HomePage /> },
       { path: 'event-recap-videos', element: <EventRecapVideosPage /> },
       { path: 'sf-tech-week', element: <SFTechWeekPage /> },
-      { path: 'rsa-conference-video', element: <RSAConferencePage /> },
       { path: 'work', element: <WorkPage /> },
       {
         path: 'work/:slug',
