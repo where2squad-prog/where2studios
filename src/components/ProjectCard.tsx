@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Play, Eye, Smartphone } from 'lucide-react'
 import { Project, getThumbnail } from '@/hooks/useProjects'
@@ -16,6 +17,9 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
   const thumbnail = getThumbnail(project)
   const isHorizontal = aspectRatio === 'horizontal'
   const isPortrait = isPortraitMedia(project)
+  // Vimeo and YouTube hand back a 16:9 still even for a 9:16 film, so the
+  // blurred backdrop treatment keys off the still itself.
+  const [portraitStill, setPortraitStill] = useState(false)
 
   const handleClick = () => {
     if (onClick) {
@@ -47,7 +51,7 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
 
       <div className={`m3-elevated-card overflow-hidden ${isHorizontal ? 'aspect-video' : 'aspect-[9/16]'}`}>
         <div className="relative w-full h-full">
-          {isPortrait ? (
+          {portraitStill ? (
             <div className="absolute inset-0">
               {/* Blurred, darkened copy of the still fills the frame. */}
               <img
@@ -61,8 +65,7 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
                 <img
                   src={thumbnail}
                   alt={`Video still from the ${project.title} project by Where2Studios`}
-                  className="h-full max-h-full w-auto max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
-                  style={{ aspectRatio: '9 / 16' }}
+                  className="h-full w-auto max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -70,6 +73,10 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
             <img
               src={thumbnail}
               alt={`Video still from the ${project.title} project by Where2Studios`}
+              onLoad={(event) => {
+                const img = event.currentTarget
+                if (img.naturalHeight > img.naturalWidth) setPortraitStill(true)
+              }}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           )}
