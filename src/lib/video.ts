@@ -84,6 +84,19 @@ export function isDirectVideoUrl(url: string | null | undefined): boolean {
   return /\.(mp4|webm|mov)(\?.*)?$/i.test(url)
 }
 
+/**
+ * True when the source is taller than it is wide, so cards can frame it
+ * deliberately instead of letterboxing it inside a 16:9 box.
+ */
+export function isPortraitMedia(media: {
+  width?: number | null
+  height?: number | null
+}): boolean {
+  const { width, height } = media
+  if (!width || !height) return false
+  return height > width
+}
+
 /** Dispatches to the right provider embed for a project video URL. */
 export function getVideoEmbedUrl(
   url: string | null | undefined,

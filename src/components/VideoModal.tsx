@@ -10,9 +10,11 @@ interface VideoModalProps {
   onClose: () => void
   videoUrl: string | null
   title?: string
+  /** 9:16 source: frame it tall instead of letterboxing it in a 16:9 box. */
+  portrait?: boolean
 }
 
-export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps) {
+export function VideoModal({ isOpen, onClose, videoUrl, title, portrait = false }: VideoModalProps) {
   const isDirect = isDirectVideoUrl(videoUrl)
   const embedUrl = isDirect ? null : getVideoEmbedUrl(videoUrl, { autoplay: true })
 
@@ -64,7 +66,11 @@ export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative z-10 w-full max-w-5xl aspect-video m3-elevated-card overflow-hidden"
+            className={`relative z-10 m3-elevated-card overflow-hidden ${
+              portrait
+                ? 'h-[78vh] max-h-[78vh] aspect-[9/16] w-auto max-w-full'
+                : 'w-full max-w-5xl aspect-video'
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {isDirect && videoUrl ? (

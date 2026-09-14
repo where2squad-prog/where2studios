@@ -14,6 +14,7 @@ const ANSWER_ROUTES = (route: string) =>
   route === '/' ||
   route === '/event-recap-videos' ||
   route === '/sf-tech-week' ||
+  route === '/rsa-conference-video' ||
   route === '/why-a-dedicated-crew' ||
   /^\/conventions\/[^/]+$/.test(route)
 

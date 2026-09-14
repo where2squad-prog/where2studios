@@ -7,7 +7,8 @@ import { PageLayout } from '@/components/layout/PageLayout'
 import { SEOHead } from '@/components/SEOHead'
 import { ProjectCard } from '@/components/ProjectCard'
 import { VideoModal } from '@/components/VideoModal'
-import { useProjects, type Project } from '@/hooks/useProjects'
+import { useProjects, proofWall, type Project } from '@/hooks/useProjects'
+import { isPortraitMedia } from '@/lib/video'
 import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 const SITE_URL = 'https://where2studios.com'
@@ -79,9 +80,7 @@ export default function WhyDedicatedCrewPage() {
 
   const proof = useMemo(() => {
     const all = projects || []
-    return PROOF_SLUGS.map((slug) => all.find((p) => p.slug === slug)).filter(
-      (p): p is Project => !!p
-    )
+    return proofWall(all, PROOF_SLUGS)
   }, [projects])
 
   const title = 'Why a Dedicated Conference Week Video Crew | Where2Studios'
@@ -234,6 +233,7 @@ export default function WhyDedicatedCrewPage() {
         onClose={() => setActiveVideo(null)}
         videoUrl={activeVideo?.video_url || null}
         title={activeVideo?.title}
+        portrait={activeVideo ? isPortraitMedia(activeVideo) : false}
       />
     </>
   )

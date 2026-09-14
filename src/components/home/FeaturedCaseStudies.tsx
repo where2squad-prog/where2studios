@@ -265,7 +265,11 @@ export function FeaturedCaseStudies() {
     )
     .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0))
 
-  const poolKey = pool.map((p) => p.id).join(',')
+  // Prefer RSAC tagged work in the rotating middle slot, fall back to the whole pool.
+  const rsacPool = pool.filter((p) => p.convention_slug === 'rsac')
+  const pickPool = rsacPool.length > 0 ? rsacPool : pool
+
+  const poolKey = pickPool.map((p) => p.id).join(',')
 
   useEffect(() => {
     const ids = poolKey ? poolKey.split(',') : []

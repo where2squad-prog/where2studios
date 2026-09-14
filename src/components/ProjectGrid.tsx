@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Project } from '@/hooks/useProjects'
 import { ProjectCard } from './ProjectCard'
 import { VideoModal } from './VideoModal'
+import { isPortraitMedia } from '@/lib/video'
 
 interface ProjectGridProps {
   projects: Project[]
@@ -70,6 +71,7 @@ export function ProjectGrid({ projects, isLoading, aspectRatio = 'vertical' }: P
         onClose={() => setSelectedProject(null)}
         videoUrl={selectedProject?.video_url || null}
         title={selectedProject?.title}
+        portrait={selectedProject ? isPortraitMedia(selectedProject) : false}
       />
     </>
   )

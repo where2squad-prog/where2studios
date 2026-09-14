@@ -18,7 +18,8 @@ const baseNavLinks = [
   
 ];
 
-const techWeekLink = { href: '/sf-tech-week', label: 'SF Tech Week', timely: true };
+const techWeekLink = { href: '/sf-tech-week', label: 'SF Tech Week', timely: true }
+const rsaConferenceLink = { href: '/rsa-conference-video', label: 'RSA Conference', timely: true };
 
 interface NavbarProps {
   variant?: 'light' | 'dark';
@@ -37,9 +38,10 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
   const navRef = useRef<HTMLDivElement>(null);
 
   const techWeekPhase = useTechWeekPhase();
+  // One conference slot: whichever campaign is live.
   const navLinks = isTechWeekPromoLive(techWeekPhase)
     ? [techWeekLink, ...baseNavLinks]
-    : baseNavLinks;
+    : [rsaConferenceLink, ...baseNavLinks];
 
   useEffect(() => {
     const handleScroll = () => {

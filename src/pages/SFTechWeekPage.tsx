@@ -12,8 +12,9 @@ import { useTechWeekPhase } from '@/hooks/useTechWeekPhase'
 import { TrustedBrands } from '@/components/TrustedBrands'
 
 import { TechWeekForm } from '@/components/techweek/TechWeekForm'
-import { useProjects, type Project } from '@/hooks/useProjects'
+import { useProjects, proofWall, type Project } from '@/hooks/useProjects'
 import { techWeekPackages, SPONSOR_OPTION } from '@/lib/techWeek'
+import { isPortraitMedia } from '@/lib/video'
 import {
   Accordion,
   AccordionContent,
@@ -44,7 +45,6 @@ const PROOF_SLUGS = [
   'dataiku-brand-hq-build-montage',
   'cloudflare-rsa-conference-2025',
   'claroty-rsa-conference-2024',
-  'claroty-podcast-day-rsa-2024',
   'rsa-conference-2025-b-restaurant',
 ]
 
@@ -132,9 +132,7 @@ export default function SFTechWeekPage() {
 
   const proof = useMemo(() => {
     const all = projects || []
-    return PROOF_SLUGS.map((slug) => all.find((p) => p.slug === slug)).filter(
-      (p): p is Project => !!p
-    )
+    return proofWall(all, PROOF_SLUGS)
   }, [projects])
 
   const requestQuote = (packageName: string) => {
@@ -451,6 +449,7 @@ export default function SFTechWeekPage() {
         onClose={() => setActiveVideo(null)}
         videoUrl={activeVideo?.video_url || null}
         title={activeVideo?.title}
+        portrait={activeVideo ? isPortraitMedia(activeVideo) : false}
       />
     </>
   )
