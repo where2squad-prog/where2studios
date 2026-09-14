@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Eye } from 'lucide-react'
+import { Play, Eye, Smartphone } from 'lucide-react'
 import { Project, getThumbnail } from '@/hooks/useProjects'
+import { isPortraitMedia } from '@/lib/video'
 
 interface ProjectCardProps {
   project: Project
@@ -14,6 +16,10 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onClick }: ProjectCardProps) {
   const thumbnail = getThumbnail(project)
   const isHorizontal = aspectRatio === 'horizontal'
+  const isPortrait = isPortraitMedia(project)
+  // Vimeo and YouTube hand back a 16:9 still even for a 9:16 film, so the
+  // blurred backdrop treatment keys off the still itself.
+  const [portraitStill, setPortraitStill] = useState(false)
 
   const handleClick = () => {
     if (onClick) {
@@ -45,11 +51,35 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
 
       <div className={`m3-elevated-card overflow-hidden ${isHorizontal ? 'aspect-video' : 'aspect-[9/16]'}`}>
         <div className="relative w-full h-full">
-          <img
-            src={thumbnail}
-            alt={`Video still from the ${project.title} project by Where2Studios`}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          {portraitStill ? (
+            <div className="absolute inset-0">
+              {/* Blurred, darkened copy of the still fills the frame. */}
+              <img
+                src={thumbnail}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover scale-110 blur-xl brightness-[0.45]"
+              />
+              {/* The still itself keeps its own proportions, centred. */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <img
+                  src={thumbnail}
+                  alt={`Video still from the ${project.title} project by Where2Studios`}
+                  className="h-full w-auto max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          ) : (
+            <img
+              src={thumbnail}
+              alt={`Video still from the ${project.title} project by Where2Studios`}
+              onLoad={(event) => {
+                const img = event.currentTarget
+                if (img.naturalHeight > img.naturalWidth) setPortraitStill(true)
+              }}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
 
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-m3-surface-dark via-m3-surface-dark/20 to-transparent opacity-80" />
@@ -61,11 +91,19 @@ export function ProjectCard({ project, index = 0, aspectRatio = 'vertical', onCl
             </div>
           </div>
 
+          {/* Vertical badge, so a 9:16 source reads as intentional */}
+          {isPortrait && (
+            <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1">
+              <Smartphone className="w-3 h-3 text-m3-on-dark/70" aria-hidden="true" />
+              <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold">Vertical</span>
+            </div>
+          )}
+
           {/* Views badge */}
           {project.result && !isHorizontal && (
-            <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1">
-              <Eye className="w-3 h-3 text-m3-on-dark/70" />
-              <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold">
+            <div className={`absolute top-2 sm:top-4 right-2 sm:right-4 bg-m3-surface-dark/70 backdrop-blur-md rounded-full px-2 sm:px-3 py-1 flex items-center gap-1 ${isPortrait ? 'max-w-[55%]' : 'max-w-[80%]'}`}>
+              <Eye className="w-3 h-3 shrink-0 text-m3-on-dark/70" />
+              <span className="text-m3-on-dark text-[10px] sm:text-xs font-semibold truncate">
                 {project.result}
               </span>
             </div>

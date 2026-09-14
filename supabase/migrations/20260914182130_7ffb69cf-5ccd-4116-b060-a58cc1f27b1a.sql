@@ -1,0 +1,2 @@
+UPDATE public.projects SET width = 1080, height = 1920 WHERE slug IN ('claroty-rsa-conference-2024','claroty-podcast-day-rsa-2024');
+UPDATE public.projects SET width = 1920, height = 1080 WHERE slug IN ('cloudflare-rsa-conference-2025','rsa-conference-2025-b-restaurant');

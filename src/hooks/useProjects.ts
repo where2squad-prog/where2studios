@@ -15,7 +15,24 @@ export interface Project {
   featured: boolean
   display_order: number
   show_on_main_site?: boolean
+  media_type?: string | null
+  source?: string | null
+  width?: number | null
+  height?: number | null
   created_at: string
+}
+
+/**
+ * Builds a proof wall from an ordered slug list. Anything hidden in the
+ * database drops out on its own, so hiding a project is enough.
+ */
+export function proofWall<T extends { slug?: string | null; show_on_main_site?: boolean }>(
+  all: T[],
+  slugs: string[]
+): T[] {
+  return slugs
+    .map((slug) => all.find((p) => p.slug === slug))
+    .filter((p): p is T => !!p && p.show_on_main_site !== false)
 }
 
 interface UseProjectsOptions {

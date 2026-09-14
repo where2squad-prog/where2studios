@@ -24,6 +24,7 @@ export function Footer() {
     ...(showTechWeek
       ? [{ label: 'SF Tech Week video coverage', href: '/sf-tech-week', promo: true }]
       : []),
+    { label: 'RSA Conference video', href: '/rsa-conference-video' },
     { label: 'Event recap videos in the Bay Area', href: '/event-recap-videos' },
     { label: 'Activation recap', href: '/services#activation-recap' },
     { label: 'Exec clips for LinkedIn', href: '/services#exec-clips' },
