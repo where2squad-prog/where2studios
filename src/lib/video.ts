@@ -88,10 +88,10 @@ export function isDirectVideoUrl(url: string | null | undefined): boolean {
  * True when the source is taller than it is wide, so cards can frame it
  * deliberately instead of letterboxing it inside a 16:9 box.
  */
-export function isPortraitMedia(media: {
-  width?: number | null
-  height?: number | null
-}): boolean {
+export function isPortraitMedia(
+  media?: { width?: number | null; height?: number | null } | null
+): boolean {
+  if (!media) return false
   const { width, height } = media
   if (!width || !height) return false
   return height > width
