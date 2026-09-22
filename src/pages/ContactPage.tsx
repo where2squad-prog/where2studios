@@ -14,7 +14,7 @@ export default function ContactPage() {
       <SkipLink />
       <SEOHead
         title="Contact Our San Francisco Video Crew"
-        description="For press, partnerships, or general questions. Hiring inquiries? Use Book a Call."
+        description="For press, partnerships or general questions. Booking event coverage? Use Book a call to pick a time."
         schema={organizationSchema}
       />
 
@@ -32,7 +32,7 @@ export default function ContactPage() {
                 Get in touch
               </h1>
               <p className="text-base sm:text-lg text-m3-on-surface/70 max-w-xl">
-                For press, partnerships, or general questions. Hiring inquiries → use Book a Call.
+                For press, partnerships or general questions. Booking event coverage? Use Book a call to pick a time.
               </p>
             </motion.div>
           </div>

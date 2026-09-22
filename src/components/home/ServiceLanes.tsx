@@ -54,6 +54,9 @@ export function ServiceLanes() {
           <h2 className="font-fredoka text-2xl sm:text-3xl lg:text-4xl font-semibold text-m3-on-surface">
             What we do
           </h2>
+          <p className="mt-2 text-sm sm:text-base text-m3-on-surface/70">
+            Event recaps first. Event photography and editing only from the same crew.
+          </p>
           <Link
             to="/why-a-dedicated-crew"
             className="inline-flex items-center gap-1.5 text-m3-primary font-semibold text-sm mt-3"

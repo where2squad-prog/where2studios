@@ -141,21 +141,21 @@ export default function TeamPage() {
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">What we do</h2>
                 <p className="text-m3-on-surface/70 leading-relaxed">
-                  From full scale marketing strategy to cinematic video production, photography, podcast production, event coverage, and brand storytelling, we create media that accelerates businesses forward.
+                  Event recap videos for tech conference weeks, plus the clips, verticals and event photos that come out of the same shoot. Clips by 10am the next day, the full recap within 5 business days.
                 </p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">Who we help</h2>
                 <p className="text-m3-on-surface/70 leading-relaxed">
-                  We specialize in startups and small businesses, and our portfolio spans hospitality, tourism, food and beverage, tech, and service based brands.
+                  Event and field marketing teams at tech companies running activations, lounges, hospitality suites and side events, from Cloudflare and Google to early stage startups.
                 </p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <h2 className="font-fredoka text-xl sm:text-2xl font-semibold text-m3-on-surface mb-3">How we think</h2>
                 <p className="text-m3-on-surface/70 leading-relaxed">
-                  Every project starts with a strategy. Every asset has a purpose. Every campaign has a measurable goal. That's how brands grow.
+                  Your run of show becomes our shot list. We plan coverage around the moments your team needs on camera, then deliver fast enough to post while the event is still on.
                 </p>
               </motion.div>
 

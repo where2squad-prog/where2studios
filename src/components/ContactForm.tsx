@@ -15,8 +15,8 @@ const contactSchema = z.object({
   company: z.string().trim().max(100).optional(),
   role: z.string().trim().max(100).optional(),
   companyUrl: z.string().trim().max(255).optional(),
-  growthGoal: z.string().min(1, 'Please select a growth goal'),
-  service: z.string().min(1, 'Please select what you need help with'),
+  growthGoal: z.string().min(1, 'Pick what you are running'),
+  service: z.string().min(1, 'Pick what you need'),
   budget: z.string().trim().max(100).optional(),
   timeline: z.string().trim().max(100).optional(),
   message: z.string().trim().min(1, 'Notes are required').max(2000),
@@ -25,19 +25,20 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>
 
+// Field names stay the same so existing leads keep their shape.
 const growthGoals = [
-  { value: 'launch', label: 'Launch' },
-  { value: 'awareness', label: 'Awareness' },
-  { value: 'leads', label: 'Leads' },
-  { value: 'sales', label: 'Sales' },
-  { value: 'hiring', label: 'Hiring' },
-  { value: 'community', label: 'Community' },
+  { value: 'activation', label: 'Activation or lounge' },
+  { value: 'hospitality-suite', label: 'Hospitality suite' },
+  { value: 'side-event', label: 'Side event or party' },
+  { value: 'customer-dinner', label: 'Customer dinner' },
+  { value: 'other', label: 'Something else' },
 ]
 
 const serviceNeeds = [
-  { value: 'strategy', label: 'Strategy' },
-  { value: 'production', label: 'Production' },
-  { value: 'marketing-execution', label: 'Marketing Execution' },
+  { value: 'event-recap', label: 'Event recap video' },
+  { value: 'event-photography', label: 'Event photography' },
+  { value: 'editing-only', label: 'Editing only' },
+  { value: 'not-sure', label: 'Not sure yet' },
 ]
 
 interface ContactFormProps {
@@ -115,7 +116,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         email: formData.email,
         company: formData.company || undefined,
         service: formData.service,
-        message: `[Growth Goal: ${formData.growthGoal}]${formData.role ? ` [Role: ${formData.role}]` : ''}${formData.companyUrl ? ` [Website: ${formData.companyUrl}]` : ''}\n\n${formData.message}`,
+        message: `[Running: ${formData.growthGoal}]${formData.role ? ` [Role: ${formData.role}]` : ''}${formData.companyUrl ? ` [Website: ${formData.companyUrl}]` : ''}\n\n${formData.message}`,
         phone: formData.phone || undefined,
         budget: formData.budget || undefined,
         timeline: formData.timeline || undefined,
@@ -170,7 +171,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           Got it.
         </h3>
         <p className="text-m3-on-surface/60 mb-6">
-          We'll reply within 1 business day with next steps, then you can book your strategy call.
+          We reply within 1 business day. Want to talk sooner? Book a 15 minute call.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           {!pendingCalOpen && (
@@ -268,7 +269,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
         {/* Growth Goal & Service Need */}
         <div className="grid sm:grid-cols-2 gap-3">
           <div>
-            <label htmlFor="contact-growthGoal" className={labelClasses}>What are you trying to grow? *</label>
+            <label htmlFor="contact-growthGoal" className={labelClasses}>What are you running? *</label>
             <select id="contact-growthGoal" name="growthGoal" required aria-required="true" value={formData.growthGoal} onChange={handleChange} className={selectClasses(!!errors.growthGoal)}>
               <option value="">Select</option>
               {growthGoals.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}
@@ -276,7 +277,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
             {errors.growthGoal && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.growthGoal}</p>}
           </div>
           <div>
-            <label htmlFor="contact-service" className={labelClasses}>What do you need help with? *</label>
+            <label htmlFor="contact-service" className={labelClasses}>What do you need? *</label>
             <select id="contact-service" name="service" required aria-required="true" value={formData.service} onChange={handleChange} className={selectClasses(!!errors.service)}>
               <option value="">Select</option>
               {serviceNeeds.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
@@ -290,7 +291,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
               <label htmlFor="contact-timeline" className={labelClasses}>Timeline</label>
-              <input id="contact-timeline" type="text" name="timeline" value={formData.timeline} onChange={handleChange} className={inputClasses(false)} placeholder="When do you want to launch" />
+              <input id="contact-timeline" type="text" name="timeline" value={formData.timeline} onChange={handleChange} className={inputClasses(false)} placeholder="Event dates" />
             </div>
             <div>
               <label htmlFor="contact-budget" className={labelClasses}>Budget range</label>
@@ -311,7 +312,7 @@ export function ContactForm({ showBookCall = true, compact = false }: ContactFor
             onChange={handleChange}
             rows={3}
             className={`${inputClasses(!!errors.message)} resize-none`}
-            placeholder="What's working, what's not, what you want to improve"
+            placeholder="The event, the venue, what you want out of it"
           />
           {errors.message && <p role="alert" className="text-m3-secondary text-[10px] mt-0.5">{errors.message}</p>}
         </div>

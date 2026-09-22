@@ -90,7 +90,15 @@ const faqs = [
   },
   {
     q: 'Do you handle photo as well as video?',
-    a: 'Yes. You can add edited photo selects to any event package, shot by the same team.',
+    a: 'Yes, the same crew shoots the event photos. A half day starts at $1,000 and a full day at $2,000, with edited photos in one week. Next day delivery is an add-on: $250 for 50 to 100 photos or $500 for 100 to 200.',
+  },
+  {
+    q: 'How many rounds of changes are included?',
+    a: 'Up to two rounds of changes are included. Every cut comes as a Frame.io link your team can comment on.',
+  },
+  {
+    q: 'Who owns the footage?',
+    a: 'You own the final files. We keep the right to show the work in our portfolio. Raw footage is available as an add-on.',
   },
   {
     q: 'Do you help with posting and distribution?',
