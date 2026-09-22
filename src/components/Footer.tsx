@@ -56,7 +56,7 @@ export function Footer() {
               Activation recaps, exec clips and same week social cutdowns, San Francisco.
             </p>
             <p className="text-m3-on-dark/40 text-xs mb-4">
-              We reply within 1 business day.
+              15 minute call. Pick a time that works.
             </p>
 
             <button

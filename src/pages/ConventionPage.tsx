@@ -334,7 +334,7 @@ function ConventionContent({ convention }: { convention: Convention }) {
               })}
             </div>
             <p className="text-xs sm:text-sm text-m3-on-surface/60 mt-6">
-              Quote based. Send your dates and we scope it the same day.
+              Quote based. Book a 15 minute call and we scope it the same day.
             </p>
           </div>
         </section>

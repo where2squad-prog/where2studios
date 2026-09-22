@@ -34,8 +34,8 @@ const whyPoints = [
 
 
 const bookingSteps = [
-  'Send us the event, the date and the times.',
-  'We confirm a crew and lock your slot.',
+  'Pick a 15 minute call time below.',
+  'We confirm a crew and lock your slot on the call.',
   'We shoot.',
   'Teaser and vertical clips by 10am the next day. Full recap after the week.',
 ]
@@ -328,7 +328,7 @@ export default function SFTechWeekPage() {
                     onClick={() => requestQuote(pkg.name)}
                     className="m3-outlined-button text-sm px-5 py-2.5 mt-5 self-start"
                   >
-                    Request a quote
+                    Book a call about this
                   </button>
                 </div>
               ))}
@@ -430,8 +430,8 @@ export default function SFTechWeekPage() {
             </h2>
             {!isPast && (
               <p className="mt-3 text-sm sm:text-base text-m3-on-surface/70">
-                San Francisco Tech Week video production books out fast. Send us your date and we
-                will tell you today if we can cover it.
+                San Francisco Tech Week video production books out fast. Book a 15 minute call and we
+                will tell you on the call if we can cover your date.
               </p>
             )}
             <button

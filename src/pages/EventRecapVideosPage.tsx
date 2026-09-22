@@ -245,7 +245,7 @@ export default function EventRecapVideosPage() {
                 </div>
 
                 <p className="text-m3-on-surface/50 text-xs mt-3">
-                  We reply within 1 business day.
+                  15 minute call. Pick a time that works.
                 </p>
               </motion.div>
             </div>
@@ -384,7 +384,7 @@ export default function EventRecapVideosPage() {
                 Got an event on the calendar?
               </h2>
               <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-                Tell us the event and the dates. We reply within 1 business day.
+                Book a 15 minute call. Pick a time that works.
               </p>
 
               <div className="mt-8">

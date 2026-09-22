@@ -61,7 +61,7 @@ export default function ServicesPage() {
               </div>
 
               <p className="text-m3-on-surface/50 text-xs mt-3">
-                We reply within 1 business day.
+                15 minute call. Pick a time that works.
               </p>
 
               <Link

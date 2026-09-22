@@ -56,7 +56,7 @@ export function ServicePageTemplate({
             </h1>
             <p className="text-lg sm:text-xl text-m3-on-dark/80 mb-4 max-w-xl">{subtitle}</p>
             <p className="text-m3-on-dark/50 text-sm mb-8">
-              Free 30 minute strategy call, we reply within 1 business day.
+              Free 15 minute call. Pick a time that works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={openSheet} className="m3-filled-button text-center text-lg px-8 py-4">
@@ -238,7 +238,7 @@ export function ServicePageTemplate({
               {bottomCtaSubheadline}
             </p>
             <p className="text-m3-on-dark/50 text-sm mb-8">
-              Free 30 minute strategy call, we reply within 1 business day.
+              Free 15 minute call. Pick a time that works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={openSheet} className="m3-filled-button inline-flex items-center gap-2 text-lg px-8 py-4">

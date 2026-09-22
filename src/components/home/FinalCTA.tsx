@@ -19,7 +19,7 @@ export function FinalCTA() {
             Let's make something worth watching.
           </h2>
           <p className="text-m3-on-dark/50 text-sm mb-8">
-            We reply within 1 business day.
+            15 minute call. Pick a time that works.
           </p>
 
           <div>

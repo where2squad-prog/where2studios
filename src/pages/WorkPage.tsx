@@ -16,6 +16,7 @@ import { isUploadedVideo } from '@/lib/portfolioMedia'
 import { UploadVideo } from '@/components/portfolio/UploadVideo'
 import { PhotoGrid } from '@/components/portfolio/PhotoGrid'
 import { KeepReading } from '@/components/layout/KeepReading'
+import { useBookingSheet } from '@/contexts/BookingSheetContext'
 
 const CATEGORIES = ['all', 'convention-week', 'event-recaps', 'brand-films']
 const CATEGORY_LABELS: Record<string, string> = {
@@ -123,6 +124,7 @@ function ProjectCard({ project, index }: { project: CaseStudy; index: number }) 
 }
 
 export default function WorkPage() {
+  const { openSheet } = useBookingSheet()
   const [searchParams, setSearchParams] = useSearchParams()
   const viewParam = searchParams.get('view')
   // The static HTML is built without a view param, so the first client render
@@ -298,12 +300,16 @@ export default function WorkPage() {
             Book a strategy call and we'll map deliverables, timeline, and budget.
           </p>
           <p className="mt-2 text-m3-on-surface/40 text-sm">
-            Free 30 minute strategy call, we reply within 1 business day.
+            Free 15 minute call. Pick a time that works.
           </p>
           <div className="mt-8">
-            <Link to="/contact" className="m3-filled-button inline-flex items-center gap-2 text-lg">
+            <button
+              type="button"
+              onClick={() => openSheet({ source: 'work-page' })}
+              className="m3-filled-button inline-flex items-center gap-2 text-lg"
+            >
               Book a Call
-            </Link>
+            </button>
           </div>
         </div>
       </section>

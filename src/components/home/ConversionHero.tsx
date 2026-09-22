@@ -73,7 +73,7 @@ export function ConversionHero() {
 
             {/* Helper line */}
             <p className="text-white/50 text-xs sm:text-sm mt-2 sm:mt-3 mb-4 sm:mb-5">
-              Tell us your conference dates. We reply within 1 business day.
+              15 minute call. Pick a time that works.
             </p>
           </motion.div>
         </div>

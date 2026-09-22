@@ -245,7 +245,7 @@ export default function TeamPage() {
               Ready to work with us?
             </h2>
             <p className="mt-4 text-m3-on-surface/60 max-w-xl mx-auto">
-              Free 30 minute strategy call, we reply within 1 business day.
+              Free 15 minute call. Pick a time that works.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={openSheet} className="m3-filled-button text-lg px-8 py-4">

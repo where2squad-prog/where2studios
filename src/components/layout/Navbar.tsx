@@ -153,6 +153,13 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                   )}
                 </Link>
               ))}
+              <button
+                type="button"
+                onClick={() => openSheet({ source: 'header' })}
+                className={`m3-filled-button hidden lg:inline-flex ml-3 rounded-full text-sm px-5 py-2.5 whitespace-nowrap ${focusRing}`}
+              >
+                Book a call
+              </button>
             </div>
 
             {/* Mobile Menu */}
@@ -246,7 +253,7 @@ export function Navbar({ variant = 'dark' }: NavbarProps) {
                     Book a Call
                   </button>
                   <p className="text-xs text-m3-on-dark/60">
-                    We reply within 1 business day.
+                    15 minute call. Pick a time that works.
                   </p>
 
                   <div className="flex items-center gap-2 pt-2">
