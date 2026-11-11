@@ -280,8 +280,38 @@ function conventionSecondLine(slug: string) {
     : `${nextUnknownYear(convention)} dates to be announced`
 }
 
+/**
+ * /small-business card. Its still is the Backyard Bayou reel posters tiled side by side,
+ * since that work lives on Instagram rather than in the projects table.
+ */
+async function renderSmallBusiness() {
+  const posters = ['C7fqRz7xTXt', 'DCAF2zYIW7z', 'DWFXq9PDwpo', 'C8NW0HHywfE'].map((code) =>
+    path.join(ROOT, `src/assets/small-business/bb-${code}.webp`)
+  )
+  const tiles = await Promise.all(
+    posters.map((file) => sharp(file).resize(300, 630, { fit: 'cover' }).toBuffer())
+  )
+  const still = await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#000000' } })
+    .composite(tiles.map((input, i) => ({ input, left: i * 300, top: 0 })))
+    .jpeg()
+    .toBuffer()
+  return render({
+    file: 'small-business.png',
+    width: 1200,
+    height: 630,
+    caption: 'Social media and video for small businesses',
+    second: 'We run @thebackyardbayou',
+    still,
+  })
+}
+
 async function main() {
   if (!existsSync(LOGO)) throw new Error(`missing logo at ${LOGO}`)
+  // OG_ONLY=small-business renders just that card, without touching the network.
+  if (process.env.OG_ONLY === 'small-business') {
+    console.log(path.relative(ROOT, await renderSmallBusiness()))
+    return
+  }
   await loadThumbnails()
 
   const written: string[] = []
@@ -335,6 +365,8 @@ async function main() {
       slugs: convention.proofSlugs,
     })
   }
+
+  written.push(await renderSmallBusiness())
 
   console.log('\nWritten:')
   let over = 0

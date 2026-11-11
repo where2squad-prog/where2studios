@@ -20,6 +20,7 @@ import Where2BoysPage from './pages/Where2BoysPage'
 import AccessibilityPage from './pages/AccessibilityPage'
 import SocialsPage from './pages/SocialsPage'
 import SocialsRedirectPage from './pages/SocialsRedirectPage'
+import SmallBusinessPage from './pages/SmallBusinessPage'
 import ConventionsPage from './pages/ConventionsPage'
 import ConventionPage, { getConventionStaticPaths } from './pages/ConventionPage'
 import { getPublishedCaseStudyPaths } from './lib/prerenderData'
@@ -50,6 +51,7 @@ export const routes: RouteRecord[] = [
       { path: 'who-we-are', element: <TeamPage /> },
       { path: 'socials', element: <SocialsRedirectPage /> },
       { path: 'backyard-bayou-socials', element: <SocialsPage /> },
+      { path: 'small-business', element: <SmallBusinessPage /> },
       { path: 'privacy', element: <PrivacyPolicyPage /> },
       { path: 'terms', element: <TermsOfServicePage /> },
       { path: 'where2boys', element: <Where2BoysPage /> },

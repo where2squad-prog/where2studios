@@ -15,6 +15,7 @@ const ANSWER_ROUTES = (route: string) =>
   route === '/event-recap-videos' ||
   route === '/sf-tech-week' ||
   route === '/why-a-dedicated-crew' ||
+  route === '/small-business' ||
   /^\/conventions\/[^/]+$/.test(route)
 
 function walk(dir: string, out: string[] = []): string[] {

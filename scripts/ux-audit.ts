@@ -34,6 +34,7 @@ const ROUTES = [
   '/services',
   '/contact',
   '/backyard-bayou-socials',
+  '/small-business',
   '/socials',
   '/nope',
 ]
