@@ -45,67 +45,75 @@ export const millionReels: ProofReel[] = [
   { shortcode: 'DAcGe94yQ00', views: '1.0M', poster: bbAddress, alt: 'Sauced king crab leg held over a seafood boil' },
 ]
 
-export type ServiceId = 'content-day' | 'social-media' | 'commercial' | 'ads'
+export const CONTACT_EMAIL = 'contact@where2studios.com'
 
-export interface Offer {
-  id: ServiceId
+export type PlanId = 'content-creation' | 'social-media'
+
+export interface Plan {
+  id: PlanId
   name: string
-  /** Shown as "From $X" plus the unit. */
+  /** Starting price, shown as "from $X a month". */
   price: string
-  unit?: string
   /** One plain sentence on what you get. */
   what: string
-  /** Small print under the line: terms, who it is for. */
+  /** Who it fits. */
   note: string
 }
 
-/**
- * Starting prices. Only Social media management ($1,500 a month) has been approved so far.
- * Content day, Commercial and Ads are proposals, check with Josh before publishing.
- */
-export const offers: Offer[] = [
+/** Starting prices approved Nov 11, 2026. Commercials and ads are add-ons with no listed price. */
+export const plans: Plan[] = [
   {
-    id: 'content-day',
-    name: 'Content day',
+    id: 'content-creation',
+    name: 'Content creation',
     price: '$750',
-    what: 'We film at your spot for up to 3 hours and hand you 4 edited videos, ready to post.',
-    note: 'One time. Good first step if you want to try us out.',
+    what: 'We come out once a month and film. You get 4 to 6 edited short videos, ready to post.',
+    note: 'You post them. Good if you already run your own page.',
   },
   {
     id: 'social-media',
     name: 'Social media management',
     price: '$1,500',
-    unit: 'a month',
     what: 'One film day a month, 2 to 3 posts a week on Instagram and TikTok, captions, and replies to comments and DMs.',
-    note: 'Month to month. This is what we do for Backyard Bayou.',
-  },
-  {
-    id: 'commercial',
-    name: 'Commercial',
-    price: '$2,500',
-    what: 'A 30 to 60 second spot for your website, YouTube or TV, plus vertical cuts for Reels, TikTok and ads.',
-    note: 'One time. Same crew that shoots for PacBio.',
-  },
-  {
-    id: 'ads',
-    name: 'Ads',
-    price: '$500',
-    unit: 'a month',
-    what: 'We turn your videos into Instagram, Facebook and TikTok ads, run them, and send you a report every month.',
-    note: 'Plus ad spend, paid straight to Meta or TikTok on your card.',
+    note: 'We run the whole page. This is what we do for Backyard Bayou.',
   },
 ]
 
-export const serviceChoices: { id: ServiceId | 'not-sure'; label: string }[] = [
-  { id: 'content-day', label: 'Content day' },
-  { id: 'social-media', label: 'Social media' },
-  { id: 'commercial', label: 'Commercial' },
-  { id: 'ads', label: 'Ads' },
+export const addOns = 'Need a commercial or ads? We add them to either plan and price them with you.'
+
+export const planChoices: { id: PlanId | 'not-sure'; label: string }[] = [
+  { id: 'content-creation', label: 'Content creation' },
+  { id: 'social-media', label: 'Social media management' },
   { id: 'not-sure', label: 'Not sure yet' },
 ]
 
+/** What the free page review promises. Shown next to the form and in the FAQ. */
+export const review = {
+  turnaround: '2 business days',
+  gets: [
+    '3 video ideas made for your business',
+    "What's working on your page and what isn't",
+    'Which plan fits, if either does',
+  ],
+}
+
+/** The way we work with owners. A real sequence, so it is shown in order. */
+export const growSteps: { title: string; body: string }[] = [
+  {
+    title: 'We come to you',
+    body: 'We spend time at your spot, meet your team and find what people actually come in for.',
+  },
+  {
+    title: 'We make it',
+    body: 'We film and edit the videos, and post them too if you want us to. You keep running your business.',
+  },
+  {
+    title: 'We check in every month',
+    body: 'We sit down with you, look at what brought people in, and change the plan when something is not working.',
+  },
+]
+
 /** Entry price used in the page intro and meta description. */
-export const entryOffer = offers[0]
+export const entryPlan = plans[0]
 
 export const pacbio = {
   slug: 'pacbio',
@@ -131,11 +139,15 @@ export const areaCities = [
 export const faqs: { q: string; a: string }[] = [
   {
     q: 'How much does it cost?',
-    a: `A content day starts at $750. Social media management starts at $1,500 a month. Commercials start at $2,500. Ads start at $500 a month plus your ad spend. We quote the exact number after a short call.`,
+    a: 'Content creation starts at $750 a month. Social media management starts at $1,500 a month. Commercials and ads can be added to either plan, and we price those with you.',
+  },
+  {
+    q: 'What is the free page review?',
+    a: `Send us your Instagram and we look at your page. Within ${review.turnaround} we send you 3 video ideas made for your business, what is working and what is not, and which plan fits, if either does. No cost and no pressure.`,
   },
   {
     q: 'Do I have to sign a long contract?',
-    a: 'No. Content days and commercials are one time. Social media management and ads are month to month.',
+    a: 'No. Both plans are month to month.',
   },
   {
     q: 'Do you only work with restaurants?',
@@ -152,7 +164,7 @@ export const faqs: { q: string; a: string }[] = [
     a: 'You do. You get the final files to post anywhere you want. We keep the right to show the work in our portfolio.',
   },
   {
-    q: 'Is ad spend included in the ads price?',
-    a: 'No. Ad spend is paid straight to Meta or TikTok on your own card, so you always see where it goes. Our fee covers making the ads, running them and reporting back.',
+    q: 'Do you run ads?',
+    a: 'Yes, as an add-on to either plan. We turn your videos into Instagram, Facebook and TikTok ads. Ad spend is paid straight to Meta or TikTok on your own card, so you always see where it goes.',
   },
 ]

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Play } from 'lucide-react'
+import { Check, Play } from 'lucide-react'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/Footer'
 import { SkipLink } from '@/components/layout/SkipLink'
@@ -20,33 +20,39 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import {
+  CONTACT_EMAIL,
   PAGE_PATH,
   PAGE_URL,
+  addOns,
   areaCities,
   bayouStats,
+  entryPlan,
   faqs,
-  entryOffer,
-  offers,
+  growSteps,
   pacbio,
-  type Offer,
+  planChoices,
+  plans,
+  review,
+  type Plan,
 } from '@/data/smallBusiness'
 import joshAvatar from '@/assets/small-business/team-joshua.webp'
 import gavinAvatar from '@/assets/small-business/team-gavin.webp'
 import danAvatar from '@/assets/small-business/team-daniel.webp'
 
-const FORM_ID = 'get-started'
-const PRICES_ID = 'prices'
+const FORM_ID = 'free-review'
+const PLANS_ID = 'plans'
 
-const fromPrice = entryOffer.price
+const fromPrice = entryPlan.price
 
 const PAGE_TITLE = 'Bay Area Small Business Social Media and Video | Where2Studios'
-const PAGE_DESCRIPTION = `We run @thebackyardbayou: 34M views, ${bayouStats.followers} followers. Content days, social media, commercials and ads for Bay Area small businesses. From ${fromPrice}.`
+const PAGE_DESCRIPTION = `We run @thebackyardbayou: 34M views, ${bayouStats.followers} followers. Social media content and management for Bay Area small businesses, from ${fromPrice} a month.`
 
 const focusRing =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-m3-primary focus-visible:ring-offset-2'
 const focusRingDark = `${focusRing} focus-visible:ring-offset-m3-surface-dark`
+const inlineLink = `font-medium text-m3-on-surface underline underline-offset-4 decoration-m3-primary decoration-2 hover:decoration-m3-on-surface rounded-sm ${focusRing}`
 
-const priceNumber = (o: Offer) => Number(o.price.replace(/[^0-9]/g, ''))
+const priceNumber = (p: Plan) => Number(p.price.replace(/[^0-9]/g, ''))
 
 const pageSchema = {
   '@context': 'https://schema.org',
@@ -62,6 +68,7 @@ const pageSchema = {
         '@type': 'Organization',
         name: 'Where2Studios',
         url: 'https://where2studios.com',
+        email: CONTACT_EMAIL,
       },
       areaServed: [
         ...areaCities.map((name) => ({ '@type': 'City', name })),
@@ -70,16 +77,16 @@ const pageSchema = {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Small business plans',
-        itemListElement: offers.map((o) => ({
+        itemListElement: plans.map((p) => ({
           '@type': 'Offer',
-          name: o.name,
-          description: o.what,
+          name: p.name,
+          description: p.what,
           priceCurrency: 'USD',
           priceSpecification: {
-            '@type': o.unit ? 'UnitPriceSpecification' : 'PriceSpecification',
-            minPrice: priceNumber(o),
+            '@type': 'UnitPriceSpecification',
+            minPrice: priceNumber(p),
             priceCurrency: 'USD',
-            ...(o.unit ? { unitText: 'MONTH' } : {}),
+            unitText: 'MONTH',
           },
         })),
       },
@@ -102,24 +109,18 @@ function scrollToId(id: string) {
 
 export default function SmallBusinessPage() {
   const { openSheet } = useBookingSheet()
-  const [selected, setSelected] = useState<string[]>([])
+  const [plan, setPlan] = useState<string | null>(null)
   const [pacbioOpen, setPacbioOpen] = useState(false)
 
-  const toggle = (id: string) =>
-    setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
-
-  const askAbout = (id: string) => {
-    setSelected((prev) => (prev.includes(id) ? prev : [...prev, id]))
+  const goToReview = (planId?: string) => {
+    if (planId) setPlan(planId)
     scrollToId(FORM_ID)
-    window.setTimeout(() => document.getElementById('sb-business')?.focus({ preventScroll: true }), 450)
+    window.setTimeout(() => document.getElementById('sb-handle')?.focus({ preventScroll: true }), 450)
   }
 
   const bookCall = () => {
-    const need = offers
-      .filter((o) => selected.includes(o.id))
-      .map((o) => o.name)
-      .join(', ')
-    openSheet({ conference: 'Small business', need: need || undefined, source: 'small-business' })
+    const need = planChoices.find((c) => c.id === plan)?.label
+    openSheet({ conference: 'Small business', need, source: 'small-business' })
   }
 
   return (
@@ -165,17 +166,18 @@ export default function SmallBusinessPage() {
               <div className="flex items-center gap-3 shrink-0">
                 <button
                   type="button"
-                  onClick={() => scrollToId(FORM_ID)}
-                  className={`m3-filled-button flex-1 sm:flex-none text-base px-6 sm:px-7 py-3.5 ${focusRingDark}`}
+                  onClick={() => goToReview()}
+                  className={`m3-filled-button flex-[1.5] sm:flex-none whitespace-nowrap text-base px-5 sm:px-7 py-3.5 ${focusRingDark}`}
                 >
-                  Get started
+                  <span className="sm:hidden">Free page review</span>
+                  <span className="hidden sm:inline">Get a free page review</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => scrollToId(PRICES_ID)}
-                  className={`flex-1 sm:flex-none rounded-full px-6 sm:px-7 py-3.5 font-fredoka font-semibold text-base text-m3-on-dark border border-m3-on-dark/25 hover:border-m3-on-dark/60 hover:bg-white/5 transition-colors ${focusRingDark}`}
+                  onClick={() => scrollToId(PLANS_ID)}
+                  className={`flex-1 sm:flex-none whitespace-nowrap rounded-full px-5 sm:px-7 py-3.5 font-fredoka font-semibold text-base text-m3-on-dark border border-m3-on-dark/25 hover:border-m3-on-dark/60 hover:bg-white/5 transition-colors ${focusRingDark}`}
                 >
-                  See prices
+                  See plans
                 </button>
               </div>
             </div>
@@ -191,58 +193,87 @@ export default function SmallBusinessPage() {
           </div>
         </section>
 
-        {/* Prices, laid out like a menu */}
-        <section id={PRICES_ID} className="bg-m3-background py-16 sm:py-24 scroll-mt-20">
-          <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-7xl grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-20">
-            <div className="lg:sticky lg:top-[calc(var(--nav-h,96px)+2rem)] self-start">
-              <h2 className="font-fredoka font-semibold text-4xl sm:text-5xl tracking-tight text-m3-on-background">
-                Start small.
+        {/* How we work with owners */}
+        <section className="bg-m3-surface py-16 sm:py-24">
+          <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-7xl">
+            <div className="max-w-2xl">
+              <h2 className="font-fredoka font-semibold text-4xl sm:text-5xl tracking-tight text-m3-on-surface">
+                We grow with you.
               </h2>
-              <p id="answer" className="mt-5 text-base sm:text-lg text-m3-on-background/70 max-w-[44ch] leading-relaxed">
-                Where2Studios makes social media content, runs Instagram and TikTok accounts, shoots
-                commercials and runs ads for small businesses across the Bay Area. Try one content day
-                for {fromPrice}. If you like what you get, we can take over your account from there.
+              <p className="mt-5 text-base sm:text-lg text-m3-on-surface/70 leading-relaxed max-w-[46ch]">
+                Every plan starts with the owner. Before we film anything, we learn your business.
               </p>
             </div>
 
-            <ul className="border-b border-m3-on-background/12">
-              {offers.map((offer) => (
-                <li key={offer.id} className="border-t border-m3-on-background/12 py-7 sm:py-8">
-                  <div className="flex items-baseline gap-3">
-                    <h3 className="font-fredoka font-semibold text-2xl sm:text-[1.75rem] leading-tight text-m3-on-background">
-                      {offer.name}
-                    </h3>
-                    <span
-                      aria-hidden="true"
-                      className="flex-1 min-w-[1.5rem] border-b-2 border-dotted border-m3-on-background/25 -translate-y-1.5"
-                    />
-                    <p className="shrink-0 text-right leading-none">
-                      <span className="text-sm text-m3-on-background/55 mr-1.5">from</span>
-                      <span className="font-fredoka font-semibold text-2xl sm:text-[1.75rem] text-m3-on-background">
-                        {offer.price}
-                      </span>
-                      {offer.unit && (
-                        <span className="block sm:inline text-sm text-m3-on-background/55 sm:ml-1.5 mt-1 sm:mt-0">
-                          {offer.unit}
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <p className="mt-3 text-base text-m3-on-background/80 max-w-[54ch] leading-relaxed">{offer.what}</p>
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-                    <p className="text-sm text-m3-on-background/55">{offer.note}</p>
-                    <button
-                      type="button"
-                      onClick={() => askAbout(offer.id)}
-                      aria-label={`Ask about ${offer.name.toLowerCase()}`}
-                      className={`shrink-0 rounded-full px-4 py-2 text-sm font-fredoka font-semibold text-m3-on-background border border-m3-on-background/20 hover:border-m3-on-background hover:bg-m3-on-background hover:text-m3-background transition-colors ${focusRing}`}
-                    >
-                      Ask about this
-                    </button>
-                  </div>
+            <ol className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
+              {growSteps.map((step, i) => (
+                <li key={step.title} className="border-t-2 border-m3-on-surface pt-6">
+                  <span className="block font-fredoka font-semibold text-sm text-m3-on-surface/50">
+                    Step {i + 1}
+                  </span>
+                  <h3 className="mt-2 font-fredoka font-semibold text-2xl sm:text-[1.75rem] leading-tight text-m3-on-surface">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-base text-m3-on-surface/75 leading-relaxed max-w-[38ch]">{step.body}</p>
                 </li>
               ))}
-            </ul>
+            </ol>
+          </div>
+        </section>
+
+        {/* Plans, laid out like a menu */}
+        <section id={PLANS_ID} className="bg-m3-background py-16 sm:py-24 scroll-mt-20">
+          <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-7xl grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-20">
+            <div className="self-start">
+              <h2 className="font-fredoka font-semibold text-4xl sm:text-5xl tracking-tight text-m3-on-background [text-wrap:balance]">
+                Two ways to work with us.
+              </h2>
+              <p id="answer" className="mt-5 text-base sm:text-lg text-m3-on-background/70 max-w-[44ch] leading-relaxed">
+                Where2Studios makes social media content and runs Instagram and TikTok accounts for small
+                businesses across the Bay Area. Content creation starts at {fromPrice} a month and social
+                media management starts at {plans[1].price} a month. Both are month to month.
+              </p>
+            </div>
+
+            <div>
+              <ul className="border-b border-m3-on-background/12">
+                {plans.map((p) => (
+                  <li key={p.id} className="border-t border-m3-on-background/12 py-7 sm:py-8">
+                    <div className="flex items-baseline gap-3">
+                      <h3 className="font-fredoka font-semibold text-2xl sm:text-[1.75rem] leading-tight text-m3-on-background">
+                        {p.name}
+                      </h3>
+                      <span
+                        aria-hidden="true"
+                        className="flex-1 min-w-[1.5rem] border-b-2 border-dotted border-m3-on-background/25 -translate-y-1.5"
+                      />
+                      <p className="shrink-0 text-right leading-none">
+                        <span className="text-sm text-m3-on-background/55 mr-1.5">from</span>
+                        <span className="font-fredoka font-semibold text-2xl sm:text-[1.75rem] text-m3-on-background">
+                          {p.price}
+                        </span>
+                        <span className="block sm:inline text-sm text-m3-on-background/55 sm:ml-1.5 mt-1 sm:mt-0">
+                          a month
+                        </span>
+                      </p>
+                    </div>
+                    <p className="mt-3 text-base text-m3-on-background/80 max-w-[54ch] leading-relaxed">{p.what}</p>
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                      <p className="text-sm text-m3-on-background/55">{p.note}</p>
+                      <button
+                        type="button"
+                        onClick={() => goToReview(p.id)}
+                        aria-label={`Start with ${p.name.toLowerCase()}: get a free page review`}
+                        className={`shrink-0 rounded-full px-4 py-2 text-sm font-fredoka font-semibold text-m3-on-background border border-m3-on-background/20 hover:border-m3-on-background hover:bg-m3-on-background hover:text-m3-background transition-colors ${focusRing}`}
+                      >
+                        Start with this
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-base text-m3-on-background/70 leading-relaxed">{addOns}</p>
+            </div>
           </div>
         </section>
 
@@ -286,28 +317,33 @@ export default function SmallBusinessPage() {
                 The same crew films for Google Pixel, Cloudflare and 1Password during convention week in
                 San Francisco.
               </p>
-              <Link
-                to="/work"
-                className={`mt-6 inline-block font-fredoka font-semibold text-m3-on-surface underline decoration-m3-primary decoration-2 underline-offset-4 hover:decoration-m3-on-surface rounded-sm ${focusRing}`}
-              >
+              <Link to="/work" className={`mt-6 inline-block font-fredoka font-semibold ${inlineLink}`}>
                 See that work
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Form */}
+        {/* Free page review */}
         <section id={FORM_ID} className="bg-m3-surface-variant py-16 sm:py-24 scroll-mt-16">
           <div className="container mx-auto px-5 sm:px-8 lg:px-12 max-w-7xl grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-20">
             <div>
               <h2 className="font-fredoka font-semibold text-4xl sm:text-5xl tracking-tight text-m3-on-surface [text-wrap:balance]">
-                Tell us about your business.
+                Get a free page review.
               </h2>
               <p className="mt-5 text-base sm:text-lg text-m3-on-surface/70 leading-relaxed max-w-[40ch]">
-                We reply within one business day.
+                Send us your Instagram. Within {review.turnaround} we send you:
               </p>
+              <ul className="mt-4 space-y-2.5">
+                {review.gets.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-base text-m3-on-surface/85">
+                    <Check className="w-5 h-5 mt-0.5 shrink-0 text-m3-primary" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-              <div className="mt-8 flex items-center gap-4">
+              <div className="mt-10 flex items-center gap-4">
                 <div className="flex -space-x-3 shrink-0">
                   {[
                     { src: joshAvatar, name: 'Josh' },
@@ -325,29 +361,29 @@ export default function SmallBusinessPage() {
                     />
                   ))}
                 </div>
-                <p className="text-sm text-m3-on-surface/70 leading-snug max-w-[26ch]">
-                  Josh, Gavin and Dan. The people who film are the people you text.
+                <p className="text-sm text-m3-on-surface/70 leading-snug max-w-[30ch]">
+                  Josh, Gavin and Dan look at every page themselves. Josh has worked at Backyard Bayou for 11
+                  years, from bussing tables to general manager.
                 </p>
               </div>
 
-              <p className="mt-8 text-base text-m3-on-surface/70 leading-relaxed max-w-[40ch]">
-                Josh has worked at Backyard Bayou for 11 years, from bussing tables to general manager. We
-                know what a slow Tuesday feels like.
-              </p>
-
-              <p className="mt-8 text-sm text-m3-on-surface/60">
-                Rather talk it through?{' '}
-                <button
-                  type="button"
-                  onClick={bookCall}
-                  className={`inline-flex min-h-[44px] items-center font-medium text-m3-on-surface underline underline-offset-4 decoration-m3-primary decoration-2 hover:decoration-m3-on-surface rounded-sm ${focusRing}`}
-                >
-                  Book a 15 minute call
-                </button>
-              </p>
+              <div className="mt-8 space-y-1 text-sm text-m3-on-surface/60">
+                <p>
+                  Rather talk it through?{' '}
+                  <button type="button" onClick={bookCall} className={`inline-flex min-h-[44px] items-center ${inlineLink}`}>
+                    Book a 15 minute call
+                  </button>
+                </p>
+                <p>
+                  Or email us at{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className={`inline-flex min-h-[44px] items-center ${inlineLink}`}>
+                    {CONTACT_EMAIL}
+                  </a>
+                </p>
+              </div>
             </div>
 
-            <SmallBizForm selected={selected} onToggle={toggle} onBookCall={bookCall} />
+            <SmallBizForm plan={plan} onPlan={setPlan} onBookCall={bookCall} />
           </div>
         </section>
 
@@ -369,6 +405,13 @@ export default function SmallBusinessPage() {
                 </AccordionItem>
               ))}
             </Accordion>
+            <p className="mt-8 text-sm text-m3-on-background/60">
+              Something else? Email{' '}
+              <a href={`mailto:${CONTACT_EMAIL}`} className={inlineLink}>
+                {CONTACT_EMAIL}
+              </a>
+              .
+            </p>
           </div>
         </section>
 
@@ -390,7 +433,7 @@ export default function SmallBusinessPage() {
         title={pacbio.title}
       />
 
-      <FloatingCTA label="Get started" scrollToId={FORM_ID} hideWhenVisibleId={FORM_ID} mobileOnly />
+      <FloatingCTA label="Free page review" scrollToId={FORM_ID} hideWhenVisibleId={FORM_ID} mobileOnly />
     </div>
   )
 }

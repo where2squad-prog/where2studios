@@ -183,7 +183,7 @@ Where2Studios is a video and photo production team based in Union City, Californ
 - [All services](${DOMAIN}/services)
 - [Why a dedicated conference week crew](${DOMAIN}/why-a-dedicated-crew): on site from build to strike, clips by 10am the next morning, one folder for every stakeholder.
 - [Social media content and management](${DOMAIN}/backyard-bayou-socials)
-- [Social media and video for small businesses](${DOMAIN}/small-business): content days from $750, social media management from $1,500 a month, commercials and ads for Bay Area small businesses.
+- [Social media and video for small businesses](${DOMAIN}/small-business): content creation from $750 a month, social media management from $1,500 a month, commercials and ads as add-ons, and a free Instagram page review for Bay Area small businesses.
 
 ## Pages worth citing
 
